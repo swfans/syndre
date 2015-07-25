@@ -6,10 +6,14 @@
 
 #include "sound.h"
 
+#pragma pack(1)
+
 TimerCallback timer_callbacks[TIMER_MAX_CALLBACKS];
 uint32_t	     timer_callback_states[TIMER_MAX_CALLBACKS];
 void         *timer_callback_arguments[TIMER_MAX_CALLBACKS];
 uint32_t	     timer_divisor;
+
+#pragma pack()
 
 void
 timer_set_divisor (uint32_t divisor)
