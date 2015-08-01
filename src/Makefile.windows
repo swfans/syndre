@@ -3,7 +3,6 @@ CC	 = gcc
 CPP	 = cpp
 PYTHON	 = python
 RC       = ../res/bfgame_stdres.rc
-RES      = ../obj/bfgame_stdres.res
 ASFLAGS	 =
 CFLAGS	 = -include windows.config.h -Wall -Wextra -Wno-unused-parameter $(shell sdl-config --cflags)
 CPPFLAGS = -C -DNEED_UNDERSCORE=1
@@ -26,6 +25,9 @@ ifeq ($(DEBUG),1)
   #ASFLAGS += -g
 endif
 
+# Names of intermediate build products
+GENSRC   =
+RES      = ../obj/bfgame_stdres.res
 OBJS = \
 	../obj/display.o \
 	../obj/dos.o \
@@ -70,7 +72,7 @@ all: $(TARGET)
 	-$(ECHO) 'Finished building: $<'
 	-$(ECHO) ' '
 
-$(TARGET): $(OBJS)
+$(TARGET): $(GENSRC) $(OBJS)
 	$(CC) -o $(TARGET) $(LDFLAGS) $(OBJS) $(LIBS)
 
 ../obj/wrappers_util.s: ../conf/wrappers_util.conf ../conf/$(RENAME)

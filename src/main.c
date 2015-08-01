@@ -79,7 +79,7 @@ main (int argc, char **argv)
 
   process_options (&argc, &argv);
 
-  printf ("BullfrogGame Port "VERSION"\n"
+  printf ("BullfrogGame Port "VER_STRING"\n"
 	  "The original by Bullfrog\n"
 	  "Port solution by Unavowed <unavowed@vexillium.org> "
 	  "and Gynvael Coldwind <gynvael@vexillium.org>\n"
