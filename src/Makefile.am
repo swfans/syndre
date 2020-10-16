@@ -5,6 +5,8 @@ EXTRA_DIST = Makefile.windows windows.config.h
 MKW = $(PYTHON) $(top_srcdir)/util/mkwrappers
 
 bfgame_SOURCES = \
+	bflib_basics.c \
+	bflib_fileio.c \
 	bflib_memory.c \
 	display.c \
 	display.h \

@@ -29,6 +29,8 @@ endif
 GENSRC   =
 RES      = ../obj/bfgame_stdres.res
 OBJS = \
+	../obj/bflib_basics.o \
+	../obj/bflib_fileio.o \
 	../obj/bflib_memory.o \
 	../obj/display.o \
 	../obj/dos.o \
