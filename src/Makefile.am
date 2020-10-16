@@ -5,6 +5,7 @@ EXTRA_DIST = Makefile.windows windows.config.h
 MKW = $(PYTHON) $(top_srcdir)/util/mkwrappers
 
 bfgame_SOURCES = \
+	bflib_memory.c \
 	display.c \
 	display.h \
 	dos.c \
@@ -14,7 +15,6 @@ bfgame_SOURCES = \
 	keyboard.c \
 	keyboard.h \
 	main.c \
-	memory.c \
 	mouse.c \
 	mouse.h \
 	oggvorbis.c \
