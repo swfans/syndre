@@ -27,9 +27,11 @@
 #include <io.h>
 #include <fcntl.h>
 #include <sys/stat.h>
+#include <sys/types.h>
 #include <limits.h>
 #include <time.h>
 #include <share.h>
+#include <errno.h>
 
 #include "bflib_basics.h"
 #include "dos.h"
@@ -396,10 +398,9 @@ long LbFileLength(const char *fname)
   game_transform_path_full (fname, transformed, sizeof (transformed));
   dos_path_to_native (transformed, path, sizeof (path));
 
-  if (stat (path, &st) != 0)
-    {
-      perror (path);
-      return -1;
+    if (stat (path, &st) != 0) {
+        ERRORLOG("%s: Cannot get file stats: %s\n", path, strerror(errno));
+        return -1;
     }
 
   return st.st_size;
@@ -519,7 +520,7 @@ int LbDirectoryCurrent(char *buf, unsigned long buflen)
   return -1;
 }
 
-int LbFileMakeFullPath(const short append_cur_dir,
+int LbFileMakeFullPath(const TbBool append_cur_dir,
   const char *directory, const char *filename, char *buf, const unsigned long len)
 {
   if (filename==NULL)
@@ -582,4 +583,82 @@ int LbFileMakeFullPath(const short append_cur_dir,
   return -1;
 }
 
+TbResult
+LbDirectoryMake(const char *path, TbBool recursive)
+{
+    char buffer[FILENAME_MAX];
+    char *p;
+    size_t len;
+    struct stat st;
+    int err;
+    mode_t __attribute__((unused)) mode = 0755;
+    int num_levels = 0;
+
+    len = snprintf(buffer, sizeof(buffer), "%s", path);
+
+    /* First, find the longest existing path */
+    do
+    {
+        err = stat(buffer, &st);
+        if (err == 0)
+        {
+            if (!S_ISDIR(st.st_mode))
+            {
+                ERRORLOG("%s: Not a directory\n", buffer);
+                return Lb_FAIL;
+            }
+        }
+        else
+        {
+            if (errno != ENOENT)
+            {
+                ERRORLOG("%s: Cannot stat dir: %s\n", buffer, strerror(errno));
+                return Lb_FAIL;
+            }
+
+            p = strrchr(buffer, FS_SEP);
+            if (p == NULL)
+                break;
+            num_levels++;
+
+            *p = 0;
+        }
+    }
+    while (err != 0);
+
+    if ((num_levels > 1) && (!recursive))
+    {
+        ERRORLOG("%s: Cannot create %d dirs - recursion disabled\n", buffer, num_levels);
+        return Lb_FAIL;
+    }
+    /*
+     * At this point, buffer contains the longest existing path.  Go forward
+     * through the rest of the path and create the missing directories.
+     */
+    p = buffer;
+
+    for (;;)
+    {
+        while (*p != '\0')
+            p++;
+
+        if (p >= buffer + len)
+            break;
+
+        *p = FS_SEP;
+
+#if defined(_WIN32)
+        err = mkdir(buffer);
+#else
+        err = mkdir(buffer, mode);
+#endif
+        if (err != 0)
+        {
+            ERRORLOG("%s: Cannot create dir: %s\n", buffer, strerror(errno));
+            return Lb_FAIL;
+        }
+    }
+
+    return Lb_SUCCESS;
+}
 /******************************************************************************/

@@ -8,10 +8,13 @@ bfgame_SOURCES = \
 	bflib_basics.c \
 	bflib_fileio.c \
 	bflib_memory.c \
+	bflib_picture.c \
 	display.c \
 	display.h \
 	dos.c \
 	dos.h \
+	game_data.c \
+	game_data.h \
 	game.c \
 	game.h \
 	keyboard.c \

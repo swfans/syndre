@@ -3,9 +3,10 @@
 #include <stdio.h>
 #include <sys/stat.h>
 #include <sys/types.h>
-#include <png.h>
 
 #include "bflib_fileio.h"
+#include "bflib_video.h"
+#include "game_data.h"
 #include "display.h"
 #include "dos.h"
 #include "game.h"
@@ -20,31 +21,9 @@
 
 #define SAVEGAME_PATH "savegame/"
 
-static char *game_user_path;
-static char *game_data_path;
-
-static bool
-create_user_directory (void)
-{
-  char buffer[FILENAME_MAX];
-
-  if (!sys_get_user_path (buffer, sizeof (buffer)))
-    {
-      game_user_path = xstrdup ("savegame");
-      return true;
-    }
-
-  game_user_path = xstrdup (buffer);
-
-  return mkdir_recursive (game_user_path, 0700);
-}
-
 bool
 game_initialise (void)
 {
-  char buffer[FILENAME_MAX];
-
-
   if (SDL_Init (SDL_INIT_JOYSTICK | SDL_INIT_VIDEO
 		| SDL_INIT_NOPARACHUTE) != 0)
     {
@@ -62,12 +41,9 @@ game_initialise (void)
   display_initialise ();
   sound_initialise ();
 
-  if (sys_get_data_path (buffer, sizeof (buffer)))
-    game_data_path = xstrdup (buffer);
-  else
-    game_data_path = xstrdup (".");
-
-  create_user_directory ();
+  // This fills the path variable; for user, it also creates the folder
+  GetDirectoryHdd();
+  GetDirectoryUser();
 
   return true;
 }
@@ -106,8 +82,6 @@ game_handle_sdl_events (void)
 void
 game_quit (void)
 {
-  xfree (game_user_path);
-  xfree (game_data_path);
   sound_finalise ();
   display_finalise ();
   SDL_Quit ();
@@ -120,7 +94,7 @@ game_transform_path_full (const char *file_name, char *buffer, size_t size)
   if (strncasecmp (file_name, SAVEGAME_PATH,
 		   sizeof (SAVEGAME_PATH) - 1) == 0)
     {
-      snprintf (buffer, size, "%s" FS_SEP_STR "%s", game_user_path,
+      snprintf (buffer, size, "%s" FS_SEP_STR "%s", GetDirectoryUser(),
 		file_name + sizeof (SAVEGAME_PATH) - 1);
       return;
     }
@@ -133,25 +107,13 @@ game_transform_path_full (const char *file_name, char *buffer, size_t size)
       return;
     }
 
-  snprintf (buffer, size, "%s" FS_SEP_STR "%s", game_data_path, file_name);
+  snprintf (buffer, size, "%s" FS_SEP_STR "%s", GetDirectoryHdd(), file_name);
 }
 
 void
 game_transform_path (const char *file_name, char *result)
 {
   game_transform_path_full (file_name, result, FILENAME_MAX);
-}
-
-const char *
-game_get_data_path (void)
-{
-  return game_data_path;
-}
-
-const char *
-game_get_user_path (void)
-{
-  return game_user_path;
 }
 
 int
