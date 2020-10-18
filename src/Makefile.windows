@@ -32,6 +32,7 @@ OBJS = \
 	../obj/bflib_basics.o \
 	../obj/bflib_dernc.o \
 	../obj/bflib_fileio.o \
+	../obj/bflib_filelst.o \
 	../obj/bflib_memory.o \
 	../obj/bflib_picture.o \
 	../obj/display.o \

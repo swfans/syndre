@@ -8,6 +8,7 @@ bfgame_SOURCES = \
 	bflib_basics.c \
 	bflib_dernc.c \
 	bflib_fileio.c \
+	bflib_filelst.c \
 	bflib_memory.c \
 	bflib_picture.c \
 	display.c \
