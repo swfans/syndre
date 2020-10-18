@@ -26,7 +26,8 @@
 
 static char data_path_user[DISKPATH_SIZE] = "";
 static char data_path_hdd[DISKPATH_SIZE] = "";
-static char game_dir_savegame[] = "qdata" FS_SEP_STR "savegame";
+static char game_dir_savegame[] = "qdata/savegame";
+static char game_dir_screenshots[] = "qdata/screenshots";
 
 /******************************************************************************/
 
@@ -40,9 +41,11 @@ GetDirectoryUser(void)
             snprintf(data_path_user, sizeof(data_path_user), ".");
         }
         DEBUGLOG(0,"Dir for user files '%s'\n", data_path_user);
-        char path_create[DISKPATH_SIZE];
-        snprintf(path_create, sizeof(path_create), "%s" FS_SEP_STR "%s", data_path_user, game_dir_savegame);
-        LbDirectoryMake(path_create, true);
+        //char path_create[DISKPATH_SIZE];
+        //snprintf(path_create, sizeof(path_create), "%s/%s", data_path_user, game_dir_savegame);
+        LbDirectoryMake(game_dir_savegame, true);
+        //snprintf(path_create, sizeof(path_create), "%s/%s", data_path_user, game_dir_screenshots);
+        LbDirectoryMake(game_dir_screenshots, true);
     }
     return data_path_user;
 }
@@ -62,21 +65,38 @@ GetDirectoryHdd(void)
 }
 
 
-void BfGameFileNameTransform(char *out_fname, const char *inp_fname)
+static void
+replace_backslash_with_fs_separator(char *path)
 {
-    char transformed[DISKPATH_SIZE];
+    size_t n;
+    for (n = 0; path[n] != '\0'; n++)
+    {
+#if FS_SEP == '\\'
+        if (path[n] == '/')
+#else
+        if (path[n] == '\\')
+#endif
+            path[n] = FS_SEP;
+    }
+}
+
+void
+BfGameFileNameTransform(char *out_fname, const char *inp_fname)
+{
+    char fs_fname[DISKPATH_SIZE];
     const char *base_dir;
 
     base_dir = GetDirectoryHdd();
 
+    // Switch the input folder separators to proper ones for current os
+    strncpy(fs_fname, inp_fname, DISKPATH_SIZE);
+    replace_backslash_with_fs_separator(fs_fname);
     // Add base path only if the input one is not absolute
-    if (inp_fname[0] == '\\' || inp_fname[0] == '/'
-      || (strlen (inp_fname) >= 2 && inp_fname[1] == ':')) {
-        snprintf (transformed, DISKPATH_SIZE, "%s", inp_fname);
+    if (fs_fname[0] == FS_SEP || (strlen(fs_fname) >= 2 && fs_fname[1] == ':')) {
+        snprintf (out_fname, DISKPATH_SIZE, "%s", fs_fname);
     } else {
-        snprintf(transformed, DISKPATH_SIZE, "%s" FS_SEP_STR "%s", base_dir, inp_fname);
+        snprintf(out_fname, DISKPATH_SIZE, "%s" FS_SEP_STR "%s", base_dir, fs_fname);
     }
-    dos_path_to_native(transformed, out_fname, DISKPATH_SIZE);
 }
 
 void setup_file_names(void)
