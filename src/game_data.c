@@ -22,10 +22,11 @@
 #include "bflib_fileio.h"
 #include "unix.h"
 #include "windows.h"
+#include "dos.h"
 
 static char data_path_user[DISKPATH_SIZE] = "";
 static char data_path_hdd[DISKPATH_SIZE] = "";
-static char data_path_cd[DISKPATH_SIZE] = "";
+static char game_dir_savegame[] = "qdata" FS_SEP_STR "savegame";
 
 /******************************************************************************/
 
@@ -36,10 +37,12 @@ GetDirectoryUser(void)
     {
         if (!sys_get_user_path(data_path_user, sizeof(data_path_user)))
         {
-            snprintf(data_path_user, sizeof(data_path_user), "%s", "qdata" FS_SEP_STR "savegame");
+            snprintf(data_path_user, sizeof(data_path_user), ".");
         }
-        DEBUGLOG(0,"Dir for user files '%s'",data_path_user);
-        LbDirectoryMake(data_path_user, true);
+        DEBUGLOG(0,"Dir for user files '%s'\n", data_path_user);
+        char path_create[DISKPATH_SIZE];
+        snprintf(path_create, sizeof(path_create), "%s" FS_SEP_STR "%s", data_path_user, game_dir_savegame);
+        LbDirectoryMake(path_create, true);
     }
     return data_path_user;
 }
@@ -53,10 +56,34 @@ GetDirectoryHdd(void)
         {
             snprintf(data_path_hdd, sizeof(data_path_hdd), "%s", ".");
         }
-        DEBUGLOG(0,"Dir with HDD data '%s'",data_path_hdd);
+        DEBUGLOG(0,"Dir with HDD data '%s'\n",data_path_hdd);
     }
     return data_path_hdd;
 }
 
 
+void BfGameFileNameTransform(char *out_fname, const char *inp_fname)
+{
+    char transformed[DISKPATH_SIZE];
+    const char *base_dir;
+
+    base_dir = GetDirectoryHdd();
+
+    // Add base path only if the input one is not absolute
+    if (inp_fname[0] == '\\' || inp_fname[0] == '/'
+      || (strlen (inp_fname) >= 2 && inp_fname[1] == ':')) {
+        snprintf (transformed, DISKPATH_SIZE, "%s", inp_fname);
+    } else {
+        snprintf(transformed, DISKPATH_SIZE, "%s" FS_SEP_STR "%s", base_dir, inp_fname);
+    }
+    dos_path_to_native(transformed, out_fname, DISKPATH_SIZE);
+}
+
+void setup_file_names(void)
+{
+    lbFileNameTransform = BfGameFileNameTransform;
+    // This fills the path variable; for user, it also creates the folder
+    GetDirectoryHdd();
+    GetDirectoryUser();
+}
 /******************************************************************************/

@@ -19,7 +19,11 @@
 #ifndef GAME_DATA_H
 #define GAME_DATA_H
 
+#include "bflib_basics.h"
+
 const char *GetDirectoryUser(void);
 const char *GetDirectoryHdd(void);
+
+void setup_file_names(void);
 
 #endif

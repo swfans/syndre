@@ -4,6 +4,7 @@
 
 #include "display.h"
 #include "game.h"
+#include "game_data.h"
 #include "util.h"
 
 #if defined _WIN32 && defined main
