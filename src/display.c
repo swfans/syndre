@@ -1,6 +1,8 @@
 #include <stdint.h>
 #include <stdio.h>
 
+#include "bflib_basics.h"
+
 #include "display.h"
 #include "util.h"
 
@@ -25,8 +27,8 @@ unlock_screen (void)
   SDL_UnlockSurface (display_screen);
 }
 
-int
-display_set_palette (const uint8_t *palette)
+TbResult
+LbPaletteSet(const unsigned char *palette)
 {
   SDL_Color colours[256];
   int n;
