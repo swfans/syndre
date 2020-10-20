@@ -35,6 +35,8 @@ OBJS = \
 	../obj/bflib_filelst.o \
 	../obj/bflib_memory.o \
 	../obj/bflib_picture.o \
+	../obj/bflib_sprite.o \
+	../obj/bflib_video.o \
 	../obj/display.o \
 	../obj/dos.o \
 	../obj/game_data.o \

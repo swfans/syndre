@@ -11,6 +11,8 @@ bfgame_SOURCES = \
 	bflib_filelst.c \
 	bflib_memory.c \
 	bflib_picture.c \
+	bflib_sprite.c \
+	bflib_video.c \
 	display.c \
 	display.h \
 	dos.c \
