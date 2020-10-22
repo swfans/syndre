@@ -7,6 +7,7 @@
 #include "bflib_fileio.h"
 #include "bflib_video.h"
 #include "bflib_filelst.h"
+#include "bflib_keybrd.h"
 #include "game_data.h"
 #include "display.h"
 #include "dos.h"
