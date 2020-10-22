@@ -81,7 +81,7 @@ game_handle_sdl_events (void)
 }
 
 void
-game_quit (void)
+game_quit(void)
 {
     sound_finalise ();
     display_finalise ();
@@ -90,7 +90,7 @@ game_quit (void)
 }
 
 void
-game_transform_path_full (const char *file_name, char *buffer, size_t size)
+game_transform_path_full(const char *file_name, char *buffer, size_t size)
 {
     if (strncasecmp (file_name, SAVEGAME_PATH,
              sizeof (SAVEGAME_PATH) - 1) == 0)
@@ -112,7 +112,7 @@ game_transform_path_full (const char *file_name, char *buffer, size_t size)
 }
 
 void
-game_transform_path (const char *file_name, char *result)
+game_transform_path(const char *file_name, char *result)
 {
     game_transform_path_full (file_name, result, FILENAME_MAX);
 }
@@ -192,14 +192,14 @@ game_update_full(bool wait)
 }
 
 int
-game_wait_for_vsync (void)
+game_wait_for_vsync(void)
 {
     game_update_full(false);
     return 1;
 }
 
 void
-game_update (void)
+game_update(void)
 {
     game_update_full(true);
 }
