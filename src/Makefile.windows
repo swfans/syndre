@@ -34,6 +34,7 @@ OBJS = \
 	../obj/bflib_fileio.o \
 	../obj/bflib_filelst.o \
 	../obj/bflib_memory.o \
+	../obj/bflib_mouse.o \
 	../obj/bflib_picture.o \
 	../obj/bflib_sprite.o \
 	../obj/bflib_video.o \

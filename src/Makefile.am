@@ -10,6 +10,8 @@ bfgame_SOURCES = \
 	bflib_fileio.c \
 	bflib_filelst.c \
 	bflib_memory.c \
+	bflib_mouse.c \
+	bflib_mouse.h \
 	bflib_picture.c \
 	bflib_sprite.c \
 	bflib_video.c \
