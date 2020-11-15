@@ -13,6 +13,9 @@ bfgame_SOURCES = \
 	bflib_mouse.c \
 	bflib_mouse.h \
 	bflib_picture.c \
+	bflib_render.c \
+	bflib_render.h \
+	bflib_render_trig.c \
 	bflib_sprite.c \
 	bflib_video.c \
 	display.c \
