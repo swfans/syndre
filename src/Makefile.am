@@ -37,7 +37,7 @@ bfgame_SOURCES = \
 	sound.h \
 	sound_util.c \
 	sound_util.h \
-	bfgame.S \
+	bfgame.sx \
 	timer.c \
 	timer.h \
 	unix.c \
@@ -49,12 +49,12 @@ bfgame_SOURCES = \
 
 bfgame_LDADD = wrappers_dos.o wrappers_game.o wrappers_libc.o wrappers_util.o
 
-$(bfgame_LDADD:.o=.S): %.S: $(top_srcdir)/conf/%.conf
+$(bfgame_LDADD:.o=.sx): %.sx: $(top_srcdir)/conf/%.conf
 	$(AM_V_GEN)$(MKW) $(MKWFLAGS) -o $@ $<
 
-.S.o:
+.sx.o:
 	$(AM_V_CC)$(CPP) $(CPPFLAGS) $< $(ASFILTER) \
 		| $(CCAS) -x assembler -c $(CCASFLAGS) -o $@ -
 
-CLEANFILES = wrappers_*.S
+CLEANFILES = wrappers_*.sx
 DISTCLEANFILES = *~
