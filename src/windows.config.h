@@ -1,11 +1,11 @@
 /* src/config.h.  Generated from config.h.in by configure.  */
 /* src/config.h.in.  Generated from configure.ac by autoheader.  */
 
-/* Define to 1 if music should be enabled */
-#define ENABLE_MUSIC 1
+/* Define to 1 if compiling in debug mode */
+//#define ENABLE_DEBUG 1 -- use DEBUG=1 when executing makefile instead
 
 /* Define to the path where the game's data resides */
-//#define GAME_DATA_PATH "/usr/local/share/bfgame"
+//#define GAME_DATA_PATH "/usr/local/share/bfgame" -- no need on Windows
 
 /* Define to 1 if you have the `gettimeofday' function. */
 #define HAVE_GETTIMEOFDAY 1
@@ -46,36 +46,41 @@
 /* Name of package */
 #define PACKAGE "bfgame"
 
-/* Current version number */
-#define VER_MAJOR 0
-#define VER_MINOR 0
-#define VER_RELEASE 1
-#define VER_BUILD 13
-#define VER_STRING        "0.3.1.13"
+/* Build number */
+#define VER_BUILD 1
 
-/* One sentence description of the package */
-#define PACKAGE_DESCRIPTION "BullfrogGame portable binary"
+/* Major version number */
+#define VER_MAJOR 0
+
+/* Minor version number */
+#define VER_MINOR 0
+
+/* Release number */
+#define VER_RELEASE 2
+
+/* Version number of package */
+#define VERSION "0.0.2.1"
 
 /* Define to the address where bug reports for this package should be sent. */
 #define PACKAGE_BUGREPORT "gynvael@vexillium.org"
 
 /* Define to the full name of this package. */
-#define PACKAGE_NAME PACKAGE
+#define PACKAGE_NAME "BullfrogGame Port"
 
 /* Define to the full name and version of this package. */
-#define PACKAGE_STRING PACKAGE" "VER_STRING
+#define PACKAGE_STRING PACKAGE_NAME" "VERSION
 
 /* Define to the one symbol short name of this package. */
 #define PACKAGE_TARNAME PACKAGE
 
+/* Define to the home page for this package. */
+#define PACKAGE_URL ""
+
 /* Define to the version of this package. */
-#define PACKAGE_VERSION "0.0.1.0"
+#define PACKAGE_VERSION VERSION
 
 /* Define to 1 if you have the ANSI C header files. */
 #define STDC_HEADERS 1
-
-/* Version number of package */
-#define VERSION "0.0.1.0"
 
 /* Define to 1 if running on a UNIX-like system where __unix__ is missing */
 /* #undef __unix__ */
