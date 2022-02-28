@@ -1,29 +1,30 @@
 # bfgame
 
-BullfrogGame port, alternative binary for the classic Bullfrog game.
+**BullfrogGame Port**, alternative binary for the classic Bullfrog game.
 
 This is a generic framework which can be used as base when preparing ASM port
 of any Bullfrog game.
 
 ## About
 
-BullfrogGame Port is a port of the 1990s DOS game BullfrogGame to modern
+**BullfrogGame Port** is a port of the 1990s DOS game BullfrogGame to modern
 operating systems. In particular, it runs on GNU, Mac OS and Windows, but it
 should also work on any system supported by the SDL library on the i386
 architecture.
 
 The port was created by disassembling the original DOS executable and replacing
-the DOS-specific parts with platform-independent code, using SDL for input
-and video display, Vorbis for music and OpenAL for sound.
+the DOS-specific parts with platform-independent code, using [SDL](https://www.libsdl.org/)
+for input and video display, [Vorbis](https://xiph.org/vorbis/) for music and
+[OpenAL](https://www.openal.org/) for sound.
 
 Only the modernised executable is provided with this port. This means that game
-data are not included. To install the BullfrogGame Port, you will need to
-have the original data from either BullfrogGame CD, or digital distribution.
+data are not included. To install the **BullfrogGame Port**, you will need to
+have the original data from either *BullfrogGame CD*, or digital distribution.
 
 ## Installation
 
-To install BullfrogGame Port, you will need either the original BullfrogGame
-PC CD, or digital distribution of the game. There were several physical
+To install **BullfrogGame Port**, you will need either the original *BullfrogGame
+PC CD*, or digital distribution of the game. There were several physical
 versions released. It is uncertain whether this port will work with all
 releases, so choose the most popular, english version.
 
@@ -40,7 +41,7 @@ The steps are:
 3. after the build succeeded, do `make install` in the directory where build
    commands were executed, to copy built files into an installation folder
    (`/usr/local/share/bfgame` by default)
-4. insert the BullfrogGame CD and make sure it is mounted (e.g. in `/media/cdrom`)
+4. insert the *BullfrogGame CD* and make sure it is mounted (e.g. in `/media/cdrom`)
 5. do `util/install -f SOURCE -t TARGET -l LANG`, where
    * *SOURCE* is the game CD path, like `/media/cdrom`,
    * *TARGET* is the destination path, in this case `/usr/local/share/bfgame`,
@@ -75,15 +76,15 @@ You can create the bundle by following these instructions:
 
 ### Installing on Windows
 
-There are two ways to install BullfrogGame Port on Windows - either download
+There are two ways to install **BullfrogGame Port** on Windows - either download
 the installer, or download the source code and compile it by hand.
 It is recommended to use the installer!
 
-The installer requires the original BullfrogGame CD to be present in the
-CD-ROM drive. It will copy the files from the original BullfrogGame CD and
+The installer requires the original *BullfrogGame CD* to be present in the
+CD-ROM drive. It will copy the files from the original *BullfrogGame CD* and
 optionally encode the game music from the CD to ogg files used by this port.
 
-The BullfrogGame CD is not required to play the game, it is used only during
+The *BullfrogGame CD* is not required to play the game, it is used only during
 the installation process.
 
 If you've decided on the hand-compilation option, proceed with the following steps:
@@ -113,7 +114,7 @@ Note that you can oly build the port for x86 architecture, and you either need
 
 ### Building on GNU or UNIX
 
-To build BullfrogGame Port on GNU or UNIX, you will need the following:
+To build **BullfrogGame Port** on GNU or UNIX, you will need the following:
 
 * GNU C compiler
 * Python 3
@@ -180,7 +181,7 @@ make V=1
 
 ### Building on Mac OS X
 
-Mac OS X is at its core a UNIX system. To build the BullfrogGame Port it is
+Mac OS X is at its core a UNIX system. To build the **BullfrogGame Port** it is
 enough to follow the [instructions for GNU or UNIX](#building-on-gnu-or-unix).
 
 The GCC compiler for Mac OS X comes as part of XCode, which you can get from
