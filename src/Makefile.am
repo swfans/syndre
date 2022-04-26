@@ -47,6 +47,9 @@ bfgame_SOURCES = \
 	windows.c \
 	windows.h
 
+bfgame_CPPFLAGS = \
+  -I"$(top_srcdir)/../bflibrary/include"
+
 bfgame_WRAPPERS = wrappers_dos.o wrappers_game.o wrappers_libc.o wrappers_util.o
 
 if HAS_WINDRES
@@ -55,7 +58,9 @@ else
 bfgame_RESRCS =
 endif
 
-bfgame_LDADD = $(bfgame_WRAPPERS) $(bfgame_RESRCS)
+bfgame_LDADD = \
+  $(builddir)/../bflibrary/libbullfrog.a \
+  $(bfgame_WRAPPERS) $(bfgame_RESRCS)
 
 $(bfgame_WRAPPERS:.o=.sx): %.sx: $(top_srcdir)/conf/%.conf
 	$(AM_V_GEN)$(MKW) $(MKWFLAGS) -o $@ $<

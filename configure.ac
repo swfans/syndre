@@ -11,6 +11,9 @@ m4_define([bfgame_version],
       [ver_major.ver_minor.ver_release.ver_build])
 
 AC_INIT([BullfrogGame Port], [bfgame_version], [mefistotelis@gmail.com], [bfgame])
+
+AC_CONFIG_SUBDIRS([bflibrary])
+
 AC_CONFIG_SRCDIR([src/main.c])
 AC_CONFIG_HEADER([src/config.h])
 AC_CONFIG_MACRO_DIR([m4])
