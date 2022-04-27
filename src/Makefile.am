@@ -61,8 +61,8 @@ bfgame_RESRCS =
 endif
 
 bfgame_LDADD = \
-  $(builddir)/../bflibrary/libbullfrog.a \
-  $(bfgame_WRAPPERS) $(bfgame_RESRCS)
+  $(bfgame_WRAPPERS) $(bfgame_RESRCS) \
+  -L$(builddir)/../bflibrary -lbullfrog
 
 $(bfgame_WRAPPERS:.o=.sx): %.sx: $(top_srcdir)/conf/%.conf
 	$(AM_V_GEN)$(MKW) $(MKWFLAGS) -o $@ $<
