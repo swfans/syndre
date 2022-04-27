@@ -46,7 +46,7 @@ bfgame_SOURCES = \
 	windows.h
 
 bfgame_CPPFLAGS = \
-  -I"$(top_srcdir)/../bflibrary/include"
+  -I"$(top_srcdir)/bflibrary/include"
 
 bfgame_WRAPPERS = wrappers_dos.o wrappers_game.o wrappers_libc.o wrappers_util.o
 
