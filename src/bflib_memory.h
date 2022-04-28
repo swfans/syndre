@@ -20,17 +20,4 @@
 #ifndef BFLIB_MEMORY_H
 #define BFLIB_MEMORY_H
 
-#include "bflib_basics.h"
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-/******************************************************************************/
-typedef unsigned char * MemAllocFunc(ulong);
-/******************************************************************************/
-
-/******************************************************************************/
-#ifdef __cplusplus
-}
-#endif
 #endif

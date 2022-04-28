@@ -14,6 +14,7 @@
 #include "game.h"
 #include "keyboard.h"
 #include "bfmemory.h"
+#include "bfmemut.h"
 #include "mouse.h"
 #include "sound.h"
 #include "unix.h"
