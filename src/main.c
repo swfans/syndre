@@ -5,6 +5,7 @@
 #include "display.h"
 #include "game.h"
 #include "game_data.h"
+#include "bffile.h"
 #include "bfmemory.h"
 #include "util.h"
 

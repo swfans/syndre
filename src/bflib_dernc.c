@@ -27,9 +27,9 @@
 #include <sys/stat.h>
 
 #include "bflib_basics.h"
-#include "bflib_fileio.h"
 #include "bfmemut.h"
 #include "bfmemory.h"
+#include "bffile.h"
 
 #ifdef __cplusplus
 extern "C" {

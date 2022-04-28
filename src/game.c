@@ -4,7 +4,6 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 
-#include "bflib_fileio.h"
 #include "bflib_video.h"
 #include "bflib_filelst.h"
 #include "bflib_keybrd.h"
@@ -14,6 +13,7 @@
 #include "game.h"
 #include "keyboard.h"
 #include "bfmemory.h"
+#include "bffile.h"
 #include "bfmemut.h"
 #include "mouse.h"
 #include "sound.h"

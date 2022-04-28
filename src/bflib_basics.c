@@ -30,8 +30,6 @@
 #include <winuser.h>
 #endif
 
-#include "bflib_fileio.h"
-
 #ifdef __cplusplus
 extern "C" {
 #endif
