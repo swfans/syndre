@@ -7,7 +7,6 @@ bfgame_SOURCES = \
 	bflib_dernc.c \
 	bflib_fileio.c \
 	bflib_filelst.c \
-	bflib_memory.c \
 	bflib_mouse.c \
 	bflib_mouse.h \
 	bflib_picture.c \
