@@ -29,6 +29,7 @@
 #include "bflib_basics.h"
 #include "bflib_fileio.h"
 #include "bflib_memory.h"
+#include "bfmemory.h"
 
 #ifdef __cplusplus
 extern "C" {

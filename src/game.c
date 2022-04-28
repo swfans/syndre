@@ -13,6 +13,7 @@
 #include "dos.h"
 #include "game.h"
 #include "keyboard.h"
+#include "bfmemory.h"
 #include "mouse.h"
 #include "sound.h"
 #include "unix.h"

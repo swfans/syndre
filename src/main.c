@@ -5,6 +5,7 @@
 #include "display.h"
 #include "game.h"
 #include "game_data.h"
+#include "bfmemory.h"
 #include "util.h"
 
 #if defined WIN32 && defined main
