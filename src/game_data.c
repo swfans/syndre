@@ -21,6 +21,7 @@
 #include "bflib_basics.h"
 #include "bffile.h"
 #include "bfdir.h"
+#include "bffnuniq.h"
 #include "unix.h"
 #include "windows.h"
 #include "dos.h"
