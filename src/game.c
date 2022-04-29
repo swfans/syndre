@@ -4,24 +4,25 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 
-#include "bfsprite.h"
 #include "bflib_video.h"
-#include "bfdata.h"
 #include "bflib_keybrd.h"
+#include "bfdata.h"
+#include "bffile.h"
+#include "bfmemory.h"
+#include "bfmemut.h"
+#include "bfpalette.h"
+#include "bfsprite.h"
+
 #include "game_data.h"
 #include "display.h"
 #include "dos.h"
 #include "game.h"
 #include "keyboard.h"
-#include "bfmemory.h"
-#include "bffile.h"
-#include "bfmemut.h"
 #include "mouse.h"
 #include "sound.h"
 #include "unix.h"
 #include "util.h"
 #include "windows.h"
-
 #include "timer.h"
 
 #define SAVEGAME_PATH "savegame/"
