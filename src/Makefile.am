@@ -4,10 +4,8 @@ MKW = $(PYTHON) $(top_srcdir)/util/mkwrappers
 
 bfgame_SOURCES = \
 	bflib_basics.c \
-	bflib_filelst.c \
 	bflib_mouse.c \
 	bflib_mouse.h \
-	bflib_picture.c \
 	bflib_render.c \
 	bflib_render.h \
 	bflib_render_trig.c \
