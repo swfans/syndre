@@ -4,6 +4,7 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 
+#include "bfsprite.h"
 #include "bflib_video.h"
 #include "bfdata.h"
 #include "bflib_keybrd.h"

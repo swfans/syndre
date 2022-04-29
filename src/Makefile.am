@@ -9,7 +9,6 @@ bfgame_SOURCES = \
 	bflib_render.c \
 	bflib_render.h \
 	bflib_render_trig.c \
-	bflib_sprite.c \
 	bflib_video.c \
 	display.c \
 	display.h \
