@@ -59,6 +59,8 @@ TbResult DrawAlphaSpriteUsingScalingData(long posx, long posy, const TbSprite *s
     int scanline;
 
     LIBLOG("Drawing at (%ld,%ld)",posx,posy);
+	//TODO set this in higher level function instead, when possible
+	render_alpha = lbSpriteReMapPtr;
     assert(render_alpha != NULL);
     {
         long sposx, sposy;

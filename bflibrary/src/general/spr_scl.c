@@ -36,6 +36,8 @@ long alpha_scale_up;
 // TODO move these to rendering/trig data module
 ubyte *render_ghost = NULL;
 ubyte *render_alpha = NULL;
+//TODO currently, render_ghost is unused; but to make it ready to use, we need to set:
+//render_ghost = lbSpriteReMapPtr;
 
 
 /**
