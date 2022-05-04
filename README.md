@@ -145,7 +145,7 @@ Here are specific commands required to compile the executable on Ubuntu linux.
 Install the dependencies - remember that some must be 32-bit (i386):
 
 ```
-sudo apt install gcc-multilib lib32z1 python3
+sudo apt install gcc-multilib g++-multilib lib32z1 python3
 sudo apt install vorbis-tools
 sudo apt install cdparanoia
 sudo apt install libsdl1.2-dev:i386
@@ -165,7 +165,7 @@ Next, proceed with the build steps; we will do that in a separate folder.
 
 ```
 mkdir -p release; cd release
-CFLAGS="-m32" LDFLAGS="-m32" PKG_CONFIG_PATH="/usr/lib/i386-linux-gnu/pkgconfig" ../configure --enable-debug=no
+CFLAGS="-m32" CXXFLAGS="-m32" LDFLAGS="-m32" PKG_CONFIG_PATH="/usr/lib/i386-linux-gnu/pkgconfig" ../configure --enable-debug=no
 make V=1
 ```
 
@@ -178,7 +178,7 @@ In case you also want a debug build:
 
 ```
 mkdir -p debug; cd debug
-CFLAGS="-m32" LDFLAGS="-m32" PKG_CONFIG_PATH="/usr/lib/i386-linux-gnu/pkgconfig" ../configure --enable-debug=full
+CFLAGS="-m32" CXXFLAGS="-m32" LDFLAGS="-m32" PKG_CONFIG_PATH="/usr/lib/i386-linux-gnu/pkgconfig" ../configure --enable-debug=full
 make V=1
 ```
 
@@ -211,7 +211,7 @@ binaries before the default mingw64:
 
 ```
 mkdir -p release; cd release
-PATH="/mingw32/bin:$PATH" CFLAGS="-m32" LDFLAGS="-m32" ../configure --enable-debug=no
+PATH="/mingw32/bin:$PATH" CFLAGS="-m32" CXXFLAGS="-m32" LDFLAGS="-m32" ../configure --enable-debug=no
 PATH="/mingw32/bin:$PATH" make V=1
 ```
 
