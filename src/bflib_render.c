@@ -20,8 +20,6 @@
 #include "bflib_render.h"
 
 #include "bflib_basics.h"
-#include "bflib_video.h"
-//#include "bflib_vidraw.h"
 
 /******************************************************************************/
 //TbPixel vec_colour = 112;

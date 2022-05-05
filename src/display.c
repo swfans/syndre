@@ -2,6 +2,7 @@
 #include <stdio.h>
 
 #include "bflib_basics.h"
+#include "bfscreen.h"
 
 #include "display.h"
 #include "util.h"

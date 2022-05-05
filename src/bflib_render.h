@@ -21,7 +21,6 @@
 #define BFLIB_REND_H
 
 #include "bflib_basics.h"
-#include "bflib_video.h"
 
 #ifdef __cplusplus
 extern "C" {

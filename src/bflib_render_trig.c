@@ -20,8 +20,8 @@
 #include "bflib_render.h"
 
 #include "bflib_basics.h"
-#include "bflib_video.h"
-//#include "bflib_vidraw.h"
+#include "bfgentab.h"
+#include "insspr.h"
 
 /******************************************************************************/
 #pragma pack(1)

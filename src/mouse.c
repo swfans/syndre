@@ -1,6 +1,8 @@
 #include <stdbool.h>
 #include <stdint.h>
 
+#include "bfscreen.h"
+
 #include "display.h"
 #include "mouse.h"
 

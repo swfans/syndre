@@ -4,13 +4,13 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 
-#include "bflib_video.h"
 #include "bflib_keybrd.h"
 #include "bfdata.h"
 #include "bffile.h"
 #include "bfmemory.h"
 #include "bfmemut.h"
 #include "bfpalette.h"
+#include "bfscreen.h"
 #include "bfsprite.h"
 
 #include "game_data.h"

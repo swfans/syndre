@@ -3,13 +3,11 @@ bin_PROGRAMS = bfgame
 MKW = $(PYTHON) $(top_srcdir)/util/mkwrappers
 
 bfgame_SOURCES = \
-	bflib_basics.c \
 	bflib_mouse.c \
 	bflib_mouse.h \
 	bflib_render.c \
 	bflib_render.h \
 	bflib_render_trig.c \
-	bflib_video.c \
 	display.c \
 	display.h \
 	dos.c \
