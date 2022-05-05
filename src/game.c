@@ -5,6 +5,8 @@
 #include <sys/types.h>
 
 #include "bflib_keybrd.h"
+#include "bfkeybd.h"
+#include "bfmouse.h"
 #include "bfdata.h"
 #include "bffile.h"
 #include "bfmemory.h"
