@@ -52,6 +52,9 @@ else
 bfgame_RESRCS =
 endif
 
+# Pretending to contain c++ source so that Automake select c++ linker
+nodist_EXTRA_bfgame_SOURCES = dummy.cxx
+
 bfgame_LDADD = \
   $(bfgame_WRAPPERS) $(bfgame_RESRCS) \
   -L$(builddir)/../bflibrary -lbullfrog
