@@ -94,42 +94,6 @@ TbResult KEventBufferedKeysUpdate(TbKeyAction action, TbKeyCode code)
     return handle_custom_key_press(action, code);
 }
 
-void
-keyboard_handle_event (const SDL_Event *ev)
-{
-  const SDL_KeyboardEvent *kev;
-  uint8_t key_index;
-  int scan_code;
-
-  if (ev->type != SDL_KEYUP && ev->type != SDL_KEYDOWN)
-    return;
-
-  kev = (const SDL_KeyboardEvent *) ev;
-
-  if (handle_custom_key_press (kev))
-    return;
-
-  scan_code = sdlkey_to_scan_code (kev->keysym.sym);
-
-  if (scan_code == 0)
-    return;
-
-  lbInkey_prefixed = is_key_prefixed (kev->keysym.sym);
-  lbInkey = scan_code;
-
-  key_index = get_key_table_index (kev->keysym.sym);
-
-  if (ev->type == SDL_KEYDOWN)
-    {
-      lbKeyOn[key_index] = 1 | get_key_flags ();
-
-      if (!lbInkey_prefixed)
-          add_key_to_buffer (scan_code);
-    }
-  else
-    lbKeyOn[key_index] = 0;
-}
-
 void init_buffered_keys(void)
 {
     LbKeyboardCustomHandler(KEventBufferedKeysUpdate);
