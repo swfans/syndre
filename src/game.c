@@ -54,6 +54,8 @@ game_initialise (void)
     return true;
 }
 
+void keyboard_handle_event (const SDL_Event *ev);
+
 void
 game_handle_sdl_events (void)
 {
