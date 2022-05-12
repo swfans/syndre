@@ -4,7 +4,6 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 
-#include "bflib_keybrd.h"
 #include "bfkeybd.h"
 #include "bfmouse.h"
 #include "bfdata.h"
