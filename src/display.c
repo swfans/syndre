@@ -3,6 +3,7 @@
 
 #include "bflib_basics.h"
 #include "bftext.h"
+#include "bfpalette.h"
 #include "bfscreen.h"
 #include "bfscrsurf.h"
 
@@ -26,32 +27,6 @@ unlock_screen (void)
     return;
 
   SDL_UnlockSurface (to_SDLSurf(lbDrawSurface));
-}
-
-TbResult
-LbPaletteSet(const unsigned char *palette)
-{
-  SDL_Color colours[256];
-  int n;
-
-  for (n = 0; n < 256; n++)
-    {
-      colours[n].r = palette[3 * n + 0] * 4;
-      colours[n].g = palette[3 * n + 1] * 4;
-      colours[n].b = palette[3 * n + 2] * 4;
-      colours[n].unused = 0;
-    }
-
-  if (SDL_SetPalette (to_SDLSurf(lbDrawSurface),
-		      SDL_LOGPAL | SDL_PHYSPAL, colours, 0, 256) != 1)
-    {
-      fprintf (stderr, "SDL_SetPalette: %s\n", SDL_GetError ());
-      return -1;
-    }
-
-  memcpy (display_palette, colours, sizeof (display_palette));
-
-  return 1;
 }
 
 void
