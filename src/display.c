@@ -1,5 +1,6 @@
 #include <stdint.h>
 #include <stdio.h>
+#include <assert.h>
 
 #include "bflib_basics.h"
 #include "bftext.h"
@@ -38,8 +39,8 @@ display_initialise (void)
 void
 display_finalise (void)
 {
-  unlock_screen ();
-  SDL_FreeSurface (to_SDLSurf(lbDrawSurface));
+  //unlock_screen (); -- handled in LbScreenReset()
+  //SDL_FreeSurface (to_SDLSurf(lbDrawSurface));
 }
 
 void
