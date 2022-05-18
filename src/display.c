@@ -37,13 +37,6 @@ display_initialise (void)
 }
 
 void
-display_finalise (void)
-{
-  //unlock_screen (); -- handled in LbScreenReset()
-  //SDL_FreeSurface (to_SDLSurf(lbDrawSurface));
-}
-
-void
 display_lock (void)
 {
   lock_screen ();

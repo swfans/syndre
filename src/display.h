@@ -5,7 +5,6 @@
 #include <stddef.h>
 
 void display_initialise (void);
-void display_finalise (void);
 void display_lock (void);
 void display_unlock (void);
 

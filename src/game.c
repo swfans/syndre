@@ -90,7 +90,6 @@ void
 game_quit(void)
 {
     sound_finalise ();
-    display_finalise ();
     SDL_Quit ();
     exit (0);
 }
