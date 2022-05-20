@@ -4,8 +4,8 @@
 #include <SDL.h>
 #include <stddef.h>
 
-void display_initialise (void);
 void display_lock (void);
 void display_unlock (void);
+const char * AppResourceMapping(short index);
 
 #endif

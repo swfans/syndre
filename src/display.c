@@ -11,6 +11,37 @@
 #include "display.h"
 #include "util.h"
 
+extern char lbDrawAreaTitle[128];
+
+#if defined(WIN32)
+
+const char * AppResourceMapping(short index)
+{
+    switch (index)
+    {
+    case 1:
+        return "A";
+        //return MAKEINTRESOURCE(110); -- may work for other resource compilers
+    default:
+        return NULL;
+    }
+}
+
+#else
+
+const char * AppResourceMapping(short index)
+{
+    switch (index)
+    {
+    case 1:
+        return "bfgame_icon.png";
+    default:
+        return NULL;
+    }
+}
+
+#endif
+
 static inline void
 lock_screen (void)
 {
@@ -28,12 +59,6 @@ unlock_screen (void)
     return;
 
   SDL_UnlockSurface (to_SDLSurf(lbDrawSurface));
-}
-
-void
-display_initialise (void)
-{
-  SDL_WM_SetCaption ("BullfrogGame", NULL);
 }
 
 void
