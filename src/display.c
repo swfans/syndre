@@ -45,26 +45,53 @@ const char * AppResourceMapping(short index)
 static inline void
 lock_screen (void)
 {
-  if (!SDL_MUSTLOCK (to_SDLSurf(lbScreenSurface)))
-    return;
+    if (SDL_MUSTLOCK (to_SDLSurf(lbScreenSurface))) {
+        if (SDL_LockSurface (to_SDLSurf(lbScreenSurface)) != 0) {
+            fprintf (stderr, "SDL_LockSurface: %s\n", SDL_GetError ());
+            exit(1);
+        }
+    }
+    // set vga buffer address
+    if (display_stretch_buffer != NULL)
+    {
+      // Set the temporary buffer
+      lbDisplay.PhysicalScreen = display_stretch_buffer;
+    }
+    else
+    {
+      // Set the good buffer
+      lbDisplay.PhysicalScreen = to_SDLSurf(lbScreenSurface)->pixels;
+    }
 
-  if (SDL_LockSurface (to_SDLSurf(lbScreenSurface)) != 0)
-    fprintf (stderr, "SDL_LockSurface: %s\n", SDL_GetError ());
 }
 
 static inline void
 unlock_screen (void)
 {
-  if (!SDL_MUSTLOCK (to_SDLSurf(lbScreenSurface)))
-    return;
-
-  SDL_UnlockSurface (to_SDLSurf(lbScreenSurface));
+    if (SDL_MUSTLOCK (to_SDLSurf(lbScreenSurface))) {
+        SDL_UnlockSurface (to_SDLSurf(lbScreenSurface));
+    }
+    lbDisplay.PhysicalScreen = NULL;
 }
 
 void
 display_lock (void)
 {
   lock_screen ();
+}
+
+void swap_wscreen(void)
+{
+    TbBool has_wscreeen;
+    has_wscreeen = (lbDisplay.WScreen != 0);
+    if ( has_wscreeen )
+        LbScreenUnlock();
+    LbScreenSwap();
+    if ( has_wscreeen )
+    {
+      while ( LbScreenLock() != Lb_SUCCESS )
+        ;
+    }
 }
 
 void

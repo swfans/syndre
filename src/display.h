@@ -7,5 +7,6 @@
 void display_lock (void);
 void display_unlock (void);
 const char * AppResourceMapping(short index);
+void swap_wscreen(void);
 
 #endif
