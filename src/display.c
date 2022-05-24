@@ -52,17 +52,7 @@ lock_screen (void)
         }
     }
     // set vga buffer address
-    if (display_stretch_buffer != NULL)
-    {
-      // Set the temporary buffer
-      lbDisplay.PhysicalScreen = display_stretch_buffer;
-    }
-    else
-    {
-      // Set the good buffer
-      lbDisplay.PhysicalScreen = to_SDLSurf(lbScreenSurface)->pixels;
-    }
-
+    lbDisplay.PhysicalScreen = to_SDLSurf(lbDrawSurface)->pixels;
 }
 
 static inline void
