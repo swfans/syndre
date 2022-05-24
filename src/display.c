@@ -45,6 +45,7 @@ const char * AppResourceMapping(short index)
 static inline void
 lock_screen (void)
 {
+#if 0
     if (SDL_MUSTLOCK (to_SDLSurf(lbScreenSurface))) {
         if (SDL_LockSurface (to_SDLSurf(lbScreenSurface)) != 0) {
             fprintf (stderr, "SDL_LockSurface: %s\n", SDL_GetError ());
@@ -53,15 +54,18 @@ lock_screen (void)
     }
     // set vga buffer address
     lbDisplay.PhysicalScreen = to_SDLSurf(lbDrawSurface)->pixels;
+#endif
 }
 
 static inline void
 unlock_screen (void)
 {
+#if 0
     if (SDL_MUSTLOCK (to_SDLSurf(lbScreenSurface))) {
         SDL_UnlockSurface (to_SDLSurf(lbScreenSurface));
     }
     lbDisplay.PhysicalScreen = NULL;
+#endif
 }
 
 void
