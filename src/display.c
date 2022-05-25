@@ -46,14 +46,12 @@ static inline void
 lock_screen (void)
 {
 #if 0
-    if (SDL_MUSTLOCK (to_SDLSurf(lbScreenSurface))) {
-        if (SDL_LockSurface (to_SDLSurf(lbScreenSurface)) != 0) {
+    if (SDL_MUSTLOCK (to_SDLSurf(lbDrawSurface))) {
+        if (SDL_LockSurface (to_SDLSurf(lbDrawSurface)) != 0) {
             fprintf (stderr, "SDL_LockSurface: %s\n", SDL_GetError ());
             exit(1);
         }
     }
-    // set vga buffer address
-    lbDisplay.PhysicalScreen = to_SDLSurf(lbDrawSurface)->pixels;
 #endif
 }
 
@@ -61,10 +59,9 @@ static inline void
 unlock_screen (void)
 {
 #if 0
-    if (SDL_MUSTLOCK (to_SDLSurf(lbScreenSurface))) {
-        SDL_UnlockSurface (to_SDLSurf(lbScreenSurface));
+    if (SDL_MUSTLOCK (to_SDLSurf(lbDrawSurface))) {
+        SDL_UnlockSurface (to_SDLSurf(lbDrawSurface));
     }
-    lbDisplay.PhysicalScreen = NULL;
 #endif
 }
 
