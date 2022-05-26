@@ -42,33 +42,14 @@ const char * AppResourceMapping(short index)
 
 #endif
 
-static inline void
-lock_screen (void)
-{
-#if 0
-    if (SDL_MUSTLOCK (to_SDLSurf(lbDrawSurface))) {
-        if (SDL_LockSurface (to_SDLSurf(lbDrawSurface)) != 0) {
-            fprintf (stderr, "SDL_LockSurface: %s\n", SDL_GetError ());
-            exit(1);
-        }
-    }
-#endif
-}
-
-static inline void
-unlock_screen (void)
-{
-#if 0
-    if (SDL_MUSTLOCK (to_SDLSurf(lbDrawSurface))) {
-        SDL_UnlockSurface (to_SDLSurf(lbDrawSurface));
-    }
-#endif
-}
-
 void
 display_lock (void)
 {
-  lock_screen ();
+}
+
+void
+display_unlock (void)
+{
 }
 
 void swap_wscreen(void)
@@ -83,10 +64,4 @@ void swap_wscreen(void)
       while ( LbScreenLock() != Lb_SUCCESS )
         ;
     }
-}
-
-void
-display_unlock (void)
-{
-  unlock_screen ();
 }
