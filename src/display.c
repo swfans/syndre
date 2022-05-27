@@ -54,12 +54,12 @@ display_unlock (void)
 
 void swap_wscreen(void)
 {
-    TbBool has_wscreeen;
-    has_wscreeen = (lbDisplay.WScreen != 0);
-    if ( has_wscreeen )
+    TbBool was_locked;
+    was_locked = LbScreenIsLocked();
+    if ( was_locked )
         LbScreenUnlock();
     LbScreenSwap();
-    if ( has_wscreeen )
+    if ( was_locked )
     {
       while ( LbScreenLock() != Lb_SUCCESS )
         ;
