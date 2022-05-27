@@ -45,11 +45,13 @@ const char * AppResourceMapping(short index)
 void
 display_lock (void)
 {
+  LbScreenLock();
 }
 
 void
 display_unlock (void)
 {
+  LbScreenUnlock();
 }
 
 void swap_wscreen(void)
