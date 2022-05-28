@@ -11,7 +11,6 @@
 #include "display.h"
 #include "util.h"
 
-extern char lbDrawAreaTitle[128];
 
 #if defined(WIN32)
 
