@@ -2627,8 +2627,8 @@ void trig(struct PolyPoint *point_a, struct PolyPoint *point_b, struct PolyPoint
     LOC_vec_screen_width = vec_screen_width;
     LOC_vec_window_width = vec_window_width;
     LOC_vec_window_height = vec_window_height;
-    render_fade_tables = _fade_table;
-    render_ghost = _ghost_table;
+    render_fade_tables = pixmap.fade_table;
+    render_ghost = pixmap.ghost_table;
     opt_a = point_a;
     opt_b = point_b;
     opt_c = point_c;
