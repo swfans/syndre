@@ -14,6 +14,7 @@
 #include "bfscreen.h"
 #include "bfsprite.h"
 
+#include "applog.h"
 #include "game_data.h"
 #include "display.h"
 #include "dos.h"
@@ -34,7 +35,7 @@ game_initialise (void)
     if (SDL_Init (SDL_INIT_JOYSTICK | SDL_INIT_VIDEO
           | SDL_INIT_NOPARACHUTE) != 0)
     {
-        ERRORLOG("SDL_Init(): %s", SDL_GetError());
+        LOGERR("SDL_Init(): %s", SDL_GetError());
         return false;
     }
 
