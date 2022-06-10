@@ -7,9 +7,3 @@
 #include "bfmouse.h"
 #include "display.h"
 
-
-void mouse_initialise(void)
-{
-    SDL_ShowCursor(SDL_DISABLE);
-}
-
