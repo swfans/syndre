@@ -15,6 +15,9 @@
 # undef main
 #endif
 
+TbBool cmdln_fullscreen = true;
+TbBool cmdln_lores_stretch = true;
+
 static void
 print_help (const char *argv0)
 {
@@ -48,23 +51,23 @@ process_options (int *argc, char ***argv)
   while ((val = getopt_long (*argc, *argv, "wSh", options, &index)) >= 0)
     {
       switch (val)
-	{
-	case 'w':
-	  display_set_full_screen (false);
-	  break;
-
-        case 'S':
-          display_set_lowres_stretch (false);
+      {
+      case 'w':
+          cmdln_fullscreen = false;
           break;
 
-	case 'h':
-	  print_help (argv0);
-	  exit (0);
-	  break;
+      case 'S':
+          cmdln_lores_stretch = false;
+          break;
 
-	default:
-	  exit (1);
-	}
+      case 'h':
+          print_help (argv0);
+          exit (0);
+          break;
+
+      default:
+          exit (1);
+      }
     }
 
   *argc -= optind - 1;
@@ -77,9 +80,6 @@ int
 main (int argc, char **argv)
 {
   int retval;
-
-  display_set_full_screen (true);
-  display_set_lowres_stretch (true);
 
   process_options (&argc, &argv);
 
