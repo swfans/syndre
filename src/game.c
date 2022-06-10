@@ -13,6 +13,7 @@
 #include "bfpalette.h"
 #include "bfscreen.h"
 #include "bfsprite.h"
+#include "bfwindows.h"
 
 #include "applog.h"
 #include "game_data.h"
@@ -32,6 +33,7 @@
 bool
 game_initialise (void)
 {
+    LbBaseInitialise();
     if (SDL_Init (SDL_INIT_JOYSTICK | SDL_INIT_VIDEO
           | SDL_INIT_NOPARACHUTE) != 0)
     {
@@ -94,7 +96,8 @@ void
 game_quit(void)
 {
     sound_finalise ();
-    SDL_Quit ();
+    LbBaseReset();
+    SDL_Quit();
     exit (0);
 }
 
