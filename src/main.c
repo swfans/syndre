@@ -76,27 +76,27 @@ process_options (int *argc, char ***argv)
   (*argv)[0] = argv0;
 }
 
-int
-main (int argc, char **argv)
+int main (int argc, char **argv)
 {
-  int retval;
+    int retval;
 
-  process_options (&argc, &argv);
+    process_options(&argc, &argv);
 
-  printf("BullfrogGame Port "VERSION"\n"
-	  "The original by Bullfrog\n"
-	  "Port solution by Unavowed <unavowed@vexillium.org> "
-	  "and Gynvael Coldwind <gynvael@vexillium.org>\n"
-	  "Refactored port base by Mefistotelis <mefistotelis@gmail.com>\n");
+    printf("BullfrogGame Port "VERSION"\n"
+      "The original by Bullfrog\n"
+      "Port solution by Unavowed <unavowed@vexillium.org> "
+      "and Gynvael Coldwind <gynvael@vexillium.org>\n"
+      "Refactored port base by Mefistotelis <mefistotelis@gmail.com>\n");
 
-  if (!game_initialise ())
-    return 1;
+    if (!game_initialise())
+        return 1;
 
-  // Call game main
-  asm volatile ("call ASM_main\n"
-		: "=a" (retval) : "a" (argc), "d" (argv));
+    // Call game main
+    asm volatile ("call ASM_main\n"
+      : "=a" (retval) : "a" (argc), "d" (argv));
 
-  game_quit ();
+    game_quit();
 
-  return retval;
+    // the above function never returns
+    return 0;
 }

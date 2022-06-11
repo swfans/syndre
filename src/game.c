@@ -71,9 +71,9 @@ game_handle_sdl_events (void)
 void
 game_quit(void)
 {
-    sound_finalise ();
+    sound_finalise();
     LbBaseReset();
-    exit (0);
+    exit(0);
 }
 
 void
