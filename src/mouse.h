@@ -6,6 +6,5 @@
 
 struct TbPoint;
 
-TbResult MEvent(const SDL_Event *ev);
 
 #endif
