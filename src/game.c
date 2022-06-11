@@ -33,7 +33,9 @@
 #include "bfscreen.h"
 #include "bfsprite.h"
 #include "bfwindows.h"
+#include "bfaudio.h"
 #include "bfsvaribl.h"
+#include "bfscd.h"
 
 #include <SDL.h>
 #include "applog.h"
@@ -189,5 +191,14 @@ void
 game_update(void)
 {
     game_update_full(true);
+}
+
+void host_reset(void)
+{
+    StopCD();
+    FreeAudio();
+    LbMouseReset();
+    LbKeyboardClose();
+    LbScreenReset();
 }
 /******************************************************************************/
