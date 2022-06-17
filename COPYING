@@ -1,0 +1,7 @@
+All source code except the code in src/*.sx is licensed under the GNU
+General Public License, version 3 or any later version.  src/*.sx files are
+modified disassembled version of the original game's main.exe by Bullfrog.  The
+project is distributed without charge and in good faith that it will be useful
+to those who purchased the original game but cannot play it anymore because
+they do not have access to an old DOS system.  However, should the original
+copyright holders complain, we will take down the code they have the rights to.
