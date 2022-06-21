@@ -94,7 +94,6 @@ extern unsigned char vec_mode;
 extern unsigned char *render_fade_tables;
 extern TbPixel fade_table[256*64];
 extern TbPixel _ghost_table[32992];
-extern struct PolyPoint polyscans[2*POLY_SCANS_COUNT];
 // Rename pending for these entries
 extern unsigned char *LOC_poly_screen;
 extern unsigned char *LOC_vec_map;
