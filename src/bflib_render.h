@@ -28,8 +28,6 @@ extern "C" {
 /******************************************************************************/
 #pragma pack(1)
 
-#define POLY_SCANS_COUNT 576
-
 enum VecModes {
     VM_Unknown0 = 0,
     VM_Unknown1,
@@ -62,16 +60,6 @@ enum VecModes {
 };
 
 
-struct PolyPoint { // sizeof = 20
-  short field_0;
-  short field_2;
-  short field_4;
-  short field_6;
-  long field_8;
-  long field_C;
-  long field_10;
-};
-
 struct GtBlock { // sizeof = 48
   unsigned char *field_0;
   unsigned long field_4;
@@ -94,22 +82,6 @@ extern unsigned char vec_mode;
 extern unsigned char *render_fade_tables;
 extern TbPixel fade_table[256*64];
 extern TbPixel _ghost_table[32992];
-// Rename pending for these entries
-extern unsigned char *LOC_poly_screen;
-extern unsigned char *LOC_vec_map;
-extern unsigned char *LOC_vec_screen;
-extern unsigned long LOC_vec_screen_width;
-extern unsigned long LOC_vec_window_width;
-extern unsigned long LOC_vec_window_height;
-// Versions from assembly
-extern unsigned char *poly_screen;
-extern unsigned char *vec_map;
-extern unsigned char *vec_screen;
-extern unsigned long vec_screen_width;
-extern unsigned long vec_window_width;
-extern unsigned long vec_window_height;
-/******************************************************************************/
-void trig(struct PolyPoint *point_a, struct PolyPoint *point_b, struct PolyPoint *point_c);
 /******************************************************************************/
 #ifdef __cplusplus
 }
