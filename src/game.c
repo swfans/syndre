@@ -176,13 +176,6 @@ game_update_full(bool wait)
     display_lock();
 }
 
-int
-LbScreenWaitVbi(void)
-{
-    game_update_full(false);
-    return 1;
-}
-
 void
 game_update(void)
 {
