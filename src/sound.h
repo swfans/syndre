@@ -4,6 +4,7 @@
 #include <stdbool.h>
 #include <stdint.h>
 
+#include "bftypes.h"
 #include "timer.h"
 
 enum SoundDriverType
@@ -122,7 +123,7 @@ struct SoundDriverCallParameters
 
 bool sound_initialise (void);
 void sound_finalise (void);
-void sound_update (void);
+TbBool sound_update(void);
 bool sound_open_music_file (const char *fname);
 void sound_play_music (void);
 void sound_stop_music (void);
