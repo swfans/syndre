@@ -38,9 +38,9 @@ SoundPCMDriver *ail_create_dig_driver (SoundDriver *driver,
 
 #pragma pack(1)
 
-extern uint16_t		sound_volume;
-extern uint16_t		sound_tension_music_volume;
-extern uint16_t		sound_music_volume;
+short startscr_samplevol;
+short startscr_midivol;
+short startscr_cdvolume;
 
 #pragma pack()
 
@@ -453,7 +453,7 @@ TbBool sound_update(void)
 #endif
 
   ogg_vorbis_stream_set_gain (&sound_music_stream,
-			      sound_music_volume * (1.f / 322.f));
+			      startscr_cdvolume * (1.f / 322.f));
   ogg_vorbis_stream_update (&sound_music_stream);
   return true;
 }
