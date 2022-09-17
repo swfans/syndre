@@ -36,6 +36,7 @@ enum SoundDriverType
 
 
 typedef struct AudioInitOptions AudioInitOptions;
+typedef struct AudioDriverChoice AudioDriverChoice;
 typedef struct SoundDriver SoundDriver;
 typedef struct SoundDriverCallParameters SoundDriverCallParameters;
 typedef struct SoundIOParameters SoundIOParameters;
@@ -60,6 +61,12 @@ struct AudioInitOptions {
   ubyte UseMultiMediaExtensions;
   ubyte InitStreamedSound;
   ubyte InitRedbookAudio;
+};
+
+struct AudioDriverChoice {
+  char str1[128];
+  char str2[128];
+  char unkfield_100[24];
 };
 
 struct SoundDriver                   // Handle to driver
