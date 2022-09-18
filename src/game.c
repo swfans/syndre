@@ -33,6 +33,7 @@
 #include "bfscreen.h"
 #include "bfsprite.h"
 #include "bfwindows.h"
+#include "bfsvaribl.h"
 
 #include <SDL.h>
 #include "applog.h"

@@ -54,17 +54,15 @@ extern AudioDriverChoice MusicInstallChoice;
 extern char full_music_data_path[144];
 extern char MusicType[6];
 extern TbBool DisableLoadMusic;
+extern TbBool DisableDangerMusic;
 extern TbBool MusicInstalled;
 extern TbBool MusicAble;
 extern TbBool MusicActive;
-extern TbBool DisableDangerMusic;
 
 extern AudioDriverChoice SoundInstallChoice;
 extern ushort SoundType;
 extern TbBool DisableLoadSounds;
-extern TbBool SoundInstalled;
 extern TbBool SoundAble;
-extern TbBool SoundActive;
 
 extern TbBool CDAble;
 
@@ -561,26 +559,6 @@ TbBool sound_update(void)
                       startscr_cdvolume * (1.f / 322.f));
   ogg_vorbis_stream_update (&sound_music_stream);
   return true;
-}
-
-TbBool GetSoundInstalled(void)
-{
-    return SoundInstalled;
-}
-
-TbBool GetSoundAble(void)
-{
-    return SoundAble;
-}
-
-TbBool GetSoundActive(void)
-{
-    return SoundActive;
-}
-
-TbBool GetMusicAble(void)
-{
-    return MusicAble;
 }
 
 void StopMusicIfActive(void)
