@@ -4,6 +4,12 @@ bindir = $(prefix)/$(PACKAGE)
 MKW = $(PYTHON) $(top_srcdir)/util/mkwrappers
 
 bfgame_SOURCES = \
+	../bfsoundlib/include/ail.h \
+	../bfsoundlib/src/ail.c \
+	../bfsoundlib/include/ailss.h \
+	../bfsoundlib/src/ailss.c \
+	../bfsoundlib/include/aildebug.h \
+	../bfsoundlib/src/aildebug.c \
 	bflib_render.c \
 	bflib_render.h \
 	display.c \
@@ -36,7 +42,8 @@ bfgame_SOURCES = \
 	util.h
 
 bfgame_CPPFLAGS = \
-  -I"$(top_srcdir)/bflibrary/include"
+  -I"$(top_srcdir)/bflibrary/include" \
+  -I"$(top_srcdir)/bfsoundlib/include"
 
 bfgame_WRAPPERS = wrappers_dos.o wrappers_game.o wrappers_libc.o wrappers_util.o
 
