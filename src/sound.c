@@ -34,8 +34,6 @@ struct SourceDescriptor
 typedef struct SourceDescriptor SourceDescriptor;
 
 
-void SS_serve (DIG_DRIVER *driver);
-
 #pragma pack(1)
 
 short startscr_samplevol;
