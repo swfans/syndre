@@ -8,6 +8,7 @@
 #include "bffile.h"
 #include "bfwindows.h"
 #include "oggvorbis.h"
+#include "snderr.h"
 #include "sound.h"
 #include "ailss.h"
 #include "sound_util.h"
@@ -41,9 +42,6 @@ short startscr_midivol;
 short startscr_cdvolume;
 
 #pragma pack()
-
-extern char SoundProgressMessage[256];
-extern long DebugAudio;
 
 extern char FullDIG_INIPath[144];
 extern char FullMDI_INIPath[144];
@@ -102,12 +100,6 @@ check_alc_line (const char *source, int line)
     }
 
   return true;
-}
-
-void SoundProgressLog(const char *msg)
-{
-    if (DebugAudio)
-        printf(msg);
 }
 
 static void

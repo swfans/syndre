@@ -18,6 +18,8 @@ bfgame_SOURCES = \
 	../bfsoundlib/src/mssxmidi.c \
 	../bfsoundlib/include/bfsvaribl.h \
 	../bfsoundlib/src/variable.c \
+	../bfsoundlib/include/snderr.h \
+	../bfsoundlib/src/snderr.c \
 	bflib_render.c \
 	bflib_render.h \
 	display.c \
