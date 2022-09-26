@@ -29,6 +29,8 @@ bfgame_SOURCES = \
 	../bfsoundlib/src/dllload.c \
 	../bfsoundlib/include/memfile.h \
 	../bfsoundlib/src/memfile.c \
+	../bfsoundlib/include/miscutil.h \
+	../bfsoundlib/src/miscutil.c \
 	../bfsoundlib/include/snderr.h \
 	../bfsoundlib/src/snderr.c \
 	bflib_render.c \
