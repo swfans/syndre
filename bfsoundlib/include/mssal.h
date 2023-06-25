@@ -50,6 +50,7 @@ typedef struct DIG_DDT DIG_DDT;
 typedef struct DIG_DST DIG_DST;
 typedef struct MDI_DDT MDI_DDT;
 typedef struct MDI_DST MDI_DST;
+typedef struct MIDIOUT MIDIOUT;
 
 /** There are two types of AIL drivers.
  */
@@ -239,8 +240,7 @@ struct AIL_INI {
     char device_name[128];                   /**< offs=0x000 Device name */
     char driver_name[128];                   /**< offs=0x080 Driver filename */
     SNDCARD_IO_PARMS IO;                     /**< offs=0x100 I/O parameters for driver */
-}
-;
+};
 
 /** Base driver descriptor.
  */
@@ -291,6 +291,12 @@ struct DIG_DRIVER {
   int32_t system_data[8];                    /**< offs=0x6C Miscellaneous system data */
 };
 
+/** MIDI output driver structure.
+ */
+struct MIDIOUT {
+    uint8_t a1;
+};
+
 /* XMIDI playback driver.
  * sizeof=468
  */
@@ -311,10 +317,21 @@ struct MDI_DRIVER {
     int32_t notes[16];                       /**< offs=352 # of active notes in channel */
     void *event_trap;                        /**< offs=416 MIDI event trap callback function */
     void *timbre_trap;                       /**< offs=420 Timbre request callback function */
-    int32_t message_count;                   /**< offs=424 MIDI message count; specific to DOS implementation */
-    int32_t offset;                          /**< offs=428 MIDI buffer offset; specific to DOS implementation  */
-    int32_t master_volume;                   /**< offs=432 Master XMIDI note volume 0-127 */
-    int32_t system_data[8];                  /**< offs=436 Miscellaneous system data */
+    union {
+      struct {
+        int32_t message_count;               /**< offs=424 MIDI message count; specific to DOS implementation */
+        int32_t offset;                      /**< offs=428 MIDI buffer offset; specific to DOS implementation  */
+        int32_t master_volume;               /**< offs=432 Master XMIDI note volume 0-127 */
+        int32_t system_data[8];              /**< offs=436 Miscellaneous system data */
+      } dos;
+      struct {
+        void *mhdr;                          /**< SysEx header */
+        MDI_DRIVER *next;                    /**< Pointer to next HMDIDRIVER in use */
+        int32_t callingCT;                   /**< Calling EXE's task number (16 bit only) */
+        int32_t callingDS;                   /**< Calling EXE's DS (used in 16 bit only) */
+        MIDIOUT *hMidiOut;                   /**< MIDI output driver */
+      } win;
+    };
 };
 
 /** Representation of a sound sample.
