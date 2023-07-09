@@ -81,18 +81,6 @@ game_initialise (void)
     return true;
 }
 
-void game_play_music(void)
-{
-    char file_name[FILENAME_MAX];
-
-    snprintf(file_name, sizeof (file_name),
-          "%s" FS_SEP_STR "music" FS_SEP_STR "track_%i.ogg",
-          GetDirectoryHdd(), 0);
-
-    sound_open_music_file(file_name);
-    sound_play_music();
-}
-
 void
 game_handle_sdl_events (void)
 {
