@@ -282,8 +282,11 @@ void InitAudio(AudioInitOptions *audOpts)
         snprintf(mdir, sizeof(mdir),
               "%s" FS_SEP_STR "music", GetDirectoryHdd());
         InitMusicOGG(mdir);
-    } else
-        CDAble = 0;
+    } else {
+        sprintf(SoundProgressMessage, "BF101 - cd init - disabled\n");
+        SoundProgressLog(SoundProgressMessage);
+        CDAble = false;
+    }
 
     sprintf(SoundProgressMessage, "BF54 - MA   %d\n", MusicAble);
     SoundProgressLog(SoundProgressMessage);
