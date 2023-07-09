@@ -5,12 +5,16 @@
 #include OPENAL_ALC_H
 #include OPENAL_AL_H
 
+#include "sound.h"
+
 #include "bffile.h"
 #include "bfwindows.h"
+#include "bfscd.h"
 #include "oggvorbis.h"
 #include "snderr.h"
-#include "sound.h"
 #include "ailss.h"
+
+#include "game_data.h"
 #include "sound_util.h"
 #include "util.h"
 
@@ -80,7 +84,7 @@ static size_t        sound_free_buffer_count    = 0;
 static ALuint        sound_free_buffers[SOUND_MAX_BUFFERS];
 static SourceDescriptor sound_sources[SOUND_MAX_SOURCES];
 SNDSAMPLE sound_samples[SOUND_MAX_SOURCES];
-static OggVorbisStream  sound_music_stream;
+extern OggVorbisStream  sound_music_stream;
 
 
 #define check_alc(source) check_alc_line ((source), __LINE__)
@@ -271,9 +275,14 @@ void InitAudio(AudioInitOptions *audOpts)
     InitSound();
     InitMusic();
 
-    if (audOpts->InitRedbookAudio == 1)
+    if (audOpts->InitRedbookAudio == 1) {
         InitRedbook();
-    else
+    } else if (audOpts->InitRedbookAudio == 2) {
+        char mdir[FILENAME_MAX];
+        snprintf(mdir, sizeof(mdir),
+              "%s" FS_SEP_STR "music", GetDirectoryHdd());
+        InitMusicOGG(mdir);
+    } else
         CDAble = 0;
 
     sprintf(SoundProgressMessage, "BF54 - MA   %d\n", MusicAble);

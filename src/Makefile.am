@@ -33,6 +33,10 @@ bfgame_SOURCES = \
 	../bfsoundlib/src/miscutil.c \
 	../bfsoundlib/include/snderr.h \
 	../bfsoundlib/src/snderr.c \
+	../bfsoundlib/include/bfscd.h \
+	../bfsoundlib/src/cd.c \
+	../bfsoundlib/include/oggvorbis.h \
+	../bfsoundlib/src/oggvorbis.c \
 	bflib_render.c \
 	bflib_render.h \
 	display.c \
@@ -48,8 +52,6 @@ bfgame_SOURCES = \
 	main.c \
 	mouse.c \
 	mouse.h \
-	oggvorbis.c \
-	oggvorbis.h \
 	sound.c \
 	sound.h \
 	sound_util.c \
