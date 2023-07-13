@@ -140,6 +140,7 @@ To build **BullfrogGame Port**, you will need the following:
   * libogg
   * libpng
   * zlib
+  * WildMIDI
 
 Once you've made sure you have the above, proceed with the following steps:
 
@@ -227,6 +228,17 @@ pacman -S mingw-w64-i686-SDL2
 pacman -S mingw-w64-i686-openal
 pacman -S mingw-w64-i686-libvorbis
 pacman -S mingw-w64-i686-libogg
+```
+
+The WildMIDI library is not available as MSYS2 pacman package, install manually:
+
+```
+pacman -S unzip
+wget https://github.com/Mindwerks/wildmidi/releases/download/wildmidi-0.4.5/wildmidi-0.4.5-win32.zip
+unzip wildmidi-0.4.5-win32.zip
+cp wildmidi-0.4.5-win32/*.h /mingw32/include/
+cp wildmidi-0.4.5-win32/*.a /mingw32/lib/
+cp wildmidi-0.4.5-win32/*.dll /mingw32/bin/
 ```
 
 The Python interpeter needs to have an additional module installed:
