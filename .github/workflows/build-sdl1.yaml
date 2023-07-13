@@ -59,6 +59,7 @@ jobs:
             libsdl1.2-dev:i386 libopenal-dev:i386 \
             libvorbis-dev:i386 libvorbisfile3:i386 \
             libogg-dev:i386 \
+            libwildmidi-dev:i386 \
             libpng-dev:i386
 
           apt install -y \
@@ -145,6 +146,7 @@ jobs:
           update: true
           install: >-
               git
+              unzip
               mingw-w64-i686-toolchain
               mingw-w64-i686-autotools
               mingw-w64-i686-libpng
@@ -152,6 +154,14 @@ jobs:
               mingw-w64-i686-openal
               mingw-w64-i686-libvorbis
               mingw-w64-i686-libogg
+
+      - name: Install WildMIDI
+        run: |
+          wget https://github.com/Mindwerks/wildmidi/releases/download/wildmidi-0.4.5/wildmidi-0.4.5-win32.zip
+          unzip wildmidi-0.4.5-win32.zip
+          cp wildmidi-0.4.5-win32/*.h /mingw32/include/
+          cp wildmidi-0.4.5-win32/*.a /mingw32/lib/
+          cp wildmidi-0.4.5-win32/*.dll /mingw32/bin/
 
       - name: Autoreconf
         run: autoreconf -ivf
