@@ -167,6 +167,13 @@ AM_PATH_OPENAL([], [
   AC_MSG_ERROR([OpenAL not found])
 ])
 
+AC_CHECK_LIB(WildMidi, WildMidi_Init,,
+  AC_MSG_ERROR([libwildmidi not found])
+)
+AC_SUBST(WILDMIDI_LIBS, -lWildMidi)
+AC_SUBST(WILDMIDI_CFLAGS, )
+AC_DEFINE(ENABLE_WILDMIDI, 1, [Define for wildmidi support])
+
 # libraries from within this project are only built after `make` is executed
 AC_SUBST(BFLIBRARY_LIBS, "-L\"\$(top_builddir)/lib\" -lbullfrog")
 # the 2nd include folder is just a temp workaround
@@ -261,6 +268,10 @@ LIBS="$LIBS $VORBISFILE_LIBS"
 
 CFLAGS="$CFLAGS $PNG_CFLAGS"
 LIBS="$LIBS $PNG_LIBS"
+
+CFLAGS="$CFLAGS $WILDMIDI_CFLAGS"
+LIBS="$LIBS $WILDMIDI_LIBS"
+
 
 AC_SUBST([MKWFLAGS])
 AC_SUBST([WINDRES])
