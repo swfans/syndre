@@ -354,6 +354,7 @@ void AIL2OAL_API_end_sample(SNDSAMPLE *s)
 
 uint32_t AIL2OAL_API_sample_status(SNDSAMPLE *s)
 {
+    assert(s != NULL);
     return s->status;
 }
 
