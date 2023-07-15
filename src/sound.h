@@ -29,13 +29,6 @@
 /******************************************************************************/
 #pragma pack(1)
 
-enum SoundDriverType
-{
-  SOUND_DRIVER_PCM  = 0,
-  SOUND_DRIVER_MIDI = 1
-};
-
-
 typedef struct AudioInitOptions AudioInitOptions;
 
 struct AudioInitOptions {
@@ -74,10 +67,6 @@ int LoadMusic(ushort bankNo);
 void fill_ail_sample_ids(void);
 
 int LoadSounds(unsigned char a1);
-
-bool sound_initialise (void);
-void sound_finalise (void);
-TbBool sound_update(void);
 
 /******************************************************************************/
 #endif // SOUND_H
