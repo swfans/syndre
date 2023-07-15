@@ -114,8 +114,7 @@ push_free_buffer (ALuint buf)
   sound_free_buffers[sound_free_buffer_count++] = buf;
 }
 
-static bool
-create_sources (void)
+static bool create_sources(void)
 {
   size_t n, m;
   ALuint source;
