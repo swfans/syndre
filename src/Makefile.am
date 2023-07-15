@@ -33,6 +33,8 @@ bfgame_SOURCES = \
 	../bfsoundlib/src/miscutil.c \
 	../bfsoundlib/include/snderr.h \
 	../bfsoundlib/src/snderr.c \
+	../bfsoundlib/include/init_snd.h \
+	../bfsoundlib/src/init_snd.c \
 	../bfsoundlib/include/bfscd.h \
 	../bfsoundlib/src/cd.c \
 	../bfsoundlib/include/oggvorbis.h \

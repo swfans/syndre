@@ -28,6 +28,7 @@
 #include "bfscd.h"
 #include "bffile.h"
 #include "bfsvaribl.h"
+#include "bfsound.h"
 #include "aildebug.h"
 #include "oggvorbis.h"
 #include "snderr.h"
@@ -334,8 +335,7 @@ void StopCD(void)
 
 void InitRedbook(void)
 {
-    if (!GetSoundAble() && !GetMusicAble())
-        AIL_startup();
+    EnsureAILStartup();
 
     if (cd_init()) {
         InitialCDVolume = GetCDVolume();
@@ -350,8 +350,7 @@ void InitRedbook(void)
 
 void InitMusicOGG(const char *nmusic_dir)
 {
-    if (!GetSoundAble() && !GetMusicAble())
-        AIL_startup();
+    EnsureAILStartup();
 
     strncpy(music_dir, nmusic_dir, sizeof(music_dir));
 

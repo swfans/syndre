@@ -117,7 +117,9 @@ int32_t AIL2OAL_API_startup(void)
 
     AILA_startup();
 
-   return 1;
+    i = OPENAL_startup();
+
+    return i;
 }
 
 void AIL2OAL_API_shutdown(void)
@@ -132,11 +134,13 @@ void AIL2OAL_API_shutdown(void)
             AIL_uninstall_driver(drvr);
     }
 
-   // Release all application timers
-   AIL_release_all_timers();
+    // Release all application timers
+    AIL_release_all_timers();
 
-   // Shut down assembly API
-   AILA_shutdown();
+    // Shut down assembly API
+    AILA_shutdown();
+
+    OPENAL_shutdown();
 }
 
 void AIL2OAL_API_set_error(const char *error_msg)
