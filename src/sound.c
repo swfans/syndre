@@ -30,16 +30,6 @@
 #define check_al(msg) sound_check_al (msg)
 
 
-struct SourceDescriptor
-{
-  SNDSAMPLE *sample;
-  ALuint       name;
-  size_t       buffers_used;
-};
-
-typedef struct SourceDescriptor SourceDescriptor;
-
-
 #pragma pack(1)
 
 short startscr_samplevol;
@@ -79,7 +69,6 @@ extern ulong MaxNumberOfSamples;
 size_t sound_source_count    = 0;
 static size_t        sound_free_buffer_count    = 0;
 static ALuint        sound_free_buffers[SOUND_MAX_BUFFERS];
-static SourceDescriptor sound_sources[SOUND_MAX_SOURCES];
 SNDSAMPLE sound_samples[SOUND_MAX_SOURCES];
 extern OggVorbisStream  sound_music_stream;
 
@@ -91,13 +80,12 @@ extern DIG_DRIVER *SoundDriver;
 bool check_alc_line(const char *source, int line);
 
 static void
-initialise_descriptor (SNDSAMPLE *samples, size_t index, ALuint name)
+initialise_descriptor(SNDSAMPLE *samples, size_t index, ALuint source)
 {
-  SourceDescriptor *desc = &sound_sources[index];
+    SNDSAMPLE *s = &samples[index];
 
-  desc->sample         = &samples[index];
-  desc->name         = name;
-  desc->buffers_used = 0;
+    s->system_data[5] = source;
+    s->system_data[4] = 0;
 }
 
 static ALuint
@@ -261,31 +249,37 @@ void InitAudio(AudioInitOptions *audOpts)
 }
 
 static void
-destroy_sources (void)
+destroy_sources(DIG_DRIVER *digdrv)
 {
-  size_t n;
+    int32_t i;
+    ALuint source;
 
-  for (n = 0; n < SOUND_MAX_SOURCES; n++)
+    for (i = 0; i < digdrv->n_samples; i++)
     {
-      if (sound_sources[n].name == 0)
-        continue;
+        SNDSAMPLE *s;
 
-      sound_delete_source_and_buffers (sound_sources[n].name);
+        s = &digdrv->samples[i];
+        source = s->system_data[5];
+
+        if (source == 0)
+            continue;
+
+        sound_delete_source_and_buffers(source);
     }
 
-  alDeleteBuffers (sound_free_buffer_count, sound_free_buffers);
-  check_al ("alDeleteBuffers");
+    alDeleteBuffers (sound_free_buffer_count, sound_free_buffers);
+    check_al ("alDeleteBuffers");
 }
 
 void oal_sound_finalise(void)
 {
-    destroy_sources();
+    destroy_sources(SoundDriver);
 }
 
 static ALenum
-get_pcm_format (SNDSAMPLE *s)
+get_pcm_format(SNDSAMPLE *s)
 {
-  switch (s->format)
+    switch (s->format)
     {
     case 0: return AL_FORMAT_MONO8;
     case 1: return AL_FORMAT_MONO16;
@@ -297,56 +291,58 @@ get_pcm_format (SNDSAMPLE *s)
 }
 
 static void
-queue_source_buffers (DIG_DRIVER *digdrv, SourceDescriptor *src)
+queue_source_buffers(DIG_DRIVER *digdrv, SNDSAMPLE *s)
 {
-  size_t len, total_len;
-  void *data;
-  float x_pos;
-  ALint state;
-  SNDSAMPLE *s;
-  ALuint buf = 0;
+    size_t len, total_len;
+    size_t buffers_used;
+    ALuint source;
+    void *data;
+    float x_pos;
+    ALint state;
+    ALuint buf = 0;
 
-  if (src->buffers_used >= SOUND_BUFFERS_PER_SRC)
-    return;
+    source = s->system_data[5];
+    buffers_used = s->system_data[4];
 
-  s = src->sample;
-
-  total_len = s->len[s->current_buffer] - s->pos[s->current_buffer];
-
-  if (total_len == 0)
-    {
-      if (s->done[s->current_buffer ^ 1] == 0)
-        s->current_buffer ^= 1;
-      else
+    if (buffers_used >= SOUND_BUFFERS_PER_SRC)
         return;
 
-      total_len = s->len[s->current_buffer] - s->pos[s->current_buffer];
+    total_len = s->len[s->current_buffer] - s->pos[s->current_buffer];
+
+    if (total_len == 0)
+    {
+        if (s->done[s->current_buffer ^ 1] == 0)
+            s->current_buffer ^= 1;
+        else
+            return;
+
+        total_len = s->len[s->current_buffer] - s->pos[s->current_buffer];
     }
 
 
-  while (total_len > 0 && src->buffers_used < SOUND_BUFFERS_PER_SRC)
+    while (total_len > 0 && buffers_used < SOUND_BUFFERS_PER_SRC)
     {
-      data = s->start[s->current_buffer] + s->pos[s->current_buffer];
-      len = MIN (total_len, SOUND_MAX_BUFSIZE);
+        data = s->start[s->current_buffer] + s->pos[s->current_buffer];
+        len = MIN (total_len, SOUND_MAX_BUFSIZE);
 
-      assert ((s->flags & 1) != 0);
+        assert ((s->flags & 1) != 0);
 
-      buf = pop_free_buffer ();
-      alBufferData (buf, get_pcm_format (s), data, len, s->playback_rate);
-      if (!check_al ("alBufferData"))
-        goto err;
+        buf = pop_free_buffer ();
+        alBufferData (buf, get_pcm_format (s), data, len, s->playback_rate);
+        if (!check_al ("alBufferData"))
+            goto err;
 
-      alSourceQueueBuffers (src->name, 1, &buf);
-      if (!check_al ("alSourceQueueBuffers"))
-        goto err;
+        alSourceQueueBuffers(source, 1, &buf);
+        if (!check_al ("alSourceQueueBuffers"))
+            goto err;
 
-      src->buffers_used++;
+        buffers_used++;
 
-      alGetSourcei (src->name, AL_SOURCE_STATE, &state);
-      if (!check_al ("alGetSourcei (AL_SOURCE_STATE)"))
-        goto err;
+        alGetSourcei (source, AL_SOURCE_STATE, &state);
+        if (!check_al ("alGetSourcei (AL_SOURCE_STATE)"))
+            goto err;
 
-      alSourcef (src->name, AL_GAIN,
+        alSourcef (source, AL_GAIN,
              (s->volume * (1.f / 127.f)
               * (digdrv->master_volume * (1.f / 127.f))));
       if (!check_al ("alSourcef (AL_GAIN)"))
@@ -387,21 +383,25 @@ err:
 }
 
 static void
-unqueue_source_buffers (SourceDescriptor *src)
+unqueue_source_buffers(SNDSAMPLE *s)
 {
-    SNDSAMPLE *s;
+    size_t buffers_used;
+    ALuint source;
 
-    if (src->buffers_used == 0)
+    source = s->system_data[5];
+    buffers_used = s->system_data[4];
+
+    if (buffers_used == 0)
         return;
 
-    s = src->sample;
-
-    src->buffers_used -=
-        sound_unqueue_buffers (src->name,
+    buffers_used -=
+        sound_unqueue_buffers(source,
                    (SoundNameCallback) push_free_buffer,
                    NULL);
 
-    if (src->buffers_used > 0
+    s->system_data[4] = buffers_used;
+
+    if (buffers_used > 0
         || s->pos[s->current_buffer] < s->len[s->current_buffer]
         || s->loop_count == 0)
       return;
@@ -410,7 +410,7 @@ unqueue_source_buffers (SourceDescriptor *src)
     if (!s->done[0] && !s->done[1])
         return;
 
-    alSourceStop (src->name);
+    alSourceStop(source);
     check_al ("alSourceStop");
     s->status = 2;
 }
@@ -418,36 +418,35 @@ unqueue_source_buffers (SourceDescriptor *src)
 void sound_update_dig_samples(DIG_DRIVER *digdrv)
 {
     int32_t n;
-    SourceDescriptor *src;
-    SNDSAMPLE *s;
 
     digdrv->n_active_samples = 0;
 
     for (n = 0; n < digdrv->n_samples; n++)
     {
-      src = &sound_sources[n];
-      s = src->sample;
+        SNDSAMPLE *s;
 
-      if (s->status == 1)
-        continue;
+        s = &digdrv->samples[n];
+
+        if (s->status == 1)
+            continue;
 
 #if 0
-      printf ("sample %i loops:%i ([%i/%i] [%i/%i]) (%i %i) %zu\n", n,
+        printf ("sample %i loops:%i ([%i/%i] [%i/%i]) (%i %i) %zu\n", n,
               s->loop_count,
               s->pos[0], s->len[0],
               s->pos[1], s->len[1],
               s->done[0], s->done[1],
-              src->buffers_used);
+              buffers_used);
 #endif
 
-      unqueue_source_buffers (src);
+        unqueue_source_buffers(s);
 
-      if (s->status != 4)
-        continue;
+        if (s->status != 4)
+            continue;
 
-      digdrv->n_active_samples++;
+        digdrv->n_active_samples++;
 
-      queue_source_buffers (digdrv, src);
+        queue_source_buffers(digdrv, s);
     }
 }
 
