@@ -27,6 +27,7 @@
 #include "aila.h"
 #include "aildebug.h"
 #include "memfile.h"
+#include "drv_oal.h"
 /******************************************************************************/
 
 /** List of installed AIL drivers.

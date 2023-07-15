@@ -75,8 +75,6 @@ game_initialise (void)
     LbSetTitle(PACKAGE_NAME);
     LbSetIcon(1);
 
-    sound_initialise();
-
     // Make sure file names are properly converted before opening
     setup_file_names();
 
@@ -96,7 +94,7 @@ game_handle_sdl_events (void)
 void
 game_quit(void)
 {
-    sound_finalise();
+    host_reset();
     LbBaseReset();
     exit(0);
 }
