@@ -61,8 +61,6 @@ bfgame_SOURCES = \
 	mouse.h \
 	sound.c \
 	sound.h \
-	sound_util.c \
-	sound_util.h \
 	bfgame.sx \
 	timer.c \
 	timer.h \
