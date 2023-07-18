@@ -166,6 +166,7 @@ sudo apt install libsdl2-dev:i386
 sudo apt install libopenal-dev:i386
 sudo apt install libvorbis-dev:i386 libvorbisfile3:i386
 sudo apt install libogg-dev:i386
+sudo apt install libwildmidi-dev:i386
 ```
 
 Now as our host is ready, we can start working on the actual `bfgame` sources.
