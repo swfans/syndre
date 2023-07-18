@@ -91,19 +91,20 @@ If you've decided on the hand-compilation option, proceed with the following ste
 
 1. download and unpack the source tarball or clone git repo
 2. follow [building instructions](#building-on-windows) below to get
-   a compiled executable
+   a compiled executable and configuration files
 3. copy all the files and directories, except for the Language directory, from
    the `Game` directory within the *BullfrogGame CD* to the location of your
-   desire, say `bfgameLocation`.
+   desire, say `BfGameLocation`.
 4. copy all the files, except `SOUND.DAT`, from the `Game\Language\LANGUAGE\` from
-   the *BullfrogGame CD* to the `bfgameLocation\Data` directory, where *LANGUAGE*
+   the *BullfrogGame CD* to the `BfGameLocation\Data` directory, where *LANGUAGE*
    stands for the appropriate subdirectory fo the language you want
 5. copy the `SOUND.DAT` file (from the directory stated above) to the
-   `bfgameLocation\Sound` directory
+   `BfGameLocation\Sound` directory
 6. *[optional]* rip the game CD Audio tracks to `track_{1,2,3}.ogg` (vorbis)
-7. *[optional]* create a `bfgameLocation\music` directory and copy the
+7. *[optional]* create a `BfGameLocation\music` directory and copy the
    previously encoded ogg files there
-8. copy `bfgame.exe` to your `bfgameLocation` directory
+8. copy `bfgame.exe` to your `BfGameLocation` directory
+8. copy `bfgame.exe` and `conf` folder to your `BfGameLocation` directory
 
 You can now launch `bfgame.exe` and have fun!
 
