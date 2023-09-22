@@ -36,6 +36,7 @@
 #include "bfaudio.h"
 #include "bfsvaribl.h"
 #include "bfscd.h"
+#include "ssampply.h"
 
 #include <SDL.h>
 #include "applog.h"
