@@ -21,6 +21,7 @@
 #define AIL2OAL_AWE32_H_
 
 #include <stdint.h>
+#include "bftypes.h"
 #include "mssal.h"
 
 #ifdef __cplusplus
@@ -46,6 +47,11 @@ struct SF_DATA {
     uint16_t data_seg;
 };
 
+/******************************************************************************/
+
+extern TbBool UseCurrentAwe32Soundfont;
+extern TbBool Awe32SoundfontLoaded;
+
 /** Release one or all of the banks in the AWE32 memory, free preset buffer.
  *
  * @param mdi Pointer to MSS MIDI driver
@@ -53,6 +59,9 @@ struct SF_DATA {
  * @return OK (0) or ERROR (-1)
  */
 int AWEFreeMem(MDI_DRIVER *mdidrv, short bank_no);
+
+void FreeAwe32Soundfont(void);
+void LoadAwe32Soundfont(const char *str);
 
 /******************************************************************************/
 #ifdef __cplusplus

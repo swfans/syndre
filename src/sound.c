@@ -15,6 +15,7 @@
 #include "snderr.h"
 #include "aila.h"
 #include "ailss.h"
+#include "awe32.h"
 
 #include "game_data.h"
 #include "util.h"
@@ -51,7 +52,6 @@ extern TbBool CDAble;
 extern TbBool UseMultiMediaExtensions;
 extern TbBool AutoScanForSoundHardware;
 extern TbBool StereoSound;
-extern TbBool UseCurrentAwe32Soundfont;
 extern TbBool ive_got_an_sb16;
 extern ulong MaxNumberOfSamples;
 extern TbBool AILStartupAlreadyInitiated;
