@@ -88,8 +88,7 @@ void InitAudio(AudioInitOptions *audOpts)
       "call ASM_InitAudio\n"
         : : "a" (audOpts));
 #endif
-    if (getenv("DEBUG_BF_AUDIO"))
-        DebugAudio = 1;
+    InitDebugAudio();
 
     sprintf(FullDIG_INIPath, "sound/DIG.INI");
     sprintf(FullMDI_INIPath, "sound/MDI.INI");
