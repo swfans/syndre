@@ -3,9 +3,9 @@
 // Syndicate Wars, Magic Carpet, Genewars or Dungeon Keeper.
 /******************************************************************************/
 /** @file awe32.c
- *     Reimplementation of Bullfrog Sound Library.
+ *     SoundBlaster AWE32 specific routines.
  * @par Purpose:
- *     Handles for global properties.
+ *     Functions which are specific to SoundBlaster AWE32 and not part of AIL.
  * @par Comment:
  *     None.
  * @author   Tomasz Lis

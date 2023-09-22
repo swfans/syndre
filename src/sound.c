@@ -12,6 +12,7 @@
 #include "bfscd.h"
 #include "drv_oal.h"
 #include "oggvorbis.h"
+#include "sb16.h"
 #include "snderr.h"
 #include "aila.h"
 #include "ailss.h"
@@ -146,6 +147,9 @@ void InitAudio(AudioInitOptions *audOpts)
         SoundProgressLog(SoundProgressMessage);
         CDAble = false;
     }
+
+    if (ive_got_an_sb16)
+        prepare_SB16_volumes();
 
     sprintf(SoundProgressMessage, "BF54 - MA   %d\n", MusicAble);
     SoundProgressLog(SoundProgressMessage);

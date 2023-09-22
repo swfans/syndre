@@ -25,6 +25,8 @@ bfgame_SOURCES = \
 	../bfsoundlib/src/variable.c \
 	../bfsoundlib/src/dpmi.c \
 	../bfsoundlib/include/dpmi.h \
+	../bfsoundlib/src/sb16.c \
+	../bfsoundlib/include/sb16.h \
 	../bfsoundlib/src/awe32.c \
 	../bfsoundlib/src/awe32use.c \
 	../bfsoundlib/include/awe32.h \
