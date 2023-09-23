@@ -50,6 +50,8 @@ bfgame_SOURCES = \
 	../bfsoundlib/src/init_snd.c \
 	../bfsoundlib/include/bfscd.h \
 	../bfsoundlib/src/cd.c \
+	../bfsoundlib/include/sndtimer.h \
+	../bfsoundlib/src/sndtimer.c \
 	../bfsoundlib/include/drv_oal.h \
 	../bfsoundlib/src/drv_oal.c \
 	../bfsoundlib/include/oggvorbis.h \
