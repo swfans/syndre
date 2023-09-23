@@ -33,6 +33,7 @@ extern "C" {
 /******************************************************************************/
 
 void FreeAudio(void);
+void EnsureAILStartup(void);
 
 void SetSoundMasterVolume(long vol);
 void SetMusicMasterVolume(long vol);

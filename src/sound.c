@@ -6,6 +6,7 @@
 #include "sound.h"
 
 #include "bffile.h"
+#include "bfmusic.h"
 #include "bfsound.h"
 #include "bfwindows.h"
 #include "bfscd.h"
