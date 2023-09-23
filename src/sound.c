@@ -8,6 +8,7 @@
 #include "sound.h"
 
 #include "bffile.h"
+#include "bfsound.h"
 #include "bfwindows.h"
 #include "bfscd.h"
 #include "oggvorbis.h"
