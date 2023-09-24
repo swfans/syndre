@@ -15,6 +15,7 @@
 #include "sb16.h"
 #include "sndtimer.h"
 #include "snderr.h"
+#include "streamfx.h"
 #include "aila.h"
 #include "ailss.h"
 #include "awe32.h"
@@ -136,6 +137,9 @@ void InitAudio(AudioInitOptions *audOpts)
     InitSound();
     InitMusic();
     InitAllBullfrogSoundTimers();
+
+    if (audOpts->InitStreamedSound == 1)
+        InitStreamedSound();
 
     if (audOpts->InitRedbookAudio == 1) {
         InitRedbook();
