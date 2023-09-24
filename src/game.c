@@ -35,6 +35,7 @@
 #include "bfwindows.h"
 #include "bfaudio.h"
 #include "bfmusic.h"
+#include "bfsound.h"
 #include "bfsvaribl.h"
 #include "bfscd.h"
 #include "ssampply.h"
