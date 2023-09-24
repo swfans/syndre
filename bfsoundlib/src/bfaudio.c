@@ -82,6 +82,17 @@ void FreeAudio(void)
     asm volatile ("call ASM_FreeAudio\n"
         :  :  : "eax" );
 #endif
+    if (GetCDAble()) {
+        FreeCD();
+        if (!SoundAble && !MusicAble)
+            AIL_shutdown();
+    }
+    if (StreamedSoundAble)
+        FreeStreamedSound();
+    FreeMusic();
+    FreeSound();
+    if (sb16_mixer_set)
+        reset_SB16_volumes();
 }
 
 /** Wrapper for LbMemoryAlloc(), needed to make sure data sizes match.
