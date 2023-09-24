@@ -18,6 +18,7 @@ bfgame_SOURCES = \
 	../bfsoundlib/src/msssys.c \
 	../bfsoundlib/include/mssxmidi.h \
 	../bfsoundlib/src/mssxmidi.c \
+	../bfsoundlib/src/mseqnlst.c \
 	../bfsoundlib/include/bfaudio.h \
 	../bfsoundlib/src/bfaudio.c \
 	../bfsoundlib/include/bfsvaribl.h \

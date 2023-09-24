@@ -39,7 +39,17 @@ extern MDI_DRIVER *MusicDriver;
 
 extern long CurrentMusicMasterVolume;
 
+extern TbBool StreamedSoundAble;
+
 /******************************************************************************/
+
+void FreeAudio(void)
+{
+#if 0
+    asm volatile ("call ASM_FreeAudio\n"
+        :  :  : "eax" );
+#endif
+}
 
 void SetSoundMasterVolume(long vol)
 {
@@ -68,5 +78,4 @@ void SetMusicMasterVolume(long vol)
     AIL_set_XMIDI_master_volume(MusicDriver, vol);
     CurrentMusicMasterVolume = vol;
 }
-
 /******************************************************************************/

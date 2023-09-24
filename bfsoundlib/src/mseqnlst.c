@@ -2,14 +2,14 @@
 // Bullfrog Sound Library - for use to remake classic games like
 // Syndicate Wars, Magic Carpet, Genewars or Dungeon Keeper.
 /******************************************************************************/
-/** @file bfaudio.h
- *     Header file for bfaudio.c.
+/** @file ssamplst.c
+ *     Music Sequence List support routines.
  * @par Purpose:
- *     Set of general audio-related calls.
+ *     Functions for handling a list/queue of music sequences.
  * @par Comment:
  *     None.
  * @author   Tomasz Lis
- * @date     12 Nov 2008 - 05 Nov 2021
+ * @date     12 Jun 2022 - 05 Sep 2022
  * @par  Copying and copyrights:
  *     This program is free software; you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
@@ -17,29 +17,17 @@
  *     (at your option) any later version.
  */
 /******************************************************************************/
-#ifndef BFSOUNDLIB_BFAUDIO_H_
-#define BFSOUNDLIB_BFAUDIO_H_
+#include <stdio.h>
+#include <stddef.h>
+#include <stdlib.h>
+#include <assert.h>
 
-#include "bftypes.h"
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-/******************************************************************************/
-#pragma pack(1)
-
-
-#pragma pack()
+#include "aildebug.h"
+#include "mssal.h"
 /******************************************************************************/
 
-void FreeAudio(void);
-
-void SetSoundMasterVolume(long vol);
-void SetMusicMasterVolume(long vol);
 
 /******************************************************************************/
-#ifdef __cplusplus
-};
-#endif
 
-#endif // BFSOUNDLIB_BFAUDIO_H_
+
+/******************************************************************************/
