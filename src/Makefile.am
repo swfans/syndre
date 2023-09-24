@@ -47,6 +47,7 @@ bfgame_SOURCES = \
 	../bfsoundlib/include/bfmusic.h \
 	../bfsoundlib/src/init_mus.c \
 	../bfsoundlib/src/mseqnply.c \
+	../bfsoundlib/src/mseqnfad.c \
 	../bfsoundlib/include/bfsound.h \
 	../bfsoundlib/src/init_snd.c \
 	../bfsoundlib/include/bfscd.h \
