@@ -163,25 +163,6 @@ void InitAudio(AudioInitOptions *audOpts)
     SoundProgressLog(SoundProgressMessage);
 }
 
-void StopMusicIfActive(void)
-{
-    if (!MusicInstalled || !MusicAble)
-        return;
-    if (MusicActive)
-    {
-        StopMusic();
-        MusicActive = 0;
-    }
-}
-
-void StopMusic(void)
-{
-#if 0
-    asm volatile ("call ASM_StopMusic\n"
-        :  :  : "eax" );
-#endif
-}
-
 //TODO better name?
 void fill_ail_sample_ids(void)
 {

@@ -34,6 +34,7 @@
 #include "bfsprite.h"
 #include "bfwindows.h"
 #include "bfaudio.h"
+#include "bfmusic.h"
 #include "bfsvaribl.h"
 #include "bfscd.h"
 #include "ssampply.h"

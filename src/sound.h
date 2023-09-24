@@ -60,8 +60,6 @@ extern short startscr_cdvolume;
 
 void InitAudio(AudioInitOptions *audOpts);
 
-void StopMusicIfActive(void);
-void StopMusic(void);
 int LoadMusic(ushort bankNo);
 
 void fill_ail_sample_ids(void);
