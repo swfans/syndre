@@ -28,6 +28,11 @@ PC CD*, or digital distribution of the game. There were several physical
 versions released. It is uncertain whether this port will work with all
 releases, so choose the most popular, english version.
 
+The CD version which you use narrows the range of available languages.
+
+* Multi-lingual CD contains `eng` `fre` `ita` `spa` `swe`,
+* German release is required to use `ger`,
+
 The steps you need to take vary depending on your operating system.
 
 ### Installing on GNU or UNIX
@@ -95,11 +100,11 @@ If you've decided on the hand-compilation option, proceed with the following ste
 3. copy all the files and directories, except for the Language directory, from
    the `Game` directory within the *BullfrogGame CD* to the location of your
    desire, say `BfGameLocation`.
-4. copy all the files, except `SOUND.DAT`, from the `Game\Language\LANGUAGE\` from
+4. copy all the files, except `sound.dat`, from the `game\language\LANGUAGE\` from
    the *BullfrogGame CD* to the `BfGameLocation\Data` directory, where *LANGUAGE*
    stands for the appropriate subdirectory fo the language you want
-5. copy the `SOUND.DAT` file (from the directory stated above) to the
-   `BfGameLocation\Sound` directory
+5. copy the `sound.dat` file (from the directory stated above) to the
+   `BfGameLocation\sound` directory
 6. *[optional]* rip the game CD Audio tracks to `track_{1,2,3}.ogg` (vorbis)
 7. *[optional]* create a `BfGameLocation\music` directory and copy the
    previously encoded ogg files there
