@@ -219,7 +219,10 @@ LIBS="$LIBS $PNG_LIBS"
 AC_SUBST([MKWFLAGS])
 AC_SUBST([WINDRES])
 
+# Prepare makefiles from `.in` templates
 AC_CONFIG_FILES([Makefile conf/Makefile src/Makefile util/Makefile])
+
+# Done - generate and execute `config.status`
 AC_OUTPUT
 
 echo
