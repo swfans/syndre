@@ -79,10 +79,6 @@ extern TbBool CDAble;
 
 void FreeAudio(void)
 {
-#if 0
-    asm volatile ("call ASM_FreeAudio\n"
-        :  :  : "eax" );
-#endif
     if (GetCDAble()) {
         FreeCD();
         if (!SoundAble && !MusicAble)
@@ -220,10 +216,6 @@ void InitAudio(AudioInitOptions *audOpts)
 
 void SetSoundMasterVolume(long vol)
 {
-#if 0
-    asm volatile ("call ASM_SetSoundMasterVolume\n"
-        :  : "a" (vol));
-#endif
     if (!SoundAble || !SoundInstalled)
         return;
     if (vol == CurrentSoundMasterVolume || vol > 127 || vol < 0)
@@ -234,10 +226,6 @@ void SetSoundMasterVolume(long vol)
 
 void SetMusicMasterVolume(long vol)
 {
-#if 0
-    asm volatile ("call ASM_SetMusicMasterVolume\n"
-        :  : "a" (vol));
-#endif
     if (!MusicAble || !MusicInstalled)
         return;
     if (vol == CurrentMusicMasterVolume || vol > 127 || vol < 0)
