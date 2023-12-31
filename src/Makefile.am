@@ -8,6 +8,8 @@ bfgame_SOURCES = \
 	../bfsoundlib/src/ail.c \
 	../bfsoundlib/include/ailss.h \
 	../bfsoundlib/src/ailss.c \
+	../bfsoundlib/src/ailvoc.c \
+	../bfsoundlib/src/ailwav.c \
 	../bfsoundlib/include/aila.h \
 	../bfsoundlib/src/aila.c \
 	../bfsoundlib/include/aildebug.h \
