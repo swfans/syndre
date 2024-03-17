@@ -83,10 +83,8 @@ int main (int argc, char **argv)
     process_options(&argc, &argv);
 
     printf("BullfrogGame Port "VERSION"\n"
-      "The original by Bullfrog\n"
-      "Port solution by Unavowed <unavowed@vexillium.org> "
-      "and Gynvael Coldwind <gynvael@vexillium.org>\n"
-      "Refactored port base by Mefistotelis <mefistotelis@gmail.com>\n");
+      "The original by Bullfrog. Port solution by Unavowed and Gynvael Coldwind.\n"
+      "Refactored port base by Mefistotelis.\n");
 
     if (!game_initialise())
         return 1;
