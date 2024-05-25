@@ -1,5 +1,5 @@
 /******************************************************************************/
-// Free implementation of Bullfrog's BullfrogGame classic game.
+// BullfrogGame Port, source port of the classic game from Bullfrog.
 /******************************************************************************/
 /** @file bfgame_ver.h
  *     Project name, version, copyrights and global definitions.
@@ -21,6 +21,9 @@
 
 /* Version definitions */
 #include "config.h"
+
+/******************************************************************************/
+
 //#define VER_MAJOR         1
 //#define VER_MINOR         2
 //#define VER_RELEASE       3
@@ -42,5 +45,5 @@
 #define PRODUCT_VERSION   VERSION
 #define DEFAULT_LOG_FILENAME INTERNAL_NAME".log"
 
-#endif // BFGAME_VER_H_
 /******************************************************************************/
+#endif // BFGAME_VER_H_

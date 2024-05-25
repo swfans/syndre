@@ -1,3 +1,21 @@
+/******************************************************************************/
+// BullfrogGame Port, source port of the classic game from Bullfrog.
+/******************************************************************************/
+/** @file sound.h
+ *     Header file for sound.c.
+ * @par Purpose:
+ *     Sound samples playback wrappers.
+ * @par Comment:
+ *     None.
+ * @author   Tomasz Lis
+ * @date     10 Oct 2012 - 13 Oct 2021
+ * @par  Copying and copyrights:
+ *     This program is free software; you can redistribute it and/or modify
+ *     it under the terms of the GNU General Public License as published by
+ *     the Free Software Foundation; either version 2 of the License, or
+ *     (at your option) any later version.
+ */
+/******************************************************************************/
 #ifndef SOUND_H
 #define SOUND_H
 
@@ -7,6 +25,7 @@
 #include "bftypes.h"
 #include "timer.h"
 
+/******************************************************************************/
 #pragma pack(1)
 
 enum SoundDriverType
@@ -124,6 +143,7 @@ struct SoundDriverCallParameters
 } __attribute__ ((packed));
 
 #pragma pack()
+/******************************************************************************/
 
 extern short startscr_samplevol;
 extern short startscr_midivol;
@@ -137,4 +157,5 @@ void sound_play_music (void);
 void sound_stop_music (void);
 void sound_pause_music (void);
 
+/******************************************************************************/
 #endif

@@ -1,5 +1,5 @@
 /******************************************************************************/
-// Free implementation of Bullfrog's BullfrogGame classic game.
+// BullfrogGame Port, source port of the classic game from Bullfrog.
 /******************************************************************************/
 /** @file keyboard.c
  *     Header file for buffered handler for keystrokes.
@@ -23,9 +23,11 @@
 #include <SDL.h>
 #include "bftypes.h"
 
+/******************************************************************************/
+
 void init_buffered_keys(void);
 void reset_buffered_keys(void);
 ulong next_buffered_key(void);
 
-#endif
 /******************************************************************************/
+#endif

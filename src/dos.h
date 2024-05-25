@@ -1,3 +1,21 @@
+/******************************************************************************/
+// BullfrogGame Port, source port of the classic game from Bullfrog.
+/******************************************************************************/
+/** @file dos.h
+ *     Header file for dos.c.
+ * @par Purpose:
+ *     Functions which were only available or have specific behaviour in DOS.
+ * @par Comment:
+ *     Multiplatform implementation of behaviours from DOS.
+ * @author   Tomasz Lis
+ * @date     12 Nov 2008 - 25 May 2022
+ * @par  Copying and copyrights:
+ *     This program is free software; you can redistribute it and/or modify
+ *     it under the terms of the GNU General Public License as published by
+ *     the Free Software Foundation; either version 2 of the License, or
+ *     (at your option) any later version.
+ */
+/******************************************************************************/
 #ifndef DOS_H
 #define DOS_H
 
@@ -6,6 +24,8 @@
 #include <stdbool.h>
 
 #include "bfdos.h"
+
+/******************************************************************************/
 
 #define DOS_O_RDONLY    0x0000
 #define DOS_O_WRONLY    0x0001
@@ -38,6 +58,7 @@ struct dosdate_t
   uint8_t  dayofweek;
 };
 
+/******************************************************************************/
 
 int dos_open_flags_to_native (int flags);
 
@@ -66,4 +87,5 @@ void *dos_getvect (int num) __attribute__ ((noreturn));
 
 void dos_setvect (int num, void *function) __attribute__ ((noreturn));
 
+/******************************************************************************/
 #endif

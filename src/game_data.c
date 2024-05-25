@@ -1,5 +1,5 @@
 /******************************************************************************/
-// Syndicate Wars Port - open-source reimplementation of SW.
+// BullfrogGame Port, source port of the classic game from Bullfrog.
 /******************************************************************************/
 /** @file game_data.c
  *     Memory managing routines.

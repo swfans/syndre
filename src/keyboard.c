@@ -1,5 +1,5 @@
 /******************************************************************************/
-// Free implementation of Bullfrog's BullfrogGame classic game.
+// BullfrogGame Port, source port of the classic game from Bullfrog.
 /******************************************************************************/
 /** @file keyboard.c
  *     Buffered handler for keystrokes.

@@ -1,5 +1,5 @@
 /******************************************************************************/
-// Syndicate Wars Port - open-source reimplementation of SW.
+// BullfrogGame Port, source port of the classic game from Bullfrog.
 /******************************************************************************/
 /** @file game_data.h
  *     Header file for game_data.c.
@@ -21,9 +21,12 @@
 
 #include "bflib_basics.h"
 
+/******************************************************************************/
+
 const char *GetDirectoryUser(void);
 const char *GetDirectoryHdd(void);
 
 void setup_file_names(void);
 
+/******************************************************************************/
 #endif

@@ -24,6 +24,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
+/******************************************************************************/
 
 /** Macro for logging messages of error severity within this module. */
 #define LOGERR(format,args...) LbErrorLog("BfGame: %s: " format "\n", __func__ , ## args)
@@ -42,9 +43,9 @@ extern "C" {
 /** Macro for messages which are only for developers and disabled in normal builds. */
 #define LOGNO(format,args...)
 
+/******************************************************************************/
 #ifdef __cplusplus
 };
 #endif
 
 #endif // APPLOG_H_
-/******************************************************************************/
