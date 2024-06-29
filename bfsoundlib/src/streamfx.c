@@ -38,17 +38,17 @@ extern TbBool SoundAble;
 extern TbBool SoundActive;
 extern DIG_DRIVER *SoundDriver;
 
-uint8_t ssnd_active;
-TbFileHandle adpcm_handle;
-long adpcm_file_open;
-SNDSAMPLE *sample_handle;
+TbBool ssnd_active = true;
+TbFileHandle adpcm_handle = INVALID_FILE;
+long adpcm_file_open = 0;
+SNDSAMPLE *sample_handle = NULL;
 uint8_t *ssnd_buffer[2];
-uint8_t *adpcm_source_buffer;
-int16_t *mixer_buffer;
-TbFileHandle sample_file;
-uint8_t mixed_file_open;
+uint8_t *adpcm_source_buffer = NULL;
+int16_t *mixer_buffer = NULL;
+TbFileHandle sample_file = INVALID_FILE;
+TbBool mixed_file_open = false;
 
-TbBool StreamedSoundAble;
+TbBool StreamedSoundAble = false;
 
 /******************************************************************************/
 
@@ -149,7 +149,7 @@ void SwitchOffStreamedSound(void)
         adpcm_file_open = 0;
     }
     if (mixed_file_open)
-        mixed_file_open = 0;
+        mixed_file_open = false;
     ssnd_active = false;
 }
 

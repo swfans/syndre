@@ -34,6 +34,15 @@
 #include "aildebug.h"
 #include "snderr.h"
 /******************************************************************************/
+#pragma pack(1)
+
+struct SoundBankSizes {
+    long DatSize;
+    long TabSize;
+};
+
+#pragma pack()
+/******************************************************************************/
 
 TbBool SixteenBit = true;
 ulong SampleRate = 0;
@@ -45,15 +54,7 @@ void *SfxData;
 long largest_dat_size = 0;
 long largest_tab_size = 0;
 char full_sound_data_path[224];
-
-#pragma pack(1)
-
-struct SoundBankSizes {
-    long DatSize;
-    long TabSize;
-};
-
-#pragma pack()
+struct SoundBankSizes sound_bank_size_info[9];
 
 extern TbBool AILStartupAlreadyInitiated;
 extern TbBool AutoScanForSoundHardware;

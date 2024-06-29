@@ -52,6 +52,8 @@ int32_t MDI_sequence_done;
 int32_t MDI_use_locked = 0;
 static uint32_t XMI_serve_entry = 0;
 
+/******************************************************************************/
+
 void AILXMIDI_end(void);
 
 /** Lock function, doubling as start of locked code.

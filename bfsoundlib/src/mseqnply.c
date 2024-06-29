@@ -27,6 +27,17 @@
 #include "mssal.h"
 /******************************************************************************/
 
+ushort CurrentTempo = 0;
+ubyte DangerMusicVolume = 0;
+sbyte DangerMusicVolumeChange = -1;
+sbyte CurrentDangerMusicFadeDirection = 1;
+ubyte DangerMusicFadeActive = 0;
+TbBool DangerMusicFadeRelease = false;
+HSNDTIMER DangerMusicFadeHandle = 0;
+TbBool DangerMusicAble = false;
+ubyte DangerMusicVoiceMessages[16] = {0};
+extern TbBool DisableDangerMusic;
+
 extern MDI_DRIVER *MusicDriver;
 extern TbBool MusicInstalled;
 extern TbBool MusicAble;
@@ -34,17 +45,7 @@ extern TbBool MusicActive;
 
 extern uint16_t SongCurrentlyPlaying;
 extern SNDSEQUENCE *SongHandle;
-ushort CurrentTempo;
 extern short NumberOfSongs;
-
-ubyte DangerMusicVolume;
-sbyte DangerMusicVolumeChange = -1;
-sbyte CurrentDangerMusicFadeDirection;
-ubyte DangerMusicFadeActive;
-TbBool DangerMusicFadeRelease;
-HSNDTIMER DangerMusicFadeHandle;
-ubyte DangerMusicAble;
-extern TbBool DisableDangerMusic;
 
 extern struct BfMusicInfo *BfMusic;
 ubyte DangerMusicVoiceMessages[16];
