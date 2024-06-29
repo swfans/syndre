@@ -28,6 +28,17 @@
 #include "dpmi.h"
 #include "bffile.h"
 /******************************************************************************/
+TbBool UseCurrentAwe32Soundfont = false;
+TbBool Awe32SoundfontLoaded = false;
+
+char CurrentAwe32SoundfontPrefix[12] = "Bullfrog";
+TbFileHandle sbkHandle = INVALID_FILE;
+
+uint8_t *awe_buffer = NULL;
+uint16_t awe_buffer_seg = 0;
+uint8_t *awe_preset = NULL;
+uint16_t awe_preset_seg = 0;
+
 extern TbBool MusicAble;
 extern TbBool MusicInstalled;
 extern char MusicType[6];
@@ -35,13 +46,6 @@ extern AIL_INI MusicInstallChoice;
 extern MDI_DRIVER *MusicDriver;
 extern char SoundDataPath[144];
 
-extern char CurrentAwe32SoundfontPrefix[12]; // = "Bullfrog";
-extern TbFileHandle sbkHandle; // = INVALID_FILE;
-
-extern uint8_t *awe_buffer;
-extern uint16_t awe_buffer_seg;
-extern uint8_t *awe_preset;
-extern uint16_t awe_preset_seg;
 /******************************************************************************/
 
 void FreeAwe32Soundfont(void)

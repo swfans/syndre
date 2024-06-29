@@ -34,6 +34,17 @@
 #include "snderr.h"
 /******************************************************************************/
 
+TbBool SixteenBit = true;
+ulong SampleRate = 0;
+
+void *Sfx;
+void *EndSfxs;
+void *SfxData;
+
+long largest_dat_size = 0;
+long largest_tab_size = 0;
+char full_sound_data_path[224];
+
 extern TbBool AILStartupAlreadyInitiated;
 extern TbBool AutoScanForSoundHardware;
 
@@ -47,17 +58,12 @@ extern ushort SoundType;
 
 extern ulong MaxNumberOfSamples;
 extern TbBool StereoSound;
-extern TbBool SixteenBit;
-extern ulong SampleRate;
 extern long CurrentSoundMasterVolume;
 
 extern struct SampleInfo sample_id[32];
 extern struct SampleInfo *end_sample_id;
 
 extern TbBool DisableLoadSounds;
-extern void *SfxData;
-extern void *Sfx;
-extern void *EndSfxs;
 
 extern TbBool MusicInstalled;
 extern TbBool MusicAble;

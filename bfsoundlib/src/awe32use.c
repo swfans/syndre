@@ -27,8 +27,11 @@
 #include "dpmi.h"
 #include "aildebug.h"
 /******************************************************************************/
-extern SF_DATA *awe_data;
-extern uint16_t awe_data_seg;
+
+/** Global variable used for transferring parameters to MDI driver. */
+SF_DATA *awe_data = NULL;
+/** DOS selector for awe_data memory block allocation. */
+uint16_t awe_data_seg = 0;
 
 /******************************************************************************/
 

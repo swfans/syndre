@@ -27,9 +27,12 @@
 #include "mssal.h"
 /******************************************************************************/
 
-extern TbBool sample_queue_handle_initiated;
-extern TbBool sample_queue_handle_stopped;
-extern SNDSAMPLE *sample_queue_handle;
+TbBool sample_queue_handle_initiated = false;
+TbBool sample_queue_handle_stopped = 1;
+SNDSAMPLE *sample_queue_handle = NULL;
+
+sbyte CurrentSoundBank = -1;
+long current_sample_queue_count = 0;
 
 /******************************************************************************/
 
@@ -40,7 +43,7 @@ void StopSampleQueueList(void)
     if (!sample_queue_handle_initiated)
         return;
 
-    sample_queue_handle_stopped = 1;
+    sample_queue_handle_stopped = true;
     AIL_register_EOS_callback(sample_queue_handle, 0);
     AIL_end_sample(sample_queue_handle);
 
