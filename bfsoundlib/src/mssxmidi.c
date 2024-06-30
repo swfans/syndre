@@ -34,11 +34,11 @@
 #include "msssys.h"
 #include "miscutil.h"
 /******************************************************************************/
-extern char GTL_prefix[128];
+char GTL_prefix[128] = "SAMPLE";
 extern char SoundDriverPath[144];
 
 extern MDI_DRIVER *MDI_first;
-extern uint32_t MDI_entry;
+uint32_t MDI_entry = 0;
 const uint8_t *MDI_ptr;
 const uint8_t *MDI_event;
 uint32_t MDI_status, MDI_len;
@@ -48,7 +48,7 @@ int32_t MDI_i, MDI_j, MDI_n;
 int32_t MDI_q, MDI_t;
 int32_t MDI_sequence_done;
 
-extern int32_t MDI_locked;
+int32_t MDI_use_locked = 0;
 static uint32_t XMI_serve_entry = 0;
 
 void AILXMIDI_end(void);
@@ -57,7 +57,7 @@ void AILXMIDI_end(void);
  */
 void AILXMIDI_start(void)
 {
-    if (MDI_locked)
+    if (MDI_use_locked)
         return;
     AIL_VMM_lock_range(AILXMIDI_start, AILXMIDI_end);
 
@@ -77,7 +77,7 @@ void AILXMIDI_start(void)
     AIL_vmm_lock(&MDI_ptr, sizeof(MDI_ptr));
     AIL_vmm_lock(&MDI_event, sizeof(MDI_event));
 
-    MDI_locked = 1;
+    MDI_use_locked = 1;
 }
 
 /** Initialize state table entries.
@@ -1688,7 +1688,7 @@ void AIL2OAL_API_release_channel(MDI_DRIVER *mdidrv, int32_t channel)
  */
 void AILXMIDI_end(void)
 {
-    if (!MDI_locked)
+    if (!MDI_use_locked)
         return;
     AIL_VMM_unlock_range(AILXMIDI_start, AILXMIDI_end);
 
@@ -1708,7 +1708,7 @@ void AILXMIDI_end(void)
     AIL_vmm_unlock(&MDI_ptr, sizeof(MDI_ptr));
     AIL_vmm_unlock(&MDI_event, sizeof(MDI_event));
 
-    MDI_locked = 0;
+    MDI_use_locked = 0;
 }
 
 /******************************************************************************/
