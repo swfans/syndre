@@ -46,7 +46,13 @@ AS_IF([test "$exec_prefix" = "NONE"], [
   exec_prefix="$prefix"
 ])
 
+# Define arguments.
+
+AC_ARG_WITH([sdl2],
+    AS_HELP_STRING([--without-sdl2], [Build without use of SDL2 library]))
+
 # Checks for programs.
+
 AC_PROG_CC
 AC_PROG_CXX
 AM_PROG_AS
@@ -119,8 +125,29 @@ AC_TYPE_OFF_T
 AC_CHECK_FUNCS([gettimeofday])
 AC_CHECK_HEADERS([unistd.h])
 
-AM_PATH_SDL([1.2.0], [], [
-  AC_MSG_ERROR([SDL not found])
+# Checks for libraries.
+
+AS_IF([test "x$with_sdl2" != "xno"],
+  [AM_PATH_SDL2([2.0.0], [
+    have_sdl2=yes], [
+    have_sdl2=no])], [
+  have_sdl2=no
+])
+AC_MSG_CHECKING([whether to use SDL2 library])
+AS_IF([test "x$have_sdl2" == "xyes"], [
+  AC_DEFINE(ENABLE_SDL2, [1], [Define for SDL2 support])
+], [
+  AS_IF([test "x$with_sdl2" = "xyes"], [
+    AC_MSG_ERROR([sdl2 requested but not found])
+  ])
+])
+AC_MSG_RESULT([$have_sdl2])
+
+AS_IF([test "x$have_sdl2" != "xyes"], [
+  AM_PATH_SDL([1.2.0], [], [
+    AC_MSG_ERROR([could not find SDL2 nor SDL1 library])
+  ])
+  AC_DEFINE(ENABLE_SDL1, [1], [Define for SDL1 support])
 ])
 
 PKG_CHECK_MODULES([VORBISFILE], [vorbisfile >= 1.2.0], [], [
