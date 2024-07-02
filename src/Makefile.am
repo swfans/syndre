@@ -55,7 +55,7 @@ nodist_EXTRA_bfgame_SOURCES = dummy.cxx
 
 bfgame_LDADD = \
   $(bfgame_WRAPPERS) $(bfgame_RESRCS) \
-  -L$(builddir)/../bflibrary -lbullfrog
+  -lbullfrog
 
 $(bfgame_WRAPPERS:.o=.sx): %.sx: $(top_srcdir)/conf/%.conf
 	$(AM_V_GEN)$(MKW) $(MKWFLAGS) -o $@ $<

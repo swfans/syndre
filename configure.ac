@@ -167,6 +167,10 @@ AM_PATH_OPENAL([], [
   AC_MSG_ERROR([OpenAL not found])
 ])
 
+# libraries from within this project are bot built at this point
+AC_SUBST(BFLIBRARY_LIBS, -L\$\(top_builddir\)/bflibrary)
+AC_SUBST(BFLIBRARY_CFLAGS, -I\$\(top_srcdir\)/bflibrary/include)
+
 # Arguments
 
 AC_ARG_ENABLE([debug],
@@ -251,6 +255,10 @@ LIBS="$LIBS $VORBISFILE_LIBS"
 
 CFLAGS="$CFLAGS $PNG_CFLAGS"
 LIBS="$LIBS $PNG_LIBS"
+
+CFLAGS="$CFLAGS $BFLIBRARY_CFLAGS"
+LIBS="$LIBS $BFLIBRARY_LIBS"
+
 
 AC_SUBST([MKWFLAGS])
 AC_SUBST([WINDRES])
