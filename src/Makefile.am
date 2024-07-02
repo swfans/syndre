@@ -4,66 +4,6 @@ bindir = $(prefix)/$(PACKAGE)
 MKW = $(PYTHON) $(top_srcdir)/util/mkwrappers
 
 bfgame_SOURCES = \
-	../bfsoundlib/include/ail.h \
-	../bfsoundlib/src/ail.c \
-	../bfsoundlib/include/ailss.h \
-	../bfsoundlib/src/ailss.c \
-	../bfsoundlib/src/ailvoc.c \
-	../bfsoundlib/src/ailwav.c \
-	../bfsoundlib/include/aila.h \
-	../bfsoundlib/src/aila.c \
-	../bfsoundlib/include/aildebug.h \
-	../bfsoundlib/src/aildebug.c \
-	../bfsoundlib/include/mssdig.h \
-	../bfsoundlib/src/mssdig.c \
-	../bfsoundlib/include/msssys.h \
-	../bfsoundlib/src/msssys.c \
-	../bfsoundlib/include/mssxmidi.h \
-	../bfsoundlib/src/mssxmidi.c \
-	../bfsoundlib/src/mseqnlst.c \
-	../bfsoundlib/include/mssxdig.h \
-	../bfsoundlib/src/mssxdig.c \
-	../bfsoundlib/include/bfaudio.h \
-	../bfsoundlib/src/bfaudio.c \
-	../bfsoundlib/include/bfsvaribl.h \
-	../bfsoundlib/src/variable.c \
-	../bfsoundlib/src/dpmi.c \
-	../bfsoundlib/include/dpmi.h \
-	../bfsoundlib/src/sb16.c \
-	../bfsoundlib/include/sb16.h \
-	../bfsoundlib/src/awe32.c \
-	../bfsoundlib/src/awe32use.c \
-	../bfsoundlib/include/awe32.h \
-	../bfsoundlib/include/ssampfad.h \
-	../bfsoundlib/src/ssampfad.c \
-	../bfsoundlib/include/ssamplst.h \
-	../bfsoundlib/src/ssamplst.c \
-	../bfsoundlib/include/ssampply.h \
-	../bfsoundlib/src/ssampply.c \
-	../bfsoundlib/include/dllload.h \
-	../bfsoundlib/src/dllload.c \
-	../bfsoundlib/include/memfile.h \
-	../bfsoundlib/src/memfile.c \
-	../bfsoundlib/include/miscutil.h \
-	../bfsoundlib/src/miscutil.c \
-	../bfsoundlib/include/snderr.h \
-	../bfsoundlib/src/snderr.c \
-	../bfsoundlib/include/bfmusic.h \
-	../bfsoundlib/src/init_mus.c \
-	../bfsoundlib/src/mseqnply.c \
-	../bfsoundlib/src/mseqnfad.c \
-	../bfsoundlib/include/bfsound.h \
-	../bfsoundlib/src/init_snd.c \
-	../bfsoundlib/include/bfscd.h \
-	../bfsoundlib/src/cd.c \
-	../bfsoundlib/include/streamfx.h \
-	../bfsoundlib/src/streamfx.c \
-	../bfsoundlib/include/sndtimer.h \
-	../bfsoundlib/src/sndtimer.c \
-	../bfsoundlib/include/drv_oal.h \
-	../bfsoundlib/src/drv_oal.c \
-	../bfsoundlib/include/oggvorbis.h \
-	../bfsoundlib/src/oggvorbis.c \
 	bflib_render.c \
 	bflib_render.h \
 	display.c \
@@ -91,9 +31,7 @@ bfgame_SOURCES = \
 	util.c \
 	util.h
 
-bfgame_CPPFLAGS = \
-  -I"$(top_srcdir)/bflibrary/include" \
-  -I"$(top_srcdir)/bfsoundlib/include"
+bfgame_CPPFLAGS =
 
 bfgame_WRAPPERS = wrappers_dos.o wrappers_game.o wrappers_libc.o wrappers_util.o
 

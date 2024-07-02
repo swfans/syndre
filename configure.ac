@@ -13,7 +13,7 @@ m4_define([bfgame_version],
 
 AC_INIT([BullfrogGame Port], [bfgame_version], [mefistotelis@gmail.com], [bfgame])
 
-AC_CONFIG_SUBDIRS([bflibrary])
+AC_CONFIG_SUBDIRS([bflibrary bfsoundlib])
 
 AC_CONFIG_SRCDIR([src/main.c])
 AC_CONFIG_HEADERS([src/config.h])
@@ -179,6 +179,9 @@ AC_SUBST(BFLIBRARY_LIBS, "-L\"\$(top_builddir)/lib\" -lbullfrog")
 # the 2nd include folder is just a temp workaround
 AC_SUBST(BFLIBRARY_CFLAGS, "-I\"\$(top_builddir)/include/bullfrog\"  -I\"\$(top_srcdir)/bflibrary/include\"")
 
+AC_SUBST(BFSOUNDLIB_LIBS, -L\$\(top_builddir\)/bfsoundlib)
+AC_SUBST(BFSOUNDLIB_CFLAGS, -I\$\(top_srcdir\)/bfsoundlib/include)
+
 # Arguments
 
 AC_ARG_ENABLE([debug],
@@ -256,6 +259,9 @@ CFLAGS="$CFLAGS -include \"\$(top_builddir)/src/config.h\""
 
 CFLAGS="$CFLAGS $BFLIBRARY_CFLAGS"
 LIBS="$LIBS $BFLIBRARY_LIBS"
+
+CFLAGS="$CFLAGS $BFSOUNDLIB_CFLAGS"
+LIBS="$LIBS $BFSOUNDLIB_LIBS"
 
 CFLAGS="$CFLAGS $SDL_CFLAGS"
 LIBS="$LIBS $SDL_LIBS"
