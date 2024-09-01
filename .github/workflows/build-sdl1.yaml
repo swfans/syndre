@@ -1,4 +1,4 @@
-name: Build
+name: Build-SDL1
 
 on:
   pull_request:
@@ -58,7 +58,8 @@ jobs:
             vorbis-tools cdparanoia \
             libsdl1.2-dev:i386 libopenal-dev:i386 \
             libvorbis-dev:i386 libvorbisfile3:i386 \
-            libogg-dev:i386
+            libogg-dev:i386 \
+            libpng-dev:i386
 
           apt install -y \
             build-essential autoconf libtool make
