@@ -99,10 +99,6 @@ void free_buffers(void)
 
 void InitStreamedSound(void)
 {
-#if 0
-    asm volatile ("call ASM_InitStreamedSound\n"
-        :  :  : "eax" );
-#else
     if (!SoundInstalled || !SoundAble || StreamedSoundAble)
         return;
 
@@ -130,7 +126,6 @@ void InitStreamedSound(void)
         return;
     }
     StreamedSoundAble = true;
-#endif
 }
 
 void SwitchOffStreamedSound(void)
