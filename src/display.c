@@ -2,7 +2,6 @@
 #include <stdio.h>
 #include <assert.h>
 
-#include "bflib_basics.h"
 #include "bftext.h"
 #include "bfpalette.h"
 #include "bfscreen.h"

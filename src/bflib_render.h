@@ -20,7 +20,7 @@
 #ifndef BFLIB_REND_H
 #define BFLIB_REND_H
 
-#include "bflib_basics.h"
+#include "bftypes.h"
 
 #ifdef __cplusplus
 extern "C" {

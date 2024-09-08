@@ -18,7 +18,7 @@
 /******************************************************************************/
 #include "game_data.h"
 
-#include "bflib_basics.h"
+#include "bftypes.h"
 #include "bffile.h"
 #include "bfdir.h"
 #include "bffnuniq.h"
