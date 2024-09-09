@@ -10,8 +10,6 @@
 #include "bfsound.h"
 #include "bfwindows.h"
 #include "bfscd.h"
-#include "drv_oal.h"
-#include "oggvorbis.h"
 #include "sb16.h"
 #include "sndtimer.h"
 #include "snderr.h"
