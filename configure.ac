@@ -198,7 +198,7 @@ AS_IF([test "x$with_wildmidi" != "xno"],
 AC_MSG_CHECKING([whether to use WildMIDI library])
 AS_IF([test "x$have_wildmidi" == "xyes"], [
   AC_DEFINE(ENABLE_WILDMIDI, [1], [Define for wildmidi support])
-  AC_SUBST(WILDMIDI_LIBS, -lWildMidi)
+  AC_SUBST(WILDMIDI_LIBS, "-lWildMidi")
 ], [
   AC_SUBST(WILDMIDI_LIBS, )
   AS_IF([test "x$with_wildmidi" = "xyes"], [
