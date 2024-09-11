@@ -167,9 +167,10 @@ AM_PATH_OPENAL([], [
   AC_MSG_ERROR([OpenAL not found])
 ])
 
-# libraries from within this project are bot built at this point
-AC_SUBST(BFLIBRARY_LIBS, -L\$\(top_builddir\)/bflibrary)
-AC_SUBST(BFLIBRARY_CFLAGS, -I\$\(top_srcdir\)/bflibrary/include)
+# libraries from within this project are only built after `make` is executed
+AC_SUBST(BFLIBRARY_LIBS, "-L\"\$(top_builddir)/lib\" -lbullfrog")
+# the 2nd include folder is just a temp workaround
+AC_SUBST(BFLIBRARY_CFLAGS, "-I\"\$(top_builddir)/include\"  -I\"\$(top_srcdir)/bflibrary/include\"")
 
 # Arguments
 
@@ -244,6 +245,11 @@ AS_IF([test "$need_underscore" = "yes"], [
 CFLAGS="$CFLAGS -Wall -Wextra -Wno-unused-parameter"
 CFLAGS="$CFLAGS -include \"\$(top_builddir)/src/config.h\""
 
+# Add configuration of libraries to flags; the order of libraries is important
+
+CFLAGS="$CFLAGS $BFLIBRARY_CFLAGS"
+LIBS="$LIBS $BFLIBRARY_LIBS"
+
 CFLAGS="$CFLAGS $SDL_CFLAGS"
 LIBS="$LIBS $SDL_LIBS"
 
@@ -255,9 +261,6 @@ LIBS="$LIBS $VORBISFILE_LIBS"
 
 CFLAGS="$CFLAGS $PNG_CFLAGS"
 LIBS="$LIBS $PNG_LIBS"
-
-CFLAGS="$CFLAGS $BFLIBRARY_CFLAGS"
-LIBS="$LIBS $BFLIBRARY_LIBS"
 
 
 AC_SUBST([MKWFLAGS])
