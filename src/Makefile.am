@@ -49,7 +49,7 @@ endif
 nodist_EXTRA_bfgame_SOURCES = dummy.cxx
 
 # Libraries included with the project
-bfgame_PROJECT_LIBS = ../lib/libbullfrog.a
+bfgame_PROJECT_LIBS = ../lib/libbullfrog.a ../lib/libbfsound.a
 
 $(bfgame_OBJECTS) $(bin_PROGRAMS): $(bfgame_PROJECT_LIBS)
 
@@ -57,7 +57,10 @@ bfgame_LDADD = \
   $(bfgame_WRAPPERS) $(bfgame_RESRCS)
 
 ../lib/libbullfrog.a: ../bflibrary/libbullfrog.a
-	$(MAKE) -C $(<D) DESTDIR="$(top_builddir)" prefix="" install
+	$(MAKE) -C $(<D) DESTDIR="../" prefix="" install
+
+../lib/libbfsound.a: ../bfsoundlib/libbfsound.a
+	$(MAKE) -C $(<D) DESTDIR="../" prefix="" install
 
 $(bfgame_WRAPPERS:.o=.sx): %.sx: $(top_srcdir)/conf/%.conf
 	$(AM_V_GEN)$(MKW) $(MKWFLAGS) -o $@ $<

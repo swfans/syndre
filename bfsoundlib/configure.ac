@@ -36,9 +36,9 @@ AC_SUBST(WILDMIDI_LIBS, -lWildMidi)
 AC_SUBST(WILDMIDI_CFLAGS, )
 AC_DEFINE(ENABLE_WILDMIDI, 1, [Define for wildmidi support])
 
-# libraries from within this project are bot built at this point
-AC_SUBST(BFLIBRARY_LIBS, -L\$\(top_builddir\)/../bflibrary)
-AC_SUBST(BFLIBRARY_CFLAGS, -I\$\(top_srcdir\)/../bflibrary/include)
+# libraries from within this project are only built after `make` is executed
+AC_SUBST(BFLIBRARY_LIBS, "-L\"\$(top_builddir)/../lib\" -lbullfrog")
+AC_SUBST(BFLIBRARY_CFLAGS, "-I\"\$(top_builddir)/../include/bullfrog\"")
 
 
 # Checks for header files.
