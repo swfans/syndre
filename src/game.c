@@ -1,6 +1,7 @@
 #include <errno.h>
 #include <limits.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <sys/stat.h>
 #include <sys/types.h>
 
@@ -15,6 +16,7 @@
 #include "bfsprite.h"
 #include "bfwindows.h"
 
+#include <SDL.h>
 #include "applog.h"
 #include "game_data.h"
 #include "display.h"
