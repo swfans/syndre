@@ -134,7 +134,7 @@ To build **BullfrogGame Port**, you will need the following:
 * vorbis-tools (oggenc in particular)
 * cdparanoia
 * development versions of the following libraries:
-  * SDL
+  * SDL2 or SDL1.2
   * OpenAL (we recommend OpenAL Soft)
   * libvorbis
   * libogg
@@ -161,7 +161,7 @@ sudo apt install gcc-multilib g++-multilib lib32z1
 sudo apt install python3 python3-polib
 sudo apt install vorbis-tools
 sudo apt install cdparanoia
-sudo apt install libsdl1.2-dev:i386
+sudo apt install libsdl2-dev:i386
 sudo apt install libopenal-dev:i386
 sudo apt install libvorbis-dev:i386 libvorbisfile3:i386
 sudo apt install libogg-dev:i386
@@ -223,7 +223,7 @@ First install the dependencies - mingw32, since we need 32-bit toolchain:
 ```
 pacman -Si mingw-w64-i686-binutils mingw-w64-i686-pkgconf mingw-w64-i686-make mingw-w64-i686-gcc
 pacman -Si mingw-w64-i686-libpng
-pacman -Si mingw-w64-i686-SDL
+pacman -Si mingw-w64-i686-SDL2
 pacman -Si mingw-w64-i686-openal
 pacman -Si mingw-w64-i686-libvorbis
 pacman -Si mingw-w64-i686-libogg
@@ -274,7 +274,7 @@ compile them manually.
 
 If you have Mac OS 10.6 ("Snow Leopard") or newer, you will need to make sure
 that your libraries contain code for the i386 architecture. In MacPorts this
-is achieved by using the `+universal` variant (e.g. `port -vu install libsdl +universal`).
+is achieved by using the `+universal` variant (e.g. `port -vu install libsdl2 +universal`).
 
 When you configure your compilation toolchain and location of libraries,
 you will need to pass `CFLAGS="-arch i386"`, like so:
