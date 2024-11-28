@@ -8,8 +8,14 @@ install installdirs: SUBDIRS = conf src util
 doc_DATA = AUTHORS COPYING GPL3
 docdir = $(prefix)/$(PACKAGE)
 
-res_DATA = res/bfgame_icon.ico res/bfgame_icon.png
+res_DATA =
 resdir = $(prefix)/$(PACKAGE)
+
+if TARGET_WINDOWS
+res_DATA += res/bfgame_icon.ico
+else
+res_DATA += res/bfgame_icon.png
+endif
 
 instscript_DATA = util/install
 instscriptdir = $(prefix)/$(PACKAGE)
