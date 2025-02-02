@@ -2,8 +2,8 @@
 // Bullfrog Engine Emulation Library - for use to remake classic games like
 // Syndicate Wars, Magic Carpet, Genewars or Dungeon Keeper.
 /******************************************************************************/
-/** @file bfflicply.h
- *     Header file for gflicply.c.
+/** @file bfflic.h
+ *     Header file for gflicply.c and gflicrec.c.
  * @par Purpose:
  *     Animation playback support in Autodesk FLIC format.
  * @par Comment:
@@ -17,8 +17,8 @@
  *     (at your option) any later version.
  */
 /******************************************************************************/
-#ifndef BFFLICPLY_H
-#define BFFLICPLY_H
+#ifndef BFFLIC_H
+#define BFFLIC_H
 
 #include "bftypes.h"
 #include "bffile.h"
