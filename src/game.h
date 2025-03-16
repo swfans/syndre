@@ -41,4 +41,4 @@ const char *game_get_user_path (void);
 };
 #endif
 
-#endif
+#endif // GAME_H

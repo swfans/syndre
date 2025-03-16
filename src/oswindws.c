@@ -6,7 +6,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "windows.h"
+#include "oswindws.h"
 
 #define REGISTRY_KEY "Software\\BullfrogGame\\CurrentVersion"
 #define REGISTRY_VALUE "InstallPath"

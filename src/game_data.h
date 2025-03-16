@@ -29,4 +29,4 @@ const char *GetDirectoryHdd(void);
 void setup_file_names(void);
 
 /******************************************************************************/
-#endif
+#endif // GAME_DATA_H

@@ -28,12 +28,12 @@ bfgame_SOURCES = \
 	bfgame.sx \
 	timer.c \
 	timer.h \
-	unix.c \
-	unix.h \
+	osunix.c \
+	osunix.h \
+	oswindws.c \
+	oswindws.h \
 	util.c \
-	util.h \
-	windows.c \
-	windows.h
+	util.h
 
 bfgame_CPPFLAGS = \
   -I"$(top_srcdir)/bflibrary/include"

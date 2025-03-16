@@ -1,10 +1,10 @@
 /******************************************************************************/
 // BullfrogGame Port, source port of the classic game from Bullfrog.
 /******************************************************************************/
-/** @file unix.h
- *     Header file for unix.c.
+/** @file oswindows.h
+ *     Header file for windows.c.
  * @par Purpose:
- *     Implementation of few functions which is specific to UNIX systems.
+ *     Implementation of few functions which is specific to Windows OS.
  * @par Comment:
  *     None.
  * @author   Gynvael Coldwind
@@ -17,21 +17,30 @@
  *     (at your option) any later version.
  */
 /******************************************************************************/
-#ifndef UNIX_H
-#define UNIX_H
+#ifndef OSWINDWS_H
+#define OSWINDWS_H
 
-#ifdef __unix__
-
+#ifdef WIN32
+#include <time.h>
+#include <sys/time.h>
 #include <stdbool.h>
 
 /******************************************************************************/
 
-void unix_restore_signal_handlers (void);
+#ifndef HAVE_GETTIMEOFDAY
+struct timezone
+{
+  int  tz_minuteswest;
+  int  tz_dsttime;
+};
+
+int gettimeofday (struct timeval *tp, struct timezone *tzp);
+#endif
+
 bool sys_get_user_path (char *buffer, size_t size);
 bool sys_get_data_path (char *buffer, size_t size);
 
 /******************************************************************************/
+#endif // WIN32
 
-#endif
-
-#endif
+#endif // OSWINDWS_H

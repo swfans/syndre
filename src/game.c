@@ -24,10 +24,10 @@
 #include "game.h"
 #include "keyboard.h"
 #include "mouse.h"
+#include "osunix.h"
+#include "oswindws.h"
 #include "sound.h"
-#include "unix.h"
 #include "util.h"
-#include "windows.h"
 #include "timer.h"
 
 #define SAVEGAME_PATH "savegame/"

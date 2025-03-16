@@ -88,4 +88,4 @@ void *dos_getvect (int num) __attribute__ ((noreturn));
 void dos_setvect (int num, void *function) __attribute__ ((noreturn));
 
 /******************************************************************************/
-#endif
+#endif // DOS_H

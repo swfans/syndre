@@ -23,9 +23,9 @@
 #include "bfdir.h"
 #include "bffnuniq.h"
 #include "applog.h"
-#include "unix.h"
-#include "windows.h"
 #include "dos.h"
+#include "osunix.h"
+#include "oswindws.h"
 
 static char data_path_user[DISKPATH_SIZE] = "";
 static char data_path_hdd[DISKPATH_SIZE] = "";

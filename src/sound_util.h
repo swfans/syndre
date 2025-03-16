@@ -13,4 +13,4 @@ void sound_delete_source_and_buffers (ALuint source);
 size_t sound_unqueue_buffers (ALuint source, SoundNameCallback callback,
 			      void *user_data);
 
-#endif
+#endif // SOUND_UTIL_H

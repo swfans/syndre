@@ -29,4 +29,4 @@ void reset_buffered_keys(void);
 ulong next_buffered_key(void);
 
 /******************************************************************************/
-#endif
+#endif // KEYBOARD_H

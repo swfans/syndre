@@ -158,4 +158,4 @@ void sound_stop_music (void);
 void sound_pause_music (void);
 
 /******************************************************************************/
-#endif
+#endif // SOUND_H

@@ -56,4 +56,4 @@ void xfree (void *ptr);
 char *xstrdup (const char *str);
 
 /******************************************************************************/
-#endif
+#endif // UTIL_H

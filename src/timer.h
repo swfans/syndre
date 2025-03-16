@@ -32,4 +32,4 @@ TimerId timer_register_callback (TimerCallback fn);
 void *timer_set_user_data (TimerId timer, void *user_data);
 
 /******************************************************************************/
-#endif
+#endif // TIMER_H

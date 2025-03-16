@@ -27,4 +27,4 @@ const char * AppResourceMapping(short index);
 void swap_wscreen(void);
 
 /******************************************************************************/
-#endif
+#endif // DISPLAY_H
