@@ -110,9 +110,7 @@ void InitStreamedSound(void)
     if (!allocate_buffers())
     {
         free_buffers();
-        sprintf(SoundProgressMessage,
-            "BF100 - Cannot allocate buffers for streamed sound\n");
-        SoundProgressLog(SoundProgressMessage);
+        SNDLOGFAIL("Streamed sound", "cannot allocate buffers");
         return;
     }
 
@@ -120,9 +118,7 @@ void InitStreamedSound(void)
     if (!sample_handle)
     {
         free_buffers();
-        sprintf(SoundProgressMessage,
-            "BF100 - Cannot allocate handle for streamed sound\n");
-        SoundProgressLog(SoundProgressMessage);
+        SNDLOGFAIL("Streamed sound", "cannot allocate handle");
         return;
     }
     StreamedSoundAble = true;
