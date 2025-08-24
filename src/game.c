@@ -1,3 +1,21 @@
+/******************************************************************************/
+// BullfrogGame Port, source port of the classic game from Bullfrog.
+/******************************************************************************/
+/** @file game.c
+ *     Functions for high level game functionalities.
+ * @par Purpose:
+ *     Routines on game loop level, creating eneral design of the game.
+ * @par Comment:
+ *     None.
+ * @author   Tomasz Lis
+ * @date     12 Nov 2008 - 25 May 2022
+ * @par  Copying and copyrights:
+ *     This program is free software; you can redistribute it and/or modify
+ *     it under the terms of the GNU General Public License as published by
+ *     the Free Software Foundation; either version 2 of the License, or
+ *     (at your option) any later version.
+ */
+/******************************************************************************/
 #include <errno.h>
 #include <limits.h>
 #include <stdio.h>
@@ -31,6 +49,8 @@
 #include "timer.h"
 
 #define SAVEGAME_PATH "savegame/"
+
+/******************************************************************************/
 
 bool
 game_initialise (void)
@@ -181,3 +201,4 @@ game_update(void)
 {
     game_update_full(true);
 }
+/******************************************************************************/
