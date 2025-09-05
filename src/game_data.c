@@ -34,8 +34,7 @@ static char game_dir_screenshots[] = "qdata/screenshots";
 
 /******************************************************************************/
 
-const char *
-GetDirectoryUser(void)
+const char *GetDirectoryUser(void)
 {
     if (data_path_user[0] == '\0')
     {
@@ -53,8 +52,7 @@ GetDirectoryUser(void)
     return data_path_user;
 }
 
-const char *
-GetDirectoryHdd(void)
+const char *GetDirectoryHdd(void)
 {
     if (data_path_hdd[0] == '\0')
     {
@@ -68,8 +66,7 @@ GetDirectoryHdd(void)
 }
 
 
-static void
-replace_backslash_with_fs_separator(char *path)
+static void replace_backslash_with_fs_separator(char *path)
 {
     size_t n;
     for (n = 0; path[n] != '\0'; n++)
@@ -83,8 +80,7 @@ replace_backslash_with_fs_separator(char *path)
     }
 }
 
-void
-BfGameFileNameTransform(char *out_fname, const char *inp_fname)
+void BfGameFileNameTransform(char *out_fname, const char *inp_fname)
 {
     char fs_fname[DISKPATH_SIZE];
     const char *base_dir;
