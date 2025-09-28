@@ -89,6 +89,7 @@ jobs:
           PKG_VERSION=$(sed -n 's/^#define[ ]\+PACKAGE_VERSION "\([^"]\+\)"$/\1/p' src/config.h | head -n 1 | tr '.' '_')
           make V=1 DESTDIR=$PWD/pkg install
           echo "PKG_NAME=bfgame-$PKG_VERSION-ubuntu-patch" >> $GITHUB_ENV
+          echo "TST_NAME=bfgame-$PKG_VERSION-ubuntu-tests" >> $GITHUB_ENV
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
@@ -97,10 +98,25 @@ jobs:
           path: release/pkg/**
 
       - name: Execute unit tests
+        id: unittests
         run: |
           cd release
           make V=1 clean
           make V=1 check
+
+      - name: Gather unit tests logs
+        if: ${{ steps.unittests.conclusion != 'skipped' }}
+        run: |
+          cd release
+          tail -n +1 ./bflibrary/test-suite.log ./bflibrary/tst_*.log
+
+      - name: Upload unit tests debug files
+        if: ${{ failure() && steps.unittests.conclusion == 'failure' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ env.TST_NAME }}
+          path: |
+            release/bflibrary/**
 
   windows-msys2:
     name: "Windows MSYS2"
@@ -161,6 +177,7 @@ jobs:
           PKG_VERSION=$(sed -n 's/^#define[ ]\+PACKAGE_VERSION "\([^"]\+\)"$/\1/p' src/config.h | head -n 1 | tr '.' '_')
           make V=1 DESTDIR=$PWD/pkg install
           echo "PKG_NAME=bfgame-$PKG_VERSION-win32-patch" >> $GITHUB_ENV
+          echo "TST_NAME=bfgame-$PKG_VERSION-win32-tests" >> $GITHUB_ENV
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
@@ -169,7 +186,22 @@ jobs:
           path: release/pkg/**
 
       - name: Execute unit tests
+        id: unittests
         run: |
           cd release
           make V=1 clean
           make V=1 check
+
+      - name: Gather unit tests logs
+        if: ${{ steps.unittests.conclusion != 'skipped' }}
+        run: |
+          cd release
+          tail -n +1 ./bflibrary/test-suite.log ./bflibrary/tst_*.log
+
+      - name: Upload unit tests debug files
+        if: ${{ failure() && steps.unittests.conclusion == 'failure' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ env.TST_NAME }}
+          path: |
+            release/bflibrary/**
