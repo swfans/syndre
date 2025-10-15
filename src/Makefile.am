@@ -4,8 +4,6 @@ bindir = $(prefix)/$(PACKAGE)
 MKW = $(PYTHON) $(top_srcdir)/util/mkwrappers
 
 bfgame_SOURCES = \
-	bflib_render.c \
-	bflib_render.h \
 	display.c \
 	display.h \
 	dos.c \
