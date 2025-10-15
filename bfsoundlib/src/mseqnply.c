@@ -36,7 +36,8 @@ TbBool DangerMusicFadeRelease = false;
 HSNDTIMER DangerMusicFadeHandle = 0;
 TbBool DangerMusicAble = false;
 ubyte DangerMusicVoiceMessages[16] = {0};
-extern TbBool DisableDangerMusic;
+
+extern struct BfMusicInfo *BfMusic;
 
 extern MDI_DRIVER *MusicDriver;
 extern TbBool MusicInstalled;
@@ -46,9 +47,7 @@ extern TbBool MusicActive;
 extern uint16_t SongCurrentlyPlaying;
 extern SNDSEQUENCE *SongHandle;
 extern short NumberOfSongs;
-
-extern struct BfMusicInfo *BfMusic;
-ubyte DangerMusicVoiceMessages[16];
+extern TbBool DisableDangerMusic;
 
 /******************************************************************************/
 

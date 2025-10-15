@@ -33,11 +33,6 @@
 #include "snderr.h"
 /******************************************************************************/
 
-extern TbBool SoundInstalled;
-extern TbBool SoundAble;
-extern TbBool SoundActive;
-extern DIG_DRIVER *SoundDriver;
-
 TbBool ssnd_active = true;
 TbFileHandle adpcm_handle = INVALID_FILE;
 long adpcm_file_open = 0;
@@ -50,6 +45,9 @@ TbBool mixed_file_open = false;
 
 TbBool StreamedSoundAble = false;
 
+extern TbBool SoundInstalled;
+extern TbBool SoundAble;
+extern DIG_DRIVER *SoundDriver;
 /******************************************************************************/
 
 void close_adpcm_file(void)

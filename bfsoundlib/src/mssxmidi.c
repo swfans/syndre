@@ -37,11 +37,6 @@
 #  include "wildmidi_lib.h"
 #endif
 /******************************************************************************/
-char GTL_prefix[128] = "SAMPLE";
-extern char SoundDriverPath[144];
-
-extern MDI_DRIVER *MDI_first;
-uint32_t MDI_entry = 0;
 const uint8_t *MDI_ptr;
 const uint8_t *MDI_event;
 uint32_t MDI_status, MDI_len;
@@ -51,8 +46,14 @@ int32_t MDI_i, MDI_j, MDI_n;
 int32_t MDI_q, MDI_t;
 int32_t MDI_sequence_done;
 
-int32_t MDI_use_locked = 0;
 static uint32_t XMI_serve_entry = 0;
+
+char GTL_prefix[128] = "SAMPLE";
+extern char SoundDriverPath[144];
+
+extern MDI_DRIVER *MDI_first;
+uint32_t MDI_entry = 0;
+int32_t MDI_use_locked = 0;
 
 /******************************************************************************/
 

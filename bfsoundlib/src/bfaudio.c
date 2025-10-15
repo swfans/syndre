@@ -71,26 +71,10 @@ long CurrentMusicMasterVolume = 127;
 extern DIG_DRIVER *SoundDriver;
 extern MDI_DRIVER *MusicDriver;
 extern TbBool MusicInstalled;
+extern TbBool CDAble;
 extern TbBool StreamedSoundAble;
 
-extern TbBool CDAble;
-
 /******************************************************************************/
-
-void FreeAudio(void)
-{
-    if (GetCDAble()) {
-        FreeCD();
-        if (!SoundAble && !MusicAble)
-            AIL_shutdown();
-    }
-    if (StreamedSoundAble)
-        FreeStreamedSound();
-    FreeMusic();
-    FreeSound();
-    if (sb16_mixer_set)
-        reset_SB16_volumes();
-}
 
 /** Wrapper for LbMemoryAlloc(), needed to make sure data sizes match.
  */
@@ -200,6 +184,21 @@ void InitAudio(AudioInitOptions *audOpts)
     SNDLOGSYNC("Init audio", "sound driver = %s", SoundInstallChoice.driver_name);
 }
 
+void FreeAudio(void)
+{
+    if (GetCDAble()) {
+        FreeCD();
+        if (!SoundAble && !MusicAble)
+            AIL_shutdown();
+    }
+    if (StreamedSoundAble)
+        FreeStreamedSound();
+    FreeMusic();
+    FreeSound();
+    if (sb16_mixer_set)
+        reset_SB16_volumes();
+}
+
 void SetSoundMasterVolume(long vol)
 {
     if (!SoundAble || !SoundInstalled)
@@ -219,4 +218,5 @@ void SetMusicMasterVolume(long vol)
     AIL_set_XMIDI_master_volume(MusicDriver, vol);
     CurrentMusicMasterVolume = vol;
 }
+
 /******************************************************************************/

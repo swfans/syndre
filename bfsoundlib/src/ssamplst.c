@@ -50,7 +50,6 @@ extern ushort SoundType;
 extern TbBool SoundActive;
 
 extern ushort NumberOfSamples;
-
 extern char full_sound_data_path[224];
 extern DIG_DRIVER *SoundDriver;
 

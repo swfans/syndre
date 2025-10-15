@@ -56,9 +56,9 @@ struct AudioInitOptions {
 #pragma pack()
 /******************************************************************************/
 
-void FreeAudio(void);
 void EnsureAILStartup(void);
 void InitAudio(AudioInitOptions *audOpts);
+void FreeAudio(void);
 
 void SetSoundMasterVolume(long vol);
 void SetMusicMasterVolume(long vol);

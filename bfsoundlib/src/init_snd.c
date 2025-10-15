@@ -35,6 +35,7 @@
 #include "aildebug.h"
 #include "snderr.h"
 /******************************************************************************/
+
 #pragma pack(1)
 
 struct SoundBankSizes {
@@ -77,11 +78,6 @@ extern struct SampleInfo sample_id[32];
 extern struct SampleInfo *end_sample_id;
 
 extern TbBool DisableLoadSounds;
-
-extern long largest_dat_size;
-extern long largest_tab_size;
-extern char full_sound_data_path[224];
-struct SoundBankSizes sound_bank_size_info[9];
 
 extern TbBool MusicInstalled;
 extern TbBool MusicAble;
