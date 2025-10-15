@@ -1,13 +1,13 @@
 /* src/config.h.in.  Generated from configure.ac by autoheader.  */
 
-/* Define to 1 if compiling in debug mode */
-#undef ENABLE_DEBUG
-
 /* Define for SDL1 support */
 #undef ENABLE_SDL1
 
 /* Define for SDL2 support */
 #undef ENABLE_SDL2
+
+/* Define for wildmidi support */
+#undef ENABLE_WILDMIDI
 
 /* Define to the path where the game's data resides */
 #undef GAME_DATA_PATH
