@@ -93,7 +93,7 @@ int dos_filelength(int fd)
     return filelength(fd);
 #else
     int bkp_pos, result;
-    bkp_pos = tell(fd);
+    bkp_pos = lseek(fd, 0, SEEK_CUR);
     result = lseek(fd, 0, SEEK_END);
     lseek(fd, bkp_pos, SEEK_SET);
     return result;
