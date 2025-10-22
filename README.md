@@ -99,17 +99,17 @@ If you've decided on the hand-compilation option, proceed with the following ste
    a compiled executable and configuration files
 3. copy all the files and directories, except for the Language directory, from
    the `Game` directory within the *BullfrogGame CD* to the location of your
-   desire, say `BfGameLocation`.
+   desire, say `SyndRELocation`.
 4. copy all the files, except `sound.dat`, from the `game\language\LANGUAGE\` from
-   the *BullfrogGame CD* to the `BfGameLocation\Data` directory, where *LANGUAGE*
+   the *BullfrogGame CD* to the `SyndRELocation\Data` directory, where *LANGUAGE*
    stands for the appropriate subdirectory fo the language you want
 5. copy the `sound.dat` file (from the directory stated above) to the
-   `BfGameLocation\sound` directory
+   `SyndRELocation\sound` directory
 6. *[optional]* rip the game CD Audio tracks to `track_{1,2,3}.ogg` (vorbis)
-7. *[optional]* create a `BfGameLocation\music` directory and copy the
+7. *[optional]* create a `SyndRELocation\music` directory and copy the
    previously encoded ogg files there
 8. from the compilation folder, copy `syndre.exe` and `conf` folder to your
-   `BfGameLocation` directory
+   `SyndRELocation` directory
 
 If instead of the above points you prefer more technical description on what to
 copy and where, read the script `util/install` which is used to perform

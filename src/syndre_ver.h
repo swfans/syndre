@@ -16,8 +16,8 @@
  *     (at your option) any later version.
  */
 /******************************************************************************/
-#ifndef BFGAME_VER_H_
-#define BFGAME_VER_H_
+#ifndef SYNDRE_VER_H_
+#define SYNDRE_VER_H_
 
 /* Version definitions */
 #include "config.h"
@@ -46,4 +46,4 @@
 #define DEFAULT_LOG_FILENAME INTERNAL_NAME".log"
 
 /******************************************************************************/
-#endif // BFGAME_VER_H_
+#endif // SYNDRE_VER_H_

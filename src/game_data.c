@@ -80,7 +80,7 @@ static void replace_backslash_with_fs_separator(char *path)
     }
 }
 
-void BfGameFileNameTransform(char *out_fname, const char *inp_fname)
+void SyndREFileNameTransform(char *out_fname, const char *inp_fname)
 {
     char fs_fname[DISKPATH_SIZE];
     const char *base_dir;
@@ -100,7 +100,7 @@ void BfGameFileNameTransform(char *out_fname, const char *inp_fname)
 
 void setup_file_names(void)
 {
-    lbFileNameTransform = BfGameFileNameTransform;
+    lbFileNameTransform = SyndREFileNameTransform;
     // This fills the path variable; for user, it also creates the folder
     GetDirectoryHdd();
     GetDirectoryUser();

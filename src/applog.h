@@ -27,14 +27,14 @@ extern "C" {
 /******************************************************************************/
 
 /** Macro for logging messages of error severity within this module. */
-#define LOGERR(format,args...) LbErrorLog("BfGame: %s: " format "\n", __func__ , ## args)
+#define LOGERR(format,args...) LbErrorLog("SyndRE: %s: " format "\n", __func__ , ## args)
 
 /** Macro for logging messages of warning severity within this module. */
-#define LOGWARN(format,args...) LbWarnLog("BfGame: %s: " format "\n", __func__ , ## args)
+#define LOGWARN(format,args...) LbWarnLog("SyndRE: %s: " format "\n", __func__ , ## args)
 
 #ifdef DEBUG
-#define LOGSYNC(format,args...) LbSyncLog("BfGame: %s: " format "\n", __func__ , ## args)
-#define LOGDBG(format,args...) LbDbgLog("BfGame: %s: " format "\n", __func__ , ## args)
+#define LOGSYNC(format,args...) LbSyncLog("SyndRE: %s: " format "\n", __func__ , ## args)
+#define LOGDBG(format,args...) LbDbgLog("SyndRE: %s: " format "\n", __func__ , ## args)
 #else
 #define LOGSYNC(format,args...)
 #define LOGDBG(format,args...)
