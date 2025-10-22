@@ -137,7 +137,7 @@ AM_CONDITIONAL([TARGET_WINDOWS], [test "$have_windows" = "yes"])
 AM_CONDITIONAL([HAS_WINDRES], [test -n "${WINDRES}" -a "$have_windows" = "yes"])
 
 # On Windows, filter out -g from CCASFLAGS.  There are too many symbols in
-# bfgame.s to include debugging information for, which also results in a lot of
+# bfgame.sx to include debugging information for, which also results in a lot of
 # warning messages.
 AS_IF([test "$have_windows" = "yes"], [
   CCASFLAGS=`echo $CCASFLAGS | sed -e 's/\(^\|\s\)-g\>//g'`

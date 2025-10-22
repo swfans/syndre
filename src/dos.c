@@ -64,6 +64,11 @@ static int open_flag_mapping[][2] =
 
 /******************************************************************************/
 
+int dos_creat(const char *path, int share_flags)
+{
+    return dos_open(path, O_WRONLY|O_CREAT|O_TRUNC);
+}
+
 int dos_sopen(const char *path, int open_flags, int share_flags, ...)
 {
     return dos_open(path, open_flags);
@@ -80,6 +85,19 @@ int dos_open(const char *path, int open_flags, ...)
     native_flags = dos_open_flags_to_native(open_flags);
 
     return open(native_path, native_flags, 0666);
+}
+
+int dos_filelength(int fd)
+{
+#if defined(WIN32)||defined(DOS)||defined(GO32)
+    return filelength(fd);
+#else
+    int bkp_pos, result;
+    bkp_pos = tell(fd);
+    result = lseek(fd, 0, SEEK_END);
+    lseek(fd, bkp_pos, SEEK_SET);
+    return result;
+#endif
 }
 
 int dos_low_level_open(const char *path, uint16_t data_segment, uint16_t mode)

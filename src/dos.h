@@ -64,6 +64,8 @@ int dos_open_flags_to_native (int flags);
 
 bool dos_path_to_native (const char *path, char *buffer, size_t len);
 
+int dos_creat(const char *path, int share_flags);
+
 int dos_sopen (const char *path, int open_flags, int share_flags, ...);
 
 int dos_open (const char *path, int open_flags, ...);
@@ -73,6 +75,8 @@ void dos_gettime (struct dostime_t *t);
 void dos_getdate (struct dosdate_t *d);
 
 uint32_t dos_clock(void);
+
+int dos_filelength(int fd);
 
 void dos_free(unsigned short n);
 
