@@ -1,7 +1,7 @@
 /******************************************************************************/
 // BullfrogGame Port, source port of the classic game from Bullfrog.
 /******************************************************************************/
-/** @file bfgame_ver.h
+/** @file syndre_ver.h
  *     Project name, version, copyrights and global definitions.
  * @par Purpose:
  *     Header file for global names and defines used by resource compiler.
@@ -35,7 +35,7 @@
 #define PROGRAM_FULL_NAME "Open-source reimplementation of BullfrogGame game"
 #define PROGRAM_AUTHORS   "see AUTHORS file"
 #define COMPANY_NAME      "Community based"
-#define INTERNAL_NAME     "bfgame"
+#define INTERNAL_NAME     "syndre"
 #define LEGAL_COPYRIGHT   "GNU General Public License"
 #define LEGAL_TRADEMARKS  ""
 #define FILE_VERSION      VERSION

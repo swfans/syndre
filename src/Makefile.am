@@ -1,9 +1,9 @@
-bin_PROGRAMS = bfgame
+bin_PROGRAMS = syndre
 bindir = $(prefix)/$(PACKAGE)
 
 MKW = $(PYTHON) $(top_srcdir)/util/mkwrappers
 
-bfgame_SOURCES = \
+syndre_SOURCES = \
 	display.c \
 	display.h \
 	dos.c \
@@ -19,7 +19,7 @@ bfgame_SOURCES = \
 	mouse.h \
 	sound.c \
 	sound.h \
-	bfgame.sx \
+	syndre.sx \
 	timer.c \
 	timer.h \
 	osunix.c \
@@ -29,30 +29,30 @@ bfgame_SOURCES = \
 	util.c \
 	util.h
 
-bfgame_CPPFLAGS =
+syndre_CPPFLAGS =
 
-bfgame_WRAPPERS = wrappers_dos.o wrappers_game.o wrappers_libc.o wrappers_util.o
+syndre_WRAPPERS = wrappers_dos.o wrappers_game.o wrappers_libc.o wrappers_util.o
 
-bfgame_RCFLAGS = \
+syndre_RCFLAGS = \
   -I"$(top_srcdir)/src" -I"$(builddir)" \
   $(RCFLAGS)
 
 if HAS_WINDRES
-bfgame_RESRCS = bfgame_stdres.res
+syndre_RESRCS = syndre_stdres.res
 else
-bfgame_RESRCS =
+syndre_RESRCS =
 endif
 
 # Pretending to contain c++ source so that Automake select c++ linker
-nodist_EXTRA_bfgame_SOURCES = dummy.cxx
+nodist_EXTRA_syndre_SOURCES = dummy.cxx
 
 # Libraries included with the project
-bfgame_PROJECT_LIBS = ../lib/libbullfrog.a ../lib/libbfsound.a
+syndre_PROJECT_LIBS = ../lib/libbullfrog.a ../lib/libbfsound.a
 
-$(bfgame_OBJECTS) $(bin_PROGRAMS): $(bfgame_PROJECT_LIBS)
+$(syndre_OBJECTS) $(bin_PROGRAMS): $(syndre_PROJECT_LIBS)
 
-bfgame_LDADD = \
-  $(bfgame_WRAPPERS) $(bfgame_RESRCS)
+syndre_LDADD = \
+  $(syndre_WRAPPERS) $(syndre_RESRCS)
 
 ../lib/libbullfrog.a: ../bflibrary/libbullfrog.a
 	$(MAKE) -C $(<D) DESTDIR="../" prefix="" install
@@ -60,7 +60,7 @@ bfgame_LDADD = \
 ../lib/libbfsound.a: ../bfsoundlib/libbfsound.a
 	$(MAKE) -C $(<D) DESTDIR="../" prefix="" install
 
-$(bfgame_WRAPPERS:.o=.sx): %.sx: $(top_srcdir)/conf/%.conf
+$(syndre_WRAPPERS:.o=.sx): %.sx: $(top_srcdir)/conf/%.conf
 	$(AM_V_GEN)$(MKW) $(MKWFLAGS) -o $@ $<
 
 .sx.o:
@@ -69,7 +69,7 @@ $(bfgame_WRAPPERS:.o=.sx): %.sx: $(top_srcdir)/conf/%.conf
 
 if HAS_WINDRES
 %.res: $(top_srcdir)/res/%.rc
-	$(WINDRES) $(bfgame_RCFLAGS) -i $< -J rc -o $@ -O coff
+	$(WINDRES) $(syndre_RCFLAGS) -i $< -J rc -o $@ -O coff
 endif
 
 # Include dynamic libraries in the package
@@ -77,7 +77,7 @@ if TARGET_WINDOWS
 install-exec-hook:
 	mkdir -p "$(DESTDIR)${prefix}/$(PACKAGE)"
 	## Find main executable dependencies
-	$(eval lib_SHARED_INSTALL := $(shell objdump -p bfgame$(EXEEXT) | \
+	$(eval lib_SHARED_INSTALL := $(shell objdump -p syndre$(EXEEXT) | \
 		sed -n 's/\s*\(DLL Name:\|NEEDED\)\s*\(.*\)$$/\2/p' | \
 		xargs -I {} find $(shell dirname $(shell which ${CXX})) -name '{}'))
 	## Find sub-dependencies for the previous dependencies

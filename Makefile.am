@@ -12,9 +12,9 @@ res_DATA =
 resdir = $(prefix)/$(PACKAGE)
 
 if TARGET_WINDOWS
-res_DATA += res/bfgame_icon.ico
+res_DATA += res/syndre_icon.ico
 else
-res_DATA += res/bfgame_icon.png
+res_DATA += res/syndre_icon.png
 endif
 
 instscript_DATA = util/install

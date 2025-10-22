@@ -33,7 +33,7 @@ const char * AppResourceMapping(short index)
     switch (index)
     {
     case 1:
-        return "bfgame_icon.png";
+        return "syndre_icon.png";
     default:
         return NULL;
     }

@@ -45,7 +45,7 @@ bool sys_get_user_path(char *buffer, size_t size)
     if (xdg_config_home != NULL)
     {
         snprintf(buffer, size,
-          "%s" FS_SEP_STR "bfgame", xdg_config_home);
+          "%s" FS_SEP_STR "syndre", xdg_config_home);
         return true;
     }
 
@@ -58,7 +58,7 @@ bool sys_get_user_path(char *buffer, size_t size)
 
 #ifndef __APPLE__
     snprintf(buffer, size,
-      "%s" FS_SEP_STR ".config" FS_SEP_STR "bfgame", home);
+      "%s" FS_SEP_STR ".config" FS_SEP_STR "syndre", home);
 #else
     snprintf(buffer, size,
       "%s/Library/Preferences/BullfrogGame", home);

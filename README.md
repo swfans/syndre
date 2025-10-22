@@ -1,4 +1,4 @@
-# bfgame
+# syndre
 
 **BullfrogGame Port**, alternative binary for the classic Bullfrog game.
 
@@ -45,11 +45,11 @@ The steps are:
    a compiled executable
 3. after the build succeeded, do `make install` in the directory where build
    commands were executed, to copy built files into an installation folder
-   (`/usr/local/share/bfgame` by default)
+   (`/usr/local/share/syndre` by default)
 4. insert the *BullfrogGame CD* and make sure it is mounted (e.g. in `/media/cdrom`)
 5. do `util/install -f SOURCE -t TARGET -l LANG`, where
    * *SOURCE* is the game CD path, like `/media/cdrom`,
-   * *TARGET* is the destination path, in this case `/usr/local/share/bfgame`,
+   * *TARGET* is the destination path, in this case `/usr/local/share/syndre`,
    * *LANG* is the installation language, and can be one of: `eng` `fre` `ger` `ita` `spa` `swe`.
 
 If all went well, you can now play the game.
@@ -76,7 +76,7 @@ You can create the bundle by following these instructions:
 4. finally, run `util/mkbundle ./data` (replacing `./data` with the directory
    you installed the data to); this will produce an application bundle named
    `BullfrogGame.app` in the current directory
-5. if you want there to be a pretty icon for the bundle, copy `res/bfgame.icns`
+5. if you want there to be a pretty icon for the bundle, copy `res/syndre.icns`
    to `BullfrogGame.app/Contents/Resources`
 
 ### Installing on Windows
@@ -108,7 +108,7 @@ If you've decided on the hand-compilation option, proceed with the following ste
 6. *[optional]* rip the game CD Audio tracks to `track_{1,2,3}.ogg` (vorbis)
 7. *[optional]* create a `BfGameLocation\music` directory and copy the
    previously encoded ogg files there
-8. from the compilation folder, copy `bfgame.exe` and `conf` folder to your
+8. from the compilation folder, copy `syndre.exe` and `conf` folder to your
    `BfGameLocation` directory
 
 If instead of the above points you prefer more technical description on what to
@@ -117,7 +117,7 @@ installation on GNU or UNIX systems. If your Windows has a Linux subsystem
 installed, you may even use it to perform the installation automatically - see
 [GNU or UNIX chapter](#installing-on-gnu-or-unix) for details.
 
-You can now launch `bfgame.exe` and have fun!
+You can now launch `syndre.exe` and have fun!
 
 ## Building
 
@@ -144,12 +144,12 @@ To build **BullfrogGame Port**, you will need the following:
 
 Once you've made sure you have the above, proceed with the following steps:
 
-1. go into the directory with `bfgame` source release (containing `conf`, `doc`, `src` etc.)
+1. go into the directory with `syndre` source release (containing `conf`, `doc`, `src` etc.)
 2. do `autoreconf -if` to create build scripts from templates
 3. do `./configure` to make the build scripts find required toolchain and libraries
 4. do `make` to compile the executable file
 
-You should now have a working `src/bfgame` executable file.
+You should now have a working `src/syndre` executable file.
 
 #### Build example - Ubuntu 20.04 64-bit
 
@@ -169,7 +169,7 @@ sudo apt install libogg-dev:i386
 sudo apt install libwildmidi-dev:i386
 ```
 
-Now as our host is ready, we can start working on the actual `bfgame` sources.
+Now as our host is ready, we can start working on the actual `syndre` sources.
 Go to that folder, and generate build scripts from templates using autotools:
 
 ```
@@ -260,10 +260,10 @@ If you do not have any Python, then install the one which fits other `i686` tool
 pacman -S mingw-w64-i686-python3 mingw-w64-i686-python-pip
 ```
 
-Now as our host is ready, we can start working on the actual `bfgame` sources.
+Now as our host is ready, we can start working on the actual `syndre` sources.
 We will still have to provide paths to 32-bit configuration - MSYS will prefer
 folders with data for 64-bit building.
-Go to the `bfgame` folder, and generate build scripts from templates using autotools:
+Go to the `syndre` folder, and generate build scripts from templates using autotools:
 
 ```
 autoreconf -ivf --include=/mingw32/share/aclocal/

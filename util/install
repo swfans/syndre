@@ -7,7 +7,7 @@ Usage: $0 [OPTIONS] -f SOURCE -t TARGET
 
 Available options:
   -f PATH  copy data from PATH (e.g. /media/cdrom)
-  -t PATH  copy data to PATH (e.g. /usr/local/share/bfgame)
+  -t PATH  copy data to PATH (e.g. /usr/local/share/syndre)
 
   -M       do not copy music
   -d DEVICE read audio tracks from DEVICE (e.g. /dev/sr0)

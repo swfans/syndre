@@ -8,10 +8,10 @@ m4_define([ver_release], [2])
 # Set build number to commit count only if ".git" folder is present
 m4_define([ver_build], m4_if(m4_esyscmd_s([ls -1 -d ".git" 2>&1]),.git,[m4_esyscmd_s([git rev-list --count HEAD])],[0]))
 
-m4_define([bfgame_version],
+m4_define([syndre_version],
       [ver_major.ver_minor.ver_release.ver_build])
 
-AC_INIT([BullfrogGame Port], [bfgame_version], [mefistotelis@gmail.com], [bfgame])
+AC_INIT([BullfrogGame Port], [syndre_version], [mefistotelis@gmail.com], [syndre])
 
 AC_CONFIG_SUBDIRS([bflibrary bfsoundlib])
 
@@ -46,13 +46,13 @@ AC_ARG_WITH([wildmidi],
 AC_ARG_WITH([data-path],
 	    AS_HELP_STRING(
 	      [--with-data-path],
-	      [path to game data @<:@DATAROOTDIR/bfgame@:>@]),
+	      [path to game data @<:@DATAROOTDIR/syndre@:>@]),
 	    [data_path=$withval], [data_path=])
 AS_IF([test "$data_path" = "yes"], [
   AC_MSG_ERROR([The data path must be explicitly specified])
 ])
 AS_IF([test -z "$data_path"], [
-  eval data_path="$datadir/bfgame"
+  eval data_path="$datadir/syndre"
   eval data_path="$data_path"
 ])
 
@@ -137,7 +137,7 @@ AM_CONDITIONAL([TARGET_WINDOWS], [test "$have_windows" = "yes"])
 AM_CONDITIONAL([HAS_WINDRES], [test -n "${WINDRES}" -a "$have_windows" = "yes"])
 
 # On Windows, filter out -g from CCASFLAGS.  There are too many symbols in
-# bfgame.sx to include debugging information for, which also results in a lot of
+# syndre.sx to include debugging information for, which also results in a lot of
 # warning messages.
 AS_IF([test "$have_windows" = "yes"], [
   CCASFLAGS=`echo $CCASFLAGS | sed -e 's/\(^\|\s\)-g\>//g'`
