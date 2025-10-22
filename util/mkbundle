@@ -3,7 +3,7 @@
 SRC="src"
 DST="."
 
-NAME="BullfrogGame"
+NAME="SyndicateRE"
 BDIR="$DST/$NAME.app"
 CDIR="$BDIR/Contents"
 XDIR="$CDIR/MacOS"

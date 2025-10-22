@@ -11,7 +11,7 @@ m4_define([ver_build], m4_if(m4_esyscmd_s([ls -1 -d ".git" 2>&1]),.git,[m4_esysc
 m4_define([syndre_version],
       [ver_major.ver_minor.ver_release.ver_build])
 
-AC_INIT([BullfrogGame Port], [syndre_version], [mefistotelis@gmail.com], [syndre])
+AC_INIT([SyndicateRE], [syndre_version], [mefistotelis@gmail.com], [syndre])
 
 AC_CONFIG_SUBDIRS([bflibrary bfsoundlib])
 
@@ -91,7 +91,7 @@ AC_COMPILE_IFELSE([AC_LANG_SOURCE([
   AC_MSG_RESULT([yes])
 ], [
   AC_MSG_RESULT([no])
-  AC_MSG_FAILURE([this BullfrogGame Port will only run on i386 processors])
+  AC_MSG_FAILURE([this SyndicateRE will only run on i386 processors])
 ])
 
 AC_MSG_CHECKING([if C symbols need an underscore])

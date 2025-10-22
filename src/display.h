@@ -1,5 +1,5 @@
 /******************************************************************************/
-// BullfrogGame Port, source port of the classic game from Bullfrog.
+// SyndicateRE, source port of the classic game from Bullfrog.
 /******************************************************************************/
 /** @file display.h
  *     Header file for display.c.

@@ -1,5 +1,5 @@
 /******************************************************************************/
-// BullfrogGame Port, source port of the classic game from Bullfrog.
+// SyndicateRE, source port of the classic game from Bullfrog.
 /******************************************************************************/
 /** @file dos.c
  *     Functions which were only available or have specific behaviour in DOS.

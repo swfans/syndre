@@ -1,5 +1,5 @@
 /******************************************************************************/
-// BullfrogGame Port, source port of the classic game from Bullfrog.
+// SyndicateRE, source port of the classic game from Bullfrog.
 /******************************************************************************/
 /** @file syndre_ver.h
  *     Project name, version, copyrights and global definitions.
@@ -31,8 +31,8 @@
 //#define VERSION           "1.2.3.4"
 
 /* Program name, copyrights and file names */
-#define PROGRAM_NAME      "BullfrogGame Port"
-#define PROGRAM_FULL_NAME "Open-source reimplementation of BullfrogGame game"
+#define PROGRAM_NAME      "SyndicateRE"
+#define PROGRAM_FULL_NAME "Open-source reimplementation of Syndicate game"
 #define PROGRAM_AUTHORS   "see AUTHORS file"
 #define COMPANY_NAME      "Community based"
 #define INTERNAL_NAME     "syndre"

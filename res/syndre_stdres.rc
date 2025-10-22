@@ -1,8 +1,8 @@
 /******************************************************************************/
-// Free implementation of Bullfrog's BullfrogGame classic game.
+// Free implementation of Bullfrog's Syndicate classic game.
 /******************************************************************************/
 /** @file syndre_stdres.rc
- *     Standard Windows resoures used by BullfrogGame application.
+ *     Standard Windows resoures used by SyndicateRE application.
  * @par Purpose:
  *     Defines icons and executable information data (VersionInfo)
  *     used by Ms Windows as description of the application.

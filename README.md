@@ -1,13 +1,10 @@
 # syndre
 
-**BullfrogGame Port**, alternative binary for the classic Bullfrog game.
-
-This is a generic framework which can be used as base when preparing ASM port
-of any Bullfrog game.
+**SyndicateRE**, alternative binary for the classic Bullfrog game.
 
 ## About
 
-**BullfrogGame Port** is a port of the 1990s DOS game BullfrogGame to modern
+**SyndicateRE** is a port of the 1990s DOS game Syndicate to modern
 operating systems. In particular, it runs on GNU, Mac OS and Windows, but it
 should also work on any system supported by the SDL library on the i386
 architecture.
@@ -18,13 +15,13 @@ for input and video display, [Vorbis](https://xiph.org/vorbis/) for music and
 [OpenAL](https://www.openal.org/) for sound.
 
 Only the modernised executable is provided with this port. This means that game
-data are not included. To install the **BullfrogGame Port**, you will need to
-have the original data from either *BullfrogGame CD*, or digital distribution.
+data are not included. To install the **SyndicateRE**, you will need to
+have the original data from either *Syndicate Plus CD*, or digital distribution.
 
 ## Installation
 
-To install **BullfrogGame Port**, you will need either the original *BullfrogGame
-PC CD*, or digital distribution of the game. There were several physical
+To install **SyndicateRE**, you will need either the original *Syndicate
+Plus PC CD*, or digital distribution of the game. There were several physical
 versions released. It is uncertain whether this port will work with all
 releases, so choose the most popular, english version.
 
@@ -46,7 +43,7 @@ The steps are:
 3. after the build succeeded, do `make install` in the directory where build
    commands were executed, to copy built files into an installation folder
    (`/usr/local/share/syndre` by default)
-4. insert the *BullfrogGame CD* and make sure it is mounted (e.g. in `/media/cdrom`)
+4. insert the *Syndicate Plus CD* and make sure it is mounted (e.g. in `/media/cdrom`)
 5. do `util/install -f SOURCE -t TARGET -l LANG`, where
    * *SOURCE* is the game CD path, like `/media/cdrom`,
    * *TARGET* is the destination path, in this case `/usr/local/share/syndre`,
@@ -72,24 +69,24 @@ You can create the bundle by following these instructions:
 3. after the code is compiled, install the data, as explained in the
    [GNU or UNIX](#installing-on-gnu-or-unix) section, to any directory,
    say `./data` (in case you wonder, the CD drive should be mounted under
-   `/Volumes/SYN WARS QA 9.0`)
+   `/Volumes/SYNDPLUS`)
 4. finally, run `util/mkbundle ./data` (replacing `./data` with the directory
    you installed the data to); this will produce an application bundle named
-   `BullfrogGame.app` in the current directory
+   `SyndicateRE.app` in the current directory
 5. if you want there to be a pretty icon for the bundle, copy `res/syndre.icns`
-   to `BullfrogGame.app/Contents/Resources`
+   to `SyndicateRE.app/Contents/Resources`
 
 ### Installing on Windows
 
-There are two ways to install **BullfrogGame Port** on Windows - either download
+There are two ways to install **SyndicateRE** on Windows - either download
 the installer, or download the source code and compile it by hand.
 It is recommended to use the installer!
 
-The installer requires the original *BullfrogGame CD* to be present in the
-CD-ROM drive. It will copy the files from the original *BullfrogGame CD* and
+The installer requires the original *Syndicate Plus CD* to be present in the
+CD-ROM drive. It will copy the files from the original *Syndicate Plus CD* and
 optionally encode the game music from the CD to ogg files used by this port.
 
-The *BullfrogGame CD* is not required to play the game, it is used only during
+The *Syndicate Plus CD* is not required to play the game, it is used only during
 the installation process.
 
 If you've decided on the hand-compilation option, proceed with the following steps:
@@ -98,10 +95,10 @@ If you've decided on the hand-compilation option, proceed with the following ste
 2. follow [building instructions](#building-on-windows) below to get
    a compiled executable and configuration files
 3. copy all the files and directories, except for the Language directory, from
-   the `Game` directory within the *BullfrogGame CD* to the location of your
+   the `Game` directory within the *Syndicate Plus CD* to the location of your
    desire, say `SyndRELocation`.
 4. copy all the files, except `sound.dat`, from the `game\language\LANGUAGE\` from
-   the *BullfrogGame CD* to the `SyndRELocation\Data` directory, where *LANGUAGE*
+   the *Syndicate Plus CD* to the `SyndRELocation\Data` directory, where *LANGUAGE*
    stands for the appropriate subdirectory fo the language you want
 5. copy the `sound.dat` file (from the directory stated above) to the
    `SyndRELocation\sound` directory
@@ -126,7 +123,7 @@ Note that you can oly build the port for x86 architecture, and you either need
 
 ### General building instructions
 
-To build **BullfrogGame Port**, you will need the following:
+To build **SyndicateRE**, you will need the following:
 
 * GNU Autotools
 * GNU C compiler
@@ -287,7 +284,7 @@ link with name expected by build system will fix the issue.
 
 ### Building on Mac OS X
 
-Mac OS X is at its core a UNIX system. To build the **BullfrogGame Port** it is
+Mac OS X is at its core a UNIX system. To build the **SyndicateRE** it is
 enough to follow the [general building instructions](#general-building-instructions).
 
 The GCC compiler for Mac OS X comes as part of XCode, which you can get from
@@ -312,7 +309,7 @@ you will also need to pass `data-path`, so youf final command will be:
 
 
 ```
-./configure --with-data-path="BullfrogGame.app/Contents/Resources" CFLAGS="-arch i386"
+./configure --with-data-path="SyndicateRE.app/Contents/Resources" CFLAGS="-arch i386"
 ```
 
 Then, do `make` as the [general building instructions](#general-building-instructions) tell.

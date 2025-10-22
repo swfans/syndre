@@ -1,5 +1,5 @@
 /******************************************************************************/
-// BullfrogGame Port, source port of the classic game from Bullfrog.
+// SyndicateRE, source port of the classic game from Bullfrog.
 /******************************************************************************/
 /** @file osunix.c
  *     Implementation of few functions which is specific to UNIX systems.
@@ -61,7 +61,7 @@ bool sys_get_user_path(char *buffer, size_t size)
       "%s" FS_SEP_STR ".config" FS_SEP_STR "syndre", home);
 #else
     snprintf(buffer, size,
-      "%s/Library/Preferences/BullfrogGame", home);
+      "%s/Library/Preferences/SyndicateRE", home);
 #endif
 
     return true;

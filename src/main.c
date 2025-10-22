@@ -82,7 +82,7 @@ int main (int argc, char **argv)
 
     process_options(&argc, &argv);
 
-    printf("BullfrogGame Port "VERSION"\n"
+    printf("SyndicateRE "VERSION"\n"
       "The original by Bullfrog. Port solution by Unavowed and Gynvael Coldwind.\n"
       "Refactored port base by Mefistotelis.\n");
 
