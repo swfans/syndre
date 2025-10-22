@@ -66,9 +66,13 @@ bool dos_path_to_native (const char *path, char *buffer, size_t len);
 
 int dos_creat(const char *path, int share_flags);
 
+ssize_t dos_lseek(int fd, ssize_t off, int whence);
+
 int dos_sopen (const char *path, int open_flags, int share_flags, ...);
 
 int dos_open (const char *path, int open_flags, ...);
+
+ssize_t dos_tell(int fd);
 
 void dos_gettime (struct dostime_t *t);
 

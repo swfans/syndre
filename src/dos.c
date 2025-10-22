@@ -146,6 +146,11 @@ ssize_t dos_lseek(int fd, ssize_t off, int whence)
     return lseek(fd, off, whence);
 }
 
+ssize_t dos_tell(int fd)
+{
+    return lseek(fd, 0, SEEK_CUR);
+}
+
 size_t dos_low_level_seek(int fd, uint32_t pos)
 {
     off_t new_pos;
