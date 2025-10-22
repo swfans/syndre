@@ -2,6 +2,11 @@
 
 **SyndicateRE**, alternative binary for the classic Bullfrog game.
 
+Be warned: this project is a work in progress, shared to help in collaboration
+efforts. If you just want to play the game, you won't find anything interesting
+here. But if you're reverse-engineering enthusiast, feel free to check it
+out, and maybe help us in making this work.
+
 ## About
 
 **SyndicateRE** is a port of the 1990s DOS game Syndicate to modern
