@@ -1,3 +1,32 @@
+
+#ifdef NEED_UNDERSCORE
+# define TRANSFORM_SYMBOLS
+# define EXPORT_SYMBOL(sym) _ ## sym
+#endif
+
+#ifndef TRANSFORM_SYMBOLS
+
+# define GLOBAL(sym) \
+  .global sym; \
+  sym ##:
+
+# define GLOBAL_FUNC(sym) \
+  GLOBAL (sym)
+
+#else
+
+# define GLOBAL(sym) \
+  .global EXPORT_SYMBOL (sym); \
+  EXPORT_SYMBOL (sym) ##: \
+  sym ##:
+
+# define GLOBAL_FUNC(sym) \
+  .global sym; \
+  GLOBAL (sym)
+
+#endif
+
+
 .text
 ___begtext:	/* 0x10003 */
 		nop
@@ -21067,7 +21096,7 @@ func_1f88c:
 		jl     jump_1f9a0
 		xor    %esi,%esi
 		lea    0x0(%eax),%eax
-		lea    0x0(%edx,%eiz,1),%edx
+		lea    0x0(%edx),%edx
 	jump_1fa50:
 		push   $0x7
 		call   random
@@ -25962,7 +25991,7 @@ set_default_player:	/* 0x23880 */
 		jb     jump_238a5
 		xor    %esi,%esi
 		lea    0x0(%eax),%eax
-		lea    0x0(%edx,%eiz,1),%edx
+		lea    0x0(%edx),%edx
 	jump_23bf0:
 		cmpb   $0x0,data_60b51
 		je     jump_23c17
@@ -26422,7 +26451,7 @@ cheat:	/* 0x23f10 */
 		xor    %esi,%esi
 		mov    %dx,data_55788(%eax)
 		lea    0x0(%eax),%eax
-		lea    0x0(%edx,%eiz,1),%edx
+		lea    0x0(%edx),%edx
 	jump_24220:
 		xor    %ebx,%ebx
 		lea    0x0(%eax),%eax
@@ -26565,7 +26594,7 @@ cheat:	/* 0x23f10 */
 		xor    %esi,%esi
 		mov    %dx,data_55788(%eax)
 		lea    0x0(%eax),%eax
-		lea    0x0(%edx,%eiz,1),%edx
+		lea    0x0(%edx),%edx
 	jump_24410:
 		xor    %ebx,%ebx
 		lea    0x0(%eax),%eax
@@ -30166,7 +30195,7 @@ LoadSaveGame:	/* 0x26ef0 */
 		mov    %bh,data_60b4c
 		xor    %bh,%bh
 		lea    0x0(%eax),%eax
-		lea    0x0(%edx,%eiz,1),%edx
+		lea    0x0(%edx),%edx
 	jump_26f60:
 		xor    %eax,%eax
 		mov    %bx,%ax
@@ -51793,7 +51822,7 @@ DoResearch:	/* 0x35e20 */
 		xor    %dl,%dl
 		mov    %dl,0x8(%esp)
 		lea    0x0(%eax),%eax
-		lea    0x0(%edx,%eiz,1),%edx
+		lea    0x0(%edx),%edx
 	jump_36000:
 		xor    %ebx,%ebx
 		mov    data_55596,%bl
@@ -51852,7 +51881,7 @@ DoResearch:	/* 0x35e20 */
 		xor    %dl,%dl
 		mov    %dl,0xc(%esp)
 		lea    0x0(%eax),%eax
-		lea    0x0(%edx,%eiz,1),%edx
+		lea    0x0(%edx),%edx
 	jump_360d0:
 		xor    %ebx,%ebx
 		mov    data_55596,%bl
@@ -51943,7 +51972,7 @@ CompleteResearch:	/* 0x36190 */
 		xor    %ah,%ah
 		mov    %ah,0x4(%esp)
 		lea    0x0(%eax),%eax
-		lea    0x0(%edx,%eiz,1),%edx
+		lea    0x0(%edx),%edx
 	jump_361e0:
 		xor    %ebx,%ebx
 		mov    data_55596,%bl
@@ -51983,7 +52012,7 @@ CompleteResearch:	/* 0x36190 */
 		xor    %bl,%bl
 		mov    %bl,0x8(%esp)
 		lea    0x0(%eax),%eax
-		lea    0x0(%edx,%eiz,1),%edx
+		lea    0x0(%edx),%edx
 	jump_36260:
 		xor    %eax,%eax
 		mov    data_55596,%al
