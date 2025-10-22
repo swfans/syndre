@@ -14,7 +14,7 @@ resdir = $(prefix)/$(PACKAGE)
 if TARGET_WINDOWS
 res_DATA += res/syndre_icon.ico
 else
-res_DATA += res/syndre_icon.png
+res_DATA += res/syndre_icon16.png res/syndre_icon32.png res/syndre_icon64.png
 endif
 
 instscript_DATA = util/install
