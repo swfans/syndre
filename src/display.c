@@ -46,6 +46,10 @@ TbResult AppScreenSetup(TbScreenMode mode)
 {
     TbScreenModeInfo *mdinfo;
 
+    // Mapping of video modes
+    if (mode == 19)
+        mode = Lb_SCREEN_MODE_320_200_8;
+
     mdinfo = LbScreenGetModeInfo(mode);
     LOGSYNC("Entering mode %d, %dx%d", (int)mode, (int)mdinfo->Width, (int)mdinfo->Height);
     return LbScreenSetup(mode, mdinfo->Width, mdinfo->Height, GraphicsPalette);
