@@ -302,6 +302,7 @@ int main (int argc, char **argv)
     mouse_sprite = &pointer_sprites[1];
     MouseSwap = 1;
 
+    lbMouseAutoReset = false;
     LbMouseSetup(mouse_sprite, 256, 256);
 
     nullsub_3();

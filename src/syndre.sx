@@ -31325,8 +31325,8 @@ CloseIKeyboard:	/* 0x27b90 */
 /*----------------------------------------------------------------*/
 LbMouseSetup:	/* 0x27bf0 */
 /*----------------------------------------------------------------*/
-		call   OpenIKeyboard
-		jmp    jump_2b440
+		call   OpenIKeyboardMs
+		jmp    func_2b440
 
 
 /*----------------------------------------------------------------*/
@@ -31475,7 +31475,7 @@ KInt:	/* 0x27cb0 */
 
 
 /*----------------------------------------------------------------*/
-OpenIKeyboard:	/* 0x27d60 */
+OpenIKeyboardMs:	/* 0x27d60 */
 /*----------------------------------------------------------------*/
 		push   %ebx
 		xor    %eax,%eax
@@ -36070,12 +36070,13 @@ ErrLogNetwork:	/* 0x2b260 */
 		add    $0x14,%esp
 		ret
 
-MouseHandler256_GETDS:	/* 0x2b290 */
+/*----------------------------------------------------------------*/
+MouseHandler256:	/* 0x2b290 */
+/*----------------------------------------------------------------*/
 #if defined(DOS)
 		push   %ds
 		call   __GETDS
 #endif
-MouseHandler256:	/* 0x2b296 */
 		push   %ebx
 		push   %esi
 		mov    %eax,mouse_event
@@ -36188,7 +36189,10 @@ MouseHandler256:	/* 0x2b296 */
 		pop    %ebx
 		pop    %ds
 		lret
-	jump_2b440:
+
+/*----------------------------------------------------------------*/
+func_2b440:	/* 0x2b440 */
+/*----------------------------------------------------------------*/
 		push   %ebx
 		push   %edi
 		sub    $0x44,%esp
@@ -36220,10 +36224,10 @@ MouseHandler256:	/* 0x2b296 */
 		jne    jump_2b575
 		mov    $0xc,%edi
 		mov    $0x1f,%eax
-		mov    $MouseHandler256_GETDS,%edx
+		mov    $MouseHandler256,%edx
 		mov    %ax,0x24(%esp)
 		mov    %edx,0x28(%esp)
-		mov    $MouseHandler256_GETDS,%eax
+		mov    $MouseHandler256,%eax
 		mov    %cs,%edx
 		mov    %di,0x1c(%esp)
 		lea    0x38(%esp),%eax
