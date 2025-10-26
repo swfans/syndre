@@ -41,6 +41,43 @@ const char * AppResourceMapping(short index)
 
 #endif
 
+TbResult AppScreenSetup(TbScreenMode mode)
+{
+    TbScreenModeInfo *mdinfo;
+
+    mdinfo = LbScreenGetModeInfo(mode);
+    return LbScreenSetup(mode, mdinfo->Width, mdinfo->Height, NULL);
+}
+
+void display_set_full_screen(bool full_screen)
+{
+    int i;
+
+    if (lbScreenSurface != NULL)
+        return;
+
+    for (i = 1; i < LB_MAX_SCREEN_MODES_COUNT; ++i)
+    {
+        TbScreenModeInfo *mdinfo;
+
+        mdinfo = LbScreenGetModeInfo(i);
+        if (mdinfo->Width == 0) break;
+        if (full_screen) {
+            mdinfo->VideoMode &= ~Lb_VF_WINDOWED;
+        } else {
+            mdinfo->VideoMode |= Lb_VF_WINDOWED;
+        }
+    }
+}
+
+void display_set_lowres_stretch(bool stretch)
+{
+    if (stretch)
+        LbScreenSetMinScreenSurfaceDimension(400);
+    else
+        LbScreenSetMinScreenSurfaceDimension(1);
+}
+
 void
 display_lock (void)
 {

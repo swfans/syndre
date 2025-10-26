@@ -244,7 +244,7 @@ GLOBAL_FUNC(syndicate)	/* 0x101e0 */
 		jne    jump_1028e
 		mov    out,%ecx
 		push   %ecx
-		call   LbPaletteSet
+		call   ac_LbPaletteSet
 		add    $0x4,%esp
 	jump_1028e:
 		xor    %eax,%eax
@@ -27601,7 +27601,7 @@ init_level_data:	/* 0x25110 */
 	jump_25176:
 		call   adjust_vehicles
 		push   $0x12
-		call   LbScreenSetup
+		call   ac_AppScreenSetup
 		add    $0x4,%esp
 		push   $0x0
 		call   func_4c236
@@ -27640,7 +27640,7 @@ init_level_data:	/* 0x25110 */
 		add    $0x8,%esp
 		mov    WScreen,%esi
 		push   %esi
-		call   LbPaletteSet
+		call   ac_LbPaletteSet
 		mov    EXPORT_SYMBOL(pointer_sprites),%eax
 		add    $0x4,%esp
 		add    $0x6,%eax
@@ -33995,7 +33995,7 @@ NetworkCmdlineSetup:	/* 0x29ce0 */
 		mov    EXPORT_SYMBOL(byte_60B4C),%bl
 		mov    %edx,0x4c(%esp)
 		mov    %ah,EXPORT_SYMBOL(byte_60B4C)
-		call   LbScreenSetup
+		call   ac_AppScreenSetup
 		add    $0x4,%esp
 	jump_29d08:
 		push   $aHowManyPlayers
@@ -53986,7 +53986,7 @@ select:	/* 0x37600 */
 		mov    $0x1,%al
 		push   $0x13
 		mov    %al,EXPORT_SYMBOL(DrawFlags)
-		call   LbScreenSetup
+		call   ac_AppScreenSetup
 		add    $0x4,%esp
 	jump_37709:
 		mov    WScreen,%eax
@@ -54705,7 +54705,7 @@ show_opt:	/* 0x37ef0 */
 		je     jump_37f47
 		mov    m_select_pal,%esi
 		push   %esi
-		call   LbPaletteSet
+		call   ac_LbPaletteSet
 		xor    %dh,%dh
 		add    $0x4,%esp
 		mov    %dh,data_55591
@@ -54751,7 +54751,7 @@ level_finished:	/* 0x37f80 */
 		mov    %dh,MusicActive
 		mov    %al,EXPORT_SYMBOL(OldDrawFlags)
 		mov    %dh,EXPORT_SYMBOL(DrawFlags)
-		call   LbScreenSetup
+		call   ac_AppScreenSetup
 		mov    data_60afc,%al
 		add    $0x4,%esp
 		test   $0x8,%al
@@ -74848,7 +74848,7 @@ func_4b277:
 
 
 /*----------------------------------------------------------------*/
-LbPaletteSet:	/* 0x4c136 */
+ASM_LbPaletteSet:	/* 0x4c136 */
 /*----------------------------------------------------------------*/
 		push   %ebp
 		mov    %esp,%ebp
@@ -74905,7 +74905,7 @@ LbPaletteSet:	/* 0x4c136 */
 
 
 /*----------------------------------------------------------------*/
-LbScreenSetup:	/* 0x4c1a7 */
+ASM_LbScreenSetup:	/* 0x4c1a7 */
 /*----------------------------------------------------------------*/
 		push   %ebp
 		mov    %esp,%ebp

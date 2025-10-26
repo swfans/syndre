@@ -274,6 +274,10 @@ int main (int argc, char **argv)
 
     if (!game_initialise())
         return 1;
+
+    display_set_full_screen(cmdln_fullscreen);
+    display_set_lowres_stretch(cmdln_lores_stretch);
+
 #if 0
     int retval;
     // Call game main
