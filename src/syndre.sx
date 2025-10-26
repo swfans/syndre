@@ -212,7 +212,7 @@ GLOBAL_FUNC(syndicate)	/* 0x101e0 */
 		test   $0x1,%ah
 		je     jump_102e9
 	jump_10214:
-		cmpb   $0x0,data_5e2c8
+		cmpb   $0x0,EXPORT_SYMBOL(lbKeyOn)+0x44
 		jne    jump_102e9
 		test   %ebx,%ebx
 		je     jump_1022a
@@ -279,7 +279,7 @@ GLOBAL_FUNC(syndicate)	/* 0x101e0 */
 		call   BFMidiStopMusic
 	jump_102f7:
 		call   free_map_level
-		cmpb   $0x0,data_5e2c8
+		cmpb   $0x0,EXPORT_SYMBOL(lbKeyOn)+0x44
 		jne    jump_101ec
 		xor    %eax,%eax
 		mov    $0x1,%edx
@@ -291,7 +291,7 @@ GLOBAL_FUNC(syndicate)	/* 0x101e0 */
 		call   transfer_people_into_player
 		add    $0x4,%esp
 		call   level_finished
-		cmpb   $0x1,data_5e2c8
+		cmpb   $0x1,EXPORT_SYMBOL(lbKeyOn)+0x44
 		jne    jump_101ec
 	jump_1033f:
 		pop    %ebp
@@ -533,7 +533,7 @@ check_end_level:	/* 0x105e0 */
 		sub    $0x8,%esp
 		xor    %edi,%edi
 		xor    %esi,%esi
-		cmpb   $0x0,data_5e29d
+		cmpb   $0x0,EXPORT_SYMBOL(lbKeyOn)+0x19
 		je     jump_1064a
 		call   BFMidiPauseSong
 		call   BFSoundPause
@@ -546,19 +546,19 @@ check_end_level:	/* 0x105e0 */
 		test   %ebx,%ebx
 		je     jump_10640
 	jump_10615:
-		cmp    data_5e29d,%al
+		cmp    EXPORT_SYMBOL(lbKeyOn)+0x19,%al
 		jne    jump_10624
 		cmp    $0x1,%ebx
 		jne    jump_10624
 		mov    %edx,%ebx
 	jump_10624:
-		cmp    data_5e29d,%al
+		cmp    EXPORT_SYMBOL(lbKeyOn)+0x19,%al
 		je     jump_10633
 		cmp    $0x2,%ebx
 		jne    jump_10633
 		mov    %ebp,%ebx
 	jump_10633:
-		cmp    data_5e29d,%al
+		cmp    EXPORT_SYMBOL(lbKeyOn)+0x19,%al
 		jne    jump_10611
 		cmp    $0x3,%ebx
 		jne    jump_10611
@@ -1115,7 +1115,7 @@ func_10cd9:
 		jne    jump_10d61
 		test   %edx,%edx
 		je     jump_10d91
-		cmpb   $0x0,data_5e2b2
+		cmpb   $0x0,EXPORT_SYMBOL(lbKeyOn)+0x2e
 		je     jump_10e0f
 		cmpb   $0x0,EXPORT_SYMBOL(cheats_mission)
 		je     jump_10e0f
@@ -1152,14 +1152,14 @@ func_10cd9:
 		test   $0x4,%bl
 		je     jump_10e0f
 	jump_10de4:
-		cmpb   $0x0,data_5e2bd
+		cmpb   $0x0,EXPORT_SYMBOL(lbKeyOn)+0x39
 		jne    jump_10df6
 		cmpb   $0x0,EXPORT_SYMBOL(lbKeyOn)+0x01	/* lbKeyOn[KC_ESCAPE] */
 		je     jump_10e0f
 	jump_10df6:
 		mov    $0x1,%al
 	jump_10df8:
-		cmp    data_5e2bd,%al
+		cmp    EXPORT_SYMBOL(lbKeyOn)+0x39,%al
 		je     jump_10df8
 		cmp    EXPORT_SYMBOL(lbKeyOn)+0x01,%al	/* lbKeyOn[KC_ESCAPE] */
 		je     jump_10df8
@@ -1735,10 +1735,10 @@ mission_briefing:	/* 0x10e60 */
 		mov    %ebx,0x46(%ebp)
 		mov    %cl,0x6e(%ebp)
 	jump_114e4:
-		cmpb   $0x0,data_5e2a0
+		cmpb   $0x0,EXPORT_SYMBOL(lbKeyOn)+0x1c	/* lbKeyOn[KC_RETURN] */
 		je     jump_11508
 		xor    %al,%al
-		mov    %al,data_5e2a0
+		mov    %al,EXPORT_SYMBOL(lbKeyOn)+0x1c	/* lbKeyOn[KC_RETURN] */
 		xor    %eax,%eax
 		mov    $0x7,%edx
 		mov    %eax,AniSpeed
@@ -10492,7 +10492,7 @@ configure_company:	/* 0x175c0 */
 		call   PlaceMouse_A
 		call   LbScreenSwapMCGA
 		call   RemoveMouse_A
-		cmpb   $0x0,data_5e2a0
+		cmpb   $0x0,EXPORT_SYMBOL(lbKeyOn)+0x1c	/* lbKeyOn[KC_RETURN] */
 		je     jump_17c63
 		cmpb   $0x1,0xe0(%esp)
 		jne    jump_17c63
@@ -10501,7 +10501,7 @@ configure_company:	/* 0x175c0 */
 		mov    0xdc(%esp),%al
 		xor    %ah,%ah
 		mov    %al,0xcc(%esp)
-		mov    %ah,data_5e2a0
+		mov    %ah,EXPORT_SYMBOL(lbKeyOn)+0x1c	/* lbKeyOn[KC_RETURN] */
 		mov    %ah,0xe0(%esp)
 	jump_17c63:
 		cmpb   $0x0,lbDisplay__LeftButton
@@ -10515,7 +10515,7 @@ configure_company:	/* 0x175c0 */
 		cmpw   $0x172,lbDisplay__MouseY
 		jb     jump_17ca4
 	jump_17c97:
-		cmpb   $0x0,data_5e2a0
+		cmpb   $0x0,EXPORT_SYMBOL(lbKeyOn)+0x1c	/* lbKeyOn[KC_RETURN] */
 		je     jump_17e05
 	jump_17ca4:
 		cmpw   $0x0,0xc0(%esp)
@@ -10606,7 +10606,7 @@ configure_company:	/* 0x175c0 */
 		jmp    jump_17dfd
 	jump_17df5:
 		xor    %cl,%cl
-		mov    %cl,data_5e2a0
+		mov    %cl,EXPORT_SYMBOL(lbKeyOn)+0x1c	/* lbKeyOn[KC_RETURN] */
 	jump_17dfd:
 		xor    %bl,%bl
 		mov    %bl,lbDisplay__LeftButton
@@ -11401,48 +11401,48 @@ process_day:	/* 0x18810 */
 		mov    0x1c(%esp),%esi
 		xor    %ah,%ah
 		mov    %ah,(%esp)
-		cmpb   $0x0,data_5e2bf
+		cmpb   $0x0,EXPORT_SYMBOL(lbKeyOn)+0x3b
 		je     jump_18846
 	jump_1882f:
-		cmpb   $0x1,data_5e2bf
+		cmpb   $0x1,EXPORT_SYMBOL(lbKeyOn)+0x3b
 		je     jump_1882f
 		mov    SoundActive,%al
 		inc    %al
 		and    $0x1,%al
 		mov    %al,SoundActive
 	jump_18846:
-		cmpb   $0x0,data_5e2c0
+		cmpb   $0x0,EXPORT_SYMBOL(lbKeyOn)+0x3c
 		je     jump_18866
 	jump_1884f:
-		cmpb   $0x1,data_5e2c0
+		cmpb   $0x1,EXPORT_SYMBOL(lbKeyOn)+0x3c
 		je     jump_1884f
 		mov    MusicActive,%al
 		inc    %al
 		and    $0x1,%al
 		mov    %al,MusicActive
 	jump_18866:
-		cmpb   $0x0,data_5e2c1
+		cmpb   $0x0,EXPORT_SYMBOL(lbKeyOn)+0x3d	/* lbKeyOn[KC_F3] */
 		je     jump_1887d
 		test   %edi,%edi
 		jbe    jump_1887d
 	jump_18873:
-		cmpb   $0x1,data_5e2c1
+		cmpb   $0x1,EXPORT_SYMBOL(lbKeyOn)+0x3d	/* lbKeyOn[KC_F3] */
 		je     jump_18873
 		dec    %edi
 	jump_1887d:
-		cmpb   $0x0,data_5e2c2
+		cmpb   $0x0,EXPORT_SYMBOL(lbKeyOn)+0x3e
 		je     jump_18895
 		cmp    $0xc,%edi
 		jae    jump_18895
 	jump_1888b:
-		cmpb   $0x1,data_5e2c2
+		cmpb   $0x1,EXPORT_SYMBOL(lbKeyOn)+0x3e
 		je     jump_1888b
 		inc    %edi
 	jump_18895:
-		cmpb   $0x0,data_5e2c3
+		cmpb   $0x0,EXPORT_SYMBOL(lbKeyOn)+0x3f
 		je     jump_188b5
 	jump_1889e:
-		cmpb   $0x1,data_5e2c3
+		cmpb   $0x1,EXPORT_SYMBOL(lbKeyOn)+0x3f
 		je     jump_1889e
 		mov    ScannerPulse,%al
 		inc    %al
@@ -12067,7 +12067,7 @@ debrief:	/* 0x18ff0 */
 		mov    %cl,lbDisplay__LeftButton
 		mov    %cl,lbDisplay__RightButton
 		mov    %cl,EXPORT_SYMBOL(lbKeyOn)+0x01	/* lbKeyOn[KC_ESCAPE] */
-		mov    %cl,data_5e2a0
+		mov    %cl,EXPORT_SYMBOL(lbKeyOn)+0x1c	/* lbKeyOn[KC_RETURN] */
 		mov    %cl,-0x10(%ebp)
 	jump_1903d:
 		movswl Network__Slot,%edx
@@ -19245,19 +19245,19 @@ scroll_map:	/* 0x1e400 */
 /*----------------------------------------------------------------*/
 		mov    0x4(%esp),%edx
 		mov    0x8(%esp),%eax
-		cmpb   $0x0,data_5e2cc
+		cmpb   $0x0,EXPORT_SYMBOL(lbKeyOn)+0x48
 		je     jump_1e413
 		xor    %eax,%eax
 	jump_1e413:
-		cmpb   $0x0,data_5e2cf
+		cmpb   $0x0,EXPORT_SYMBOL(lbKeyOn)+0x4b
 		je     jump_1e41e
 		xor    %edx,%edx
 	jump_1e41e:
-		cmpb   $0x0,data_5e2d4
+		cmpb   $0x0,EXPORT_SYMBOL(lbKeyOn)+0x50	/* lbKeyOn[KC_NUMPAD2] */
 		je     jump_1e42c
 		mov    $0x18e,%eax
 	jump_1e42c:
-		cmpb   $0x0,data_5e2d1
+		cmpb   $0x0,EXPORT_SYMBOL(lbKeyOn)+0x4d
 		je     jump_1e43c
 		mov    $0x27e,%edx
 		jmp    jump_1e458
@@ -27986,7 +27986,7 @@ multi_play:	/* 0x25580 */
 		cmp    %edx,%eax
 		jl     jump_255f6
 		mov    $0x6,%esi
-		cmpb   $0x0,data_5e2c7
+		cmpb   $0x0,EXPORT_SYMBOL(lbKeyOn)+0x43
 		jne    jump_25627
 		test   %di,%di
 		je     jump_256e2
@@ -31596,7 +31596,7 @@ map_selection:	/* 0x27e00 */
 		push   %eax
 		call   draw_connecting_cities
 		add    $0x8,%esp
-		cmpb   $0x0,data_5e2b2
+		cmpb   $0x0,EXPORT_SYMBOL(lbKeyOn)+0x2e
 		je     jump_27f62
 		cmpb   $0x0,EXPORT_SYMBOL(cheats_mission)
 		je     jump_27f62
@@ -31782,7 +31782,7 @@ map_selection:	/* 0x27e00 */
 		xor    %eax,%eax
 		jmp    jump_2847e
 	jump_2822f:
-		cmpb   $0x0,data_5e2a0
+		cmpb   $0x0,EXPORT_SYMBOL(lbKeyOn)+0x1c	/* lbKeyOn[KC_RETURN] */
 		je     jump_28294
 		xor    %eax,%eax
 		mov    data_55030,%al
@@ -39358,7 +39358,7 @@ make_packet:	/* 0x2d610 */
 		mov    %eax,(%esp)
 		jmp    jump_2e474
 	jump_2d63a:
-		cmpb   $0x0,data_5e2a4
+		cmpb   $0x0,EXPORT_SYMBOL(lbKeyOn)+0x20	/* lbKeyOn[KC_D] */
 		je     jump_2d65f
 		cmpb   $0x0,EXPORT_SYMBOL(is_multiplayer_game)
 		jne    jump_2d65f
@@ -39388,11 +39388,11 @@ make_packet:	/* 0x2d610 */
 		je     jump_2d6a7
 		movw   $0x4,data_5e124
 	jump_2d6a7:
-		cmpb   $0x0,data_5e297
+		cmpb   $0x0,EXPORT_SYMBOL(lbKeyOn)+0x13
 		je     jump_2d6d5
-		cmpb   $0x0,data_5e296
+		cmpb   $0x0,EXPORT_SYMBOL(lbKeyOn)+0x12
 		je     jump_2d6d5
-		cmpb   $0x0,data_5e2a3
+		cmpb   $0x0,EXPORT_SYMBOL(lbKeyOn)+0x1f
 		je     jump_2d6d5
 		xor    %esi,%esi
 		movb   $0x17,0xd(%ebx)
@@ -54119,7 +54119,7 @@ func_37800:
 	jump_37883:
 		cmpl   $0x6,0x4(%esp)
 		je     jump_37c36
-		cmpb   $0x0,data_5e2c8
+		cmpb   $0x0,EXPORT_SYMBOL(lbKeyOn)+0x44
 		je     jump_3789f
 		movl   $0x6,0x4(%esp)
 	jump_3789f:
@@ -56355,17 +56355,17 @@ get_line:	/* 0x390c0 */
 		mov    0x84(%esp),%eax
 		xor    %bh,%bh
 		movw   $0x0,(%eax)
-		mov    %bh,data_5e2a0
+		mov    %bh,EXPORT_SYMBOL(lbKeyOn)+0x1c	/* lbKeyOn[KC_RETURN] */
 		jmp    jump_392df
 	jump_391c8:
 		movw   $0x0,(%esi)
 		xor    %bl,%bl
-		mov    %bl,data_5e2cb
+		mov    %bl,EXPORT_SYMBOL(lbKeyOn)+0x47
 		jmp    jump_392df
 	jump_391da:
 		xor    %ah,%ah
 		mov    %di,(%esi)
-		mov    %ah,data_5e2d3
+		mov    %ah,EXPORT_SYMBOL(lbKeyOn)+0x4f
 		jmp    jump_392df
 	jump_391ea:
 		mov    (%esi),%ax
@@ -56376,7 +56376,7 @@ get_line:	/* 0x390c0 */
 		mov    %dx,(%esi)
 	jump_391f8:
 		xor    %dh,%dh
-		mov    %dh,data_5e2cf
+		mov    %dh,EXPORT_SYMBOL(lbKeyOn)+0x4b
 		jmp    jump_392df
 	jump_39205:
 		mov    (%esi),%cx
@@ -56387,13 +56387,13 @@ get_line:	/* 0x390c0 */
 		mov    %di,(%esi)
 	jump_39214:
 		xor    %dl,%dl
-		mov    %dl,data_5e2d1
+		mov    %dl,EXPORT_SYMBOL(lbKeyOn)+0x4d
 		jmp    jump_392df
 	jump_39221:
 		mov    (%esi),%bx
 		cmp    %bx,%di
 		jbe    jump_39265
-		cmpb   $0x0,data_5e2a1
+		cmpb   $0x0,EXPORT_SYMBOL(lbKeyOn)+0x1d
 		je     jump_39245
 		xor    %eax,%eax
 		mov    0x88(%esp),%edx
@@ -56417,12 +56417,12 @@ get_line:	/* 0x390c0 */
 		jne    jump_39258
 	jump_39265:
 		xor    %bl,%bl
-		mov    %bl,data_5e2d7
+		mov    %bl,EXPORT_SYMBOL(lbKeyOn)+0x53
 		jmp    jump_392df
 	jump_39272:
 		cmpw   $0x0,(%esi)
 		je     jump_392d0
-		cmpb   $0x0,data_5e2a1
+		cmpb   $0x0,EXPORT_SYMBOL(lbKeyOn)+0x1d
 		je     jump_392ac
 		xor    %ebx,%ebx
 		mov    (%esi),%bx
@@ -84997,55 +84997,8 @@ next_mission_countries:	/* 0x5e13c */
 data_5e144:
 		.fill   0x140
 ASM_lbKeyOn:	/* 0x5e284 */
-		.fill   0x0e
-		.fill   0x4
-data_5e296:
-		.ascii  "\x00"
-data_5e297:
-		.fill   0x6
-data_5e29d:
-		.ascii  "\x00\x00\x00"
-data_5e2a0:
-		.ascii  "\x00"
-data_5e2a1:
-		.ascii  "\x00\x00"
-data_5e2a3:
-		.ascii  "\x00"
-data_5e2a4:
-		.fill   0xe
-data_5e2b2:
-		.fill   0xb
-data_5e2bd:
-		.ascii  "\x00\x00"
-data_5e2bf:
-		.ascii  "\x00"
-data_5e2c0:
-		.ascii  "\x00"
-data_5e2c1:
-		.ascii  "\x00"
-data_5e2c2:
-		.ascii  "\x00"
-data_5e2c3:
-		.fill   0x4
-data_5e2c7:
-		.ascii  "\x00"
-data_5e2c8:
-		.ascii  "\x00\x00\x00"
-data_5e2cb:
-		.ascii  "\x00"
-data_5e2cc:
-		.ascii  "\x00\x00\x00"
-data_5e2cf:
-		.ascii  "\x00\x00"
-data_5e2d1:
-		.ascii  "\x00\x00"
-data_5e2d3:
-		.ascii  "\x00"
-data_5e2d4:
-		.ascii  "\x00\x00\x00"
-data_5e2d7:
-		.fill   0x2d
-lbKeyOn2:	/* 0x5e304 */
+		.fill   0x80
+ASM_lbKeyOn2:	/* 0x5e304 */
 		.fill   0x80
 data_5e384:
 		.fill   0x10
