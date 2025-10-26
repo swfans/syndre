@@ -324,7 +324,7 @@ int main (int argc, char **argv)
         //TODO OpenIKeyboard_0();
         syndicate();
 
-        tmend = LbTimerClock() + 72 * 5000/91; // 1 from int08 timer is 10000/182 miliseconds
+        tmend = LbTimerClock() + 72 * 5000/91; // 1 from int08 timer is 1000/18.2 miliseconds
         LbSleepUntil(tmend);
 
         //TODO CloseIKeyboard();

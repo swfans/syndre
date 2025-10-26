@@ -61449,12 +61449,20 @@ AniPlay:	/* 0x3c558 */
 		mov    %eax,AniFileHandle
 		movw   $0x0,CurrFrame
 		movw   $0x0,loop_count
+#if 0 /* get time in sec/100 */
 		mov    $0x2c,%ah
 		int    $0x21
 		mov    $0x64,%ax
 		mul    %dh
 		mov    $0x0,%dh
 		add    %ax,%dx
+#else
+		call   ac_LbTimerClock
+		mov    $0x0a,%cx
+		mov    $0x0,%dx
+		idiv   %cx
+		mov    %ax,%dx
+#endif
 		mov    %dx,old_time
 	jump_3c5cc:
 		mov    $0x4,%eax
@@ -61886,12 +61894,20 @@ DelayTimer:	/* 0x3ca52 */
 		push   %cx
 		push   %dx
 	jump_3ca63:
+#if 0 /* get time in sec/100 */
 		mov    $0x2c,%ah
 		int    $0x21
 		mov    $0x64,%ax
 		mul    %dh
 		mov    $0x0,%dh
 		add    %ax,%dx
+#else
+		call   ac_LbTimerClock
+		mov    $0x0a,%cx
+		mov    $0x0,%dx
+		idiv   %cx
+		mov    %ax,%dx
+#endif
 		mov    %dx,%cx
 		sub    old_time,%dx
 		cmp    $0x0,%dx
