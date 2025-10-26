@@ -53880,6 +53880,7 @@ LbDrawText:	/* 0x374f0 */
 		pop    %esi
 		pop    %ebx
 		ret
+
 jpt_3775C:	/* 0x375c0 */
 		.long   func_377f8
 		.long   func_37800
@@ -54010,9 +54011,7 @@ select:	/* 0x37600 */
 		jmp    *%cs:jpt_3775C(,%eax,4)
 
 
-/*----------------------------------------------------------------*/
 func_37764:
-/*----------------------------------------------------------------*/
 		push   $sound_array
 		mov    $0xf,%edx
 		mov    $AniName,%edi
@@ -54030,6 +54029,7 @@ func_37764:
 		jne    jump_377b2
 	jump_37797:
 #if !defined(DOS) /* add input refresh, as otherwise this is just an infinite loop */
+		call   ac_LbScreenSwap
 		call   ac_game_update
 #endif
 		cmpb   $0x0,lbDisplay__MLeftButton
@@ -54045,9 +54045,7 @@ func_37764:
 		mov    %ebp,AniSpeed
 
 
-/*----------------------------------------------------------------*/
 func_377c5:
-/*----------------------------------------------------------------*/
 		mov    $AniName,%edi
 		mov    $aDataMscrenupDa,%esi
 		push   $0x1
@@ -54067,17 +54065,13 @@ func_377c5:
 		mov    %ch,data_55591
 
 
-/*----------------------------------------------------------------*/
 func_377f8:
-/*----------------------------------------------------------------*/
 		xor    %eax,%eax
 		mov    %eax,0x4(%esp)
 		jmp    def_3775C
 
 
-/*----------------------------------------------------------------*/
 func_37800:
-/*----------------------------------------------------------------*/
 		mov    $AniName,%edi
 		mov    $aDataMscrenupDa,%esi
 		push   $0x1

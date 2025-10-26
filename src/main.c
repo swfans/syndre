@@ -4,6 +4,7 @@
 
 #include "bfdata.h"
 #include "bffile.h"
+#include "bfkeybd.h"
 #include "bflog.h"
 #include "bfmemory.h"
 #include "bfmouse.h"
@@ -304,11 +305,11 @@ int main (int argc, char **argv)
     LbMouseSetup(mouse_sprite, 256, 256);
 
     nullsub_3();
-# if 1
-    InitSound();
-# else
+# if defined(DOS)
     if (SoundAble)
         SoundAble = init_sound(sndcard_irq, sndcard_dma, sndcard_ioaddr);
+# else
+    InitSound();
 # endif
     if (MusicAble)
         MusicAble = InitMIDI("data/syngame.xmi", "data/gamefm.dll", sndcard_irq, sndcard_dma, sndcard_ioaddr);
@@ -321,13 +322,21 @@ int main (int argc, char **argv)
     {
         TbClockMSec tmend;
 
-        //TODO OpenIKeyboard_0();
+# if defined(DOS)
+        OpenIKeyboard_0();
+# else
+        LbIKeyboardOpen();
+# endif
         syndicate();
 
         tmend = LbTimerClock() + 72 * 5000/91; // 1 from int08 timer is 1000/18.2 miliseconds
         LbSleepUntil(tmend);
 
-        //TODO CloseIKeyboard();
+# if defined(DOS)
+        CloseIKeyboard();
+# else
+        LbIKeyboardClose();
+# endif
     }
     reset_input();
     LbDataFreeAll(load_files_vres16);
