@@ -54157,7 +54157,11 @@ func_37800:
 	jump_37883:
 		cmpl   $0x6,0x4(%esp)
 		je     jump_37c36
-		cmpb   $0x0,EXPORT_SYMBOL(lbKeyOn)+0x44
+#if !defined(DOS) /* add input refresh, as otherwise this is just an infinite loop */
+		call   ac_LbScreenSwap
+		call   ac_game_update
+#endif
+		cmpb   $0x0,EXPORT_SYMBOL(lbKeyOn)+0x44	/* lbKeyOn[KC_F10] */
 		je     jump_3789f
 		movl   $0x6,0x4(%esp)
 	jump_3789f:
