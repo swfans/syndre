@@ -8,6 +8,7 @@
 #include "bfscreen.h"
 #include "bfscrsurf.h"
 
+#include "applog.h"
 #include "display.h"
 #include "util.h"
 
@@ -46,6 +47,7 @@ TbResult AppScreenSetup(TbScreenMode mode)
     TbScreenModeInfo *mdinfo;
 
     mdinfo = LbScreenGetModeInfo(mode);
+    LOGSYNC("Entering mode %d, %dx%d", (int)mode, (int)mdinfo->Width, (int)mdinfo->Height);
     return LbScreenSetup(mode, mdinfo->Width, mdinfo->Height, GraphicsPalette);
 }
 

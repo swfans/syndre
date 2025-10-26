@@ -11295,7 +11295,7 @@ draw_logo:	/* 0x186f0 */
 		mov    0x1c(%esp),%ax
 		mov    player_colour_for_map(%ecx),%cl
 		add    %esi,%eax
-		mov    WScreen,%esi
+		mov    EXPORT_SYMBOL(lbDisplay)+0x04,%esi	/* lbDisplay.WScreen */
 		mov    0x28(%esp),%ch
 		add    %esi,%eax
 		test   %ch,%ch
@@ -27634,11 +27634,11 @@ init_level_data:	/* 0x25110 */
 		call   LbFileReadRNC
 		add    $0x8,%esp
 		push   $0x0
-		mov    WScreen,%ecx
+		mov    EXPORT_SYMBOL(lbDisplay)+0x04,%ecx	/* lbDisplay.WScreen */
 		push   %ecx
 		call   LbScreenSurfaceClear
 		add    $0x8,%esp
-		mov    WScreen,%esi
+		mov    EXPORT_SYMBOL(lbDisplay)+0x04,%esi	/* lbDisplay.WScreen */
 		push   %esi
 		call   ac_LbPaletteSet
 		mov    EXPORT_SYMBOL(pointer_sprites),%eax
@@ -27712,7 +27712,7 @@ load_map_level:	/* 0x252b0 */
 		cmp    $0x2,%ah
 		jne    jump_253a9
 		mov    $0xa0c80,%edx
-		mov    WScreen,%ebx
+		mov    EXPORT_SYMBOL(lbDisplay)+0x04,%ebx	/* lbDisplay.WScreen */
 		push   $level__Seed
 		lea    0x1f408(%ebx),%eax
 		mov    %edx,VScreen
@@ -32514,7 +32514,7 @@ draw_connecting_cities:	/* 0x28af0 */
 		test   %al,%al
 		je     jump_28c14
 		xor    %eax,%eax
-		mov    WScreen,%edx
+		mov    EXPORT_SYMBOL(lbDisplay)+0x04,%edx	/* lbDisplay.WScreen */
 		mov    (%esp),%al
 		push   %edx
 		cwtl
@@ -32559,7 +32559,7 @@ draw_connecting_cities:	/* 0x28af0 */
 		je     jump_28c85
 		xor    %al,%al
 	jump_28c85:
-		mov    WScreen,%ecx
+		mov    EXPORT_SYMBOL(lbDisplay)+0x04,%ecx	/* lbDisplay.WScreen */
 		xor    %ah,%ah
 		push   %ecx
 		cwtl
@@ -53989,7 +53989,7 @@ select:	/* 0x37600 */
 		call   ac_AppScreenSetup
 		add    $0x4,%esp
 	jump_37709:
-		mov    WScreen,%eax
+		mov    EXPORT_SYMBOL(lbDisplay)+0x04,%eax	/* lbDisplay.WScreen */
 		add    $0xfa00,%eax
 		mov    %eax,BScreen
 		add    $0xfa00,%eax
@@ -54593,7 +54593,7 @@ LbCopyScreenFromBackMCGA:	/* 0x37df0 */
 /*----------------------------------------------------------------*/
 		push   %ebx
 		mov    $0x3e7f,%ebx
-		mov    WScreen,%edx
+		mov    EXPORT_SYMBOL(lbDisplay)+0x04,%edx	/* lbDisplay.WScreen */
 		mov    BScreen,%eax
 		lea    0x0(%eax),%eax
 		lea    0x0(%edx),%edx
@@ -54623,7 +54623,7 @@ LbCopyScreenToBackMCGA:	/* 0x37e40 */
 		push   %ebx
 		mov    $0x3e7f,%ebx
 		mov    BScreen,%edx
-		mov    WScreen,%eax
+		mov    EXPORT_SYMBOL(lbDisplay)+0x04,%eax	/* lbDisplay.WScreen */
 		lea    0x0(%eax),%eax
 		lea    0x0(%edx),%edx
 		lea    0x0(%eax),%eax
@@ -54652,7 +54652,7 @@ LbScreenSwapMCGA:	/* 0x37e90 */
 		push   %ebx
 		mov    $0xa0000,%eax
 		mov    $0x3e80,%ebx
-		mov    WScreen,%edx
+		mov    EXPORT_SYMBOL(lbDisplay)+0x04,%edx	/* lbDisplay.WScreen */
 		lea    0x0(%eax),%eax
 		lea    0x0(%edx),%edx
 		lea    0x0(%eax),%eax
@@ -54736,7 +54736,7 @@ level_finished:	/* 0x37f80 */
 		xor    %ah,%ah
 		mov    %ah,0x4(%esp)
 		mov    %ah,(%esp)
-		mov    WScreen,%eax
+		mov    EXPORT_SYMBOL(lbDisplay)+0x04,%eax	/* lbDisplay.WScreen */
 		mov    $0x1,%dh
 		add    $0x1f400,%eax
 		push   $0x13
@@ -56198,8 +56198,8 @@ new_show_text:	/* 0x38f50 */
 		cmpb   $0x0,0x40(%esp)
 		je     jump_39025
 		mov    BScreen,%eax
-		mov    WScreen,%ebp
-		mov    %eax,WScreen
+		mov    EXPORT_SYMBOL(lbDisplay)+0x04,%ebp	/* lbDisplay.WScreen */
+		mov    %eax,EXPORT_SYMBOL(lbDisplay)+0x04	/* lbDisplay.WScreen */
 	jump_39025:
 		xor    %eax,%eax
 		xor    %edx,%edx
@@ -56232,7 +56232,7 @@ new_show_text:	/* 0x38f50 */
 		add    %eax,%ebx
 		test   %dh,%dh
 		je     jump_390aa
-		mov    %ebp,WScreen
+		mov    %ebp,EXPORT_SYMBOL(lbDisplay)+0x04	/* lbDisplay.WScreen */
 		incb   (%esp)
 		jmp    jump_38f64
 	jump_3908a:
@@ -61503,10 +61503,15 @@ AniPlay:	/* 0x3c558 */
 		push   %ecx
 		push   %edi
 		push   %esi
+#if 0
 		mov    $0xa0000,%edi
-		mov    WScreen,%esi
+		mov    EXPORT_SYMBOL(lbDisplay)+0x04,%esi	/* lbDisplay.WScreen */
 		mov    $0x3e80,%ecx
 		rep movsl %ds:(%esi),%es:(%edi)
+#else
+		call   ac_LbScreenSwap
+//WIP - now need to decide how to handle screen buffer
+#endif
 		pop    %esi
 		pop    %edi
 		pop    %ecx
@@ -61758,7 +61763,7 @@ decode_SS2:	/* 0x3c8eb */
 		push   AniFileHandle
 		call   ac_read
 		add    $0xc,%esp
-		mov    WScreen,%esi
+		mov    EXPORT_SYMBOL(lbDisplay)+0x04,%esi	/* lbDisplay.WScreen */
 		mov    BScreen,%edi
 		mov    (%edi),%ax
 		mov    %ax,-0x8(%ebp)
@@ -61843,7 +61848,7 @@ decode_BRUN:	/* 0x3c9c4 */
 		push   AniFileHandle
 		call   ac_read
 		add    $0xc,%esp
-		mov    WScreen,%esi
+		mov    EXPORT_SYMBOL(lbDisplay)+0x04,%esi	/* lbDisplay.WScreen */
 		mov    BScreen,%edi
 		mov    -0x4(%ebp),%bx
 	jump_3ca0d:
@@ -62728,7 +62733,7 @@ PlaceMouse_A:	/* 0x4165e */
 		push   %edi
 		push   %esi
 		movw   $0x1,EXPORT_SYMBOL(MouseSwap)
-		mov    WScreen,%eax
+		mov    EXPORT_SYMBOL(lbDisplay)+0x04,%eax	/* lbDisplay.WScreen */
 		mov    %eax,ScrSeg
 		call   BackupMouse
 		cmpb   $0x1,EXPORT_SYMBOL(DrawFlags)
@@ -62790,7 +62795,7 @@ PlaceMouse_B:	/* 0x416ef */
 		push   %edi
 		push   %esi
 		movw   $0x1,EXPORT_SYMBOL(MouseSwap)
-		mov    WScreen,%eax
+		mov    EXPORT_SYMBOL(lbDisplay)+0x04,%eax	/* lbDisplay.WScreen */
 		mov    %eax,ScrSeg
 		cmpb   $0x1,EXPORT_SYMBOL(DrawFlags)
 		jne    jump_4173a
@@ -62903,7 +62908,7 @@ UndrawWMouse:	/* 0x417e2 */
 		cmp    $0x0,%bx
 		je     jump_419a2
 		movzwl %bx,%ebx
-		mov    $WScreen,%edx
+		mov    $EXPORT_SYMBOL(lbDisplay)+0x04,%edx	/* lbDisplay.WScreen */
 		add    %edx,%edi
 		mov    %ds,%cx
 		mov    %cx,%es
@@ -62940,7 +62945,7 @@ UndrawWMouse:	/* 0x417e2 */
 	jump_418d3:
 		add    $0x7,%bx
 		shr    $0x3,%bx
-		mov    WScreen,%edx
+		mov    EXPORT_SYMBOL(lbDisplay)+0x04,%edx	/* lbDisplay.WScreen */
 		add    %edx,%edi
 		mov    %ds,%cx
 		mov    %cx,%es
@@ -62988,7 +62993,7 @@ UndrawWMouse:	/* 0x417e2 */
 	jump_41968:
 		add    $0x7,%bx
 		shr    $0x3,%bx
-		mov    WScreen,%edx
+		mov    EXPORT_SYMBOL(lbDisplay)+0x04,%edx	/* lbDisplay.WScreen */
 		add    %edx,%edi
 		mov    %ds,%cx
 		mov    %cx,%es
@@ -63428,7 +63433,7 @@ vertical_line:	/* 0x41d6c */
 		mov    %ecx,%esi
 		shr    $0x3,%esi
 		add    %eax,%esi
-		add    WScreen,%esi
+		add    EXPORT_SYMBOL(lbDisplay)+0x04,%esi	/* lbDisplay.WScreen */
 		and    $0x7,%cl
 		mov    $0x80,%ax
 		shr    %cl,%ax
@@ -63576,7 +63581,7 @@ horizontal_line:	/* 0x41eee */
 		mov    %eax,%esi
 		shr    $0x3,%esi
 		add    %edi,%esi
-		add    WScreen,%esi
+		add    EXPORT_SYMBOL(lbDisplay)+0x04,%esi	/* lbDisplay.WScreen */
 		mov    %eax,%edx
 		and    $0xfff8,%eax
 		mov    %ebx,%edi
@@ -64159,7 +64164,7 @@ rectangle:	/* 0x423f8 */
 		mov    %eax,%esi
 		shr    $0x3,%esi
 		add    %edi,%esi
-		add    WScreen,%esi
+		add    EXPORT_SYMBOL(lbDisplay)+0x04,%esi	/* lbDisplay.WScreen */
 		mov    %eax,%edx
 		and    $0xfff8,%eax
 		mov    %ebx,%edi
@@ -64387,7 +64392,7 @@ func_426db:
 		mov    0x8(%ebp),%eax
 		sar    $1,%eax
 		add    %eax,%edi
-		add    WScreen,%edi
+		add    EXPORT_SYMBOL(lbDisplay)+0x04,%edi	/* lbDisplay.WScreen */
 		mov    0x14(%ebp),%edx
 		sar    $1,%edx
 		mov    0x18(%ebp),%eax
@@ -64802,7 +64807,7 @@ pixel_plot:	/* 0x42aee */
 		imul   $0x280,%eax,%esi
 		add    %ecx,%esi
 		shr    $0x3,%esi
-		add    WScreen,%esi
+		add    EXPORT_SYMBOL(lbDisplay)+0x04,%esi	/* lbDisplay.WScreen */
 		and    $0x7,%cl
 		mov    $0x80,%ax
 		shr    %cl,%ax
@@ -64823,7 +64828,7 @@ pixel_plot:	/* 0x42aee */
 		sar    $1,%ebx
 		imul   $0x140,%ebx,%ebx
 		add    %ebx,%eax
-		add    WScreen,%eax
+		add    EXPORT_SYMBOL(lbDisplay)+0x04,%eax	/* lbDisplay.WScreen */
 		mov    0x10(%ebp),%ebx
 		mov    %bl,(%eax)
 	jump_42b90:
@@ -65869,7 +65874,7 @@ func_439b2:
 		add    %ebx,%eax
 		mov    0x18(%ebp),%edi
 		add    0x1c(%ebp),%edi
-		add    WScreen,%edi
+		add    EXPORT_SYMBOL(lbDisplay)+0x04,%edi	/* lbDisplay.WScreen */
 		add    $0x10,%edi
 		call   func_42f98
 		jmp    jump_43a76
@@ -65892,7 +65897,7 @@ func_439b2:
 		add    %ebx,%eax
 		mov    0x18(%ebp),%edi
 		add    0x1c(%ebp),%edi
-		add    WScreen,%edi
+		add    EXPORT_SYMBOL(lbDisplay)+0x04,%edi	/* lbDisplay.WScreen */
 		add    $0x10,%edi
 		call   func_43513
 	jump_43a76:
@@ -65928,7 +65933,7 @@ func_439b2:
 		add    %ebx,%eax
 		mov    0x18(%ebp),%edi
 		add    0x1c(%ebp),%edi
-		add    WScreen,%edi
+		add    EXPORT_SYMBOL(lbDisplay)+0x04,%edi	/* lbDisplay.WScreen */
 		add    $0x10,%edi
 		call   func_42f98
 		jmp    jump_43b48
@@ -65951,7 +65956,7 @@ func_439b2:
 		add    %ebx,%eax
 		mov    0x18(%ebp),%edi
 		add    0x1c(%ebp),%edi
-		add    WScreen,%edi
+		add    EXPORT_SYMBOL(lbDisplay)+0x04,%edi	/* lbDisplay.WScreen */
 		add    $0x10,%edi
 		call   func_43513
 	jump_43b48:
@@ -75087,7 +75092,7 @@ func_4c32f:
 		testb  $0x2,EXPORT_SYMBOL(DrawFlags)
 		je     jump_4c406
 		mov    UScreen,%esi
-		mov    WScreen,%edi
+		mov    EXPORT_SYMBOL(lbDisplay)+0x04,%edi	/* lbDisplay.WScreen */
 		mov    $0x190,%cx
 	jump_4c350:
 		mov    (%esi),%eax
@@ -75174,7 +75179,7 @@ copy_screen_cube:	/* 0x4c41f */
 		imul   $0x500,0xc(%ebp),%ebx
 		add    %ebx,%eax
 		add    $0x10,%eax
-		mov    WScreen,%edi
+		mov    EXPORT_SYMBOL(lbDisplay)+0x04,%edi	/* lbDisplay.WScreen */
 		add    %eax,%edi
 		mov    (%esi),%eax
 		mov    %eax,(%edi)
@@ -75345,7 +75350,7 @@ func_4c797:
 		je     jump_4cb58
 		imul   $0x500,0xc(%ebp),%eax
 		add    $0x10,%eax
-		mov    WScreen,%esi
+		mov    EXPORT_SYMBOL(lbDisplay)+0x04,%esi	/* lbDisplay.WScreen */
 		mov    VScreen,%edi
 		add    %eax,%esi
 		add    %eax,%edi
@@ -75639,7 +75644,7 @@ func_4cc84:
 		push   %edx
 		push   %esi
 		push   %edi
-		mov    WScreen,%esi
+		mov    EXPORT_SYMBOL(lbDisplay)+0x04,%esi	/* lbDisplay.WScreen */
 		mov    $vtable_4cb74,%edi
 		movzwl 0x8(%ebp),%eax
 		imul   $0x50,%eax,%eax
@@ -75685,7 +75690,7 @@ func_4cce7:
 		push   %edx
 		push   %esi
 		push   %edi
-		mov    WScreen,%esi
+		mov    EXPORT_SYMBOL(lbDisplay)+0x04,%esi	/* lbDisplay.WScreen */
 		mov    $vtable_4cb74,%edi
 		movzwl 0x8(%ebp),%eax
 		imul   $0x50,%eax,%eax
@@ -75732,7 +75737,7 @@ func_4cd4a:
 		testb  $0x2,EXPORT_SYMBOL(DrawFlags)
 		je     jump_4ce11
 		mov    $0x3c4,%dx
-		mov    WScreen,%esi
+		mov    EXPORT_SYMBOL(lbDisplay)+0x04,%esi	/* lbDisplay.WScreen */
 		mov    VScreen,%edi
 		mov    $0x102,%ax
 		out    %ax,(%dx)
@@ -75744,7 +75749,7 @@ func_4cd4a:
 		add    $0x40,%edi
 		dec    %ebx
 		jne    jump_4cd78
-		mov    WScreen,%esi
+		mov    EXPORT_SYMBOL(lbDisplay)+0x04,%esi	/* lbDisplay.WScreen */
 		add    $0x7d00,%esi
 		mov    VScreen,%edi
 		mov    $0x202,%ax
@@ -75757,7 +75762,7 @@ func_4cd4a:
 		add    $0x40,%edi
 		dec    %ebx
 		jne    jump_4cda5
-		mov    WScreen,%esi
+		mov    EXPORT_SYMBOL(lbDisplay)+0x04,%esi	/* lbDisplay.WScreen */
 		add    $0xfa00,%esi
 		mov    VScreen,%edi
 		mov    $0x402,%ax
@@ -75770,7 +75775,7 @@ func_4cd4a:
 		add    $0x40,%edi
 		dec    %ebx
 		jne    jump_4cdd2
-		mov    WScreen,%esi
+		mov    EXPORT_SYMBOL(lbDisplay)+0x04,%esi	/* lbDisplay.WScreen */
 		mov    VScreen,%edi
 		add    $0x17700,%esi
 		mov    $0x802,%ax
@@ -75843,7 +75848,7 @@ func_4ce60:
 		mov    $0x5,%ax
 		out    %ax,(%dx)
 		mov    $0xc4,%dl
-		mov    WScreen,%esi
+		mov    EXPORT_SYMBOL(lbDisplay)+0x04,%esi	/* lbDisplay.WScreen */
 		mov    VScreen,%edi
 		mov    $0x32,%ebx
 	jump_4ce8a:
@@ -75899,7 +75904,7 @@ DrawASpriteHires16_A:	/* 0x4cef2 */
 		mov    0x5(%edi),%ch
 		mov    (%edi),%esi
 		mov    0x14(%ebp),%dx
-		mov    WScreen,%edi
+		mov    EXPORT_SYMBOL(lbDisplay)+0x04,%edi	/* lbDisplay.WScreen */
 		call   DrawSpriteLores16
 		pop    %edi
 		pop    %esi
@@ -75976,7 +75981,7 @@ LbSpriteDrawMCGA:	/* 0x4cf80 */
 		mov    0x10(%ebp),%esi
 		movswl 0x8(%ebp),%ebx
 		movswl 0xc(%ebp),%ecx
-		mov    WScreen,%edi
+		mov    EXPORT_SYMBOL(lbDisplay)+0x04,%edi	/* lbDisplay.WScreen */
 		mov    0x4(%esi),%dl
 		mov    0x5(%esi),%dh
 		mov    $0x0,%eax
@@ -79028,7 +79033,7 @@ func_4f52f:
 		sar    $0x3,%ax
 		add    %ax,%bx
 		and    $0xffff,%ebx
-		add    WScreen,%ebx
+		add    EXPORT_SYMBOL(lbDisplay)+0x04,%ebx	/* lbDisplay.WScreen */
 		pop    %ax
 		and    $0x7,%ax
 		xchg   %ax,%cx
@@ -79118,7 +79123,7 @@ func_4f5f6:
 		sar    $0x3,%ax
 		add    %ax,%bx
 		and    $0xffff,%ebx
-		add    WScreen,%ebx
+		add    EXPORT_SYMBOL(lbDisplay)+0x04,%ebx	/* lbDisplay.WScreen */
 		pop    %ax
 		and    $0x7,%ax
 		xchg   %ax,%cx
@@ -79195,7 +79200,7 @@ rprint:	/* 0x4f69b */
 		shr    $0x3,%eax
 		imul   $0x50,%ebx,%ebx
 		add    %eax,%ebx
-		add    WScreen,%ebx
+		add    EXPORT_SYMBOL(lbDisplay)+0x04,%ebx	/* lbDisplay.WScreen */
 		mov    %ebx,-0xc(%ebp)
 		mov    %ebx,-0x8(%ebp)
 		movzwl 0x14(%ebp),%eax
@@ -79472,7 +79477,7 @@ LbCopyScreenBox:	/* 0x4f96c */
 		imul   $0x500,0x14(%ebp),%edi
 		add    %eax,%edi
 		add    BScreen,%esi
-		add    WScreen,%edi
+		add    EXPORT_SYMBOL(lbDisplay)+0x04,%edi	/* lbDisplay.WScreen */
 		mov    0x1c(%ebp),%ebx
 		shl    $0x4,%ebx
 		mov    0x18(%ebp),%eax
@@ -83223,7 +83228,7 @@ GLOBAL (sndcard_ioaddr)	/* 0x54d98 */
 GLOBAL (load_files_vres16)	/* 0x54d9c */
 		.ascii  "\x2a"
 		.fill   0x1b
-		.long   WScreen
+		.long   EXPORT_SYMBOL(lbDisplay)+0x04	/* lbDisplay.WScreen */
 		.fill   0x4
 		.ascii  "\x10\xe8\x03"
 		.fill   0x5
@@ -83247,7 +83252,7 @@ GLOBAL (load_files_vres16)	/* 0x54d9c */
 GLOBAL (load_files_mcga)		/* 0x54EA4 */
 		.ascii  "\x2a"
 		.fill   0x1b
-		.long   WScreen
+		.long   EXPORT_SYMBOL(lbDisplay)+0x04	/* lbDisplay.WScreen */
 		.fill   0x4
 		.ascii  "\x10\xe8\x03"
 		.fill   0x5
@@ -83494,7 +83499,7 @@ h_blocks:	/* 0x55360 */
 		.fill   0x4
 h_font:	/* 0x55364 */
 		.fill   0x4
-WScreen:	/* 0x55368 */
+ASM_WScreen:	/* 0x55368 */
 		.fill   0x4
 VScreen:	/* 0x5536c */
 		.fill   0x4
