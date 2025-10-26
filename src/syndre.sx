@@ -79804,7 +79804,7 @@ func_4fc4b:
 		or     %ecx,%ecx
 		je     jump_4fc7a
 		bsr    %ecx,%eax
-		movzwl func_4fc81(,%eax,2),%ebx
+		movzwl data_4fc81(,%eax,2),%ebx
 	jump_4fc63:
 		mov    %ecx,%eax
 		xor    %edx,%edx
@@ -79829,31 +79829,21 @@ func_4fc4b:
 		leave
 		ret
 
+.data
+data_4fc81:
+		.ascii  "\x01\x00\x02\x00\x02\x00\x04\x00"
+		.ascii  "\x05\x00\x08\x00\x0b\x00\x10\x00"
+		.ascii  "\x16\x00\x20\x00\x2d\x00\x40\x00"
+		.ascii  "\x5a\x00\x80\x00\xb5\x00\x00\x01"
+		.ascii  "\x6a\x01\x00\x02\xd4\x02\x00\x04"
+		.ascii  "\xa8\x05\x00\x08\x50\x0b\x00\x10"
+		.ascii  "\xa0\x16\x00\x20\x41\x2d\x00\x40"
+		.ascii  "\x82\x5a\x00\x80\x04\xb5\xff\xff"
+.text
 
 /*----------------------------------------------------------------*/
-func_4fc81:
+func_4fcc1:
 /*----------------------------------------------------------------*/
-		add    %eax,(%eax)
-		add    (%eax),%al
-		add    (%eax),%al
-		add    $0x0,%al
-		add    $0xb000800,%eax
-		add    %dl,(%eax)
-		add    %dl,(%esi)
-		add    %ah,(%eax)
-		add    %ch,0x5a004000
-		add    %al,0xb500(%eax)
-		add    %ebp,0x1(%edx)
-		add    %al,(%edx)
-		aam    $0x2
-		add    %al,(%eax,%ebp,4)
-		add    $0xb500800,%eax
-		add    %dl,(%eax)
-		mov    0x41200016,%al
-		sub    $0x5a824000,%eax
-		add    %al,-0x4afc(%eax)
-		push   %ebp
-		mov    %esp,%ebp
 		push   %dx
 		mov    $0x3c8,%dx
 		movzbw 0x8(%ebp),%ax
