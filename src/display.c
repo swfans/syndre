@@ -46,7 +46,7 @@ TbResult AppScreenSetup(TbScreenMode mode)
     TbScreenModeInfo *mdinfo;
 
     mdinfo = LbScreenGetModeInfo(mode);
-    return LbScreenSetup(mode, mdinfo->Width, mdinfo->Height, NULL);
+    return LbScreenSetup(mode, mdinfo->Width, mdinfo->Height, GraphicsPalette);
 }
 
 void display_set_full_screen(bool full_screen)

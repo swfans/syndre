@@ -42,6 +42,10 @@
 # define mkdir(path, mode) mkdir (path)
 #endif
 
+#if defined(__GNUC__) && !defined(_cdecl)
+# define _cdecl __attribute__((__cdecl__))
+#endif
+
 /******************************************************************************/
 
 void strtolower (char *string);

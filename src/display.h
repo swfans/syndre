@@ -29,6 +29,8 @@ enum DrawFlagsVals
   DrwF_Unkn04 = 0x4,
 };
 
+extern ubyte *GraphicsPalette;
+
 void display_lock (void);
 void display_unlock (void);
 const char * AppResourceMapping(short index);

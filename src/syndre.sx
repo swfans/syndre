@@ -242,7 +242,7 @@ GLOBAL_FUNC(syndicate)	/* 0x101e0 */
 		call   func_1d2c0
 		cmp    $0x2,%ebx
 		jne    jump_1028e
-		mov    out,%ecx
+		mov    EXPORT_SYMBOL(GraphicsPalette),%ecx
 		push   %ecx
 		call   ac_LbPaletteSet
 		add    $0x4,%esp
@@ -27627,7 +27627,7 @@ init_level_data:	/* 0x25110 */
 		call   ac_sprintf
 		add    $0xc,%esp
 	jump_251d3:
-		mov    out,%ebx
+		mov    EXPORT_SYMBOL(GraphicsPalette),%ebx
 		push   %ebx
 		lea    0x4(%esp),%eax
 		push   %eax
@@ -83207,7 +83207,7 @@ GLOBAL (load_files_vres16)	/* 0x54d9c */
 		.fill   0x5
 		.string "data/hpal01.dat"
 		.fill   0xc
-		.long   out
+		.long   GraphicsPalette
 		.fill   0xc
 		.string "data/hpointer.tab"
 		.fill   0xa
@@ -83231,7 +83231,7 @@ GLOBAL (load_files_mcga)		/* 0x54EA4 */
 		.fill   0x5
 		.string "data/lpal01.dat"
 		.fill   0xc
-		.long   out
+		.long   GraphicsPalette
 		.fill   0xc
 		.string "data/lpointer.tab"
 		.fill   0xa
@@ -83480,7 +83480,7 @@ BScreen:	/* 0x55370 */
 		.fill   0x4
 UScreen:	/* 0x55374 */
 		.fill   0x4
-out:	/* 0x55378 */
+GLOBAL (GraphicsPalette)	/* 0x55378 */
 		.fill   0x4
 data_5537c:
 		.ascii  "\x00\x00"

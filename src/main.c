@@ -62,12 +62,12 @@ extern struct TbLoadFiles load_files_vres16[];
 extern struct TbLoadFiles load_files_mcga[];
 
 // ASM imports with matching call convention
-int * __cdecl ApSpriteSetup_ForceHeight(struct TbSprite *p_start, struct TbSprite *p_end, ubyte *data);
-int __cdecl init_sound(ushort sc_irq, ushort sc_dma, ushort sc_ioaddr);
-int __cdecl InitMIDI(const char *fname1, char *fname2, ushort sc_irq, ushort sc_dma, ushort sc_ioaddr);
-void __cdecl reset_input(void);
-void __cdecl ShutdownMIDI(void);
-void __cdecl syndicate(void);
+int * _cdecl ApSpriteSetup_ForceHeight(struct TbSprite *p_start, struct TbSprite *p_end, ubyte *data);
+int _cdecl init_sound(ushort sc_irq, ushort sc_dma, ushort sc_ioaddr);
+int _cdecl InitMIDI(const char *fname1, char *fname2, ushort sc_irq, ushort sc_dma, ushort sc_ioaddr);
+void _cdecl reset_input(void);
+void _cdecl ShutdownMIDI(void);
+void _cdecl syndicate(void);
 
 /*
 
