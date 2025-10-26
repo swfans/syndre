@@ -195,7 +195,7 @@ check_for_danger:	/* 0x10010 */
 
 
 /*----------------------------------------------------------------*/
-syndicate:	/* 0x101e0 */
+GLOBAL_FUNC(syndicate)	/* 0x101e0 */
 /*----------------------------------------------------------------*/
 		push   %ebx
 		push   %ebp
@@ -286,7 +286,7 @@ syndicate:	/* 0x101e0 */
 		mov    Network__Slot,%ax
 		xor    %ebx,%ebx
 		push   %eax
-		mov    %edx,MouseSwap
+		mov    %edx,EXPORT_SYMBOL(MouseSwap)
 		mov    %ebx,MouseOldW
 		call   transfer_people_into_player
 		add    $0x4,%esp
@@ -2067,7 +2067,7 @@ mission_briefing:	/* 0x10e60 */
 		mov    %esi,MouseOldW
 		mov    $aDataMbrieoutDa,%esi
 		xor    %ah,%ah
-		mov    %ecx,MouseSwap
+		mov    %ecx,EXPORT_SYMBOL(MouseSwap)
 		movsl  %ds:(%esi),%es:(%edi)
 		movsl  %ds:(%esi),%es:(%edi)
 		movsl  %ds:(%esi),%es:(%edi)
@@ -10854,7 +10854,7 @@ func_18084:
 		movsl  %ds:(%esi),%es:(%edi)
 		movsl  %ds:(%esi),%es:(%edi)
 		movsw  %ds:(%esi),%es:(%edi)
-		mov    %eax,MouseSwap
+		mov    %eax,EXPORT_SYMBOL(MouseSwap)
 		push   $0x2
 		mov    %bl,lbDisplay__LeftButton
 		call   BFPlaySample
@@ -10866,7 +10866,7 @@ func_18084:
 		add    $0xc,%esp
 		call   LbCopyScreenToBackMCGA
 		xor    %edx,%edx
-		mov    %edx,MouseSwap
+		mov    %edx,EXPORT_SYMBOL(MouseSwap)
 		call   cheat
 		add    $0xe4,%esp
 		pop    %ebp
@@ -13399,7 +13399,7 @@ debrief:	/* 0x18ff0 */
 		mov    %esi,MouseOldW
 		mov    $aDataMdeoutDat,%esi
 		mov    data_553a2(,%eax,2),%ebx
-		mov    %ecx,MouseSwap
+		mov    %ecx,EXPORT_SYMBOL(MouseSwap)
 		sub    %edx,%ebx
 		movsl  %ds:(%esi),%es:(%edi)
 		movsl  %ds:(%esi),%es:(%edi)
@@ -17802,7 +17802,7 @@ func_1d2c0:
 /*----------------------------------------------------------------*/
 		push   %ebx
 		push   %esi
-		mov    mouse_sprite,%ebx
+		mov    EXPORT_SYMBOL(mouse_sprite),%ebx
 		movzbw 0x5(%ebx),%si
 		add    lbDisplay__MMouseY,%si
 		mov    0x4(%ebx),%bl
@@ -24378,7 +24378,7 @@ func_227c8:
 		mov    $aDataMseloutDat,%esi
 		xor    %edx,%edx
 		xor    %bl,%bl
-		mov    %eax,MouseSwap
+		mov    %eax,EXPORT_SYMBOL(MouseSwap)
 		mov    %edx,MouseOldW
 		movsl  %ds:(%esi),%es:(%edi)
 		movsl  %ds:(%esi),%es:(%edi)
@@ -27641,11 +27641,11 @@ init_level_data:	/* 0x25110 */
 		mov    WScreen,%esi
 		push   %esi
 		call   LbPaletteSet
-		mov    pointer_sprites,%eax
+		mov    EXPORT_SYMBOL(pointer_sprites),%eax
 		add    $0x4,%esp
 		add    $0x6,%eax
 		xor    %dh,%dh
-		mov    %eax,mouse_sprite
+		mov    %eax,EXPORT_SYMBOL(mouse_sprite)
 		mov    %dh,lbDisplay__LeftButton
 		mov    %dh,lbDisplay__RightButton
 		mov    %dh,data_60b50
@@ -30501,7 +30501,7 @@ func_27280:
 		movsl  %ds:(%esi),%es:(%edi)
 		movsl  %ds:(%esi),%es:(%edi)
 		movsw  %ds:(%esi),%es:(%edi)
-		mov    %eax,MouseSwap
+		mov    %eax,EXPORT_SYMBOL(MouseSwap)
 		push   $0x2
 		mov    %bl,lbDisplay__LeftButton
 		call   BFPlaySample
@@ -30513,7 +30513,7 @@ func_27280:
 		add    $0xc,%esp
 		xor    %ebx,%ebx
 		call   LbCopyScreenToBackMCGA
-		mov    %ebx,MouseSwap
+		mov    %ebx,EXPORT_SYMBOL(MouseSwap)
 		call   cheat
 		mov    %ebp,%eax
 		add    $0x10,%esp
@@ -30942,7 +30942,7 @@ GLOBAL_FUNC (ASM_main)	/* 0x274a0 */
 		mov    EXPORT_SYMBOL(DrawFlags),%ah
 		test   $0x2,%ah
 		je     jump_278c3
-		push   $load_files_vres16
+		push   $EXPORT_SYMBOL(load_files_vres16)
 		jmp    jump_278d5
 	jump_27786:
 		movb   $0x2,EXPORT_SYMBOL(DrawFlags)
@@ -31043,32 +31043,32 @@ GLOBAL_FUNC (ASM_main)	/* 0x274a0 */
 		mov    EXPORT_SYMBOL(DrawFlags),%ah
 		test   $0x2,%ah
 		je     jump_278c3
-		push   $load_files_vres16
+		push   $EXPORT_SYMBOL(load_files_vres16)
 		jmp    jump_278d5
 #endif
 	jump_278c3:
 		test   $0x4,%ah
 		je     jump_278dd
 		xor    %dh,%dh
-		push   $data_54ea4
+		push   $EXPORT_SYMBOL(load_files_mcga)
 		mov    %dh,EXPORT_SYMBOL(byte_60B42)
 	jump_278d5:
 		call   LbDataLoadAll
 		add    $0x4,%esp
 	jump_278dd:
-		mov    pointer_data,%ebx
+		mov    EXPORT_SYMBOL(pointer_data),%ebx
 		push   %ebx
-		mov    pointer_sprites_end,%ecx
+		mov    EXPORT_SYMBOL(pointer_sprites_end),%ecx
 		push   %ecx
-		mov    pointer_sprites,%esi
+		mov    EXPORT_SYMBOL(pointer_sprites),%esi
 		push   %esi
 		call   ApSpriteSetup_ForceHeight
-		mov    pointer_sprites,%eax
+		mov    EXPORT_SYMBOL(pointer_sprites),%eax
 		add    $0x6,%eax
-		mov    %eax,mouse_sprite
+		mov    %eax,EXPORT_SYMBOL(mouse_sprite)
 		mov    $0x1,%eax
 		add    $0xc,%esp
-		mov    %ax,MouseSwap
+		mov    %ax,EXPORT_SYMBOL(MouseSwap)
 		call   LbMouseSetup
 		call   nullsub_3
 		cmpb   $0x0,EXPORT_SYMBOL(SoundAble)
@@ -31123,7 +31123,7 @@ GLOBAL_FUNC (ASM_main)	/* 0x274a0 */
 		call   CloseIKeyboard
 	jump_279c7:
 		call   reset_input
-		push   $load_files_vres16
+		push   $EXPORT_SYMBOL(load_files_vres16)
 		call   LbDataFreeAll
 		add    $0x4,%esp
 		call   ShutdownMIDI
@@ -31302,7 +31302,7 @@ LbMouseSetup:	/* 0x27bf0 */
 
 
 /*----------------------------------------------------------------*/
-reset_input:	/* 0x27c00 */
+GLOBAL_FUNC(reset_input)	/* 0x27c00 */
 /*----------------------------------------------------------------*/
 		call   LbMouseReset
 		lea    0x0(%eax),%eax
@@ -31341,7 +31341,7 @@ LbSpriteSetup:	/* 0x27c30 */
 
 
 /*----------------------------------------------------------------*/
-ApSpriteSetup_ForceHeight:	/* 0x27c60 */
+GLOBAL_FUNC(ApSpriteSetup_ForceHeight)	/* 0x27c60 */
 /*----------------------------------------------------------------*/
 		push   %ebx
 		push   %esi
@@ -31518,12 +31518,12 @@ map_selection:	/* 0x27e00 */
 		mov    %ah,lbDisplay__RightButton
 		mov    $0x1,%edx
 		mov    %ah,EXPORT_SYMBOL(is_multiplayer_game)
-		mov    %edx,MouseSwap
+		mov    %edx,EXPORT_SYMBOL(MouseSwap)
 		call   LbDataLoadAll
 		add    $0x4,%esp
 		xor    %ebx,%ebx
 		call   display_cities
-		mov    %ebx,MouseSwap
+		mov    %ebx,EXPORT_SYMBOL(MouseSwap)
 		mov    $0x10,%edi
 	jump_27e48:
 		call   LbCopyScreenFromBackMCGA
@@ -33712,7 +33712,7 @@ func_29818:
 		mov    $AniName,%edi
 		mov    $aDataMmultoutDa,%esi
 		xor    %ecx,%ecx
-		mov    %ebx,MouseSwap
+		mov    %ebx,EXPORT_SYMBOL(MouseSwap)
 		mov    %ecx,MouseOldW
 		movsl  %ds:(%esi),%es:(%edi)
 		movsl  %ds:(%esi),%es:(%edi)
@@ -36083,7 +36083,7 @@ MouseHandler256:	/* 0x2b296 */
 		xor    %al,%al
 		mov    %al,lbDisplay__MRightButton
 	jump_2b362:
-		cmpl   $0x0,MouseSwap
+		cmpl   $0x0,EXPORT_SYMBOL(MouseSwap)
 		jne    jump_2b436
 		mov    data_60b34,%ah
 		cmp    $0x1,%ah
@@ -36097,7 +36097,7 @@ MouseHandler256:	/* 0x2b296 */
 		mov    %eax,ScrSeg
 		call   UndoMouse
 		call   BackupMouse
-		mov    mouse_sprite,%esi
+		mov    EXPORT_SYMBOL(mouse_sprite),%esi
 		xor    %eax,%eax
 		push   %esi
 		mov    MouseOldY,%ax
@@ -36119,7 +36119,7 @@ MouseHandler256:	/* 0x2b296 */
 		call   UndoMouse
 		call   BackupMouse
 		call   GetScreenBoxHires16
-		mov    mouse_sprite,%ecx
+		mov    EXPORT_SYMBOL(mouse_sprite),%ecx
 		push   %ecx
 		jmp    jump_2b415
 	jump_2b3f0:
@@ -36130,7 +36130,7 @@ MouseHandler256:	/* 0x2b296 */
 		call   UndoMouse
 		call   BackupMouse
 		call   GetScreenBoxHires16
-		mov    mouse_sprite,%ebx
+		mov    EXPORT_SYMBOL(mouse_sprite),%ebx
 		push   %ebx
 	jump_2b415:
 		mov    MouseOldX,%ax
@@ -38463,9 +38463,9 @@ func_2cca4:
 		lea    0x0(,%ecx,4),%eax
 		sub    %ecx,%eax
 		lea    (%eax,%eax,1),%ecx
-		mov    pointer_sprites,%eax
+		mov    EXPORT_SYMBOL(pointer_sprites),%eax
 		add    %ecx,%eax
-		mov    %eax,mouse_sprite
+		mov    %eax,EXPORT_SYMBOL(mouse_sprite)
 		pop    %ebp
 		pop    %edi
 		pop    %esi
@@ -38777,10 +38777,10 @@ func_2cfda:
 		lea    0x0(,%ecx,4),%eax
 		sub    %ecx,%eax
 		lea    (%eax,%eax,1),%ecx
-		mov    pointer_sprites,%eax
+		mov    EXPORT_SYMBOL(pointer_sprites),%eax
 		add    %ecx,%eax
 		add    $0x8,%esp
-		mov    %eax,mouse_sprite
+		mov    %eax,EXPORT_SYMBOL(mouse_sprite)
 		pop    %ebp
 		pop    %edi
 		pop    %esi
@@ -38795,10 +38795,10 @@ func_2d0b0:
 		mov    %si,%cx
 		lea    0x0(,%ecx,4),%eax
 		sub    %ecx,%eax
-		mov    pointer_sprites,%ecx
+		mov    EXPORT_SYMBOL(pointer_sprites),%ecx
 		add    %eax,%eax
 		add    %eax,%ecx
-		mov    %ecx,mouse_sprite
+		mov    %ecx,EXPORT_SYMBOL(mouse_sprite)
 	jump_2d0ce:
 		pop    %ebp
 		pop    %edi
@@ -51677,7 +51677,7 @@ func_359e6:
 		mov    $aDataMresoutDat,%esi
 		xor    %ebx,%ebx
 		xor    %ah,%ah
-		mov    %edx,MouseSwap
+		mov    %edx,EXPORT_SYMBOL(MouseSwap)
 		mov    %ebx,MouseOldW
 		movsl  %ds:(%esi),%es:(%edi)
 		movsl  %ds:(%esi),%es:(%edi)
@@ -53932,10 +53932,10 @@ select:	/* 0x37600 */
 		mov    m_sprites,%eax
 		xor    %ebp,%ebp
 		xor    %edx,%edx
-		mov    %edi,MouseSwap
+		mov    %edi,EXPORT_SYMBOL(MouseSwap)
 		add    $0x17a,%eax
 		mov    %ebp,MouseOldW
-		mov    %eax,mouse_sprite
+		mov    %eax,EXPORT_SYMBOL(mouse_sprite)
 		jmp    jump_37699
 	jump_3767a:
 		mov    m_spr_data,%ebx
@@ -54108,7 +54108,7 @@ func_37800:
 		add    $0x4,%esp
 		xor    %ebx,%ebx
 		mov    0x4(%esp),%ecx
-		mov    %ebx,MouseSwap
+		mov    %ebx,EXPORT_SYMBOL(MouseSwap)
 		cmp    $0xa,%ecx
 		je     jump_37c36
 		mov    $data_60b60,%eax
@@ -54229,7 +54229,7 @@ func_378c3:
 		mov    $0x1,%edx
 		mov    0x4(%esp),%ecx
 		xor    %ebx,%ebx
-		mov    %edx,MouseSwap
+		mov    %edx,EXPORT_SYMBOL(MouseSwap)
 		mov    %ebx,MouseOldW
 		test   %ecx,%ecx
 		je     jump_37a38
@@ -54278,7 +54278,7 @@ func_378c3:
 		mov    $0x1,%ecx
 		mov    0x4(%esp),%edi
 		xor    %esi,%esi
-		mov    %ecx,MouseSwap
+		mov    %ecx,EXPORT_SYMBOL(MouseSwap)
 		mov    %esi,MouseOldW
 		test   %edi,%edi
 		je     jump_37ad8
@@ -54334,11 +54334,11 @@ func_37b29:
 /*----------------------------------------------------------------*/
 		xor    %esi,%esi
 		mov    $0x1,%edi
-		mov    %esi,MouseSwap
+		mov    %esi,EXPORT_SYMBOL(MouseSwap)
 		call   map_selection
 		push   $0x2
 		mov    $aDataMmapoutDat,%esi
-		mov    %edi,MouseSwap
+		mov    %edi,EXPORT_SYMBOL(MouseSwap)
 		mov    $AniName,%edi
 		mov    %eax,%ebx
 		mov    %eax,0x8(%esp)
@@ -54454,7 +54454,7 @@ func_37bdd:
 		mov    $0x1,%eax
 		mov    %edx,MouseOldW
 		mov    0xc(%esp),%dl
-		mov    %eax,MouseSwap
+		mov    %eax,EXPORT_SYMBOL(MouseSwap)
 		test   %dl,%dl
 		je     jump_37cc7
 		push   $0x0
@@ -54695,7 +54695,7 @@ show_opt:	/* 0x37ef0 */
 		mov    $0x1,%edx
 		xor    %ebx,%ebx
 		push   $AniName
-		mov    %edx,MouseSwap
+		mov    %edx,EXPORT_SYMBOL(MouseSwap)
 		mov    %ebx,MouseOldW
 		call   ac_strcpy
 		add    $0x8,%esp
@@ -54718,7 +54718,7 @@ show_opt:	/* 0x37ef0 */
 		mov    $0x1,%edi
 		call   LbCopyScreenToBackMCGA
 		call   LbCopyScreenFromBackMCGA
-		mov    %edi,MouseSwap
+		mov    %edi,EXPORT_SYMBOL(MouseSwap)
 		pop    %edi
 		pop    %esi
 		pop    %ebx
@@ -54759,7 +54759,7 @@ level_finished:	/* 0x37f80 */
 		mov    $0x1,%ebx
 		mov    $0x5,%esi
 		xor    %ecx,%ecx
-		mov    %ebx,MouseSwap
+		mov    %ebx,EXPORT_SYMBOL(MouseSwap)
 		mov    %ecx,MouseOldW
 		mov    $0x1,%bh
 		mov    %esi,AniSpeed
@@ -54924,7 +54924,7 @@ level_finished:	/* 0x37f80 */
 	jump_38224:
 		mov    $0x1,%ebp
 		xor    %eax,%eax
-		mov    %ebp,MouseSwap
+		mov    %ebp,EXPORT_SYMBOL(MouseSwap)
 		mov    %eax,MouseOldW
 		test   %ebx,%ebx
 		je     jump_382b9
@@ -55226,7 +55226,7 @@ load_save_text:	/* 0x38540 */
 
 
 /*----------------------------------------------------------------*/
-init_sound:	/* 0x385c0 */
+GLOBAL_FUNC(init_sound)	/* 0x385c0 */
 /*----------------------------------------------------------------*/
 		push   %ebx
 		push   %esi
@@ -59701,7 +59701,7 @@ load_global_timbre:	/* 0x3b4e0 */
 
 
 /*----------------------------------------------------------------*/
-InitMIDI:	/* 0x3b5b0 */
+GLOBAL_FUNC(InitMIDI)	/* 0x3b5b0 */
 /*----------------------------------------------------------------*/
 		push   %ebx
 		push   %esi
@@ -60141,7 +60141,7 @@ BFMidiIsMusicPlaying:	/* 0x3ba10 */
 
 
 /*----------------------------------------------------------------*/
-ShutdownMIDI:	/* 0x3ba40 */
+GLOBAL_FUNC(ShutdownMIDI)	/* 0x3ba40 */
 /*----------------------------------------------------------------*/
 		push   %ebx
 		cmpb   $0x0,EXPORT_SYMBOL(MusicAble)
@@ -62705,13 +62705,13 @@ PlaceMouse_A:	/* 0x4165e */
 		push   %edx
 		push   %edi
 		push   %esi
-		movw   $0x1,MouseSwap
+		movw   $0x1,EXPORT_SYMBOL(MouseSwap)
 		mov    WScreen,%eax
 		mov    %eax,ScrSeg
 		call   BackupMouse
 		cmpb   $0x1,EXPORT_SYMBOL(DrawFlags)
 		jne    jump_416ae
-		push   mouse_sprite
+		push   EXPORT_SYMBOL(mouse_sprite)
 		sub    $0x2,%esp
 		pushw  MouseOldY
 		sub    $0x2,%esp
@@ -62727,7 +62727,7 @@ PlaceMouse_A:	/* 0x4165e */
 		ret
 	jump_416ae:
 		push   $0x0
-		push   mouse_sprite
+		push   EXPORT_SYMBOL(mouse_sprite)
 		sub    $0x2,%esp
 		pushw  MouseOldY
 		sub    $0x2,%esp
@@ -62752,7 +62752,7 @@ RemoveMouse_A:	/* 0x416d9 */
 		push   %edx
 		push   %edi
 		push   %esi
-		movw   $0x0,MouseSwap
+		movw   $0x0,EXPORT_SYMBOL(MouseSwap)
 		pop    %esi
 		pop    %edi
 		pop    %edx
@@ -62767,12 +62767,12 @@ PlaceMouse_B:	/* 0x416ef */
 		push   %edx
 		push   %edi
 		push   %esi
-		movw   $0x1,MouseSwap
+		movw   $0x1,EXPORT_SYMBOL(MouseSwap)
 		mov    WScreen,%eax
 		mov    %eax,ScrSeg
 		cmpb   $0x1,EXPORT_SYMBOL(DrawFlags)
 		jne    jump_4173a
-		push   mouse_sprite
+		push   EXPORT_SYMBOL(mouse_sprite)
 		sub    $0x2,%esp
 		pushw  MouseOldY
 		sub    $0x2,%esp
@@ -62788,7 +62788,7 @@ PlaceMouse_B:	/* 0x416ef */
 		ret
 	jump_4173a:
 		push   $0x0
-		push   mouse_sprite
+		push   EXPORT_SYMBOL(mouse_sprite)
 		sub    $0x2,%esp
 		pushw  MouseOldY
 		sub    $0x2,%esp
@@ -62799,7 +62799,7 @@ PlaceMouse_B:	/* 0x416ef */
 		mov    %eax,ScrSeg
 		cmpb   $0x1,EXPORT_SYMBOL(DrawFlags)
 		jne    jump_4179a
-		push   mouse_sprite
+		push   EXPORT_SYMBOL(mouse_sprite)
 		sub    $0x2,%esp
 		pushw  MouseOldY
 		sub    $0x2,%esp
@@ -62817,7 +62817,7 @@ PlaceMouse_B:	/* 0x416ef */
 		call   GetScreenBoxHires16
 		mov    MouseOldX,%ax
 		and    $0x7,%ax
-		push   mouse_sprite
+		push   EXPORT_SYMBOL(mouse_sprite)
 		push   $0x0
 		push   $0x0
 		sub    $0x2,%esp
@@ -62839,7 +62839,7 @@ RemoveMouse_B:	/* 0x417cc */
 		push   %edx
 		push   %edi
 		push   %esi
-		movw   $0x0,MouseSwap
+		movw   $0x0,EXPORT_SYMBOL(MouseSwap)
 		pop    %esi
 		pop    %edi
 		pop    %edx
@@ -83198,7 +83198,7 @@ GLOBAL (sndcard_dma)	/* 0x54d96 */
 		.ascii  "\x00\x00"
 GLOBAL (sndcard_ioaddr)	/* 0x54d98 */
 		.fill   0x4
-load_files_vres16:	/* 0x54d9c */
+GLOBAL (load_files_vres16)	/* 0x54d9c */
 		.ascii  "\x2a"
 		.fill   0x1b
 		.long   WScreen
@@ -83211,18 +83211,18 @@ load_files_vres16:	/* 0x54d9c */
 		.fill   0xc
 		.string "data/hpointer.tab"
 		.fill   0xa
-		.long   pointer_sprites
-		.long   pointer_sprites_end
+		.long   EXPORT_SYMBOL(pointer_sprites)
+		.long   EXPORT_SYMBOL(pointer_sprites_end)
 		.fill   0x8
 		.string "data/hpointer.dat"
 		.fill   0xa
-		.long   pointer_data
+		.long   EXPORT_SYMBOL(pointer_data)
 		.fill   0xc
 		.string "data/hreq.dat"
 		.fill   0xe
 		.long   data_60abc
 		.fill   0x38
-data_54ea4:
+GLOBAL (load_files_mcga)		/* 0x54EA4 */
 		.ascii  "\x2a"
 		.fill   0x1b
 		.long   WScreen
@@ -83235,12 +83235,12 @@ data_54ea4:
 		.fill   0xc
 		.string "data/lpointer.tab"
 		.fill   0xa
-		.long   pointer_sprites
-		.long   pointer_sprites_end
+		.long   EXPORT_SYMBOL(pointer_sprites)
+		.long   EXPORT_SYMBOL(pointer_sprites_end)
 		.fill   0x8
 		.string "data/lpointer.dat"
 		.fill   0xa
-		.long   pointer_data
+		.long   EXPORT_SYMBOL(pointer_data)
 		.fill   0xc
 		.string "data/lreq.dat"
 		.fill   0xe
@@ -83275,7 +83275,7 @@ MouseOldY:	/* 0x55060 */
 		.ascii  "\xc8\x00\x00\x00"
 MouseOldW:	/* 0x55064 */
 		.fill   0x8
-MouseSwap:	/* 0x5506c */
+GLOBAL (MouseSwap)	/* 0x5506c */
 		.fill   0x4
 data_55070:
 		.fill   0x4
@@ -83424,11 +83424,11 @@ data_55302:
 		.ascii  "\x00\x00"
 game_speed:	/* 0x55304 */
 		.ascii  "\x07\x00\x00\x00"
-pointer_sprites:	/* 0x55308 */
+GLOBAL (pointer_sprites)	/* 0x55308 */
 		.fill   0x4
-pointer_sprites_end:	/* 0x5530c */
+GLOBAL (pointer_sprites_end)	/* 0x5530c */
 		.fill   0x4
-pointer_data:	/* 0x55310 */
+GLOBAL (pointer_data)	/* 0x55310 */
 		.fill   0x4
 h_sprites:	/* 0x55314 */
 		.fill   0x4
@@ -83438,7 +83438,7 @@ data_5531c:
 		.fill   0x4
 data_55320:
 		.fill   0x4
-mouse_sprite:	/* 0x55324 */
+GLOBAL (mouse_sprite)	/* 0x55324 */
 		.fill   0x8
 data_5532c:
 		.ascii  "\x00\x00"

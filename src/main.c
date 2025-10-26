@@ -2,9 +2,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "bfdata.h"
 #include "bffile.h"
 #include "bfmemory.h"
+#include "bfmouse.h"
 #include "bfscreen.h"
+#include "bfsprite.h"
+#include "bfsound.h"
+
 #include "display.h"
 #include "game.h"
 #include "game_data.h"
@@ -46,6 +51,55 @@ extern int debug_k;
 extern ubyte byte_60B51;
 extern ubyte cheats_speedup;
 extern ubyte cheats_mission;
+extern ushort MouseSwap;
+extern struct TbSprite *mouse_sprite;
+
+extern struct TbSprite *pointer_sprites;
+extern struct TbSprite *pointer_sprites_end;
+extern ubyte *pointer_data;
+extern struct TbLoadFiles load_files_vres16[];
+extern struct TbLoadFiles load_files_mcga[];
+
+// ASM imports with matching call convention
+int * __cdecl ApSpriteSetup_ForceHeight(struct TbSprite *p_start, struct TbSprite *p_end, ubyte *data);
+int __cdecl init_sound(ushort sc_irq, ushort sc_dma, ushort sc_ioaddr);
+int __cdecl InitMIDI(const char *fname1, char *fname2, ushort sc_irq, ushort sc_dma, ushort sc_ioaddr);
+void __cdecl reset_input(void);
+void __cdecl ShutdownMIDI(void);
+void __cdecl syndicate(void);
+
+/*
+
+int *ApSpriteSetup_ForceHeight(struct TbSprite *p_start, struct TbSprite *p_end, ubyte *data)
+{
+}
+
+int init_sound(ushort sc_irq, ushort sc_dma, ushort sc_ioaddr)
+{
+}
+
+int InitMIDI(const char *fname1, char *fname2, ushort sc_irq, ushort sc_dma, ushort sc_ioaddr)
+{
+}
+
+void reset_input(void)
+{
+    asm volatile ("call ASM_reset_input\n"
+      :  : );
+}
+
+void ShutdownMIDI(void)
+{
+    asm volatile ("call ASM_ShutdownMIDI\n"
+      :  : );
+}
+
+void syndicate(void)
+{
+    asm volatile ("call ASM_syndicate\n"
+      :  : );
+}
+*/
 
 static void
 run_intro (int argc, char **argv)
@@ -177,10 +231,18 @@ process_options (int *argc, char ***argv)
   (*argv)[0] = argv0;
 }
 
+void
+nullsub_2 (void)
+{
+}
+
+void
+nullsub_3 (void)
+{
+}
+
 int main (int argc, char **argv)
 {
-    int retval;
-
     run_intro(argc, argv);
 
     current_levno = 1;
@@ -212,10 +274,60 @@ int main (int argc, char **argv)
 
     if (!game_initialise())
         return 1;
-
+#if 0
+    int retval;
     // Call game main
     asm volatile ("call ASM_main\n"
       : "=a" (retval) : "a" (argc), "d" (argv));
+#else
+    if ((DrawFlags & DrwF_ScreenVres16) != 0)
+    {
+        LbDataLoadAll(load_files_vres16);
+    }
+    else if ((DrawFlags & DrwF_Unkn04) != 0)
+    {
+        byte_60B42 = 0;
+        LbDataLoadAll(load_files_mcga);
+    }
+    ApSpriteSetup_ForceHeight(pointer_sprites, pointer_sprites_end, pointer_data);
+    mouse_sprite = &pointer_sprites[1];
+    MouseSwap = 1;
+
+    LbMouseSetup(mouse_sprite, 256, 256);
+
+    nullsub_3();
+# if 1
+    InitSound();
+# else
+    if (SoundAble)
+        SoundAble = init_sound(sndcard_irq, sndcard_dma, sndcard_ioaddr);
+# endif
+    if (MusicAble)
+        MusicAble = InitMIDI("data/syngame.xmi", "data/gamefm.dll", sndcard_irq, sndcard_dma, sndcard_ioaddr);
+
+    if (byte_60B42)
+    {
+        nullsub_2();
+    }
+    else
+    {
+        TbClockMSec tmend;
+
+        //TODO OpenIKeyboard_0();
+        syndicate();
+
+        tmend = LbTimerClock() + 72 * 5000/91; // 1 from int08 timer is 10000/182 miliseconds
+        LbSleepUntil(tmend);
+
+        //TODO CloseIKeyboard();
+    }
+    reset_input();
+    LbDataFreeAll(load_files_vres16);
+    ShutdownMIDI();
+# if 0 // there is broader FreeAudio() call within game_quit()
+    FreeSound();
+# endif
+#endif
 
     game_quit();
 
