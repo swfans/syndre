@@ -2037,7 +2037,11 @@ mission_briefing:	/* 0x10e60 */
 		call   draw_brief_tact_map
 		add    $0x28,%esp
 		call   PlaceMouse_A
+#if !defined(DOS) /* new bflibrary has generic screen swapping routine */
+		call   ac_LbScreenSwap
+#else
 		call   LbScreenSwapMCGA
+#endif
 		call   RemoveMouse_A
 		cmpb   $0x0,0x6e(%ebp)
 		je     jump_11079
@@ -10490,7 +10494,11 @@ configure_company:	/* 0x175c0 */
 		mov    %bl,0xe0(%esp)
 	jump_17c16:
 		call   PlaceMouse_A
+#if !defined(DOS) /* new bflibrary has generic screen swapping routine */
+		call   ac_LbScreenSwap
+#else
 		call   LbScreenSwapMCGA
+#endif
 		call   RemoveMouse_A
 		cmpb   $0x0,EXPORT_SYMBOL(lbKeyOn)+0x1c	/* lbKeyOn[KC_RETURN] */
 		je     jump_17c63
@@ -11217,7 +11225,11 @@ func_184e8:
 swap_screen:	/* 0x18650 */
 /*----------------------------------------------------------------*/
 		call   PlaceMouse_A
+#if !defined(DOS) /* new bflibrary has generic screen swapping routine */
+		call   ac_LbScreenSwap
+#else
 		call   LbScreenSwapMCGA
+#endif
 		call   RemoveMouse_A
 		jmp    LbCopyScreenFromBackMCGA
 
@@ -11246,7 +11258,11 @@ draw_config_menu_box:	/* 0x18670 */
 		call   func_186c0
 		add    $0x4,%esp
 		call   PlaceMouse_A
+#if !defined(DOS) /* new bflibrary has generic screen swapping routine */
+		call   ac_LbScreenSwap
+#else
 		call   LbScreenSwapMCGA
+#endif
 		jmp    RemoveMouse_A
 
 
@@ -13365,7 +13381,11 @@ debrief:	/* 0x18ff0 */
 	jump_1a164:
 		movb   $0x3,-0xc(%ebp)
 		call   PlaceMouse_A
+#if !defined(DOS) /* new bflibrary has generic screen swapping routine */
+		call   ac_LbScreenSwap
+#else
 		call   LbScreenSwapMCGA
+#endif
 		call   RemoveMouse_A
 		cmpb   $0x0,-0x14(%ebp)
 		je     jump_197a0
@@ -24368,7 +24388,11 @@ func_227c8:
 	def_21874:	/* 0x227d9 */
 		movb   $0x18,-0x8(%ebp)
 		call   PlaceMouse_A
+#if !defined(DOS) /* new bflibrary has generic screen swapping routine */
+		call   ac_LbScreenSwap
+#else
 		call   LbScreenSwapMCGA
+#endif
 		call   RemoveMouse_A
 		cmpb   $0x0,-0x18(%ebp)
 		je     jump_1fd31
@@ -30470,7 +30494,11 @@ func_27280:
 	def_27219:	/* 0x272a8 */
 		movb   $0xd,0x8(%esp)
 		call   PlaceMouse_A
+#if !defined(DOS) /* new bflibrary has generic screen swapping routine */
+		call   ac_LbScreenSwap
+#else
 		call   LbScreenSwapMCGA
+#endif
 		call   RemoveMouse_A
 		cmpb   $0x0,0x4(%esp)
 		je     jump_26fa4
@@ -31716,7 +31744,11 @@ map_selection:	/* 0x27e00 */
 		call   draw_logo
 		add    $0x1c,%esp
 		call   PlaceMouse_A
+#if !defined(DOS) /* new bflibrary has generic screen swapping routine */
+		call   ac_LbScreenSwap
+#else
 		call   LbScreenSwapMCGA
+#endif
 		call   RemoveMouse_A
 		cmpb   $0x0,lbDisplay__RightButton
 		je     jump_28212
@@ -32054,7 +32086,11 @@ display_cities:	/* 0x28580 */
 		test   %ecx,%ecx
 		jne    jump_285fd
 		call   LbCopyScreenFromBackMCGA
+#if !defined(DOS) /* new bflibrary has generic screen swapping routine */
+		call   ac_LbScreenSwap
+#else
 		call   LbScreenSwapMCGA
+#endif
 	jump_285fd:
 		inc    %bl
 		cmp    $0x32,%bl
@@ -33602,7 +33638,11 @@ func_29818:
 		movb   $0x1,(%esp)
 	def_2998D:	/* 0x29825 */
 		call   PlaceMouse_A
+#if !defined(DOS) /* new bflibrary has generic screen swapping routine */
+		call   ac_LbScreenSwap
+#else
 		call   LbScreenSwapMCGA
+#endif
 		mov    $0xc,%bh
 		call   RemoveMouse_A
 		mov    %bh,0x4(%esp)
@@ -51631,7 +51671,11 @@ func_359e6:
 	def_35899:	/* 0x35d05 */
 		movb   $0x8,0x76(%ebp)
 		call   PlaceMouse_A
+#if !defined(DOS) /* new bflibrary has generic screen swapping routine */
+		call   ac_LbScreenSwap
+#else
 		call   LbScreenSwapMCGA
+#endif
 		call   RemoveMouse_A
 		cmpb   $0x0,0x66(%ebp)
 		jne    jump_35dca
@@ -54438,7 +54482,11 @@ func_37bdd:
 		je     jump_37c21
 		call   PlaceMouse_A
 	jump_37c21:
+#if !defined(DOS) /* new bflibrary has generic screen swapping routine */
+		call   ac_LbScreenSwap
+#else
 		call   LbScreenSwapMCGA
+#endif
 		call   RemoveMouse_A
 		cmpl   $0xa,0x4(%esp)
 		jne    jump_37883
@@ -54563,7 +54611,11 @@ func_37bdd:
 	jump_37da0:
 		call   new_show_text
 		add    $0x28,%esp
+#if !defined(DOS) /* new bflibrary has generic screen swapping routine */
+		call   ac_LbScreenSwap
+#else
 		call   LbScreenSwapMCGA
+#endif
 		push   $unk984_load_files
 		call   LbDataFreeAll
 		mov    EXPORT_SYMBOL(SoundAble),%bl
