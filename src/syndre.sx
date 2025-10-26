@@ -579,7 +579,7 @@ check_end_level:	/* 0x105e0 */
 		mov    data_60afc,%al
 		test   $0x6,%al
 		jne    jump_10d9e
-		cmpb   $0x0,data_5e285
+		cmpb   $0x0,EXPORT_SYMBOL(lbKeyOn)+0x01	/* lbKeyOn[KC_ESCAPE] */
 		je     jump_106b6
 		mov    data_60afc,%ah
 		or     $0x8,%ah
@@ -1154,14 +1154,14 @@ func_10cd9:
 	jump_10de4:
 		cmpb   $0x0,data_5e2bd
 		jne    jump_10df6
-		cmpb   $0x0,data_5e285
+		cmpb   $0x0,EXPORT_SYMBOL(lbKeyOn)+0x01	/* lbKeyOn[KC_ESCAPE] */
 		je     jump_10e0f
 	jump_10df6:
 		mov    $0x1,%al
 	jump_10df8:
 		cmp    data_5e2bd,%al
 		je     jump_10df8
-		cmp    data_5e285,%al
+		cmp    EXPORT_SYMBOL(lbKeyOn)+0x01,%al	/* lbKeyOn[KC_ESCAPE] */
 		je     jump_10df8
 		andb   $0xfe,data_60afc
 	jump_10e0f:
@@ -1725,10 +1725,10 @@ mission_briefing:	/* 0x10e60 */
 		call   LbSpriteDrawMCGA
 		add    $0xc,%esp
 	jump_114c3:
-		cmpb   $0x0,data_5e285
+		cmpb   $0x0,EXPORT_SYMBOL(lbKeyOn)+0x01	/* lbKeyOn[KC_ESCAPE] */
 		je     jump_114e4
 		xor    %bh,%bh
-		mov    %bh,data_5e285
+		mov    %bh,EXPORT_SYMBOL(lbKeyOn)+0x01	/* lbKeyOn[KC_ESCAPE] */
 		xor    %ebx,%ebx
 		mov    $0x1,%cl
 		mov    %ebx,AniSpeed
@@ -10622,7 +10622,7 @@ configure_company:	/* 0x175c0 */
 		cmpw   $0x172,lbDisplay__MouseY
 		jb     jump_17e43
 	jump_17e3a:
-		cmpb   $0x0,data_5e285
+		cmpb   $0x0,EXPORT_SYMBOL(lbKeyOn)+0x01	/* lbKeyOn[KC_ESCAPE] */
 		je     jump_17e4c
 	jump_17e43:
 		mov    $0x1,%bh
@@ -12066,7 +12066,7 @@ debrief:	/* 0x18ff0 */
 		xor    %cl,%cl
 		mov    %cl,lbDisplay__LeftButton
 		mov    %cl,lbDisplay__RightButton
-		mov    %cl,data_5e285
+		mov    %cl,EXPORT_SYMBOL(lbKeyOn)+0x01	/* lbKeyOn[KC_ESCAPE] */
 		mov    %cl,data_5e2a0
 		mov    %cl,-0x10(%ebp)
 	jump_1903d:
@@ -24921,9 +24921,9 @@ WhichIconSelected:	/* 0x22e20 */
 		je     jump_22e59
 		xor    %edx,%edx
 		mov    0x9(%eax),%dl
-		cmp    lbKeyOn(%edx),%cl
+		cmp    EXPORT_SYMBOL(lbKeyOn)(%edx),%cl	/* lbKeyOn[edx] */
 		je     jump_22e59
-		mov    %cl,lbKeyOn(%edx)
+		mov    %cl,EXPORT_SYMBOL(lbKeyOn)(%edx)
 		mov    0x8(%eax),%bl
 	jump_22e59:
 		add    $0xa,%eax
@@ -30725,7 +30725,7 @@ GLOBAL_FUNC (ASM_main)	/* 0x274a0 */
 		push   %edi
 		sub    $0x88,%esp
 		mov    0x9c(%esp),%ebx
-#if 0 /* disable keyboard input check */
+#if defined(DOS) /* disable keyboard input check */
 		movb   $0xf,0x65(%esp)
 		lea    0x64(%esp),%eax
 		push   %eax
@@ -31175,7 +31175,7 @@ timer2_cb:	/* 0x27a70 */
 KInt_0:	/* 0x27a90 */
 /*----------------------------------------------------------------*/
 		pusha
-#if 0
+#if defined(DOS)
 		push   %ds
 		push   %es
 		push   %fs
@@ -31381,7 +31381,7 @@ GLOBAL_FUNC(ApSpriteSetup_ForceHeight)	/* 0x27c60 */
 KInt:	/* 0x27cb0 */
 /*----------------------------------------------------------------*/
 		pusha
-#if 0
+#if defined(DOS)
 		push   %ds
 		push   %es
 		push   %fs
@@ -31392,19 +31392,19 @@ KInt:	/* 0x27cb0 */
 		push   $0x60
 		call   inp
 		add    $0x4,%esp
-		mov    %al,Inkey
-		mov    Inkey,%al
+		mov    %al,EXPORT_SYMBOL(lbInkey)
+		mov    EXPORT_SYMBOL(lbInkey),%al
 		and    $0x7f,%al
 		xor    %ah,%ah
-		cmpb   $0x7f,Inkey
+		cmpb   $0x7f,EXPORT_SYMBOL(lbInkey)
 		jbe    jump_27cef
 		and    $0xffff,%eax
 		xor    %bl,%bl
-		mov    %bl,lbKeyOn(%eax)
+		mov    %bl,EXPORT_SYMBOL(lbKeyOn)(%eax)	/* lbKeyOn[eax] */
 		jmp    jump_27cfb
 	jump_27cef:
 		and    $0xffff,%eax
-		movb   $0x1,lbKeyOn(%eax)
+		movb   $0x1,EXPORT_SYMBOL(lbKeyOn)(%eax)
 	jump_27cfb:
 		push   $0x61
 		call   inp
@@ -31458,7 +31458,7 @@ OpenIKeyboard:	/* 0x27d60 */
 		movswl %ax,%edx
 		xor    %bl,%bl
 		inc    %eax
-		mov    %bl,lbKeyOn(%edx)
+		mov    %bl,EXPORT_SYMBOL(lbKeyOn)(%edx)	/* lbKeyOn[edx] */
 		cmp    $0x80,%ax
 		jl     jump_27d70
 		push   $0x9
@@ -31774,7 +31774,7 @@ map_selection:	/* 0x27e00 */
 		call   adjust_tax
 		add    $0x8,%esp
 	jump_28212:
-		cmpb   $0x0,data_5e285
+		cmpb   $0x0,EXPORT_SYMBOL(lbKeyOn)+0x01	/* lbKeyOn[KC_ESCAPE] */
 		je     jump_2822f
 		push   $mmapblk_load_files
 		call   LbDataFreeAll
@@ -34041,7 +34041,7 @@ NetworkCmdlineSetup:	/* 0x29ce0 */
 	jump_29d95:
 		mov    $EXPORT_SYMBOL(Network__Name),%ebx
 	jump_29d9a:
-		cmpb   $0x0,data_5e285
+		cmpb   $0x0,EXPORT_SYMBOL(lbKeyOn)+0x01	/* lbKeyOn[KC_ESCAPE] */
 		je     jump_29db0
 		mov    $0xfffffffe,%eax
 		add    $0x50,%esp
@@ -34365,7 +34365,7 @@ NetworkCmdlineSetup:	/* 0x29ce0 */
 		push   $aPleaseWait
 		call   ac_printf
 		add    $0x4,%esp
-		cmpb   $0x0,data_5e285
+		cmpb   $0x0,EXPORT_SYMBOL(lbKeyOn)+0x01	/* lbKeyOn[KC_ESCAPE] */
 		je     jump_2a212
 	jump_2a205:
 		mov    $0xfffffffe,%eax
@@ -34409,7 +34409,7 @@ NetworkCmdlineSetup:	/* 0x29ce0 */
 	jump_2a276:
 		cmp    %si,%di
 		je     jump_2a286
-		cmpb   $0x0,data_5e285
+		cmpb   $0x0,EXPORT_SYMBOL(lbKeyOn)+0x01	/* lbKeyOn[KC_ESCAPE] */
 		jne    jump_2a205
 		jmp    jump_2a219
 	jump_2a286:
@@ -36031,7 +36031,7 @@ ErrLogNetwork:	/* 0x2b260 */
 		ret
 
 MouseHandler256_GETDS:	/* 0x2b290 */
-#if 0
+#if defined(DOS)
 		push   %ds
 		call   __GETDS
 #endif
@@ -39349,7 +39349,7 @@ make_packet:	/* 0x2d610 */
 		push   %edi
 		sub    $0x4,%esp
 		mov    0x14(%esp),%ebx
-		cmpb   $0x0,data_5e285
+		cmpb   $0x0,EXPORT_SYMBOL(lbKeyOn)+0x01	/* lbKeyOn[KC_ESCAPE] */
 		je     jump_2d63a
 		cmpb   $0x0,EXPORT_SYMBOL(is_multiplayer_game)
 		je     jump_2d63a
@@ -39372,19 +39372,19 @@ make_packet:	/* 0x2d610 */
 		pop    %ebx
 		ret
 	jump_2d65f:
-		cmpb   $0x0,data_5e286
+		cmpb   $0x0,EXPORT_SYMBOL(lbKeyOn)+0x02	/* lbKeyOn[KC_1] */
 		je     jump_2d671
 		movw   $0x1,data_5e124
 	jump_2d671:
-		cmpb   $0x0,data_5e287
+		cmpb   $0x0,EXPORT_SYMBOL(lbKeyOn)+0x03
 		je     jump_2d683
 		movw   $0x2,data_5e124
 	jump_2d683:
-		cmpb   $0x0,data_5e288
+		cmpb   $0x0,EXPORT_SYMBOL(lbKeyOn)+0x04
 		je     jump_2d695
 		movw   $0x3,data_5e124
 	jump_2d695:
-		cmpb   $0x0,data_5e289
+		cmpb   $0x0,EXPORT_SYMBOL(lbKeyOn)+0x05
 		je     jump_2d6a7
 		movw   $0x4,data_5e124
 	jump_2d6a7:
@@ -54029,9 +54029,12 @@ func_37764:
 		cmpb   $0x0,lbDisplay__LeftButton
 		jne    jump_377b2
 	jump_37797:
+#if !defined(DOS) /* add input refresh, as otherwise this is just an infinite loop */
+		call   ac_game_update
+#endif
 		cmpb   $0x0,lbDisplay__MLeftButton
 		jne    jump_377b2
-		cmpb   $0x7f,Inkey
+		cmpb   $0x7f,EXPORT_SYMBOL(lbInkey)
 		jbe    jump_377b2
 		cmpb   $0x0,lbDisplay__LeftButton
 		je     jump_37797
@@ -54252,12 +54255,12 @@ func_378c3:
 		call   LbCopyScreenToBackMCGA
 		call   LbCopyScreenFromBackMCGA
 	jump_37a42:
-		cmpb   $0x3b,Inkey
+		cmpb   $0x3b,EXPORT_SYMBOL(lbInkey)
 		jb     jump_37ae2
-		cmpb   $0x40,Inkey
+		cmpb   $0x40,EXPORT_SYMBOL(lbInkey)
 		jae    jump_37ae2
 		xor    %eax,%eax
-		mov    Inkey,%al
+		mov    EXPORT_SYMBOL(lbInkey),%al
 		sub    $0x3a,%eax
 		mov    %eax,0x4(%esp)
 		cmp    $0x4,%eax
@@ -54948,7 +54951,7 @@ level_finished:	/* 0x37f80 */
 		jne    jump_382b9
 		cmpb   $0x0,lbDisplay__MRightButton
 		jne    jump_382b9
-		cmpb   $0x7f,Inkey
+		cmpb   $0x7f,EXPORT_SYMBOL(lbInkey)
 		jbe    jump_382b9
 		mov    EXPORT_SYMBOL(debug_k),%eax
 		sub    %edx,%eax
@@ -56323,7 +56326,7 @@ get_line:	/* 0x390c0 */
 	jump_3915b:
 		mov    $0x1,%edx
 		mov    %edx,0x58(%esp)
-		mov    Inkey,%al
+		mov    EXPORT_SYMBOL(lbInkey),%al
 		cmp    $0x4b,%al
 		jb     jump_39193
 		jbe    jump_391ea
@@ -56460,14 +56463,14 @@ get_line:	/* 0x390c0 */
 		decw   (%esi)
 	jump_392d0:
 		xor    %al,%al
-		mov    %al,data_5e292
+		mov    %al,EXPORT_SYMBOL(lbKeyOn)+0x0e	/* lbKeyOn[KC_BACK] */
 		jmp    jump_392df
 	jump_392d9:
 		xor    %ebx,%ebx
 		mov    %ebx,0x58(%esp)
 	jump_392df:
 		xor    %ah,%ah
-		mov    %ah,Inkey
+		mov    %ah,EXPORT_SYMBOL(lbInkey)
 		mov    0x78(%esp),%edx
 		mov    (%esi),%ax
 		sub    %edx,%eax
@@ -61434,7 +61437,7 @@ AniPlay:	/* 0x3c558 */
 		push   %edi
 		push   %esi
 		movw   $0x1,AniQuit
-		movb   $0x80,Inkey
+		movb   $0x80,EXPORT_SYMBOL(lbInkey)
 		movw   $0x0,AniArrayCount
 		mov    0xc(%ebp),%eax
 		mov    %eax,AniPalChange
@@ -61449,7 +61452,7 @@ AniPlay:	/* 0x3c558 */
 		mov    %eax,AniFileHandle
 		movw   $0x0,CurrFrame
 		movw   $0x0,loop_count
-#if 0 /* get time in sec/100 */
+#if defined(DOS) /* get time in sec/100 */
 		mov    $0x2c,%ah
 		int    $0x21
 		mov    $0x64,%ax
@@ -61503,33 +61506,39 @@ AniPlay:	/* 0x3c558 */
 		push   %ecx
 		push   %edi
 		push   %esi
-#if 0
+#if defined(DOS)	/* copy WScreen to screen buffer, DOS method */
 		mov    $0xa0000,%edi
 		mov    EXPORT_SYMBOL(lbDisplay)+0x04,%esi	/* lbDisplay.WScreen */
 		mov    $0x3e80,%ecx
 		rep movsl %ds:(%esi),%es:(%edi)
 #else
 		call   ac_LbScreenSwap
-//WIP - now need to decide how to handle screen buffer
 #endif
 		pop    %esi
 		pop    %edi
 		pop    %ecx
 	jump_3c677:
 		call   DelayTimer
+#if !defined(DOS) /* add input refresh, to allow reaction on keys and mouse */
+		call   ac_game_handle_sdl_events
+#endif
 		mov    NoFrames,%ax
 		cmp    $0x0,%ax
 		jne    jump_3c68a
 		jmp    jump_3c6c5
 	jump_3c68a:
+#if defined(DOS)	/* enable video refresh, DOS method */
 		mov    $0x36,%bl
 		mov    $0x1200,%ax
 		int    $0x10
+#else
+		call   ac_LbScreenWaitVbi
+#endif
 		cmpl   $0x0,0x8(%ebp)
 		je     jump_3c6b5
 		cmpb   $0x0,lbDisplay__LeftButton
 		jne    jump_3c6ac
-		cmpb   $0x80,Inkey
+		cmpb   $0x80,EXPORT_SYMBOL(lbInkey)
 		jg     jump_3c6ac
 		jmp    jump_3c6b5
 	jump_3c6ac:
@@ -61718,7 +61727,7 @@ DoPalette:	/* 0x3c84a */
 		cmp    $0x0,%ax
 		jne    jump_3c876
 		mov    EXPORT_SYMBOL(PalMem),%esi
-#if 0 /* DOS palette setting */
+#if defined(DOS) /* DOS palette setting */
 		mov    %esi,%edi
 		mov    $0x300,%cx
 		mov    $0x3c8,%dx
@@ -61905,7 +61914,7 @@ DelayTimer:	/* 0x3ca52 */
 		push   %cx
 		push   %dx
 	jump_3ca63:
-#if 0 /* get time in sec/100 */
+#if defined(DOS) /* get time in sec/100 */
 		mov    $0x2c,%ah
 		int    $0x21
 		mov    $0x64,%ax
@@ -83511,7 +83520,7 @@ GLOBAL (GraphicsPalette)	/* 0x55378 */
 		.fill   0x4
 data_5537c:
 		.ascii  "\x00\x00"
-Inkey:	/* 0x5537e */
+ASM_Inkey:	/* 0x5537e */
 		.ascii  "\x80"
 SoundActive:	/* 0x5537f */
 		.ascii  "\x01"
@@ -84987,19 +84996,8 @@ next_mission_countries:	/* 0x5e13c */
 		.fill   0x8
 data_5e144:
 		.fill   0x140
-lbKeyOn:	/* 0x5e284 */
-		.ascii  "\x00"
-data_5e285:
-		.ascii  "\x00"
-data_5e286:
-		.ascii  "\x00"
-data_5e287:
-		.ascii  "\x00"
-data_5e288:
-		.ascii  "\x00"
-data_5e289:
-		.fill   0x9
-data_5e292:
+ASM_lbKeyOn:	/* 0x5e284 */
+		.fill   0x0e
 		.fill   0x4
 data_5e296:
 		.ascii  "\x00"
