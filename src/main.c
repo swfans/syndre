@@ -4,6 +4,7 @@
 
 #include "bfdata.h"
 #include "bffile.h"
+#include "bflog.h"
 #include "bfmemory.h"
 #include "bfmouse.h"
 #include "bfscreen.h"
@@ -266,6 +267,9 @@ int main (int argc, char **argv)
     cheats_speedup = 0;
     cheats_mission = 0;
 
+    if (LbErrorLogSetup(NULL, NULL, Lb_ERROR_LOG_NEW) != Lb_SUCCESS)
+            printf("Execution log setup failed\n");
+
     process_options(&argc, &argv);
 
     printf("SyndicateRE "VERSION"\n"
@@ -333,6 +337,8 @@ int main (int argc, char **argv)
 # endif
 #endif
 
+    LbErrorLogReset();
+    LbMemoryReset();
     game_quit();
 
     // the above function never returns
