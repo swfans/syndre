@@ -53997,7 +53997,7 @@ select:	/* 0x37600 */
 		mov    %eax,data_60ab0
 		add    $0x1000,%eax
 		mov    %ebp,VScreen
-		mov    %eax,data_60aa8
+		mov    %eax,EXPORT_SYMBOL(PalMem)
 		xor    %ah,%ah
 		mov    %ah,lbDisplay__LeftButton
 		mov    $0x5,%eax
@@ -54746,7 +54746,7 @@ level_finished:	/* 0x37f80 */
 		mov    %eax,data_60ab0
 		add    $0x1000,%eax
 		mov    %dh,SoundActive
-		mov    %eax,data_60aa8
+		mov    %eax,EXPORT_SYMBOL(PalMem)
 		mov    EXPORT_SYMBOL(DrawFlags),%al
 		mov    %dh,MusicActive
 		mov    %al,EXPORT_SYMBOL(OldDrawFlags)
@@ -61677,7 +61677,7 @@ DoPalette:	/* 0x3c84a */
 		sub    %bx,%bx
 		mov    (%edi),%ax
 		add    $0x2,%edi
-		mov    data_60aa8,%esi
+		mov    EXPORT_SYMBOL(PalMem),%esi
 	jump_3c876:
 		push   %ax
 		mov    $0x0,%ecx
@@ -61712,7 +61712,8 @@ DoPalette:	/* 0x3c84a */
 		dec    %ax
 		cmp    $0x0,%ax
 		jne    jump_3c876
-		mov    data_60aa8,%esi
+		mov    EXPORT_SYMBOL(PalMem),%esi
+#if 0 /* DOS palette setting */
 		mov    %esi,%edi
 		mov    $0x300,%cx
 		mov    $0x3c8,%dx
@@ -61729,6 +61730,11 @@ DoPalette:	/* 0x3c84a */
 		je     jump_3c8dc
 		mov    $0x3c9,%dx
 		rep outsb %ds:(%esi),(%dx)
+#else
+		push   %esi
+		call   ac_LbPaletteSet
+		add    $0x4,%esp
+#endif
 		mov    %esi,%edi
 	jump_3c8e9:
 		pop    %esi
@@ -85152,7 +85158,7 @@ data_60aa6:
 		.ascii  "\x00"
 data_60aa7:
 		.ascii  "\x00"
-data_60aa8:
+GLOBAL (PalMem)		/* 0x60aa8 */
 		.fill   0x4
 data_60aac:
 		.fill   0x4
