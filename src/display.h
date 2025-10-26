@@ -21,6 +21,13 @@
 
 #include <stddef.h>
 
+enum DrawFlagsVals
+{
+  DrwF_ScreenMCGA = 0x1,
+  DrwF_ScreenVres16 = 0x2,
+  DrwF_Unkn04 = 0x4,
+};
+
 void display_lock (void);
 void display_unlock (void);
 const char * AppResourceMapping(short index);

@@ -2,6 +2,8 @@
 #ifdef NEED_UNDERSCORE
 # define TRANSFORM_SYMBOLS
 # define EXPORT_SYMBOL(sym) _ ## sym
+#else
+# define EXPORT_SYMBOL(sym) sym
 #endif
 
 #ifndef TRANSFORM_SYMBOLS
@@ -216,7 +218,7 @@ syndicate:	/* 0x101e0 */
 		je     jump_1022a
 		call   process_players_turn
 	jump_1022a:
-		cmpb   $0x0,is_multiplayer_game
+		cmpb   $0x0,EXPORT_SYMBOL(is_multiplayer_game)
 		je     jump_1023a
 		call   multi_play
 		jmp    jump_10244
@@ -272,7 +274,7 @@ syndicate:	/* 0x101e0 */
 		testb  $0x1,data_60afc
 		jne    jump_10214
 	jump_102e9:
-		cmpb   $0x0,MusicAble
+		cmpb   $0x0,EXPORT_SYMBOL(MusicAble)
 		je     jump_102f7
 		call   BFMidiStopMusic
 	jump_102f7:
@@ -453,7 +455,7 @@ level_failed:	/* 0x104c0 */
 		push   $0x7f
 		mov    %dl,data_60afc
 		push   $0x18
-		mov    debug_k,%eax
+		mov    EXPORT_SYMBOL(debug_k),%eax
 		mov    $0x1,%edx
 		mov    %eax,data_5c34c
 		mov    %edx,data_5c354
@@ -472,7 +474,7 @@ level_complete:	/* 0x10510 */
 		movw   $0x10,data_5532c
 		orb    $0x2,data_60afc
 		push   $0x7f
-		mov    debug_k,%eax
+		mov    EXPORT_SYMBOL(debug_k),%eax
 		push   $0x17
 		mov    %eax,data_5c34c
 		call   SetBFSampleStatus
@@ -564,7 +566,7 @@ check_end_level:	/* 0x105e0 */
 		call   BFMidiResumeSong
 		call   BFSoundResume
 	jump_1064a:
-		cmpb   $0x0,is_multiplayer_game
+		cmpb   $0x0,EXPORT_SYMBOL(is_multiplayer_game)
 		je     jump_1067e
 		cmpw   $0x1,Network__NumberOfSlots
 		jg     jump_10e0f
@@ -1115,7 +1117,7 @@ func_10cd9:
 		je     jump_10d91
 		cmpb   $0x0,data_5e2b2
 		je     jump_10e0f
-		cmpb   $0x0,cheats_mission
+		cmpb   $0x0,EXPORT_SYMBOL(cheats_mission)
 		je     jump_10e0f
 	jump_10d91:
 		call   level_complete
@@ -1129,11 +1131,11 @@ func_10cd9:
 		test   $0x4,%al
 		je     jump_10dd4
 		mov    %al,%dl
-		mov    MusicAble,%dh
+		mov    EXPORT_SYMBOL(MusicAble),%dh
 		and    $0xfe,%dl
 		test   %dh,%dh
 		jne    jump_10dc5
-		mov    debug_k,%eax
+		mov    EXPORT_SYMBOL(debug_k),%eax
 		sub    data_5c34c,%eax
 		cmp    $0x240,%eax
 		jbe    jump_10dd4
@@ -1215,7 +1217,7 @@ mission_briefing:	/* 0x10e60 */
 		mov    %ah,lbDisplay__LeftButton
 		mov    %ah,lbDisplay__RightButton
 		xor    %eax,%eax
-		mov    current_levno,%ax
+		mov    EXPORT_SYMBOL(current_levno),%ax
 		push   %eax
 		push   $aGameDat
 		lea    0x1e(%ebp),%eax
@@ -1233,7 +1235,7 @@ mission_briefing:	/* 0x10e60 */
 		jmp    jump_11a1b
 	jump_10ed9:
 		xor    %eax,%eax
-		mov    level__MapNumber,%ax
+		mov    EXPORT_SYMBOL(level__MapNumber),%ax
 		push   %eax
 		push   $aDataMap02dDat
 		lea    0x1e(%ebp),%eax
@@ -1384,7 +1386,7 @@ mission_briefing:	/* 0x10e60 */
 		sar    $0x8,%eax
 		mov    %eax,0x4a(%ebp)
 		xor    %eax,%eax
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		mov    data_54570(,%eax,4),%edx
 		push   %edx
 		call   DisplayScreenTitle
@@ -1429,7 +1431,7 @@ mission_briefing:	/* 0x10e60 */
 		push   $0x62
 		xor    %eax,%eax
 		push   $0x15a
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		push   $0x94
 		mov    text_map(,%eax,4),%edx
 		push   %edx
@@ -1456,7 +1458,7 @@ mission_briefing:	/* 0x10e60 */
 		push   $0x7e
 		xor    %eax,%eax
 		push   $0x6c
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		push   $0x1f4
 		mov    text_info(,%eax,4),%ebx
 		push   %ebx
@@ -1483,7 +1485,7 @@ mission_briefing:	/* 0x10e60 */
 		push   $0x7e
 		xor    %eax,%eax
 		push   $0xa2
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		push   $0x1f4
 		mov    text_enhance(,%eax,4),%ecx
 		push   %ecx
@@ -10046,7 +10048,7 @@ configure_company:	/* 0x175c0 */
 		push   %edi
 		push   %ebp
 		sub    $0xe4,%esp
-		mov    data_60b4c,%al
+		mov    EXPORT_SYMBOL(byte_60B4C),%al
 		xor    %ah,%ah
 		xor    %edx,%edx
 		xor    %ebx,%ebx
@@ -10059,7 +10061,7 @@ configure_company:	/* 0x175c0 */
 		xor    %dl,%dl
 		mov    $0x1,%dh
 		mov    %dl,0xd0(%esp)
-		mov    %dh,data_60b4c
+		mov    %dh,EXPORT_SYMBOL(byte_60B4C)
 		movswl Network__Slot,%edx
 		mov    %al,0xc4(%esp)
 		mov    %edx,%eax
@@ -10416,7 +10418,7 @@ configure_company:	/* 0x175c0 */
 		push   $0x10
 		xor    %eax,%eax
 		push   $0x46
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		push   $0x16a
 		mov    str(,%eax,4),%ebp
 		push   %ebp
@@ -10442,7 +10444,7 @@ configure_company:	/* 0x175c0 */
 		push   $0x10
 		xor    %eax,%eax
 		push   $0x5e
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		push   $0x16a
 		mov    data_54750(,%eax,4),%esi
 		push   %esi
@@ -10468,7 +10470,7 @@ configure_company:	/* 0x175c0 */
 		push   $0x10
 		xor    %eax,%eax
 		push   $0x76
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		push   $0x16a
 		mov    data_5475c(,%eax,4),%edx
 		push   %edx
@@ -10845,7 +10847,7 @@ func_18084:
 		mov    $AniName,%edi
 		mov    $aDataMconfoutDa,%esi
 		xor    %bl,%bl
-		mov    %al,data_60b4c
+		mov    %al,EXPORT_SYMBOL(byte_60B4C)
 		mov    $0x1,%eax
 		movsl  %ds:(%esi),%es:(%edi)
 		movsl  %ds:(%esi),%es:(%edi)
@@ -10911,7 +10913,7 @@ func_18278:
 		push   $0x10
 		xor    %eax,%eax
 		push   $0x22
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		push   $0x12c
 		mov    data_54738(,%eax,4),%edi
 		push   %edi
@@ -10927,7 +10929,7 @@ func_18278:
 		push   $0x10
 		xor    %eax,%eax
 		push   $0x46
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		push   $0x16a
 		mov    str(,%eax,4),%edx
 		push   %edx
@@ -10950,7 +10952,7 @@ func_18278:
 		push   $0x10
 		xor    %eax,%eax
 		push   $0x5e
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		push   $0x16a
 		mov    data_54750(,%eax,4),%esi
 		push   %esi
@@ -10973,7 +10975,7 @@ func_18278:
 		push   $0x10
 		xor    %eax,%eax
 		push   $0x76
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		push   $0x16a
 		mov    data_5475c(,%eax,4),%edx
 		push   %edx
@@ -11002,7 +11004,7 @@ func_18394:
 		push   $0x10
 		xor    %eax,%eax
 		push   $0x22
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		push   $0x12e
 		mov    data_54768(,%eax,4),%edx
 		push   %edx
@@ -11018,7 +11020,7 @@ func_18394:
 		push   $0x10
 		xor    %eax,%eax
 		push   $0x3c
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		push   $0x1dc
 		mov    data_54774(,%eax,4),%esi
 		push   %esi
@@ -11034,7 +11036,7 @@ func_18394:
 		push   $0x10
 		xor    %eax,%eax
 		push   $0x5e
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		push   $0x1dc
 		mov    data_54780(,%eax,4),%edx
 		push   %edx
@@ -11098,7 +11100,7 @@ func_184ba:
 		push   $0x10
 		xor    %eax,%eax
 		push   $0x22
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		push   $0x158
 		mov    data_54798(,%eax,4),%edi
 		push   %edi
@@ -11118,7 +11120,7 @@ func_184e8:
 		push   $0x10
 		xor    %eax,%eax
 		push   $0x22
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		push   $0x142
 		mov    a5(,%eax,4),%ecx
 		push   %ecx
@@ -11170,7 +11172,7 @@ func_184e8:
 		push   $0x80
 		xor    %eax,%eax
 		push   $0x78
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		push   $0x122
 		mov    data_545b8(,%eax,4),%ebx
 		push   %ebx
@@ -11197,7 +11199,7 @@ func_184e8:
 		push   $0x80
 		xor    %eax,%eax
 		push   $0x78
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		push   $0x1da
 		mov    data_545c4(,%eax,4),%ecx
 		push   %ecx
@@ -11447,7 +11449,7 @@ process_day:	/* 0x18810 */
 		and    $0x1,%al
 		mov    %al,ScannerPulse
 	jump_188b5:
-		cmpb   $0x0,is_multiplayer_game
+		cmpb   $0x0,EXPORT_SYMBOL(is_multiplayer_game)
 		jne    jump_18ad4
 		cmp    $0x3,%edi
 		jb     jump_188db
@@ -11570,7 +11572,7 @@ process_day:	/* 0x18810 */
 		pop    %ebx
 		ret
 	jump_18a71:
-		cmpb   $0x0,cheats_speedup
+		cmpb   $0x0,EXPORT_SYMBOL(cheats_speedup)
 		je     jump_18aad
 		mov    $0x60,%ecx
 		mov    %esi,%eax
@@ -11639,7 +11641,7 @@ process_day:	/* 0x18810 */
 		pop    %ebx
 		ret
 	jump_18b59:
-		cmpb   $0x0,cheats_speedup
+		cmpb   $0x0,EXPORT_SYMBOL(cheats_speedup)
 		je     jump_18ba0
 		mov    $0x60,%ecx
 		mov    %esi,%eax
@@ -12556,7 +12558,7 @@ debrief:	/* 0x18ff0 */
 		div    %ebx
 		mov    %eax,%edi
 		xor    %eax,%eax
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		mov    data_54594(,%eax,4),%edx
 		push   %edx
 		mov    %esi,data_60b06
@@ -12628,7 +12630,7 @@ debrief:	/* 0x18ff0 */
 		push   $0x10
 		xor    %eax,%eax
 		push   $0x64
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		push   $0x12
 		mov    data_54954(,%eax,4),%edx
 		push   %edx
@@ -12644,7 +12646,7 @@ debrief:	/* 0x18ff0 */
 		push   $0x10
 		xor    %eax,%eax
 		push   $0x78
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		push   $0x12
 		mov    strings_mission_status(,%eax,4),%esi
 		push   %esi
@@ -12664,7 +12666,7 @@ debrief:	/* 0x18ff0 */
 		push   $0x10
 		xor    %eax,%eax
 		push   $0x78
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		push   $0x140
 		mov    strings_misstat_complete(,%eax,4),%edx
 		jmp    jump_19950
@@ -12681,7 +12683,7 @@ debrief:	/* 0x18ff0 */
 		push   $0x10
 		xor    %eax,%eax
 		push   $0x78
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		push   $0x140
 		mov    strings_misstat_withdrew(,%eax,4),%esi
 		push   %esi
@@ -12699,7 +12701,7 @@ debrief:	/* 0x18ff0 */
 		push   $0x10
 		xor    %eax,%eax
 		push   $0x78
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		push   $0x140
 		mov    strings_misstat_failed(,%eax,4),%edx
 	jump_19950:
@@ -12721,7 +12723,7 @@ debrief:	/* 0x18ff0 */
 		mov    %bx,%si
 		xor    %eax,%eax
 		push   %esi
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		push   $0x12
 		mov    strings_debrief_agents_used(,%eax,4),%edx
 		push   %edx
@@ -12761,7 +12763,7 @@ debrief:	/* 0x18ff0 */
 		mov    %bx,%si
 		xor    %eax,%eax
 		push   %esi
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		push   $0x12
 		mov    strings_debrief_agents_gained(,%eax,4),%edx
 		push   %edx
@@ -12801,14 +12803,14 @@ debrief:	/* 0x18ff0 */
 		mov    %bx,%si
 		xor    %eax,%eax
 		push   %esi
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		push   $0x12
 		mov    strings_debrief_time(,%eax,4),%edx
 		push   %edx
 		call   new_show_text
 		add    $0x28,%esp
 		xor    %eax,%eax
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		mov    data_548b8(,%eax,4),%ecx
 		xor    %edx,%edx
 		push   %ecx
@@ -12851,7 +12853,7 @@ debrief:	/* 0x18ff0 */
 		mov    %bx,%si
 		xor    %eax,%eax
 		push   %esi
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		push   $0x12
 		mov    strings_debrief_agents_killed(,%eax,4),%edx
 		push   %edx
@@ -12891,7 +12893,7 @@ debrief:	/* 0x18ff0 */
 		mov    %bx,%si
 		xor    %eax,%eax
 		push   %esi
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		push   $0x12
 		mov    strings_debrief_criminals_killed(,%eax,4),%edx
 		push   %edx
@@ -12931,7 +12933,7 @@ debrief:	/* 0x18ff0 */
 		mov    %bx,%si
 		xor    %eax,%eax
 		push   %esi
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		push   $0x12
 		mov    strings_debrief_civilians_killed(,%eax,4),%edx
 		push   %edx
@@ -12971,7 +12973,7 @@ debrief:	/* 0x18ff0 */
 		mov    %bx,%si
 		xor    %eax,%eax
 		push   %esi
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		push   $0x12
 		mov    strings_debrief_police_killed(,%eax,4),%edx
 		push   %edx
@@ -13011,7 +13013,7 @@ debrief:	/* 0x18ff0 */
 		mov    %bx,%si
 		xor    %eax,%eax
 		push   %esi
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		push   $0x12
 		mov    strings_debrief_guards_killed(,%eax,4),%edx
 		push   %edx
@@ -13051,7 +13053,7 @@ debrief:	/* 0x18ff0 */
 		mov    %bx,%si
 		xor    %eax,%eax
 		push   %esi
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		push   $0x12
 		mov    strings_debrief_people_persuaded(,%eax,4),%edx
 		push   %edx
@@ -13091,7 +13093,7 @@ debrief:	/* 0x18ff0 */
 		mov    %bx,%si
 		xor    %eax,%eax
 		push   %esi
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		push   $0x12
 		mov    strings_debrief_hit_accuracy(,%eax,4),%edx
 		push   %edx
@@ -13146,7 +13148,7 @@ debrief:	/* 0x18ff0 */
 		push   $0x10
 		xor    %eax,%eax
 		push   %esi
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		push   $0x140
 		mov    strings_debrief_no_bullets(,%eax,4),%edx
 		push   %edx
@@ -13171,7 +13173,7 @@ debrief:	/* 0x18ff0 */
 		mov    cybmods(%eax),%bl
 		xor    %edx,%edx
 		lea    0x0(,%ebx,4),%eax
-		mov    language,%dl
+		mov    EXPORT_SYMBOL(language),%dl
 		sub    %ebx,%eax
 		mov    strings_misstat_complete(,%edx,4),%esi
 		lea    0x0(,%eax,4),%eax
@@ -13180,7 +13182,7 @@ debrief:	/* 0x18ff0 */
 		jmp    jump_19f3e
 	jump_19f02:
 		xor    %edx,%edx
-		mov    language,%dl
+		mov    EXPORT_SYMBOL(language),%dl
 		mov    strings_misstat_complete(,%edx,4),%eax
 		push   %eax
 		xor    %eax,%eax
@@ -13229,7 +13231,7 @@ debrief:	/* 0x18ff0 */
 		push   $0x10
 		xor    %eax,%eax
 		push   $0x138
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		push   $0x12
 		mov    data_5493c(,%eax,4),%edx
 		push   %edx
@@ -13245,7 +13247,7 @@ debrief:	/* 0x18ff0 */
 		push   $0x10
 		xor    %eax,%eax
 		push   $0x144
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		push   $0x12
 		mov    data_54948(,%eax,4),%ecx
 		push   %ecx
@@ -13254,7 +13256,7 @@ debrief:	/* 0x18ff0 */
 	jump_19ff4:
 		cmpb   $0x2,data_60afc
 		je     jump_1a0de
-		cmpb   $0x0,cheats_mission
+		cmpb   $0x0,EXPORT_SYMBOL(cheats_mission)
 		je     jump_1a0de
 		mov    data_5b80e,%ax
 		sub    $0x2,%ax
@@ -13307,7 +13309,7 @@ debrief:	/* 0x18ff0 */
 		mov    %cx,%ax
 		push   %eax
 		xor    %eax,%eax
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		mov    text_replay(,%eax,4),%esi
 		push   %esi
 		call   DrawScreenGadget
@@ -13343,7 +13345,7 @@ debrief:	/* 0x18ff0 */
 	jump_1a12c:
 		test   %al,%al
 		jne    jump_1a164
-		cmpb   $0x0,cheats_mission
+		cmpb   $0x0,EXPORT_SYMBOL(cheats_mission)
 		je     jump_1a164
 		cmpb   $0x2,data_60afc
 		je     jump_1a164
@@ -15028,7 +15030,7 @@ func_1b3a0:
 		push   %edi
 		push   %ebp
 		sub    $0x30,%esp
-		mov    DrawFlags,%ah
+		mov    EXPORT_SYMBOL(DrawFlags),%ah
 		test   $0x2,%ah
 		je     jump_1b3b9
 		mov    $0x1,%ebp
@@ -15914,7 +15916,7 @@ ccircle:	/* 0x1bbd0 */
 		sub    $0x1c,%esp
 		mov    0x38(%esp),%ebx
 		mov    $0x1,%edx
-		mov    DrawFlags,%ah
+		mov    EXPORT_SYMBOL(DrawFlags),%ah
 		mov    %edx,0xc(%esp)
 		test   $0x2,%ah
 		jne    jump_1bbfc
@@ -16557,7 +16559,7 @@ func_1c419:
 	jump_1c44b:
 		mov    %edi,%eax
 		inc    %eax
-		mov    is_multiplayer_game,%ch
+		mov    EXPORT_SYMBOL(is_multiplayer_game),%ch
 		mov    %eax,0x624(%esp)
 		test   %ch,%ch
 		je     jump_1c5eb
@@ -16919,7 +16921,7 @@ func_1c795:
 		movswl 0x63c(%esp),%eax
 		cmp    $0xffffffff,%eax
 		je     jump_1c995
-		cmpb   $0x0,is_multiplayer_game
+		cmpb   $0x0,EXPORT_SYMBOL(is_multiplayer_game)
 		je     jump_1c995
 		mov    data_5a74e,%ax
 		xor    %ebx,%ebx
@@ -16960,7 +16962,7 @@ func_1c795:
 		add    $0x10,%esp
 	jump_1c995:
 		mov    $0xffffffff,%esi
-		mov    is_multiplayer_game,%bh
+		mov    EXPORT_SYMBOL(is_multiplayer_game),%bh
 		mov    %si,data_60b30
 		test   %bh,%bh
 		jne    jump_1cc47
@@ -21321,7 +21323,7 @@ equip_team:	/* 0x1fbc0 */
 		cmpw   $0x0,data_5e5c3(%eax,%edx,4)
 		jne    jump_1fcc1
 		xor    %eax,%eax
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		mov    data_5457c(,%eax,4),%edx
 		push   %edx
 		mov    -0x18(%ebp),%bl
@@ -21363,7 +21365,7 @@ equip_team:	/* 0x1fbc0 */
 		mov    %cx,%ax
 		push   %eax
 		xor    %eax,%eax
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		mov    text_equip(,%eax,4),%esi
 		push   %esi
 		jmp    jump_1fe39
@@ -21385,7 +21387,7 @@ equip_team:	/* 0x1fbc0 */
 		mov    %bx,%ax
 		push   %eax
 		xor    %eax,%eax
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		mov    text_mods(,%eax,4),%ecx
 		push   %ecx
 		jmp    jump_1fe39
@@ -21407,14 +21409,14 @@ equip_team:	/* 0x1fbc0 */
 		mov    data_5b5d8,%ax
 		push   %eax
 		xor    %eax,%eax
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		mov    text_team(,%eax,4),%ebx
 		push   %ebx
 	jump_1fe39:
 		call   DrawScreenGadget
 		add    $0x1c,%esp
 	jump_1fe41:
-		cmpb   $0x0,is_multiplayer_game
+		cmpb   $0x0,EXPORT_SYMBOL(is_multiplayer_game)
 		jne    jump_1fedf
 		push   $0xc
 		mov    lbDisplay__MMouseY,%ax
@@ -21450,7 +21452,7 @@ equip_team:	/* 0x1fbc0 */
 		mov    %cx,%ax
 		push   %eax
 		xor    %eax,%eax
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		mov    data_545dc(,%eax,4),%edi
 		push   %edi
 		call   DrawScreenGadget
@@ -21491,7 +21493,7 @@ equip_team:	/* 0x1fbc0 */
 		mov    %dx,%ax
 		push   %eax
 		xor    %eax,%eax
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		mov    text_team(,%eax,4),%edx
 		push   %edx
 		call   DrawScreenGadget
@@ -21513,7 +21515,7 @@ equip_team:	/* 0x1fbc0 */
 		mov    %cx,%ax
 		push   %eax
 		xor    %eax,%eax
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		mov    text_equip(,%eax,4),%ecx
 		push   %ecx
 		call   DrawScreenGadget
@@ -21535,7 +21537,7 @@ equip_team:	/* 0x1fbc0 */
 		mov    %si,%ax
 		push   %eax
 		xor    %eax,%eax
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		mov    text_mods(,%eax,4),%esi
 		push   %esi
 		call   DrawScreenGadget
@@ -21573,7 +21575,7 @@ equip_team:	/* 0x1fbc0 */
 		mov    %bx,%ax
 		push   %eax
 		xor    %eax,%eax
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		mov    text_team(,%eax,4),%edi
 		push   %edi
 		call   DrawScreenGadget
@@ -21612,7 +21614,7 @@ equip_team:	/* 0x1fbc0 */
 		mov    %si,%ax
 		push   %eax
 		xor    %eax,%eax
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		mov    text_mods(,%eax,4),%edx
 		push   %edx
 		call   DrawScreenGadget
@@ -21650,7 +21652,7 @@ equip_team:	/* 0x1fbc0 */
 		mov    %si,%ax
 		push   %eax
 		xor    %eax,%eax
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		mov    text_equip(,%eax,4),%ebx
 		push   %ebx
 		call   DrawScreenGadget
@@ -21855,7 +21857,7 @@ equip_team:	/* 0x1fbc0 */
 		and    $0xff,%eax
 		mov    text_cyborg_names(,%eax,4),%edi
 		xor    %eax,%eax
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		push   %edi
 		mov    text_spec_agent(,%eax,4),%edx
 		push   %edx
@@ -22025,7 +22027,7 @@ equip_team:	/* 0x1fbc0 */
 		lea    0x0(,%eax,4),%edx
 		xor    %eax,%eax
 		push   $0xe4
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		push   $0x16e
 		mov    strings_cybmod_names(%edx,%eax,4),%esi
 		push   %esi
@@ -22072,7 +22074,7 @@ equip_team:	/* 0x1fbc0 */
 		lea    0x0(,%eax,4),%edx
 		xor    %eax,%eax
 		push   $0xfc
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		push   $0x16e
 		mov    strings_cybmod_names(%edx,%eax,4),%ebx
 		push   %ebx
@@ -22154,7 +22156,7 @@ equip_team:	/* 0x1fbc0 */
 		sub    %edx,%eax
 		xor    %edx,%edx
 		push   $0xe
-		mov    language,%dl
+		mov    EXPORT_SYMBOL(language),%dl
 		push   $0x8a
 		lea    0x0(,%edx,4),%edx
 		push   $0x16e
@@ -22241,7 +22243,7 @@ equip_team:	/* 0x1fbc0 */
 		lea    0x0(,%eax,4),%edx
 		xor    %eax,%eax
 		push   $0x72
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		push   $0x16e
 		mov    strings_cybmod_names(%edx,%eax,4),%ebx
 		push   %ebx
@@ -22324,7 +22326,7 @@ equip_team:	/* 0x1fbc0 */
 		sub    %edx,%eax
 		xor    %edx,%edx
 		push   $0xe
-		mov    language,%dl
+		mov    EXPORT_SYMBOL(language),%dl
 		push   $0xce
 		lea    0x0(,%edx,4),%edx
 		push   $0x16e
@@ -22408,7 +22410,7 @@ equip_team:	/* 0x1fbc0 */
 		lea    0x0(,%eax,4),%edx
 		xor    %eax,%eax
 		push   $0xa2
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		push   $0x16e
 		mov    strings_cybmod_names(%edx,%eax,4),%ebx
 		push   %ebx
@@ -22580,7 +22582,7 @@ equip_team:	/* 0x1fbc0 */
 		push   $0xe
 		xor    %eax,%eax
 		push   $0x6c
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		push   $0x1f8
 		mov    data_543fc(,%eax,4),%edi
 		push   %edi
@@ -22678,7 +22680,7 @@ equip_team:	/* 0x1fbc0 */
 		mov    %si,%ax
 		push   %eax
 		xor    %eax,%eax
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		push   $0x208
 		mov    a4(,%eax,4),%ebx
 		push   %ebx
@@ -22843,7 +22845,7 @@ equip_team:	/* 0x1fbc0 */
 		push   $0x7e
 		xor    %eax,%eax
 		push   $0x13e
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		push   $0x1f4
 		mov    data_54618(,%eax,4),%ebx
 		push   %ebx
@@ -22871,7 +22873,7 @@ equip_team:	/* 0x1fbc0 */
 		push   $0x7e
 		xor    %eax,%eax
 		push   $0x10e
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		push   $0x1f4
 		mov    data_545c4(,%eax,4),%ecx
 		push   %ecx
@@ -22930,7 +22932,7 @@ equip_team:	/* 0x1fbc0 */
 		push   $0x7e
 		xor    %eax,%eax
 		push   $0x10e
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		push   $0x1f4
 		mov    data_545c4(,%eax,4),%ecx
 		push   %ecx
@@ -22974,7 +22976,7 @@ equip_team:	/* 0x1fbc0 */
 		push   $0xf
 		xor    %eax,%eax
 		push   $0x100
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		push   $0x1f8
 		mov    strings_reload(,%eax,4),%edx
 		push   %edx
@@ -23050,7 +23052,7 @@ equip_team:	/* 0x1fbc0 */
 		push   $0x7e
 		xor    %eax,%eax
 		push   $0x13e
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		push   $0x1f4
 		mov    text_button_sell(,%eax,4),%edi
 		push   %edi
@@ -23077,7 +23079,7 @@ equip_team:	/* 0x1fbc0 */
 		push   $0x7e
 		xor    %eax,%eax
 		push   $0x13e
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		push   $0x1f4
 		mov    data_54618(,%eax,4),%esi
 		push   %esi
@@ -23136,7 +23138,7 @@ equip_team:	/* 0x1fbc0 */
 		push   $0x7e
 		xor    %eax,%eax
 		push   $0x126
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		push   $0x1f4
 		mov    text_button_reload(,%eax,4),%edx
 		push   %edx
@@ -24344,7 +24346,7 @@ func_2273c:
 /*----------------------------------------------------------------*/
 func_227b0:
 /*----------------------------------------------------------------*/
-		cmpb   $0x0,is_multiplayer_game
+		cmpb   $0x0,EXPORT_SYMBOL(is_multiplayer_game)
 		jne    def_21874
 		mov    $0x1,%al
 		mov    $0xb,%esi
@@ -24610,7 +24612,7 @@ ShowInfoOnEquipItem:	/* 0x22a10 */
 		sub    %esi,%eax
 		lea    0x0(,%eax,4),%esi
 		xor    %eax,%eax
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		mov    strings_weapon_names(%esi,%eax,4),%edi
 		push   %edi
 		push   $aS
@@ -24642,7 +24644,7 @@ ShowInfoOnEquipItem:	/* 0x22a10 */
 		push   $0xf
 		xor    %eax,%eax
 		push   $0xd0
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		push   $0x1f8
 		mov    strings_cost(,%eax,4),%ecx
 		push   %ecx
@@ -24683,7 +24685,7 @@ ShowInfoOnEquipItem:	/* 0x22a10 */
 		push   $0xf
 		xor    %eax,%eax
 		push   $0xdc
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		push   $0x1f8
 		mov    strings_ammo(,%eax,4),%edx
 		push   %edx
@@ -24725,7 +24727,7 @@ ShowInfoOnEquipItem:	/* 0x22a10 */
 		mov    %di,%si
 		xor    %eax,%eax
 		push   %esi
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		push   $0x1f8
 		mov    strings_range(,%eax,4),%ebp
 		push   %ebp
@@ -24772,7 +24774,7 @@ ShowInfoOnEquipItem:	/* 0x22a10 */
 		mov    %di,%bx
 		xor    %eax,%eax
 		push   %ebx
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		push   $0x1f8
 		mov    strings_shot(,%eax,4),%ecx
 		push   %ecx
@@ -24824,7 +24826,7 @@ ShowInfoOnEquipItem:	/* 0x22a10 */
 		lea    0x0(,%eax,4),%esi
 		xor    %eax,%eax
 		push   $0x6e
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		push   $0x1f8
 		mov    strings_cybmod_names(%esi,%eax,4),%ecx
 		push   %ecx
@@ -24840,7 +24842,7 @@ ShowInfoOnEquipItem:	/* 0x22a10 */
 		push   $0xf
 		xor    %eax,%eax
 		push   $0x7e
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		push   $0x1f8
 		mov    strings_cost(,%eax,4),%edi
 		push   %edi
@@ -24886,7 +24888,7 @@ ShowInfoOnEquipItem:	/* 0x22a10 */
 		push   $0x78
 		xor    %ebx,%ebx
 		push   $0x8e
-		mov    language,%bl
+		mov    EXPORT_SYMBOL(language),%bl
 		push   $0x1f8
 		mov    data_54960(%eax,%ebx,4),%ecx
 		push   %ecx
@@ -24986,7 +24988,7 @@ ShowAvailableParts:	/* 0x22eb0 */
 		sub    %edx,%eax
 		lea    0x0(,%eax,4),%edx
 		xor    %eax,%eax
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		push   $0x1f8
 		mov    strings_cybmod_names(%edx,%eax,4),%ebp
 		push   %ebp
@@ -25039,7 +25041,7 @@ ShowAvailableParts:	/* 0x22eb0 */
 		sub    %edx,%eax
 		lea    0x0(,%eax,4),%edx
 		xor    %eax,%eax
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		push   $0x1f8
 		mov    strings_cybmod_names(%edx,%eax,4),%ecx
 		push   %ecx
@@ -25090,7 +25092,7 @@ ShowAvailableEquipment:	/* 0x22fe0 */
 		sub    %edx,%eax
 		lea    0x0(,%eax,4),%edx
 		xor    %eax,%eax
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		push   $0x1f8
 		mov    strings_weapon_names(%edx,%eax,4),%ebp
 		push   %ebp
@@ -25142,7 +25144,7 @@ ShowAvailableEquipment:	/* 0x22fe0 */
 		lea    0x0(,%edx,4),%eax
 		sub    %edx,%eax
 		xor    %edx,%edx
-		mov    language,%dl
+		mov    EXPORT_SYMBOL(language),%dl
 		lea    0x0(,%edx,4),%edx
 		push   $0x1f8
 		mov    strings_weapon_names(%edx,%eax,4),%ecx
@@ -25837,7 +25839,7 @@ set_default_player:	/* 0x23880 */
 		mov    %ebx,data_5e4a0(%edx)
 		mov    $0x55,%edi
 		mov    %si,data_5e4a4(%edx)
-		mov    cheat_credits,%bl
+		mov    EXPORT_SYMBOL(cheat_credits),%bl
 		mov    %di,data_5e4a6(%edx)
 		test   %bl,%bl
 		je     jump_239c2
@@ -25995,7 +25997,7 @@ set_default_player:	/* 0x23880 */
 		lea    0x0(%eax),%eax
 		lea    0x0(%edx),%edx
 	jump_23bf0:
-		cmpb   $0x0,data_60b51
+		cmpb   $0x0,EXPORT_SYMBOL(byte_60B51)
 		je     jump_23c17
 		test   %si,%si
 		je     jump_23c17
@@ -26051,7 +26053,7 @@ set_default_player:	/* 0x23880 */
 		mov    $0x1eb,%ebp
 		lea    0x0(%eax),%eax
 	jump_23cb0:
-		cmpb   $0x0,cheat_credits
+		cmpb   $0x0,EXPORT_SYMBOL(cheat_credits)
 		je     jump_23d31
 		xor    %eax,%eax
 		mov    %si,%ax
@@ -26131,7 +26133,7 @@ set_default_player:	/* 0x23880 */
 		mov    $0x1f5,%ebp
 		lea    0x0(%eax),%eax
 	jump_23db0:
-		cmpb   $0x0,cheat_credits
+		cmpb   $0x0,EXPORT_SYMBOL(cheat_credits)
 		je     jump_23e49
 		xor    %eax,%eax
 		mov    %di,%ax
@@ -26243,10 +26245,10 @@ cheat:	/* 0x23f10 */
 		sub    $0xc,%esp
 		xor    %ah,%ah
 		movswl Network__Slot,%edx
-		mov    %ah,cheat_worldmap
-		mov    %ah,cheats_speedup
-		mov    %ah,cheat_credits
-		mov    %ah,cheats_mission
+		mov    %ah,EXPORT_SYMBOL(cheat_worldmap)
+		mov    %ah,EXPORT_SYMBOL(cheats_speedup)
+		mov    %ah,EXPORT_SYMBOL(cheat_credits)
+		mov    %ah,EXPORT_SYMBOL(cheats_mission)
 		mov    %edx,%eax
 		shl    $0x5,%eax
 		add    %edx,%eax
@@ -26279,7 +26281,7 @@ cheat:	/* 0x23f10 */
 		test   %eax,%eax
 		jne    jump_23fac
 	jump_23fa5:
-		movb   $0x1,cheat_worldmap
+		movb   $0x1,EXPORT_SYMBOL(cheat_worldmap)
 	jump_23fac:
 		movswl Network__Slot,%edx
 		mov    %edx,%eax
@@ -26314,7 +26316,7 @@ cheat:	/* 0x23f10 */
 		test   %eax,%eax
 		jne    jump_24027
 	jump_24020:
-		movb   $0x1,cheats_speedup
+		movb   $0x1,EXPORT_SYMBOL(cheats_speedup)
 	jump_24027:
 		movswl Network__Slot,%edx
 		mov    %edx,%eax
@@ -26349,7 +26351,7 @@ cheat:	/* 0x23f10 */
 		test   %eax,%eax
 		jne    jump_240a2
 	jump_2409b:
-		movb   $0x1,cheats_mission
+		movb   $0x1,EXPORT_SYMBOL(cheats_mission)
 	jump_240a2:
 		movswl Network__Slot,%edx
 		mov    %edx,%eax
@@ -26386,7 +26388,7 @@ cheat:	/* 0x23f10 */
 	jump_24116:
 		mov    $0x1,%al
 		movswl Network__Slot,%edx
-		mov    %al,cheat_credits
+		mov    %al,EXPORT_SYMBOL(cheat_credits)
 		mov    %edx,%eax
 		shl    $0x5,%eax
 		add    %edx,%eax
@@ -26431,8 +26433,8 @@ cheat:	/* 0x23f10 */
 	jump_241bf:
 		mov    $0x1,%ah
 		movswl Network__Slot,%edx
-		mov    %ah,cheat_worldmap
-		mov    %ah,cheat_credits
+		mov    %ah,EXPORT_SYMBOL(cheat_worldmap)
+		mov    %ah,EXPORT_SYMBOL(cheat_credits)
 		mov    %edx,%eax
 		shl    $0x5,%eax
 		add    %edx,%eax
@@ -26581,8 +26583,8 @@ cheat:	/* 0x23f10 */
 		lea    0x0(,%eax,8),%eax
 		mov    $0x5f5e100,%edi
 		sub    %edx,%eax
-		mov    %bl,cheat_worldmap
-		mov    %bl,cheat_credits
+		mov    %bl,EXPORT_SYMBOL(cheat_worldmap)
+		mov    %bl,EXPORT_SYMBOL(cheat_credits)
 		mov    %edi,players(%eax)
 		xor    %edi,%edi
 		mov    $0x1eb,%ebp
@@ -26783,7 +26785,7 @@ transfer_people_into_player:	/* 0x246d0 */
 		push   %ebp
 		sub    $0xc,%esp
 		mov    0x20(%esp),%edi
-		cmpb   $0x0,is_multiplayer_game
+		cmpb   $0x0,EXPORT_SYMBOL(is_multiplayer_game)
 		jne    jump_24c06
 		xor    %edx,%edx
 		mov    %edx,0x8(%esp)
@@ -27149,7 +27151,7 @@ transfer_people_into_player:	/* 0x246d0 */
 	jump_24c06:
 		test   %di,%di
 		jbe    jump_24c53
-		cmpb   $0x0,is_multiplayer_game
+		cmpb   $0x0,EXPORT_SYMBOL(is_multiplayer_game)
 		je     jump_24c53
 		xor    %edx,%edx
 		mov    %di,%dx
@@ -27498,7 +27500,7 @@ free_map_level:	/* 0x24fe0 */
 		add    $0x4,%esp
 		push   $unkn1_empty_load_files
 		call   LbDataFreeAll
-		mov    SoundAble,%ah
+		mov    EXPORT_SYMBOL(SoundAble),%ah
 		add    $0x4,%esp
 		test   %ah,%ah
 		je     jump_25016
@@ -27517,7 +27519,7 @@ set_structure_ends:	/* 0x25020 */
 		push   %esi
 		mov    $level__Vehicles,%ebx
 		mov    $level__Objects,%ecx
-		mov    data_60b42,%ah
+		mov    EXPORT_SYMBOL(byte_60B42),%ah
 		mov    $level__Weapons,%esi
 		test   %ah,%ah
 		jne    jump_2509f
@@ -27589,7 +27591,7 @@ init_level_data:	/* 0x25110 */
 		mov    data_5531c,%eax
 		push   %eax
 		call   LbSpriteSetup
-		mov    is_multiplayer_game,%ah
+		mov    EXPORT_SYMBOL(is_multiplayer_game),%ah
 		xor    %edx,%edx
 		add    $0xc,%esp
 		mov    %edx,data_60ac8
@@ -27603,7 +27605,7 @@ init_level_data:	/* 0x25110 */
 		add    $0x4,%esp
 		push   $0x0
 		call   func_4c236
-		mov    is_multiplayer_game,%dl
+		mov    EXPORT_SYMBOL(is_multiplayer_game),%dl
 		add    $0x4,%esp
 		test   %dl,%dl
 		je     jump_251ad
@@ -27615,7 +27617,7 @@ init_level_data:	/* 0x25110 */
 		jmp    jump_251d3
 	jump_251ad:
 		xor    %eax,%eax
-		mov    current_levno,%ax
+		mov    EXPORT_SYMBOL(current_levno),%ax
 		mov    level_palettes(%eax),%al
 		and    $0xff,%eax
 		push   %eax
@@ -27691,7 +27693,7 @@ load_map_level:	/* 0x252b0 */
 		mov    0xc(%esp),%esi
 		mov    0x10(%esp),%bx
 		call   clear_savegame
-		mov    %bx,current_levno
+		mov    %bx,EXPORT_SYMBOL(current_levno)
 		and    $0xffff,%ebx
 		mov    $0xa,%ecx
 		mov    %ebx,%edx
@@ -27705,7 +27707,7 @@ load_map_level:	/* 0x252b0 */
 		mov    %ebx,%eax
 		idiv   %ecx
 		add    $0x30,%edx
-		mov    DrawFlags,%ah
+		mov    EXPORT_SYMBOL(DrawFlags),%ah
 		mov    %dl,0xa(%esi)
 		cmp    $0x2,%ah
 		jne    jump_253a9
@@ -27719,14 +27721,14 @@ load_map_level:	/* 0x252b0 */
 		mov    %eax,UScreen
 		mov    %ebx,BScreen
 		call   LbFileReadRNC
-		mov    level__MapNumber,%dx
+		mov    EXPORT_SYMBOL(level__MapNumber),%dx
 		add    $0x8,%esp
 		test   %dx,%dx
 		jne    jump_2534a
-		movw   $0x1,level__MapNumber
+		movw   $0x1,EXPORT_SYMBOL(level__MapNumber)
 	jump_2534a:
 		xor    %ebx,%ebx
-		mov    level__MapNumber,%bx
+		mov    EXPORT_SYMBOL(level__MapNumber),%bx
 		mov    $0xa,%ecx
 		mov    %ebx,%edx
 		mov    %ebx,%eax
@@ -27742,7 +27744,7 @@ load_map_level:	/* 0x252b0 */
 		push   $mission_load_files
 		mov    %dl,data_53f3d
 		call   LbDataLoadAll
-		mov    SoundAble,%dl
+		mov    EXPORT_SYMBOL(SoundAble),%dl
 		add    $0x4,%esp
 		test   %dl,%dl
 		je     jump_253a4
@@ -27753,16 +27755,16 @@ load_map_level:	/* 0x252b0 */
 	jump_253a4:
 		call   init_hires_blocks
 	jump_253a9:
-		cmpb   $0x4,DrawFlags
+		cmpb   $0x4,EXPORT_SYMBOL(DrawFlags)
 		jne    jump_253e2
 		push   $level__Seed
 		push   %esi
 		call   LbFileReadRNC
-		mov    level__MapNumber,%cx
+		mov    EXPORT_SYMBOL(level__MapNumber),%cx
 		add    $0x8,%esp
 		test   %cx,%cx
 		jne    jump_253d5
-		movw   $0x1,level__MapNumber
+		movw   $0x1,EXPORT_SYMBOL(level__MapNumber)
 	jump_253d5:
 		push   $unkn1_empty_load_files
 		call   LbDataLoadAll
@@ -28060,7 +28062,7 @@ initialise_player:	/* 0x256f0 */
 		push   %ebx
 		mov    $0x1,%ecx
 		xor    %edx,%edx
-		mov    is_multiplayer_game,%ah
+		mov    EXPORT_SYMBOL(is_multiplayer_game),%ah
 		mov    %dx,Network__Slot
 		mov    %cx,Network__NumberOfSlots
 		cmp    $0x1,%ah
@@ -28103,7 +28105,7 @@ initialise_player:	/* 0x256f0 */
 		push   $0x0
 		xor    %dl,%dl
 		push   $0x0
-		mov    %dl,is_multiplayer_game
+		mov    %dl,EXPORT_SYMBOL(is_multiplayer_game)
 		call   set_network_player
 		add    $0x8,%esp
 		mov    %ebx,%eax
@@ -28146,7 +28148,7 @@ set_network_player:	/* 0x25790 */
 		mov    0xc(%esp),%al
 		shl    $0x3,%al
 		mov    %al,data_5e551(%ebx)
-		mov    current_levno,%ax
+		mov    EXPORT_SYMBOL(current_levno),%ax
 		mov    %ax,data_5e553(%ebx)
 		pop    %esi
 		pop    %ebx
@@ -28341,7 +28343,7 @@ func_25a6f:
 		jmp    jump_25b20
 	jump_25afa:
 		xor    %eax,%eax
-		mov    current_levno,%ax
+		mov    EXPORT_SYMBOL(current_levno),%ax
 		push   %eax
 		push   $level_fname
 		call   load_map_level
@@ -28383,7 +28385,7 @@ func_25b45:
 		and    $0xfe,%cl
 		mov    %cl,data_60afc
 	jump_25b6f:
-		cmpb   $0x0,is_multiplayer_game
+		cmpb   $0x0,EXPORT_SYMBOL(is_multiplayer_game)
 		je     def_25A67
 		xor    %eax,%eax
 		mov    %di,%ax
@@ -30191,10 +30193,10 @@ LoadSaveGame:	/* 0x26ef0 */
 		mov    %dh,lbDisplay__LeftButton
 		xor    %bl,%bl
 		mov    %dh,lbDisplay__RightButton
-		mov    data_60b4c,%al
+		mov    EXPORT_SYMBOL(byte_60B4C),%al
 		mov    $0x1,%bh
 		mov    %al,0xc(%esp)
-		mov    %bh,data_60b4c
+		mov    %bh,EXPORT_SYMBOL(byte_60B4C)
 		xor    %bh,%bh
 		lea    0x0(%eax),%eax
 		lea    0x0(%edx),%edx
@@ -30210,7 +30212,7 @@ LoadSaveGame:	/* 0x26ef0 */
 		cmp    $0xa,%bx
 		jb     jump_26f60
 		xor    %eax,%eax
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		mov    data_54558(,%eax,4),%ebx
 		push   %ebx
 		call   DisplayScreenTitle
@@ -30254,7 +30256,7 @@ LoadSaveGame:	/* 0x26ef0 */
 		mov    %dx,%ax
 		push   %eax
 		xor    %eax,%eax
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		mov    text_load(,%eax,4),%ecx
 		push   %ecx
 		call   DrawScreenGadget
@@ -30292,7 +30294,7 @@ LoadSaveGame:	/* 0x26ef0 */
 		mov    %bx,%ax
 		push   %eax
 		xor    %eax,%eax
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		mov    text_save(,%eax,4),%esi
 		push   %esi
 		call   DrawScreenGadget
@@ -30491,7 +30493,7 @@ func_27280:
 		mov    $aDataMlosaoutDa,%esi
 		xor    %edx,%edx
 		xor    %bl,%bl
-		mov    %al,data_60b4c
+		mov    %al,EXPORT_SYMBOL(byte_60B4C)
 		mov    %edx,MouseOldW
 		mov    $0x1,%eax
 		movsl  %ds:(%esi),%es:(%edi)
@@ -30745,6 +30747,7 @@ GLOBAL_FUNC (ASM_main)	/* 0x274a0 */
 		mov    $aIntroNul,%esi
 #endif
 
+#if 0 /* remade intro run and command line args parsing */
 		mov    %al,0x84(%esp)
 		mov    %al,data_60b38
 		cmp    %dx,%cx
@@ -30804,29 +30807,29 @@ GLOBAL_FUNC (ASM_main)	/* 0x274a0 */
 		mov    $0x2,%dl
 		mov    $0x1,%ah
 		add    $0x4,%esp
-		mov    %di,current_levno
-		mov    %di,level__MapNumber
+		mov    %di,EXPORT_SYMBOL(current_levno)
+		mov    %di,EXPORT_SYMBOL(level__MapNumber)
 		xor    %dh,%dh
 		xor    %cl,%cl
-		mov    %dl,DrawFlags
-		mov    %dh,is_multiplayer_game
-		mov    %dh,data_60b42
-		mov    %dh,data_60b44
-		mov    %dh,data_60b3b
-		mov    %ah,data_60b3a
-		mov    %dh,data_60b4c
-		mov    %ah,data_60b47
-		mov    %dh,cheat_credits
-		mov    %ah,SoundAble
-		mov    %ah,MusicAble
-		mov    %dh,cheat_worldmap
+		mov    %dl,EXPORT_SYMBOL(DrawFlags)
+		mov    %dh,EXPORT_SYMBOL(is_multiplayer_game)
+		mov    %dh,EXPORT_SYMBOL(byte_60B42)
+		mov    %dh,EXPORT_SYMBOL(byte_60B44)
+		mov    %dh,EXPORT_SYMBOL(byte_60B3B)
+		mov    %ah,EXPORT_SYMBOL(byte_60B3A)
+		mov    %dh,EXPORT_SYMBOL(byte_60B4C)
+		mov    %ah,EXPORT_SYMBOL(byte_60B47)
+		mov    %dh,EXPORT_SYMBOL(cheat_credits)
+		mov    %ah,EXPORT_SYMBOL(SoundAble)
+		mov    %ah,EXPORT_SYMBOL(MusicAble)
+		mov    %dh,EXPORT_SYMBOL(cheat_worldmap)
 		xor    %edx,%edx
-		mov    %edx,debug_k
-		mov    %cl,data_60b51
-		mov    %cl,language
-		mov    %cl,unused_option_p
-		mov    %cl,cheats_speedup
-		mov    %cl,cheats_mission
+		mov    %edx,EXPORT_SYMBOL(debug_k)
+		mov    %cl,EXPORT_SYMBOL(byte_60B51)
+		mov    %cl,EXPORT_SYMBOL(language)
+		mov    %cl,EXPORT_SYMBOL(unused_option_p)
+		mov    %cl,EXPORT_SYMBOL(cheats_speedup)
+		mov    %cl,EXPORT_SYMBOL(cheats_mission)
 		mov    0x98(%esp),%ecx
 		mov    %edi,0x80(%esp)
 		cmp    %di,%cx
@@ -30908,14 +30911,14 @@ GLOBAL_FUNC (ASM_main)	/* 0x274a0 */
 		push   %eax
 		call   ac_atoi
 		add    $0x4,%esp
-		mov    %al,language
+		mov    %al,EXPORT_SYMBOL(language)
 		cmp    $0x3,%al
 		jb     jump_2774e
 		xor    %dl,%dl
-		mov    %dl,language
+		mov    %dl,EXPORT_SYMBOL(language)
 		jmp    jump_2774e
 	jump_27717:
-		movb   $0x1,data_60b4c
+		movb   $0x1,EXPORT_SYMBOL(byte_60B4C)
 		jmp    jump_2774e
 	jump_27723:
 		movswl 0x80(%esp),%eax
@@ -30924,10 +30927,10 @@ GLOBAL_FUNC (ASM_main)	/* 0x274a0 */
 		push   %eax
 		call   ac_atoi
 		add    $0x4,%esp
-		mov    %al,unused_option_p
+		mov    %al,EXPORT_SYMBOL(unused_option_p)
 		cmp    $0x10,%al
 		jbe    jump_2774e
-		movb   $0x10,unused_option_p
+		movb   $0x10,EXPORT_SYMBOL(unused_option_p)
 	jump_2774e:
 		mov    0x80(%esp),%esi
 		inc    %esi
@@ -30936,13 +30939,13 @@ GLOBAL_FUNC (ASM_main)	/* 0x274a0 */
 		cmp    %di,%si
 		jl     jump_27603
 	jump_2776d:
-		mov    DrawFlags,%ah
+		mov    EXPORT_SYMBOL(DrawFlags),%ah
 		test   $0x2,%ah
 		je     jump_278c3
 		push   $load_files_vres16
 		jmp    jump_278d5
 	jump_27786:
-		movb   $0x2,DrawFlags
+		movb   $0x2,EXPORT_SYMBOL(DrawFlags)
 		jmp    jump_2774e
 	jump_2778f:
 		movswl 0x80(%esp),%eax
@@ -30957,7 +30960,7 @@ GLOBAL_FUNC (ASM_main)	/* 0x274a0 */
 		push   %eax
 		call   ac_atoi
 		add    $0x4,%esp
-		mov    %ax,sndcard_irq
+		mov    %ax,EXPORT_SYMBOL(sndcard_irq)
 	jump_277be:
 		movswl 0x80(%esp),%eax
 		mov    (%ebx,%eax,4),%eax
@@ -30971,7 +30974,7 @@ GLOBAL_FUNC (ASM_main)	/* 0x274a0 */
 		push   %eax
 		call   ac_atoi
 		add    $0x4,%esp
-		mov    %ax,sndcard_dma
+		mov    %ax,EXPORT_SYMBOL(sndcard_dma)
 	jump_277ed:
 		movswl 0x80(%esp),%eax
 		mov    (%ebx,%eax,4),%eax
@@ -30983,15 +30986,15 @@ GLOBAL_FUNC (ASM_main)	/* 0x274a0 */
 		push   %eax
 		call   atoi_hex
 		add    $0x4,%esp
-		mov    %ax,sndcard_ioaddr
+		mov    %ax,EXPORT_SYMBOL(sndcard_ioaddr)
 		jmp    jump_2774e
 	jump_27823:
-		movb   $0x4,DrawFlags
+		movb   $0x4,EXPORT_SYMBOL(DrawFlags)
 		jmp    jump_2774e
 	jump_2782f:
 		xor    %dh,%dh
-		mov    %dh,SoundAble
-		mov    %dh,MusicAble
+		mov    %dh,EXPORT_SYMBOL(SoundAble)
+		mov    %dh,EXPORT_SYMBOL(MusicAble)
 		jmp    jump_2774e
 	jump_27842:
 		mov    0x84(%esp),%al
@@ -31009,7 +31012,7 @@ GLOBAL_FUNC (ASM_main)	/* 0x274a0 */
 	jump_2786c:
 		movswl 0x80(%esp),%eax
 		mov    (%ebx,%eax,4),%esi
-		mov    $Network__Name,%edi
+		mov    $EXPORT_SYMBOL(Network__Name),%edi
 		add    $0x2,%esi
 		push   %edi
 	jump_27880:
@@ -31036,12 +31039,19 @@ GLOBAL_FUNC (ASM_main)	/* 0x274a0 */
 		add    $0x8,%esp
 		push   $0x1
 		jmp    ac_exit
+#else
+		mov    EXPORT_SYMBOL(DrawFlags),%ah
+		test   $0x2,%ah
+		je     jump_278c3
+		push   $load_files_vres16
+		jmp    jump_278d5
+#endif
 	jump_278c3:
 		test   $0x4,%ah
 		je     jump_278dd
 		xor    %dh,%dh
 		push   $data_54ea4
-		mov    %dh,data_60b42
+		mov    %dh,EXPORT_SYMBOL(byte_60B42)
 	jump_278d5:
 		call   LbDataLoadAll
 		add    $0x4,%esp
@@ -31061,49 +31071,49 @@ GLOBAL_FUNC (ASM_main)	/* 0x274a0 */
 		mov    %ax,MouseSwap
 		call   LbMouseSetup
 		call   nullsub_3
-		cmpb   $0x0,SoundAble
+		cmpb   $0x0,EXPORT_SYMBOL(SoundAble)
 		je     jump_2794d
 		xor    %eax,%eax
-		mov    sndcard_ioaddr,%ax
+		mov    EXPORT_SYMBOL(sndcard_ioaddr),%ax
 		push   %eax
 		xor    %eax,%eax
-		mov    sndcard_dma,%ax
+		mov    EXPORT_SYMBOL(sndcard_dma),%ax
 		push   %eax
 		xor    %eax,%eax
-		mov    sndcard_irq,%ax
+		mov    EXPORT_SYMBOL(sndcard_irq),%ax
 		push   %eax
 		call   init_sound
 		add    $0xc,%esp
-		mov    %al,SoundAble
+		mov    %al,EXPORT_SYMBOL(SoundAble)
 	jump_2794d:
-		cmpb   $0x0,MusicAble
+		cmpb   $0x0,EXPORT_SYMBOL(MusicAble)
 		je     jump_27988
 		xor    %eax,%eax
-		mov    sndcard_ioaddr,%ax
+		mov    EXPORT_SYMBOL(sndcard_ioaddr),%ax
 		push   %eax
 		xor    %eax,%eax
-		mov    sndcard_dma,%ax
+		mov    EXPORT_SYMBOL(sndcard_dma),%ax
 		push   %eax
 		xor    %eax,%eax
-		mov    sndcard_irq,%ax
+		mov    EXPORT_SYMBOL(sndcard_irq),%ax
 		push   %eax
 		push   $fname2
 		push   $fname1
 		call   InitMIDI
 		add    $0x14,%esp
-		mov    %al,MusicAble
+		mov    %al,EXPORT_SYMBOL(MusicAble)
 	jump_27988:
-		cmpb   $0x0,data_60b42
+		cmpb   $0x0,EXPORT_SYMBOL(byte_60B42)
 		je     jump_27998
 		call   nullsub_2
 		jmp    jump_279c7
 	jump_27998:
 		call   OpenIKeyboard_0
 		call   syndicate
-		mov    debug_k,%si
+		mov    EXPORT_SYMBOL(debug_k),%si
 	jump_279a9:
 		movswl %si,%eax
-		mov    debug_k,%ebx
+		mov    EXPORT_SYMBOL(debug_k),%ebx
 		sub    %eax,%ebx
 		cmp    $0x48,%ebx
 		ja     jump_279c2
@@ -31156,7 +31166,7 @@ print_command_opts:	/* 0x27a20 */
 		add    $0x4,%esp
 		ret
 timer2_cb:	/* 0x27a70 */
-		incl   debug_k
+		incl   EXPORT_SYMBOL(debug_k)
 		incb   data_60b50
 		movb   $0x1,data_60b34
 		ret
@@ -31173,10 +31183,10 @@ KInt_0:	/* 0x27a90 */
 		mov    %esp,%ebp
 		cld
 		call   __GETDS
-		incl   debug_k
+		incl   EXPORT_SYMBOL(debug_k)
 		incb   data_60b50
 		movb   $0x1,data_60b34
-		mov    debug_k,%ebx
+		mov    EXPORT_SYMBOL(debug_k),%ebx
 		test   $0x3,%bl
 		jne    jump_27ad5
 		xor    %eax,%eax
@@ -31204,9 +31214,9 @@ KInt_0:	/* 0x27a90 */
 OpenIKeyboard_0:	/* 0x27af0 */
 /*----------------------------------------------------------------*/
 		push   %ebx
-		cmpb   $0x0,SoundAble
+		cmpb   $0x0,EXPORT_SYMBOL(SoundAble)
 		jne    jump_27b03
-		cmpb   $0x0,MusicAble
+		cmpb   $0x0,EXPORT_SYMBOL(MusicAble)
 		je     jump_27b36
 	jump_27b03:
 		push   $timer2_cb
@@ -31256,9 +31266,9 @@ OpenIKeyboard_0:	/* 0x27af0 */
 /*----------------------------------------------------------------*/
 CloseIKeyboard:	/* 0x27b90 */
 /*----------------------------------------------------------------*/
-		cmpb   $0x0,SoundAble
+		cmpb   $0x0,EXPORT_SYMBOL(SoundAble)
 		jne    jump_27be0
-		cmpb   $0x0,MusicAble
+		cmpb   $0x0,EXPORT_SYMBOL(MusicAble)
 		jne    jump_27be0
 		push   $0x36
 		push   $0x43
@@ -31342,7 +31352,7 @@ ApSpriteSetup_ForceHeight:	/* 0x27c60 */
 		mov    0x14(%esp),%edx
 		add    $0x14,%edx
 	jump_27c75:
-		mov    DrawFlags,%bl
+		mov    EXPORT_SYMBOL(DrawFlags),%bl
 		cmp    $0x2,%bl
 		jb     jump_27c9d
 		jbe    jump_27c93
@@ -31411,7 +31421,7 @@ KInt:	/* 0x27cb0 */
 		push   %eax
 		push   $0x61
 		call   outp
-		mov    data_60b4c,%bh
+		mov    EXPORT_SYMBOL(byte_60B4C),%bh
 		add    $0x8,%esp
 		test   %bh,%bh
 		je     jump_27d4b
@@ -31507,7 +31517,7 @@ map_selection:	/* 0x27e00 */
 		push   $mmapblk_load_files
 		mov    %ah,lbDisplay__RightButton
 		mov    $0x1,%edx
-		mov    %ah,is_multiplayer_game
+		mov    %ah,EXPORT_SYMBOL(is_multiplayer_game)
 		mov    %edx,MouseSwap
 		call   LbDataLoadAll
 		add    $0x4,%esp
@@ -31588,7 +31598,7 @@ map_selection:	/* 0x27e00 */
 		add    $0x8,%esp
 		cmpb   $0x0,data_5e2b2
 		je     jump_27f62
-		cmpb   $0x0,cheats_mission
+		cmpb   $0x0,EXPORT_SYMBOL(cheats_mission)
 		je     jump_27f62
 		xor    %edx,%edx
 		mov    data_55030,%dl
@@ -31791,7 +31801,7 @@ map_selection:	/* 0x27e00 */
 		mov    data_5b071(%eax),%al
 		xor    %ah,%ah
 		mov    %dl,data_60b36
-		mov    %ax,current_levno
+		mov    %ax,EXPORT_SYMBOL(current_levno)
 		call   LbDataFreeAll
 		mov    $0x9,%eax
 		add    $0x4,%esp
@@ -31836,7 +31846,7 @@ map_selection:	/* 0x27e00 */
 		mov    data_5b071(%eax),%al
 		xor    %ah,%ah
 		mov    %dl,data_60b36
-		mov    %ax,current_levno
+		mov    %ax,EXPORT_SYMBOL(current_levno)
 		call   LbDataFreeAll
 		mov    $0x9,%eax
 		add    $0x4,%esp
@@ -32090,7 +32100,7 @@ show_city_info:	/* 0x28610 */
 		sub    %edx,%eax
 		lea    0x0(,%eax,4),%edx
 		xor    %eax,%eax
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		mov    text_lang(%edx,%eax,4),%ecx
 		push   %ecx
 		call   GetLineWidth
@@ -32111,7 +32121,7 @@ show_city_info:	/* 0x28610 */
 		lea    0x0(,%edx,4),%eax
 		sub    %edx,%eax
 		xor    %edx,%edx
-		mov    language,%dl
+		mov    EXPORT_SYMBOL(language),%dl
 		lea    0x0(,%edx,4),%edx
 		mov    text_lang(%edx,%eax,4),%esi
 		push   %esi
@@ -32127,7 +32137,7 @@ show_city_info:	/* 0x28610 */
 		push   $0xf
 		xor    %eax,%eax
 		push   $0x14e
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		lea    0x0(,%ebx,4),%esi
 		push   $0xc2
 		mov    text_city_pop(,%eax,4),%edx
@@ -32167,7 +32177,7 @@ show_city_info:	/* 0x28610 */
 		push   $0xf
 		xor    %eax,%eax
 		push   $0x15c
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		push   $0xc2
 		mov    text_city_tax(,%eax,4),%edx
 		push   %edx
@@ -32196,7 +32206,7 @@ show_city_info:	/* 0x28610 */
 		push   $0xf
 		xor    %eax,%eax
 		push   $0x16a
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		push   $0xc2
 		mov    text_city_stat(,%eax,4),%esi
 		push   %esi
@@ -32228,7 +32238,7 @@ show_city_info:	/* 0x28610 */
 		push   $0x82
 		xor    %eax,%eax
 		push   $0x15a
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		push   $0x10
 		mov    text_city_breief(,%eax,4),%edi
 		push   %edi
@@ -32244,7 +32254,7 @@ show_city_info:	/* 0x28610 */
 		push   $0xf
 		xor    %eax,%eax
 		push   $0x15c
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		push   $0x10c
 		mov    data_546cc(,%eax,4),%esi
 		push   %esi
@@ -32260,7 +32270,7 @@ show_city_info:	/* 0x28610 */
 		push   $0xf
 		xor    %eax,%eax
 		push   $0x16a
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		push   $0xc2
 		mov    data_546c0(,%eax,4),%edx
 		push   %edx
@@ -32292,7 +32302,7 @@ show_city_info:	/* 0x28610 */
 		push   $0x82
 		xor    %eax,%eax
 		push   $0x15a
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		push   $0x10
 		mov    text_city_breief(,%eax,4),%ebx
 		push   %ebx
@@ -32322,7 +32332,7 @@ show_city_info:	/* 0x28610 */
 		cmp    $0x2f,%si
 		jge    jump_289c2
 		xor    %eax,%eax
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		mov    text_city_mood_vhappy(,%eax,4),%edx
 		push   %edx
 		lea    -0x28(%ebp),%eax
@@ -32334,7 +32344,7 @@ show_city_info:	/* 0x28610 */
 		cmp    $0x5f,%si
 		jge    jump_289e8
 		xor    %eax,%eax
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		mov    text_city_mood_happy(,%eax,4),%edi
 		push   %edi
 		lea    -0x28(%ebp),%eax
@@ -32346,7 +32356,7 @@ show_city_info:	/* 0x28610 */
 		cmp    $0xa0,%si
 		jge    jump_28a0f
 		xor    %eax,%eax
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		mov    text_city_mood_content(,%eax,4),%esi
 		push   %esi
 		lea    -0x28(%ebp),%eax
@@ -32358,7 +32368,7 @@ show_city_info:	/* 0x28610 */
 		cmp    $0xd1,%si
 		jge    jump_28a36
 		xor    %eax,%eax
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		mov    text_city_mood_unhappy(,%eax,4),%ecx
 		push   %ecx
 		lea    -0x28(%ebp),%eax
@@ -32370,7 +32380,7 @@ show_city_info:	/* 0x28610 */
 		cmp    $0xfe,%si
 		jge    jump_28a5a
 		xor    %eax,%eax
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		mov    text_city_mood_discontent(,%eax,4),%ebx
 		push   %ebx
 		lea    -0x28(%ebp),%eax
@@ -32380,7 +32390,7 @@ show_city_info:	/* 0x28610 */
 		jmp    jump_28ab2
 	jump_28a5a:
 		xor    %eax,%eax
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		mov    text_city_mood_rebellious(,%eax,4),%edx
 		push   %edx
 		lea    -0x28(%ebp),%eax
@@ -32643,7 +32653,7 @@ can_i_play_this_city:	/* 0x28d60 */
 		push   %esi
 		mov    Network__Slot,%si
 		mov    0xc(%esp),%cl
-		cmpb   $0x0,cheat_worldmap
+		cmpb   $0x0,EXPORT_SYMBOL(cheat_worldmap)
 		je     jump_28d7d
 		mov    $0x1,%al
 		jmp    jump_28e7f
@@ -33545,15 +33555,15 @@ multi_out:	/* 0x29790 */
 		mov    %dl,0x4(%esp)
 		mov    $0x5a,%edx
 		mov    %ah,(%esp)
-		mov    %dx,current_levno
+		mov    %dx,EXPORT_SYMBOL(current_levno)
 		mov    %ah,lbDisplay__LeftButton
 		mov    %ah,lbDisplay__RightButton
 		xor    %eax,%eax
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		mov    data_54564(,%eax,4),%edx
 		mov    $0x1,%bh
 		push   %edx
-		mov    %bh,is_multiplayer_game
+		mov    %bh,EXPORT_SYMBOL(is_multiplayer_game)
 		call   DisplayScreenTitle
 		add    $0x4,%esp
 		mov    $0x10,%edi
@@ -33571,7 +33581,7 @@ func_297e5:
 		lea    0x0(,%edx,4),%eax
 		sub    %edx,%eax
 		mov    data_5b524(,%eax,2),%ax
-		mov    %ax,current_levno
+		mov    %ax,EXPORT_SYMBOL(current_levno)
 		jmp    def_2998D
 
 
@@ -33726,7 +33736,7 @@ func_29818:
 		lea    0x0(,%edx,4),%eax
 		sub    %edx,%eax
 		mov    data_5b524(,%eax,2),%ax
-		mov    %ax,current_levno
+		mov    %ax,EXPORT_SYMBOL(current_levno)
 		mov    %ebp,%eax
 		add    $0x8,%esp
 		pop    %ebp
@@ -33782,7 +33792,7 @@ ExchangeNetwork_Packet:	/* 0x29a10 */
 		test   %ax,%ax
 		je     jump_29aef
 		push   %ebx
-		push   $Network__Name
+		push   $EXPORT_SYMBOL(Network__Name)
 		lgs    NetUserNcb(%esi),%eax
 		push   $aSD
 		movb   $0x0,%gs:0x2(%eax)
@@ -33982,9 +33992,9 @@ NetworkCmdlineSetup:	/* 0x29ce0 */
 		mov    $0x1,%edx
 		mov    $0x1,%ah
 		push   $0x12
-		mov    data_60b4c,%bl
+		mov    EXPORT_SYMBOL(byte_60B4C),%bl
 		mov    %edx,0x4c(%esp)
-		mov    %ah,data_60b4c
+		mov    %ah,EXPORT_SYMBOL(byte_60B4C)
 		call   LbScreenSetup
 		add    $0x4,%esp
 	jump_29d08:
@@ -34010,7 +34020,7 @@ NetworkCmdlineSetup:	/* 0x29ce0 */
 		jmp    jump_2a2a2
 	jump_29d4c:
 		push   $aNumberOfPlayer
-		mov    %bl,data_60b4c
+		mov    %bl,EXPORT_SYMBOL(byte_60B4C)
 		call   ac_printf
 		add    $0x4,%esp
 		xor    %ebx,%ebx
@@ -34029,7 +34039,7 @@ NetworkCmdlineSetup:	/* 0x29ce0 */
 		cmp    %di,%si
 		jl     jump_29d79
 	jump_29d95:
-		mov    $Network__Name,%ebx
+		mov    $EXPORT_SYMBOL(Network__Name),%ebx
 	jump_29d9a:
 		cmpb   $0x0,data_5e285
 		je     jump_29db0
@@ -34182,7 +34192,7 @@ NetworkCmdlineSetup:	/* 0x29ce0 */
 		lea    0x0(,%ebx,4),%eax
 		push   %edi
 		sub    %ebx,%eax
-		push   $Network__Name
+		push   $EXPORT_SYMBOL(Network__Name)
 		lgs    NetUserNcb(,%eax,2),%ebx
 		mov    data_60648(%ebp),%cx
 		mov    NetUserNcb(%ebp),%eax
@@ -34261,7 +34271,7 @@ NetworkCmdlineSetup:	/* 0x29ce0 */
 		call   ac_printf
 		add    $0x10,%esp
 		push   %ebp
-		push   $Network__Name
+		push   $EXPORT_SYMBOL(Network__Name)
 		push   $aSD
 		lea    0x38(%esp),%eax
 		push   %eax
@@ -34539,7 +34549,7 @@ StopNetwork:	/* 0x2a340 */
 		jl     jump_2a364
 		movswl Network__Slot,%eax
 		push   %eax
-		push   $Network__Name
+		push   $EXPORT_SYMBOL(Network__Name)
 		push   $aSD
 		lea    0xc(%esp),%eax
 		push   %eax
@@ -36079,7 +36089,7 @@ MouseHandler256:	/* 0x2b296 */
 		cmp    $0x1,%ah
 		jne    jump_2b436
 		xor    %dl,%dl
-		mov    DrawFlags,%dh
+		mov    EXPORT_SYMBOL(DrawFlags),%dh
 		mov    %dl,data_60b34
 		cmp    %ah,%dh
 		jne    jump_2b3c9
@@ -36198,7 +36208,7 @@ MouseHandler256:	/* 0x2b296 */
 		mov    %dx,0x2c(%esp)
 		mov    %bx,0x30(%esp)
 		call   ac_dos_int386x
-		mov    DrawFlags,%al
+		mov    EXPORT_SYMBOL(DrawFlags),%al
 		add    $0x10,%esp
 		cmp    $0x1,%al
 		jb     jump_2b52a
@@ -37656,13 +37666,13 @@ set_mission_complete:	/* 0x2c2e0 */
 /*----------------------------------------------------------------*/
 		push   %ebx
 		xor    %eax,%eax
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		mov    data_54468(,%eax,4),%edx
 		push   %edx
 		push   $data_60564
 		call   center_panel_string
 		xor    %eax,%eax
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		add    $0x8,%esp
 		mov    data_54474(,%eax,4),%ebx
 		push   %ebx
@@ -37677,7 +37687,7 @@ set_mission_complete:	/* 0x2c2e0 */
 set_mission_failed:	/* 0x2c320 */
 /*----------------------------------------------------------------*/
 		xor    %eax,%eax
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		mov    data_54480(,%eax,4),%edx
 		push   %edx
 		push   $data_60564
@@ -37718,7 +37728,7 @@ set_panel_string:	/* 0x2c390 */
 		add    $0x8,%esp
 		mov    0x18(%esp),%eax
 		mov    %ax,data_5537c
-		cmpb   $0x0,is_multiplayer_game
+		cmpb   $0x0,EXPORT_SYMBOL(is_multiplayer_game)
 		jne    jump_2c4ff
 		mov    data_60afc,%dl
 		test   $0x6,%dl
@@ -37743,7 +37753,7 @@ set_panel_string:	/* 0x2c390 */
 func_2c40a:
 /*----------------------------------------------------------------*/
 		xor    %eax,%eax
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		mov    data_54408(,%eax,4),%ecx
 		push   %ecx
 		jmp    jump_2c493
@@ -37753,7 +37763,7 @@ func_2c40a:
 func_2c41e:
 /*----------------------------------------------------------------*/
 		xor    %eax,%eax
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		mov    data_54414(,%eax,4),%ebp
 		push   %ebp
 		jmp    jump_2c493
@@ -37763,7 +37773,7 @@ func_2c41e:
 func_2c42f:
 /*----------------------------------------------------------------*/
 		xor    %eax,%eax
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		mov    data_54420(,%eax,4),%edi
 		push   %edi
 		jmp    jump_2c493
@@ -37773,7 +37783,7 @@ func_2c42f:
 func_2c440:
 /*----------------------------------------------------------------*/
 		xor    %eax,%eax
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		mov    data_5442c(,%eax,4),%esi
 		push   %esi
 		jmp    jump_2c493
@@ -37783,7 +37793,7 @@ func_2c440:
 func_2c451:
 /*----------------------------------------------------------------*/
 		xor    %eax,%eax
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		mov    data_54438(,%eax,4),%ebp
 		push   %ebp
 		jmp    jump_2c493
@@ -37793,7 +37803,7 @@ func_2c451:
 func_2c462:
 /*----------------------------------------------------------------*/
 		xor    %eax,%eax
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		mov    data_54444(,%eax,4),%esi
 		push   %esi
 		jmp    jump_2c493
@@ -37803,7 +37813,7 @@ func_2c462:
 func_2c473:
 /*----------------------------------------------------------------*/
 		xor    %eax,%eax
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		mov    data_54450(,%eax,4),%edi
 		push   %edi
 		jmp    jump_2c493
@@ -37813,7 +37823,7 @@ func_2c473:
 func_2c484:
 /*----------------------------------------------------------------*/
 		xor    %eax,%eax
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		mov    data_5445c(,%eax,4),%edx
 		push   %edx
 	jump_2c493:
@@ -38670,7 +38680,7 @@ func_2cf11:
 		sub    %ecx,%eax
 		lea    0x0(,%eax,4),%ecx
 		xor    %eax,%eax
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		add    $0xc,%esp
 		mov    strings_weapon_names(%ecx,%eax,4),%edx
 		push   %edx
@@ -38756,7 +38766,7 @@ func_2cfda:
 		lea    0x0(,%ecx,4),%eax
 		sub    %ecx,%eax
 		xor    %ecx,%ecx
-		mov    language,%cl
+		mov    EXPORT_SYMBOL(language),%cl
 		lea    0x0(,%ecx,4),%ecx
 		mov    strings_weapon_names(%ecx,%eax,4),%ebx
 		push   %ebx
@@ -39013,7 +39023,7 @@ func_2d39f:
 func_2d3b8:
 /*----------------------------------------------------------------*/
 		xor    %eax,%eax
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		push   $0x32
 		mov    data_5448c(,%eax,4),%edx
 		push   %edx
@@ -39038,21 +39048,21 @@ func_2d3d6:
 		jmp    jump_2d411
 	jump_2d3e5:
 		xor    %eax,%eax
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		push   $0x32
 		mov    data_54420(,%eax,4),%edi
 		push   %edi
 		jmp    jump_2d5ec
 	jump_2d3fb:
 		xor    %eax,%eax
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		push   $0x32
 		mov    data_54498(,%eax,4),%esi
 		push   %esi
 		jmp    jump_2d5ec
 	jump_2d411:
 		xor    %eax,%eax
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		push   $0x32
 		mov    data_544a4(,%eax,4),%ebp
 		push   %ebp
@@ -39071,7 +39081,7 @@ func_2d42f:
 		mov    $0x32,%eax
 		push   %eax
 		xor    %eax,%eax
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		mov    data_54498(,%eax,4),%ecx
 		push   %ecx
 		call   set_panel_string
@@ -39089,7 +39099,7 @@ func_2d451:
 		mov    $0x32,%eax
 		push   %eax
 		xor    %eax,%eax
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		mov    data_544b0(,%eax,4),%ebx
 		push   %ebx
 		call   set_panel_string
@@ -39105,7 +39115,7 @@ func_2d451:
 func_2d473:
 /*----------------------------------------------------------------*/
 		xor    %eax,%eax
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		push   $0x32
 		mov    data_544bc(,%eax,4),%edx
 		push   %edx
@@ -39122,7 +39132,7 @@ func_2d473:
 func_2d491:
 /*----------------------------------------------------------------*/
 		xor    %eax,%eax
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		push   $0x32
 		mov    data_544c8(,%eax,4),%ebp
 		push   %ebp
@@ -39139,7 +39149,7 @@ func_2d491:
 func_2d4af:
 /*----------------------------------------------------------------*/
 		xor    %eax,%eax
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		push   $0x32
 		mov    data_544d4(,%eax,4),%edi
 		push   %edi
@@ -39156,7 +39166,7 @@ func_2d4af:
 func_2d4cd:
 /*----------------------------------------------------------------*/
 		xor    %eax,%eax
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		push   $0x32
 		mov    data_544e0(,%eax,4),%esi
 		push   %esi
@@ -39173,7 +39183,7 @@ func_2d4cd:
 func_2d4eb:
 /*----------------------------------------------------------------*/
 		xor    %eax,%eax
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		push   $0x32
 		mov    data_544ec(,%eax,4),%ecx
 		push   %ecx
@@ -39190,7 +39200,7 @@ func_2d4eb:
 func_2d509:
 /*----------------------------------------------------------------*/
 		xor    %eax,%eax
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		push   $0x32
 		mov    data_544ec(,%eax,4),%ebx
 		push   %ebx
@@ -39207,7 +39217,7 @@ func_2d509:
 func_2d527:
 /*----------------------------------------------------------------*/
 		xor    %eax,%eax
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		push   $0x32
 		mov    data_544f8(,%eax,4),%edx
 		push   %edx
@@ -39224,7 +39234,7 @@ func_2d527:
 func_2d545:
 /*----------------------------------------------------------------*/
 		xor    %eax,%eax
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		push   $0x32
 		mov    data_54504(,%eax,4),%ebp
 		push   %ebp
@@ -39241,7 +39251,7 @@ func_2d545:
 func_2d563:
 /*----------------------------------------------------------------*/
 		xor    %eax,%eax
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		push   $0x32
 		mov    data_54510(,%eax,4),%edi
 		push   %edi
@@ -39258,7 +39268,7 @@ func_2d563:
 func_2d581:
 /*----------------------------------------------------------------*/
 		xor    %eax,%eax
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		push   $0x32
 		mov    data_5451c(,%eax,4),%esi
 		push   %esi
@@ -39275,7 +39285,7 @@ func_2d581:
 func_2d59f:
 /*----------------------------------------------------------------*/
 		xor    %eax,%eax
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		push   $0x32
 		mov    data_54528(,%eax,4),%ecx
 		push   %ecx
@@ -39292,7 +39302,7 @@ func_2d59f:
 func_2d5bd:
 /*----------------------------------------------------------------*/
 		xor    %eax,%eax
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		push   $0x32
 		mov    data_54534(,%eax,4),%ebx
 		push   %ebx
@@ -39309,7 +39319,7 @@ func_2d5bd:
 func_2d5db:
 /*----------------------------------------------------------------*/
 		xor    %eax,%eax
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		push   $0x32
 		mov    data_54540(,%eax,4),%edx
 		push   %edx
@@ -39341,7 +39351,7 @@ make_packet:	/* 0x2d610 */
 		mov    0x14(%esp),%ebx
 		cmpb   $0x0,data_5e285
 		je     jump_2d63a
-		cmpb   $0x0,is_multiplayer_game
+		cmpb   $0x0,EXPORT_SYMBOL(is_multiplayer_game)
 		je     jump_2d63a
 		xor    %eax,%eax
 		movb   $0x2,0xd(%ebx)
@@ -39350,7 +39360,7 @@ make_packet:	/* 0x2d610 */
 	jump_2d63a:
 		cmpb   $0x0,data_5e2a4
 		je     jump_2d65f
-		cmpb   $0x0,is_multiplayer_game
+		cmpb   $0x0,EXPORT_SYMBOL(is_multiplayer_game)
 		jne    jump_2d65f
 		xor    %edi,%edi
 		movb   $0x10,0xd(%ebx)
@@ -50177,7 +50187,7 @@ ResearchAndDevelop:	/* 0x34ad0 */
 		mov    %ah,lbDisplay__LeftButton
 		mov    %ah,lbDisplay__RightButton
 		xor    %eax,%eax
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		mov    data_54588(,%eax,4),%edx
 		push   %edx
 		call   DisplayScreenTitle
@@ -50200,7 +50210,7 @@ ResearchAndDevelop:	/* 0x34ad0 */
 		mov    %bx,%ax
 		push   %eax
 		xor    %eax,%eax
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		mov    data_54630(,%eax,4),%ebx
 		push   %ebx
 		call   DrawScreenGadget
@@ -50239,7 +50249,7 @@ ResearchAndDevelop:	/* 0x34ad0 */
 		mov    %bx,%ax
 		push   %eax
 		xor    %eax,%eax
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		mov    strings_research_funddec(,%eax,4),%ecx
 		push   %ecx
 		call   DrawScreenGadget
@@ -50274,7 +50284,7 @@ ResearchAndDevelop:	/* 0x34ad0 */
 		mov    %cx,%ax
 		push   %eax
 		xor    %eax,%eax
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		mov    text_equip(,%eax,4),%edi
 		push   %edi
 		call   DrawScreenGadget
@@ -50296,7 +50306,7 @@ ResearchAndDevelop:	/* 0x34ad0 */
 		mov    %si,%ax
 		push   %eax
 		xor    %eax,%eax
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		mov    text_mods(,%eax,4),%edx
 		push   %edx
 		call   DrawScreenGadget
@@ -50334,7 +50344,7 @@ ResearchAndDevelop:	/* 0x34ad0 */
 		mov    %bx,%ax
 		push   %eax
 		xor    %eax,%eax
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		mov    text_mods(,%eax,4),%ebx
 		push   %ebx
 		call   DrawScreenGadget
@@ -50373,7 +50383,7 @@ ResearchAndDevelop:	/* 0x34ad0 */
 		mov    %bx,%ax
 		push   %eax
 		xor    %eax,%eax
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		mov    text_equip(,%eax,4),%ecx
 		push   %ecx
 		call   DrawScreenGadget
@@ -50516,7 +50526,7 @@ ResearchAndDevelop:	/* 0x34ad0 */
 		sub    %edx,%eax
 		lea    0x0(,%eax,4),%edx
 		xor    %eax,%eax
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		mov    strings_cybmod_names(%edx,%eax,4),%edi
 		push   %edi
 		mov    strings_researching(,%eax,4),%edx
@@ -50533,7 +50543,7 @@ ResearchAndDevelop:	/* 0x34ad0 */
 		lea    0x12(%ebp),%eax
 		push   %eax
 		xor    %eax,%eax
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		mov    strings_researching(,%eax,4),%esi
 		push   %esi
 	jump_34fd0:
@@ -50703,7 +50713,7 @@ ResearchAndDevelop:	/* 0x34ad0 */
 		push   $0x7e
 		xor    %eax,%eax
 		push   $0x13e
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		push   $0x1f4
 		mov    data_545c4(,%eax,4),%esi
 		push   %esi
@@ -50750,7 +50760,7 @@ ResearchAndDevelop:	/* 0x34ad0 */
 		push   $0x7e
 		xor    %eax,%eax
 		push   $0x13e
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		push   $0x1f4
 		mov    data_545c4(,%eax,4),%ecx
 		push   %ecx
@@ -50772,7 +50782,7 @@ ResearchAndDevelop:	/* 0x34ad0 */
 		push   $0x10
 		xor    %eax,%eax
 		push   $0x6a
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		push   $0x14
 		mov    strings_research_min_funding(,%eax,4),%edx
 		push   %edx
@@ -50788,7 +50798,7 @@ ResearchAndDevelop:	/* 0x34ad0 */
 		push   $0x10
 		xor    %eax,%eax
 		push   $0x82
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		push   $0x14
 		mov    strings_research_max_funding(,%eax,4),%ecx
 		push   %ecx
@@ -50880,7 +50890,7 @@ ResearchAndDevelop:	/* 0x34ad0 */
 		lea    0x0(,%eax,4),%edx
 		xor    %eax,%eax
 		push   $0x56
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		push   $0x14
 		mov    strings_cybmod_names(%edx,%eax,4),%edi
 		push   %edi
@@ -51001,7 +51011,7 @@ ResearchAndDevelop:	/* 0x34ad0 */
 		push   $0x80
 		xor    %eax,%eax
 		push   $0x9e
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		push   $0x10
 		mov    data_545dc(,%eax,4),%edx
 		push   %edx
@@ -51028,7 +51038,7 @@ ResearchAndDevelop:	/* 0x34ad0 */
 		push   $0x80
 		xor    %eax,%eax
 		push   $0xb6
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		push   $0x10
 		mov    data_545c4(,%eax,4),%ebx
 		push   %ebx
@@ -51162,7 +51172,7 @@ ResearchAndDevelop:	/* 0x34ad0 */
 		sub    %edx,%eax
 		lea    0x0(,%eax,4),%edx
 		xor    %eax,%eax
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		push   $0x14
 		mov    strings_cybmod_names(%edx,%eax,4),%ecx
 		push   %ecx
@@ -51218,7 +51228,7 @@ ResearchAndDevelop:	/* 0x34ad0 */
 		sub    %edx,%eax
 		lea    0x0(,%eax,4),%edx
 		xor    %eax,%eax
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		push   $0x14
 		mov    strings_cybmod_names(%edx,%eax,4),%esi
 		push   %esi
@@ -52140,7 +52150,7 @@ GetWeaponName:	/* 0x36350 */
 		sub    %ebx,%eax
 		lea    0x0(,%eax,4),%ebx
 		xor    %eax,%eax
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		mov    strings_weapon_names(%ebx,%eax,4),%ebp
 		push   %ebp
 		jmp    jump_36431
@@ -52157,7 +52167,7 @@ GetWeaponName:	/* 0x36350 */
 func_363cb:
 /*----------------------------------------------------------------*/
 		xor    %eax,%eax
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		mov    strings_weapon_category_automatic(,%eax,4),%edi
 		push   %edi
 		push   %edx
@@ -52174,7 +52184,7 @@ func_363cb:
 func_363e8:
 /*----------------------------------------------------------------*/
 		xor    %eax,%eax
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		mov    strings_weapon_category_heavy(,%eax,4),%esi
 		push   %esi
 		push   %edx
@@ -52191,7 +52201,7 @@ func_363e8:
 func_36405:
 /*----------------------------------------------------------------*/
 		xor    %eax,%eax
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		mov    strings_weapon_category_assault(,%eax,4),%ecx
 		push   %ecx
 		push   %edx
@@ -52208,7 +52218,7 @@ func_36405:
 func_36422:
 /*----------------------------------------------------------------*/
 		xor    %eax,%eax
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		mov    strings_weapon_category_misc(,%eax,4),%ebx
 		push   %ebx
 	jump_36431:
@@ -53906,7 +53916,7 @@ select:	/* 0x37600 */
 		mov    %edx,m_sprites
 		mov    %edx,m_sprites_end
 		call   LbDataLoadAll
-		mov    SoundAble,%dl
+		mov    EXPORT_SYMBOL(SoundAble),%dl
 		add    $0x4,%esp
 		test   %dl,%dl
 		je     jump_37654
@@ -53971,11 +53981,11 @@ select:	/* 0x37600 */
 		cmp    $0x3,%cl
 		jne    jump_37709
 	jump_376ee:
-		mov    DrawFlags,%al
-		mov    %al,OldDrawFlags
+		mov    EXPORT_SYMBOL(DrawFlags),%al
+		mov    %al,EXPORT_SYMBOL(OldDrawFlags)
 		mov    $0x1,%al
 		push   $0x13
-		mov    %al,DrawFlags
+		mov    %al,EXPORT_SYMBOL(DrawFlags)
 		call   LbScreenSetup
 		add    $0x4,%esp
 	jump_37709:
@@ -54124,7 +54134,7 @@ func_37800:
 func_378c3:
 /*----------------------------------------------------------------*/
 		xor    %edx,%eax
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		mov    data_5454c(,%eax,4),%edx
 		push   %edx
 		call   DisplayScreenTitle
@@ -54180,7 +54190,7 @@ func_378c3:
 		mov    %di,%bx
 		push   %ebx
 		xor    %ebx,%ebx
-		mov    language,%bl
+		mov    EXPORT_SYMBOL(language),%bl
 		push   $0xd0
 		mov    data_54c00(%eax,%ebx,4),%ecx
 		push   %ecx
@@ -54350,7 +54360,7 @@ func_37b29:
 		jne    def_378BB
 	jump_37b7b:
 		xor    %eax,%eax
-		mov    current_levno,%ax
+		mov    EXPORT_SYMBOL(current_levno),%ax
 		push   %eax
 		push   $brief_text
 		call   load_text
@@ -54398,7 +54408,7 @@ func_37bbf:
 		push   %ebx
 		xor    %cl,%cl
 		push   $brief_text
-		mov    %cl,is_multiplayer_game
+		mov    %cl,EXPORT_SYMBOL(is_multiplayer_game)
 		call   mission_briefing
 		add    $0x8,%esp
 		jmp    jump_37be2
@@ -54460,7 +54470,7 @@ func_37bdd:
 		push   $0xfffffffe
 		xor    %eax,%eax
 		push   $0x38a
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		push   %ecx
 		mov    strings_logging_out(,%eax,4),%edi
 		push   %edi
@@ -54477,12 +54487,12 @@ func_37bdd:
 		and    $0xffff,%eax
 		push   %eax
 		xor    %eax,%eax
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		mov    strings_logging_out(,%eax,4),%ebp
 		push   %ebp
 		jmp    jump_37da0
 	jump_37cc7:
-		cmpb   $0x0,is_multiplayer_game
+		cmpb   $0x0,EXPORT_SYMBOL(is_multiplayer_game)
 		je     jump_37d3a
 		push   $0x0
 		push   $0x0
@@ -54498,7 +54508,7 @@ func_37bdd:
 		push   $0xfffffffe
 		xor    %ebp,%eax
 		push   $0x38a
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		push   %ebp
 		mov    strings_multiplayer(,%eax,4),%edx
 		push   %edx
@@ -54515,7 +54525,7 @@ func_37bdd:
 		and    $0xffff,%eax
 		push   %eax
 		xor    %eax,%eax
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		mov    strings_multiplayer(,%eax,4),%ebx
 		push   %ebx
 		jmp    jump_37da0
@@ -54533,7 +54543,7 @@ func_37bdd:
 		push   $0xfffffffe
 		xor    %eax,%eax
 		push   $0x38a
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		push   %ebx
 		mov    strings_loading(,%eax,4),%esi
 		push   %esi
@@ -54550,7 +54560,7 @@ func_37bdd:
 		and    $0xffff,%eax
 		push   %eax
 		xor    %eax,%eax
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		mov    strings_loading(,%eax,4),%edi
 		push   %edi
 	jump_37da0:
@@ -54559,7 +54569,7 @@ func_37bdd:
 		call   LbScreenSwapMCGA
 		push   $unk984_load_files
 		call   LbDataFreeAll
-		mov    SoundAble,%bl
+		mov    EXPORT_SYMBOL(SoundAble),%bl
 		add    $0x4,%esp
 		test   %bl,%bl
 		je     jump_37dd1
@@ -54567,8 +54577,8 @@ func_37bdd:
 		call   LbDataFreeAll
 		add    $0x4,%esp
 	jump_37dd1:
-		mov    OldDrawFlags,%al
-		mov    %al,DrawFlags
+		mov    EXPORT_SYMBOL(OldDrawFlags),%al
+		mov    %al,EXPORT_SYMBOL(DrawFlags)
 		mov    0xc(%esp),%al
 		add    $0x10,%esp
 		pop    %ebp
@@ -54737,10 +54747,10 @@ level_finished:	/* 0x37f80 */
 		add    $0x1000,%eax
 		mov    %dh,SoundActive
 		mov    %eax,data_60aa8
-		mov    DrawFlags,%al
+		mov    EXPORT_SYMBOL(DrawFlags),%al
 		mov    %dh,MusicActive
-		mov    %al,OldDrawFlags
-		mov    %dh,DrawFlags
+		mov    %al,EXPORT_SYMBOL(OldDrawFlags)
+		mov    %dh,EXPORT_SYMBOL(DrawFlags)
 		call   LbScreenSetup
 		mov    data_60afc,%al
 		add    $0x4,%esp
@@ -54756,7 +54766,7 @@ level_finished:	/* 0x37f80 */
 		mov    %bh,data_55590
 		jmp    jump_382cf
 	jump_38011:
-		cmpb   $0x0,SoundAble
+		cmpb   $0x0,EXPORT_SYMBOL(SoundAble)
 		je     jump_3802c
 		push   $sound_bank_files
 		call   LbDataLoadAll
@@ -54928,7 +54938,7 @@ level_finished:	/* 0x37f80 */
 		xor    %ch,%ch
 		mov    %ch,lbDisplay__LeftButton
 		mov    %ch,lbDisplay__RightButton
-		mov    debug_k,%edx
+		mov    EXPORT_SYMBOL(debug_k),%edx
 		cmpb   $0x0,lbDisplay__LeftButton
 		jne    jump_382b9
 	jump_38271:
@@ -54940,7 +54950,7 @@ level_finished:	/* 0x37f80 */
 		jne    jump_382b9
 		cmpb   $0x7f,Inkey
 		jbe    jump_382b9
-		mov    debug_k,%eax
+		mov    EXPORT_SYMBOL(debug_k),%eax
 		sub    %edx,%eax
 		cmp    $0x870,%eax
 		jae    jump_382b9
@@ -54973,7 +54983,7 @@ load_text:	/* 0x382e0 */
 		sub    $0x64,%esp
 		mov    0x6c(%esp),%ebx
 		mov    0x70(%esp),%eax
-		mov    language,%dl
+		mov    EXPORT_SYMBOL(language),%dl
 		movb   $0x0,(%ebx)
 		test   %dl,%dl
 		jne    jump_3830e
@@ -55201,7 +55211,7 @@ load_save_text:	/* 0x38540 */
 		cmpb   $0x0,(%esi)
 		jne    jump_385b3
 		xor    %ebx,%ebx
-		mov    language,%bl
+		mov    EXPORT_SYMBOL(language),%bl
 		mov    a4(,%ebx,4),%ecx
 		push   %ecx
 		push   %esi
@@ -55364,7 +55374,7 @@ sound_bank_setup:	/* 0x38720 */
 		mov    smptable,%edx
 		test   %edx,%edx
 		je     jump_38782
-		cmpb   $0x0,SoundAble
+		cmpb   $0x0,EXPORT_SYMBOL(SoundAble)
 		je     jump_38782
 		mov    smptable_end,%ebx
 		lea    0x20(%edx),%esi
@@ -55457,7 +55467,7 @@ BFPlaySample:	/* 0x38830 */
 /*----------------------------------------------------------------*/
 		push   %ebx
 		push   %esi
-		cmpb   $0x0,SoundAble
+		cmpb   $0x0,EXPORT_SYMBOL(SoundAble)
 		je     jump_38887
 		cmpb   $0x0,SoundActive
 		je     jump_38887
@@ -55493,7 +55503,7 @@ BFPlaySample:	/* 0x38830 */
 BFSoundPause:	/* 0x38890 */
 /*----------------------------------------------------------------*/
 		push   %ebx
-		cmpb   $0x0,SoundAble
+		cmpb   $0x0,EXPORT_SYMBOL(SoundAble)
 		je     jump_388b2
 		cmpb   $0x0,SoundActive
 		je     jump_388b2
@@ -55510,7 +55520,7 @@ BFSoundPause:	/* 0x38890 */
 BFSoundResume:	/* 0x388c0 */
 /*----------------------------------------------------------------*/
 		push   %ebx
-		cmpb   $0x0,SoundAble
+		cmpb   $0x0,EXPORT_SYMBOL(SoundAble)
 		je     jump_388e2
 		cmpb   $0x0,SoundActive
 		je     jump_388e2
@@ -55531,7 +55541,7 @@ BFSonundUnkn1:	/* 0x388f0 */
 		push   %edi
 		push   %ebp
 		mov    smptable,%edi
-		mov    SoundAble,%ah
+		mov    EXPORT_SYMBOL(SoundAble),%ah
 		xor    %ebp,%ebp
 		test   %ah,%ah
 		je     jump_38a0f
@@ -55625,7 +55635,7 @@ BFSonundUnkn1:	/* 0x388f0 */
 FreeSound:	/* 0x38a20 */
 /*----------------------------------------------------------------*/
 		push   %ebx
-		cmpb   $0x0,SoundAble
+		cmpb   $0x0,EXPORT_SYMBOL(SoundAble)
 		je     jump_38a34
 		push   $0x0
 		call   AIL_shutdown
@@ -55639,7 +55649,7 @@ FreeSound:	/* 0x38a20 */
 StopAllSounds:	/* 0x38a40 */
 /*----------------------------------------------------------------*/
 		push   %ebx
-		cmpb   $0x0,SoundAble
+		cmpb   $0x0,EXPORT_SYMBOL(SoundAble)
 		je     jump_38a59
 		mov    DIGhdriver,%edx
 		push   %edx
@@ -55780,7 +55790,7 @@ DrawAcceptGadget:	/* 0x38b50 */
 		mov    %di,%ax
 		push   %eax
 		xor    %eax,%eax
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		mov    data_545a0(,%eax,4),%edx
 		push   %edx
 		call   DrawScreenGadget
@@ -55827,7 +55837,7 @@ DrawMenuGadget:	/* 0x38bf0 */
 		mov    %di,%ax
 		push   %eax
 		xor    %eax,%eax
-		mov    language,%al
+		mov    EXPORT_SYMBOL(language),%al
 		mov    data_545ac(,%eax,4),%edx
 		push   %edx
 		call   DrawScreenGadget
@@ -59362,7 +59372,7 @@ func_3b1f9:
 		mov    %ebx,0x14(%esp)
 		add    $0x4,%esp
 	jump_3b213:
-		cmpb   $0x0,is_multiplayer_game
+		cmpb   $0x0,EXPORT_SYMBOL(is_multiplayer_game)
 		je     jump_3b478
 		movzwl 0x20(%edi),%ebp
 		add    $level__things_base,%ebp
@@ -59986,7 +59996,7 @@ BFMidiStartMusic:	/* 0x3b8a0 */
 		push   %esi
 		push   %edi
 		push   %ebp
-		cmpb   $0x0,MusicAble
+		cmpb   $0x0,EXPORT_SYMBOL(MusicAble)
 		je     jump_3b909
 		cmpb   $0x0,MusicActive
 		je     jump_3b909
@@ -60045,7 +60055,7 @@ BFMidiStartMusic:	/* 0x3b8a0 */
 BFMidiStopMusic:	/* 0x3b940 */
 /*----------------------------------------------------------------*/
 		push   %ebx
-		cmpb   $0x0,MusicAble
+		cmpb   $0x0,EXPORT_SYMBOL(MusicAble)
 		je     jump_3b97f
 		cmpb   $0x0,MusicActive
 		je     jump_3b97f
@@ -60070,7 +60080,7 @@ BFMidiStopMusic:	/* 0x3b940 */
 BFMidiPauseSong:	/* 0x3b990 */
 /*----------------------------------------------------------------*/
 		push   %ebx
-		cmpb   $0x0,MusicAble
+		cmpb   $0x0,EXPORT_SYMBOL(MusicAble)
 		je     jump_3b9c7
 		cmpb   $0x0,MusicActive
 		je     jump_3b9c7
@@ -60093,7 +60103,7 @@ BFMidiPauseSong:	/* 0x3b990 */
 BFMidiResumeSong:	/* 0x3b9d0 */
 /*----------------------------------------------------------------*/
 		push   %ebx
-		cmpb   $0x0,MusicAble
+		cmpb   $0x0,EXPORT_SYMBOL(MusicAble)
 		je     jump_3ba07
 		cmpb   $0x0,MusicActive
 		je     jump_3ba07
@@ -60134,7 +60144,7 @@ BFMidiIsMusicPlaying:	/* 0x3ba10 */
 ShutdownMIDI:	/* 0x3ba40 */
 /*----------------------------------------------------------------*/
 		push   %ebx
-		cmpb   $0x0,MusicAble
+		cmpb   $0x0,EXPORT_SYMBOL(MusicAble)
 		je     jump_3ba57
 		push   $signoff_msg
 		call   AIL_shutdown
@@ -60180,7 +60190,7 @@ CheckArray:	/* 0x3ba60 */
 		je     jump_3bb09
 		jmp    jump_3bb28
 	jump_3babe:
-		cmpb   $0x0,SoundAble
+		cmpb   $0x0,EXPORT_SYMBOL(SoundAble)
 		je     jump_3bb28
 		movswl %si,%eax
 		lea    0x0(,%eax,4),%eax
@@ -62210,7 +62220,7 @@ UndoMouse:	/* 0x410ce */
 		push   %esi
 		cmpw   $0x0,MouseOldW
 		je     jump_4131c
-		movzbw DrawFlags,%ax
+		movzbw EXPORT_SYMBOL(DrawFlags),%ax
 		cmp    $0x1,%ax
 		jne    jump_41180
 		mov    $MouseOldData,%esi
@@ -62422,7 +62432,7 @@ BackupMouse:	/* 0x41323 */
 		mov    %ax,MouseOldX
 		mov    lbDisplay__MMouseY,%ax
 		mov    %ax,MouseOldY
-		movzbw DrawFlags,%ax
+		movzbw EXPORT_SYMBOL(DrawFlags),%ax
 		cmp    $0x1,%ax
 		je     jump_413cb
 		cmp    $0x2,%ax
@@ -62439,7 +62449,7 @@ BackupMouse:	/* 0x41323 */
 		add    $0xfff0,%ax
 		add    $0xfff0,%ax
 		mov    %ax,MouseOldY
-		movzbw DrawFlags,%ax
+		movzbw EXPORT_SYMBOL(DrawFlags),%ax
 		jmp    jump_41468
 	jump_41394:
 		mov    lbDisplay__MMouseX,%ax
@@ -62452,7 +62462,7 @@ BackupMouse:	/* 0x41323 */
 		mov    lbDisplay__MMouseY,%ax
 		add    $0xfff0,%ax
 		mov    %ax,MouseOldY
-		movzbw DrawFlags,%ax
+		movzbw EXPORT_SYMBOL(DrawFlags),%ax
 		jmp    jump_41468
 	jump_413cb:
 		mov    lbDisplay__MMouseX,%ax
@@ -62699,7 +62709,7 @@ PlaceMouse_A:	/* 0x4165e */
 		mov    WScreen,%eax
 		mov    %eax,ScrSeg
 		call   BackupMouse
-		cmpb   $0x1,DrawFlags
+		cmpb   $0x1,EXPORT_SYMBOL(DrawFlags)
 		jne    jump_416ae
 		push   mouse_sprite
 		sub    $0x2,%esp
@@ -62760,7 +62770,7 @@ PlaceMouse_B:	/* 0x416ef */
 		movw   $0x1,MouseSwap
 		mov    WScreen,%eax
 		mov    %eax,ScrSeg
-		cmpb   $0x1,DrawFlags
+		cmpb   $0x1,EXPORT_SYMBOL(DrawFlags)
 		jne    jump_4173a
 		push   mouse_sprite
 		sub    $0x2,%esp
@@ -62787,7 +62797,7 @@ PlaceMouse_B:	/* 0x416ef */
 		add    $0x10,%esp
 		mov    VScreen,%eax
 		mov    %eax,ScrSeg
-		cmpb   $0x1,DrawFlags
+		cmpb   $0x1,EXPORT_SYMBOL(DrawFlags)
 		jne    jump_4179a
 		push   mouse_sprite
 		sub    $0x2,%esp
@@ -62846,7 +62856,7 @@ UndrawWMouse:	/* 0x417e2 */
 		push   %esi
 		cmpw   $0x0,MouseOldW
 		je     jump_419a2
-		movzbw DrawFlags,%ax
+		movzbw EXPORT_SYMBOL(DrawFlags),%ax
 		cmp    $0x1,%ax
 		jne    jump_4187c
 		mov    $MouseOldData,%esi
@@ -62996,7 +63006,7 @@ GetScreenBoxHires16:	/* 0x419a9 */
 		push   %edx
 		push   %edi
 		push   %esi
-		movzbw DrawFlags,%ax
+		movzbw EXPORT_SYMBOL(DrawFlags),%ax
 		cmp    $0x2,%ax
 		jne    jump_41aa5
 		mov    $MScreen,%edi
@@ -63172,7 +63182,7 @@ PutScreenBoxHires16:	/* 0x41b6f */
 		out    %ax,(%dx)
 		mov    $0x5,%ax
 		out    %ax,(%dx)
-		movzbw DrawFlags,%ax
+		movzbw EXPORT_SYMBOL(DrawFlags),%ax
 		cmp    $0x2,%ax
 		jne    jump_41c8b
 		mov    $MScreen,%esi
@@ -63390,7 +63400,7 @@ vertical_line:	/* 0x41d6c */
 		cmp    $0x0,%ebx
 		jle    jump_41e25
 		mov    0x14(%ebp),%edx
-		testb  $0x2,DrawFlags
+		testb  $0x2,EXPORT_SYMBOL(DrawFlags)
 		je     jump_41e11
 		imul   $0x50,%eax,%eax
 		mov    %ecx,%esi
@@ -63406,11 +63416,11 @@ vertical_line:	/* 0x41d6c */
 		call   func_42d70
 		jmp    jump_41e25
 	jump_41e11:
-		testb  $0x4,DrawFlags
+		testb  $0x4,EXPORT_SYMBOL(DrawFlags)
 		je     jump_41e1c
 		jmp    jump_41e25
 	jump_41e1c:
-		testb  $0x1,DrawFlags
+		testb  $0x1,EXPORT_SYMBOL(DrawFlags)
 		je     jump_41e25
 	jump_41e25:
 		pop    %edi
@@ -63465,7 +63475,7 @@ pvertical_line:	/* 0x41e2d */
 		cmp    $0x0,%ebx
 		jle    jump_41ee6
 		mov    0x14(%ebp),%edx
-		testb  $0x2,DrawFlags
+		testb  $0x2,EXPORT_SYMBOL(DrawFlags)
 		je     jump_41ed2
 		imul   $0x50,%eax,%eax
 		mov    %ecx,%esi
@@ -63481,11 +63491,11 @@ pvertical_line:	/* 0x41e2d */
 		call   func_42d70
 		jmp    jump_41ee6
 	jump_41ed2:
-		testb  $0x4,DrawFlags
+		testb  $0x4,EXPORT_SYMBOL(DrawFlags)
 		je     jump_41edd
 		jmp    jump_41ee6
 	jump_41edd:
-		testb  $0x1,DrawFlags
+		testb  $0x1,EXPORT_SYMBOL(DrawFlags)
 		je     jump_41ee6
 	jump_41ee6:
 		pop    %edi
@@ -63538,7 +63548,7 @@ horizontal_line:	/* 0x41eee */
 		add    GraphicsWindowX,%eax
 		add    GraphicsWindowX,%ebx
 		add    GraphicsWindowY,%edi
-		testb  $0x2,DrawFlags
+		testb  $0x2,EXPORT_SYMBOL(DrawFlags)
 		je     jump_42157
 		imul   $0x50,%edi,%edi
 		mov    %eax,%esi
@@ -63752,11 +63762,11 @@ func_42124:
 		call   func_42b98
 		jmp    jump_4216b
 	jump_42157:
-		testb  $0x4,DrawFlags
+		testb  $0x4,EXPORT_SYMBOL(DrawFlags)
 		je     jump_42162
 		jmp    jump_4216b
 	jump_42162:
-		testb  $0x1,DrawFlags
+		testb  $0x1,EXPORT_SYMBOL(DrawFlags)
 		je     jump_4216b
 	jump_4216b:
 		pop    %edi
@@ -63805,7 +63815,7 @@ phorizontal_line_unsure:	/* 0x42173 */
 		add    GraphicsWindowX,%eax
 		add    GraphicsWindowX,%ebx
 		add    GraphicsWindowY,%edi
-		testb  $0x2,DrawFlags
+		testb  $0x2,EXPORT_SYMBOL(DrawFlags)
 		je     jump_423dc
 		imul   $0x50,%edi,%edi
 		mov    %eax,%esi
@@ -64018,11 +64028,11 @@ func_423a9:
 		call   func_42b98
 		jmp    jump_423f0
 	jump_423dc:
-		testb  $0x4,DrawFlags
+		testb  $0x4,EXPORT_SYMBOL(DrawFlags)
 		je     jump_423e7
 		jmp    jump_423f0
 	jump_423e7:
-		testb  $0x1,DrawFlags
+		testb  $0x1,EXPORT_SYMBOL(DrawFlags)
 		je     jump_423f0
 	jump_423f0:
 		pop    %edi
@@ -64047,9 +64057,9 @@ rectangle:	/* 0x423f8 */
 		push   %edx
 		push   %edi
 		push   %esi
-		testb  $0x4,DrawFlags
+		testb  $0x4,EXPORT_SYMBOL(DrawFlags)
 		jne    jump_42416
-		testb  $0x1,DrawFlags
+		testb  $0x1,EXPORT_SYMBOL(DrawFlags)
 		je     jump_4243a
 	jump_42416:
 		mov    0x8(%ebp),%eax
@@ -64121,7 +64131,7 @@ rectangle:	/* 0x423f8 */
 		je     jump_42763
 		cmp    $0x0,%edx
 		jle    jump_42763
-		testb  $0x2,DrawFlags
+		testb  $0x2,EXPORT_SYMBOL(DrawFlags)
 		je     jump_42711
 		imul   $0x50,%edi,%edi
 		mov    %eax,%esi
@@ -64343,11 +64353,11 @@ func_426db:
 		call   func_42d70
 		jmp    jump_42763
 	jump_42711:
-		testb  $0x4,DrawFlags
+		testb  $0x4,EXPORT_SYMBOL(DrawFlags)
 		je     jump_4271c
 		jmp    jump_42763
 	jump_4271c:
-		testb  $0x1,DrawFlags
+		testb  $0x1,EXPORT_SYMBOL(DrawFlags)
 		je     jump_42763
 		mov    0xc(%ebp),%edi
 		sar    $1,%edi
@@ -64397,9 +64407,9 @@ prectangle:	/* 0x4276b */
 		push   %edx
 		push   %edi
 		push   %esi
-		testb  $0x4,DrawFlags
+		testb  $0x4,EXPORT_SYMBOL(DrawFlags)
 		jne    jump_42789
-		testb  $0x1,DrawFlags
+		testb  $0x1,EXPORT_SYMBOL(DrawFlags)
 		je     jump_427ad
 	jump_42789:
 		mov    0x8(%ebp),%eax
@@ -64471,7 +64481,7 @@ prectangle:	/* 0x4276b */
 		je     jump_42ad6
 		cmp    $0x0,%edx
 		jle    jump_42ad6
-		testb  $0x2,DrawFlags
+		testb  $0x2,EXPORT_SYMBOL(DrawFlags)
 		je     jump_42a84
 		imul   $0x50,%edi,%edi
 		mov    %eax,%esi
@@ -64693,11 +64703,11 @@ func_42a4e:
 		call   func_42d70
 		jmp    jump_42ad6
 	jump_42a84:
-		testb  $0x4,DrawFlags
+		testb  $0x4,EXPORT_SYMBOL(DrawFlags)
 		je     jump_42a8f
 		jmp    jump_42ad6
 	jump_42a8f:
-		testb  $0x1,DrawFlags
+		testb  $0x1,EXPORT_SYMBOL(DrawFlags)
 		je     jump_42ad6
 		mov    0xc(%ebp),%edi
 		sar    $1,%edi
@@ -64764,7 +64774,7 @@ pixel_plot:	/* 0x42aee */
 		jge    jump_42b90
 		add    GraphicsWindowX,%ecx
 		add    GraphicsWindowY,%eax
-		testb  $0x2,DrawFlags
+		testb  $0x2,EXPORT_SYMBOL(DrawFlags)
 		je     jump_42b5f
 		mov    0x10(%ebp),%edx
 		imul   $0x280,%eax,%esi
@@ -64779,11 +64789,11 @@ pixel_plot:	/* 0x42aee */
 		call   func_42b98
 		jmp    jump_42b90
 	jump_42b5f:
-		testb  $0x4,DrawFlags
+		testb  $0x4,EXPORT_SYMBOL(DrawFlags)
 		je     jump_42b6a
 		jmp    jump_42b90
 	jump_42b6a:
-		testb  $0x1,DrawFlags
+		testb  $0x1,EXPORT_SYMBOL(DrawFlags)
 		je     jump_42b90
 		mov    0x8(%ebp),%eax
 		sar    $1,%eax
@@ -65662,7 +65672,7 @@ __cover_sprite:	/* 0x43806 */
 		push   %edx
 		push   %esi
 		push   %edi
-		testb  $0x2,DrawFlags
+		testb  $0x2,EXPORT_SYMBOL(DrawFlags)
 		je     jump_43917
 		mov    0x1c(%ebp),%ax
 		sar    $0x5,%ax
@@ -65737,11 +65747,11 @@ __cover_sprite:	/* 0x43806 */
 		jg     jump_438ba
 		jmp    jump_4392b
 	jump_43917:
-		testb  $0x4,DrawFlags
+		testb  $0x4,EXPORT_SYMBOL(DrawFlags)
 		je     jump_43922
 		jmp    jump_4392b
 	jump_43922:
-		testb  $0x1,DrawFlags
+		testb  $0x1,EXPORT_SYMBOL(DrawFlags)
 		je     jump_4392b
 	jump_4392b:
 		pop    %edi
@@ -70941,7 +70951,7 @@ func_48719:
 		jl     jump_4876d
 		add    $0x4,%eax
 	jump_4876d:
-		testb  $0x2,DrawFlags
+		testb  $0x2,EXPORT_SYMBOL(DrawFlags)
 		je     jump_48826
 		imul   $0x500,0x18(%ebp),%ebx
 		mov    %ebx,0x18(%ebp)
@@ -71005,11 +71015,11 @@ func_487b1:
 		jne    func_487b1
 		jmp    jump_4883a
 	jump_48826:
-		testb  $0x4,DrawFlags
+		testb  $0x4,EXPORT_SYMBOL(DrawFlags)
 		je     jump_48831
 		jmp    jump_4883a
 	jump_48831:
-		testb  $0x1,DrawFlags
+		testb  $0x1,EXPORT_SYMBOL(DrawFlags)
 		je     jump_4883a
 	jump_4883a:
 		pop    %edi
@@ -71057,7 +71067,7 @@ draw_horizontal:	/* 0x48842 */
 		jl     jump_48896
 		add    $0x4,%eax
 	jump_48896:
-		testb  $0x2,DrawFlags
+		testb  $0x2,EXPORT_SYMBOL(DrawFlags)
 		je     jump_48936
 		imul   $0x500,0x18(%ebp),%ebx
 		mov    %ebx,0x18(%ebp)
@@ -71116,11 +71126,11 @@ func_488da:
 		jne    func_488da
 		jmp    jump_4894a
 	jump_48936:
-		testb  $0x4,DrawFlags
+		testb  $0x4,EXPORT_SYMBOL(DrawFlags)
 		je     jump_48941
 		jmp    jump_4894a
 	jump_48941:
-		testb  $0x1,DrawFlags
+		testb  $0x1,EXPORT_SYMBOL(DrawFlags)
 		je     jump_4894a
 	jump_4894a:
 		pop    %edi
@@ -72874,7 +72884,7 @@ func_4a336:
 		push   %edx
 		push   %esi
 		push   %edi
-		testb  $0x2,DrawFlags
+		testb  $0x2,EXPORT_SYMBOL(DrawFlags)
 		je     jump_4c11a
 		mov    0x8(%ebp),%ax
 		mov    0xc(%ebp),%bx
@@ -74821,11 +74831,11 @@ func_4b277:
 	jump_4c118:
 		jmp    jump_4c12e
 	jump_4c11a:
-		testb  $0x4,DrawFlags
+		testb  $0x4,EXPORT_SYMBOL(DrawFlags)
 		je     jump_4c125
 		jmp    jump_4c12e
 	jump_4c125:
-		testb  $0x1,DrawFlags
+		testb  $0x1,EXPORT_SYMBOL(DrawFlags)
 		je     jump_4c12e
 	jump_4c12e:
 		pop    %edi
@@ -74848,9 +74858,9 @@ LbPaletteSet:	/* 0x4c136 */
 		push   %edx
 		push   %edi
 		push   %esi
-		testb  $0x2,DrawFlags
+		testb  $0x2,EXPORT_SYMBOL(DrawFlags)
 		jne    jump_4c151
-		testb  $0x4,DrawFlags
+		testb  $0x4,EXPORT_SYMBOL(DrawFlags)
 		je     jump_4c183
 	jump_4c151:
 		mov    $0x0,%bx
@@ -74874,7 +74884,7 @@ LbPaletteSet:	/* 0x4c136 */
 		rep outsb %ds:(%esi),(%dx)
 		jmp    jump_4c19f
 	jump_4c183:
-		testb  $0x1,DrawFlags
+		testb  $0x1,EXPORT_SYMBOL(DrawFlags)
 		je     jump_4c19f
 		mov    0x8(%ebp),%esi
 		mov    $0x3c8,%dx
@@ -74952,7 +74962,7 @@ LbScreenSurfaceClear:	/* 0x4c1f3 */
 		push   %edx
 		push   %esi
 		push   %edi
-		testb  $0x2,DrawFlags
+		testb  $0x2,EXPORT_SYMBOL(DrawFlags)
 		je     jump_4c21a
 		push   $0x1f400
 		push   0xc(%ebp)
@@ -74961,11 +74971,11 @@ LbScreenSurfaceClear:	/* 0x4c1f3 */
 		add    $0xc,%esp
 		jmp    jump_4c22e
 	jump_4c21a:
-		testb  $0x4,DrawFlags
+		testb  $0x4,EXPORT_SYMBOL(DrawFlags)
 		je     jump_4c225
 		jmp    jump_4c22e
 	jump_4c225:
-		testb  $0x1,DrawFlags
+		testb  $0x1,EXPORT_SYMBOL(DrawFlags)
 		je     jump_4c22e
 	jump_4c22e:
 		pop    %edi
@@ -74990,7 +75000,7 @@ func_4c236:
 		push   %esi
 		push   %edi
 		cld
-		testb  $0x2,DrawFlags
+		testb  $0x2,EXPORT_SYMBOL(DrawFlags)
 		je     jump_4c2cd
 		mov    $0x3ce,%dx
 		mov    $0xff08,%ax
@@ -75028,11 +75038,11 @@ func_4c236:
 		add    $0xc,%esp
 		jmp    jump_4c2e1
 	jump_4c2cd:
-		testb  $0x4,DrawFlags
+		testb  $0x4,EXPORT_SYMBOL(DrawFlags)
 		je     jump_4c2d8
 		jmp    jump_4c2e1
 	jump_4c2d8:
-		testb  $0x1,DrawFlags
+		testb  $0x1,EXPORT_SYMBOL(DrawFlags)
 		je     jump_4c2e1
 	jump_4c2e1:
 		pop    %edi
@@ -75052,7 +75062,7 @@ func_4c32f:
 		push   %ecx
 		push   %esi
 		push   %edi
-		testb  $0x2,DrawFlags
+		testb  $0x2,EXPORT_SYMBOL(DrawFlags)
 		je     jump_4c406
 		mov    UScreen,%esi
 		mov    WScreen,%edi
@@ -75096,11 +75106,11 @@ func_4c32f:
 		jne    jump_4c350
 		jmp    jump_4c41a
 	jump_4c406:
-		testb  $0x4,DrawFlags
+		testb  $0x4,EXPORT_SYMBOL(DrawFlags)
 		je     jump_4c411
 		jmp    jump_4c41a
 	jump_4c411:
-		testb  $0x1,DrawFlags
+		testb  $0x1,EXPORT_SYMBOL(DrawFlags)
 		je     jump_4c41a
 	jump_4c41a:
 		pop    %edi
@@ -75121,7 +75131,7 @@ copy_screen_cube:	/* 0x4c41f */
 		push   %edx
 		push   %esi
 		push   %edi
-		testb  $0x2,DrawFlags
+		testb  $0x2,EXPORT_SYMBOL(DrawFlags)
 		je     jump_4c77b
 		mov    0x8(%ebp),%eax
 		add    DestinationX,%eax
@@ -75281,11 +75291,11 @@ copy_screen_cube:	/* 0x4c41f */
 		leave
 		ret
 	jump_4c77b:
-		testb  $0x4,DrawFlags
+		testb  $0x4,EXPORT_SYMBOL(DrawFlags)
 		je     jump_4c786
 		jmp    jump_4c78f
 	jump_4c786:
-		testb  $0x1,DrawFlags
+		testb  $0x1,EXPORT_SYMBOL(DrawFlags)
 		je     jump_4c78f
 	jump_4c78f:
 		pop    %edi
@@ -75309,7 +75319,7 @@ func_4c797:
 		push   %edx
 		push   %esi
 		push   %edi
-		testb  $0x2,DrawFlags
+		testb  $0x2,EXPORT_SYMBOL(DrawFlags)
 		je     jump_4cb58
 		imul   $0x500,0xc(%ebp),%eax
 		add    $0x10,%eax
@@ -75509,11 +75519,11 @@ func_4c797:
 		sub    $0x40,%esi
 		jmp    jump_4cb6c
 	jump_4cb58:
-		testb  $0x4,DrawFlags
+		testb  $0x4,EXPORT_SYMBOL(DrawFlags)
 		je     jump_4cb63
 		jmp    jump_4cb6c
 	jump_4cb63:
-		testb  $0x1,DrawFlags
+		testb  $0x1,EXPORT_SYMBOL(DrawFlags)
 		je     jump_4cb6c
 	jump_4cb6c:
 		pop    %edi
@@ -75697,7 +75707,7 @@ func_4cd4a:
 		push   %edx
 		push   %esi
 		push   %edi
-		testb  $0x2,DrawFlags
+		testb  $0x2,EXPORT_SYMBOL(DrawFlags)
 		je     jump_4ce11
 		mov    $0x3c4,%dx
 		mov    WScreen,%esi
@@ -75753,11 +75763,11 @@ func_4cd4a:
 		jne    jump_4cdff
 		jmp    jump_4ce25
 	jump_4ce11:
-		testb  $0x4,DrawFlags
+		testb  $0x4,EXPORT_SYMBOL(DrawFlags)
 		je     jump_4ce1c
 		jmp    jump_4ce25
 	jump_4ce1c:
-		testb  $0x1,DrawFlags
+		testb  $0x1,EXPORT_SYMBOL(DrawFlags)
 		je     jump_4ce25
 	jump_4ce25:
 		pop    %edi
@@ -75777,17 +75787,17 @@ func_4ce2c:
 		push   %edx
 		push   %esi
 		push   %edi
-		testb  $0x2,DrawFlags
+		testb  $0x2,EXPORT_SYMBOL(DrawFlags)
 		je     jump_4ce41
 		call   func_4ce60
 		jmp    jump_4ce5a
 	jump_4ce41:
-		testb  $0x4,DrawFlags
+		testb  $0x4,EXPORT_SYMBOL(DrawFlags)
 		je     jump_4ce51
 		call   nullsub_6
 		jmp    jump_4ce5a
 	jump_4ce51:
-		testb  $0x1,DrawFlags
+		testb  $0x1,EXPORT_SYMBOL(DrawFlags)
 		je     jump_4ce5a
 	jump_4ce5a:
 		pop    %edi
@@ -76805,7 +76815,7 @@ func_4d5e0:
 /*----------------------------------------------------------------*/
 DrawSpriteLores16:	/* 0x4d92b */
 /*----------------------------------------------------------------*/
-		testb  $0x2,DrawFlags
+		testb  $0x2,EXPORT_SYMBOL(DrawFlags)
 		je     jump_4f36f
 		and    $0x3,%edx
 		shl    $0x3,%edx
@@ -78836,11 +78846,11 @@ func_4f30e:
 		add    %ebx,%edi
 		ret
 	jump_4f36f:
-		testb  $0x4,DrawFlags
+		testb  $0x4,EXPORT_SYMBOL(DrawFlags)
 		je     jump_4f37a
 		jmp    jump_4f383
 	jump_4f37a:
-		testb  $0x1,DrawFlags
+		testb  $0x1,EXPORT_SYMBOL(DrawFlags)
 		je     jump_4f383
 	jump_4f383:
 		ret
@@ -78894,13 +78904,13 @@ func_4f420:
 		push   %edx
 		push   %edi
 		push   %esi
-		testb  $0x2,DrawFlags
+		testb  $0x2,EXPORT_SYMBOL(DrawFlags)
 		jne    jump_4f441
-		testb  $0x4,DrawFlags
+		testb  $0x4,EXPORT_SYMBOL(DrawFlags)
 		je     jump_4f4f5
 	jump_4f441:
 		mov    0x8(%ebp),%esi
-		testb  $0x2,DrawFlags
+		testb  $0x2,EXPORT_SYMBOL(DrawFlags)
 		jne    jump_4f455
 		shrw   $1,0x10(%ebp)
 		shrw   $1,0x14(%ebp)
@@ -78946,7 +78956,7 @@ func_4f420:
 	jump_4f4d1:
 		mov    -0x2(%ebp),%ax
 		mov    %ax,0x10(%ebp)
-		testb  $0x2,DrawFlags
+		testb  $0x2,EXPORT_SYMBOL(DrawFlags)
 		je     jump_4f4e9
 		addw   $0xc,0x14(%ebp)
 		jmp    jump_4f4ee
@@ -78955,7 +78965,7 @@ func_4f420:
 	jump_4f4ee:
 		jmp    jump_4f465
 	jump_4f4f5:
-		testb  $0x1,DrawFlags
+		testb  $0x1,EXPORT_SYMBOL(DrawFlags)
 		je     jump_4f4fe
 	jump_4f4fe:
 		pop    %esi
@@ -78970,17 +78980,17 @@ func_4f420:
 /*----------------------------------------------------------------*/
 func_4f505:
 /*----------------------------------------------------------------*/
-		testb  $0x2,DrawFlags
+		testb  $0x2,EXPORT_SYMBOL(DrawFlags)
 		je     jump_4f515
 		call   func_4f52f
 		jmp    jump_4f52e
 	jump_4f515:
-		testb  $0x4,DrawFlags
+		testb  $0x4,EXPORT_SYMBOL(DrawFlags)
 		je     jump_4f525
 		call   nullsub_7
 		jmp    jump_4f52e
 	jump_4f525:
-		testb  $0x1,DrawFlags
+		testb  $0x1,EXPORT_SYMBOL(DrawFlags)
 		je     jump_4f52e
 	jump_4f52e:
 		ret
@@ -79061,16 +79071,16 @@ nullsub_7:	/* 0x4f5d0 */
 /*----------------------------------------------------------------*/
 func_4f5d1:
 /*----------------------------------------------------------------*/
-		testb  $0x2,DrawFlags
+		testb  $0x2,EXPORT_SYMBOL(DrawFlags)
 		je     jump_4f5e1
 		call   func_4f5f6
 		jmp    jump_4f5f5
 	jump_4f5e1:
-		testb  $0x4,DrawFlags
+		testb  $0x4,EXPORT_SYMBOL(DrawFlags)
 		je     jump_4f5ec
 		jmp    jump_4f5f5
 	jump_4f5ec:
-		testb  $0x1,DrawFlags
+		testb  $0x1,EXPORT_SYMBOL(DrawFlags)
 		je     jump_4f5f5
 	jump_4f5f5:
 		ret
@@ -79154,7 +79164,7 @@ rprint:	/* 0x4f69b */
 		mov    0x8(%ebp),%esi
 		mov    data_60abc,%eax
 		mov    %eax,-0x10(%ebp)
-		testb  $0x2,DrawFlags
+		testb  $0x2,EXPORT_SYMBOL(DrawFlags)
 		je     jump_4f724
 		movzwl 0xc(%ebp),%eax
 		movzwl 0x10(%ebp),%ebx
@@ -79193,11 +79203,11 @@ rprint:	/* 0x4f69b */
 		mov    %eax,-0x8(%ebp)
 		jmp    jump_4f70a
 	jump_4f724:
-		testb  $0x4,DrawFlags
+		testb  $0x4,EXPORT_SYMBOL(DrawFlags)
 		je     jump_4f72f
 		jmp    jump_4f738
 	jump_4f72f:
-		testb  $0x1,DrawFlags
+		testb  $0x1,EXPORT_SYMBOL(DrawFlags)
 		je     jump_4f738
 	jump_4f738:
 		pop    %esi
@@ -79429,7 +79439,7 @@ LbCopyScreenBox:	/* 0x4f96c */
 		push   %edx
 		push   %esi
 		push   %edi
-		testb  $0x2,DrawFlags
+		testb  $0x2,EXPORT_SYMBOL(DrawFlags)
 		je     jump_4fa35
 		mov    0x8(%ebp),%eax
 		shl    $0x2,%eax
@@ -79509,11 +79519,11 @@ LbCopyScreenBox:	/* 0x4f96c */
 		add    $0x7d00,%esi
 		jmp    jump_4fa49
 	jump_4fa35:
-		testb  $0x4,DrawFlags
+		testb  $0x4,EXPORT_SYMBOL(DrawFlags)
 		je     jump_4fa40
 		jmp    jump_4fa49
 	jump_4fa40:
-		testb  $0x1,DrawFlags
+		testb  $0x1,EXPORT_SYMBOL(DrawFlags)
 		je     jump_4fa49
 	jump_4fa49:
 		pop    %edi
@@ -83182,11 +83192,11 @@ data_54d79:
 		.fill   0x19
 savegame_slot:	/* 0x54d92 */
 		.ascii  "\x00\x00"
-sndcard_irq:	/* 0x54d94 */
+GLOBAL (sndcard_irq)	/* 0x54d94 */
 		.ascii  "\x00\x00"
-sndcard_dma:	/* 0x54d96 */
+GLOBAL (sndcard_dma)	/* 0x54d96 */
 		.ascii  "\x00\x00"
-sndcard_ioaddr:	/* 0x54d98 */
+GLOBAL (sndcard_ioaddr)	/* 0x54d98 */
 		.fill   0x4
 load_files_vres16:	/* 0x54d9c */
 		.ascii  "\x2a"
@@ -83252,7 +83262,7 @@ data_55034:
 data_55038:
 		.ascii  "\x01"
 		.fill   0xb
-Network__Name:	/* 0x55044 */
+GLOBAL (Network__Name)	/* 0x55044 */
 		.string "SYND"
 		.fill   0xd
 Network__MasterNcb:	/* 0x55056 */
@@ -83492,7 +83502,7 @@ lbDisplay__MMouseY:	/* 0x55392 */
 		.ascii  "\xc8\x00\x01\x00\x01\x00"
 AniArrayCount:	/* 0x55398 */
 		.ascii  "\x00\x00"
-cheat_worldmap:	/* 0x5539a */
+GLOBAL (cheat_worldmap)	/* 0x5539a */
 		.ascii  "\x00\x00"
 country_states:	/* 0x5539c */
 		.ascii  "\x00\x00"
@@ -83691,7 +83701,7 @@ data_57de8:
 		.fill   0x1e6
 		.ascii  "\x04\xff"
 		.fill   0x1f4
-language:	/* 0x5a50d */
+GLOBAL (language)	/* 0x5a50d */
 		.ascii  "\x00\x00\x00"
 data_5a510:
 		.fill   0x5
@@ -85142,7 +85152,7 @@ h_col:	/* 0x60ac0 */
 		.fill   0x8
 data_60ac8:
 		.fill   0x10
-debug_k:	/* 0x60ad8 */
+GLOBAL (debug_k)	/* 0x60ad8 */
 		.fill   0x4
 last_vehicle:	/* 0x60adc */
 		.fill   0x4
@@ -85214,7 +85224,7 @@ data_60b2a:
 		.ascii  "\x00\x00"
 data_60b2c:
 		.ascii  "\x00\x00"
-current_levno:	/* 0x60b2e */
+GLOBAL (current_levno)	/* 0x60b2e */
 		.ascii  "\x00\x00"
 data_60b30:
 		.ascii  "\x00\x00"
@@ -85222,7 +85232,7 @@ data_60b32:
 		.ascii  "\x00\x00"
 data_60b34:
 		.ascii  "\x00"
-OldDrawFlags:	/* 0x60b35 */
+GLOBAL (OldDrawFlags)	/* 0x60b35 */
 		.ascii  "\x00"
 data_60b36:
 		.ascii  "\x00\x00"
@@ -85230,9 +85240,9 @@ data_60b38:
 		.ascii  "\x00"
 data_60b39:
 		.ascii  "\x00"
-data_60b3a:
+GLOBAL (byte_60B3A)		/* 0x60B3A */
 		.ascii  "\x00"
-data_60b3b:
+GLOBAL (byte_60B3B)		/* 0x60B3B */
 		.ascii  "\x00\x00\x00"
 lbDisplay__RightButton:	/* 0x60b3e */
 		.ascii  "\x00"
@@ -85242,27 +85252,31 @@ lbDisplay__MRightButton:	/* 0x60b40 */
 		.ascii  "\x00"
 lbDisplay__MLeftButton:	/* 0x60b41 */
 		.ascii  "\x00"
-data_60b42:
+GLOBAL (byte_60B42)	/* 0x60B42 */
 		.ascii  "\x00"
-cheat_credits:	/* 0x60b43 */
+GLOBAL (cheat_credits)	/* 0x60b43 */
 		.ascii  "\x00"
-data_60b44:
+GLOBAL (byte_60B44)			/* 0x60B44 */
 		.ascii  "\x00"
-is_multiplayer_game:	/* 0x60b45 */
+GLOBAL (is_multiplayer_game)	/* 0x60b45 */
 		.ascii  "\x00"
 data_60b46:
 		.ascii  "\x00"
-data_60b47:
+GLOBAL (byte_60B47)		/* 0x_60B47 */
 		.ascii  "\x00"
-cheats_mission:	/* 0x60b48 */
+GLOBAL (cheats_mission)	/* 0x60b48 */
 		.ascii  "\x00"
-MusicAble:	/* 0x60b49 */
+
+#if 0 /* defined in bfsoundlib */
+GLOBAL (MusicAble)	/* 0x60b49 */
 		.ascii  "\x00"
-SoundAble:	/* 0x60b4a */
+GLOBAL (SoundAble)	/* 0x60b4a */
 		.ascii  "\x00"
+#endif
+
 ScannerPulse:	/* 0x60b4b */
 		.ascii  "\x00"
-data_60b4c:
+GLOBAL (byte_60B4C)		/* 0x60B4C */
 		.ascii  "\x00"
 MusicActive:	/* 0x60b4d */
 		.ascii  "\x00"
@@ -85272,11 +85286,11 @@ data_60b4f:
 		.ascii  "\x00"
 data_60b50:
 		.ascii  "\x00"
-data_60b51:
+GLOBAL (byte_60B51)		/* 0x60B51 */
 		.ascii  "\x00"
-cheats_speedup:	/* 0x60b52 */
+GLOBAL (cheats_speedup)	/* 0x60b52 */
 		.ascii  "\x00"
-unused_option_p:	/* 0x60b53 */
+GLOBAL (unused_option_p)	/* 0x60b53 */
 		.ascii  "\x00"
 data_60b54:
 		.ascii  "\x00\x00"
@@ -85376,8 +85390,11 @@ player_view_map_x:	/* 0x80000 */
 		.ascii  "\x00\x00"
 player_view_map_y:	/* 0x80002 */
 		.fill   0x103
-DrawFlags:	/* 0x80105 */
-		.ascii  "\x04\x00\x00"
+
+GLOBAL (DrawFlags)	/* 0x80105 */
+		.byte	0x04
+		.align	4
+
 level__Seed:	/* 0x80108 */
 		.ascii  "\x00\x00"
 level__PersonCount_UNSURE:	/* 0x8010a */
@@ -85440,7 +85457,7 @@ data_9bc7a:
 		.ascii  "\x00"
 data_9bc7b:
 		.fill   0x1b5
-level__MapNumber:	/* 0x9be30 */
+GLOBAL (level__MapNumber)	/* 0x9be30 */
 		.ascii  "\x01\x00"
 level__LoBoundaryx:	/* 0x9be32 */
 		.ascii  "\x02\x00"
