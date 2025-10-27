@@ -237,7 +237,7 @@ GLOBAL_FUNC(syndicate)	/* 0x101e0 */
 		call   process_day
 		add    $0x4,%esp
 		call   check_end_level
-		call   LbScreenWaitVbi
+		call   ac_LbScreenWaitVbi
 		call   nullsub_1
 		call   func_1d2c0
 		cmp    $0x2,%ebx
@@ -79932,7 +79932,7 @@ func_4fcc1:
 
 
 /*----------------------------------------------------------------*/
-LbScreenWaitVbi:	/* 0x4fcec */
+ASM_LbScreenWaitVbi:	/* 0x4fcec */
 /*----------------------------------------------------------------*/
 		push   %eax
 		push   %edx
