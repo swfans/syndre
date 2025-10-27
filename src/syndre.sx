@@ -1214,8 +1214,8 @@ mission_briefing:	/* 0x10e60 */
 		mov    %ah,0x76(%ebp)
 		mov    %edx,0x4e(%ebp)
 		mov    %edx,0x56(%ebp)
-		mov    %ah,lbDisplay__LeftButton
-		mov    %ah,lbDisplay__RightButton
+		mov    %ah,EXPORT_SYMBOL(lbDisplay)+103	/* lbDisplay.LeftButton */
+		mov    %ah,EXPORT_SYMBOL(lbDisplay)+104	/* lbDisplay.RightButton */
 		xor    %eax,%eax
 		mov    EXPORT_SYMBOL(current_levno),%ax
 		push   %eax
@@ -1746,7 +1746,7 @@ mission_briefing:	/* 0x10e60 */
 		mov    %edx,0x46(%ebp)
 		mov    %ah,0x6e(%ebp)
 	jump_11508:
-		cmpb   $0x0,lbDisplay__MLeftButton
+		cmpb   $0x0,EXPORT_SYMBOL(lbDisplay)+106	/* lbDisplay.MLeftButton */
 		je     jump_11668
 		cmpw   $0x1f4,EXPORT_SYMBOL(lbDisplay)+80	/* lbDisplay.MMouseX */
 		jbe    jump_11668
@@ -1830,10 +1830,10 @@ mission_briefing:	/* 0x10e60 */
 		jl     jump_11668
 		movl   $0x7f,0x52(%ebp)
 	jump_11668:
-		cmpb   $0x0,lbDisplay__LeftButton
+		cmpb   $0x0,EXPORT_SYMBOL(lbDisplay)+103	/* lbDisplay.LeftButton */
 		je     jump_118e8
 		xor    %bl,%bl
-		mov    %bl,lbDisplay__LeftButton
+		mov    %bl,EXPORT_SYMBOL(lbDisplay)+103	/* lbDisplay.LeftButton */
 		cmpb   $0x0,0x62(%ebp)
 		je     jump_116b2
 		cmpw   $0x1ac,EXPORT_SYMBOL(lbDisplay)+80	/* lbDisplay.MMouseX */
@@ -1860,13 +1860,13 @@ mission_briefing:	/* 0x10e60 */
 		jae    jump_116ed
 		incb   0x62(%ebp)
 	jump_116ed:
-		cmpw   $0x1f4,lbDisplay__MouseX
+		cmpw   $0x1f4,EXPORT_SYMBOL(lbDisplay)+72	/* lbDisplay.MouseX */
 		jbe    jump_117c1
-		cmpw   $0x270,lbDisplay__MouseX
+		cmpw   $0x270,EXPORT_SYMBOL(lbDisplay)+72
 		jae    jump_117c1
-		cmpw   $0x6c,lbDisplay__MouseY
+		cmpw   $0x6c,EXPORT_SYMBOL(lbDisplay)+76	/* lbDisplay.MouseY */
 		jbe    jump_117c1
-		cmpw   $0x9e,lbDisplay__MouseY
+		cmpw   $0x9e,EXPORT_SYMBOL(lbDisplay)+76
 		jae    jump_117c1
 		xor    %ebx,%ebx
 		mov    0x6a(%ebp),%bl
@@ -1916,13 +1916,13 @@ mission_briefing:	/* 0x10e60 */
 		test   %dh,%dh
 		jne    jump_11770
 	jump_117c1:
-		cmpw   $0x1f4,lbDisplay__MouseX
+		cmpw   $0x1f4,EXPORT_SYMBOL(lbDisplay)+72	/* lbDisplay.MouseX */
 		jbe    jump_11844
-		cmpw   $0x270,lbDisplay__MouseX
+		cmpw   $0x270,EXPORT_SYMBOL(lbDisplay)+72
 		jae    jump_11844
-		cmpw   $0xa2,lbDisplay__MouseY
+		cmpw   $0xa2,EXPORT_SYMBOL(lbDisplay)+76	/* lbDisplay.MouseY */
 		jbe    jump_11844
-		cmpw   $0xd4,lbDisplay__MouseY
+		cmpw   $0xd4,EXPORT_SYMBOL(lbDisplay)+76
 		jae    jump_11844
 		xor    %ebx,%ebx
 		mov    0x5e(%ebp),%bl
@@ -1948,36 +1948,36 @@ mission_briefing:	/* 0x10e60 */
 		mov    %ebx,players(%eax)
 		mov    %cl,0x5e(%ebp)
 	jump_11844:
-		cmpw   $0x10,lbDisplay__MouseX
+		cmpw   $0x10,EXPORT_SYMBOL(lbDisplay)+72	/* lbDisplay.MouseX */
 		jbe    jump_1187a
-		cmpw   $0x92,lbDisplay__MouseX
+		cmpw   $0x92,EXPORT_SYMBOL(lbDisplay)+72
 		jae    jump_1187a
-		cmpw   $0x15a,lbDisplay__MouseY
+		cmpw   $0x15a,EXPORT_SYMBOL(lbDisplay)+76
 		jbe    jump_1187a
-		cmpw   $0x174,lbDisplay__MouseY
+		cmpw   $0x174,EXPORT_SYMBOL(lbDisplay)+76
 		jae    jump_1187a
 		movl   $0x7,0x46(%ebp)
 		movb   $0x1,0x6e(%ebp)
 	jump_1187a:
-		cmpw   $0x1f4,lbDisplay__MouseX
+		cmpw   $0x1f4,EXPORT_SYMBOL(lbDisplay)+72	/* lbDisplay.MouseX */
 		jbe    jump_118af
-		cmpw   $0x274,lbDisplay__MouseX
+		cmpw   $0x274,EXPORT_SYMBOL(lbDisplay)+72
 		jae    jump_118af
-		cmpw   $0x15a,lbDisplay__MouseY
+		cmpw   $0x15a,EXPORT_SYMBOL(lbDisplay)+76
 		jbe    jump_118af
-		cmpw   $0x174,lbDisplay__MouseY
+		cmpw   $0x174,EXPORT_SYMBOL(lbDisplay)+76
 		jae    jump_118af
 		xor    %eax,%eax
 		mov    %eax,0x46(%ebp)
 		movb   $0x1,0x6e(%ebp)
 	jump_118af:
-		cmpw   $0x94,lbDisplay__MouseX
+		cmpw   $0x94,EXPORT_SYMBOL(lbDisplay)+72	/* lbDisplay.MouseX */
 		jbe    jump_118e8
-		cmpw   $0xfc,lbDisplay__MouseX
+		cmpw   $0xfc,EXPORT_SYMBOL(lbDisplay)+72
 		jae    jump_118e8
-		cmpw   $0x15a,lbDisplay__MouseY
+		cmpw   $0x15a,EXPORT_SYMBOL(lbDisplay)+76
 		jbe    jump_118e8
-		cmpw   $0x172,lbDisplay__MouseY
+		cmpw   $0x172,EXPORT_SYMBOL(lbDisplay)+76
 		jae    jump_118e8
 		mov    $0x2,%edx
 		mov    $0x1,%ah
@@ -2081,7 +2081,7 @@ mission_briefing:	/* 0x10e60 */
 		movsl  %ds:(%esi),%es:(%edi)
 		movsw  %ds:(%esi),%es:(%edi)
 		push   $0x2
-		mov    %ah,lbDisplay__LeftButton
+		mov    %ah,EXPORT_SYMBOL(lbDisplay)+103	/* lbDisplay.LeftButton */
 		call   BFPlaySample
 		add    $0x4,%esp
 		push   $sound_array
@@ -10518,15 +10518,15 @@ configure_company:	/* 0x175c0 */
 		mov    %ah,EXPORT_SYMBOL(lbKeyOn)+0x1c	/* lbKeyOn[KC_RETURN] */
 		mov    %ah,0xe0(%esp)
 	jump_17c63:
-		cmpb   $0x0,lbDisplay__LeftButton
+		cmpb   $0x0,EXPORT_SYMBOL(lbDisplay)+103	/* lbDisplay.LeftButton */
 		je     jump_17c97
-		cmpw   $0x2e,lbDisplay__MouseX
+		cmpw   $0x2e,EXPORT_SYMBOL(lbDisplay)+72	/* lbDisplay.MouseX */
 		jbe    jump_17c97
-		cmpw   $0x90,lbDisplay__MouseX
+		cmpw   $0x90,EXPORT_SYMBOL(lbDisplay)+72
 		jae    jump_17c97
-		cmpw   $0x15a,lbDisplay__MouseY
+		cmpw   $0x15a,EXPORT_SYMBOL(lbDisplay)+76	/* lbDisplay.MouseY */
 		jbe    jump_17c97
-		cmpw   $0x172,lbDisplay__MouseY
+		cmpw   $0x172,EXPORT_SYMBOL(lbDisplay)+76
 		jb     jump_17ca4
 	jump_17c97:
 		cmpb   $0x0,EXPORT_SYMBOL(lbKeyOn)+0x1c	/* lbKeyOn[KC_RETURN] */
@@ -10623,17 +10623,17 @@ configure_company:	/* 0x175c0 */
 		mov    %cl,EXPORT_SYMBOL(lbKeyOn)+0x1c	/* lbKeyOn[KC_RETURN] */
 	jump_17dfd:
 		xor    %bl,%bl
-		mov    %bl,lbDisplay__LeftButton
+		mov    %bl,EXPORT_SYMBOL(lbDisplay)+103	/* lbDisplay.LeftButton */
 	jump_17e05:
-		cmpb   $0x0,lbDisplay__LeftButton
+		cmpb   $0x0,EXPORT_SYMBOL(lbDisplay)+103	/* lbDisplay.LeftButton */
 		je     jump_17e3a
-		cmpw   $0x1f4,lbDisplay__MouseX
+		cmpw   $0x1f4,EXPORT_SYMBOL(lbDisplay)+72	/* lbDisplay.MouseX */
 		jbe    jump_17e3a
-		cmpw   $0x256,lbDisplay__MouseX
+		cmpw   $0x256,EXPORT_SYMBOL(lbDisplay)+72
 		jae    jump_17e3a
-		cmpw   $0x15a,lbDisplay__MouseY
+		cmpw   $0x15a,EXPORT_SYMBOL(lbDisplay)+76	/* lbDisplay.MouseY */
 		jbe    jump_17e3a
-		cmpw   $0x172,lbDisplay__MouseY
+		cmpw   $0x172,EXPORT_SYMBOL(lbDisplay)+76
 		jb     jump_17e43
 	jump_17e3a:
 		cmpb   $0x0,EXPORT_SYMBOL(lbKeyOn)+0x01	/* lbKeyOn[KC_ESCAPE] */
@@ -10641,12 +10641,12 @@ configure_company:	/* 0x175c0 */
 	jump_17e43:
 		mov    $0x1,%bh
 		xor    %al,%al
-		mov    %al,lbDisplay__LeftButton
+		mov    %al,EXPORT_SYMBOL(lbDisplay)+103	/* lbDisplay.LeftButton */
 	jump_17e4c:
-		cmpb   $0x0,lbDisplay__LeftButton
+		cmpb   $0x0,EXPORT_SYMBOL(lbDisplay)+103	/* lbDisplay.LeftButton */
 		je     jump_181c2
 		xor    %dl,%dl
-		mov    %dl,lbDisplay__LeftButton
+		mov    %dl,EXPORT_SYMBOL(lbDisplay)+103	/* lbDisplay.LeftButton */
 		mov    0xe0(%esp),%dl
 		cmp    $0x3,%dl
 		ja     def_17E75
@@ -10658,29 +10658,29 @@ configure_company:	/* 0x175c0 */
 /*----------------------------------------------------------------*/
 func_17e7d:
 /*----------------------------------------------------------------*/
-		cmpw   $0x144,lbDisplay__MouseX
+		cmpw   $0x144,EXPORT_SYMBOL(lbDisplay)+72	/* lbDisplay.MouseX */
 		jbe    def_17E75
-		cmpw   $0x242,lbDisplay__MouseX
+		cmpw   $0x242,EXPORT_SYMBOL(lbDisplay)+72
 		jae    def_17E75
-		cmpw   $0x40,lbDisplay__MouseY
+		cmpw   $0x40,EXPORT_SYMBOL(lbDisplay)+76
 		jbe    jump_17eb6
-		cmpw   $0x56,lbDisplay__MouseY
+		cmpw   $0x56,EXPORT_SYMBOL(lbDisplay)+76
 		jae    jump_17eb6
 		mov    $0x1,%dl
 		jmp    def_17E75
 	jump_17eb6:
-		cmpw   $0x58,lbDisplay__MouseY
+		cmpw   $0x58,EXPORT_SYMBOL(lbDisplay)+76
 		jbe    jump_17edd
-		cmpw   $0x6e,lbDisplay__MouseY
+		cmpw   $0x6e,EXPORT_SYMBOL(lbDisplay)+76
 		jae    jump_17edd
 		mov    $0x1,%eax
 		mov    $0x3,%dl
 		mov    %eax,0xc0(%esp)
 		jmp    def_17E75
 	jump_17edd:
-		cmpw   $0x70,lbDisplay__MouseY
+		cmpw   $0x70,EXPORT_SYMBOL(lbDisplay)+76
 		jbe    def_17E75
-		cmpw   $0x86,lbDisplay__MouseY
+		cmpw   $0x86,EXPORT_SYMBOL(lbDisplay)+76
 		jae    def_17E75
 		mov    $0x1,%edi
 		mov    $0x2,%dl
@@ -10691,13 +10691,13 @@ func_17e7d:
 /*----------------------------------------------------------------*/
 func_17f0d:
 /*----------------------------------------------------------------*/
-		cmpw   $0x198,lbDisplay__MouseX
+		cmpw   $0x198,EXPORT_SYMBOL(lbDisplay)+72
 		jbe    jump_17f57
-		cmpw   $0x1b4,lbDisplay__MouseX
+		cmpw   $0x1b4,EXPORT_SYMBOL(lbDisplay)+72
 		jae    jump_17f57
-		cmpw   $0x38,lbDisplay__MouseY
+		cmpw   $0x38,EXPORT_SYMBOL(lbDisplay)+76
 		jbe    jump_17f57
-		cmpw   $0x4c,lbDisplay__MouseY
+		cmpw   $0x4c,EXPORT_SYMBOL(lbDisplay)+76
 		jae    jump_17f57
 		mov    0xdc(%esp),%bl
 		test   %bl,%bl
@@ -10709,13 +10709,13 @@ func_17f0d:
 	jump_17f4f:
 		movb   $0x7,0xdc(%esp)
 	jump_17f57:
-		cmpw   $0x1b6,lbDisplay__MouseX
+		cmpw   $0x1b6,EXPORT_SYMBOL(lbDisplay)+72
 		jbe    jump_17f9e
-		cmpw   $0x1d2,lbDisplay__MouseX
+		cmpw   $0x1d2,EXPORT_SYMBOL(lbDisplay)+72
 		jae    jump_17f9e
-		cmpw   $0x38,lbDisplay__MouseY
+		cmpw   $0x38,EXPORT_SYMBOL(lbDisplay)+76	/* lbDisplay.MouseY */
 		jbe    jump_17f9e
-		cmpw   $0x4c,lbDisplay__MouseY
+		cmpw   $0x4c,EXPORT_SYMBOL(lbDisplay)+76
 		jae    jump_17f9e
 		mov    0xdc(%esp),%al
 		inc    %al
@@ -10725,13 +10725,13 @@ func_17f0d:
 		xor    %dh,%dh
 		mov    %dh,0xdc(%esp)
 	jump_17f9e:
-		cmpw   $0x198,lbDisplay__MouseX
+		cmpw   $0x198,EXPORT_SYMBOL(lbDisplay)+72
 		jbe    jump_17fe8
-		cmpw   $0x1b4,lbDisplay__MouseX
+		cmpw   $0x1b4,EXPORT_SYMBOL(lbDisplay)+72
 		jae    jump_17fe8
-		cmpw   $0x5a,lbDisplay__MouseY
+		cmpw   $0x5a,EXPORT_SYMBOL(lbDisplay)+76
 		jbe    jump_17fe8
-		cmpw   $0x6e,lbDisplay__MouseY
+		cmpw   $0x6e,EXPORT_SYMBOL(lbDisplay)+76
 		jae    jump_17fe8
 		mov    0xd8(%esp),%bl
 		test   %bl,%bl
@@ -10743,13 +10743,13 @@ func_17f0d:
 	jump_17fe0:
 		movb   $0x27,0xd8(%esp)
 	jump_17fe8:
-		cmpw   $0x1b4,lbDisplay__MouseX
+		cmpw   $0x1b4,EXPORT_SYMBOL(lbDisplay)+72	/* lbDisplay.MouseX */
 		jbe    def_17E75
-		cmpw   $0x1d2,lbDisplay__MouseX
+		cmpw   $0x1d2,EXPORT_SYMBOL(lbDisplay)+72
 		jae    def_17E75
-		cmpw   $0x5a,lbDisplay__MouseY
+		cmpw   $0x5a,EXPORT_SYMBOL(lbDisplay)+76
 		jbe    def_17E75
-		cmpw   $0x6e,lbDisplay__MouseY
+		cmpw   $0x6e,EXPORT_SYMBOL(lbDisplay)+76
 		jae    def_17E75
 		mov    0xd8(%esp),%al
 		inc    %al
@@ -10764,13 +10764,13 @@ func_17f0d:
 /*----------------------------------------------------------------*/
 func_18048:
 /*----------------------------------------------------------------*/
-		cmpw   $0x14c,lbDisplay__MouseX
+		cmpw   $0x14c,EXPORT_SYMBOL(lbDisplay)+72	/* lbDisplay.MouseX */
 		jbe    def_17E75
-		cmpw   $0x234,lbDisplay__MouseX
+		cmpw   $0x234,EXPORT_SYMBOL(lbDisplay)+72
 		jae    def_17E75
-		cmpw   $0x4a,lbDisplay__MouseY
+		cmpw   $0x4a,EXPORT_SYMBOL(lbDisplay)+76
 		jbe    def_17E75
-		cmpw   $0xc4,lbDisplay__MouseY
+		cmpw   $0xc4,EXPORT_SYMBOL(lbDisplay)+76
 		jae    def_17E75
 		movl   $0x1,0xbc(%esp)
 		jmp    def_17E75
@@ -10779,26 +10779,26 @@ func_18048:
 /*----------------------------------------------------------------*/
 func_18084:
 /*----------------------------------------------------------------*/
-		cmpw   $0x14c,lbDisplay__MouseX
+		cmpw   $0x14c,EXPORT_SYMBOL(lbDisplay)+72	/* lbDisplay.MouseX */
 		jbe    def_17E75
-		cmpw   $0x234,lbDisplay__MouseX
+		cmpw   $0x234,EXPORT_SYMBOL(lbDisplay)+72
 		jae    def_17E75
-		cmpw   $0x4a,lbDisplay__MouseY
+		cmpw   $0x4a,EXPORT_SYMBOL(lbDisplay)+76
 		jbe    def_17E75
-		cmpw   $0xc4,lbDisplay__MouseY
+		cmpw   $0xc4,EXPORT_SYMBOL(lbDisplay)+76
 		jae    def_17E75
 		movl   $0x1,0xc0(%esp)
 	def_17E75:	/* 0x180ba */
 		mov    0xe0(%esp),%bl
 		test   %bl,%bl
 		je     jump_181bb
-		cmpw   $0x122,lbDisplay__MouseX
+		cmpw   $0x122,EXPORT_SYMBOL(lbDisplay)+72	/* lbDisplay.MouseX */
 		jbe    jump_18173
-		cmpw   $0x1a2,lbDisplay__MouseX
+		cmpw   $0x1a2,EXPORT_SYMBOL(lbDisplay)+72
 		jae    jump_18173
-		cmpw   $0x78,lbDisplay__MouseY
+		cmpw   $0x78,EXPORT_SYMBOL(lbDisplay)+76	/* lbDisplay.MouseY */
 		jbe    jump_18173
-		cmpw   $0x90,lbDisplay__MouseY
+		cmpw   $0x90,EXPORT_SYMBOL(lbDisplay)+76
 		jae    jump_18173
 		cmp    $0x2,%bl
 		jb     jump_18112
@@ -10835,13 +10835,13 @@ func_18084:
 		mov    %eax,0xc0(%esp)
 		mov    %edx,0xbc(%esp)
 	jump_18173:
-		cmpw   $0x1da,lbDisplay__MouseX
+		cmpw   $0x1da,EXPORT_SYMBOL(lbDisplay)+72	/* lbDisplay.MouseX */
 		jbe    jump_181c2
-		cmpw   $0x25a,lbDisplay__MouseX
+		cmpw   $0x25a,EXPORT_SYMBOL(lbDisplay)+72
 		jae    jump_181c2
-		cmpw   $0x78,lbDisplay__MouseY
+		cmpw   $0x78,EXPORT_SYMBOL(lbDisplay)+76
 		jbe    jump_181c2
-		cmpw   $0x90,lbDisplay__MouseY
+		cmpw   $0x90,EXPORT_SYMBOL(lbDisplay)+76
 		jae    jump_181c2
 		xor    %dh,%dh
 		xor    %dl,%dl
@@ -10870,7 +10870,7 @@ func_18084:
 		movsw  %ds:(%esi),%es:(%edi)
 		mov    %eax,EXPORT_SYMBOL(MouseSwap)
 		push   $0x2
-		mov    %bl,lbDisplay__LeftButton
+		mov    %bl,EXPORT_SYMBOL(lbDisplay)+103	/* lbDisplay.LeftButton */
 		call   BFPlaySample
 		add    $0x4,%esp
 		push   $sound_array
@@ -12074,13 +12074,13 @@ debrief:	/* 0x18ff0 */
 		mov    %dh,-0xc(%ebp)
 		mov    $0x1,%al
 	jump_19010:
-		cmp    lbDisplay__MLeftButton,%al
+		cmp    EXPORT_SYMBOL(lbDisplay)+106,%al	/* lbDisplay.MLeftButton */
 		je     jump_19010
-		cmp    lbDisplay__MRightButton,%al
+		cmp    EXPORT_SYMBOL(lbDisplay)+107,%al	/* lbDisplay.MRightButton */
 		je     jump_19010
 		xor    %cl,%cl
-		mov    %cl,lbDisplay__LeftButton
-		mov    %cl,lbDisplay__RightButton
+		mov    %cl,EXPORT_SYMBOL(lbDisplay)+103	/* lbDisplay.LeftButton */
+		mov    %cl,EXPORT_SYMBOL(lbDisplay)+104	/* lbDisplay.RightButton */
 		mov    %cl,EXPORT_SYMBOL(lbKeyOn)+0x01	/* lbKeyOn[KC_ESCAPE] */
 		mov    %cl,EXPORT_SYMBOL(lbKeyOn)+0x1c	/* lbKeyOn[KC_RETURN] */
 		mov    %cl,-0x10(%ebp)
@@ -13330,13 +13330,13 @@ debrief:	/* 0x18ff0 */
 		call   DrawScreenGadget
 		add    $0x1c,%esp
 	jump_1a0de:
-		cmpb   $0x0,lbDisplay__LeftButton
+		cmpb   $0x0,EXPORT_SYMBOL(lbDisplay)+103	/* lbDisplay.LeftButton */
 		je     jump_1a103
 		push   $0x3
 		push   $0x1
 		xor    %cl,%cl
 		push   $data_5b808
-		mov    %cl,lbDisplay__LeftButton
+		mov    %cl,EXPORT_SYMBOL(lbDisplay)+103	/* lbDisplay.LeftButton */
 		call   WhichIconSelected
 		add    $0xc,%esp
 		mov    %al,-0xc(%ebp)
@@ -13430,7 +13430,7 @@ debrief:	/* 0x18ff0 */
 		mov    %ebx,data_553a2(,%eax,2)
 		xor    %ah,%ah
 		push   $0x2
-		mov    %ah,lbDisplay__LeftButton
+		mov    %ah,EXPORT_SYMBOL(lbDisplay)+103	/* lbDisplay.LeftButton */
 		call   BFPlaySample
 		add    $0x4,%esp
 		push   $sound_array
@@ -21261,8 +21261,8 @@ equip_team:	/* 0x1fbc0 */
 		xor    %dl,%dl
 		mov    %dh,-0x20(%ebp)
 		mov    %dx,-0x2c(%ebp)
-		mov    %dh,lbDisplay__LeftButton
-		mov    %dh,lbDisplay__RightButton
+		mov    %dh,EXPORT_SYMBOL(lbDisplay)+103	/* lbDisplay.LeftButton */
+		mov    %dh,EXPORT_SYMBOL(lbDisplay)+104	/* lbDisplay.RightButton */
 		mov    %dh,data_55592
 		mov    %bx,-0x38(%ebp)
 	jump_1fc04:
@@ -23229,7 +23229,7 @@ equip_team:	/* 0x1fbc0 */
 		call   LbSpriteDrawMCGA
 		add    $0xc,%esp
 	jump_217aa:
-		cmpb   $0x0,lbDisplay__MRightButton
+		cmpb   $0x0,EXPORT_SYMBOL(lbDisplay)+107	/* lbDisplay.MRightButton */
 		je     jump_2187c
 		cmpb   $0x0,-0x1c(%ebp)
 		je     jump_2187c
@@ -23445,20 +23445,20 @@ equip_team:	/* 0x1fbc0 */
 		mov    %al,-0x1c(%ebp)
 		jmp    jump_21850
 	jump_21ab0:
-		cmpb   $0x0,lbDisplay__LeftButton
+		cmpb   $0x0,EXPORT_SYMBOL(lbDisplay)+103	/* lbDisplay.LeftButton */
 		jne    jump_21ac2
-		cmpb   $0x0,lbDisplay__RightButton
+		cmpb   $0x0,EXPORT_SYMBOL(lbDisplay)+104	/* lbDisplay.RightButton */
 		je     jump_21b0f
 	jump_21ac2:
 		xor    %bl,%bl
-		mov    %bl,lbDisplay__LeftButton
-		cmpw   $0x14,lbDisplay__MouseX
+		mov    %bl,EXPORT_SYMBOL(lbDisplay)+103	/* lbDisplay.LeftButton */
+		cmpw   $0x14,EXPORT_SYMBOL(lbDisplay)+72	/* lbDisplay.MouseX */
 		jbe    jump_21afb
-		cmpw   $0x8c,lbDisplay__MouseX
+		cmpw   $0x8c,EXPORT_SYMBOL(lbDisplay)+72
 		jae    jump_21afb
-		cmpw   $0x98,lbDisplay__MouseY
+		cmpw   $0x98,EXPORT_SYMBOL(lbDisplay)+76	/* lbDisplay.MouseY */
 		jbe    jump_21afb
-		cmpw   $0x9e,lbDisplay__MouseY
+		cmpw   $0x9e,EXPORT_SYMBOL(lbDisplay)+76
 		jae    jump_21afb
 		movb   $0x17,-0x8(%ebp)
 		jmp    jump_21b0f
@@ -23470,21 +23470,21 @@ equip_team:	/* 0x1fbc0 */
 		add    $0xc,%esp
 		mov    %al,-0x8(%ebp)
 	jump_21b0f:
-		cmpb   $0x0,lbDisplay__RightButton
+		cmpb   $0x0,EXPORT_SYMBOL(lbDisplay)+104	/* lbDisplay.RightButton */
 		je     jump_2184a
 		xor    %ch,%ch
-		mov    %ch,lbDisplay__RightButton
+		mov    %ch,EXPORT_SYMBOL(lbDisplay)+104	/* lbDisplay.RightButton */
 		cmpb   $0x15,-0x8(%ebp)
 		jne    jump_21c63
 		cmpb   $0x0,-0x10(%ebp)
 		je     jump_21c63
-		cmpw   $0x1f4,lbDisplay__MouseX
+		cmpw   $0x1f4,EXPORT_SYMBOL(lbDisplay)+72	/* lbDisplay.MouseX */
 		jbe    jump_21c63
-		cmpw   $0x272,lbDisplay__MouseX
+		cmpw   $0x272,EXPORT_SYMBOL(lbDisplay)+72
 		jae    jump_21c63
-		cmpw   $0x126,lbDisplay__MouseY
+		cmpw   $0x126,EXPORT_SYMBOL(lbDisplay)+76
 		jbe    jump_21c63
-		cmpw   $0x13c,lbDisplay__MouseY
+		cmpw   $0x13c,EXPORT_SYMBOL(lbDisplay)+76
 		jae    jump_21c63
 		xor    %esi,%esi
 		mov    %si,-0x38(%ebp)
@@ -23853,10 +23853,10 @@ func_2201c:
 		push   $0x0
 		xor    %eax,%eax
 		push   $0x0
-		mov    lbDisplay__MouseY,%ax
+		mov    EXPORT_SYMBOL(lbDisplay)+76,%ax	/* lbDisplay.MouseY */
 		push   %eax
 		xor    %eax,%eax
-		mov    lbDisplay__MouseX,%ax
+		mov    EXPORT_SYMBOL(lbDisplay)+72,%ax	/* lbDisplay.MouseX */
 		push   %eax
 		xor    %eax,%eax
 		mov    -0x38(%ebp),%ax
@@ -23875,7 +23875,7 @@ func_2201c:
 		test   %ch,%ch
 		jne    def_21874
 		xor    %edx,%edx
-		mov    lbDisplay__MouseY,%dx
+		mov    EXPORT_SYMBOL(lbDisplay)+76,%dx
 		mov    %edx,%eax
 		sar    $0x1f,%edx
 		sub    %edx,%eax
@@ -23968,13 +23968,13 @@ func_2201c:
 		mov    %bl,-0x10(%ebp)
 		jmp    def_21874
 	jump_221eb:
-		cmpw   $0x1f4,lbDisplay__MouseX
+		cmpw   $0x1f4,EXPORT_SYMBOL(lbDisplay)+72	/* lbDisplay.MouseX */
 		jbe    jump_225c0
-		cmpw   $0x272,lbDisplay__MouseX
+		cmpw   $0x272,EXPORT_SYMBOL(lbDisplay)+72
 		jae    jump_225c0
-		cmpw   $0x13e,lbDisplay__MouseY
+		cmpw   $0x13e,EXPORT_SYMBOL(lbDisplay)+76	/* lbDisplay.MouseY */
 		jbe    jump_225c0
-		cmpw   $0x156,lbDisplay__MouseY
+		cmpw   $0x156,EXPORT_SYMBOL(lbDisplay)+76
 		jae    jump_225c0
 		mov    -0xc(%ebp),%cl
 		cmp    $0x1,%cl
@@ -24241,13 +24241,13 @@ func_2201c:
 		mov    %dh,-0x14(%ebp)
 		jmp    def_21874
 	jump_225c0:
-		cmpw   $0x1f4,lbDisplay__MouseX
+		cmpw   $0x1f4,EXPORT_SYMBOL(lbDisplay)+72	/* lbDisplay.MouseX */
 		jbe    jump_226d3
-		cmpw   $0x272,lbDisplay__MouseX
+		cmpw   $0x272,EXPORT_SYMBOL(lbDisplay)+72
 		jae    jump_226d3
-		cmpw   $0x126,lbDisplay__MouseY
+		cmpw   $0x126,EXPORT_SYMBOL(lbDisplay)+76	/* lbDisplay.MouseY */
 		jbe    jump_226d3
-		cmpw   $0x13c,lbDisplay__MouseY
+		cmpw   $0x13c,EXPORT_SYMBOL(lbDisplay)+76
 		jae    jump_226d3
 		cmpb   $0x0,-0x14(%ebp)
 		je     def_21874
@@ -24416,7 +24416,7 @@ func_227c8:
 		movsl  %ds:(%esi),%es:(%edi)
 		movsb  %ds:(%esi),%es:(%edi)
 		push   $0x2
-		mov    %bl,lbDisplay__LeftButton
+		mov    %bl,EXPORT_SYMBOL(lbDisplay)+103	/* lbDisplay.LeftButton */
 		call   BFPlaySample
 		add    $0x4,%esp
 		push   $sound_array
@@ -24961,16 +24961,16 @@ WhichIconSelected:	/* 0x22e20 */
 	jump_22e5e:
 		cmp    0x8(%eax),%bh
 		je     jump_22e9e
-		mov    lbDisplay__MouseX,%dx
+		mov    EXPORT_SYMBOL(lbDisplay)+72,%dx	/* lbDisplay.MouseX */
 		cmp    (%eax),%dx
 		jbe    jump_22e99
-		mov    lbDisplay__MouseX,%dx
+		mov    EXPORT_SYMBOL(lbDisplay)+72,%dx
 		cmp    0x4(%eax),%dx
 		jae    jump_22e99
-		mov    lbDisplay__MouseY,%dx
+		mov    EXPORT_SYMBOL(lbDisplay)+76,%dx	/* lbDisplay.MouseY */
 		cmp    0x2(%eax),%dx
 		jbe    jump_22e99
-		mov    lbDisplay__MouseY,%dx
+		mov    EXPORT_SYMBOL(lbDisplay)+76,%dx
 		cmp    0x6(%eax),%dx
 		jae    jump_22e99
 		mov    0x8(%eax),%bl
@@ -27682,8 +27682,8 @@ init_level_data:	/* 0x25110 */
 		add    $0x6,%eax
 		xor    %dh,%dh
 		mov    %eax,EXPORT_SYMBOL(mouse_sprite)
-		mov    %dh,lbDisplay__LeftButton
-		mov    %dh,lbDisplay__RightButton
+		mov    %dh,EXPORT_SYMBOL(lbDisplay)+103	/* lbDisplay.LeftButton */
+		mov    %dh,EXPORT_SYMBOL(lbDisplay)+104	/* lbDisplay.RightButton */
 		mov    %dh,data_60b50
 		call   set_structure_ends
 		call   ClearBFSampleStatus
@@ -30226,9 +30226,9 @@ LoadSaveGame:	/* 0x26ef0 */
 		cmp    $0xa,%cx
 		jb     jump_26f10
 		xor    %dh,%dh
-		mov    %dh,lbDisplay__LeftButton
+		mov    %dh,EXPORT_SYMBOL(lbDisplay)+103	/* lbDisplay.LeftButton */
 		xor    %bl,%bl
-		mov    %dh,lbDisplay__RightButton
+		mov    %dh,EXPORT_SYMBOL(lbDisplay)+104	/* lbDisplay.RightButton */
 		mov    EXPORT_SYMBOL(byte_60B4C),%al
 		mov    $0x1,%bh
 		mov    %al,0xc(%esp)
@@ -30415,13 +30415,13 @@ LoadSaveGame:	/* 0x26ef0 */
 		call   get_line
 		add    $0x38,%esp
 	jump_271c6:
-		cmpb   $0x0,lbDisplay__LeftButton
+		cmpb   $0x0,EXPORT_SYMBOL(lbDisplay)+103	/* lbDisplay.LeftButton */
 		je     jump_271ec
 		push   $0xd
 		push   $0x1
 		xor    %dh,%dh
 		push   $data_5b77c
-		mov    %dh,lbDisplay__LeftButton
+		mov    %dh,EXPORT_SYMBOL(lbDisplay)+103	/* lbDisplay.LeftButton */
 		call   WhichIconSelected
 		add    $0xc,%esp
 		mov    %al,0x8(%esp)
@@ -30540,7 +30540,7 @@ func_27280:
 		movsw  %ds:(%esi),%es:(%edi)
 		mov    %eax,EXPORT_SYMBOL(MouseSwap)
 		push   $0x2
-		mov    %bl,lbDisplay__LeftButton
+		mov    %bl,EXPORT_SYMBOL(lbDisplay)+103	/* lbDisplay.LeftButton */
 		call   BFPlaySample
 		add    $0x4,%esp
 		push   $sound_array
@@ -31515,27 +31515,27 @@ OpenIKeyboardMs:	/* 0x27d60 */
 /*----------------------------------------------------------------*/
 correct_buttons:	/* 0x27db0 */
 /*----------------------------------------------------------------*/
-		cmpb   $0x1,lbDisplay__LeftButton
+		cmpb   $0x1,EXPORT_SYMBOL(lbDisplay)+103	/* lbDisplay.LeftButton */
 		jbe    jump_27dc1
 		xor    %dl,%dl
-		mov    %dl,lbDisplay__LeftButton
+		mov    %dl,EXPORT_SYMBOL(lbDisplay)+103	/* lbDisplay.LeftButton */
 	jump_27dc1:
-		mov    lbDisplay__LeftButton,%dh
+		mov    EXPORT_SYMBOL(lbDisplay)+103,%dh	/* lbDisplay.LeftButton */
 		cmp    $0x1,%dh
 		jne    jump_27dd7
-		mov    lbDisplay__LeftButton,%al
-		add    %dh,lbDisplay__LeftButton
+		mov    EXPORT_SYMBOL(lbDisplay)+103,%al	/* lbDisplay.LeftButton */
+		add    %dh,EXPORT_SYMBOL(lbDisplay)+103	/* lbDisplay.LeftButton */
 	jump_27dd7:
-		cmpb   $0x1,lbDisplay__RightButton
+		cmpb   $0x1,EXPORT_SYMBOL(lbDisplay)+104	/* lbDisplay.RightButton */
 		jbe    jump_27de8
 		xor    %cl,%cl
-		mov    %cl,lbDisplay__RightButton
+		mov    %cl,EXPORT_SYMBOL(lbDisplay)+104	/* lbDisplay.RightButton */
 	jump_27de8:
-		mov    lbDisplay__RightButton,%ch
+		mov    EXPORT_SYMBOL(lbDisplay)+104,%ch	/* lbDisplay.RightButton */
 		cmp    $0x1,%ch
 		jne    jump_27dfe
-		mov    lbDisplay__RightButton,%al
-		add    %ch,lbDisplay__RightButton
+		mov    EXPORT_SYMBOL(lbDisplay)+104,%al	/* lbDisplay.RightButton */
+		add    %ch,EXPORT_SYMBOL(lbDisplay)+104	/* lbDisplay.RightButton */
 	jump_27dfe:
 		ret
 
@@ -31550,9 +31550,9 @@ map_selection:	/* 0x27e00 */
 		sub    $0x8,%esp
 		xor    %ah,%ah
 		mov    %ah,(%esp)
-		mov    %ah,lbDisplay__LeftButton
+		mov    %ah,EXPORT_SYMBOL(lbDisplay)+103	/* lbDisplay.LeftButton */
 		push   $mmapblk_load_files
-		mov    %ah,lbDisplay__RightButton
+		mov    %ah,EXPORT_SYMBOL(lbDisplay)+104	/* lbDisplay.RightButton */
 		mov    $0x1,%edx
 		mov    %ah,EXPORT_SYMBOL(is_multiplayer_game)
 		mov    %edx,EXPORT_SYMBOL(MouseSwap)
@@ -31762,17 +31762,17 @@ map_selection:	/* 0x27e00 */
 #if !defined(DOS) /* add input refresh, as DOS interrupts are not available */
 		call   ac_game_update
 #endif
-		cmpb   $0x0,lbDisplay__RightButton
+		cmpb   $0x0,EXPORT_SYMBOL(lbDisplay)+104	/* lbDisplay.RightButton */
 		je     jump_28212
 		xor    %al,%al
-		mov    %al,lbDisplay__RightButton
-		cmpw   $0x176,lbDisplay__MouseX
+		mov    %al,EXPORT_SYMBOL(lbDisplay)+104	/* lbDisplay.RightButton */
+		cmpw   $0x176,EXPORT_SYMBOL(lbDisplay)+72	/* lbDisplay.MouseX */
 		jbe    jump_281a7
-		cmpw   $0x180,lbDisplay__MouseX
+		cmpw   $0x180,EXPORT_SYMBOL(lbDisplay)+72
 		jae    jump_281a7
-		cmpw   $0x158,lbDisplay__MouseY
+		cmpw   $0x158,EXPORT_SYMBOL(lbDisplay)+76	/* lbDisplay.MouseY */
 		jbe    jump_281a7
-		cmpw   $0x166,lbDisplay__MouseY
+		cmpw   $0x166,EXPORT_SYMBOL(lbDisplay)+76
 		jae    jump_281a7
 		xor    %ebx,%ebx
 		mov    data_55030,%bl
@@ -31792,13 +31792,13 @@ map_selection:	/* 0x27e00 */
 		call   adjust_tax
 		add    $0x8,%esp
 	jump_281a7:
-		cmpw   $0x1b4,lbDisplay__MouseX
+		cmpw   $0x1b4,EXPORT_SYMBOL(lbDisplay)+72
 		jbe    jump_28212
-		cmpw   $0x1be,lbDisplay__MouseX
+		cmpw   $0x1be,EXPORT_SYMBOL(lbDisplay)+72
 		jae    jump_28212
-		cmpw   $0x158,lbDisplay__MouseY
+		cmpw   $0x158,EXPORT_SYMBOL(lbDisplay)+76
 		jbe    jump_28212
-		cmpw   $0x166,lbDisplay__MouseY
+		cmpw   $0x166,EXPORT_SYMBOL(lbDisplay)+76
 		jae    jump_28212
 		xor    %edx,%edx
 		mov    data_55030,%dl
@@ -31856,22 +31856,22 @@ map_selection:	/* 0x27e00 */
 		pop    %ebx
 		ret
 	jump_28294:
-		cmpb   $0x0,lbDisplay__LeftButton
+		cmpb   $0x0,EXPORT_SYMBOL(lbDisplay)+103	/* lbDisplay.LeftButton */
 		je     jump_27e48
 		xor    %bl,%bl
-		mov    %bl,lbDisplay__LeftButton
+		mov    %bl,EXPORT_SYMBOL(lbDisplay)+103	/* lbDisplay.LeftButton */
 		call   check_for_click_on_cityadjust_tax
 		cmp    $0x32,%al
 		je     jump_282b7
 		mov    %al,data_55030
 	jump_282b7:
-		cmp    lbDisplay__MouseX,%di
+		cmp    EXPORT_SYMBOL(lbDisplay)+72,%di	/* lbDisplay.MouseX */
 		jae    jump_28345
-		cmpw   $0x92,lbDisplay__MouseX
+		cmpw   $0x92,EXPORT_SYMBOL(lbDisplay)+72
 		jae    jump_28345
-		cmpw   $0x15a,lbDisplay__MouseY
+		cmpw   $0x15a,EXPORT_SYMBOL(lbDisplay)+76	/* lbDisplay.MouseY */
 		jbe    jump_28345
-		cmpw   $0x174,lbDisplay__MouseY
+		cmpw   $0x174,EXPORT_SYMBOL(lbDisplay)+76
 		jae    jump_28345
 		xor    %eax,%eax
 		mov    data_55030,%al
@@ -31901,13 +31901,13 @@ map_selection:	/* 0x27e00 */
 		pop    %ebx
 		ret
 	jump_28345:
-		cmpw   $0x1f4,lbDisplay__MouseX
+		cmpw   $0x1f4,EXPORT_SYMBOL(lbDisplay)+72
 		jbe    jump_28388
-		cmpw   $0x274,lbDisplay__MouseX
+		cmpw   $0x274,EXPORT_SYMBOL(lbDisplay)+72
 		jae    jump_28388
-		cmpw   $0x15a,lbDisplay__MouseY
+		cmpw   $0x15a,EXPORT_SYMBOL(lbDisplay)+76
 		jbe    jump_28388
-		cmpw   $0x174,lbDisplay__MouseY
+		cmpw   $0x174,EXPORT_SYMBOL(lbDisplay)+76
 		jae    jump_28388
 		push   $mmapblk_load_files
 		call   LbDataFreeAll
@@ -31920,13 +31920,13 @@ map_selection:	/* 0x27e00 */
 		pop    %ebx
 		ret
 	jump_28388:
-		cmpw   $0x176,lbDisplay__MouseX
+		cmpw   $0x176,EXPORT_SYMBOL(lbDisplay)+72
 		jbe    jump_283f6
-		cmpw   $0x180,lbDisplay__MouseX
+		cmpw   $0x180,EXPORT_SYMBOL(lbDisplay)+72
 		jae    jump_283f6
-		cmpw   $0x158,lbDisplay__MouseY
+		cmpw   $0x158,EXPORT_SYMBOL(lbDisplay)+76
 		jbe    jump_283f6
-		cmpw   $0x166,lbDisplay__MouseY
+		cmpw   $0x166,EXPORT_SYMBOL(lbDisplay)+76
 		jae    jump_283f6
 		xor    %edx,%edx
 		mov    data_55030,%dl
@@ -31946,13 +31946,13 @@ map_selection:	/* 0x27e00 */
 		call   adjust_tax
 		add    $0x8,%esp
 	jump_283f6:
-		cmpw   $0x1b4,lbDisplay__MouseX
+		cmpw   $0x1b4,EXPORT_SYMBOL(lbDisplay)+72	/* lbDisplay.MouseX */
 		jbe    jump_27e48
-		cmpw   $0x1be,lbDisplay__MouseX
+		cmpw   $0x1be,EXPORT_SYMBOL(lbDisplay)+72
 		jae    jump_27e48
-		cmpw   $0x158,lbDisplay__MouseY
+		cmpw   $0x158,EXPORT_SYMBOL(lbDisplay)+76	/* lbDisplay.MouseY */
 		jbe    jump_27e48
-		cmpw   $0x166,lbDisplay__MouseY
+		cmpw   $0x166,EXPORT_SYMBOL(lbDisplay)+76
 		jae    jump_27e48
 		xor    %edx,%edx
 		mov    data_55030,%dl
@@ -31998,29 +31998,29 @@ check_for_click_on_cityadjust_tax:	/* 0x28490 */
 		add    %ebx,%eax
 		lea    0x0(,%eax,4),%eax
 		sub    %ebx,%eax
-		mov    lbDisplay__MouseX,%dx
+		mov    EXPORT_SYMBOL(lbDisplay)+72,%dx
 		cmp    map_countries(%eax),%dx
 		jbe    jump_28551
 		xor    %ecx,%ecx
 		xor    %edx,%edx
 		mov    map_countries(%eax),%cx
-		mov    lbDisplay__MouseX,%dx
+		mov    EXPORT_SYMBOL(lbDisplay)+72,%dx
 		lea    0x80(%ecx),%esi
 		cmp    %esi,%edx
 		jge    jump_28551
-		mov    lbDisplay__MouseY,%dx
+		mov    EXPORT_SYMBOL(lbDisplay)+76,%dx
 		mov    data_5b062(%eax),%si
 		cmp    %si,%dx
 		jbe    jump_28551
 		xor    %edx,%edx
 		xor    %eax,%eax
 		mov    %si,%dx
-		mov    lbDisplay__MouseY,%ax
+		mov    EXPORT_SYMBOL(lbDisplay)+76,%ax
 		lea    0x58(%edx),%esi
 		cmp    %esi,%eax
 		jge    jump_28551
 		xor    %eax,%eax
-		mov    lbDisplay__MouseY,%ax
+		mov    EXPORT_SYMBOL(lbDisplay)+76,%ax
 		sub    %edx,%eax
 		mov    %eax,%edx
 		sar    $0x1f,%edx
@@ -32029,7 +32029,7 @@ check_for_click_on_cityadjust_tax:	/* 0x28490 */
 		mov    %eax,%esi
 		xor    %edx,%edx
 		shl    $0x6,%esi
-		mov    lbDisplay__MouseX,%dx
+		mov    EXPORT_SYMBOL(lbDisplay)+72,%dx	/* lbDisplay.MouseX */
 		sub    %ecx,%edx
 		mov    %edx,%eax
 		sar    $0x1f,%edx
@@ -33608,8 +33608,8 @@ multi_out:	/* 0x29790 */
 		mov    $0x5a,%edx
 		mov    %ah,(%esp)
 		mov    %dx,EXPORT_SYMBOL(current_levno)
-		mov    %ah,lbDisplay__LeftButton
-		mov    %ah,lbDisplay__RightButton
+		mov    %ah,EXPORT_SYMBOL(lbDisplay)+103	/* lbDisplay.LeftButton */
+		mov    %ah,EXPORT_SYMBOL(lbDisplay)+104	/* lbDisplay.RightButton */
 		xor    %eax,%eax
 		mov    EXPORT_SYMBOL(language),%al
 		mov    data_54564(,%eax,4),%edx
@@ -33734,13 +33734,13 @@ func_29818:
 		add    $0x28,%esp
 		cmp    $0xa,%si
 		jb     jump_298b0
-		cmpb   $0x0,lbDisplay__LeftButton
+		cmpb   $0x0,EXPORT_SYMBOL(lbDisplay)+103	/* lbDisplay.LeftButton */
 		je     jump_29960
 		push   $0xc
 		push   $0x1
 		xor    %ch,%ch
 		push   $data_5b6fa
-		mov    %ch,lbDisplay__LeftButton
+		mov    %ch,EXPORT_SYMBOL(lbDisplay)+103	/* lbDisplay.LeftButton */
 		call   WhichIconSelected
 		add    $0xc,%esp
 		mov    %al,0x4(%esp)
@@ -33773,7 +33773,7 @@ func_29818:
 		movsw  %ds:(%esi),%es:(%edi)
 		xor    %ch,%ch
 		push   $0x2
-		mov    %ch,lbDisplay__LeftButton
+		mov    %ch,EXPORT_SYMBOL(lbDisplay)+103	/* lbDisplay.LeftButton */
 		call   BFPlaySample
 		add    $0x4,%esp
 		push   $sound_array
@@ -36104,37 +36104,37 @@ MouseHandler256:	/* 0x2b290 */
 	jump_2b2d3:
 		testb  $0x2,mouse_event
 		je     jump_2b30a
-		cmpb   $0x0,lbDisplay__MLeftButton
+		cmpb   $0x0,EXPORT_SYMBOL(lbDisplay)+106	/* lbDisplay.MLeftButton */
 		jne    jump_2b303
-		cmpb   $0x0,lbDisplay__LeftButton
+		cmpb   $0x0,EXPORT_SYMBOL(lbDisplay)+103	/* lbDisplay.LeftButton */
 		jne    jump_2b303
-		movb   $0x1,lbDisplay__LeftButton
-		mov    %cx,lbDisplay__MouseX
-		mov    %dx,lbDisplay__MouseY
+		movb   $0x1,EXPORT_SYMBOL(lbDisplay)+103	/* lbDisplay.LeftButton */
+		mov    %cx,EXPORT_SYMBOL(lbDisplay)+72	/* lbDisplay.MouseX */
+		mov    %dx,EXPORT_SYMBOL(lbDisplay)+76	/* lbDisplay.MouseY */
 	jump_2b303:
-		movb   $0x1,lbDisplay__MLeftButton
+		movb   $0x1,EXPORT_SYMBOL(lbDisplay)+106	/* lbDisplay.MLeftButton */
 	jump_2b30a:
 		testb  $0x4,mouse_event
 		je     jump_2b31b
 		xor    %bh,%bh
-		mov    %bh,lbDisplay__MLeftButton
+		mov    %bh,EXPORT_SYMBOL(lbDisplay)+106	/* lbDisplay.MLeftButton */
 	jump_2b31b:
 		testb  $0x8,mouse_event
 		je     jump_2b352
-		cmpb   $0x0,lbDisplay__MRightButton
+		cmpb   $0x0,EXPORT_SYMBOL(lbDisplay)+107	/* lbDisplay.MRightButton */
 		jne    jump_2b34b
-		cmpb   $0x0,lbDisplay__RightButton
+		cmpb   $0x0,EXPORT_SYMBOL(lbDisplay)+104	/* lbDisplay.RightButton */
 		jne    jump_2b34b
-		movb   $0x1,lbDisplay__RightButton
-		mov    %cx,lbDisplay__MouseX
-		mov    %dx,lbDisplay__MouseY
+		movb   $0x1,EXPORT_SYMBOL(lbDisplay)+104	/* lbDisplay.RightButton */
+		mov    %cx,EXPORT_SYMBOL(lbDisplay)+72
+		mov    %dx,EXPORT_SYMBOL(lbDisplay)+76
 	jump_2b34b:
-		movb   $0x1,lbDisplay__MRightButton
+		movb   $0x1,EXPORT_SYMBOL(lbDisplay)+107	/* lbDisplay.MRightButton */
 	jump_2b352:
 		testb  $0x10,mouse_event
 		je     jump_2b362
 		xor    %al,%al
-		mov    %al,lbDisplay__MRightButton
+		mov    %al,EXPORT_SYMBOL(lbDisplay)+107	/* lbDisplay.MRightButton */
 	jump_2b362:
 		cmpl   $0x0,EXPORT_SYMBOL(MouseSwap)
 		jne    jump_2b436
@@ -38040,7 +38040,7 @@ setup_panel:	/* 0x2c640 */
 		push   $0x38
 		xor    %ah,%ah
 		push   $0x0
-		mov    %ah,lbDisplay__LeftButton
+		mov    %ah,EXPORT_SYMBOL(lbDisplay)+103	/* lbDisplay.LeftButton */
 		push   $data_5df48
 		mov    $unkarr_5094,%ebx
 		mov    $data_55070,%esi
@@ -38212,11 +38212,11 @@ process_players_turn:	/* 0x2c880 */
 		mov    %ax,data_5e122
 		mov    %dx,level__Timer
 		xor    %eax,%eax
-		mov    lbDisplay__RightButton,%al
+		mov    EXPORT_SYMBOL(lbDisplay)+104,%al	/* lbDisplay.RightButton */
 		cwtl
 		push   %eax
 		xor    %eax,%eax
-		mov    lbDisplay__LeftButton,%al
+		mov    EXPORT_SYMBOL(lbDisplay)+103,%al	/* lbDisplay.LeftButton */
 		cwtl
 		push   %eax
 		xor    %eax,%eax
@@ -38229,7 +38229,7 @@ process_players_turn:	/* 0x2c880 */
 		test   %ax,%ax
 		je     jump_2c8fd
 		movw   $0x1,data_5e112
-		cmpb   $0x0,lbDisplay__LeftButton
+		cmpb   $0x0,EXPORT_SYMBOL(lbDisplay)+103	/* lbDisplay.LeftButton */
 		je     jump_2c8f6
 		xor    %edx,%edx
 		cwtl
@@ -38242,11 +38242,11 @@ process_players_turn:	/* 0x2c880 */
 		mov    %bx,data_5e124
 	jump_2c8fd:
 		xor    %eax,%eax
-		mov    lbDisplay__RightButton,%al
+		mov    EXPORT_SYMBOL(lbDisplay)+104,%al	/* lbDisplay.RightButton */
 		cwtl
 		push   %eax
 		xor    %eax,%eax
-		mov    lbDisplay__LeftButton,%al
+		mov    EXPORT_SYMBOL(lbDisplay)+103,%al	/* lbDisplay.LeftButton */
 		cwtl
 		push   %eax
 		xor    %eax,%eax
@@ -38324,11 +38324,11 @@ process_players_turn:	/* 0x2c880 */
 	jump_2ca1d:
 		call   check_player_holding
 		xor    %eax,%eax
-		mov    lbDisplay__RightButton,%al
+		mov    EXPORT_SYMBOL(lbDisplay)+104,%al	/* lbDisplay.RightButton */
 		cwtl
 		push   %eax
 		xor    %eax,%eax
-		mov    lbDisplay__LeftButton,%al
+		mov    EXPORT_SYMBOL(lbDisplay)+103,%al	/* lbDisplay.LeftButton */
 		cwtl
 		push   %eax
 		xor    %eax,%eax
@@ -39462,11 +39462,11 @@ make_packet:	/* 0x2d610 */
 	jump_2d6d5:
 		cmpw   $0x0,data_60b14
 		je     jump_2d7d4
-		cmpb   $0x0,lbDisplay__LeftButton
+		cmpb   $0x0,EXPORT_SYMBOL(lbDisplay)+103	/* lbDisplay.LeftButton */
 		je     jump_2d7d4
 		cmpw   $0x0,data_60b1a
 		je     jump_2d707
-		cmpb   $0x0,lbDisplay__LeftButton
+		cmpb   $0x0,EXPORT_SYMBOL(lbDisplay)+103	/* lbDisplay.LeftButton */
 		jne    jump_2d7d4
 	jump_2d707:
 		movswl Network__Slot,%ecx
@@ -39654,11 +39654,11 @@ make_packet:	/* 0x2d610 */
 		add    $0x8,%esp
 	jump_2d9a0:
 		xor    %ch,%ch
-		mov    %ch,lbDisplay__LeftButton
-		mov    lbDisplay__LeftButton,%al
-		mov    %al,lbDisplay__RightButton
+		mov    %ch,EXPORT_SYMBOL(lbDisplay)+103	/* lbDisplay.LeftButton */
+		mov    EXPORT_SYMBOL(lbDisplay)+103,%al	/* lbDisplay.LeftButton */
+		mov    %al,EXPORT_SYMBOL(lbDisplay)+104	/* lbDisplay.RightButton */
 		xor    %ah,%ah
-		mov    lbDisplay__RightButton,%al
+		mov    EXPORT_SYMBOL(lbDisplay)+104,%al	/* lbDisplay.RightButton */
 		mov    %ax,data_5e116
 		xor    %ebx,%ebx
 		mov    %ax,data_5e114
@@ -39903,9 +39903,9 @@ func_2dcf5:
 /*----------------------------------------------------------------*/
 func_2dd04:
 /*----------------------------------------------------------------*/
-		cmpb   $0x0,lbDisplay__MLeftButton
+		cmpb   $0x0,EXPORT_SYMBOL(lbDisplay)+106	/* lbDisplay.MLeftButton */
 		je     jump_2dd62
-		cmpb   $0x0,lbDisplay__MRightButton
+		cmpb   $0x0,EXPORT_SYMBOL(lbDisplay)+107	/* lbDisplay.MRightButton */
 		je     jump_2dd62
 		mov    data_60b20,%ax
 		movb   $0x11,0xd(%ebx)
@@ -39915,8 +39915,8 @@ func_2dd04:
 		mov    data_60b1c,%ax
 		mov    %ax,0x4(%ebx)
 		xor    %bh,%bh
-		mov    %bh,lbDisplay__LeftButton
-		mov    %bh,lbDisplay__RightButton
+		mov    %bh,EXPORT_SYMBOL(lbDisplay)+103	/* lbDisplay.LeftButton */
+		mov    %bh,EXPORT_SYMBOL(lbDisplay)+104	/* lbDisplay.RightButton */
 		xor    %esi,%esi
 		mov    %si,data_5e114
 		mov    %si,data_5e116
@@ -39930,7 +39930,7 @@ func_2dd04:
 	jump_2dd62:
 		cmpb   $0x0,data_60b39
 		je     jump_2ddb5
-		cmpb   $0x0,lbDisplay__LeftButton
+		cmpb   $0x0,EXPORT_SYMBOL(lbDisplay)+103	/* lbDisplay.LeftButton */
 		je     jump_2ddb5
 		mov    data_60b20,%ax
 		movb   $0x3,0xd(%ebx)
@@ -39940,7 +39940,7 @@ func_2dd04:
 		mov    data_60b1c,%ax
 		mov    %ax,0x4(%ebx)
 		xor    %bl,%bl
-		mov    %bl,lbDisplay__LeftButton
+		mov    %bl,EXPORT_SYMBOL(lbDisplay)+103	/* lbDisplay.LeftButton */
 		xor    %bh,%bh
 		xor    %ecx,%ecx
 		mov    %bx,data_5e116
@@ -39952,9 +39952,9 @@ func_2dd04:
 		pop    %ebx
 		ret
 	jump_2ddb5:
-		cmpb   $0x0,lbDisplay__LeftButton
+		cmpb   $0x0,EXPORT_SYMBOL(lbDisplay)+103	/* lbDisplay.LeftButton */
 		je     jump_2dee7
-		cmpw   $0x80,lbDisplay__MouseX
+		cmpw   $0x80,EXPORT_SYMBOL(lbDisplay)+72	/* lbDisplay.MouseX */
 		jb     jump_2dee7
 		mov    data_60b12,%dx
 		test   %dx,%dx
@@ -39976,7 +39976,7 @@ func_2dd04:
 		mov    %ax,(%ebx)
 	jump_2de09:
 		xor    %dh,%dh
-		mov    %dh,lbDisplay__LeftButton
+		mov    %dh,EXPORT_SYMBOL(lbDisplay)+103	/* lbDisplay.LeftButton */
 		xor    %eax,%eax
 		xor    %dl,%dl
 		mov    %ax,data_5e116
@@ -39995,7 +39995,7 @@ func_2dd04:
 		mov    %dx,data_5e116
 		mov    %cx,(%ebx)
 		xor    %dl,%dl
-		mov    %dl,lbDisplay__LeftButton
+		mov    %dl,EXPORT_SYMBOL(lbDisplay)+103	/* lbDisplay.LeftButton */
 		xor    %edi,%edi
 		mov    %edi,(%esp)
 		mov    (%esp),%eax
@@ -40022,7 +40022,7 @@ func_2dd04:
 	jump_2de89:
 		mov    %ax,(%ebx)
 		xor    %ah,%ah
-		mov    %ah,lbDisplay__LeftButton
+		mov    %ah,EXPORT_SYMBOL(lbDisplay)+103	/* lbDisplay.LeftButton */
 		xor    %ebx,%ebx
 		mov    %bx,data_5e116
 		mov    %ebx,(%esp)
@@ -40041,7 +40041,7 @@ func_2dd04:
 		mov    data_60b1c,%ax
 		mov    %ax,0x4(%ebx)
 		xor    %al,%al
-		mov    %al,lbDisplay__LeftButton
+		mov    %al,EXPORT_SYMBOL(lbDisplay)+103	/* lbDisplay.LeftButton */
 		xor    %ah,%ah
 		mov    %edx,(%esp)
 		mov    %ax,data_5e116
@@ -40054,7 +40054,7 @@ func_2dd04:
 	jump_2dee7:
 		cmpb   $0x0,data_60b39
 		je     jump_2df57
-		cmpb   $0x0,lbDisplay__RightButton
+		cmpb   $0x0,EXPORT_SYMBOL(lbDisplay)+104	/* lbDisplay.RightButton */
 		je     jump_2df57
 		xor    %edx,%edx
 		xor    %eax,%eax
@@ -40075,7 +40075,7 @@ func_2dd04:
 		call   full_redraw
 		add    $0x8,%esp
 		xor    %ch,%ch
-		mov    %ch,lbDisplay__RightButton
+		mov    %ch,EXPORT_SYMBOL(lbDisplay)+104	/* lbDisplay.RightButton */
 		xor    %edi,%edi
 		mov    %di,data_5e114
 		mov    %edi,(%esp)
@@ -40086,7 +40086,7 @@ func_2dd04:
 		pop    %ebx
 		ret
 	jump_2df57:
-		cmpb   $0x0,lbDisplay__MRightButton
+		cmpb   $0x0,EXPORT_SYMBOL(lbDisplay)+107	/* lbDisplay.MRightButton */
 		je     jump_2e084
 		cmpw   $0x80,EXPORT_SYMBOL(lbDisplay)+80	/* lbDisplay.MMouseX */
 		jb     jump_2e084
@@ -40097,16 +40097,16 @@ func_2dd04:
 		add    $0x4,%esp
 		test   %ax,%ax
 		je     jump_2df95
-		cmpb   $0x0,lbDisplay__MRightButton
+		cmpb   $0x0,EXPORT_SYMBOL(lbDisplay)+107	/* lbDisplay.MRightButton */
 		jne    jump_2dfa2
 	jump_2df95:
-		cmpb   $0x0,lbDisplay__RightButton
+		cmpb   $0x0,EXPORT_SYMBOL(lbDisplay)+104	/* lbDisplay.RightButton */
 		je     jump_2e084
 	jump_2dfa2:
-		cmpb   $0x0,lbDisplay__RightButton
+		cmpb   $0x0,EXPORT_SYMBOL(lbDisplay)+104	/* lbDisplay.RightButton */
 		je     jump_2dfb3
 		xor    %cl,%cl
-		mov    %cl,lbDisplay__RightButton
+		mov    %cl,EXPORT_SYMBOL(lbDisplay)+104	/* lbDisplay.RightButton */
 	jump_2dfb3:
 		mov    data_60b14,%cx
 		test   %cx,%cx
@@ -40205,7 +40205,7 @@ func_2dd04:
 		mov    %dx,data_5e114
 		mov    %ax,(%ebx)
 		xor    %dl,%dl
-		mov    %dl,lbDisplay__RightButton
+		mov    %dl,EXPORT_SYMBOL(lbDisplay)+104	/* lbDisplay.RightButton */
 		xor    %ebx,%ebx
 		mov    %ebx,(%esp)
 		mov    (%esp),%eax
@@ -40224,7 +40224,7 @@ func_2dd04:
 		mov    %cx,index
 		movb   $0xb,0xd(%ebx)
 		xor    %dh,%ah
-		mov    %ah,lbDisplay__LeftButton
+		mov    %ah,EXPORT_SYMBOL(lbDisplay)+103	/* lbDisplay.LeftButton */
 		mov    %cx,data_5e116
 		mov    %ecx,(%esp)
 		mov    (%esp),%eax
@@ -40258,7 +40258,7 @@ func_2dd04:
 		add    $0x8,%esp
 		mov    %ax,(%ebx)
 		xor    %al,%al
-		mov    %al,lbDisplay__LeftButton
+		mov    %al,EXPORT_SYMBOL(lbDisplay)+103	/* lbDisplay.LeftButton */
 		xor    %ebx,%ebx
 		mov    %bx,data_5e116
 		mov    %ebx,(%esp)
@@ -40269,9 +40269,9 @@ func_2dd04:
 		pop    %ebx
 		ret
 	jump_2e1d6:
-		cmpb   $0x0,lbDisplay__MLeftButton
+		cmpb   $0x0,EXPORT_SYMBOL(lbDisplay)+106	/* lbDisplay.MLeftButton */
 		je     jump_2e474
-		cmpw   $0x80,lbDisplay__MouseX
+		cmpw   $0x80,EXPORT_SYMBOL(lbDisplay)+72	/* lbDisplay.MouseX */
 		jae    jump_2e474
 		xor    %edx,%edx
 	jump_2e1f4:
@@ -40282,24 +40282,24 @@ func_2dd04:
 		xor    %ecx,%ecx
 		xor    %esi,%esi
 		mov    data_55114(%eax),%cx
-		mov    lbDisplay__MouseX,%si
+		mov    EXPORT_SYMBOL(lbDisplay)+72,%si	/* lbDisplay.MouseX */
 		lea    0x4(%ecx),%edi
 		cmp    %edi,%esi
 		jl     jump_2e2c6
 		xor    %esi,%esi
-		mov    lbDisplay__MouseX,%si
+		mov    EXPORT_SYMBOL(lbDisplay)+72,%si	/* lbDisplay.MouseX */
 		add    $0x3b,%ecx
 		cmp    %ecx,%esi
 		jg     jump_2e2c6
 		xor    %ecx,%ecx
 		xor    %edi,%edi
 		mov    data_55116(%eax),%cx
-		mov    lbDisplay__MouseY,%di
+		mov    EXPORT_SYMBOL(lbDisplay)+76,%di	/* lbDisplay.MouseY */
 		lea    0x2e(%ecx),%esi
 		cmp    %esi,%edi
 		jl     jump_2e2c6
 		xor    %esi,%esi
-		mov    lbDisplay__MouseY,%si
+		mov    EXPORT_SYMBOL(lbDisplay)+76,%si
 		add    $0x3c,%ecx
 		cmp    %ecx,%esi
 		jg     jump_2e2c6
@@ -40329,7 +40329,7 @@ func_2dd04:
 		mov    %ax,0x2(%ebx)
 	jump_2e2af:
 		xor    %ah,%ah
-		mov    %ah,lbDisplay__LeftButton
+		mov    %ah,EXPORT_SYMBOL(lbDisplay)+103	/* lbDisplay.LeftButton */
 		xor    %esi,%esi
 		mov    %esi,(%esp)
 		mov    (%esp),%eax
@@ -40346,24 +40346,24 @@ func_2dd04:
 		xor    %ecx,%ecx
 		xor    %edi,%edi
 		mov    data_55114(%eax),%cx
-		mov    lbDisplay__MouseX,%di
+		mov    EXPORT_SYMBOL(lbDisplay)+72,%di	/* lbDisplay.MouseX */
 		lea    0x4(%ecx),%esi
 		cmp    %esi,%edi
 		jl     jump_2e397
 		xor    %esi,%esi
-		mov    lbDisplay__MouseX,%si
+		mov    EXPORT_SYMBOL(lbDisplay)+72,%si
 		add    $0x3b,%ecx
 		cmp    %ecx,%esi
 		jg     jump_2e397
 		xor    %ecx,%ecx
 		xor    %edi,%edi
 		mov    data_55116(%eax),%cx
-		mov    lbDisplay__MouseY,%di
+		mov    EXPORT_SYMBOL(lbDisplay)+76,%di
 		lea    0x3c(%ecx),%esi
 		cmp    %esi,%edi
 		jl     jump_2e397
 		xor    %esi,%esi
-		mov    lbDisplay__MouseY,%si
+		mov    EXPORT_SYMBOL(lbDisplay)+76,%si
 		add    $0x4a,%ecx
 		cmp    %ecx,%esi
 		jg     jump_2e397
@@ -40393,7 +40393,7 @@ func_2dd04:
 		mov    %ax,0x2(%ebx)
 	jump_2e381:
 		xor    %al,%al
-		mov    %al,lbDisplay__LeftButton
+		mov    %al,EXPORT_SYMBOL(lbDisplay)+103	/* lbDisplay.LeftButton */
 		xor    %ecx,%ecx
 		mov    %ecx,(%esp)
 		mov    (%esp),%eax
@@ -40410,24 +40410,24 @@ func_2dd04:
 		xor    %ecx,%ecx
 		xor    %esi,%esi
 		mov    data_55114(%eax),%cx
-		mov    lbDisplay__MouseX,%si
+		mov    EXPORT_SYMBOL(lbDisplay)+72,%si
 		lea    0x4(%ecx),%edi
 		cmp    %edi,%esi
 		jl     jump_2e469
 		xor    %esi,%esi
-		mov    lbDisplay__MouseX,%si
+		mov    EXPORT_SYMBOL(lbDisplay)+72,%si
 		add    $0x3b,%ecx
 		cmp    %ecx,%esi
 		jg     jump_2e469
 		xor    %ecx,%ecx
 		xor    %edi,%edi
 		mov    data_55116(%eax),%cx
-		mov    lbDisplay__MouseY,%di
+		mov    EXPORT_SYMBOL(lbDisplay)+76,%di	/* lbDisplay.MouseY */
 		lea    0x4a(%ecx),%esi
 		cmp    %esi,%edi
 		jl     jump_2e469
 		xor    %esi,%esi
-		mov    lbDisplay__MouseY,%si
+		mov    EXPORT_SYMBOL(lbDisplay)+76,%si
 		add    $0x58,%ecx
 		cmp    %ecx,%esi
 		jg     jump_2e469
@@ -40457,7 +40457,7 @@ func_2dd04:
 		mov    %ax,0x2(%ebx)
 	jump_2e452:
 		xor    %ch,%ch
-		mov    %ch,lbDisplay__LeftButton
+		mov    %ch,EXPORT_SYMBOL(lbDisplay)+103	/* lbDisplay.LeftButton */
 		xor    %ebx,%ebx
 		mov    %ebx,(%esp)
 		mov    (%esp),%eax
@@ -40609,14 +40609,14 @@ func_2e595:
 		mov    0x2(%ebx),%ax
 		add    %edx,%eax
 		xor    %edx,%edx
-		mov    lbDisplay__MouseX,%dx
+		mov    EXPORT_SYMBOL(lbDisplay)+72,%dx	/* lbDisplay.MouseX */
 		cmp    %eax,%edx
 		jl     jump_2e5ff
 		xor    %edx,%edx
 		mov    0x6(%ebx),%dl
 		add    %edx,%eax
 		xor    %edx,%edx
-		mov    lbDisplay__MouseX,%dx
+		mov    EXPORT_SYMBOL(lbDisplay)+72,%dx
 		cmp    %eax,%edx
 		jge    jump_2e5ff
 		xor    %edx,%edx
@@ -40624,14 +40624,14 @@ func_2e595:
 		mov    0x4(%ebx),%dx
 		add    %edx,%eax
 		xor    %edx,%edx
-		mov    lbDisplay__MouseY,%dx
+		mov    EXPORT_SYMBOL(lbDisplay)+76,%dx	/* lbDisplay.MouseY */
 		cmp    %eax,%edx
 		jl     jump_2e5ff
 		xor    %edx,%edx
 		mov    0x7(%ebx),%dl
 		add    %edx,%eax
 		xor    %edx,%edx
-		mov    lbDisplay__MouseY,%dx
+		mov    EXPORT_SYMBOL(lbDisplay)+76,%dx
 		cmp    %eax,%edx
 		jl     jump_2e610
 	jump_2e5ff:
@@ -40647,7 +40647,7 @@ func_2e595:
 		test   %al,%al
 		je     jump_2e632
 		xor    %ah,%ah
-		mov    %ah,lbDisplay__LeftButton
+		mov    %ah,EXPORT_SYMBOL(lbDisplay)+103	/* lbDisplay.LeftButton */
 		movw   $0x1,data_5e116
 	jump_2e632:
 		xor    %eax,%eax
@@ -40656,7 +40656,7 @@ func_2e595:
 		test   %dl,%dl
 		je     jump_2e653
 		xor    %dh,%dh
-		mov    %dh,lbDisplay__RightButton
+		mov    %dh,EXPORT_SYMBOL(lbDisplay)+104	/* lbDisplay.RightButton */
 		movw   $0x1,data_5e114
 	jump_2e653:
 		mov    (%ebx),%cx
@@ -40697,14 +40697,14 @@ func_2e67f:
 		mov    0x2(%ebx),%dx
 		add    %edx,%eax
 		xor    %edx,%edx
-		mov    lbDisplay__MouseX,%dx
+		mov    EXPORT_SYMBOL(lbDisplay)+72,%dx	/* lbDisplay.MouseX */
 		cmp    %eax,%edx
 		jl     jump_2e74b
 		xor    %edx,%edx
 		mov    0x6(%ebx),%dl
 		add    %edx,%eax
 		xor    %edx,%edx
-		mov    lbDisplay__MouseX,%dx
+		mov    EXPORT_SYMBOL(lbDisplay)+72,%dx
 		cmp    %eax,%edx
 		jge    jump_2e74b
 		xor    %eax,%eax
@@ -40712,14 +40712,14 @@ func_2e67f:
 		mov    0x4(%ebx),%ax
 		add    %edx,%eax
 		xor    %edx,%edx
-		mov    lbDisplay__MouseY,%dx
+		mov    EXPORT_SYMBOL(lbDisplay)+76,%dx	/* lbDisplay.MouseY */
 		cmp    %eax,%edx
 		jl     jump_2e74b
 		xor    %edx,%edx
 		mov    0x7(%ebx),%dl
 		add    %edx,%eax
 		xor    %edx,%edx
-		mov    lbDisplay__MouseY,%dx
+		mov    EXPORT_SYMBOL(lbDisplay)+76,%dx
 		cmp    %eax,%edx
 		jge    jump_2e74b
 		xor    %ecx,%ecx
@@ -40728,7 +40728,7 @@ func_2e67f:
 		test   %dl,%dl
 		je     jump_2e727
 		xor    %dh,%dh
-		mov    %dh,lbDisplay__LeftButton
+		mov    %dh,EXPORT_SYMBOL(lbDisplay)+103	/* lbDisplay.LeftButton */
 		movw   $0x1,data_5e116
 	jump_2e727:
 		xor    %edx,%edx
@@ -40737,7 +40737,7 @@ func_2e67f:
 		test   %cl,%cl
 		je     jump_2e76d
 		xor    %ch,%ch
-		mov    %ch,lbDisplay__RightButton
+		mov    %ch,EXPORT_SYMBOL(lbDisplay)+104	/* lbDisplay.RightButton */
 		movw   $0x1,data_5e114
 		jmp    jump_2e76d
 	jump_2e74b:
@@ -40820,14 +40820,14 @@ func_2e7d5:
 		mov    0x2(%ebx),%ax
 		add    %edx,%eax
 		xor    %edx,%edx
-		mov    lbDisplay__MouseX,%dx
+		mov    EXPORT_SYMBOL(lbDisplay)+72,%dx	/* lbDisplay.MouseX */
 		cmp    %eax,%edx
 		jl     jump_2e83f
 		xor    %edx,%edx
 		mov    0x6(%ebx),%dl
 		add    %edx,%eax
 		xor    %edx,%edx
-		mov    lbDisplay__MouseX,%dx
+		mov    EXPORT_SYMBOL(lbDisplay)+72,%dx
 		cmp    %eax,%edx
 		jge    jump_2e83f
 		xor    %edx,%edx
@@ -40835,14 +40835,14 @@ func_2e7d5:
 		mov    0x4(%ebx),%dx
 		add    %edx,%eax
 		xor    %edx,%edx
-		mov    lbDisplay__MouseY,%dx
+		mov    EXPORT_SYMBOL(lbDisplay)+76,%dx	/* lbDisplay.MouseY */
 		cmp    %eax,%edx
 		jl     jump_2e83f
 		xor    %edx,%edx
 		mov    0x7(%ebx),%dl
 		add    %edx,%eax
 		xor    %edx,%edx
-		mov    lbDisplay__MouseY,%dx
+		mov    EXPORT_SYMBOL(lbDisplay)+76,%dx
 		cmp    %eax,%edx
 		jl     jump_2e850
 	jump_2e83f:
@@ -40875,7 +40875,7 @@ func_2e7d5:
 		test   %dh,%dh
 		je     jump_2e8b3
 		xor    %cl,%cl
-		mov    %cl,lbDisplay__LeftButton
+		mov    %cl,EXPORT_SYMBOL(lbDisplay)+103	/* lbDisplay.LeftButton */
 		movw   $0x1,data_5e116
 	jump_2e8b3:
 		xor    %edx,%edx
@@ -40884,7 +40884,7 @@ func_2e7d5:
 		test   %ch,%ch
 		je     jump_2e8d4
 		xor    %al,%al
-		mov    %al,lbDisplay__RightButton
+		mov    %al,EXPORT_SYMBOL(lbDisplay)+104	/* lbDisplay.RightButton */
 		movw   $0x1,data_5e114
 	jump_2e8d4:
 		mov    (%ebx),%ax
@@ -40927,14 +40927,14 @@ func_2e902:
 		mov    0x2(%ebx),%dx
 		add    %edx,%eax
 		xor    %edx,%edx
-		mov    lbDisplay__MouseX,%dx
+		mov    EXPORT_SYMBOL(lbDisplay)+72,%dx	/* lbDisplay.MouseX */
 		cmp    %eax,%edx
 		jl     jump_2e9d0
 		xor    %edx,%edx
 		mov    0x6(%ebx),%dl
 		add    %edx,%eax
 		xor    %edx,%edx
-		mov    lbDisplay__MouseX,%dx
+		mov    EXPORT_SYMBOL(lbDisplay)+72,%dx
 		cmp    %eax,%edx
 		jge    jump_2e9d0
 		xor    %edx,%edx
@@ -40942,14 +40942,14 @@ func_2e902:
 		mov    0x4(%ebx),%dx
 		add    %edx,%eax
 		xor    %edx,%edx
-		mov    lbDisplay__MouseY,%dx
+		mov    EXPORT_SYMBOL(lbDisplay)+76,%dx	/* lbDisplay.MouseY */
 		cmp    %eax,%edx
 		jl     jump_2e9d0
 		xor    %edx,%edx
 		mov    0x7(%ebx),%dl
 		add    %edx,%eax
 		xor    %edx,%edx
-		mov    lbDisplay__MouseY,%dx
+		mov    EXPORT_SYMBOL(lbDisplay)+76,%dx
 		cmp    %eax,%edx
 		jge    jump_2e9d0
 		xor    %eax,%eax
@@ -40958,7 +40958,7 @@ func_2e902:
 		test   %dl,%dl
 		je     jump_2e9a9
 		xor    %dh,%dh
-		mov    %dh,lbDisplay__LeftButton
+		mov    %dh,EXPORT_SYMBOL(lbDisplay)+103	/* lbDisplay.LeftButton */
 		movw   $0x1,data_5e116
 	jump_2e9a9:
 		xor    %ecx,%ecx
@@ -40966,7 +40966,7 @@ func_2e902:
 		cmpb   $0x0,0x1c(%esp)
 		je     jump_2e9ca
 		xor    %ch,%ch
-		mov    %ch,lbDisplay__RightButton
+		mov    %ch,EXPORT_SYMBOL(lbDisplay)+104	/* lbDisplay.RightButton */
 		movw   $0x1,data_5e114
 	jump_2e9ca:
 		movb   $0x2,0xa(%ebx)
@@ -41100,14 +41100,14 @@ func_2eb05:
 		mov    0x2(%ebx),%ax
 		add    %edx,%eax
 		xor    %edx,%edx
-		mov    lbDisplay__MouseX,%dx
+		mov    EXPORT_SYMBOL(lbDisplay)+72,%dx	/* lbDisplay.MouseX */
 		cmp    %eax,%edx
 		jl     jump_2eb6f
 		xor    %edx,%edx
 		mov    0x6(%ebx),%dl
 		add    %edx,%eax
 		xor    %edx,%edx
-		mov    lbDisplay__MouseX,%dx
+		mov    EXPORT_SYMBOL(lbDisplay)+72,%dx
 		cmp    %eax,%edx
 		jge    jump_2eb6f
 		xor    %eax,%eax
@@ -41115,14 +41115,14 @@ func_2eb05:
 		mov    0x4(%ebx),%ax
 		add    %edx,%eax
 		xor    %edx,%edx
-		mov    lbDisplay__MouseY,%dx
+		mov    EXPORT_SYMBOL(lbDisplay)+76,%dx	/* lbDisplay.MouseY */
 		cmp    %eax,%edx
 		jl     jump_2eb6f
 		xor    %edx,%edx
 		mov    0x7(%ebx),%dl
 		add    %edx,%eax
 		xor    %edx,%edx
-		mov    lbDisplay__MouseY,%dx
+		mov    EXPORT_SYMBOL(lbDisplay)+76,%dx
 		cmp    %eax,%edx
 		jl     jump_2eb80
 	jump_2eb6f:
@@ -41138,7 +41138,7 @@ func_2eb05:
 		test   %al,%al
 		je     jump_2eba2
 		xor    %ah,%ah
-		mov    %ah,lbDisplay__LeftButton
+		mov    %ah,EXPORT_SYMBOL(lbDisplay)+103	/* lbDisplay.LeftButton */
 		movw   $0x1,data_5e116
 	jump_2eba2:
 		xor    %eax,%eax
@@ -41147,7 +41147,7 @@ func_2eb05:
 		test   %dl,%dl
 		je     jump_2ebc3
 		xor    %dh,%dh
-		mov    %dh,lbDisplay__RightButton
+		mov    %dh,EXPORT_SYMBOL(lbDisplay)+104	/* lbDisplay.RightButton */
 		movw   $0x1,data_5e114
 	jump_2ebc3:
 		mov    (%ebx),%cx
@@ -41192,14 +41192,14 @@ func_2ebef:
 		mov    0x2(%ebx),%dx
 		add    %edx,%eax
 		xor    %edx,%edx
-		mov    lbDisplay__MouseX,%dx
+		mov    EXPORT_SYMBOL(lbDisplay)+72,%dx	/* lbDisplay.MouseX */
 		cmp    %eax,%edx
 		jl     jump_2ecc8
 		xor    %edx,%edx
 		mov    0x6(%ebx),%dl
 		add    %edx,%eax
 		xor    %edx,%edx
-		mov    lbDisplay__MouseX,%dx
+		mov    EXPORT_SYMBOL(lbDisplay)+72,%dx
 		cmp    %eax,%edx
 		jge    jump_2ecc8
 		xor    %edx,%edx
@@ -41207,14 +41207,14 @@ func_2ebef:
 		mov    0x4(%ebx),%dx
 		add    %edx,%eax
 		xor    %edx,%edx
-		mov    lbDisplay__MouseY,%dx
+		mov    EXPORT_SYMBOL(lbDisplay)+76,%dx	/* lbDisplay.MouseY */
 		cmp    %eax,%edx
 		jl     jump_2ecc8
 		xor    %edx,%edx
 		mov    0x7(%ebx),%dl
 		add    %edx,%eax
 		xor    %edx,%edx
-		mov    lbDisplay__MouseY,%dx
+		mov    EXPORT_SYMBOL(lbDisplay)+76,%dx
 		cmp    %eax,%edx
 		jge    jump_2ecc8
 		xor    %ecx,%ecx
@@ -41223,7 +41223,7 @@ func_2ebef:
 		test   %dl,%dl
 		je     jump_2eca0
 		xor    %dh,%dh
-		mov    %dh,lbDisplay__LeftButton
+		mov    %dh,EXPORT_SYMBOL(lbDisplay)+103	/* lbDisplay.LeftButton */
 		movw   $0x1,data_5e116
 	jump_2eca0:
 		xor    %edx,%edx
@@ -41232,7 +41232,7 @@ func_2ebef:
 		test   %cl,%cl
 		je     jump_2ecc2
 		xor    %ch,%ch
-		mov    %ch,lbDisplay__RightButton
+		mov    %ch,EXPORT_SYMBOL(lbDisplay)+104	/* lbDisplay.RightButton */
 		movw   $0x1,data_5e114
 	jump_2ecc2:
 		movb   $0x2,0xa(%ebx)
@@ -50240,8 +50240,8 @@ ResearchAndDevelop:	/* 0x34ad0 */
 		mov    $0xffff,%edx
 		mov    %ah,0x6a(%ebp)
 		mov    %dx,0x46(%ebp)
-		mov    %ah,lbDisplay__LeftButton
-		mov    %ah,lbDisplay__RightButton
+		mov    %ah,EXPORT_SYMBOL(lbDisplay)+103	/* lbDisplay.LeftButton */
+		mov    %ah,EXPORT_SYMBOL(lbDisplay)+104	/* lbDisplay.RightButton */
 		xor    %eax,%eax
 		mov    EXPORT_SYMBOL(language),%al
 		mov    data_54588(,%eax,4),%edx
@@ -51292,13 +51292,13 @@ ResearchAndDevelop:	/* 0x34ad0 */
 		call   new_show_text
 		add    $0x28,%esp
 	jump_3584a:
-		cmpb   $0x0,lbDisplay__LeftButton
+		cmpb   $0x0,EXPORT_SYMBOL(lbDisplay)+103	/* lbDisplay.LeftButton */
 		je     jump_3586f
 		push   $0x8
 		push   $0x1
 		xor    %ah,%ah
 		push   $data_5b6a0
-		mov    %ah,lbDisplay__LeftButton
+		mov    %ah,EXPORT_SYMBOL(lbDisplay)+103	/* lbDisplay.LeftButton */
 		call   WhichIconSelected
 		add    $0xc,%esp
 		mov    %al,0x76(%ebp)
@@ -51419,10 +51419,10 @@ func_3597a:
 		push   $0x0
 		xor    %eax,%eax
 		push   $0x0
-		mov    lbDisplay__MouseY,%ax
+		mov    EXPORT_SYMBOL(lbDisplay)+76,%ax	/* lbDisplay.MouseY */
 		push   %eax
 		xor    %eax,%eax
-		mov    lbDisplay__MouseX,%ax
+		mov    EXPORT_SYMBOL(lbDisplay)+72,%ax	/* lbDisplay.MouseX */
 		push   %eax
 		xor    %eax,%eax
 		mov    %bx,%ax
@@ -51496,13 +51496,13 @@ func_359e6:
 		mov    %bl,0x72(%ebp)
 		jmp    def_35899
 	jump_35a71:
-		cmpw   $0x10,lbDisplay__MouseX
+		cmpw   $0x10,EXPORT_SYMBOL(lbDisplay)+72	/* lbDisplay.MouseX */
 		jbe    jump_35cd2
-		cmpw   $0x92,lbDisplay__MouseX
+		cmpw   $0x92,EXPORT_SYMBOL(lbDisplay)+72
 		jae    jump_35cd2
-		cmpw   $0x9e,lbDisplay__MouseY
+		cmpw   $0x9e,EXPORT_SYMBOL(lbDisplay)+76	/* lbDisplay.MouseY */
 		jbe    jump_35cd2
-		cmpw   $0xb8,lbDisplay__MouseY
+		cmpw   $0xb8,EXPORT_SYMBOL(lbDisplay)+76
 		jae    jump_35cd2
 		mov    data_55595,%bh
 		test   %bh,%bh
@@ -51749,7 +51749,7 @@ func_359e6:
 		movsl  %ds:(%esi),%es:(%edi)
 		movsb  %ds:(%esi),%es:(%edi)
 		push   $0x2
-		mov    %ah,lbDisplay__LeftButton
+		mov    %ah,EXPORT_SYMBOL(lbDisplay)+103	/* lbDisplay.LeftButton */
 		call   BFPlaySample
 		add    $0x4,%esp
 		push   $sound_array
@@ -54064,7 +54064,7 @@ select:	/* 0x37600 */
 		mov    %ebp,VScreen
 		mov    %eax,EXPORT_SYMBOL(PalMem)
 		xor    %ah,%ah
-		mov    %ah,lbDisplay__LeftButton
+		mov    %ah,EXPORT_SYMBOL(lbDisplay)+103	/* lbDisplay.LeftButton */
 		mov    $0x5,%eax
 		mov    data_55590,%dl
 		mov    %eax,AniSpeed
@@ -54089,18 +54089,18 @@ func_37764:
 		movsl  %ds:(%esi),%es:(%edi)
 		call   AniPlay
 		add    $0xc,%esp
-		cmpb   $0x0,lbDisplay__LeftButton
+		cmpb   $0x0,EXPORT_SYMBOL(lbDisplay)+103	/* lbDisplay.LeftButton */
 		jne    jump_377b2
 	jump_37797:
 #if !defined(DOS) /* add input refresh, as otherwise this is just an infinite loop */
 		call   ac_LbScreenSwap
 		call   ac_game_update
 #endif
-		cmpb   $0x0,lbDisplay__MLeftButton
+		cmpb   $0x0,EXPORT_SYMBOL(lbDisplay)+106	/* lbDisplay.MLeftButton */
 		jne    jump_377b2
 		cmpb   $0x7f,EXPORT_SYMBOL(lbInkey)
 		jbe    jump_377b2
-		cmpb   $0x0,lbDisplay__LeftButton
+		cmpb   $0x0,EXPORT_SYMBOL(lbDisplay)+103	/* lbDisplay.LeftButton */
 		je     jump_37797
 	jump_377b2:
 		mov    $0x1,%cl
@@ -54162,7 +54162,7 @@ func_37800:
 		mov    %ecx,0x4(%esp)
 	def_3775C:	/* 0x37852 */
 		xor    %al,%al
-		mov    %al,lbDisplay__LeftButton
+		mov    %al,EXPORT_SYMBOL(lbDisplay)+103	/* lbDisplay.LeftButton */
 		mov    0x4(%esp),%edx
 		push   %edx
 		call   show_opt
@@ -54266,16 +54266,16 @@ func_378c3:
 		inc    %esi
 		cmp    $0x6,%esi
 		jl     jump_3791b
-		cmpb   $0x0,lbDisplay__LeftButton
+		cmpb   $0x0,EXPORT_SYMBOL(lbDisplay)+103	/* lbDisplay.LeftButton */
 		je     jump_37a42
 		xor    %al,%al
-		mov    %al,lbDisplay__LeftButton
-		cmpw   $0x7c,lbDisplay__MouseY
+		mov    %al,EXPORT_SYMBOL(lbDisplay)+103	/* lbDisplay.LeftButton */
+		cmpw   $0x7c,EXPORT_SYMBOL(lbDisplay)+76	/* lbDisplay.MouseY */
 		jbe    jump_37a42
-		cmpw   $0x126,lbDisplay__MouseY
+		cmpw   $0x126,EXPORT_SYMBOL(lbDisplay)+76
 		jae    jump_37a42
 		xor    %edx,%edx
-		mov    lbDisplay__MouseY,%dx
+		mov    EXPORT_SYMBOL(lbDisplay)+76,%dx
 		sub    $0x5a,%edx
 		mov    $0x22,%ebx
 		mov    %edx,%eax
@@ -54762,7 +54762,7 @@ show_opt:	/* 0x37ef0 */
 		call   ac_strcpy
 		add    $0x8,%esp
 		xor    %ah,%ah
-		mov    %ah,lbDisplay__LeftButton
+		mov    %ah,EXPORT_SYMBOL(lbDisplay)+103	/* lbDisplay.LeftButton */
 		cmpb   $0x0,data_55591
 		je     jump_37f47
 		mov    m_select_pal,%esi
@@ -54998,17 +54998,17 @@ level_finished:	/* 0x37f80 */
 		call   AniPlay
 		add    $0xc,%esp
 		xor    %ch,%ch
-		mov    %ch,lbDisplay__LeftButton
-		mov    %ch,lbDisplay__RightButton
+		mov    %ch,EXPORT_SYMBOL(lbDisplay)+103	/* lbDisplay.LeftButton */
+		mov    %ch,EXPORT_SYMBOL(lbDisplay)+104	/* lbDisplay.RightButton */
 		mov    EXPORT_SYMBOL(debug_k),%edx
-		cmpb   $0x0,lbDisplay__LeftButton
+		cmpb   $0x0,EXPORT_SYMBOL(lbDisplay)+103	/* lbDisplay.LeftButton */
 		jne    jump_382b9
 	jump_38271:
-		cmpb   $0x0,lbDisplay__MLeftButton
+		cmpb   $0x0,EXPORT_SYMBOL(lbDisplay)+106	/* lbDisplay.MLeftButton */
 		jne    jump_382b9
-		cmpb   $0x0,lbDisplay__RightButton
+		cmpb   $0x0,EXPORT_SYMBOL(lbDisplay)+104	/* lbDisplay.RightButton */
 		jne    jump_382b9
-		cmpb   $0x0,lbDisplay__MRightButton
+		cmpb   $0x0,EXPORT_SYMBOL(lbDisplay)+107	/* lbDisplay.MRightButton */
 		jne    jump_382b9
 		cmpb   $0x7f,EXPORT_SYMBOL(lbInkey)
 		jbe    jump_382b9
@@ -55016,7 +55016,7 @@ level_finished:	/* 0x37f80 */
 		sub    %edx,%eax
 		cmp    $0x870,%eax
 		jae    jump_382b9
-		cmpb   $0x0,lbDisplay__LeftButton
+		cmpb   $0x0,EXPORT_SYMBOL(lbDisplay)+103	/* lbDisplay.LeftButton */
 		je     jump_38271
 		jmp    jump_382b9
 	jump_382ae:
@@ -61595,7 +61595,7 @@ AniPlay:	/* 0x3c558 */
 #endif
 		cmpl   $0x0,0x8(%ebp)
 		je     jump_3c6b5
-		cmpb   $0x0,lbDisplay__LeftButton
+		cmpb   $0x0,EXPORT_SYMBOL(lbDisplay)+103	/* lbDisplay.LeftButton */
 		jne    jump_3c6ac
 		cmpb   $0x80,EXPORT_SYMBOL(lbInkey)
 		jg     jump_3c6ac
@@ -85233,9 +85233,9 @@ data_60b1e:
 		.ascii  "\x00\x00"
 data_60b20:
 		.ascii  "\x00\x00"
-lbDisplay__MouseX:	/* 0x60b22 */
+ASM_lbDisplay__MouseX:	/* 0x60b22 */
 		.ascii  "\x00\x00"
-lbDisplay__MouseY:	/* 0x60b24 */
+ASM_lbDisplay__MouseY:	/* 0x60b24 */
 		.fill   0x4
 data_60b28:
 		.ascii  "\x00\x00"
@@ -85263,13 +85263,13 @@ GLOBAL (byte_60B3A)		/* 0x60B3A */
 		.ascii  "\x00"
 GLOBAL (byte_60B3B)		/* 0x60B3B */
 		.ascii  "\x00\x00\x00"
-lbDisplay__RightButton:	/* 0x60b3e */
+ASM_lbDisplay__RightButton:	/* 0x60b3e */
 		.ascii  "\x00"
-lbDisplay__LeftButton:	/* 0x60b3f */
+ASM_lbDisplay__LeftButton:	/* 0x60b3f */
 		.ascii  "\x00"
-lbDisplay__MRightButton:	/* 0x60b40 */
+ASM_lbDisplay__MRightButton:	/* 0x60b40 */
 		.ascii  "\x00"
-lbDisplay__MLeftButton:	/* 0x60b41 */
+ASM_lbDisplay__MLeftButton:	/* 0x60b41 */
 		.ascii  "\x00"
 GLOBAL (byte_60B42)	/* 0x60B42 */
 		.ascii  "\x00"
