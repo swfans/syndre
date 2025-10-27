@@ -21209,6 +21209,7 @@ func_1fb07:
 		pop    %esi
 		pop    %ebx
 		ret
+
 jpt_21874:	/* 0x1fb50 */
 		.long   func_21e86
 		.long   func_21e86
@@ -24396,6 +24397,9 @@ func_227c8:
 		call   LbScreenSwapMCGA
 #endif
 		call   RemoveMouse_A
+#if !defined(DOS) /* add input refresh, as DOS interrupts are not available */
+		call   ac_game_update
+#endif
 		cmpb   $0x0,-0x18(%ebp)
 		je     jump_1fd31
 	jump_227f6:
