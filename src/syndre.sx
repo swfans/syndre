@@ -27512,7 +27512,7 @@ init_a_players_weapon:	/* 0x24f60 */
 /*----------------------------------------------------------------*/
 clear_savegame:	/* 0x24fc0 */
 /*----------------------------------------------------------------*/
-		mov    $0x9c632,%eax
+		mov    $level__End,%eax
 		sub    $EXPORT_SYMBOL(level__Seed),%eax
 		push   %eax
 		push   $0x0
