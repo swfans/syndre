@@ -53,6 +53,8 @@ TbResult AppScreenSetup(TbScreenMode mode)
     // Mapping of video modes
     if (mode == 19)
         mode = Lb_SCREEN_MODE_320_200_8;
+    else if (mode == 18)
+        mode = Lb_SCREEN_MODE_640_480_8; // should we add 4BPP mode?
 
     mdinfo = LbScreenGetModeInfo(mode);
     LOGSYNC("Entering mode %d, %dx%d", (int)mode, (int)mdinfo->Width, (int)mdinfo->Height);

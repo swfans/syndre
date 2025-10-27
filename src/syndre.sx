@@ -27633,10 +27633,16 @@ init_level_data:	/* 0x25110 */
 		push   $0x12
 		call   ac_AppScreenSetup
 		add    $0x4,%esp
+#if !defined(DOS) /* new bflibrary has generic screen clearing routine */
 		push   $0x0
-		call   func_4c236
-		mov    EXPORT_SYMBOL(is_multiplayer_game),%dl
+		call   ac_LbScreenClear
 		add    $0x4,%esp
+#else
+		push   $0x0
+		call   LbScreenClearVres16
+		add    $0x4,%esp
+#endif
+		mov    EXPORT_SYMBOL(is_multiplayer_game),%dl
 		test   %dl,%dl
 		je     jump_251ad
 		push   $aDataHpal01Dat
@@ -66108,7 +66114,7 @@ func_43b5e:
 		cmp    $0x0,%ecx
 		je     jump_44163
 		dec    %ecx
-		mov    vtable_48ad0(,%ecx,4),%ebx
+		mov    data_48ad0(,%ecx,4),%ebx
 		mov    (%ebx),%eax
 		and    %eax,(%edi)
 		and    %eax,0x7d00(%edi)
@@ -71327,7 +71333,9 @@ func_48a40:
 		movl   $0x0,0x12c(%eax)
 		ret
 
-vtable_48ad0:
+.data
+
+data_48ad0:
 		.long   0
 		.long   0
 		.long   0
@@ -71365,6 +71373,7 @@ vtable_48ad0:
 		.long   0
 		.long   0
 
+.text
 
 /*----------------------------------------------------------------*/
 func_48b60:
@@ -71387,7 +71396,7 @@ func_48b60:
 		cmp    $0x0,%edx
 		je     jump_48bb7
 		add    h_blocks,%edx
-		mov    %edx,vtable_48ad0(,%ecx,4)
+		mov    %edx,data_48ad0(,%ecx,4)
 		inc    %ecx
 		testb  $0x8,data_5e39c(%ebx)
 		jne    jump_49747
@@ -71409,7 +71418,7 @@ func_48b60:
 		cmp    $0x0,%edx
 		je     jump_48c0d
 		add    h_blocks,%edx
-		mov    %edx,vtable_48ad0(,%ecx,4)
+		mov    %edx,data_48ad0(,%ecx,4)
 		inc    %ecx
 		testb  $0x2,data_5e39c(%ebx)
 		jne    jump_49747
@@ -71431,7 +71440,7 @@ func_48b60:
 		cmp    $0x0,%edx
 		je     jump_48c63
 		add    h_blocks,%edx
-		mov    %edx,vtable_48ad0(,%ecx,4)
+		mov    %edx,data_48ad0(,%ecx,4)
 		inc    %ecx
 		testb  $0x20,data_5e39c(%ebx)
 		jne    jump_49747
@@ -71453,7 +71462,7 @@ func_48b60:
 		cmp    $0x0,%edx
 		je     jump_48cb8
 		add    h_blocks,%edx
-		mov    %edx,vtable_48ad0(,%ecx,4)
+		mov    %edx,data_48ad0(,%ecx,4)
 		inc    %ecx
 		testb  $0x1,data_5e39c(%ebx)
 		jne    jump_49747
@@ -71475,7 +71484,7 @@ func_48b60:
 		cmp    $0x0,%edx
 		je     jump_48d0e
 		add    h_blocks,%edx
-		mov    %edx,vtable_48ad0(,%ecx,4)
+		mov    %edx,data_48ad0(,%ecx,4)
 		inc    %ecx
 		testb  $0x10,data_5e39c(%ebx)
 		jne    jump_49747
@@ -71497,7 +71506,7 @@ func_48b60:
 		cmp    $0x0,%edx
 		je     jump_48d64
 		add    h_blocks,%edx
-		mov    %edx,vtable_48ad0(,%ecx,4)
+		mov    %edx,data_48ad0(,%ecx,4)
 		inc    %ecx
 		testb  $0x4,data_5e39c(%ebx)
 		jne    jump_49747
@@ -71519,7 +71528,7 @@ func_48b60:
 		cmp    $0x0,%edx
 		je     jump_48dba
 		add    h_blocks,%edx
-		mov    %edx,vtable_48ad0(,%ecx,4)
+		mov    %edx,data_48ad0(,%ecx,4)
 		inc    %ecx
 		testb  $0x8,data_5e39c(%ebx)
 		jne    jump_49747
@@ -71541,7 +71550,7 @@ func_48b60:
 		cmp    $0x0,%edx
 		je     jump_48e10
 		add    h_blocks,%edx
-		mov    %edx,vtable_48ad0(,%ecx,4)
+		mov    %edx,data_48ad0(,%ecx,4)
 		inc    %ecx
 		testb  $0x2,data_5e39c(%ebx)
 		jne    jump_49747
@@ -71563,7 +71572,7 @@ func_48b60:
 		cmp    $0x0,%edx
 		je     jump_48e66
 		add    h_blocks,%edx
-		mov    %edx,vtable_48ad0(,%ecx,4)
+		mov    %edx,data_48ad0(,%ecx,4)
 		inc    %ecx
 		testb  $0x20,data_5e39c(%ebx)
 		jne    jump_49747
@@ -71585,7 +71594,7 @@ func_48b60:
 		cmp    $0x0,%edx
 		je     jump_48ebb
 		add    h_blocks,%edx
-		mov    %edx,vtable_48ad0(,%ecx,4)
+		mov    %edx,data_48ad0(,%ecx,4)
 		inc    %ecx
 		testb  $0x1,data_5e39c(%ebx)
 		jne    jump_49747
@@ -71607,7 +71616,7 @@ func_48b60:
 		cmp    $0x0,%edx
 		je     jump_48f11
 		add    h_blocks,%edx
-		mov    %edx,vtable_48ad0(,%ecx,4)
+		mov    %edx,data_48ad0(,%ecx,4)
 		inc    %ecx
 		testb  $0x10,data_5e39c(%ebx)
 		jne    jump_49747
@@ -71629,7 +71638,7 @@ func_48b60:
 		cmp    $0x0,%edx
 		je     jump_48f67
 		add    h_blocks,%edx
-		mov    %edx,vtable_48ad0(,%ecx,4)
+		mov    %edx,data_48ad0(,%ecx,4)
 		inc    %ecx
 		testb  $0x4,data_5e39c(%ebx)
 		jne    jump_49747
@@ -71651,7 +71660,7 @@ func_48b60:
 		cmp    $0x0,%edx
 		je     jump_48fbd
 		add    h_blocks,%edx
-		mov    %edx,vtable_48ad0(,%ecx,4)
+		mov    %edx,data_48ad0(,%ecx,4)
 		inc    %ecx
 		testb  $0x8,data_5e39c(%ebx)
 		jne    jump_49747
@@ -71673,7 +71682,7 @@ func_48b60:
 		cmp    $0x0,%edx
 		je     jump_49013
 		add    h_blocks,%edx
-		mov    %edx,vtable_48ad0(,%ecx,4)
+		mov    %edx,data_48ad0(,%ecx,4)
 		inc    %ecx
 		testb  $0x2,data_5e39c(%ebx)
 		jne    jump_49747
@@ -71695,7 +71704,7 @@ func_48b60:
 		cmp    $0x0,%edx
 		je     jump_49069
 		add    h_blocks,%edx
-		mov    %edx,vtable_48ad0(,%ecx,4)
+		mov    %edx,data_48ad0(,%ecx,4)
 		inc    %ecx
 		testb  $0x20,data_5e39c(%ebx)
 		jne    jump_49747
@@ -71717,7 +71726,7 @@ func_48b60:
 		cmp    $0x0,%edx
 		je     jump_490be
 		add    h_blocks,%edx
-		mov    %edx,vtable_48ad0(,%ecx,4)
+		mov    %edx,data_48ad0(,%ecx,4)
 		inc    %ecx
 		testb  $0x1,data_5e39c(%ebx)
 		jne    jump_49747
@@ -71739,7 +71748,7 @@ func_48b60:
 		cmp    $0x0,%edx
 		je     jump_49114
 		add    h_blocks,%edx
-		mov    %edx,vtable_48ad0(,%ecx,4)
+		mov    %edx,data_48ad0(,%ecx,4)
 		inc    %ecx
 		testb  $0x10,data_5e39c(%ebx)
 		jne    jump_49747
@@ -71761,7 +71770,7 @@ func_48b60:
 		cmp    $0x0,%edx
 		je     jump_4916a
 		add    h_blocks,%edx
-		mov    %edx,vtable_48ad0(,%ecx,4)
+		mov    %edx,data_48ad0(,%ecx,4)
 		inc    %ecx
 		testb  $0x4,data_5e39c(%ebx)
 		jne    jump_49747
@@ -71783,7 +71792,7 @@ func_48b60:
 		cmp    $0x0,%edx
 		je     jump_491c0
 		add    h_blocks,%edx
-		mov    %edx,vtable_48ad0(,%ecx,4)
+		mov    %edx,data_48ad0(,%ecx,4)
 		inc    %ecx
 		testb  $0x8,data_5e39c(%ebx)
 		jne    jump_49747
@@ -71805,7 +71814,7 @@ func_48b60:
 		cmp    $0x0,%edx
 		je     jump_49216
 		add    h_blocks,%edx
-		mov    %edx,vtable_48ad0(,%ecx,4)
+		mov    %edx,data_48ad0(,%ecx,4)
 		inc    %ecx
 		testb  $0x2,data_5e39c(%ebx)
 		jne    jump_49747
@@ -71827,7 +71836,7 @@ func_48b60:
 		cmp    $0x0,%edx
 		je     jump_4926c
 		add    h_blocks,%edx
-		mov    %edx,vtable_48ad0(,%ecx,4)
+		mov    %edx,data_48ad0(,%ecx,4)
 		inc    %ecx
 		testb  $0x20,data_5e39c(%ebx)
 		jne    jump_49747
@@ -71849,7 +71858,7 @@ func_48b60:
 		cmp    $0x0,%edx
 		je     jump_492c1
 		add    h_blocks,%edx
-		mov    %edx,vtable_48ad0(,%ecx,4)
+		mov    %edx,data_48ad0(,%ecx,4)
 		inc    %ecx
 		testb  $0x1,data_5e39c(%ebx)
 		jne    jump_49747
@@ -71871,7 +71880,7 @@ func_48b60:
 		cmp    $0x0,%edx
 		je     jump_49317
 		add    h_blocks,%edx
-		mov    %edx,vtable_48ad0(,%ecx,4)
+		mov    %edx,data_48ad0(,%ecx,4)
 		inc    %ecx
 		testb  $0x10,data_5e39c(%ebx)
 		jne    jump_49747
@@ -71893,7 +71902,7 @@ func_48b60:
 		cmp    $0x0,%edx
 		je     jump_4936d
 		add    h_blocks,%edx
-		mov    %edx,vtable_48ad0(,%ecx,4)
+		mov    %edx,data_48ad0(,%ecx,4)
 		inc    %ecx
 		testb  $0x4,data_5e39c(%ebx)
 		jne    jump_49747
@@ -71915,7 +71924,7 @@ func_48b60:
 		cmp    $0x0,%edx
 		je     jump_493c3
 		add    h_blocks,%edx
-		mov    %edx,vtable_48ad0(,%ecx,4)
+		mov    %edx,data_48ad0(,%ecx,4)
 		inc    %ecx
 		testb  $0x8,data_5e39c(%ebx)
 		jne    jump_49747
@@ -71937,7 +71946,7 @@ func_48b60:
 		cmp    $0x0,%edx
 		je     jump_49419
 		add    h_blocks,%edx
-		mov    %edx,vtable_48ad0(,%ecx,4)
+		mov    %edx,data_48ad0(,%ecx,4)
 		inc    %ecx
 		testb  $0x2,data_5e39c(%ebx)
 		jne    jump_49747
@@ -71959,7 +71968,7 @@ func_48b60:
 		cmp    $0x0,%edx
 		je     jump_4946f
 		add    h_blocks,%edx
-		mov    %edx,vtable_48ad0(,%ecx,4)
+		mov    %edx,data_48ad0(,%ecx,4)
 		inc    %ecx
 		testb  $0x20,data_5e39c(%ebx)
 		jne    jump_49747
@@ -71981,7 +71990,7 @@ func_48b60:
 		cmp    $0x0,%edx
 		je     jump_494c4
 		add    h_blocks,%edx
-		mov    %edx,vtable_48ad0(,%ecx,4)
+		mov    %edx,data_48ad0(,%ecx,4)
 		inc    %ecx
 		testb  $0x1,data_5e39c(%ebx)
 		jne    jump_49747
@@ -72003,7 +72012,7 @@ func_48b60:
 		cmp    $0x0,%edx
 		je     jump_4951a
 		add    h_blocks,%edx
-		mov    %edx,vtable_48ad0(,%ecx,4)
+		mov    %edx,data_48ad0(,%ecx,4)
 		inc    %ecx
 		testb  $0x10,data_5e39c(%ebx)
 		jne    jump_49747
@@ -72025,7 +72034,7 @@ func_48b60:
 		cmp    $0x0,%edx
 		je     jump_49569
 		add    h_blocks,%edx
-		mov    %edx,vtable_48ad0(,%ecx,4)
+		mov    %edx,data_48ad0(,%ecx,4)
 		inc    %ecx
 		testb  $0x4,data_5e39c(%ebx)
 		jne    jump_49747
@@ -72047,7 +72056,7 @@ func_48b60:
 		cmp    $0x0,%edx
 		je     jump_495bf
 		add    h_blocks,%edx
-		mov    %edx,vtable_48ad0(,%ecx,4)
+		mov    %edx,data_48ad0(,%ecx,4)
 		inc    %ecx
 		testb  $0x8,data_5e39c(%ebx)
 		jne    jump_49747
@@ -72069,7 +72078,7 @@ func_48b60:
 		cmp    $0x0,%edx
 		je     jump_4960e
 		add    h_blocks,%edx
-		mov    %edx,vtable_48ad0(,%ecx,4)
+		mov    %edx,data_48ad0(,%ecx,4)
 		inc    %ecx
 		testb  $0x2,data_5e39c(%ebx)
 		jne    jump_49747
@@ -72091,7 +72100,7 @@ func_48b60:
 		cmp    $0x0,%edx
 		je     jump_4965e
 		add    h_blocks,%edx
-		mov    %edx,vtable_48ad0(,%ecx,4)
+		mov    %edx,data_48ad0(,%ecx,4)
 		inc    %ecx
 		testb  $0x20,data_5e39c(%ebx)
 		jne    jump_49747
@@ -72113,7 +72122,7 @@ func_48b60:
 		cmp    $0x0,%edx
 		je     jump_496ab
 		add    h_blocks,%edx
-		mov    %edx,vtable_48ad0(,%ecx,4)
+		mov    %edx,data_48ad0(,%ecx,4)
 		inc    %ecx
 		testb  $0x1,data_5e39c(%ebx)
 		jne    jump_49747
@@ -72135,7 +72144,7 @@ func_48b60:
 		cmp    $0x0,%edx
 		je     jump_496f6
 		add    h_blocks,%edx
-		mov    %edx,vtable_48ad0(,%ecx,4)
+		mov    %edx,data_48ad0(,%ecx,4)
 		inc    %ecx
 		testb  $0x10,data_5e39c(%ebx)
 		jne    jump_49747
@@ -72157,7 +72166,7 @@ func_48b60:
 		cmp    $0x0,%edx
 		je     jump_49747
 		add    h_blocks,%edx
-		mov    %edx,vtable_48ad0(,%ecx,4)
+		mov    %edx,data_48ad0(,%ecx,4)
 		inc    %ecx
 		testb  $0x4,data_5e39c(%ebx)
 		jne    jump_49747
@@ -72188,7 +72197,7 @@ func_4974e:
 		cmp    $0x0,%edx
 		je     jump_497a4
 		add    h_blocks,%edx
-		mov    %edx,vtable_48ad0(,%ecx,4)
+		mov    %edx,data_48ad0(,%ecx,4)
 		inc    %ecx
 		testb  $0x1,data_5e39c(%ebx)
 		jne    jump_4a32f
@@ -72210,7 +72219,7 @@ func_4974e:
 		cmp    $0x0,%edx
 		je     jump_497fa
 		add    h_blocks,%edx
-		mov    %edx,vtable_48ad0(,%ecx,4)
+		mov    %edx,data_48ad0(,%ecx,4)
 		inc    %ecx
 		testb  $0x10,data_5e39c(%ebx)
 		jne    jump_4a32f
@@ -72232,7 +72241,7 @@ func_4974e:
 		cmp    $0x0,%edx
 		je     jump_49850
 		add    h_blocks,%edx
-		mov    %edx,vtable_48ad0(,%ecx,4)
+		mov    %edx,data_48ad0(,%ecx,4)
 		inc    %ecx
 		testb  $0x4,data_5e39c(%ebx)
 		jne    jump_4a32f
@@ -72254,7 +72263,7 @@ func_4974e:
 		cmp    $0x0,%edx
 		je     jump_498a6
 		add    h_blocks,%edx
-		mov    %edx,vtable_48ad0(,%ecx,4)
+		mov    %edx,data_48ad0(,%ecx,4)
 		inc    %ecx
 		testb  $0x8,data_5e39c(%ebx)
 		jne    jump_4a32f
@@ -72276,7 +72285,7 @@ func_4974e:
 		cmp    $0x0,%edx
 		je     jump_498fc
 		add    h_blocks,%edx
-		mov    %edx,vtable_48ad0(,%ecx,4)
+		mov    %edx,data_48ad0(,%ecx,4)
 		inc    %ecx
 		testb  $0x2,data_5e39c(%ebx)
 		jne    jump_4a32f
@@ -72298,7 +72307,7 @@ func_4974e:
 		cmp    $0x0,%edx
 		je     jump_49952
 		add    h_blocks,%edx
-		mov    %edx,vtable_48ad0(,%ecx,4)
+		mov    %edx,data_48ad0(,%ecx,4)
 		inc    %ecx
 		testb  $0x20,data_5e39c(%ebx)
 		jne    jump_4a32f
@@ -72320,7 +72329,7 @@ func_4974e:
 		cmp    $0x0,%edx
 		je     jump_499a7
 		add    h_blocks,%edx
-		mov    %edx,vtable_48ad0(,%ecx,4)
+		mov    %edx,data_48ad0(,%ecx,4)
 		inc    %ecx
 		testb  $0x1,data_5e39c(%ebx)
 		jne    jump_4a32f
@@ -72342,7 +72351,7 @@ func_4974e:
 		cmp    $0x0,%edx
 		je     jump_499fd
 		add    h_blocks,%edx
-		mov    %edx,vtable_48ad0(,%ecx,4)
+		mov    %edx,data_48ad0(,%ecx,4)
 		inc    %ecx
 		testb  $0x10,data_5e39c(%ebx)
 		jne    jump_4a32f
@@ -72364,7 +72373,7 @@ func_4974e:
 		cmp    $0x0,%edx
 		je     jump_49a53
 		add    h_blocks,%edx
-		mov    %edx,vtable_48ad0(,%ecx,4)
+		mov    %edx,data_48ad0(,%ecx,4)
 		inc    %ecx
 		testb  $0x4,data_5e39c(%ebx)
 		jne    jump_4a32f
@@ -72386,7 +72395,7 @@ func_4974e:
 		cmp    $0x0,%edx
 		je     jump_49aa9
 		add    h_blocks,%edx
-		mov    %edx,vtable_48ad0(,%ecx,4)
+		mov    %edx,data_48ad0(,%ecx,4)
 		inc    %ecx
 		testb  $0x8,data_5e39c(%ebx)
 		jne    jump_4a32f
@@ -72408,7 +72417,7 @@ func_4974e:
 		cmp    $0x0,%edx
 		je     jump_49aff
 		add    h_blocks,%edx
-		mov    %edx,vtable_48ad0(,%ecx,4)
+		mov    %edx,data_48ad0(,%ecx,4)
 		inc    %ecx
 		testb  $0x2,data_5e39c(%ebx)
 		jne    jump_4a32f
@@ -72430,7 +72439,7 @@ func_4974e:
 		cmp    $0x0,%edx
 		je     jump_49b55
 		add    h_blocks,%edx
-		mov    %edx,vtable_48ad0(,%ecx,4)
+		mov    %edx,data_48ad0(,%ecx,4)
 		inc    %ecx
 		testb  $0x20,data_5e39c(%ebx)
 		jne    jump_4a32f
@@ -72452,7 +72461,7 @@ func_4974e:
 		cmp    $0x0,%edx
 		je     jump_49baa
 		add    h_blocks,%edx
-		mov    %edx,vtable_48ad0(,%ecx,4)
+		mov    %edx,data_48ad0(,%ecx,4)
 		inc    %ecx
 		testb  $0x1,data_5e39c(%ebx)
 		jne    jump_4a32f
@@ -72474,7 +72483,7 @@ func_4974e:
 		cmp    $0x0,%edx
 		je     jump_49c00
 		add    h_blocks,%edx
-		mov    %edx,vtable_48ad0(,%ecx,4)
+		mov    %edx,data_48ad0(,%ecx,4)
 		inc    %ecx
 		testb  $0x10,data_5e39c(%ebx)
 		jne    jump_4a32f
@@ -72496,7 +72505,7 @@ func_4974e:
 		cmp    $0x0,%edx
 		je     jump_49c56
 		add    h_blocks,%edx
-		mov    %edx,vtable_48ad0(,%ecx,4)
+		mov    %edx,data_48ad0(,%ecx,4)
 		inc    %ecx
 		testb  $0x4,data_5e39c(%ebx)
 		jne    jump_4a32f
@@ -72518,7 +72527,7 @@ func_4974e:
 		cmp    $0x0,%edx
 		je     jump_49cac
 		add    h_blocks,%edx
-		mov    %edx,vtable_48ad0(,%ecx,4)
+		mov    %edx,data_48ad0(,%ecx,4)
 		inc    %ecx
 		testb  $0x8,data_5e39c(%ebx)
 		jne    jump_4a32f
@@ -72540,7 +72549,7 @@ func_4974e:
 		cmp    $0x0,%edx
 		je     jump_49d02
 		add    h_blocks,%edx
-		mov    %edx,vtable_48ad0(,%ecx,4)
+		mov    %edx,data_48ad0(,%ecx,4)
 		inc    %ecx
 		testb  $0x2,data_5e39c(%ebx)
 		jne    jump_4a32f
@@ -72562,7 +72571,7 @@ func_4974e:
 		cmp    $0x0,%edx
 		je     jump_49d58
 		add    h_blocks,%edx
-		mov    %edx,vtable_48ad0(,%ecx,4)
+		mov    %edx,data_48ad0(,%ecx,4)
 		inc    %ecx
 		testb  $0x20,data_5e39c(%ebx)
 		jne    jump_4a32f
@@ -72584,7 +72593,7 @@ func_4974e:
 		cmp    $0x0,%edx
 		je     jump_49dad
 		add    h_blocks,%edx
-		mov    %edx,vtable_48ad0(,%ecx,4)
+		mov    %edx,data_48ad0(,%ecx,4)
 		inc    %ecx
 		testb  $0x1,data_5e39c(%ebx)
 		jne    jump_4a32f
@@ -72606,7 +72615,7 @@ func_4974e:
 		cmp    $0x0,%edx
 		je     jump_49e03
 		add    h_blocks,%edx
-		mov    %edx,vtable_48ad0(,%ecx,4)
+		mov    %edx,data_48ad0(,%ecx,4)
 		inc    %ecx
 		testb  $0x10,data_5e39c(%ebx)
 		jne    jump_4a32f
@@ -72628,7 +72637,7 @@ func_4974e:
 		cmp    $0x0,%edx
 		je     jump_49e59
 		add    h_blocks,%edx
-		mov    %edx,vtable_48ad0(,%ecx,4)
+		mov    %edx,data_48ad0(,%ecx,4)
 		inc    %ecx
 		testb  $0x4,data_5e39c(%ebx)
 		jne    jump_4a32f
@@ -72650,7 +72659,7 @@ func_4974e:
 		cmp    $0x0,%edx
 		je     jump_49eaf
 		add    h_blocks,%edx
-		mov    %edx,vtable_48ad0(,%ecx,4)
+		mov    %edx,data_48ad0(,%ecx,4)
 		inc    %ecx
 		testb  $0x8,data_5e39c(%ebx)
 		jne    jump_4a32f
@@ -72672,7 +72681,7 @@ func_4974e:
 		cmp    $0x0,%edx
 		je     jump_49f05
 		add    h_blocks,%edx
-		mov    %edx,vtable_48ad0(,%ecx,4)
+		mov    %edx,data_48ad0(,%ecx,4)
 		inc    %ecx
 		testb  $0x2,data_5e39c(%ebx)
 		jne    jump_4a32f
@@ -72694,7 +72703,7 @@ func_4974e:
 		cmp    $0x0,%edx
 		je     jump_49f5b
 		add    h_blocks,%edx
-		mov    %edx,vtable_48ad0(,%ecx,4)
+		mov    %edx,data_48ad0(,%ecx,4)
 		inc    %ecx
 		testb  $0x20,data_5e39c(%ebx)
 		jne    jump_4a32f
@@ -72716,7 +72725,7 @@ func_4974e:
 		cmp    $0x0,%edx
 		je     jump_49fb0
 		add    h_blocks,%edx
-		mov    %edx,vtable_48ad0(,%ecx,4)
+		mov    %edx,data_48ad0(,%ecx,4)
 		inc    %ecx
 		testb  $0x1,data_5e39c(%ebx)
 		jne    jump_4a32f
@@ -72738,7 +72747,7 @@ func_4974e:
 		cmp    $0x0,%edx
 		je     jump_4a006
 		add    h_blocks,%edx
-		mov    %edx,vtable_48ad0(,%ecx,4)
+		mov    %edx,data_48ad0(,%ecx,4)
 		inc    %ecx
 		testb  $0x10,data_5e39c(%ebx)
 		jne    jump_4a32f
@@ -72760,7 +72769,7 @@ func_4974e:
 		cmp    $0x0,%edx
 		je     jump_4a056
 		add    h_blocks,%edx
-		mov    %edx,vtable_48ad0(,%ecx,4)
+		mov    %edx,data_48ad0(,%ecx,4)
 		inc    %ecx
 		testb  $0x4,data_5e39c(%ebx)
 		jne    jump_4a32f
@@ -72782,7 +72791,7 @@ func_4974e:
 		cmp    $0x0,%edx
 		je     jump_4a0ac
 		add    h_blocks,%edx
-		mov    %edx,vtable_48ad0(,%ecx,4)
+		mov    %edx,data_48ad0(,%ecx,4)
 		inc    %ecx
 		testb  $0x8,data_5e39c(%ebx)
 		jne    jump_4a32f
@@ -72804,7 +72813,7 @@ func_4974e:
 		cmp    $0x0,%edx
 		je     jump_4a0fc
 		add    h_blocks,%edx
-		mov    %edx,vtable_48ad0(,%ecx,4)
+		mov    %edx,data_48ad0(,%ecx,4)
 		inc    %ecx
 		testb  $0x2,data_5e39c(%ebx)
 		jne    jump_4a32f
@@ -72826,7 +72835,7 @@ func_4974e:
 		cmp    $0x0,%edx
 		je     jump_4a14b
 		add    h_blocks,%edx
-		mov    %edx,vtable_48ad0(,%ecx,4)
+		mov    %edx,data_48ad0(,%ecx,4)
 		inc    %ecx
 		testb  $0x20,data_5e39c(%ebx)
 		jne    jump_4a32f
@@ -72848,7 +72857,7 @@ func_4974e:
 		cmp    $0x0,%edx
 		je     jump_4a19a
 		add    h_blocks,%edx
-		mov    %edx,vtable_48ad0(,%ecx,4)
+		mov    %edx,data_48ad0(,%ecx,4)
 		inc    %ecx
 		testb  $0x1,data_5e39c(%ebx)
 		jne    jump_4a32f
@@ -72870,7 +72879,7 @@ func_4974e:
 		cmp    $0x0,%edx
 		je     jump_4a1e9
 		add    h_blocks,%edx
-		mov    %edx,vtable_48ad0(,%ecx,4)
+		mov    %edx,data_48ad0(,%ecx,4)
 		inc    %ecx
 		testb  $0x10,data_5e39c(%ebx)
 		jne    jump_4a32f
@@ -72892,7 +72901,7 @@ func_4974e:
 		cmp    $0x0,%edx
 		je     jump_4a23f
 		add    h_blocks,%edx
-		mov    %edx,vtable_48ad0(,%ecx,4)
+		mov    %edx,data_48ad0(,%ecx,4)
 		inc    %ecx
 		testb  $0x4,data_5e39c(%ebx)
 		jne    jump_4a32f
@@ -72914,7 +72923,7 @@ func_4974e:
 		cmp    $0x0,%edx
 		je     jump_4a28d
 		add    h_blocks,%edx
-		mov    %edx,vtable_48ad0(,%ecx,4)
+		mov    %edx,data_48ad0(,%ecx,4)
 		inc    %ecx
 		testb  $0x8,data_5e39c(%ebx)
 		jne    jump_4a32f
@@ -72936,7 +72945,7 @@ func_4974e:
 		cmp    $0x0,%edx
 		je     jump_4a2de
 		add    h_blocks,%edx
-		mov    %edx,vtable_48ad0(,%ecx,4)
+		mov    %edx,data_48ad0(,%ecx,4)
 		inc    %ecx
 		testb  $0x2,data_5e39c(%ebx)
 		jne    jump_4a32f
@@ -72958,7 +72967,7 @@ func_4974e:
 		cmp    $0x0,%edx
 		je     jump_4a32f
 		add    h_blocks,%edx
-		mov    %edx,vtable_48ad0(,%ecx,4)
+		mov    %edx,data_48ad0(,%ecx,4)
 		inc    %ecx
 		testb  $0x20,data_5e39c(%ebx)
 		jne    jump_4a32f
@@ -75083,7 +75092,7 @@ LbScreenSurfaceClear:	/* 0x4c1f3 */
 
 
 /*----------------------------------------------------------------*/
-func_4c236:
+LbScreenClearVres16:
 /*----------------------------------------------------------------*/
 		push   %ebp
 		mov    %esp,%ebp
