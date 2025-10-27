@@ -76930,9 +76930,9 @@ DrawSpriteLores16:	/* 0x4d92b */
 		dec    %edi
 		add    %edi,%edx
 		pop    %edi
-		jmp    *vtable_4d956(,%edx,4)
+		jmp    *%cs:spr_lr16_jt(,%edx,4)
 
-vtable_4d956:
+spr_lr16_jt:
 		.long   func_4d9d6
 		.long   func_4daa8
 		.long   func_4dbd8
