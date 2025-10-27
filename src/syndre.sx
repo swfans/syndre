@@ -2043,6 +2043,9 @@ mission_briefing:	/* 0x10e60 */
 		call   LbScreenSwapMCGA
 #endif
 		call   RemoveMouse_A
+#if !defined(DOS) /* add input refresh, as DOS interrupts are not available */
+		call   ac_game_update
+#endif
 		cmpb   $0x0,0x6e(%ebp)
 		je     jump_11079
 	jump_11988:
@@ -10500,6 +10503,9 @@ configure_company:	/* 0x175c0 */
 		call   LbScreenSwapMCGA
 #endif
 		call   RemoveMouse_A
+#if !defined(DOS) /* add input refresh, as DOS interrupts are not available */
+		call   ac_game_update
+#endif
 		cmpb   $0x0,EXPORT_SYMBOL(lbKeyOn)+0x1c	/* lbKeyOn[KC_RETURN] */
 		je     jump_17c63
 		cmpb   $0x1,0xe0(%esp)
@@ -10908,9 +10914,7 @@ draw_config_menu:	/* 0x18250 */
 		jmp    *%cs:jpt_18270(,%eax,4)
 
 
-/*----------------------------------------------------------------*/
 func_18278:
-/*----------------------------------------------------------------*/
 		push   $0x0
 		push   $0x0
 		push   $0xe
@@ -10999,9 +11003,7 @@ func_18278:
 		jmp    def_18270
 
 
-/*----------------------------------------------------------------*/
 func_18394:
-/*----------------------------------------------------------------*/
 		push   $0x0
 		push   $0x0
 		push   $0xe
@@ -11095,9 +11097,7 @@ func_18394:
 		jmp    def_18270
 
 
-/*----------------------------------------------------------------*/
 func_184ba:
-/*----------------------------------------------------------------*/
 		push   $0x0
 		push   $0x0
 		push   $0xe
@@ -11115,9 +11115,7 @@ func_184ba:
 		jmp    jump_18514
 
 
-/*----------------------------------------------------------------*/
 func_184e8:
-/*----------------------------------------------------------------*/
 		push   $0x0
 		push   $0x0
 		push   $0xe
@@ -11263,7 +11261,8 @@ draw_config_menu_box:	/* 0x18670 */
 #else
 		call   LbScreenSwapMCGA
 #endif
-		jmp    RemoveMouse_A
+		call   RemoveMouse_A
+		ret
 
 
 /*----------------------------------------------------------------*/
@@ -13387,6 +13386,9 @@ debrief:	/* 0x18ff0 */
 		call   LbScreenSwapMCGA
 #endif
 		call   RemoveMouse_A
+#if !defined(DOS) /* add input refresh, as DOS interrupts are not available */
+		call   ac_game_update
+#endif
 		cmpb   $0x0,-0x14(%ebp)
 		je     jump_197a0
 	jump_1a181:
@@ -30431,9 +30433,7 @@ LoadSaveGame:	/* 0x26ef0 */
 		jmp    *%cs:jpt_27219(,%eax,4)
 
 
-/*----------------------------------------------------------------*/
 func_27221:
-/*----------------------------------------------------------------*/
 		mov    savegame_slot,%dh
 		cmp    $0xa,%dh
 		jae    jump_2723a
@@ -30450,18 +30450,14 @@ func_27221:
 		jmp    def_27219
 
 
-/*----------------------------------------------------------------*/
 func_27255:
-/*----------------------------------------------------------------*/
 		mov    $0x1,%dl
 		xor    %ebp,%ebp
 		mov    %dl,0x4(%esp)
 		jmp    def_27219
 
 
-/*----------------------------------------------------------------*/
 func_2725f:
-/*----------------------------------------------------------------*/
 		cmpb   $0xa,savegame_slot
 		jae    jump_272a6
 		xor    %eax,%eax
@@ -30474,9 +30470,7 @@ func_2725f:
 		jmp    jump_272a6
 
 
-/*----------------------------------------------------------------*/
 func_27280:
-/*----------------------------------------------------------------*/
 		mov    savegame_slot,%cl
 		cmp    $0xa,%cl
 		jae    jump_272a6
@@ -30489,8 +30483,10 @@ func_27280:
 		mov    $0x1,%ch
 		add    $0x8,%esp
 		mov    %ch,0x4(%esp)
+
 	jump_272a6:
 		xor    %ebp,%ebp
+
 	def_27219:	/* 0x272a8 */
 		movb   $0xd,0x8(%esp)
 		call   PlaceMouse_A
@@ -30500,6 +30496,9 @@ func_27280:
 		call   LbScreenSwapMCGA
 #endif
 		call   RemoveMouse_A
+#if !defined(DOS) /* add input refresh, as DOS interrupts are not available */
+		call   ac_game_update
+#endif
 		cmpb   $0x0,0x4(%esp)
 		je     jump_26fa4
 	jump_272c7:
@@ -31750,6 +31749,9 @@ map_selection:	/* 0x27e00 */
 		call   LbScreenSwapMCGA
 #endif
 		call   RemoveMouse_A
+#if !defined(DOS) /* add input refresh, as DOS interrupts are not available */
+		call   ac_game_update
+#endif
 		cmpb   $0x0,lbDisplay__RightButton
 		je     jump_28212
 		xor    %al,%al
@@ -33566,6 +33568,7 @@ move_on_mapwho:	/* 0x296d0 */
 		mov    %dx,0x8(%eax)
 		pop    %ebx
 		ret
+
 jpt_2998D:	/* 0x29760 */
 		.long   func_297e5
 		.long   func_297e5
@@ -33579,7 +33582,10 @@ jpt_2998D:	/* 0x29760 */
 		.long   func_297e5
 		.long   func_29818
 		.long   func_2980f
+
+/*----------------------------------------------------------------*/
 multi_out:	/* 0x29790 */
+/*----------------------------------------------------------------*/
 		push   %ebx
 		push   %esi
 		push   %edi
@@ -33606,9 +33612,7 @@ multi_out:	/* 0x29790 */
 		jmp    jump_29844
 
 
-/*----------------------------------------------------------------*/
 func_297e5:
-/*----------------------------------------------------------------*/
 		mov    0x4(%esp),%al
 		xor    %edx,%edx
 		inc    %al
@@ -33620,22 +33624,17 @@ func_297e5:
 		mov    %ax,EXPORT_SYMBOL(current_levno)
 		jmp    def_2998D
 
-
-/*----------------------------------------------------------------*/
 func_2980f:
-/*----------------------------------------------------------------*/
 		mov    $0x1,%dl
 		xor    %ebp,%ebp
 		mov    %dl,(%esp)
 		jmp    def_2998D
 
-
-/*----------------------------------------------------------------*/
 func_29818:
-/*----------------------------------------------------------------*/
 		cmpb   $0x0,data_55038
 		je     def_2998D
 		movb   $0x1,(%esp)
+
 	def_2998D:	/* 0x29825 */
 		call   PlaceMouse_A
 #if !defined(DOS) /* new bflibrary has generic screen swapping routine */
@@ -33646,6 +33645,9 @@ func_29818:
 		mov    $0xc,%bh
 		call   RemoveMouse_A
 		mov    %bh,0x4(%esp)
+#if !defined(DOS) /* add input refresh, as DOS interrupts are not available */
+		call   ac_game_update
+#endif
 		cmpb   $0x0,(%esp)
 		jne    jump_29995
 	jump_29844:
@@ -51672,6 +51674,7 @@ func_359e6:
 		xor    %bh,%bh
 		mov    %bh,0x7e(%ebp)
 		mov    %bh,0x72(%ebp)
+
 	def_35899:	/* 0x35d05 */
 		movb   $0x8,0x76(%ebp)
 		call   PlaceMouse_A
@@ -51681,6 +51684,9 @@ func_359e6:
 		call   LbScreenSwapMCGA
 #endif
 		call   RemoveMouse_A
+#if !defined(DOS) /* add input refresh, as DOS interrupts are not available */
+		call   ac_game_update
+#endif
 		cmpb   $0x0,0x66(%ebp)
 		jne    jump_35dca
 	jump_35d22:
@@ -54369,18 +54375,14 @@ func_378c3:
 		jmp    jump_37b00
 
 
-/*----------------------------------------------------------------*/
 func_37b19:
-/*----------------------------------------------------------------*/
 		xor    %ebp,%ebp
 		call   configure_company
 		mov    %ebp,0x4(%esp)
 		jmp    jump_37bed
 
 
-/*----------------------------------------------------------------*/
 func_37b29:
-/*----------------------------------------------------------------*/
 		xor    %esi,%esi
 		mov    $0x1,%edi
 		mov    %esi,EXPORT_SYMBOL(MouseSwap)
@@ -54417,17 +54419,13 @@ func_37b29:
 		jmp    def_378BB
 
 
-/*----------------------------------------------------------------*/
 func_37b93:
-/*----------------------------------------------------------------*/
 		call   LoadSaveGame
 		mov    %eax,0x4(%esp)
 		jmp    def_378BB
 
 
-/*----------------------------------------------------------------*/
 func_37b9e:
-/*----------------------------------------------------------------*/
 		call   set_default_player
 		xor    %ecx,%ecx
 		xor    %edx,%edx
@@ -54436,23 +54434,17 @@ func_37b9e:
 		jmp    jump_37bed
 
 
-/*----------------------------------------------------------------*/
 func_37bb1:
-/*----------------------------------------------------------------*/
 		call   equip_team
 		jmp    jump_37be2
 
 
-/*----------------------------------------------------------------*/
 func_37bb8:
-/*----------------------------------------------------------------*/
 		call   debrief
 		jmp    jump_37be2
 
 
-/*----------------------------------------------------------------*/
 func_37bbf:
-/*----------------------------------------------------------------*/
 		mov    m_sprites,%ebx
 		push   %ebx
 		xor    %cl,%cl
@@ -54463,12 +54455,12 @@ func_37bbf:
 		jmp    jump_37be2
 
 
-/*----------------------------------------------------------------*/
 func_37bdd:
-/*----------------------------------------------------------------*/
 		call   ResearchAndDevelop
 	jump_37be2:
 		mov    %eax,0x4(%esp)
+
+
 	def_378BB:	/* 0x37be6 */
 		cmpl   $0xa,0x4(%esp)
 		je     jump_37c08
@@ -54496,6 +54488,9 @@ func_37bdd:
 		call   LbScreenSwapMCGA
 #endif
 		call   RemoveMouse_A
+#if !defined(DOS) /* add input refresh, as DOS interrupts are not available */
+		call   ac_game_update
+#endif
 		cmpl   $0xa,0x4(%esp)
 		jne    jump_37883
 	jump_37c36:
@@ -62852,7 +62847,10 @@ RemoveMouse_A:	/* 0x416d9 */
 		pop    %ebx
 		pop    %eax
 		ret
+
+/*----------------------------------------------------------------*/
 PlaceMouse_B:	/* 0x416ef */
+/*----------------------------------------------------------------*/
 		push   %eax
 		push   %ebx
 		push   %ecx
