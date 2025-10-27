@@ -25781,7 +25781,7 @@ reset_mission_info:	/* 0x237b0 */
 		push   %ebp
 		push   $data_60674
 		mov    %ebp,data_60ae8
-		call   LbMemorySet
+		call   ac_LbMemorySet
 		add    $0xc,%esp
 		pop    %ebp
 		pop    %edi
@@ -26252,7 +26252,7 @@ set_default_player:	/* 0x23880 */
 		push   $0x0
 		push   $research
 		mov    $0xffffffff,%edi
-		call   LbMemorySet
+		call   ac_LbMemorySet
 		mov    $0x2,%ch
 		add    $0xc,%esp
 		mov    %edi,data_55597
@@ -27459,7 +27459,7 @@ func_24e15:
 		push   $0x5c
 		push   $0x0
 		push   %esi
-		call   LbMemorySet
+		call   ac_LbMemorySet
 		add    $0xc,%esp
 	jump_24f41:
 		inc    %edi
@@ -27517,7 +27517,7 @@ clear_savegame:	/* 0x24fc0 */
 		push   %eax
 		push   $0x0
 		push   $level__Seed
-		call   LbMemorySet
+		call   ac_LbMemorySet
 		add    $0xc,%esp
 		ret
 
@@ -27865,7 +27865,7 @@ init_weapon:	/* 0x25460 */
 		push   $0x24
 		push   $0x0
 		push   %ebx
-		call   LbMemorySet
+		call   ac_LbMemorySet
 		add    $0xc,%esp
 		mov    0x8(%esp),%eax
 		mov    %ax,0x4(%ebx)
@@ -27909,7 +27909,7 @@ new_weapon:	/* 0x254d0 */
 		push   $0x24
 		push   $0x0
 		push   %ebx
-		call   LbMemorySet
+		call   ac_LbMemorySet
 		add    $0xc,%esp
 		mov    %ebx,%eax
 		pop    %ebx
@@ -38038,7 +38038,7 @@ setup_panel:	/* 0x2c640 */
 		push   $data_5df48
 		mov    $unkarr_5094,%ebx
 		mov    $data_55070,%esi
-		call   LbMemorySet
+		call   ac_LbMemorySet
 		mov    unkarr_5094,%dx
 		add    $0xc,%esp
 		test   %dx,%dx
@@ -75061,7 +75061,7 @@ LbScreenSurfaceClear:	/* 0x4c1f3 */
 		push   $0x1f400
 		push   0xc(%ebp)
 		push   0x8(%ebp)
-		call   LbMemorySet
+		call   ac_LbMemorySet
 		add    $0xc,%esp
 		jmp    jump_4c22e
 	jump_4c21a:
@@ -75107,28 +75107,28 @@ func_4c236:
 		push   $0x9600
 		push   0x8(%ebp)
 		push   $0xa0000
-		call   LbMemorySet
+		call   ac_LbMemorySet
 		add    $0xc,%esp
 		mov    $0x202,%ax
 		out    %ax,(%dx)
 		push   $0x9600
 		push   0x8(%ebp)
 		push   $0xa0000
-		call   LbMemorySet
+		call   ac_LbMemorySet
 		add    $0xc,%esp
 		mov    $0x402,%ax
 		out    %ax,(%dx)
 		push   $0x9600
 		push   0x8(%ebp)
 		push   $0xa0000
-		call   LbMemorySet
+		call   ac_LbMemorySet
 		add    $0xc,%esp
 		mov    $0x802,%ax
 		out    %ax,(%dx)
 		push   $0x9600
 		push   0x8(%ebp)
 		push   $0xa0000
-		call   LbMemorySet
+		call   ac_LbMemorySet
 		add    $0xc,%esp
 		jmp    jump_4c2e1
 	jump_4c2cd:
@@ -79631,7 +79631,7 @@ LbCopyScreenBox:	/* 0x4f96c */
 
 
 /*----------------------------------------------------------------*/
-LbMemorySet:	/* 0x4fa51 */
+ASM_LbMemorySet:	/* 0x4fa51 */
 /*----------------------------------------------------------------*/
 		push   %ebp
 		mov    %esp,%ebp
