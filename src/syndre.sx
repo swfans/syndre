@@ -1177,7 +1177,7 @@ func_10cd9:
 random:	/* 0x10e20 */
 /*----------------------------------------------------------------*/
 		push   %ebx
-		mov    level__Seed,%cx
+		mov    EXPORT_SYMBOL(level__Seed),%cx
 		imul   $0x24a1,%ecx,%ecx
 		xor    %edx,%edx
 		add    $0x24df,%ecx
@@ -1187,7 +1187,7 @@ random:	/* 0x10e20 */
 		mov    %edx,%eax
 		sar    $0x1f,%edx
 		idiv   %ebx
-		mov    %cx,level__Seed
+		mov    %cx,EXPORT_SYMBOL(level__Seed)
 		mov    %edx,%eax
 		pop    %ebx
 		ret
@@ -1224,7 +1224,7 @@ mission_briefing:	/* 0x10e60 */
 		push   %eax
 		call   ac_sprintf
 		add    $0xc,%esp
-		push   $level__Seed
+		push   $EXPORT_SYMBOL(level__Seed)
 		lea    0x1e(%ebp),%eax
 		push   %eax
 		call   LbFileReadRNC
@@ -7034,7 +7034,7 @@ bump_person:	/* 0x153a0 */
 init_computer_players:	/* 0x15560 */
 /*----------------------------------------------------------------*/
 		push   %ebx
-		mov    $level__CPObjectives,%eax
+		mov    $EXPORT_SYMBOL(level__CPObjectives),%eax
 		xor    %edx,%edx
 		mov    $0xef,%cl
 		lea    0x0(%eax),%eax
@@ -7602,7 +7602,7 @@ CPDoTurn:	/* 0x15c60 */
 		mov    (%ebx),%dl
 		mov    %edx,%eax
 		shl    $0x4,%eax
-		mov    $level__CPObjectives,%edi
+		mov    $EXPORT_SYMBOL(level__CPObjectives),%edi
 		sub    %edx,%eax
 		add    %eax,%edi
 		xor    %eax,%eax
@@ -7749,7 +7749,7 @@ func_15db1:
 		mov    (%edi),%dx
 		mov    %edx,%eax
 		shl    $0x4,%eax
-		mov    $level__CPObjectives,%edi
+		mov    $EXPORT_SYMBOL(level__CPObjectives),%edi
 		sub    %edx,%eax
 		add    %eax,%edi
 		cmpb   $0x4,0x7(%edi)
@@ -9264,7 +9264,7 @@ func_16cc2:
 		mov    %ebx,%eax
 		shl    $0x4,%eax
 		sub    %ebx,%eax
-		mov    $level__CPObjectives,%ebx
+		mov    $EXPORT_SYMBOL(level__CPObjectives),%ebx
 		add    %eax,%ebx
 		orb    $0x10,0x6(%ebx)
 		cmpw   $0x0,(%ebx)
@@ -9358,7 +9358,7 @@ CPGetObjective:	/* 0x16e40 */
 		mov    $data_5c358,%edi
 		add    %eax,%eax
 		add    %eax,%edi
-		mov    $data_9bec1,%ebx
+		mov    $EXPORT_SYMBOL(level__CPObjectives)+0x0f,%ebx
 		xor    %dl,%dl
 		mov    (%edi),%cl
 		mov    %dl,0x8(%esp)
@@ -9374,7 +9374,7 @@ CPGetObjective:	/* 0x16e40 */
 		mov    %ch,(%esp)
 		sub    %eax,%ebx
 		mov    $0x1,%al
-		add    $level__CPObjectives,%ebx
+		add    $EXPORT_SYMBOL(level__CPObjectives),%ebx
 		mov    %ch,%ah
 		mov    %al,0x8(%esp)
 		add    %al,%ah
@@ -9418,7 +9418,7 @@ CPGetObjective:	/* 0x16e40 */
 		jne    jump_16e9d
 		cmpb   $0x0,0x4(%esp)
 		je     jump_16f12
-		mov    $data_9bec1,%ebx
+		mov    $EXPORT_SYMBOL(level__CPObjectives)+0x0f,%ebx
 		mov    $0x1,%ah
 		mov    %ch,0x4(%esp)
 		jmp    jump_16e9a
@@ -9438,15 +9438,15 @@ CPGetObjective:	/* 0x16e40 */
 	jump_16f39:
 		mov    $0x1,%bh
 		mov    $0x3,%cl
-		mov    %al,data_9beb8
+		mov    %al,EXPORT_SYMBOL(level__CPObjectives)+0x06	/* level.CPObjectives[].Flags */
 		xor    %esi,%esi
-		mov    %bh,data_9beb9
-		mov    %cl,data_9beba
-		mov    %si,data_9bebb
+		mov    %bh,EXPORT_SYMBOL(level__CPObjectives)+0x07	/* level.CPObjectives[].ActionType */
+		mov    %cl,EXPORT_SYMBOL(level__CPObjectives)+0x08	/* level.CPObjectives[].Action */
+		mov    %si,EXPORT_SYMBOL(level__CPObjectives)+0x09
 		xor    %ebx,%ebx
 		xor    %ecx,%ecx
-		mov    %bx,data_9bebf
-		mov    %cx,data_9bebd
+		mov    %bx,EXPORT_SYMBOL(level__CPObjectives)+0x0d
+		mov    %cx,EXPORT_SYMBOL(level__CPObjectives)+0x0b
 		jmp    jump_16f9c
 	jump_16f6b:
 		mov    (%esp),%al
@@ -9732,7 +9732,7 @@ CPGetFirstObjectiveInList:	/* 0x17250 */
 		mov    %edx,%eax
 		shl    $0x4,%eax
 		sub    %edx,%eax
-		add    $level__CPObjectives,%eax
+		add    $EXPORT_SYMBOL(level__CPObjectives),%eax
 		cmpw   $0x0,0x2(%eax)
 		jne    jump_1725b
 	jump_17274:
@@ -17985,9 +17985,9 @@ draw_mapwho:	/* 0x1d450 */
 		mov    %ebx,0x10(%esp)
 		mov    %ebx,%ebp
 		mov    %ecx,0x18(%esp)
-		cmp    $data_8070e,%ebx
+		cmp    $level__MapWho+0x600,%ebx
 		jb     jump_1d60b
-		cmp    $data_87b0e,%ebx
+		cmp    $level__MapWho+0x8000-0x600,%ebx
 		jae    jump_1d60b
 		xor    %ebx,%ebx
 		mov    %ebx,0x1c(%esp)
@@ -25818,7 +25818,7 @@ set_default_player:	/* 0x23880 */
 		mov    %cx,data_605d8(,%eax,2)
 		xor    %bl,%bl
 		mov    %bl,data_605e1(,%eax,2)
-		mov    level__Seed,%bx
+		mov    EXPORT_SYMBOL(level__Seed),%bx
 		mov    %bx,data_605da(,%eax,2)
 		mov    %edx,%eax
 		shl    $0x5,%eax
@@ -27513,10 +27513,10 @@ init_a_players_weapon:	/* 0x24f60 */
 clear_savegame:	/* 0x24fc0 */
 /*----------------------------------------------------------------*/
 		mov    $0x9c632,%eax
-		sub    $level__Seed,%eax
+		sub    $EXPORT_SYMBOL(level__Seed),%eax
 		push   %eax
 		push   $0x0
-		push   $level__Seed
+		push   $EXPORT_SYMBOL(level__Seed)
 		call   ac_LbMemorySet
 		add    $0xc,%esp
 		ret
@@ -27743,7 +27743,7 @@ load_map_level:	/* 0x252b0 */
 		jne    jump_253a9
 		mov    $0xa0c80,%edx
 		mov    EXPORT_SYMBOL(lbDisplay)+0x04,%ebx	/* lbDisplay.WScreen */
-		push   $level__Seed
+		push   $EXPORT_SYMBOL(level__Seed)
 		lea    0x1f408(%ebx),%eax
 		mov    %edx,VScreen
 		push   %esi
@@ -27787,7 +27787,7 @@ load_map_level:	/* 0x252b0 */
 	jump_253a9:
 		cmpb   $0x4,EXPORT_SYMBOL(DrawFlags)
 		jne    jump_253e2
-		push   $level__Seed
+		push   $EXPORT_SYMBOL(level__Seed)
 		push   %esi
 		call   LbFileReadRNC
 		mov    EXPORT_SYMBOL(level__MapNumber),%cx
@@ -27985,7 +27985,7 @@ multi_play:	/* 0x25580 */
 		movswl Network__Slot,%edx
 		lea    0x0(,%edx,8),%eax
 		sub    %edx,%eax
-		mov    level__Seed,%dx
+		mov    EXPORT_SYMBOL(level__Seed),%dx
 		mov    %dx,data_605da(,%eax,2)
 		mov    level__PersonCount_UNSURE,%dx
 		mov    %dx,data_605dc(,%eax,2)
@@ -85412,29 +85412,28 @@ MouseOldData:	/* 0x70000 */
 		.fill   0x800
 MScreen:	/* 0x70800 */
 		.fill   0x400
+
+
 player_view_map_x:	/* 0x80000 */
-		.ascii  "\x00\x00"
+		.short  0x0
 player_view_map_y:	/* 0x80002 */
-		.fill   0x103
+		.short  0x0
+		.fill   0x101
 
 GLOBAL (DrawFlags)	/* 0x80105 */
 		.byte	0x04
 		.align	4
 
-level__Seed:	/* 0x80108 */
-		.ascii  "\x00\x00"
+GLOBAL (level__Seed)	/* 0x80108 */
+		.short  0x0
 level__PersonCount_UNSURE:	/* 0x8010a */
-		.ascii  "\x00\x00"
+		.short  0x0
 level__Timer:	/* 0x8010c */
-		.ascii  "\x00\x00"
+		.short  0x0
 level__MapWho:	/* 0x8010e */
-		.fill   0x600
-data_8070e:
-		.fill   0x7400
-data_87b0e:
-		.fill   0x600
+		.fill   0x8000
 level__things_base:	/* 0x8810e */
-		.ascii  "\x00\x00"
+		.short  0x0
 level__People:	/* 0x88110 */
 		.fill   0x4
 data_88114:
@@ -85506,34 +85505,23 @@ data_9be44:
 data_9be46:
 		.fill   0x64
 level__ComputerPlayersCount:	/* 0x9beaa */
-		.ascii  "\x00"
+		.byte	0x0
 level__CPTeamSize:	/* 0x9beab */
-		.ascii  "\x00"
+		.byte	0x0
 level__CPProcessInterval:	/* 0x9beac */
-		.ascii  "\x00"
+		.byte	0x0
 level__CPLvlInit:	/* 0x9bead */
-		.ascii  "\x00"
+		.byte	0x0
 level__CPIsBombingTeam:	/* 0x9beae */
-		.ascii  "\x00"
+		.byte	0x0
 level__CPIsPersuadingTeam:	/* 0x9beaf */
-		.ascii  "\x00"
+		.byte	0x0
 level__CPFlags:	/* 0x9beb0 */
-		.ascii  "\x00"
+		.byte	0x0
 level__CPWieldedWeaponType:	/* 0x9beb1 */
-		.ascii  "\x00"
-level__CPObjectives:	/* 0x9beb2 */
-		.fill   0x6
-data_9beb8:
-		.ascii  "\x00"
-data_9beb9:
-		.ascii  "\x00"
-data_9beba:
-		.ascii  "\x00"
-data_9bebb:
-		.ascii  "\x00\x00"
-data_9bebd:
-		.ascii  "\x00\x00"
-data_9bebf:
-		.ascii  "\x00\x00"
-data_9bec1:
-		.fill   0x771
+		.byte	0x0
+GLOBAL (level__CPObjectives)	/* 0x9beb2 */
+		.fill   0x780
+level__End:
+		.byte	0x00
+		.align	4

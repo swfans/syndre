@@ -16,6 +16,7 @@
  *     (at your option) any later version.
  */
 /******************************************************************************/
+#include <assert.h>
 #include <errno.h>
 #include <limits.h>
 #include <stdio.h>
@@ -54,7 +55,7 @@
 #include "util.h"
 #include "timer.h"
 
-#define SAVEGAME_PATH "savegame/"
+#define SAVEGAME_PATH "save/"
 
 /******************************************************************************/
 
@@ -62,6 +63,11 @@ bool
 game_initialise (void)
 {
     TbResult ret;
+
+    // Check for level data offsets consistency
+    assert((int)((ubyte *)(level__CPObjectives) - (ubyte *)&level__Seed) == 0x9BEB2 - 0x80108);
+    assert((int)((ubyte *)(level__CPObjectives + 128) - (ubyte *)&level__Seed) == 0x9C632 - 0x80108);
+
     ret = LbBaseInitialise();
     if (ret != Lb_SUCCESS)
     {

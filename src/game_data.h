@@ -21,7 +21,29 @@
 
 #include "bftypes.h"
 
+#pragma pack(1)
+
+struct Thing;
+
+struct CPObjective
+{
+    short Child;
+    ushort Parent;
+    short field_4;
+    ubyte field_6;
+    ubyte ActionType;
+    ubyte Action;
+    ushort TargetOffs;
+    short field_B;
+    short field_D;
+};
+
+#pragma pack()
+
 /******************************************************************************/
+extern ushort level__Seed;
+extern struct CPObjective level__CPObjectives[128];
+
 
 const char *GetDirectoryUser(void);
 const char *GetDirectoryHdd(void);
