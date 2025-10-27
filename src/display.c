@@ -4,6 +4,7 @@
 #include <assert.h>
 
 #include "bftext.h"
+#include "bfmouse.h"
 #include "bfpalette.h"
 #include "bfscreen.h"
 #include "bfscrsurf.h"
@@ -45,6 +46,7 @@ const char * AppResourceMapping(short index)
 TbResult AppScreenSetup(TbScreenMode mode)
 {
     TbScreenModeInfo *mdinfo;
+    TbResult ret;
 
     // Mapping of video modes
     if (mode == 19)
@@ -52,7 +54,12 @@ TbResult AppScreenSetup(TbScreenMode mode)
 
     mdinfo = LbScreenGetModeInfo(mode);
     LOGSYNC("Entering mode %d, %dx%d", (int)mode, (int)mdinfo->Width, (int)mdinfo->Height);
-    return LbScreenSetup(mode, mdinfo->Width, mdinfo->Height, GraphicsPalette);
+    ret = LbScreenSetup(mode, mdinfo->Width, mdinfo->Height, GraphicsPalette);
+    // This app requires mouse window larger than screen resolution
+    LbMouseChangeMoveRatio(512, 512);
+    LbMouseSetWindow(0, 0, lbDisplay.GraphicsScreenWidth * lbDisplay.MouseMoveRatioX / 256,
+      lbDisplay.GraphicsScreenHeight * lbDisplay.MouseMoveRatioY / 256);
+    return ret;
 }
 
 void display_set_full_screen(bool full_screen)
