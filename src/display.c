@@ -47,7 +47,9 @@ TbResult AppScreenSetup(TbScreenMode mode)
 {
     TbScreenModeInfo *mdinfo;
     TbResult ret;
+    ushort ratio_mul;
 
+    ratio_mul = 2;
     // Mapping of video modes
     if (mode == 19)
         mode = Lb_SCREEN_MODE_320_200_8;
@@ -56,9 +58,11 @@ TbResult AppScreenSetup(TbScreenMode mode)
     LOGSYNC("Entering mode %d, %dx%d", (int)mode, (int)mdinfo->Width, (int)mdinfo->Height);
     ret = LbScreenSetup(mode, mdinfo->Width, mdinfo->Height, GraphicsPalette);
     // This app requires mouse window larger than screen resolution
-    LbMouseChangeMoveRatio(512, 512);
-    LbMouseSetWindow(0, 0, lbDisplay.GraphicsScreenWidth * lbDisplay.MouseMoveRatioX / 256,
-      lbDisplay.GraphicsScreenHeight * lbDisplay.MouseMoveRatioY / 256);
+    // For the ration change to have any effect, the project nees to be
+    // built with `--enable-lb-mouse-move-ratio`
+    LbMouseChangeMoveRatio(ratio_mul << 8, ratio_mul << 8);
+    LbMouseSetWindow(0, 0, lbDisplay.GraphicsScreenWidth * ratio_mul,
+      lbDisplay.GraphicsScreenHeight * ratio_mul);
     return ret;
 }
 
