@@ -14254,7 +14254,7 @@ FILE_append:	/* 0x1ab60 */
 
 
 /*----------------------------------------------------------------*/
-LbDataLoadAll:	/* 0x1abf0 */
+ASM_LbDataLoadAll:	/* 0x1abf0 */
 /*----------------------------------------------------------------*/
 		push   %ebx
 		push   %esi
@@ -27791,13 +27791,13 @@ load_map_level:	/* 0x252b0 */
 		add    $0x30,%edx
 		push   $mission_load_files
 		mov    %dl,data_53f3d
-		call   LbDataLoadAll
+		call   ac_LbDataLoadAll
 		mov    EXPORT_SYMBOL(SoundAble),%dl
 		add    $0x4,%esp
 		test   %dl,%dl
 		je     jump_253a4
 		push   $sound_load_files
-		call   LbDataLoadAll
+		call   ac_LbDataLoadAll
 		add    $0x4,%esp
 		call   sound_bank_setup
 	jump_253a4:
@@ -27815,7 +27815,7 @@ load_map_level:	/* 0x252b0 */
 		movw   $0x1,EXPORT_SYMBOL(level__MapNumber)
 	jump_253d5:
 		push   $unkn1_empty_load_files
-		call   LbDataLoadAll
+		call   ac_LbDataLoadAll
 		add    $0x4,%esp
 	jump_253e2:
 		call   init_level_data
@@ -31102,7 +31102,7 @@ GLOBAL_FUNC (ASM_main)	/* 0x274a0 */
 		push   $EXPORT_SYMBOL(load_files_mcga)
 		mov    %dh,EXPORT_SYMBOL(byte_60B42)
 	jump_278d5:
-		call   LbDataLoadAll
+		call   ac_LbDataLoadAll
 		add    $0x4,%esp
 	jump_278dd:
 		mov    EXPORT_SYMBOL(pointer_data),%ebx
@@ -31568,7 +31568,7 @@ map_selection:	/* 0x27e00 */
 		mov    $0x1,%edx
 		mov    %ah,EXPORT_SYMBOL(is_multiplayer_game)
 		mov    %edx,EXPORT_SYMBOL(MouseSwap)
-		call   LbDataLoadAll
+		call   ac_LbDataLoadAll
 		add    $0x4,%esp
 		xor    %ebx,%ebx
 		call   display_cities
@@ -53992,7 +53992,7 @@ select:	/* 0x37600 */
 		mov    %edx,m_spr_data
 		mov    %edx,m_sprites
 		mov    %edx,m_sprites_end
-		call   LbDataLoadAll
+		call   ac_LbDataLoadAll
 		mov    EXPORT_SYMBOL(SoundAble),%dl
 		add    $0x4,%esp
 		test   %dl,%dl
@@ -54001,7 +54001,7 @@ select:	/* 0x37600 */
 		cmpl   $0x0,(%eax)
 		jne    jump_37654
 		push   $sound_bank_files
-		call   LbDataLoadAll
+		call   ac_LbDataLoadAll
 		add    $0x4,%esp
 		call   sound_bank_setup
 	jump_37654:
@@ -54843,7 +54843,7 @@ level_finished:	/* 0x37f80 */
 		cmpb   $0x0,EXPORT_SYMBOL(SoundAble)
 		je     jump_3802c
 		push   $sound_bank_files
-		call   LbDataLoadAll
+		call   ac_LbDataLoadAll
 		add    $0x4,%esp
 		call   sound_bank_setup
 	jump_3802c:
