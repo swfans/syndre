@@ -44,6 +44,8 @@ extern ubyte *VGABuffer;
  */
 extern ubyte *WScreen;
 
+extern ubyte *VScreen;
+
 extern ubyte *GraphicsPalette;
 
 void display_lock (void);

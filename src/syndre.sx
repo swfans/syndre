@@ -17864,12 +17864,6 @@ func_1d2c0:
 	jump_1d340:
 		call   PlaceMouse_A
 	jump_1d345:
-/* TODO this is incorrectly altered; we need to copy everything from WScreen to VScreen ! */
-#if !defined(DOS) /* new bflibrary has generic screen swapping routine */
-		xor    %dl,%dl
-		mov    %dl,data_60b4f
-		call   ac_swap_wscreen
-#else
 		cmpb   $0x0,data_60b4f
 		je     jump_1d35d
 		xor    %dl,%dl
@@ -17877,6 +17871,11 @@ func_1d2c0:
 		call   LbScreenSwapVres16
 		jmp    jump_1d388
 	jump_1d35d:
+/* TODO not sure if this is correct */
+#if !defined(DOS) /* new bflibrary has generic screen swapping routine */
+		call   ac_update_vscreen_whole_vres16
+		call   ac_swap_wscreen
+#else
 		call   screen_ega_bitmask_allow_all
 		mov    $data_5db2c,%esi
 		xor    %ebx,%ebx
@@ -27764,7 +27763,7 @@ load_map_level:	/* 0x252b0 */
 		mov    EXPORT_SYMBOL(WScreen),%ebx
 		push   $EXPORT_SYMBOL(level__Seed)
 		lea    0x1f408(%ebx),%eax
-		mov    %edx,VScreen
+		mov    %edx,EXPORT_SYMBOL(VScreen)
 		push   %esi
 		add    $0x1f418,%ebx
 		mov    %eax,UScreen
@@ -36159,7 +36158,7 @@ MouseHandler256:	/* 0x2b290 */
 		mov    %dl,data_60b34
 		cmp    %ah,%dh
 		jne    jump_2b3c9
-		mov    VScreen,%eax
+		mov    EXPORT_SYMBOL(VScreen),%eax
 		mov    %eax,ScrSeg
 		call   UndoMouse
 		call   BackupMouse
@@ -36180,7 +36179,7 @@ MouseHandler256:	/* 0x2b290 */
 	jump_2b3c9:
 		cmp    $0x2,%dh
 		jne    jump_2b3f0
-		mov    VScreen,%eax
+		mov    EXPORT_SYMBOL(VScreen),%eax
 		mov    %eax,ScrSeg
 		call   UndoMouse
 		call   BackupMouse
@@ -36191,7 +36190,7 @@ MouseHandler256:	/* 0x2b290 */
 	jump_2b3f0:
 		cmp    $0xd,%dh
 		jne    jump_2b436
-		mov    VScreen,%eax
+		mov    EXPORT_SYMBOL(VScreen),%eax
 		mov    %eax,ScrSeg
 		call   UndoMouse
 		call   BackupMouse
@@ -54074,7 +54073,7 @@ select:	/* 0x37600 */
 		mov    EXPORT_SYMBOL(VGABuffer),%ebp
 		mov    %eax,data_60ab0
 		add    $0x1000,%eax
-		mov    %ebp,VScreen
+		mov    %ebp,EXPORT_SYMBOL(VScreen)
 		mov    %eax,EXPORT_SYMBOL(PalMem)
 		xor    %ah,%ah
 		mov    %ah,EXPORT_SYMBOL(lbDisplay)+103	/* lbDisplay.LeftButton */
@@ -62348,7 +62347,7 @@ UndoMouse:	/* 0x410ce */
 		shr    $1,%ebx
 		add    %ebx,%eax
 		mov    %eax,%edi
-		add    VScreen,%edi
+		add    EXPORT_SYMBOL(VScreen),%edi
 		mov    $0x190,%ax
 		sub    MouseOldY,%ax
 		shr    $1,%ax
@@ -62396,7 +62395,7 @@ UndoMouse:	/* 0x410ce */
 		shr    $0x3,%bx
 		add    %bx,%ax
 		movzwl %ax,%edi
-		add    VScreen,%edi
+		add    EXPORT_SYMBOL(VScreen),%edi
 		mov    $0x190,%ax
 		sub    %cs:MouseOldY,%ax
 		cmp    $0x30,%ax
@@ -62467,7 +62466,7 @@ UndoMouse:	/* 0x410ce */
 		shr    $0x4,%bx
 		add    %bx,%ax
 		movzwl %ax,%edi
-		add    VScreen,%edi
+		add    EXPORT_SYMBOL(VScreen),%edi
 		mov    $0x190,%ax
 		sub    %cs:MouseOldY,%ax
 		shr    $1,%ax
@@ -62654,7 +62653,7 @@ BackupMouse:	/* 0x41323 */
 		shr    $0x3,%bx
 		mov    ScrSeg,%edx
 		add    %edx,%esi
-		cmp    VScreen,%edx
+		cmp    EXPORT_SYMBOL(VScreen),%edx
 		jne    jump_41530
 		movzwl %bx,%ebx
 		mov    $0x4,%dx
@@ -62744,7 +62743,7 @@ BackupMouse:	/* 0x41323 */
 		shr    $0x3,%bx
 		mov    ScrSeg,%edx
 		add    %edx,%esi
-		cmp    VScreen,%edx
+		cmp    EXPORT_SYMBOL(VScreen),%edx
 		jne    jump_41623
 		movzwl %bx,%ebx
 		mov    $0x4,%dx
@@ -62910,7 +62909,7 @@ PlaceMouse_B:	/* 0x416ef */
 		pushw  MouseOldX
 		call   DrawASpriteHires16_A
 		add    $0x10,%esp
-		mov    VScreen,%eax
+		mov    EXPORT_SYMBOL(VScreen),%eax
 		mov    %eax,ScrSeg
 		cmpb   $0x1,EXPORT_SYMBOL(DrawFlags)
 		jne    jump_4179a
@@ -63138,7 +63137,7 @@ GetScreenBoxHires16:	/* 0x419a9 */
 		shr    $0x3,%bx
 		add    %bx,%ax
 		movzwl %ax,%esi
-		add    VScreen,%esi
+		add    EXPORT_SYMBOL(VScreen),%esi
 		mov    $0x190,%ax
 		sub    MouseOldY,%ax
 		cmp    $0x20,%ax
@@ -63219,7 +63218,7 @@ GetScreenBoxHires16:	/* 0x419a9 */
 		shr    $0x4,%bx
 		add    %bx,%ax
 		movzwl %ax,%esi
-		add    VScreen,%esi
+		add    EXPORT_SYMBOL(VScreen),%esi
 		mov    $0x190,%ax
 		sub    MouseOldY,%ax
 		shr    $1,%ax
@@ -63314,7 +63313,7 @@ PutScreenBoxHires16:	/* 0x41b6f */
 		shr    $0x3,%bx
 		add    %bx,%ax
 		movzwl %ax,%edi
-		add    VScreen,%edi
+		add    EXPORT_SYMBOL(VScreen),%edi
 		mov    $0x190,%ax
 		sub    MouseOldY,%ax
 		cmp    $0x20,%ax
@@ -63402,7 +63401,7 @@ PutScreenBoxHires16:	/* 0x41b6f */
 		shr    $0x4,%bx
 		add    %bx,%ax
 		movzwl %ax,%edi
-		add    VScreen,%edi
+		add    EXPORT_SYMBOL(VScreen),%edi
 		mov    $0x190,%ax
 		sub    MouseOldY,%ax
 		shr    $1,%ax
@@ -75442,7 +75441,7 @@ func_4c797:
 		imul   $0x500,0xc(%ebp),%eax
 		add    $0x10,%eax
 		mov    EXPORT_SYMBOL(WScreen),%esi
-		mov    VScreen,%edi
+		mov    EXPORT_SYMBOL(VScreen),%edi
 		add    %eax,%esi
 		add    %eax,%edi
 		mov    $0x3c4,%dx
@@ -75829,7 +75828,7 @@ func_4cd4a:
 		je     jump_4ce11
 		mov    $0x3c4,%dx
 		mov    EXPORT_SYMBOL(WScreen),%esi
-		mov    VScreen,%edi
+		mov    EXPORT_SYMBOL(VScreen),%edi
 		mov    $0x102,%ax
 		out    %ax,(%dx)
 		mov    $0x190,%ebx
@@ -75842,7 +75841,7 @@ func_4cd4a:
 		jne    jump_4cd78
 		mov    EXPORT_SYMBOL(WScreen),%esi
 		add    $0x7d00,%esi
-		mov    VScreen,%edi
+		mov    EXPORT_SYMBOL(VScreen),%edi
 		mov    $0x202,%ax
 		out    %ax,(%dx)
 		mov    $0x190,%ebx
@@ -75855,7 +75854,7 @@ func_4cd4a:
 		jne    jump_4cda5
 		mov    EXPORT_SYMBOL(WScreen),%esi
 		add    $0xfa00,%esi
-		mov    VScreen,%edi
+		mov    EXPORT_SYMBOL(VScreen),%edi
 		mov    $0x402,%ax
 		out    %ax,(%dx)
 		mov    $0x190,%ebx
@@ -75867,7 +75866,7 @@ func_4cd4a:
 		dec    %ebx
 		jne    jump_4cdd2
 		mov    EXPORT_SYMBOL(WScreen),%esi
-		mov    VScreen,%edi
+		mov    EXPORT_SYMBOL(VScreen),%edi
 		add    $0x17700,%esi
 		mov    $0x802,%ax
 		out    %ax,(%dx)
@@ -75907,7 +75906,7 @@ LbScreenSwapVres16:
 		push   %edi
 		testb  $0x2,EXPORT_SYMBOL(DrawFlags)
 		je     jump_4ce41
-		call   func_4ce60
+		call   ac_update_vscreen_whole_vres16
 		jmp    jump_4ce5a
 	jump_4ce41:
 		testb  $0x4,EXPORT_SYMBOL(DrawFlags)
@@ -75918,6 +75917,9 @@ LbScreenSwapVres16:
 		testb  $0x1,EXPORT_SYMBOL(DrawFlags)
 		je     jump_4ce5a
 	jump_4ce5a:
+#if !defined(DOS) /* new bflibrary has generic screen swapping routine */
+		call   ac_swap_wscreen
+#endif
 		pop    %edi
 		pop    %esi
 		pop    %edx
@@ -75927,7 +75929,7 @@ LbScreenSwapVres16:
 
 
 /*----------------------------------------------------------------*/
-func_4ce60:
+ASM_update_vscreen_whole_vres16:
 /*----------------------------------------------------------------*/
 		push   %ebp
 		mov    %esp,%ebp
@@ -75940,7 +75942,7 @@ func_4ce60:
 		out    %ax,(%dx)
 		mov    $0xc4,%dl
 		mov    EXPORT_SYMBOL(WScreen),%esi
-		mov    VScreen,%edi
+		mov    EXPORT_SYMBOL(VScreen),%edi
 		mov    $0x32,%ebx
 	jump_4ce8a:
 		mov    $0x102,%ax
@@ -76104,7 +76106,7 @@ LbSpriteDrawMCGA_0:	/* 0x4cfb6 */
 		mov    0x10(%ebp),%esi
 		movswl 0x8(%ebp),%ebx
 		movswl 0xc(%ebp),%ecx
-		mov    VScreen,%edi
+		mov    EXPORT_SYMBOL(VScreen),%edi
 		mov    0x4(%esi),%dl
 		mov    0x5(%esi),%dh
 		mov    $0x0,%eax
@@ -76303,7 +76305,7 @@ DrawASpriteLores16_D:	/* 0x4d150 */
 		mov    0x4(%esi),%cl
 		mov    0x5(%esi),%ch
 		mov    (%esi),%edi
-		mov    VScreen,%esi
+		mov    EXPORT_SYMBOL(VScreen),%esi
 		call   DrawSpriteLores16
 		pop    %es
 		pop    %ebp
@@ -83567,7 +83569,7 @@ h_font:	/* 0x55364 */
 		.fill   0x4
 GLOBAL (WScreen)	/* 0x55368 */
 		.fill   0x4
-VScreen:	/* 0x5536c */
+GLOBAL (VScreen)	/* 0x5536c */
 		.fill   0x4
 BScreen:	/* 0x55370 */
 		.fill   0x4

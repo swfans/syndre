@@ -123,6 +123,55 @@ void display_unlock(void)
     LbScreenUnlock();
 }
 
+void update_vscreen_whole_vres16(void)
+{
+    const ushort *i;
+    ushort *o;
+    int n, k;
+
+    LbMemorySet(VScreen, 0, 320*400);
+
+    i = (const ushort *)WScreen;
+    o = (ushort *)VScreen;
+    for (k = 50; k > 0; k--)
+    {
+        for (n = 320; n > 0; n--)
+        {
+            *o |= (*i) & 0x1111;
+            o++;
+            i++;
+        }
+
+        i += 320 * 49;
+        o -= 320;
+        for (n = 320; n > 0; n--)
+        {
+            *o |= (*i) & 0x2222;
+            o++;
+            i++;
+        }
+
+        i += 320 * 49;
+        o -= 320;
+        for (n = 320; n > 0; n--)
+        {
+            *o |= (*i) & 0x4444;
+            o++;
+            i++;
+        }
+
+        i += 320 * 49;
+        o -= 320;
+        for (n = 320; n > 0; n--)
+        {
+            *o |= (*i) & 0x8888;
+            o++;
+            i++;
+        }
+        i -= 320 * 150;
+    }
+}
+
 void blit_wscreen_vres16(const ubyte *buf)
 {
     const ubyte *i;
@@ -133,7 +182,7 @@ void blit_wscreen_vres16(const ubyte *buf)
 
     i = buf;
     o = lbDisplay.WScreen;
-    for (k = 400; k > 0; k--)
+    for (k = 480; k > 0; k--)
     {
         for (n = 80; n > 0; n--)
         {
@@ -151,7 +200,7 @@ void blit_wscreen_vres16(const ubyte *buf)
     }
 
     o = lbDisplay.WScreen;
-    for (k = 400; k > 0; k--)
+    for (k = 480; k > 0; k--)
     {
         for (n = 80; n > 0; n--)
         {
@@ -169,7 +218,7 @@ void blit_wscreen_vres16(const ubyte *buf)
     }
 
     o = lbDisplay.WScreen;
-    for (k = 400; k > 0; k--)
+    for (k = 480; k > 0; k--)
     {
         for (n = 80; n > 0; n--)
         {
@@ -187,7 +236,7 @@ void blit_wscreen_vres16(const ubyte *buf)
     }
 
     o = lbDisplay.WScreen;
-    for (k = 400; k > 0; k--)
+    for (k = 480; k > 0; k--)
     {
         for (n = 80; n > 0; n--)
         {
@@ -216,7 +265,7 @@ void swap_wscreen(void)
     was_locked = LbScreenIsLocked();
     LbScreenLock();
     if (DrawFlags & DrwF_ScreenVres16)
-        blit_wscreen_vres16(WScreen); //TODO switch to VGABuffer ?
+        blit_wscreen_vres16(VGABuffer);
     else
         blit_wscreen_mcga(WScreen);
     LbScreenUnlock();
