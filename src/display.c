@@ -123,17 +123,102 @@ void display_unlock(void)
     LbScreenUnlock();
 }
 
+void blit_wscreen_vres16(const ubyte *buf)
+{
+    const ubyte *i;
+    ubyte *o;
+    int n, k;
+
+    LbMemorySet(lbDisplay.WScreen, 0, 640*480);
+
+    i = buf;
+    o = lbDisplay.WScreen;
+    for (k = 400; k > 0; k--)
+    {
+        for (n = 80; n > 0; n--)
+        {
+            o[7] |= ((*i) >> 0) & 0x01;
+            o[6] |= ((*i) >> 1) & 0x01;
+            o[5] |= ((*i) >> 2) & 0x01;
+            o[4] |= ((*i) >> 3) & 0x01;
+            o[3] |= ((*i) >> 4) & 0x01;
+            o[2] |= ((*i) >> 5) & 0x01;
+            o[1] |= ((*i) >> 6) & 0x01;
+            o[0] |= ((*i) >> 7) & 0x01;
+            o += 8;
+            i++;
+        }
+    }
+
+    o = lbDisplay.WScreen;
+    for (k = 400; k > 0; k--)
+    {
+        for (n = 80; n > 0; n--)
+        {
+            o[7] |= ((*i) << 1) & 0x02;
+            o[6] |= ((*i) >> 0) & 0x02;
+            o[5] |= ((*i) >> 1) & 0x02;
+            o[4] |= ((*i) >> 2) & 0x02;
+            o[3] |= ((*i) >> 3) & 0x02;
+            o[2] |= ((*i) >> 4) & 0x02;
+            o[1] |= ((*i) >> 5) & 0x02;
+            o[0] |= ((*i) >> 6) & 0x02;
+            o += 8;
+            i++;
+        }
+    }
+
+    o = lbDisplay.WScreen;
+    for (k = 400; k > 0; k--)
+    {
+        for (n = 80; n > 0; n--)
+        {
+            o[7] |= ((*i) << 2) & 0x03;
+            o[6] |= ((*i) << 1) & 0x03;
+            o[5] |= ((*i) >> 0) & 0x03;
+            o[4] |= ((*i) >> 1) & 0x03;
+            o[3] |= ((*i) >> 2) & 0x03;
+            o[2] |= ((*i) >> 3) & 0x03;
+            o[1] |= ((*i) >> 4) & 0x03;
+            o[0] |= ((*i) >> 5) & 0x03;
+            o += 8;
+            i++;
+        }
+    }
+
+    o = lbDisplay.WScreen;
+    for (k = 400; k > 0; k--)
+    {
+        for (n = 80; n > 0; n--)
+        {
+            o[7] |= ((*i) << 3) & 0x04;
+            o[6] |= ((*i) << 2) & 0x04;
+            o[5] |= ((*i) << 1) & 0x04;
+            o[4] |= ((*i) >> 0) & 0x04;
+            o[3] |= ((*i) >> 1) & 0x04;
+            o[2] |= ((*i) >> 2) & 0x04;
+            o[1] |= ((*i) >> 3) & 0x04;
+            o[0] |= ((*i) >> 4) & 0x04;
+            o += 8;
+            i++;
+        }
+    }
+}
+
+void blit_wscreen_mcga(const ubyte *buf)
+{
+    LbMemoryCopy(lbDisplay.WScreen, buf, 320*200);
+}
+
 void swap_wscreen(void)
 {
     TbBool was_locked;
     was_locked = LbScreenIsLocked();
     LbScreenLock();
-#if 0 // Enable when buffer handling is fixed in assembly
     if (DrawFlags & DrwF_ScreenVres16)
-        LbMemoryCopy(lbDisplay.WScreen, VGABuffer, 640*480);
+        blit_wscreen_vres16(WScreen); //TODO switch to VGABuffer ?
     else
-#endif
-        LbMemoryCopy(lbDisplay.WScreen, WScreen, 320*200);
+        blit_wscreen_mcga(WScreen);
     LbScreenUnlock();
     LbScreenSwap();
     if ( was_locked )
