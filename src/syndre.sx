@@ -83280,9 +83280,10 @@ GLOBAL (load_files_vres16)	/* 0x54d9c */
 		.ascii  "\x2a"
 		.fill   0x1b
 		.long   EXPORT_SYMBOL(WScreen)
-		.fill   0x4
-		.ascii  "\x10\xe8\x03"
-		.fill   0x5
+		.long   0x0
+		.long   256048	/* 256016 is too little, need 320x400 + 24 + 320x400 + some safety bytes (24) */
+		.short  0x0
+		.short  0x0
 		.string "data/hpal01.dat"
 		.fill   0xc
 		.long   GraphicsPalette
