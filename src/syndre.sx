@@ -16142,6 +16142,7 @@ ccircle:	/* 0x1bbd0 */
 		pop    %esi
 		pop    %ebx
 		ret
+
 jpt_1C0B0:	/* 0x1be1c */
 		.long   jump_1c202
 		.long   func_1c1a7
@@ -16159,12 +16160,14 @@ jpt_1C0B0:	/* 0x1be1c */
 		.long   func_1c1a7
 		.long   func_1c0b8
 		.long   func_1c110
+jpt_1BE5C:	/* 0x1be5c */
 		.long   jump_1c7c0
 		.long   func_1c419
 		.long   func_1c3e1
 		.long   jump_1c7c0
 		.long   func_1c795
 		.long   jump_1c7c0
+jpt_1BE74:	/* 0x1be74 */
 		.long   jump_1cc3c
 		.long   func_1cb44
 		.long   func_1cb44
@@ -16534,7 +16537,7 @@ func_1c1a7:
 		ja     jump_1c7c0
 		xor    %eax,%eax
 		mov    %dh,%al
-		jmp    *%cs:0x1be5c(,%eax,4) /* Warning: address points to a valid object/reloc, but no label found */
+		jmp    *%cs:jpt_1BE5C(,%eax,4)
 
 
 /*----------------------------------------------------------------*/
@@ -17003,7 +17006,7 @@ func_1c795:
 		ja     jump_1cc3c
 		xor    %eax,%eax
 		mov    %di,%ax
-		jmp    *%cs:0x1be74(,%eax,4) /* Warning: address points to a valid object/reloc, but no label found */
+		jmp    *%cs:jpt_1BE74(,%eax,4)
 
 
 /*----------------------------------------------------------------*/
@@ -55511,6 +55514,8 @@ SetBFSampleStatus:	/* 0x387e0 */
 		mov    0x8(%esp),%al
 		mov    %eax,%edx
 		mov    smptable,%ebx
+		cmp    $0x0,%ebx
+		je     jump_3882e
 		shl    $0x5,%edx
 		cmpb   $0x0,0x1e(%edx,%ebx,1)
 		je     jump_3882e
