@@ -75655,7 +75655,9 @@ func_4c797:
 		leave
 		ret
 
-vtable_4cb74:
+.data
+
+dword_4CB74:	/* 0x4CB74, 68 elements */
 		.long   0
 		.long   0
 		.long   0
@@ -75725,6 +75727,7 @@ vtable_4cb74:
 		.long   0
 		.long   0
 
+.text
 
 /*----------------------------------------------------------------*/
 func_4cc84:
@@ -75738,7 +75741,7 @@ func_4cc84:
 		push   %esi
 		push   %edi
 		mov    EXPORT_SYMBOL(WScreen),%esi
-		mov    $vtable_4cb74,%edi
+		mov    $dword_4CB74,%edi
 		movzwl 0x8(%ebp),%eax
 		imul   $0x50,%eax,%eax
 		add    %eax,%esi
@@ -75784,7 +75787,7 @@ func_4cce7:
 		push   %esi
 		push   %edi
 		mov    EXPORT_SYMBOL(WScreen),%esi
-		mov    $vtable_4cb74,%edi
+		mov    $dword_4CB74,%edi
 		movzwl 0x8(%ebp),%eax
 		imul   $0x50,%eax,%eax
 		add    %eax,%esi
