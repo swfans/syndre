@@ -2038,7 +2038,7 @@ mission_briefing:	/* 0x10e60 */
 		add    $0x28,%esp
 		call   PlaceMouse_A
 #if !defined(DOS) /* new bflibrary has generic screen swapping routine */
-		call   ac_LbScreenSwap
+		call   ac_swap_wscreen
 #else
 		call   LbScreenSwapMCGA
 #endif
@@ -10498,7 +10498,7 @@ configure_company:	/* 0x175c0 */
 	jump_17c16:
 		call   PlaceMouse_A
 #if !defined(DOS) /* new bflibrary has generic screen swapping routine */
-		call   ac_LbScreenSwap
+		call   ac_swap_wscreen
 #else
 		call   LbScreenSwapMCGA
 #endif
@@ -11224,7 +11224,7 @@ swap_screen:	/* 0x18650 */
 /*----------------------------------------------------------------*/
 		call   PlaceMouse_A
 #if !defined(DOS) /* new bflibrary has generic screen swapping routine */
-		call   ac_LbScreenSwap
+		call   ac_swap_wscreen
 #else
 		call   LbScreenSwapMCGA
 #endif
@@ -11257,7 +11257,7 @@ draw_config_menu_box:	/* 0x18670 */
 		add    $0x4,%esp
 		call   PlaceMouse_A
 #if !defined(DOS) /* new bflibrary has generic screen swapping routine */
-		call   ac_LbScreenSwap
+		call   ac_swap_wscreen
 #else
 		call   LbScreenSwapMCGA
 #endif
@@ -13381,7 +13381,7 @@ debrief:	/* 0x18ff0 */
 		movb   $0x3,-0xc(%ebp)
 		call   PlaceMouse_A
 #if !defined(DOS) /* new bflibrary has generic screen swapping routine */
-		call   ac_LbScreenSwap
+		call   ac_swap_wscreen
 #else
 		call   LbScreenSwapMCGA
 #endif
@@ -24392,7 +24392,7 @@ func_227c8:
 		movb   $0x18,-0x8(%ebp)
 		call   PlaceMouse_A
 #if !defined(DOS) /* new bflibrary has generic screen swapping routine */
-		call   ac_LbScreenSwap
+		call   ac_swap_wscreen
 #else
 		call   LbScreenSwapMCGA
 #endif
@@ -30501,7 +30501,7 @@ func_27280:
 		movb   $0xd,0x8(%esp)
 		call   PlaceMouse_A
 #if !defined(DOS) /* new bflibrary has generic screen swapping routine */
-		call   ac_LbScreenSwap
+		call   ac_swap_wscreen
 #else
 		call   LbScreenSwapMCGA
 #endif
@@ -31754,7 +31754,7 @@ map_selection:	/* 0x27e00 */
 		add    $0x1c,%esp
 		call   PlaceMouse_A
 #if !defined(DOS) /* new bflibrary has generic screen swapping routine */
-		call   ac_LbScreenSwap
+		call   ac_swap_wscreen
 #else
 		call   LbScreenSwapMCGA
 #endif
@@ -32099,7 +32099,7 @@ display_cities:	/* 0x28580 */
 		jne    jump_285fd
 		call   LbCopyScreenFromBackMCGA
 #if !defined(DOS) /* new bflibrary has generic screen swapping routine */
-		call   ac_LbScreenSwap
+		call   ac_swap_wscreen
 #else
 		call   LbScreenSwapMCGA
 #endif
@@ -33648,7 +33648,7 @@ func_29818:
 	def_2998D:	/* 0x29825 */
 		call   PlaceMouse_A
 #if !defined(DOS) /* new bflibrary has generic screen swapping routine */
-		call   ac_LbScreenSwap
+		call   ac_swap_wscreen
 #else
 		call   LbScreenSwapMCGA
 #endif
@@ -51689,7 +51689,7 @@ func_359e6:
 		movb   $0x8,0x76(%ebp)
 		call   PlaceMouse_A
 #if !defined(DOS) /* new bflibrary has generic screen swapping routine */
-		call   ac_LbScreenSwap
+		call   ac_swap_wscreen
 #else
 		call   LbScreenSwapMCGA
 #endif
@@ -54093,7 +54093,7 @@ func_37764:
 		jne    jump_377b2
 	jump_37797:
 #if !defined(DOS) /* add input refresh, as otherwise this is just an infinite loop */
-		call   ac_LbScreenSwap
+		call   ac_swap_wscreen
 		call   ac_game_update
 #endif
 		cmpb   $0x0,EXPORT_SYMBOL(lbDisplay)+106	/* lbDisplay.MLeftButton */
@@ -54178,7 +54178,7 @@ func_37800:
 		cmpl   $0x6,0x4(%esp)
 		je     jump_37c36
 #if !defined(DOS) /* add input refresh, as otherwise this is just an infinite loop */
-		call   ac_LbScreenSwap
+		call   ac_swap_wscreen
 		call   ac_game_update
 #endif
 		cmpb   $0x0,EXPORT_SYMBOL(lbKeyOn)+0x44	/* lbKeyOn[KC_F10] */
@@ -54493,7 +54493,7 @@ func_37bdd:
 		call   PlaceMouse_A
 	jump_37c21:
 #if !defined(DOS) /* new bflibrary has generic screen swapping routine */
-		call   ac_LbScreenSwap
+		call   ac_swap_wscreen
 #else
 		call   LbScreenSwapMCGA
 #endif
@@ -54625,7 +54625,7 @@ func_37bdd:
 		call   new_show_text
 		add    $0x28,%esp
 #if !defined(DOS) /* new bflibrary has generic screen swapping routine */
-		call   ac_LbScreenSwap
+		call   ac_swap_wscreen
 #else
 		call   LbScreenSwapMCGA
 #endif
@@ -61571,7 +61571,7 @@ AniPlay:	/* 0x3c558 */
 		mov    $0x3e80,%ecx
 		rep movsl %ds:(%esi),%es:(%edi)
 #else
-		call   ac_LbScreenSwap
+		call   ac_swap_wscreen
 #endif
 		pop    %esi
 		pop    %edi

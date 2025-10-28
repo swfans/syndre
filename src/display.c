@@ -5,6 +5,7 @@
 
 #include "bftext.h"
 #include "bfmemory.h"
+#include "bfmemut.h"
 #include "bfmouse.h"
 #include "bfpalette.h"
 #include "bfscreen.h"
@@ -56,7 +57,8 @@ TbResult AppScreenSetup(TbScreenMode mode)
     if (mode == 19)
         mode = Lb_SCREEN_MODE_320_200_8;
     else if (mode == 18)
-        mode = Lb_SCREEN_MODE_640_480_8; // should we add 4BPP mode?
+        mode = Lb_SCREEN_MODE_640_480_8;
+    lbDisplay.WScreen = VGABuffer + 640*480;
 
     mdinfo = LbScreenGetModeInfo(mode);
     LOGSYNC("Entering mode %d, %dx%d", (int)mode, (int)mdinfo->Width, (int)mdinfo->Height);
@@ -101,6 +103,7 @@ void display_set_lowres_stretch(bool stretch)
 
 void display_create_vga_buffer(void)
 {
+    // First for 4bpp buffer, second for 8BPP WScreen buffer
     VGABuffer = LbMemoryAlloc(640*480 * 2 + 16);
 }
 
@@ -124,8 +127,12 @@ void swap_wscreen(void)
 {
     TbBool was_locked;
     was_locked = LbScreenIsLocked();
-    if ( was_locked )
-        LbScreenUnlock();
+    LbScreenLock();
+    if (DrawFlags & DrwF_ScreenVres16)
+        LbMemoryCopy(lbDisplay.WScreen, VGABuffer, 640*480);
+    else
+        LbMemoryCopy(lbDisplay.WScreen, WScreen, 320*200);
+    LbScreenUnlock();
     LbScreenSwap();
     if ( was_locked )
     {
