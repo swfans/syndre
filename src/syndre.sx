@@ -17861,11 +17861,16 @@ func_1d2c0:
 	jump_1d340:
 		call   PlaceMouse_A
 	jump_1d345:
+#if !defined(DOS) /* new bflibrary has generic screen swapping routine */
+		xor    %dl,%dl
+		mov    %dl,data_60b4f
+		call   ac_swap_wscreen
+#else
 		cmpb   $0x0,data_60b4f
 		je     jump_1d35d
 		xor    %dl,%dl
 		mov    %dl,data_60b4f
-		call   func_4ce2c
+		call   LbScreenSwapVres16
 		jmp    jump_1d388
 	jump_1d35d:
 		call   screen_ega_bitmask_allow_all
@@ -17883,11 +17888,14 @@ func_1d2c0:
 		cmp    $0x19,%ebx
 		jl     jump_1d370
 		call   func_4cd4a
+#endif
 	jump_1d388:
 		call   RemoveMouse_A
 		pop    %esi
 		pop    %ebx
 		ret
+
+
 jpt_1D596:	/* 0x1d390 */
 		.long   func_1d5b3
 		.long   func_1d5b3
@@ -75884,7 +75892,7 @@ func_4cd4a:
 
 
 /*----------------------------------------------------------------*/
-func_4ce2c:
+LbScreenSwapVres16:
 /*----------------------------------------------------------------*/
 		push   %ebx
 		push   %ecx
