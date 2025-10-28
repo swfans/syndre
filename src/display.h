@@ -29,6 +29,20 @@ enum DrawFlagsVals
   DrwF_Unkn04 = 0x4,
 };
 
+extern ubyte DrawFlags;
+
+/** Simulated hardware VGA buffer, used only in Vres16 mode.
+ * To be removed (replaced by lbDisplay.WScreen) when the game switches to 8bpp graphics.
+ */
+extern ubyte *VGABuffer;
+
+/** Working screen pointer used by the game.
+ * Unlike other Bullfrog games, it does not always store the complete game screen.
+ * In mission it is used to store static/scrolling elements, while sprites are
+ * drawn on VScreen.
+ */
+extern ubyte *WScreen;
+
 extern ubyte *GraphicsPalette;
 
 void display_lock (void);
@@ -38,6 +52,9 @@ void swap_wscreen(void);
 
 void display_set_full_screen(bool full_screen);
 void display_set_lowres_stretch(bool stretch);
+
+void display_create_vga_buffer(void);
+void display_free_vga_buffer(void);
 
 /******************************************************************************/
 #endif // DISPLAY_H

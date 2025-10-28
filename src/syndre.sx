@@ -71335,7 +71335,7 @@ func_48a40:
 
 .data
 
-data_48ad0:
+data_48ad0: /* 0x48ad0, 36 dwords */
 		.long   0
 		.long   0
 		.long   0

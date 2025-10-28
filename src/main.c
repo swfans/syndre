@@ -30,7 +30,6 @@ extern ushort sndcard_dma;
 extern ushort sndcard_ioaddr;
 extern ubyte unused_option_p;
 extern char Network__Name[18];
-extern ubyte DrawFlags;
 
 // From bfsoundlib
 extern TbBool SoundAble;
@@ -280,6 +279,7 @@ int main (int argc, char **argv)
     if (!game_initialise())
         return 1;
 
+    display_create_vga_buffer();
     display_set_full_screen(cmdln_fullscreen);
     display_set_lowres_stretch(cmdln_lores_stretch);
 
@@ -347,6 +347,7 @@ int main (int argc, char **argv)
 # endif
 #endif
 
+    display_free_vga_buffer();
     LbErrorLogReset();
     LbMemoryReset();
     game_quit();

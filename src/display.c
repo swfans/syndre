@@ -4,6 +4,7 @@
 #include <assert.h>
 
 #include "bftext.h"
+#include "bfmemory.h"
 #include "bfmouse.h"
 #include "bfpalette.h"
 #include "bfscreen.h"
@@ -13,6 +14,7 @@
 #include "display.h"
 #include "util.h"
 
+ubyte *VGABuffer = NULL;
 
 #if defined(WIN32)
 
@@ -97,16 +99,25 @@ void display_set_lowres_stretch(bool stretch)
         LbScreenSetMinScreenSurfaceDimension(1);
 }
 
-void
-display_lock (void)
+void display_create_vga_buffer(void)
 {
-  LbScreenLock();
+    VGABuffer = LbMemoryAlloc(640*480 * 2 + 16);
 }
 
-void
-display_unlock (void)
+void display_free_vga_buffer(void)
 {
-  LbScreenUnlock();
+    LbMemoryFree(VGABuffer);
+    VGABuffer = NULL;
+}
+
+void display_lock(void)
+{
+    LbScreenLock();
+}
+
+void display_unlock(void)
+{
+    LbScreenUnlock();
 }
 
 void swap_wscreen(void)
