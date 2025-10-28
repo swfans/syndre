@@ -32,6 +32,7 @@ enum DrawFlagsVals
 extern ubyte DrawFlags;
 
 /** Simulated hardware VGA buffer, used only in Vres16 mode.
+ * the game sets if VScreen pointer based on this buffer.
  * To be removed (replaced by lbDisplay.WScreen) when the game switches to 8bpp graphics.
  */
 extern ubyte *VGABuffer;

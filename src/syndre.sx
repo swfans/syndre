@@ -27747,7 +27747,8 @@ load_map_level:	/* 0x252b0 */
 		mov    %dl,0xa(%esi)
 		cmp    $0x2,%ah
 		jne    jump_253a9
-		mov    $0xa0c80,%edx
+		mov    EXPORT_SYMBOL(VGABuffer),%edx
+		add    $0x0c80,%edx
 		mov    EXPORT_SYMBOL(WScreen),%ebx
 		push   $EXPORT_SYMBOL(level__Seed)
 		lea    0x1f408(%ebx),%eax
@@ -54058,7 +54059,7 @@ select:	/* 0x37600 */
 		add    $0xfa00,%eax
 		mov    %eax,BScreen
 		add    $0xfa00,%eax
-		mov    $0xa0000,%ebp
+		mov    EXPORT_SYMBOL(VGABuffer),%ebp
 		mov    %eax,data_60ab0
 		add    $0x1000,%eax
 		mov    %ebp,VScreen
@@ -54712,7 +54713,7 @@ LbCopyScreenToBackMCGA:	/* 0x37e40 */
 LbScreenSwapMCGA:	/* 0x37e90 */
 /*----------------------------------------------------------------*/
 		push   %ebx
-		mov    $0xa0000,%eax
+		mov    EXPORT_SYMBOL(VGABuffer),%eax
 		mov    $0x3e80,%ebx
 		mov    EXPORT_SYMBOL(WScreen),%edx
 		lea    0x0(%eax),%eax
@@ -61566,7 +61567,7 @@ AniPlay:	/* 0x3c558 */
 		push   %edi
 		push   %esi
 #if defined(DOS)	/* copy WScreen to screen buffer, DOS method */
-		mov    $0xa0000,%edi
+		mov    EXPORT_SYMBOL(VGABuffer),%edi
 		mov    EXPORT_SYMBOL(WScreen),%esi
 		mov    $0x3e80,%ecx
 		rep movsl %ds:(%esi),%es:(%edi)
@@ -75115,28 +75116,28 @@ LbScreenClearVres16:
 		out    %ax,(%dx)
 		push   $0x9600
 		push   0x8(%ebp)
-		push   $0xa0000
+		push   EXPORT_SYMBOL(VGABuffer)
 		call   ac_LbMemorySet
 		add    $0xc,%esp
 		mov    $0x202,%ax
 		out    %ax,(%dx)
 		push   $0x9600
 		push   0x8(%ebp)
-		push   $0xa0000
+		push   EXPORT_SYMBOL(VGABuffer)
 		call   ac_LbMemorySet
 		add    $0xc,%esp
 		mov    $0x402,%ax
 		out    %ax,(%dx)
 		push   $0x9600
 		push   0x8(%ebp)
-		push   $0xa0000
+		push   EXPORT_SYMBOL(VGABuffer)
 		call   ac_LbMemorySet
 		add    $0xc,%esp
 		mov    $0x802,%ax
 		out    %ax,(%dx)
 		push   $0x9600
 		push   0x8(%ebp)
-		push   $0xa0000
+		push   EXPORT_SYMBOL(VGABuffer)
 		call   ac_LbMemorySet
 		add    $0xc,%esp
 		jmp    jump_4c2e1
