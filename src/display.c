@@ -128,9 +128,11 @@ void swap_wscreen(void)
     TbBool was_locked;
     was_locked = LbScreenIsLocked();
     LbScreenLock();
+#if 0 // Enable when buffer handling is fixed in assembly
     if (DrawFlags & DrwF_ScreenVres16)
         LbMemoryCopy(lbDisplay.WScreen, VGABuffer, 640*480);
     else
+#endif
         LbMemoryCopy(lbDisplay.WScreen, WScreen, 320*200);
     LbScreenUnlock();
     LbScreenSwap();

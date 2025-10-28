@@ -17864,6 +17864,7 @@ func_1d2c0:
 	jump_1d340:
 		call   PlaceMouse_A
 	jump_1d345:
+/* TODO this is incorrectly altered; we need to copy everything from WScreen to VScreen ! */
 #if !defined(DOS) /* new bflibrary has generic screen swapping routine */
 		xor    %dl,%dl
 		mov    %dl,data_60b4f
