@@ -65561,7 +65561,7 @@ func_42f98:
 		and    %ecx,0x3c0(%edi)
 		and    %ecx,0x80c0(%edi)
 		and    %ecx,0xfdc0(%edi)
-		and    %ecx,jump_17ac0(%edi)
+		and    %ecx,0x17ac0(%edi)
 		not    %ecx
 		mov    0x3c0(%eax),%edx
 		and    %ecx,%edx
@@ -65572,9 +65572,9 @@ func_42f98:
 		mov    0xfdc0(%eax),%edx
 		and    %ecx,%edx
 		or     %edx,0xfdc0(%edi)
-		mov    jump_17ac0(%eax),%edx
+		mov    0x17ac0(%eax),%edx
 		and    %ecx,%edx
-		or     %edx,jump_17ac0(%edi)
+		or     %edx,0x17ac0(%edi)
 		mov    0x104(%ebx),%ecx
 		not    %ecx
 		and    %ecx,0x410(%edi)
@@ -65740,8 +65740,8 @@ func_43513:
 		mov    %edx,0x80c0(%edi)
 		mov    0xfdc0(%eax),%edx
 		mov    %edx,0xfdc0(%edi)
-		mov    jump_17ac0(%eax),%edx
-		mov    %edx,jump_17ac0(%edi)
+		mov    0x17ac0(%eax),%edx
+		mov    %edx,0x17ac0(%edi)
 		mov    0x410(%eax),%edx
 		mov    %edx,0x410(%edi)
 		mov    0x8110(%eax),%edx
@@ -66106,7 +66106,7 @@ func_43b5e:
 		mov    %eax,0x3c0(%edi)
 		mov    %eax,0x80c0(%edi)
 		mov    %eax,0xfdc0(%edi)
-		mov    %eax,jump_17ac0(%edi)
+		mov    %eax,0x17ac0(%edi)
 		mov    %eax,0x410(%edi)
 		mov    %eax,0x8110(%edi)
 		mov    %eax,0xfe10(%edi)
@@ -66284,7 +66284,7 @@ func_43b5e:
 		and    %eax,0x3c0(%edi)
 		and    %eax,0x80c0(%edi)
 		and    %eax,0xfdc0(%edi)
-		and    %eax,jump_17ac0(%edi)
+		and    %eax,0x17ac0(%edi)
 		mov    0xf4(%ebx),%eax
 		or     %eax,0x3c0(%edi)
 		mov    0xf8(%ebx),%eax
@@ -66292,7 +66292,7 @@ func_43b5e:
 		mov    0xfc(%ebx),%eax
 		or     %eax,0xfdc0(%edi)
 		mov    0x100(%ebx),%eax
-		or     %eax,jump_17ac0(%edi)
+		or     %eax,0x17ac0(%edi)
 		mov    0x104(%ebx),%eax
 		and    %eax,0x410(%edi)
 		and    %eax,0x8110(%edi)
@@ -75368,8 +75368,8 @@ copy_screen_cube:	/* 0x4c41f */
 		mov    %eax,0x80c0(%edi)
 		mov    0xfdc0(%esi),%eax
 		mov    %eax,0xfdc0(%edi)
-		mov    jump_17ac0(%esi),%eax
-		mov    %eax,jump_17ac0(%edi)
+		mov    0x17ac0(%esi),%eax
+		mov    %eax,0x17ac0(%edi)
 		mov    0x410(%esi),%eax
 		mov    %eax,0x410(%edi)
 		mov    0x8110(%esi),%eax
@@ -75613,7 +75613,7 @@ func_4c797:
 		mov    %eax,0x320(%edi)
 		mov    0x17a70(%esi),%eax
 		mov    %eax,0x370(%edi)
-		mov    jump_17ac0(%esi),%eax
+		mov    0x17ac0(%esi),%eax
 		mov    %eax,0x3c0(%edi)
 		mov    0x17b10(%esi),%eax
 		mov    %eax,0x410(%edi)
