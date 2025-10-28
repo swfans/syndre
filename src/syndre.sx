@@ -267,6 +267,9 @@ GLOBAL_FUNC(syndicate)	/* 0x101e0 */
 		call   draw_mapwho
 		call   draw_panel
 		call   click_map
+#if !defined(DOS) /* add input refresh, as DOS interrupts are not available */
+		call   ac_game_update
+#endif
 		cmp    $0x3,%ebx
 		jae    jump_102dc
 		inc    %ebx
