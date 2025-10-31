@@ -52,7 +52,7 @@ TbResult AppScreenSetup(TbScreenMode mode)
     TbResult ret;
     ushort ratio_mul;
 
-    ratio_mul = 2;
+    ratio_mul = 1;
     // Mapping of video modes
     if (mode == 19)
         mode = Lb_SCREEN_MODE_320_200_8;
@@ -263,7 +263,8 @@ void swap_wscreen(void)
 {
     TbBool was_locked;
     was_locked = LbScreenIsLocked();
-    LbScreenLock();
+    if (!was_locked)
+        LbScreenLock();
     if (DrawFlags & DrwF_ScreenVres16)
         blit_wscreen_vres16(VGABuffer);
     else

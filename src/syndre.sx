@@ -28,6 +28,7 @@
 
 #endif
 
+#define USE_BFLIB_MOUSE_CURSOR 1
 
 .text
 
@@ -248,18 +249,18 @@ GLOBAL_FUNC(syndicate)	/* 0x101e0 */
 		add    $0x4,%esp
 	jump_1028e:
 		xor    %eax,%eax
-		mov    EXPORT_SYMBOL(lbDisplay)+84,%ax
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseY_400),%ax
 		push   %eax
 		xor    %eax,%eax
-		mov    EXPORT_SYMBOL(lbDisplay)+80,%ax	/* lbDisplay.MMouseX */
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseX_640),%ax	/* lbDisplay.MMouseX but scaled */
 		push   %eax
 		call   scroll_map
 		add    $0x8,%esp
 		xor    %eax,%eax
-		mov    EXPORT_SYMBOL(lbDisplay)+84,%ax
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseY_400),%ax
 		push   %eax
 		xor    %eax,%eax
-		mov    EXPORT_SYMBOL(lbDisplay)+80,%ax	/* lbDisplay.MMouseX */
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseX_640),%ax	/* lbDisplay.MMouseX but scaled */
 		push   %eax
 		call   scroll_map
 		add    $0x8,%esp
@@ -1414,15 +1415,15 @@ mission_briefing:	/* 0x10e60 */
 		call   DrawAcceptGadget
 		call   DrawMenuGadget
 		push   $0xc
-		mov    EXPORT_SYMBOL(lbDisplay)+84,%ax
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseY_400),%ax
 		push   $0xfffffffe
 		cmp    $0x15a,%ax
 		jbe    jump_110e6
-		cmpw   $0x172,EXPORT_SYMBOL(lbDisplay)+84
+		cmpw   $0x172,EXPORT_SYMBOL(lbDisplay__MMouseY_400)
 		jae    jump_110e6
-		cmpw   $0x94,EXPORT_SYMBOL(lbDisplay)+80	/* lbDisplay.MMouseX */
+		cmpw   $0x94,EXPORT_SYMBOL(lbDisplay__MMouseX_640)	/* lbDisplay.MMouseX but scaled */
 		jbe    jump_110e6
-		cmpw   $0xf6,EXPORT_SYMBOL(lbDisplay)+80	/* lbDisplay.MMouseX */
+		cmpw   $0xf6,EXPORT_SYMBOL(lbDisplay__MMouseX_640)	/* lbDisplay.MMouseX but scaled */
 		jae    jump_110e6
 		mov    $0x166,%eax
 		jmp    jump_110eb
@@ -1441,15 +1442,15 @@ mission_briefing:	/* 0x10e60 */
 		call   DrawScreenGadget
 		add    $0x1c,%esp
 		push   $0xc
-		mov    EXPORT_SYMBOL(lbDisplay)+84,%ax
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseY_400),%ax
 		push   $0xfffffffe
 		cmp    $0x6c,%ax
 		jbe    jump_1114c
-		cmpw   $0x9e,EXPORT_SYMBOL(lbDisplay)+84
+		cmpw   $0x9e,EXPORT_SYMBOL(lbDisplay__MMouseY_400)
 		jae    jump_1114c
-		cmpw   $0x1f4,EXPORT_SYMBOL(lbDisplay)+80	/* lbDisplay.MMouseX */
+		cmpw   $0x1f4,EXPORT_SYMBOL(lbDisplay__MMouseX_640)	/* lbDisplay.MMouseX but scaled */
 		jbe    jump_1114c
-		cmpw   $0x272,EXPORT_SYMBOL(lbDisplay)+80	/* lbDisplay.MMouseX */
+		cmpw   $0x272,EXPORT_SYMBOL(lbDisplay__MMouseX_640)	/* lbDisplay.MMouseX but scaled */
 		jae    jump_1114c
 		mov    $0x166,%eax
 		jmp    jump_11151
@@ -1468,15 +1469,15 @@ mission_briefing:	/* 0x10e60 */
 		call   DrawScreenGadget
 		add    $0x1c,%esp
 		push   $0xc
-		mov    EXPORT_SYMBOL(lbDisplay)+84,%ax
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseY_400),%ax
 		push   $0xfffffffe
 		cmp    $0xa2,%ax
 		jbe    jump_111af
-		cmpw   $0xd4,EXPORT_SYMBOL(lbDisplay)+84
+		cmpw   $0xd4,EXPORT_SYMBOL(lbDisplay__MMouseY_400)
 		jae    jump_111af
-		cmpw   $0x1f4,EXPORT_SYMBOL(lbDisplay)+80	/* lbDisplay.MMouseX */
+		cmpw   $0x1f4,EXPORT_SYMBOL(lbDisplay__MMouseX_640)	/* lbDisplay.MMouseX but scaled */
 		jbe    jump_111af
-		cmpw   $0x272,EXPORT_SYMBOL(lbDisplay)+80	/* lbDisplay.MMouseX */
+		cmpw   $0x272,EXPORT_SYMBOL(lbDisplay__MMouseX_640)	/* lbDisplay.MMouseX but scaled */
 		jae    jump_111af
 		mov    $0x166,%eax
 		jmp    jump_111b4
@@ -1677,13 +1678,13 @@ mission_briefing:	/* 0x10e60 */
 		cmpb   $0x0,0x62(%ebp)
 		je     jump_11456
 		mov    $0x52,%ebx
-		cmpw   $0x1ac,EXPORT_SYMBOL(lbDisplay)+80	/* lbDisplay.MMouseX */
+		cmpw   $0x1ac,EXPORT_SYMBOL(lbDisplay__MMouseX_640)	/* lbDisplay.MMouseX but scaled */
 		jbe    jump_1142b
-		cmpw   $0x1ca,EXPORT_SYMBOL(lbDisplay)+80	/* lbDisplay.MMouseX */
+		cmpw   $0x1ca,EXPORT_SYMBOL(lbDisplay__MMouseX_640)	/* lbDisplay.MMouseX but scaled */
 		jae    jump_1142b
-		cmpw   $0x13c,EXPORT_SYMBOL(lbDisplay)+84
+		cmpw   $0x13c,EXPORT_SYMBOL(lbDisplay__MMouseY_400)
 		jbe    jump_1142b
-		cmpw   $0x152,EXPORT_SYMBOL(lbDisplay)+84
+		cmpw   $0x152,EXPORT_SYMBOL(lbDisplay__MMouseY_400)
 		jae    jump_1142b
 		mov    $0x50,%ebx
 	jump_1142b:
@@ -1705,13 +1706,13 @@ mission_briefing:	/* 0x10e60 */
 		cmpl   $0x0,-0x6(%ebp,%eax,4)
 		je     jump_114c3
 		mov    $0x51,%ebx
-		cmpw   $0x1ce,EXPORT_SYMBOL(lbDisplay)+80	/* lbDisplay.MMouseX */
+		cmpw   $0x1ce,EXPORT_SYMBOL(lbDisplay__MMouseX_640)	/* lbDisplay.MMouseX but scaled */
 		jbe    jump_11498
-		cmpw   $0x1ec,EXPORT_SYMBOL(lbDisplay)+80	/* lbDisplay.MMouseX */
+		cmpw   $0x1ec,EXPORT_SYMBOL(lbDisplay__MMouseX_640)	/* lbDisplay.MMouseX but scaled */
 		jae    jump_11498
-		cmpw   $0x13c,EXPORT_SYMBOL(lbDisplay)+84
+		cmpw   $0x13c,EXPORT_SYMBOL(lbDisplay__MMouseY_400)
 		jbe    jump_11498
-		cmpw   $0x152,EXPORT_SYMBOL(lbDisplay)+84
+		cmpw   $0x152,EXPORT_SYMBOL(lbDisplay__MMouseY_400)
 		jae    jump_11498
 		mov    $0x4f,%ebx
 	jump_11498:
@@ -1751,21 +1752,21 @@ mission_briefing:	/* 0x10e60 */
 	jump_11508:
 		cmpb   $0x0,EXPORT_SYMBOL(lbDisplay)+106	/* lbDisplay.MLeftButton */
 		je     jump_11668
-		cmpw   $0x1f4,EXPORT_SYMBOL(lbDisplay)+80	/* lbDisplay.MMouseX */
+		cmpw   $0x1f4,EXPORT_SYMBOL(lbDisplay__MMouseX_640)	/* lbDisplay.MMouseX but scaled */
 		jbe    jump_11668
-		cmpw   $0x274,EXPORT_SYMBOL(lbDisplay)+80	/* lbDisplay.MMouseX */
+		cmpw   $0x274,EXPORT_SYMBOL(lbDisplay__MMouseX_640)	/* lbDisplay.MMouseX but scaled */
 		jae    jump_11668
-		cmpw   $0xd8,EXPORT_SYMBOL(lbDisplay)+84
+		cmpw   $0xd8,EXPORT_SYMBOL(lbDisplay__MMouseY_400)
 		jbe    jump_11668
-		cmpw   $0x158,EXPORT_SYMBOL(lbDisplay)+84
+		cmpw   $0x158,EXPORT_SYMBOL(lbDisplay__MMouseY_400)
 		jae    jump_11668
-		cmpw   $0x1f4,EXPORT_SYMBOL(lbDisplay)+80	/* lbDisplay.MMouseX */
+		cmpw   $0x1f4,EXPORT_SYMBOL(lbDisplay__MMouseX_640)	/* lbDisplay.MMouseX but scaled */
 		jbe    jump_11595
-		cmpw   $0x274,EXPORT_SYMBOL(lbDisplay)+80	/* lbDisplay.MMouseX */
+		cmpw   $0x274,EXPORT_SYMBOL(lbDisplay__MMouseX_640)	/* lbDisplay.MMouseX but scaled */
 		jae    jump_11595
-		cmpw   $0xd8,EXPORT_SYMBOL(lbDisplay)+84
+		cmpw   $0xd8,EXPORT_SYMBOL(lbDisplay__MMouseY_400)
 		jbe    jump_11595
-		cmpw   $0x102,EXPORT_SYMBOL(lbDisplay)+84
+		cmpw   $0x102,EXPORT_SYMBOL(lbDisplay__MMouseY_400)
 		jae    jump_11595
 		xor    %eax,%eax
 		mov    0x5e(%ebp),%al
@@ -1778,13 +1779,13 @@ mission_briefing:	/* 0x10e60 */
 		xor    %eax,%eax
 		mov    %eax,0x4a(%ebp)
 	jump_11595:
-		cmpw   $0x1f4,EXPORT_SYMBOL(lbDisplay)+80	/* lbDisplay.MMouseX */
+		cmpw   $0x1f4,EXPORT_SYMBOL(lbDisplay__MMouseX_640)	/* lbDisplay.MMouseX but scaled */
 		jbe    jump_115dc
-		cmpw   $0x274,EXPORT_SYMBOL(lbDisplay)+80	/* lbDisplay.MMouseX */
+		cmpw   $0x274,EXPORT_SYMBOL(lbDisplay__MMouseX_640)	/* lbDisplay.MMouseX but scaled */
 		jae    jump_115dc
-		cmpw   $0x12e,EXPORT_SYMBOL(lbDisplay)+84
+		cmpw   $0x12e,EXPORT_SYMBOL(lbDisplay__MMouseY_400)
 		jbe    jump_115dc
-		cmpw   $0x158,EXPORT_SYMBOL(lbDisplay)+84
+		cmpw   $0x158,EXPORT_SYMBOL(lbDisplay__MMouseY_400)
 		jae    jump_115dc
 		xor    %eax,%eax
 		mov    0x5e(%ebp),%al
@@ -1796,13 +1797,13 @@ mission_briefing:	/* 0x10e60 */
 		jl     jump_115dc
 		movl   $0x5f,0x4a(%ebp)
 	jump_115dc:
-		cmpw   $0x1f4,EXPORT_SYMBOL(lbDisplay)+80	/* lbDisplay.MMouseX */
+		cmpw   $0x1f4,EXPORT_SYMBOL(lbDisplay__MMouseX_640)	/* lbDisplay.MMouseX but scaled */
 		jbe    jump_11620
-		cmpw   $0x21e,EXPORT_SYMBOL(lbDisplay)+80
+		cmpw   $0x21e,EXPORT_SYMBOL(lbDisplay__MMouseX_640)
 		jae    jump_11620
-		cmpw   $0xd8,EXPORT_SYMBOL(lbDisplay)+84
+		cmpw   $0xd8,EXPORT_SYMBOL(lbDisplay__MMouseY_400)
 		jbe    jump_11620
-		cmpw   $0x158,EXPORT_SYMBOL(lbDisplay)+84
+		cmpw   $0x158,EXPORT_SYMBOL(lbDisplay__MMouseY_400)
 		jae    jump_11620
 		xor    %eax,%eax
 		mov    0x5e(%ebp),%al
@@ -1815,13 +1816,13 @@ mission_briefing:	/* 0x10e60 */
 		xor    %ecx,%ecx
 		mov    %ecx,0x52(%ebp)
 	jump_11620:
-		cmpw   $0x24a,EXPORT_SYMBOL(lbDisplay)+80	/* lbDisplay.MMouseX */
+		cmpw   $0x24a,EXPORT_SYMBOL(lbDisplay__MMouseX_640)	/* lbDisplay.MMouseX but scaled */
 		jbe    jump_11668
-		cmpw   $0x274,EXPORT_SYMBOL(lbDisplay)+80
+		cmpw   $0x274,EXPORT_SYMBOL(lbDisplay__MMouseX_640)
 		jae    jump_11668
-		cmpw   $0xd8,EXPORT_SYMBOL(lbDisplay)+84
+		cmpw   $0xd8,EXPORT_SYMBOL(lbDisplay__MMouseY_400)
 		jbe    jump_11668
-		cmpw   $0x158,EXPORT_SYMBOL(lbDisplay)+84
+		cmpw   $0x158,EXPORT_SYMBOL(lbDisplay__MMouseY_400)
 		jae    jump_11668
 		xor    %eax,%eax
 		mov    0x5e(%ebp),%al
@@ -1839,13 +1840,13 @@ mission_briefing:	/* 0x10e60 */
 		mov    %bl,EXPORT_SYMBOL(lbDisplay)+103	/* lbDisplay.LeftButton */
 		cmpb   $0x0,0x62(%ebp)
 		je     jump_116b2
-		cmpw   $0x1ac,EXPORT_SYMBOL(lbDisplay)+80	/* lbDisplay.MMouseX */
+		cmpw   $0x1ac,EXPORT_SYMBOL(lbDisplay__MMouseX_640)	/* lbDisplay.MMouseX but scaled */
 		jbe    jump_116b2
-		cmpw   $0x1ca,EXPORT_SYMBOL(lbDisplay)+80
+		cmpw   $0x1ca,EXPORT_SYMBOL(lbDisplay__MMouseX_640)
 		jae    jump_116b2
-		cmpw   $0x13c,EXPORT_SYMBOL(lbDisplay)+84
+		cmpw   $0x13c,EXPORT_SYMBOL(lbDisplay__MMouseY_400)
 		jbe    jump_116b2
-		cmpw   $0x152,EXPORT_SYMBOL(lbDisplay)+84
+		cmpw   $0x152,EXPORT_SYMBOL(lbDisplay__MMouseY_400)
 		jae    jump_116b2
 		decb   0x62(%ebp)
 	jump_116b2:
@@ -1853,23 +1854,23 @@ mission_briefing:	/* 0x10e60 */
 		mov    0x62(%ebp),%al
 		cmpl   $0x0,-0x6(%ebp,%eax,4)
 		je     jump_116ed
-		cmpw   $0x1ce,EXPORT_SYMBOL(lbDisplay)+80	/* lbDisplay.MMouseX */
+		cmpw   $0x1ce,EXPORT_SYMBOL(lbDisplay__MMouseX_640)	/* lbDisplay.MMouseX but scaled */
 		jbe    jump_116ed
-		cmpw   $0x1ec,EXPORT_SYMBOL(lbDisplay)+80
+		cmpw   $0x1ec,EXPORT_SYMBOL(lbDisplay__MMouseX_640)
 		jae    jump_116ed
-		cmpw   $0x13c,EXPORT_SYMBOL(lbDisplay)+84
+		cmpw   $0x13c,EXPORT_SYMBOL(lbDisplay__MMouseY_400)
 		jbe    jump_116ed
-		cmpw   $0x152,EXPORT_SYMBOL(lbDisplay)+84
+		cmpw   $0x152,EXPORT_SYMBOL(lbDisplay__MMouseY_400)
 		jae    jump_116ed
 		incb   0x62(%ebp)
 	jump_116ed:
-		cmpw   $0x1f4,EXPORT_SYMBOL(lbDisplay)+72	/* lbDisplay.MouseX */
+		cmpw   $0x1f4,EXPORT_SYMBOL(lbDisplay__MouseX_640)	/* lbDisplay.MouseX but scaled */
 		jbe    jump_117c1
-		cmpw   $0x270,EXPORT_SYMBOL(lbDisplay)+72
+		cmpw   $0x270,EXPORT_SYMBOL(lbDisplay__MouseX_640)
 		jae    jump_117c1
-		cmpw   $0x6c,EXPORT_SYMBOL(lbDisplay)+76	/* lbDisplay.MouseY */
+		cmpw   $0x6c,EXPORT_SYMBOL(lbDisplay__MouseY_400)	/* lbDisplay.MouseY but scaled */
 		jbe    jump_117c1
-		cmpw   $0x9e,EXPORT_SYMBOL(lbDisplay)+76
+		cmpw   $0x9e,EXPORT_SYMBOL(lbDisplay__MouseY_400)
 		jae    jump_117c1
 		xor    %ebx,%ebx
 		mov    0x6a(%ebp),%bl
@@ -1919,13 +1920,13 @@ mission_briefing:	/* 0x10e60 */
 		test   %dh,%dh
 		jne    jump_11770
 	jump_117c1:
-		cmpw   $0x1f4,EXPORT_SYMBOL(lbDisplay)+72	/* lbDisplay.MouseX */
+		cmpw   $0x1f4,EXPORT_SYMBOL(lbDisplay__MouseX_640)	/* lbDisplay.MouseX but scaled */
 		jbe    jump_11844
-		cmpw   $0x270,EXPORT_SYMBOL(lbDisplay)+72
+		cmpw   $0x270,EXPORT_SYMBOL(lbDisplay__MouseX_640)
 		jae    jump_11844
-		cmpw   $0xa2,EXPORT_SYMBOL(lbDisplay)+76	/* lbDisplay.MouseY */
+		cmpw   $0xa2,EXPORT_SYMBOL(lbDisplay__MouseY_400)	/* lbDisplay.MouseY but scaled */
 		jbe    jump_11844
-		cmpw   $0xd4,EXPORT_SYMBOL(lbDisplay)+76
+		cmpw   $0xd4,EXPORT_SYMBOL(lbDisplay__MouseY_400)
 		jae    jump_11844
 		xor    %ebx,%ebx
 		mov    0x5e(%ebp),%bl
@@ -1951,36 +1952,36 @@ mission_briefing:	/* 0x10e60 */
 		mov    %ebx,players(%eax)
 		mov    %cl,0x5e(%ebp)
 	jump_11844:
-		cmpw   $0x10,EXPORT_SYMBOL(lbDisplay)+72	/* lbDisplay.MouseX */
+		cmpw   $0x10,EXPORT_SYMBOL(lbDisplay__MouseX_640)	/* lbDisplay.MouseX but scaled */
 		jbe    jump_1187a
-		cmpw   $0x92,EXPORT_SYMBOL(lbDisplay)+72
+		cmpw   $0x92,EXPORT_SYMBOL(lbDisplay__MouseX_640)
 		jae    jump_1187a
-		cmpw   $0x15a,EXPORT_SYMBOL(lbDisplay)+76
+		cmpw   $0x15a,EXPORT_SYMBOL(lbDisplay__MouseY_400)
 		jbe    jump_1187a
-		cmpw   $0x174,EXPORT_SYMBOL(lbDisplay)+76
+		cmpw   $0x174,EXPORT_SYMBOL(lbDisplay__MouseY_400)
 		jae    jump_1187a
 		movl   $0x7,0x46(%ebp)
 		movb   $0x1,0x6e(%ebp)
 	jump_1187a:
-		cmpw   $0x1f4,EXPORT_SYMBOL(lbDisplay)+72	/* lbDisplay.MouseX */
+		cmpw   $0x1f4,EXPORT_SYMBOL(lbDisplay__MouseX_640)	/* lbDisplay.MouseX but scaled */
 		jbe    jump_118af
-		cmpw   $0x274,EXPORT_SYMBOL(lbDisplay)+72
+		cmpw   $0x274,EXPORT_SYMBOL(lbDisplay__MouseX_640)
 		jae    jump_118af
-		cmpw   $0x15a,EXPORT_SYMBOL(lbDisplay)+76
+		cmpw   $0x15a,EXPORT_SYMBOL(lbDisplay__MouseY_400)
 		jbe    jump_118af
-		cmpw   $0x174,EXPORT_SYMBOL(lbDisplay)+76
+		cmpw   $0x174,EXPORT_SYMBOL(lbDisplay__MouseY_400)
 		jae    jump_118af
 		xor    %eax,%eax
 		mov    %eax,0x46(%ebp)
 		movb   $0x1,0x6e(%ebp)
 	jump_118af:
-		cmpw   $0x94,EXPORT_SYMBOL(lbDisplay)+72	/* lbDisplay.MouseX */
+		cmpw   $0x94,EXPORT_SYMBOL(lbDisplay__MouseX_640)	/* lbDisplay.MouseX but scaled */
 		jbe    jump_118e8
-		cmpw   $0xfc,EXPORT_SYMBOL(lbDisplay)+72
+		cmpw   $0xfc,EXPORT_SYMBOL(lbDisplay__MouseX_640)
 		jae    jump_118e8
-		cmpw   $0x15a,EXPORT_SYMBOL(lbDisplay)+76
+		cmpw   $0x15a,EXPORT_SYMBOL(lbDisplay__MouseY_400)
 		jbe    jump_118e8
-		cmpw   $0x172,EXPORT_SYMBOL(lbDisplay)+76
+		cmpw   $0x172,EXPORT_SYMBOL(lbDisplay__MouseY_400)
 		jae    jump_118e8
 		mov    $0x2,%edx
 		mov    $0x1,%ah
@@ -2514,12 +2515,12 @@ click_map:	/* 0x11ea0 */
 		sub    $0x10,%esp
 		mov    data_60b20,%bx
 		mov    data_60b1e,%si
-		mov    EXPORT_SYMBOL(lbDisplay)+80,%ax	/* lbDisplay.MMouseX */
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseX_640),%ax	/* lbDisplay.MMouseX but scaled */
 		sub    $0x80,%eax
 		and    $0x1f,%al
 		xor    %ah,%ah
 		mov    %eax,0x4(%esp)
-		mov    EXPORT_SYMBOL(lbDisplay)+84,%di
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseY_400),%di
 		and    $0xf,%edi
 		movswl %di,%eax
 		xor    %edx,%edx
@@ -2528,10 +2529,10 @@ click_map:	/* 0x11ea0 */
 		mov    %edx,data_60aac
 		push   %eax
 		xor    %eax,%eax
-		mov    EXPORT_SYMBOL(lbDisplay)+80,%ax	/* lbDisplay.MMouseX */
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseX_640),%ax	/* lbDisplay.MMouseX but scaled */
 		sub    $0x80,%eax
 		sar    $1,%eax
-		mov    EXPORT_SYMBOL(lbDisplay)+84,%dx
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseY_400),%dx
 		sub    %eax,%edx
 		movswl player_view_map_y,%eax
 		shl    $0x4,%eax
@@ -2540,11 +2541,11 @@ click_map:	/* 0x11ea0 */
 		cwtl
 		push   %eax
 		xor    %eax,%eax
-		mov    EXPORT_SYMBOL(lbDisplay)+80,%ax	/* lbDisplay.MMouseX */
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseX_640),%ax	/* lbDisplay.MMouseX but scaled */
 		sub    $0x80,%eax
 		xor    %edx,%edx
 		sar    $1,%eax
-		mov    EXPORT_SYMBOL(lbDisplay)+84,%dx
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseY_400),%dx
 		add    %eax,%edx
 		movswl player_view_map_x,%eax
 		shl    $0x4,%eax
@@ -10354,13 +10355,13 @@ configure_company:	/* 0x175c0 */
 	jump_179ce:
 		cmp    $0x1,%al
 		jne    jump_17acd
-		cmpw   $0x198,EXPORT_SYMBOL(lbDisplay)+80	/* lbDisplay.MMouseX */
+		cmpw   $0x198,EXPORT_SYMBOL(lbDisplay__MMouseX_640)	/* lbDisplay.MMouseX but scaled */
 		jbe    jump_17a15
-		cmpw   $0x1b4,EXPORT_SYMBOL(lbDisplay)+80
+		cmpw   $0x1b4,EXPORT_SYMBOL(lbDisplay__MMouseX_640)
 		jae    jump_17a15
-		cmpw   $0x38,EXPORT_SYMBOL(lbDisplay)+84
+		cmpw   $0x38,EXPORT_SYMBOL(lbDisplay__MMouseY_400)
 		jbe    jump_17a15
-		cmpw   $0x4c,EXPORT_SYMBOL(lbDisplay)+84
+		cmpw   $0x4c,EXPORT_SYMBOL(lbDisplay__MMouseY_400)
 		jae    jump_17a15
 		mov    m_sprites,%eax
 		add    $0x30,%eax
@@ -10369,13 +10370,13 @@ configure_company:	/* 0x175c0 */
 		push   $0x198
 		jmp    jump_17ac5
 	jump_17a15:
-		cmpw   $0x1b6,EXPORT_SYMBOL(lbDisplay)+80	/* lbDisplay.MMouseX */
+		cmpw   $0x1b6,EXPORT_SYMBOL(lbDisplay__MMouseX_640)	/* lbDisplay.MMouseX but scaled */
 		jbe    jump_17a4f
-		cmpw   $0x1d2,EXPORT_SYMBOL(lbDisplay)+80
+		cmpw   $0x1d2,EXPORT_SYMBOL(lbDisplay__MMouseX_640)
 		jae    jump_17a4f
-		cmpw   $0x38,EXPORT_SYMBOL(lbDisplay)+84
+		cmpw   $0x38,EXPORT_SYMBOL(lbDisplay__MMouseY_400)
 		jbe    jump_17a4f
-		cmpw   $0x4c,EXPORT_SYMBOL(lbDisplay)+84
+		cmpw   $0x4c,EXPORT_SYMBOL(lbDisplay__MMouseY_400)
 		jae    jump_17a4f
 		mov    m_sprites,%eax
 		add    $0x36,%eax
@@ -10383,13 +10384,13 @@ configure_company:	/* 0x175c0 */
 		push   $0x38
 		jmp    jump_17ac0
 	jump_17a4f:
-		cmpw   $0x198,EXPORT_SYMBOL(lbDisplay)+80	/* lbDisplay.MMouseX */
+		cmpw   $0x198,EXPORT_SYMBOL(lbDisplay__MMouseX_640)	/* lbDisplay.MMouseX but scaled */
 		jbe    jump_17a8b
-		cmpw   $0x1b4,EXPORT_SYMBOL(lbDisplay)+80
+		cmpw   $0x1b4,EXPORT_SYMBOL(lbDisplay__MMouseX_640)
 		jae    jump_17a8b
-		cmpw   $0x5a,EXPORT_SYMBOL(lbDisplay)+84
+		cmpw   $0x5a,EXPORT_SYMBOL(lbDisplay__MMouseY_400)
 		jbe    jump_17a8b
-		cmpw   $0x6e,EXPORT_SYMBOL(lbDisplay)+84
+		cmpw   $0x6e,EXPORT_SYMBOL(lbDisplay__MMouseY_400)
 		jae    jump_17a8b
 		mov    m_sprites,%eax
 		add    $0x30,%eax
@@ -10398,13 +10399,13 @@ configure_company:	/* 0x175c0 */
 		push   $0x198
 		jmp    jump_17ac5
 	jump_17a8b:
-		cmpw   $0x1b6,EXPORT_SYMBOL(lbDisplay)+80	/* lbDisplay.MMouseX */
+		cmpw   $0x1b6,EXPORT_SYMBOL(lbDisplay__MMouseX_640)	/* lbDisplay.MMouseX but scaled */
 		jbe    jump_17acd
-		cmpw   $0x1d2,EXPORT_SYMBOL(lbDisplay)+80
+		cmpw   $0x1d2,EXPORT_SYMBOL(lbDisplay__MMouseX_640)
 		jae    jump_17acd
-		cmpw   $0x5a,EXPORT_SYMBOL(lbDisplay)+84
+		cmpw   $0x5a,EXPORT_SYMBOL(lbDisplay__MMouseY_400)
 		jbe    jump_17acd
-		cmpw   $0x6e,EXPORT_SYMBOL(lbDisplay)+84
+		cmpw   $0x6e,EXPORT_SYMBOL(lbDisplay__MMouseY_400)
 		jae    jump_17acd
 		mov    m_sprites,%eax
 		add    $0x36,%eax
@@ -10418,13 +10419,13 @@ configure_company:	/* 0x175c0 */
 	jump_17acd:
 		cmpb   $0x0,0xe0(%esp)
 		jne    jump_17c06
-		cmpw   $0x144,EXPORT_SYMBOL(lbDisplay)+80	/* lbDisplay.MMouseX */
+		cmpw   $0x144,EXPORT_SYMBOL(lbDisplay__MMouseX_640)	/* lbDisplay.MMouseX but scaled */
 		jbe    jump_17c06
-		cmpw   $0x242,EXPORT_SYMBOL(lbDisplay)+80
+		cmpw   $0x242,EXPORT_SYMBOL(lbDisplay__MMouseX_640)
 		jae    jump_17c06
-		cmpw   $0x40,EXPORT_SYMBOL(lbDisplay)+84
+		cmpw   $0x40,EXPORT_SYMBOL(lbDisplay__MMouseY_400)
 		jbe    jump_17b51
-		cmpw   $0x56,EXPORT_SYMBOL(lbDisplay)+84
+		cmpw   $0x56,EXPORT_SYMBOL(lbDisplay__MMouseY_400)
 		jae    jump_17b51
 		push   $0x0
 		push   $0x0
@@ -10448,9 +10449,9 @@ configure_company:	/* 0x175c0 */
 		push   $0x40
 		jmp    jump_17bf9
 	jump_17b51:
-		cmpw   $0x58,EXPORT_SYMBOL(lbDisplay)+84
+		cmpw   $0x58,EXPORT_SYMBOL(lbDisplay__MMouseY_400)
 		jbe    jump_17ba6
-		cmpw   $0x6e,EXPORT_SYMBOL(lbDisplay)+84
+		cmpw   $0x6e,EXPORT_SYMBOL(lbDisplay__MMouseY_400)
 		jae    jump_17ba6
 		push   $0x0
 		push   $0x0
@@ -10474,9 +10475,9 @@ configure_company:	/* 0x175c0 */
 		push   $0x58
 		jmp    jump_17bf9
 	jump_17ba6:
-		cmpw   $0x70,EXPORT_SYMBOL(lbDisplay)+84
+		cmpw   $0x70,EXPORT_SYMBOL(lbDisplay__MMouseY_400)
 		jbe    jump_17c06
-		cmpw   $0x86,EXPORT_SYMBOL(lbDisplay)+84
+		cmpw   $0x86,EXPORT_SYMBOL(lbDisplay__MMouseY_400)
 		jae    jump_17c06
 		push   $0x0
 		push   $0x0
@@ -10539,13 +10540,13 @@ configure_company:	/* 0x175c0 */
 	jump_17c63:
 		cmpb   $0x0,EXPORT_SYMBOL(lbDisplay)+103	/* lbDisplay.LeftButton */
 		je     jump_17c97
-		cmpw   $0x2e,EXPORT_SYMBOL(lbDisplay)+72	/* lbDisplay.MouseX */
+		cmpw   $0x2e,EXPORT_SYMBOL(lbDisplay__MouseX_640)	/* lbDisplay.MouseX but scaled */
 		jbe    jump_17c97
-		cmpw   $0x90,EXPORT_SYMBOL(lbDisplay)+72
+		cmpw   $0x90,EXPORT_SYMBOL(lbDisplay__MouseX_640)
 		jae    jump_17c97
-		cmpw   $0x15a,EXPORT_SYMBOL(lbDisplay)+76	/* lbDisplay.MouseY */
+		cmpw   $0x15a,EXPORT_SYMBOL(lbDisplay__MouseY_400)	/* lbDisplay.MouseY but scaled */
 		jbe    jump_17c97
-		cmpw   $0x172,EXPORT_SYMBOL(lbDisplay)+76
+		cmpw   $0x172,EXPORT_SYMBOL(lbDisplay__MouseY_400)
 		jb     jump_17ca4
 	jump_17c97:
 		cmpb   $0x0,EXPORT_SYMBOL(lbKeyOn)+0x1c	/* lbKeyOn[KC_RETURN] */
@@ -10646,13 +10647,13 @@ configure_company:	/* 0x175c0 */
 	jump_17e05:
 		cmpb   $0x0,EXPORT_SYMBOL(lbDisplay)+103	/* lbDisplay.LeftButton */
 		je     jump_17e3a
-		cmpw   $0x1f4,EXPORT_SYMBOL(lbDisplay)+72	/* lbDisplay.MouseX */
+		cmpw   $0x1f4,EXPORT_SYMBOL(lbDisplay__MouseX_640)	/* lbDisplay.MouseX but scaled */
 		jbe    jump_17e3a
-		cmpw   $0x256,EXPORT_SYMBOL(lbDisplay)+72
+		cmpw   $0x256,EXPORT_SYMBOL(lbDisplay__MouseX_640)
 		jae    jump_17e3a
-		cmpw   $0x15a,EXPORT_SYMBOL(lbDisplay)+76	/* lbDisplay.MouseY */
+		cmpw   $0x15a,EXPORT_SYMBOL(lbDisplay__MouseY_400)	/* lbDisplay.MouseY but scaled */
 		jbe    jump_17e3a
-		cmpw   $0x172,EXPORT_SYMBOL(lbDisplay)+76
+		cmpw   $0x172,EXPORT_SYMBOL(lbDisplay__MouseY_400)
 		jb     jump_17e43
 	jump_17e3a:
 		cmpb   $0x0,EXPORT_SYMBOL(lbKeyOn)+0x01	/* lbKeyOn[KC_ESCAPE] */
@@ -10677,29 +10678,29 @@ configure_company:	/* 0x175c0 */
 /*----------------------------------------------------------------*/
 func_17e7d:
 /*----------------------------------------------------------------*/
-		cmpw   $0x144,EXPORT_SYMBOL(lbDisplay)+72	/* lbDisplay.MouseX */
+		cmpw   $0x144,EXPORT_SYMBOL(lbDisplay__MouseX_640)	/* lbDisplay.MouseX but scaled */
 		jbe    def_17E75
-		cmpw   $0x242,EXPORT_SYMBOL(lbDisplay)+72
+		cmpw   $0x242,EXPORT_SYMBOL(lbDisplay__MouseX_640)
 		jae    def_17E75
-		cmpw   $0x40,EXPORT_SYMBOL(lbDisplay)+76
+		cmpw   $0x40,EXPORT_SYMBOL(lbDisplay__MouseY_400)
 		jbe    jump_17eb6
-		cmpw   $0x56,EXPORT_SYMBOL(lbDisplay)+76
+		cmpw   $0x56,EXPORT_SYMBOL(lbDisplay__MouseY_400)
 		jae    jump_17eb6
 		mov    $0x1,%dl
 		jmp    def_17E75
 	jump_17eb6:
-		cmpw   $0x58,EXPORT_SYMBOL(lbDisplay)+76
+		cmpw   $0x58,EXPORT_SYMBOL(lbDisplay__MouseY_400)
 		jbe    jump_17edd
-		cmpw   $0x6e,EXPORT_SYMBOL(lbDisplay)+76
+		cmpw   $0x6e,EXPORT_SYMBOL(lbDisplay__MouseY_400)
 		jae    jump_17edd
 		mov    $0x1,%eax
 		mov    $0x3,%dl
 		mov    %eax,0xc0(%esp)
 		jmp    def_17E75
 	jump_17edd:
-		cmpw   $0x70,EXPORT_SYMBOL(lbDisplay)+76
+		cmpw   $0x70,EXPORT_SYMBOL(lbDisplay__MouseY_400)
 		jbe    def_17E75
-		cmpw   $0x86,EXPORT_SYMBOL(lbDisplay)+76
+		cmpw   $0x86,EXPORT_SYMBOL(lbDisplay__MouseY_400)
 		jae    def_17E75
 		mov    $0x1,%edi
 		mov    $0x2,%dl
@@ -10710,13 +10711,13 @@ func_17e7d:
 /*----------------------------------------------------------------*/
 func_17f0d:
 /*----------------------------------------------------------------*/
-		cmpw   $0x198,EXPORT_SYMBOL(lbDisplay)+72
+		cmpw   $0x198,EXPORT_SYMBOL(lbDisplay__MouseX_640)
 		jbe    jump_17f57
-		cmpw   $0x1b4,EXPORT_SYMBOL(lbDisplay)+72
+		cmpw   $0x1b4,EXPORT_SYMBOL(lbDisplay__MouseX_640)
 		jae    jump_17f57
-		cmpw   $0x38,EXPORT_SYMBOL(lbDisplay)+76
+		cmpw   $0x38,EXPORT_SYMBOL(lbDisplay__MouseY_400)
 		jbe    jump_17f57
-		cmpw   $0x4c,EXPORT_SYMBOL(lbDisplay)+76
+		cmpw   $0x4c,EXPORT_SYMBOL(lbDisplay__MouseY_400)
 		jae    jump_17f57
 		mov    0xdc(%esp),%bl
 		test   %bl,%bl
@@ -10728,13 +10729,13 @@ func_17f0d:
 	jump_17f4f:
 		movb   $0x7,0xdc(%esp)
 	jump_17f57:
-		cmpw   $0x1b6,EXPORT_SYMBOL(lbDisplay)+72
+		cmpw   $0x1b6,EXPORT_SYMBOL(lbDisplay__MouseX_640)
 		jbe    jump_17f9e
-		cmpw   $0x1d2,EXPORT_SYMBOL(lbDisplay)+72
+		cmpw   $0x1d2,EXPORT_SYMBOL(lbDisplay__MouseX_640)
 		jae    jump_17f9e
-		cmpw   $0x38,EXPORT_SYMBOL(lbDisplay)+76	/* lbDisplay.MouseY */
+		cmpw   $0x38,EXPORT_SYMBOL(lbDisplay__MouseY_400)	/* lbDisplay.MouseY but scaled */
 		jbe    jump_17f9e
-		cmpw   $0x4c,EXPORT_SYMBOL(lbDisplay)+76
+		cmpw   $0x4c,EXPORT_SYMBOL(lbDisplay__MouseY_400)
 		jae    jump_17f9e
 		mov    0xdc(%esp),%al
 		inc    %al
@@ -10744,13 +10745,13 @@ func_17f0d:
 		xor    %dh,%dh
 		mov    %dh,0xdc(%esp)
 	jump_17f9e:
-		cmpw   $0x198,EXPORT_SYMBOL(lbDisplay)+72
+		cmpw   $0x198,EXPORT_SYMBOL(lbDisplay__MouseX_640)
 		jbe    jump_17fe8
-		cmpw   $0x1b4,EXPORT_SYMBOL(lbDisplay)+72
+		cmpw   $0x1b4,EXPORT_SYMBOL(lbDisplay__MouseX_640)
 		jae    jump_17fe8
-		cmpw   $0x5a,EXPORT_SYMBOL(lbDisplay)+76
+		cmpw   $0x5a,EXPORT_SYMBOL(lbDisplay__MouseY_400)
 		jbe    jump_17fe8
-		cmpw   $0x6e,EXPORT_SYMBOL(lbDisplay)+76
+		cmpw   $0x6e,EXPORT_SYMBOL(lbDisplay__MouseY_400)
 		jae    jump_17fe8
 		mov    0xd8(%esp),%bl
 		test   %bl,%bl
@@ -10762,13 +10763,13 @@ func_17f0d:
 	jump_17fe0:
 		movb   $0x27,0xd8(%esp)
 	jump_17fe8:
-		cmpw   $0x1b4,EXPORT_SYMBOL(lbDisplay)+72	/* lbDisplay.MouseX */
+		cmpw   $0x1b4,EXPORT_SYMBOL(lbDisplay__MouseX_640)	/* lbDisplay.MouseX but scaled */
 		jbe    def_17E75
-		cmpw   $0x1d2,EXPORT_SYMBOL(lbDisplay)+72
+		cmpw   $0x1d2,EXPORT_SYMBOL(lbDisplay__MouseX_640)
 		jae    def_17E75
-		cmpw   $0x5a,EXPORT_SYMBOL(lbDisplay)+76
+		cmpw   $0x5a,EXPORT_SYMBOL(lbDisplay__MouseY_400)
 		jbe    def_17E75
-		cmpw   $0x6e,EXPORT_SYMBOL(lbDisplay)+76
+		cmpw   $0x6e,EXPORT_SYMBOL(lbDisplay__MouseY_400)
 		jae    def_17E75
 		mov    0xd8(%esp),%al
 		inc    %al
@@ -10783,13 +10784,13 @@ func_17f0d:
 /*----------------------------------------------------------------*/
 func_18048:
 /*----------------------------------------------------------------*/
-		cmpw   $0x14c,EXPORT_SYMBOL(lbDisplay)+72	/* lbDisplay.MouseX */
+		cmpw   $0x14c,EXPORT_SYMBOL(lbDisplay__MouseX_640)	/* lbDisplay.MouseX but scaled */
 		jbe    def_17E75
-		cmpw   $0x234,EXPORT_SYMBOL(lbDisplay)+72
+		cmpw   $0x234,EXPORT_SYMBOL(lbDisplay__MouseX_640)
 		jae    def_17E75
-		cmpw   $0x4a,EXPORT_SYMBOL(lbDisplay)+76
+		cmpw   $0x4a,EXPORT_SYMBOL(lbDisplay__MouseY_400)
 		jbe    def_17E75
-		cmpw   $0xc4,EXPORT_SYMBOL(lbDisplay)+76
+		cmpw   $0xc4,EXPORT_SYMBOL(lbDisplay__MouseY_400)
 		jae    def_17E75
 		movl   $0x1,0xbc(%esp)
 		jmp    def_17E75
@@ -10798,26 +10799,26 @@ func_18048:
 /*----------------------------------------------------------------*/
 func_18084:
 /*----------------------------------------------------------------*/
-		cmpw   $0x14c,EXPORT_SYMBOL(lbDisplay)+72	/* lbDisplay.MouseX */
+		cmpw   $0x14c,EXPORT_SYMBOL(lbDisplay__MouseX_640)	/* lbDisplay.MouseX but scaled */
 		jbe    def_17E75
-		cmpw   $0x234,EXPORT_SYMBOL(lbDisplay)+72
+		cmpw   $0x234,EXPORT_SYMBOL(lbDisplay__MouseX_640)
 		jae    def_17E75
-		cmpw   $0x4a,EXPORT_SYMBOL(lbDisplay)+76
+		cmpw   $0x4a,EXPORT_SYMBOL(lbDisplay__MouseY_400)
 		jbe    def_17E75
-		cmpw   $0xc4,EXPORT_SYMBOL(lbDisplay)+76
+		cmpw   $0xc4,EXPORT_SYMBOL(lbDisplay__MouseY_400)
 		jae    def_17E75
 		movl   $0x1,0xc0(%esp)
 	def_17E75:	/* 0x180ba */
 		mov    0xe0(%esp),%bl
 		test   %bl,%bl
 		je     jump_181bb
-		cmpw   $0x122,EXPORT_SYMBOL(lbDisplay)+72	/* lbDisplay.MouseX */
+		cmpw   $0x122,EXPORT_SYMBOL(lbDisplay__MouseX_640)	/* lbDisplay.MouseX but scaled */
 		jbe    jump_18173
-		cmpw   $0x1a2,EXPORT_SYMBOL(lbDisplay)+72
+		cmpw   $0x1a2,EXPORT_SYMBOL(lbDisplay__MouseX_640)
 		jae    jump_18173
-		cmpw   $0x78,EXPORT_SYMBOL(lbDisplay)+76	/* lbDisplay.MouseY */
+		cmpw   $0x78,EXPORT_SYMBOL(lbDisplay__MouseY_400)	/* lbDisplay.MouseY but scaled */
 		jbe    jump_18173
-		cmpw   $0x90,EXPORT_SYMBOL(lbDisplay)+76
+		cmpw   $0x90,EXPORT_SYMBOL(lbDisplay__MouseY_400)
 		jae    jump_18173
 		cmp    $0x2,%bl
 		jb     jump_18112
@@ -10854,13 +10855,13 @@ func_18084:
 		mov    %eax,0xc0(%esp)
 		mov    %edx,0xbc(%esp)
 	jump_18173:
-		cmpw   $0x1da,EXPORT_SYMBOL(lbDisplay)+72	/* lbDisplay.MouseX */
+		cmpw   $0x1da,EXPORT_SYMBOL(lbDisplay__MouseX_640)	/* lbDisplay.MouseX but scaled */
 		jbe    jump_181c2
-		cmpw   $0x25a,EXPORT_SYMBOL(lbDisplay)+72
+		cmpw   $0x25a,EXPORT_SYMBOL(lbDisplay__MouseX_640)
 		jae    jump_181c2
-		cmpw   $0x78,EXPORT_SYMBOL(lbDisplay)+76
+		cmpw   $0x78,EXPORT_SYMBOL(lbDisplay__MouseY_400)
 		jbe    jump_181c2
-		cmpw   $0x90,EXPORT_SYMBOL(lbDisplay)+76
+		cmpw   $0x90,EXPORT_SYMBOL(lbDisplay__MouseY_400)
 		jae    jump_181c2
 		xor    %dh,%dh
 		xor    %dl,%dl
@@ -11177,15 +11178,15 @@ func_184e8:
 		call   func_187a0
 		add    $0x14,%esp
 		push   $0xc
-		mov    EXPORT_SYMBOL(lbDisplay)+84,%dx
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseY_400),%dx
 		push   $0xfffffffe
 		cmp    $0x78,%dx
 		jbe    jump_185b4
-		cmpw   $0x90,EXPORT_SYMBOL(lbDisplay)+84
+		cmpw   $0x90,EXPORT_SYMBOL(lbDisplay__MMouseY_400)
 		jae    jump_185b4
-		cmpw   $0x122,EXPORT_SYMBOL(lbDisplay)+80	/* lbDisplay.MMouseX */
+		cmpw   $0x122,EXPORT_SYMBOL(lbDisplay__MMouseX_640)	/* lbDisplay.MMouseX but scaled */
 		jbe    jump_185b4
-		cmpw   $0x1a2,EXPORT_SYMBOL(lbDisplay)+80
+		cmpw   $0x1a2,EXPORT_SYMBOL(lbDisplay__MMouseX_640)
 		jae    jump_185b4
 		mov    $0x166,%eax
 		jmp    jump_185b9
@@ -11204,15 +11205,15 @@ func_184e8:
 		call   DrawScreenGadget
 		add    $0x1c,%esp
 		push   $0xc
-		mov    EXPORT_SYMBOL(lbDisplay)+84,%di
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseY_400),%di
 		push   $0xfffffffe
 		cmp    $0x78,%di
 		jbe    jump_1861b
-		cmpw   $0x90,EXPORT_SYMBOL(lbDisplay)+84
+		cmpw   $0x90,EXPORT_SYMBOL(lbDisplay__MMouseY_400)
 		jae    jump_1861b
-		cmpw   $0x1da,EXPORT_SYMBOL(lbDisplay)+80	/* lbDisplay.MMouseX */
+		cmpw   $0x1da,EXPORT_SYMBOL(lbDisplay__MMouseX_640)	/* lbDisplay.MMouseX but scaled */
 		jbe    jump_1861b
-		cmpw   $0x25a,EXPORT_SYMBOL(lbDisplay)+80
+		cmpw   $0x25a,EXPORT_SYMBOL(lbDisplay__MMouseX_640)
 		jae    jump_1861b
 		mov    $0x166,%eax
 		jmp    jump_18620
@@ -13326,18 +13327,18 @@ debrief:	/* 0x18ff0 */
 		call   func_187a0
 		add    $0x14,%esp
 		push   $0xc
-		mov    EXPORT_SYMBOL(lbDisplay)+84,%ax
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseY_400),%ax
 		mov    arg8,%cx
 		push   $0xfffffffe
 		cmp    %cx,%ax
 		jbe    jump_1a097
-		mov    EXPORT_SYMBOL(lbDisplay)+84,%ax
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseY_400),%ax
 		cmp    data_5b80e,%ax
 		jae    jump_1a097
-		mov    EXPORT_SYMBOL(lbDisplay)+80,%ax	/* lbDisplay.MMouseX */
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseX_640),%ax	/* lbDisplay.MMouseX but scaled */
 		cmp    data_5b808,%ax
 		jbe    jump_1a097
-		mov    EXPORT_SYMBOL(lbDisplay)+80,%ax
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseX_640),%ax
 		cmp    data_5b80c,%ax
 		jae    jump_1a097
 		mov    $0x166,%eax
@@ -17876,48 +17877,42 @@ swap_screen_vres16:
 		mov    EXPORT_SYMBOL(mouse_sprite),%ebx
 #endif
 		movzbw 0x5(%ebx),%si
-		add    EXPORT_SYMBOL(lbDisplay)+84,%si
+		add    EXPORT_SYMBOL(lbDisplay__MMouseY_400),%si
 		mov    0x4(%ebx),%bl
 		sub    $0x10,%esi
 		xor    %bh,%bh
 		movswl %si,%esi
-		add    EXPORT_SYMBOL(lbDisplay)+80,%bx	/* lbDisplay.MMouseX */
+		add    EXPORT_SYMBOL(lbDisplay__MMouseX_640),%bx	/* lbDisplay.MMouseX but scaled */
 		sub    $0x10,%ebx
 		push   %esi
 		movswl %bx,%ebx
 		push   %ebx
-		mov    EXPORT_SYMBOL(lbDisplay)+84,%bx
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseY_400),%bx
 		sub    $0x10,%ebx
 		movswl %bx,%ebx
 		push   %ebx
-		mov    EXPORT_SYMBOL(lbDisplay)+80,%bx
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseX_640),%bx
 		sub    $0x10,%ebx
 		movswl %bx,%ebx
 		push   %ebx
 		call   set_block_changes
 		add    $0x10,%esp
-		cmpw   $0x270,EXPORT_SYMBOL(lbDisplay)+80	/* lbDisplay.MMouseX */
+		cmpw   $0x270,EXPORT_SYMBOL(lbDisplay__MMouseX_640)	/* lbDisplay.MMouseX but scaled */
 		jb     jump_1d340
-		mov    EXPORT_SYMBOL(lbDisplay)+84,%bx
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseY_400),%bx
 		movswl %bx,%ebx
 		push   %ebx
 		call   func_4cce7
 		add    $0x4,%esp
-#if defined(USE_BFLIB_MOUSE_CURSOR)
-		call   ac_LbMousePlace
-#else
+		/* do not use bflibrary for 4bpp cursor - use original */
 		call   PlaceMouse_A
-#endif
 		push   %ebx
 		call   func_4cc84
 		add    $0x4,%esp
 		jmp    jump_1d345
 	jump_1d340:
-#if defined(USE_BFLIB_MOUSE_CURSOR)
-		call   ac_LbMousePlace
-#else
+		/* do not use bflibrary for 4bpp cursor - use original */
 		call   PlaceMouse_A
-#endif
 	jump_1d345:
 		cmpb   $0x0,data_60b4f
 		je     jump_1d35d
@@ -17948,11 +17943,8 @@ swap_screen_vres16:
 		call   func_4cd4a
 #endif
 	jump_1d388:
-#if defined(USE_BFLIB_MOUSE_CURSOR)
-		call   ac_LbMouseRemove
-#else
+		/* do not use bflibrary for 4bpp cursor - use original */
 		call   RemoveMouse_A
-#endif
 		pop    %esi
 		pop    %ebx
 		ret
@@ -18524,7 +18516,7 @@ func_1daa8:
 		movswl 0x4(%esi),%edx
 		add    %ebx,%edx
 		xor    %ebx,%ebx
-		mov    EXPORT_SYMBOL(lbDisplay)+80,%bx	/* lbDisplay.MMouseX */
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseX_640),%bx	/* lbDisplay.MMouseX but scaled */
 		lea    -0x4(%edx),%ecx
 		cmp    %ecx,%ebx
 		jl     def_1DAA1
@@ -18532,7 +18524,7 @@ func_1daa8:
 		mov    0x2(%ebp),%bl
 		add    %edx,%ebx
 		xor    %edx,%edx
-		mov    EXPORT_SYMBOL(lbDisplay)+80,%dx
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseX_640),%dx
 		add    $0x4,%ebx
 		cmp    %ebx,%edx
 		jge    def_1DAA1
@@ -18540,7 +18532,7 @@ func_1daa8:
 		movswl 0x6(%esi),%ebx
 		xor    %ecx,%ecx
 		add    %ebx,%edx
-		mov    EXPORT_SYMBOL(lbDisplay)+84,%cx
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseY_400),%cx
 		lea    -0x4(%edx),%ebx
 		cmp    %ebx,%ecx
 		jl     def_1DAA1
@@ -18548,7 +18540,7 @@ func_1daa8:
 		mov    0x3(%ebp),%bl
 		add    %ebx,%edx
 		xor    %ebx,%ebx
-		mov    EXPORT_SYMBOL(lbDisplay)+84,%bx
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseY_400),%bx
 		add    $0x4,%edx
 		cmp    %edx,%ebx
 		jge    def_1DAA1
@@ -18563,28 +18555,28 @@ func_1db25:
 		movswl 0x4(%esi),%edx
 		add    %ebx,%edx
 		xor    %ebx,%ebx
-		mov    EXPORT_SYMBOL(lbDisplay)+80,%bx
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseX_640),%bx
 		cmp    %edx,%ebx
 		jl     def_1DAA1
 		xor    %ebx,%ebx
 		mov    0x2(%ebp),%bl
 		add    %edx,%ebx
 		xor    %edx,%edx
-		mov    EXPORT_SYMBOL(lbDisplay)+80,%dx
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseX_640),%dx
 		cmp    %ebx,%edx
 		jge    def_1DAA1
 		movswl 0x20(%esp),%ebx
 		movswl 0x6(%esi),%edx
 		add    %ebx,%edx
 		xor    %ebx,%ebx
-		mov    EXPORT_SYMBOL(lbDisplay)+84,%bx
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseY_400),%bx
 		cmp    %edx,%ebx
 		jl     def_1DAA1
 		xor    %ebx,%ebx
 		mov    0x3(%ebp),%bl
 		add    %ebx,%edx
 		xor    %ebx,%ebx
-		mov    EXPORT_SYMBOL(lbDisplay)+84,%bx
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseY_400),%bx
 		cmp    %edx,%ebx
 		jge    def_1DAA1
 		mov    %ax,data_60b12
@@ -18598,7 +18590,7 @@ func_1db93:
 		movswl 0x4(%esi),%ebx
 		xor    %ecx,%ecx
 		add    %ebx,%edx
-		mov    EXPORT_SYMBOL(lbDisplay)+80,%cx	/* lbDisplay.MMouseX */
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseX_640),%cx	/* lbDisplay.MMouseX but scaled */
 		lea    -0xa(%edx),%ebx
 		cmp    %ebx,%ecx
 		jl     def_1DAA1
@@ -18606,7 +18598,7 @@ func_1db93:
 		mov    0x2(%ebp),%bl
 		add    %ebx,%edx
 		xor    %ebx,%ebx
-		mov    EXPORT_SYMBOL(lbDisplay)+80,%bx
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseX_640),%bx
 		add    $0xa,%edx
 		cmp    %edx,%ebx
 		jge    def_1DAA1
@@ -18614,7 +18606,7 @@ func_1db93:
 		movswl 0x6(%esi),%ebx
 		xor    %ecx,%ecx
 		add    %ebx,%edx
-		mov    EXPORT_SYMBOL(lbDisplay)+84,%cx
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseY_400),%cx
 		lea    -0xa(%edx),%ebx
 		cmp    %ebx,%ecx
 		jl     def_1DAA1
@@ -18622,7 +18614,7 @@ func_1db93:
 		mov    0x3(%ebp),%bl
 		add    %ebx,%edx
 		xor    %ebx,%ebx
-		mov    EXPORT_SYMBOL(lbDisplay)+84,%bx
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseY_400),%bx
 		add    $0xa,%edx
 		cmp    %edx,%ebx
 		jge    def_1DAA1
@@ -21512,18 +21504,18 @@ equip_team:	/* 0x1fbc0 */
 		cmpb   $0x0,EXPORT_SYMBOL(is_multiplayer_game)
 		jne    jump_1fedf
 		push   $0xc
-		mov    EXPORT_SYMBOL(lbDisplay)+84,%ax
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseY_400),%ax
 		mov    data_5b68e,%si
 		push   $0xfffffffe
 		cmp    %si,%ax
 		jbe    jump_1fe98
-		mov    EXPORT_SYMBOL(lbDisplay)+84,%ax
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseY_400),%ax
 		cmp    data_5b692,%ax
 		jae    jump_1fe98
-		mov    EXPORT_SYMBOL(lbDisplay)+80,%ax	/* lbDisplay.MMouseX */
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseX_640),%ax	/* lbDisplay.MMouseX but scaled */
 		cmp    data_5b68c,%ax
 		jbe    jump_1fe98
-		mov    EXPORT_SYMBOL(lbDisplay)+80,%ax
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseX_640),%ax
 		cmp    data_5b690,%ax
 		jae    jump_1fe98
 		mov    $0x166,%eax
@@ -21635,18 +21627,18 @@ equip_team:	/* 0x1fbc0 */
 		push   %esi
 		call   DrawScreenGadget
 		add    $0x1c,%esp
-		mov    EXPORT_SYMBOL(lbDisplay)+84,%ax
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseY_400),%ax
 		mov    data_5b5da,%di
 		cmp    %di,%ax
 		jbe    jump_2006f
-		mov    EXPORT_SYMBOL(lbDisplay)+84,%ax
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseY_400),%ax
 		cmp    data_5b5de,%ax
 		jae    jump_2006f
-		mov    EXPORT_SYMBOL(lbDisplay)+80,%ax	/* lbDisplay.MMouseX */
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseX_640),%ax	/* lbDisplay.MMouseX but scaled */
 		mov    data_5b5d8,%bx
 		cmp    %bx,%ax
 		jbe    jump_2006f
-		mov    EXPORT_SYMBOL(lbDisplay)+80,%ax
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseX_640),%ax
 		mov    data_5b5dc,%cx
 		cmp    %cx,%ax
 		jae    jump_2006f
@@ -21674,17 +21666,17 @@ equip_team:	/* 0x1fbc0 */
 		call   DrawScreenGadget
 		add    $0x1c,%esp
 	jump_2006f:
-		mov    EXPORT_SYMBOL(lbDisplay)+84,%ax
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseY_400),%ax
 		mov    data_5b5e4,%di
 		cmp    %di,%ax
 		jbe    jump_20100
-		mov    EXPORT_SYMBOL(lbDisplay)+84,%ax
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseY_400),%ax
 		cmp    data_5b5e8,%ax
 		jae    jump_20100
-		mov    EXPORT_SYMBOL(lbDisplay)+80,%ax	/* lbDisplay.MMouseX */
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseX_640),%ax	/* lbDisplay.MMouseX but scaled */
 		cmp    data_5b5e2,%ax
 		jbe    jump_20100
-		mov    EXPORT_SYMBOL(lbDisplay)+80,%ax
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseX_640),%ax
 		mov    data_5b5e6,%cx
 		cmp    %cx,%ax
 		jae    jump_20100
@@ -21713,17 +21705,17 @@ equip_team:	/* 0x1fbc0 */
 		call   DrawScreenGadget
 		add    $0x1c,%esp
 	jump_20100:
-		mov    EXPORT_SYMBOL(lbDisplay)+84,%ax
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseY_400),%ax
 		mov    data_5b5ee,%di
 		cmp    %di,%ax
 		jbe    jump_20191
-		mov    EXPORT_SYMBOL(lbDisplay)+84,%ax
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseY_400),%ax
 		cmp    data_5b5f2,%ax
 		jae    jump_20191
-		mov    EXPORT_SYMBOL(lbDisplay)+80,%ax
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseX_640),%ax
 		cmp    data_5b5ec,%ax
 		jbe    jump_20191
-		mov    EXPORT_SYMBOL(lbDisplay)+80,%ax
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseX_640),%ax
 		cmp    data_5b5f0,%ax
 		jae    jump_20191
 		cmpb   $0x2,-0xc(%ebp)
@@ -22786,16 +22778,16 @@ equip_team:	/* 0x1fbc0 */
 		mov    %ax,-0x38(%ebp)
 		cmp    $0x12,%ax
 		jb     jump_20f20
-		cmpw   $0x1f4,EXPORT_SYMBOL(lbDisplay)+80	/* lbDisplay.MMouseX */
+		cmpw   $0x1f4,EXPORT_SYMBOL(lbDisplay__MMouseX_640)	/* lbDisplay.MMouseX but scaled */
 		jbe    jump_216ee
-		cmpw   $0x272,EXPORT_SYMBOL(lbDisplay)+80
+		cmpw   $0x272,EXPORT_SYMBOL(lbDisplay__MMouseX_640)
 		jae    jump_216ee
-		cmpw   $0x76,EXPORT_SYMBOL(lbDisplay)+84
+		cmpw   $0x76,EXPORT_SYMBOL(lbDisplay__MMouseY_400)
 		jbe    jump_216ee
-		cmpw   $0x156,EXPORT_SYMBOL(lbDisplay)+84
+		cmpw   $0x156,EXPORT_SYMBOL(lbDisplay__MMouseY_400)
 		jae    jump_216ee
 		xor    %edx,%edx
-		mov    EXPORT_SYMBOL(lbDisplay)+84,%dx
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseY_400),%dx
 		sub    $0x7c,%edx
 		mov    $0xc,%ebx
 		mov    %edx,%eax
@@ -22918,15 +22910,15 @@ equip_team:	/* 0x1fbc0 */
 		test   %bl,%bl
 		jne    jump_21286
 		push   $0xc
-		mov    EXPORT_SYMBOL(lbDisplay)+80,%bx	/* lbDisplay.MMouseX */
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseX_640),%bx	/* lbDisplay.MMouseX but scaled */
 		push   $0xfffffffe
 		cmp    $0x1f4,%bx
 		jbe    jump_21258
-		cmpw   $0x272,EXPORT_SYMBOL(lbDisplay)+80
+		cmpw   $0x272,EXPORT_SYMBOL(lbDisplay__MMouseX_640)
 		jae    jump_21258
-		cmpw   $0x13e,EXPORT_SYMBOL(lbDisplay)+84
+		cmpw   $0x13e,EXPORT_SYMBOL(lbDisplay__MMouseY_400)
 		jbe    jump_21258
-		cmpw   $0x156,EXPORT_SYMBOL(lbDisplay)+84
+		cmpw   $0x156,EXPORT_SYMBOL(lbDisplay__MMouseY_400)
 		jae    jump_21258
 		mov    $0x166,%eax
 		jmp    jump_2125d
@@ -22946,15 +22938,15 @@ equip_team:	/* 0x1fbc0 */
 		add    $0x1c,%esp
 	jump_21286:
 		push   $0xc
-		mov    EXPORT_SYMBOL(lbDisplay)+84,%ax
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseY_400),%ax
 		push   $0xfffffffe
 		cmp    $0x10e,%ax
 		jbe    jump_212be
-		cmpw   $0x126,EXPORT_SYMBOL(lbDisplay)+84
+		cmpw   $0x126,EXPORT_SYMBOL(lbDisplay__MMouseY_400)
 		jae    jump_212be
-		cmpw   $0x1f4,EXPORT_SYMBOL(lbDisplay)+80
+		cmpw   $0x1f4,EXPORT_SYMBOL(lbDisplay__MMouseX_640)
 		jbe    jump_212be
-		cmpw   $0x272,EXPORT_SYMBOL(lbDisplay)+80
+		cmpw   $0x272,EXPORT_SYMBOL(lbDisplay__MMouseX_640)
 		jae    jump_212be
 		mov    $0x166,%eax
 		jmp    jump_212c3
@@ -23005,15 +22997,15 @@ equip_team:	/* 0x1fbc0 */
 		call   ShowInfoOnEquipItem
 		add    $0x8,%esp
 		push   $0xc
-		mov    EXPORT_SYMBOL(lbDisplay)+84,%dx
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseY_400),%dx
 		push   $0xfffffffe
 		cmp    $0x10e,%dx
 		jbe    jump_213a6
-		cmpw   $0x126,EXPORT_SYMBOL(lbDisplay)+84
+		cmpw   $0x126,EXPORT_SYMBOL(lbDisplay__MMouseY_400)
 		jae    jump_213a6
-		cmpw   $0x1f4,EXPORT_SYMBOL(lbDisplay)+80	/* lbDisplay.MMouseX */
+		cmpw   $0x1f4,EXPORT_SYMBOL(lbDisplay__MMouseX_640)	/* lbDisplay.MMouseX but scaled */
 		jbe    jump_213a6
-		cmpw   $0x272,EXPORT_SYMBOL(lbDisplay)+80
+		cmpw   $0x272,EXPORT_SYMBOL(lbDisplay__MMouseX_640)
 		jae    jump_213a6
 		mov    $0x166,%eax
 		jmp    jump_213ab
@@ -23125,15 +23117,15 @@ equip_team:	/* 0x1fbc0 */
 		cmpb   $0x0,-0x14(%ebp)
 		je     jump_21595
 		push   $0xc
-		mov    EXPORT_SYMBOL(lbDisplay)+80,%si	/* lbDisplay.MMouseX */
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseX_640),%si	/* lbDisplay.MMouseX but scaled */
 		push   $0xfffffffe
 		cmp    $0x1f4,%si
 		jbe    jump_2156d
-		cmpw   $0x272,EXPORT_SYMBOL(lbDisplay)+80
+		cmpw   $0x272,EXPORT_SYMBOL(lbDisplay__MMouseX_640)
 		jae    jump_2156d
-		cmpw   $0x13e,EXPORT_SYMBOL(lbDisplay)+84
+		cmpw   $0x13e,EXPORT_SYMBOL(lbDisplay__MMouseY_400)
 		jbe    jump_2156d
-		cmpw   $0x156,EXPORT_SYMBOL(lbDisplay)+84
+		cmpw   $0x156,EXPORT_SYMBOL(lbDisplay__MMouseY_400)
 		jae    jump_2156d
 		mov    $0x166,%eax
 		jmp    jump_21572
@@ -23152,15 +23144,15 @@ equip_team:	/* 0x1fbc0 */
 		jmp    jump_215f3
 	jump_21595:
 		push   $0xc
-		mov    EXPORT_SYMBOL(lbDisplay)+80,%ax
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseX_640),%ax
 		push   $0xfffffffe
 		cmp    $0x1f4,%ax
 		jbe    jump_215cd
-		cmpw   $0x272,EXPORT_SYMBOL(lbDisplay)+80
+		cmpw   $0x272,EXPORT_SYMBOL(lbDisplay__MMouseX_640)
 		jae    jump_215cd
-		cmpw   $0x13e,EXPORT_SYMBOL(lbDisplay)+84
+		cmpw   $0x13e,EXPORT_SYMBOL(lbDisplay__MMouseY_400)
 		jbe    jump_215cd
-		cmpw   $0x156,EXPORT_SYMBOL(lbDisplay)+84
+		cmpw   $0x156,EXPORT_SYMBOL(lbDisplay__MMouseY_400)
 		jae    jump_215cd
 		mov    $0x166,%eax
 		jmp    jump_215d2
@@ -23211,15 +23203,15 @@ equip_team:	/* 0x1fbc0 */
 		cmp    data_57bf9(%eax),%dx
 		jge    jump_216ee
 		push   $0xc
-		mov    EXPORT_SYMBOL(lbDisplay)+80,%si	/* lbDisplay.MMouseX */
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseX_640),%si	/* lbDisplay.MMouseX but scaled */
 		push   $0xfffffffe
 		cmp    $0x1f4,%si
 		jbe    jump_216c0
-		cmpw   $0x272,EXPORT_SYMBOL(lbDisplay)+80
+		cmpw   $0x272,EXPORT_SYMBOL(lbDisplay__MMouseX_640)
 		jae    jump_216c0
-		cmpw   $0x126,EXPORT_SYMBOL(lbDisplay)+84
+		cmpw   $0x126,EXPORT_SYMBOL(lbDisplay__MMouseY_400)
 		jbe    jump_216c0
-		cmpw   $0x13c,EXPORT_SYMBOL(lbDisplay)+84
+		cmpw   $0x13c,EXPORT_SYMBOL(lbDisplay__MMouseY_400)
 		jae    jump_216c0
 		mov    $0x166,%eax
 		jmp    jump_216c5
@@ -23321,10 +23313,10 @@ equip_team:	/* 0x1fbc0 */
 	jump_217ef:
 		push   %eax
 		xor    %eax,%eax
-		mov    EXPORT_SYMBOL(lbDisplay)+84,%ax
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseY_400),%ax
 		push   %eax
 		xor    %eax,%eax
-		mov    EXPORT_SYMBOL(lbDisplay)+80,%ax	/* lbDisplay.MMouseX */
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseX_640),%ax	/* lbDisplay.MMouseX but scaled */
 		push   %eax
 		call   LbSpriteDrawMCGA
 		add    $0xc,%esp
@@ -23339,10 +23331,10 @@ equip_team:	/* 0x1fbc0 */
 		movswl data_57bf9(%eax),%eax
 		push   %eax
 		xor    %eax,%eax
-		mov    EXPORT_SYMBOL(lbDisplay)+84,%ax
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseY_400),%ax
 		push   %eax
 		xor    %eax,%eax
-		mov    EXPORT_SYMBOL(lbDisplay)+80,%ax
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseX_640),%ax
 		push   %eax
 		call   draw_ammo_for_this_weapon
 		add    $0x10,%esp
@@ -23367,46 +23359,46 @@ equip_team:	/* 0x1fbc0 */
 		cmpb   $0x0,-0x1c(%ebp)
 		je     jump_21ab0
 		movw   $0x12,-0x38(%ebp)
-		cmpw   $0x10,EXPORT_SYMBOL(lbDisplay)+80
+		cmpw   $0x10,EXPORT_SYMBOL(lbDisplay__MMouseX_640)
 		jbe    jump_218bf
-		cmpw   $0x50,EXPORT_SYMBOL(lbDisplay)+80
+		cmpw   $0x50,EXPORT_SYMBOL(lbDisplay__MMouseX_640)
 		jae    jump_218bf
-		cmpw   $0x50,EXPORT_SYMBOL(lbDisplay)+84
+		cmpw   $0x50,EXPORT_SYMBOL(lbDisplay__MMouseY_400)
 		jbe    jump_218bf
-		cmpw   $0xa2,EXPORT_SYMBOL(lbDisplay)+84
+		cmpw   $0xa2,EXPORT_SYMBOL(lbDisplay__MMouseY_400)
 		jae    jump_218bf
 		mov    selected_team,%al
 		jmp    jump_21954
 	jump_218bf:
-		cmpw   $0x50,EXPORT_SYMBOL(lbDisplay)+80
+		cmpw   $0x50,EXPORT_SYMBOL(lbDisplay__MMouseX_640)
 		jbe    jump_218f3
-		cmpw   $0x90,EXPORT_SYMBOL(lbDisplay)+80
+		cmpw   $0x90,EXPORT_SYMBOL(lbDisplay__MMouseX_640)
 		jae    jump_218f3
-		cmpw   $0x50,EXPORT_SYMBOL(lbDisplay)+84
+		cmpw   $0x50,EXPORT_SYMBOL(lbDisplay__MMouseY_400)
 		jbe    jump_218f3
-		cmpw   $0xa2,EXPORT_SYMBOL(lbDisplay)+84
+		cmpw   $0xa2,EXPORT_SYMBOL(lbDisplay__MMouseY_400)
 		jae    jump_218f3
 		mov    data_60aa5,%al
 		jmp    jump_21954
 	jump_218f3:
-		cmpw   $0x10,EXPORT_SYMBOL(lbDisplay)+80
+		cmpw   $0x10,EXPORT_SYMBOL(lbDisplay__MMouseX_640)
 		jbe    jump_21924
-		cmpw   $0x50,EXPORT_SYMBOL(lbDisplay)+80
+		cmpw   $0x50,EXPORT_SYMBOL(lbDisplay__MMouseX_640)
 		jae    jump_21924
-		cmpw   $0xa2,EXPORT_SYMBOL(lbDisplay)+84
+		cmpw   $0xa2,EXPORT_SYMBOL(lbDisplay__MMouseY_400)
 		jbe    jump_21924
-		cmpw   $0xf6,EXPORT_SYMBOL(lbDisplay)+84
+		cmpw   $0xf6,EXPORT_SYMBOL(lbDisplay__MMouseY_400)
 		jae    jump_21924
 		mov    data_60aa6,%al
 		jmp    jump_21954
 	jump_21924:
-		cmpw   $0x50,EXPORT_SYMBOL(lbDisplay)+80	/* lbDisplay.MMouseX */
+		cmpw   $0x50,EXPORT_SYMBOL(lbDisplay__MMouseX_640)	/* lbDisplay.MMouseX but scaled */
 		jbe    jump_2195a
-		cmpw   $0x90,EXPORT_SYMBOL(lbDisplay)+80
+		cmpw   $0x90,EXPORT_SYMBOL(lbDisplay__MMouseX_640)
 		jae    jump_2195a
-		cmpw   $0xa2,EXPORT_SYMBOL(lbDisplay)+84
+		cmpw   $0xa2,EXPORT_SYMBOL(lbDisplay__MMouseY_400)
 		jbe    jump_2195a
-		cmpw   $0xf6,EXPORT_SYMBOL(lbDisplay)+84
+		cmpw   $0xf6,EXPORT_SYMBOL(lbDisplay__MMouseY_400)
 		jae    jump_2195a
 		mov    data_60aa7,%al
 	jump_21954:
@@ -23522,13 +23514,13 @@ equip_team:	/* 0x1fbc0 */
 	jump_21ac2:
 		xor    %bl,%bl
 		mov    %bl,EXPORT_SYMBOL(lbDisplay)+103	/* lbDisplay.LeftButton */
-		cmpw   $0x14,EXPORT_SYMBOL(lbDisplay)+72	/* lbDisplay.MouseX */
+		cmpw   $0x14,EXPORT_SYMBOL(lbDisplay__MouseX_640)	/* lbDisplay.MouseX but scaled */
 		jbe    jump_21afb
-		cmpw   $0x8c,EXPORT_SYMBOL(lbDisplay)+72
+		cmpw   $0x8c,EXPORT_SYMBOL(lbDisplay__MouseX_640)
 		jae    jump_21afb
-		cmpw   $0x98,EXPORT_SYMBOL(lbDisplay)+76	/* lbDisplay.MouseY */
+		cmpw   $0x98,EXPORT_SYMBOL(lbDisplay__MouseY_400)	/* lbDisplay.MouseY but scaled */
 		jbe    jump_21afb
-		cmpw   $0x9e,EXPORT_SYMBOL(lbDisplay)+76
+		cmpw   $0x9e,EXPORT_SYMBOL(lbDisplay__MouseY_400)
 		jae    jump_21afb
 		movb   $0x17,-0x8(%ebp)
 		jmp    jump_21b0f
@@ -23548,13 +23540,13 @@ equip_team:	/* 0x1fbc0 */
 		jne    jump_21c63
 		cmpb   $0x0,-0x10(%ebp)
 		je     jump_21c63
-		cmpw   $0x1f4,EXPORT_SYMBOL(lbDisplay)+72	/* lbDisplay.MouseX */
+		cmpw   $0x1f4,EXPORT_SYMBOL(lbDisplay__MouseX_640)	/* lbDisplay.MouseX but scaled */
 		jbe    jump_21c63
-		cmpw   $0x272,EXPORT_SYMBOL(lbDisplay)+72
+		cmpw   $0x272,EXPORT_SYMBOL(lbDisplay__MouseX_640)
 		jae    jump_21c63
-		cmpw   $0x126,EXPORT_SYMBOL(lbDisplay)+76
+		cmpw   $0x126,EXPORT_SYMBOL(lbDisplay__MouseY_400)
 		jbe    jump_21c63
-		cmpw   $0x13c,EXPORT_SYMBOL(lbDisplay)+76
+		cmpw   $0x13c,EXPORT_SYMBOL(lbDisplay__MouseY_400)
 		jae    jump_21c63
 		xor    %esi,%esi
 		mov    %si,-0x38(%ebp)
@@ -23923,10 +23915,10 @@ func_2201c:
 		push   $0x0
 		xor    %eax,%eax
 		push   $0x0
-		mov    EXPORT_SYMBOL(lbDisplay)+76,%ax	/* lbDisplay.MouseY */
+		mov    EXPORT_SYMBOL(lbDisplay__MouseY_400),%ax	/* lbDisplay.MouseY but scaled */
 		push   %eax
 		xor    %eax,%eax
-		mov    EXPORT_SYMBOL(lbDisplay)+72,%ax	/* lbDisplay.MouseX */
+		mov    EXPORT_SYMBOL(lbDisplay__MouseX_640),%ax	/* lbDisplay.MouseX but scaled */
 		push   %eax
 		xor    %eax,%eax
 		mov    -0x38(%ebp),%ax
@@ -23945,7 +23937,7 @@ func_2201c:
 		test   %ch,%ch
 		jne    def_21874
 		xor    %edx,%edx
-		mov    EXPORT_SYMBOL(lbDisplay)+76,%dx
+		mov    EXPORT_SYMBOL(lbDisplay__MouseY_400),%dx
 		mov    %edx,%eax
 		sar    $0x1f,%edx
 		sub    %edx,%eax
@@ -24038,13 +24030,13 @@ func_2201c:
 		mov    %bl,-0x10(%ebp)
 		jmp    def_21874
 	jump_221eb:
-		cmpw   $0x1f4,EXPORT_SYMBOL(lbDisplay)+72	/* lbDisplay.MouseX */
+		cmpw   $0x1f4,EXPORT_SYMBOL(lbDisplay__MouseX_640)	/* lbDisplay.MouseX but scaled */
 		jbe    jump_225c0
-		cmpw   $0x272,EXPORT_SYMBOL(lbDisplay)+72
+		cmpw   $0x272,EXPORT_SYMBOL(lbDisplay__MouseX_640)
 		jae    jump_225c0
-		cmpw   $0x13e,EXPORT_SYMBOL(lbDisplay)+76	/* lbDisplay.MouseY */
+		cmpw   $0x13e,EXPORT_SYMBOL(lbDisplay__MouseY_400)	/* lbDisplay.MouseY but scaled */
 		jbe    jump_225c0
-		cmpw   $0x156,EXPORT_SYMBOL(lbDisplay)+76
+		cmpw   $0x156,EXPORT_SYMBOL(lbDisplay__MouseY_400)
 		jae    jump_225c0
 		mov    -0xc(%ebp),%cl
 		cmp    $0x1,%cl
@@ -24311,13 +24303,13 @@ func_2201c:
 		mov    %dh,-0x14(%ebp)
 		jmp    def_21874
 	jump_225c0:
-		cmpw   $0x1f4,EXPORT_SYMBOL(lbDisplay)+72	/* lbDisplay.MouseX */
+		cmpw   $0x1f4,EXPORT_SYMBOL(lbDisplay__MouseX_640)	/* lbDisplay.MouseX but scaled */
 		jbe    jump_226d3
-		cmpw   $0x272,EXPORT_SYMBOL(lbDisplay)+72
+		cmpw   $0x272,EXPORT_SYMBOL(lbDisplay__MouseX_640)
 		jae    jump_226d3
-		cmpw   $0x126,EXPORT_SYMBOL(lbDisplay)+76	/* lbDisplay.MouseY */
+		cmpw   $0x126,EXPORT_SYMBOL(lbDisplay__MouseY_400)	/* lbDisplay.MouseY but scaled */
 		jbe    jump_226d3
-		cmpw   $0x13c,EXPORT_SYMBOL(lbDisplay)+76
+		cmpw   $0x13c,EXPORT_SYMBOL(lbDisplay__MouseY_400)
 		jae    jump_226d3
 		cmpb   $0x0,-0x14(%ebp)
 		je     def_21874
@@ -25039,16 +25031,16 @@ WhichIconSelected:	/* 0x22e20 */
 	jump_22e5e:
 		cmp    0x8(%eax),%bh
 		je     jump_22e9e
-		mov    EXPORT_SYMBOL(lbDisplay)+72,%dx	/* lbDisplay.MouseX */
+		mov    EXPORT_SYMBOL(lbDisplay__MouseX_640),%dx	/* lbDisplay.MouseX but scaled */
 		cmp    (%eax),%dx
 		jbe    jump_22e99
-		mov    EXPORT_SYMBOL(lbDisplay)+72,%dx
+		mov    EXPORT_SYMBOL(lbDisplay__MouseX_640),%dx
 		cmp    0x4(%eax),%dx
 		jae    jump_22e99
-		mov    EXPORT_SYMBOL(lbDisplay)+76,%dx	/* lbDisplay.MouseY */
+		mov    EXPORT_SYMBOL(lbDisplay__MouseY_400),%dx	/* lbDisplay.MouseY but scaled */
 		cmp    0x2(%eax),%dx
 		jbe    jump_22e99
-		mov    EXPORT_SYMBOL(lbDisplay)+76,%dx
+		mov    EXPORT_SYMBOL(lbDisplay__MouseY_400),%dx
 		cmp    0x6(%eax),%dx
 		jae    jump_22e99
 		mov    0x8(%eax),%bl
@@ -25116,10 +25108,10 @@ ShowAvailableParts:	/* 0x22eb0 */
 		lea    0x18(%esp),%eax
 		push   %eax
 		xor    %eax,%eax
-		mov    EXPORT_SYMBOL(lbDisplay)+84,%ax
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseY_400),%ax
 		push   %eax
 		xor    %eax,%eax
-		mov    EXPORT_SYMBOL(lbDisplay)+80,%ax	/* lbDisplay.MMouseX */
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseX_640),%ax	/* lbDisplay.MMouseX but scaled */
 		push   %eax
 		push   $0x12
 		call   which_item_selected
@@ -25220,10 +25212,10 @@ ShowAvailableEquipment:	/* 0x22fe0 */
 		lea    0x18(%esp),%eax
 		push   %eax
 		xor    %eax,%eax
-		mov    EXPORT_SYMBOL(lbDisplay)+84,%ax
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseY_400),%ax
 		push   %eax
 		xor    %eax,%eax
-		mov    EXPORT_SYMBOL(lbDisplay)+80,%ax	/* lbDisplay.MMouseX */
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseX_640),%ax	/* lbDisplay.MMouseX but scaled */
 		push   %eax
 		push   $0x14
 		call   which_item_selected
@@ -30344,16 +30336,16 @@ LoadSaveGame:	/* 0x26ef0 */
 	jump_26fa4:
 		incw   (%esp)
 		call   LbCopyScreenFromBackMCGA
-		mov    EXPORT_SYMBOL(lbDisplay)+84,%ax
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseY_400),%ax
 		cmp    data_5b7ec,%ax
 		jbe    jump_26ff0
-		mov    EXPORT_SYMBOL(lbDisplay)+84,%ax
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseY_400),%ax
 		cmp    data_5b7f0,%ax
 		jae    jump_26ff0
-		mov    EXPORT_SYMBOL(lbDisplay)+80,%ax	/* lbDisplay.MMouseX */
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseX_640),%ax	/* lbDisplay.MMouseX but scaled */
 		cmp    data_5b7ea,%ax
 		jbe    jump_26ff0
-		mov    EXPORT_SYMBOL(lbDisplay)+80,%ax
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseX_640),%ax
 		cmp    data_5b7ee,%ax
 		jae    jump_26ff0
 		mov    $0x166,%eax
@@ -30382,16 +30374,16 @@ LoadSaveGame:	/* 0x26ef0 */
 		push   %ecx
 		call   DrawScreenGadget
 		add    $0x1c,%esp
-		mov    EXPORT_SYMBOL(lbDisplay)+84,%ax
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseY_400),%ax
 		cmp    data_5b7f6,%ax
 		jbe    jump_2707e
-		mov    EXPORT_SYMBOL(lbDisplay)+84,%ax
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseY_400),%ax
 		cmp    data_5b7fa,%ax
 		jae    jump_2707e
-		mov    EXPORT_SYMBOL(lbDisplay)+80,%ax	/* lbDisplay.MMouseX */
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseX_640),%ax	/* lbDisplay.MMouseX but scaled */
 		cmp    data_5b7f4,%ax
 		jbe    jump_2707e
-		mov    EXPORT_SYMBOL(lbDisplay)+80,%ax
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseX_640),%ax
 		cmp    data_5b7f8,%ax
 		jae    jump_2707e
 		mov    $0x166,%eax
@@ -31873,13 +31865,13 @@ map_selection:	/* 0x27e00 */
 		je     jump_28212
 		xor    %al,%al
 		mov    %al,EXPORT_SYMBOL(lbDisplay)+104	/* lbDisplay.RightButton */
-		cmpw   $0x176,EXPORT_SYMBOL(lbDisplay)+72	/* lbDisplay.MouseX */
+		cmpw   $0x176,EXPORT_SYMBOL(lbDisplay__MouseX_640)	/* lbDisplay.MouseX but scaled */
 		jbe    jump_281a7
-		cmpw   $0x180,EXPORT_SYMBOL(lbDisplay)+72
+		cmpw   $0x180,EXPORT_SYMBOL(lbDisplay__MouseX_640)
 		jae    jump_281a7
-		cmpw   $0x158,EXPORT_SYMBOL(lbDisplay)+76	/* lbDisplay.MouseY */
+		cmpw   $0x158,EXPORT_SYMBOL(lbDisplay__MouseY_400)	/* lbDisplay.MouseY but scaled */
 		jbe    jump_281a7
-		cmpw   $0x166,EXPORT_SYMBOL(lbDisplay)+76
+		cmpw   $0x166,EXPORT_SYMBOL(lbDisplay__MouseY_400)
 		jae    jump_281a7
 		xor    %ebx,%ebx
 		mov    data_55030,%bl
@@ -31899,13 +31891,13 @@ map_selection:	/* 0x27e00 */
 		call   adjust_tax
 		add    $0x8,%esp
 	jump_281a7:
-		cmpw   $0x1b4,EXPORT_SYMBOL(lbDisplay)+72
+		cmpw   $0x1b4,EXPORT_SYMBOL(lbDisplay__MouseX_640)
 		jbe    jump_28212
-		cmpw   $0x1be,EXPORT_SYMBOL(lbDisplay)+72
+		cmpw   $0x1be,EXPORT_SYMBOL(lbDisplay__MouseX_640)
 		jae    jump_28212
-		cmpw   $0x158,EXPORT_SYMBOL(lbDisplay)+76
+		cmpw   $0x158,EXPORT_SYMBOL(lbDisplay__MouseY_400)
 		jbe    jump_28212
-		cmpw   $0x166,EXPORT_SYMBOL(lbDisplay)+76
+		cmpw   $0x166,EXPORT_SYMBOL(lbDisplay__MouseY_400)
 		jae    jump_28212
 		xor    %edx,%edx
 		mov    data_55030,%dl
@@ -31972,13 +31964,13 @@ map_selection:	/* 0x27e00 */
 		je     jump_282b7
 		mov    %al,data_55030
 	jump_282b7:
-		cmp    EXPORT_SYMBOL(lbDisplay)+72,%di	/* lbDisplay.MouseX */
+		cmp    EXPORT_SYMBOL(lbDisplay__MouseX_640),%di	/* lbDisplay.MouseX but scaled */
 		jae    jump_28345
-		cmpw   $0x92,EXPORT_SYMBOL(lbDisplay)+72
+		cmpw   $0x92,EXPORT_SYMBOL(lbDisplay__MouseX_640)
 		jae    jump_28345
-		cmpw   $0x15a,EXPORT_SYMBOL(lbDisplay)+76	/* lbDisplay.MouseY */
+		cmpw   $0x15a,EXPORT_SYMBOL(lbDisplay__MouseY_400)	/* lbDisplay.MouseY but scaled */
 		jbe    jump_28345
-		cmpw   $0x174,EXPORT_SYMBOL(lbDisplay)+76
+		cmpw   $0x174,EXPORT_SYMBOL(lbDisplay__MouseY_400)
 		jae    jump_28345
 		xor    %eax,%eax
 		mov    data_55030,%al
@@ -32008,13 +32000,13 @@ map_selection:	/* 0x27e00 */
 		pop    %ebx
 		ret
 	jump_28345:
-		cmpw   $0x1f4,EXPORT_SYMBOL(lbDisplay)+72
+		cmpw   $0x1f4,EXPORT_SYMBOL(lbDisplay__MouseX_640)
 		jbe    jump_28388
-		cmpw   $0x274,EXPORT_SYMBOL(lbDisplay)+72
+		cmpw   $0x274,EXPORT_SYMBOL(lbDisplay__MouseX_640)
 		jae    jump_28388
-		cmpw   $0x15a,EXPORT_SYMBOL(lbDisplay)+76
+		cmpw   $0x15a,EXPORT_SYMBOL(lbDisplay__MouseY_400)
 		jbe    jump_28388
-		cmpw   $0x174,EXPORT_SYMBOL(lbDisplay)+76
+		cmpw   $0x174,EXPORT_SYMBOL(lbDisplay__MouseY_400)
 		jae    jump_28388
 		push   $mmapblk_load_files
 		call   LbDataFreeAll
@@ -32027,13 +32019,13 @@ map_selection:	/* 0x27e00 */
 		pop    %ebx
 		ret
 	jump_28388:
-		cmpw   $0x176,EXPORT_SYMBOL(lbDisplay)+72
+		cmpw   $0x176,EXPORT_SYMBOL(lbDisplay__MouseX_640)
 		jbe    jump_283f6
-		cmpw   $0x180,EXPORT_SYMBOL(lbDisplay)+72
+		cmpw   $0x180,EXPORT_SYMBOL(lbDisplay__MouseX_640)
 		jae    jump_283f6
-		cmpw   $0x158,EXPORT_SYMBOL(lbDisplay)+76
+		cmpw   $0x158,EXPORT_SYMBOL(lbDisplay__MouseY_400)
 		jbe    jump_283f6
-		cmpw   $0x166,EXPORT_SYMBOL(lbDisplay)+76
+		cmpw   $0x166,EXPORT_SYMBOL(lbDisplay__MouseY_400)
 		jae    jump_283f6
 		xor    %edx,%edx
 		mov    data_55030,%dl
@@ -32053,13 +32045,13 @@ map_selection:	/* 0x27e00 */
 		call   adjust_tax
 		add    $0x8,%esp
 	jump_283f6:
-		cmpw   $0x1b4,EXPORT_SYMBOL(lbDisplay)+72	/* lbDisplay.MouseX */
+		cmpw   $0x1b4,EXPORT_SYMBOL(lbDisplay__MouseX_640)	/* lbDisplay.MouseX but scaled */
 		jbe    jump_27e48
-		cmpw   $0x1be,EXPORT_SYMBOL(lbDisplay)+72
+		cmpw   $0x1be,EXPORT_SYMBOL(lbDisplay__MouseX_640)
 		jae    jump_27e48
-		cmpw   $0x158,EXPORT_SYMBOL(lbDisplay)+76	/* lbDisplay.MouseY */
+		cmpw   $0x158,EXPORT_SYMBOL(lbDisplay__MouseY_400)	/* lbDisplay.MouseY but scaled */
 		jbe    jump_27e48
-		cmpw   $0x166,EXPORT_SYMBOL(lbDisplay)+76
+		cmpw   $0x166,EXPORT_SYMBOL(lbDisplay__MouseY_400)
 		jae    jump_27e48
 		xor    %edx,%edx
 		mov    data_55030,%dl
@@ -32105,29 +32097,29 @@ check_for_click_on_cityadjust_tax:	/* 0x28490 */
 		add    %ebx,%eax
 		lea    0x0(,%eax,4),%eax
 		sub    %ebx,%eax
-		mov    EXPORT_SYMBOL(lbDisplay)+72,%dx
+		mov    EXPORT_SYMBOL(lbDisplay__MouseX_640),%dx
 		cmp    map_countries(%eax),%dx
 		jbe    jump_28551
 		xor    %ecx,%ecx
 		xor    %edx,%edx
 		mov    map_countries(%eax),%cx
-		mov    EXPORT_SYMBOL(lbDisplay)+72,%dx
+		mov    EXPORT_SYMBOL(lbDisplay__MouseX_640),%dx
 		lea    0x80(%ecx),%esi
 		cmp    %esi,%edx
 		jge    jump_28551
-		mov    EXPORT_SYMBOL(lbDisplay)+76,%dx
+		mov    EXPORT_SYMBOL(lbDisplay__MouseY_400),%dx
 		mov    data_5b062(%eax),%si
 		cmp    %si,%dx
 		jbe    jump_28551
 		xor    %edx,%edx
 		xor    %eax,%eax
 		mov    %si,%dx
-		mov    EXPORT_SYMBOL(lbDisplay)+76,%ax
+		mov    EXPORT_SYMBOL(lbDisplay__MouseY_400),%ax
 		lea    0x58(%edx),%esi
 		cmp    %esi,%eax
 		jge    jump_28551
 		xor    %eax,%eax
-		mov    EXPORT_SYMBOL(lbDisplay)+76,%ax
+		mov    EXPORT_SYMBOL(lbDisplay__MouseY_400),%ax
 		sub    %edx,%eax
 		mov    %eax,%edx
 		sar    $0x1f,%edx
@@ -32136,7 +32128,7 @@ check_for_click_on_cityadjust_tax:	/* 0x28490 */
 		mov    %eax,%esi
 		xor    %edx,%edx
 		shl    $0x6,%esi
-		mov    EXPORT_SYMBOL(lbDisplay)+72,%dx	/* lbDisplay.MouseX */
+		mov    EXPORT_SYMBOL(lbDisplay__MouseX_640),%dx	/* lbDisplay.MouseX but scaled */
 		sub    %ecx,%edx
 		mov    %edx,%eax
 		sar    $0x1f,%edx
@@ -32373,15 +32365,15 @@ show_city_info:	/* 0x28610 */
 		cmp    $0xff,%bx
 		jne    jump_28952
 		push   $0xc
-		mov    EXPORT_SYMBOL(lbDisplay)+84,%cx
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseY_400),%cx
 		push   $0xfffffffe
 		cmp    $0x15a,%cx
 		jbe    jump_28848
-		cmpw   $0x174,EXPORT_SYMBOL(lbDisplay)+84
+		cmpw   $0x174,EXPORT_SYMBOL(lbDisplay__MMouseY_400)
 		jae    jump_28848
-		cmpw   $0x10,EXPORT_SYMBOL(lbDisplay)+80	/* lbDisplay.MMouseX */
+		cmpw   $0x10,EXPORT_SYMBOL(lbDisplay__MMouseX_640)	/* lbDisplay.MMouseX but scaled */
 		jbe    jump_28848
-		cmpw   $0x92,EXPORT_SYMBOL(lbDisplay)+80
+		cmpw   $0x92,EXPORT_SYMBOL(lbDisplay__MMouseX_640)
 		jae    jump_28848
 		mov    $0x166,%eax
 		jmp    jump_2884d
@@ -32437,15 +32429,15 @@ show_city_info:	/* 0x28610 */
 		cmp    $0x1,%al
 		jne    jump_28952
 		push   $0xc
-		mov    EXPORT_SYMBOL(lbDisplay)+84,%si
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseY_400),%si
 		push   $0xfffffffe
 		cmp    $0x15a,%si
 		jbe    jump_28924
-		cmpw   $0x174,EXPORT_SYMBOL(lbDisplay)+84
+		cmpw   $0x174,EXPORT_SYMBOL(lbDisplay__MMouseY_400)
 		jae    jump_28924
-		cmpw   $0x10,EXPORT_SYMBOL(lbDisplay)+80
+		cmpw   $0x10,EXPORT_SYMBOL(lbDisplay__MMouseX_640)
 		jbe    jump_28924
-		cmpw   $0x92,EXPORT_SYMBOL(lbDisplay)+80
+		cmpw   $0x92,EXPORT_SYMBOL(lbDisplay__MMouseX_640)
 		jae    jump_28924
 		mov    $0x166,%eax
 		jmp    jump_28929
@@ -36207,15 +36199,15 @@ MouseHandler256:	/* 0x2b290 */
 		push   %ebx
 		push   %esi
 		mov    %eax,mouse_event
-		mov    %cx,EXPORT_SYMBOL(lbDisplay)+80	/* lbDisplay.MMouseX */
-		mov    %dx,EXPORT_SYMBOL(lbDisplay)+84
-		cmpw   $0x27e,EXPORT_SYMBOL(lbDisplay)+80
+		mov    %cx,EXPORT_SYMBOL(lbDisplay__MMouseX_640)	/* lbDisplay.MMouseX but scaled */
+		mov    %dx,EXPORT_SYMBOL(lbDisplay__MMouseY_400)
+		cmpw   $0x27e,EXPORT_SYMBOL(lbDisplay__MMouseX_640)
 		jbe    jump_2b2bf
-		movw   $0x27e,EXPORT_SYMBOL(lbDisplay)+80
+		movw   $0x27e,EXPORT_SYMBOL(lbDisplay__MMouseX_640)
 	jump_2b2bf:
-		cmpw   $0x18e,EXPORT_SYMBOL(lbDisplay)+84
+		cmpw   $0x18e,EXPORT_SYMBOL(lbDisplay__MMouseY_400)
 		jbe    jump_2b2d3
-		movw   $0x18e,EXPORT_SYMBOL(lbDisplay)+84
+		movw   $0x18e,EXPORT_SYMBOL(lbDisplay__MMouseY_400)
 	jump_2b2d3:
 		testb  $0x2,mouse_event
 		je     jump_2b30a
@@ -36224,8 +36216,8 @@ MouseHandler256:	/* 0x2b290 */
 		cmpb   $0x0,EXPORT_SYMBOL(lbDisplay)+103	/* lbDisplay.LeftButton */
 		jne    jump_2b303
 		movb   $0x1,EXPORT_SYMBOL(lbDisplay)+103	/* lbDisplay.LeftButton */
-		mov    %cx,EXPORT_SYMBOL(lbDisplay)+72	/* lbDisplay.MouseX */
-		mov    %dx,EXPORT_SYMBOL(lbDisplay)+76	/* lbDisplay.MouseY */
+		mov    %cx,EXPORT_SYMBOL(lbDisplay__MouseX_640)	/* lbDisplay.MouseX but scaled */
+		mov    %dx,EXPORT_SYMBOL(lbDisplay__MouseY_400)	/* lbDisplay.MouseY but scaled */
 	jump_2b303:
 		movb   $0x1,EXPORT_SYMBOL(lbDisplay)+106	/* lbDisplay.MLeftButton */
 	jump_2b30a:
@@ -36241,8 +36233,8 @@ MouseHandler256:	/* 0x2b290 */
 		cmpb   $0x0,EXPORT_SYMBOL(lbDisplay)+104	/* lbDisplay.RightButton */
 		jne    jump_2b34b
 		movb   $0x1,EXPORT_SYMBOL(lbDisplay)+104	/* lbDisplay.RightButton */
-		mov    %cx,EXPORT_SYMBOL(lbDisplay)+72
-		mov    %dx,EXPORT_SYMBOL(lbDisplay)+76
+		mov    %cx,EXPORT_SYMBOL(lbDisplay__MouseX_640)
+		mov    %dx,EXPORT_SYMBOL(lbDisplay__MouseY_400)
 	jump_2b34b:
 		movb   $0x1,EXPORT_SYMBOL(lbDisplay)+107	/* lbDisplay.MRightButton */
 	jump_2b352:
@@ -38540,7 +38532,7 @@ change_mouse_pointer:	/* 0x2cb40 */
 		xor    %ah,%ah
 		mov    $0x1,%esi
 		mov    %ah,data_552ff
-		cmpw   $0x80,EXPORT_SYMBOL(lbDisplay)+80	/* lbDisplay.MMouseX */
+		cmpw   $0x80,EXPORT_SYMBOL(lbDisplay__MMouseX_640)	/* lbDisplay.MMouseX but scaled */
 		jb     jump_2cc88
 		movswl Network__Slot,%ecx
 		mov    %ecx,%eax
@@ -39964,12 +39956,12 @@ make_packet:	/* 0x2d610 */
 		add    %edx,%eax
 		imul   $0x5c,%eax,%esi
 		add    $level__People,%esi
-		cmpw   $0x80,EXPORT_SYMBOL(lbDisplay)+80	/* lbDisplay.MMouseX */
+		cmpw   $0x80,EXPORT_SYMBOL(lbDisplay__MMouseX_640)	/* lbDisplay.MMouseX but scaled */
 		jae    jump_2dcc6
-		cmpw   $0x110,EXPORT_SYMBOL(lbDisplay)+84
+		cmpw   $0x110,EXPORT_SYMBOL(lbDisplay__MMouseY_400)
 		jb     jump_2dcc6
 		xor    %edi,%edi
-		mov    EXPORT_SYMBOL(lbDisplay)+80,%di
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseX_640),%di
 		mov    $0x100,%eax
 		xor    %ecx,%ecx
 		mov    %eax,%edx
@@ -39991,7 +39983,7 @@ make_packet:	/* 0x2d610 */
 		movw   $0x100,data_60b20
 	jump_2dc5b:
 		xor    %edi,%edi
-		mov    EXPORT_SYMBOL(lbDisplay)+84,%di
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseY_400),%di
 		mov    $0x100,%eax
 		xor    %ecx,%ecx
 		mov    %eax,%edx
@@ -40099,7 +40091,7 @@ func_2dd04:
 	jump_2ddb5:
 		cmpb   $0x0,EXPORT_SYMBOL(lbDisplay)+103	/* lbDisplay.LeftButton */
 		je     jump_2dee7
-		cmpw   $0x80,EXPORT_SYMBOL(lbDisplay)+72	/* lbDisplay.MouseX */
+		cmpw   $0x80,EXPORT_SYMBOL(lbDisplay__MouseX_640)	/* lbDisplay.MouseX but scaled */
 		jb     jump_2dee7
 		mov    data_60b12,%dx
 		test   %dx,%dx
@@ -40233,7 +40225,7 @@ func_2dd04:
 	jump_2df57:
 		cmpb   $0x0,EXPORT_SYMBOL(lbDisplay)+107	/* lbDisplay.MRightButton */
 		je     jump_2e084
-		cmpw   $0x80,EXPORT_SYMBOL(lbDisplay)+80	/* lbDisplay.MMouseX */
+		cmpw   $0x80,EXPORT_SYMBOL(lbDisplay__MMouseX_640)	/* lbDisplay.MMouseX but scaled */
 		jb     jump_2e084
 		cmpw   $0x0,0x44(%esi)
 		je     jump_2e084
@@ -40416,7 +40408,7 @@ func_2dd04:
 	jump_2e1d6:
 		cmpb   $0x0,EXPORT_SYMBOL(lbDisplay)+106	/* lbDisplay.MLeftButton */
 		je     jump_2e474
-		cmpw   $0x80,EXPORT_SYMBOL(lbDisplay)+72	/* lbDisplay.MouseX */
+		cmpw   $0x80,EXPORT_SYMBOL(lbDisplay__MouseX_640)	/* lbDisplay.MouseX but scaled */
 		jae    jump_2e474
 		xor    %edx,%edx
 	jump_2e1f4:
@@ -40427,24 +40419,24 @@ func_2dd04:
 		xor    %ecx,%ecx
 		xor    %esi,%esi
 		mov    data_55114(%eax),%cx
-		mov    EXPORT_SYMBOL(lbDisplay)+72,%si	/* lbDisplay.MouseX */
+		mov    EXPORT_SYMBOL(lbDisplay__MouseX_640),%si	/* lbDisplay.MouseX but scaled */
 		lea    0x4(%ecx),%edi
 		cmp    %edi,%esi
 		jl     jump_2e2c6
 		xor    %esi,%esi
-		mov    EXPORT_SYMBOL(lbDisplay)+72,%si	/* lbDisplay.MouseX */
+		mov    EXPORT_SYMBOL(lbDisplay__MouseX_640),%si	/* lbDisplay.MouseX but scaled */
 		add    $0x3b,%ecx
 		cmp    %ecx,%esi
 		jg     jump_2e2c6
 		xor    %ecx,%ecx
 		xor    %edi,%edi
 		mov    data_55116(%eax),%cx
-		mov    EXPORT_SYMBOL(lbDisplay)+76,%di	/* lbDisplay.MouseY */
+		mov    EXPORT_SYMBOL(lbDisplay__MouseY_400),%di	/* lbDisplay.MouseY but scaled */
 		lea    0x2e(%ecx),%esi
 		cmp    %esi,%edi
 		jl     jump_2e2c6
 		xor    %esi,%esi
-		mov    EXPORT_SYMBOL(lbDisplay)+76,%si
+		mov    EXPORT_SYMBOL(lbDisplay__MouseY_400),%si
 		add    $0x3c,%ecx
 		cmp    %ecx,%esi
 		jg     jump_2e2c6
@@ -40453,7 +40445,7 @@ func_2dd04:
 		mov    data_55114(%eax),%ax
 		xor    %edx,%edx
 		and    $0xffff,%eax
-		mov    EXPORT_SYMBOL(lbDisplay)+80,%dx	/* lbDisplay.MMouseX */
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseX_640),%dx	/* lbDisplay.MMouseX but scaled */
 		add    $0x4,%eax
 		sub    %eax,%edx
 		shl    $0x8,%edx
@@ -40491,24 +40483,24 @@ func_2dd04:
 		xor    %ecx,%ecx
 		xor    %edi,%edi
 		mov    data_55114(%eax),%cx
-		mov    EXPORT_SYMBOL(lbDisplay)+72,%di	/* lbDisplay.MouseX */
+		mov    EXPORT_SYMBOL(lbDisplay__MouseX_640),%di	/* lbDisplay.MouseX but scaled */
 		lea    0x4(%ecx),%esi
 		cmp    %esi,%edi
 		jl     jump_2e397
 		xor    %esi,%esi
-		mov    EXPORT_SYMBOL(lbDisplay)+72,%si
+		mov    EXPORT_SYMBOL(lbDisplay__MouseX_640),%si
 		add    $0x3b,%ecx
 		cmp    %ecx,%esi
 		jg     jump_2e397
 		xor    %ecx,%ecx
 		xor    %edi,%edi
 		mov    data_55116(%eax),%cx
-		mov    EXPORT_SYMBOL(lbDisplay)+76,%di
+		mov    EXPORT_SYMBOL(lbDisplay__MouseY_400),%di
 		lea    0x3c(%ecx),%esi
 		cmp    %esi,%edi
 		jl     jump_2e397
 		xor    %esi,%esi
-		mov    EXPORT_SYMBOL(lbDisplay)+76,%si
+		mov    EXPORT_SYMBOL(lbDisplay__MouseY_400),%si
 		add    $0x4a,%ecx
 		cmp    %ecx,%esi
 		jg     jump_2e397
@@ -40517,7 +40509,7 @@ func_2dd04:
 		mov    data_55114(%eax),%ax
 		xor    %edx,%edx
 		and    $0xffff,%eax
-		mov    EXPORT_SYMBOL(lbDisplay)+80,%dx
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseX_640),%dx
 		add    $0x4,%eax
 		sub    %eax,%edx
 		shl    $0x8,%edx
@@ -40555,24 +40547,24 @@ func_2dd04:
 		xor    %ecx,%ecx
 		xor    %esi,%esi
 		mov    data_55114(%eax),%cx
-		mov    EXPORT_SYMBOL(lbDisplay)+72,%si
+		mov    EXPORT_SYMBOL(lbDisplay__MouseX_640),%si
 		lea    0x4(%ecx),%edi
 		cmp    %edi,%esi
 		jl     jump_2e469
 		xor    %esi,%esi
-		mov    EXPORT_SYMBOL(lbDisplay)+72,%si
+		mov    EXPORT_SYMBOL(lbDisplay__MouseX_640),%si
 		add    $0x3b,%ecx
 		cmp    %ecx,%esi
 		jg     jump_2e469
 		xor    %ecx,%ecx
 		xor    %edi,%edi
 		mov    data_55116(%eax),%cx
-		mov    EXPORT_SYMBOL(lbDisplay)+76,%di	/* lbDisplay.MouseY */
+		mov    EXPORT_SYMBOL(lbDisplay__MouseY_400),%di	/* lbDisplay.MouseY but scaled */
 		lea    0x4a(%ecx),%esi
 		cmp    %esi,%edi
 		jl     jump_2e469
 		xor    %esi,%esi
-		mov    EXPORT_SYMBOL(lbDisplay)+76,%si
+		mov    EXPORT_SYMBOL(lbDisplay__MouseY_400),%si
 		add    $0x58,%ecx
 		cmp    %ecx,%esi
 		jg     jump_2e469
@@ -40581,7 +40573,7 @@ func_2dd04:
 		mov    data_55114(%eax),%ax
 		xor    %edx,%edx
 		and    $0xffff,%eax
-		mov    EXPORT_SYMBOL(lbDisplay)+80,%dx	/* lbDisplay.MMouseX */
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseX_640),%dx	/* lbDisplay.MMouseX but scaled */
 		add    $0x4,%eax
 		sub    %eax,%edx
 		shl    $0x8,%edx
@@ -40754,14 +40746,14 @@ func_2e595:
 		mov    0x2(%ebx),%ax
 		add    %edx,%eax
 		xor    %edx,%edx
-		mov    EXPORT_SYMBOL(lbDisplay)+72,%dx	/* lbDisplay.MouseX */
+		mov    EXPORT_SYMBOL(lbDisplay__MouseX_640),%dx	/* lbDisplay.MouseX but scaled */
 		cmp    %eax,%edx
 		jl     jump_2e5ff
 		xor    %edx,%edx
 		mov    0x6(%ebx),%dl
 		add    %edx,%eax
 		xor    %edx,%edx
-		mov    EXPORT_SYMBOL(lbDisplay)+72,%dx
+		mov    EXPORT_SYMBOL(lbDisplay__MouseX_640),%dx
 		cmp    %eax,%edx
 		jge    jump_2e5ff
 		xor    %edx,%edx
@@ -40769,14 +40761,14 @@ func_2e595:
 		mov    0x4(%ebx),%dx
 		add    %edx,%eax
 		xor    %edx,%edx
-		mov    EXPORT_SYMBOL(lbDisplay)+76,%dx	/* lbDisplay.MouseY */
+		mov    EXPORT_SYMBOL(lbDisplay__MouseY_400),%dx	/* lbDisplay.MouseY but scaled */
 		cmp    %eax,%edx
 		jl     jump_2e5ff
 		xor    %edx,%edx
 		mov    0x7(%ebx),%dl
 		add    %edx,%eax
 		xor    %edx,%edx
-		mov    EXPORT_SYMBOL(lbDisplay)+76,%dx
+		mov    EXPORT_SYMBOL(lbDisplay__MouseY_400),%dx
 		cmp    %eax,%edx
 		jl     jump_2e610
 	jump_2e5ff:
@@ -40842,14 +40834,14 @@ func_2e67f:
 		mov    0x2(%ebx),%dx
 		add    %edx,%eax
 		xor    %edx,%edx
-		mov    EXPORT_SYMBOL(lbDisplay)+72,%dx	/* lbDisplay.MouseX */
+		mov    EXPORT_SYMBOL(lbDisplay__MouseX_640),%dx	/* lbDisplay.MouseX but scaled */
 		cmp    %eax,%edx
 		jl     jump_2e74b
 		xor    %edx,%edx
 		mov    0x6(%ebx),%dl
 		add    %edx,%eax
 		xor    %edx,%edx
-		mov    EXPORT_SYMBOL(lbDisplay)+72,%dx
+		mov    EXPORT_SYMBOL(lbDisplay__MouseX_640),%dx
 		cmp    %eax,%edx
 		jge    jump_2e74b
 		xor    %eax,%eax
@@ -40857,14 +40849,14 @@ func_2e67f:
 		mov    0x4(%ebx),%ax
 		add    %edx,%eax
 		xor    %edx,%edx
-		mov    EXPORT_SYMBOL(lbDisplay)+76,%dx	/* lbDisplay.MouseY */
+		mov    EXPORT_SYMBOL(lbDisplay__MouseY_400),%dx	/* lbDisplay.MouseY but scaled */
 		cmp    %eax,%edx
 		jl     jump_2e74b
 		xor    %edx,%edx
 		mov    0x7(%ebx),%dl
 		add    %edx,%eax
 		xor    %edx,%edx
-		mov    EXPORT_SYMBOL(lbDisplay)+76,%dx
+		mov    EXPORT_SYMBOL(lbDisplay__MouseY_400),%dx
 		cmp    %eax,%edx
 		jge    jump_2e74b
 		xor    %ecx,%ecx
@@ -40965,14 +40957,14 @@ func_2e7d5:
 		mov    0x2(%ebx),%ax
 		add    %edx,%eax
 		xor    %edx,%edx
-		mov    EXPORT_SYMBOL(lbDisplay)+72,%dx	/* lbDisplay.MouseX */
+		mov    EXPORT_SYMBOL(lbDisplay__MouseX_640),%dx	/* lbDisplay.MouseX but scaled */
 		cmp    %eax,%edx
 		jl     jump_2e83f
 		xor    %edx,%edx
 		mov    0x6(%ebx),%dl
 		add    %edx,%eax
 		xor    %edx,%edx
-		mov    EXPORT_SYMBOL(lbDisplay)+72,%dx
+		mov    EXPORT_SYMBOL(lbDisplay__MouseX_640),%dx
 		cmp    %eax,%edx
 		jge    jump_2e83f
 		xor    %edx,%edx
@@ -40980,14 +40972,14 @@ func_2e7d5:
 		mov    0x4(%ebx),%dx
 		add    %edx,%eax
 		xor    %edx,%edx
-		mov    EXPORT_SYMBOL(lbDisplay)+76,%dx	/* lbDisplay.MouseY */
+		mov    EXPORT_SYMBOL(lbDisplay__MouseY_400),%dx	/* lbDisplay.MouseY but scaled */
 		cmp    %eax,%edx
 		jl     jump_2e83f
 		xor    %edx,%edx
 		mov    0x7(%ebx),%dl
 		add    %edx,%eax
 		xor    %edx,%edx
-		mov    EXPORT_SYMBOL(lbDisplay)+76,%dx
+		mov    EXPORT_SYMBOL(lbDisplay__MouseY_400),%dx
 		cmp    %eax,%edx
 		jl     jump_2e850
 	jump_2e83f:
@@ -41072,14 +41064,14 @@ func_2e902:
 		mov    0x2(%ebx),%dx
 		add    %edx,%eax
 		xor    %edx,%edx
-		mov    EXPORT_SYMBOL(lbDisplay)+72,%dx	/* lbDisplay.MouseX */
+		mov    EXPORT_SYMBOL(lbDisplay__MouseX_640),%dx	/* lbDisplay.MouseX but scaled */
 		cmp    %eax,%edx
 		jl     jump_2e9d0
 		xor    %edx,%edx
 		mov    0x6(%ebx),%dl
 		add    %edx,%eax
 		xor    %edx,%edx
-		mov    EXPORT_SYMBOL(lbDisplay)+72,%dx
+		mov    EXPORT_SYMBOL(lbDisplay__MouseX_640),%dx
 		cmp    %eax,%edx
 		jge    jump_2e9d0
 		xor    %edx,%edx
@@ -41087,14 +41079,14 @@ func_2e902:
 		mov    0x4(%ebx),%dx
 		add    %edx,%eax
 		xor    %edx,%edx
-		mov    EXPORT_SYMBOL(lbDisplay)+76,%dx	/* lbDisplay.MouseY */
+		mov    EXPORT_SYMBOL(lbDisplay__MouseY_400),%dx	/* lbDisplay.MouseY but scaled */
 		cmp    %eax,%edx
 		jl     jump_2e9d0
 		xor    %edx,%edx
 		mov    0x7(%ebx),%dl
 		add    %edx,%eax
 		xor    %edx,%edx
-		mov    EXPORT_SYMBOL(lbDisplay)+76,%dx
+		mov    EXPORT_SYMBOL(lbDisplay__MouseY_400),%dx
 		cmp    %eax,%edx
 		jge    jump_2e9d0
 		xor    %eax,%eax
@@ -41245,14 +41237,14 @@ func_2eb05:
 		mov    0x2(%ebx),%ax
 		add    %edx,%eax
 		xor    %edx,%edx
-		mov    EXPORT_SYMBOL(lbDisplay)+72,%dx	/* lbDisplay.MouseX */
+		mov    EXPORT_SYMBOL(lbDisplay__MouseX_640),%dx	/* lbDisplay.MouseX but scaled */
 		cmp    %eax,%edx
 		jl     jump_2eb6f
 		xor    %edx,%edx
 		mov    0x6(%ebx),%dl
 		add    %edx,%eax
 		xor    %edx,%edx
-		mov    EXPORT_SYMBOL(lbDisplay)+72,%dx
+		mov    EXPORT_SYMBOL(lbDisplay__MouseX_640),%dx
 		cmp    %eax,%edx
 		jge    jump_2eb6f
 		xor    %eax,%eax
@@ -41260,14 +41252,14 @@ func_2eb05:
 		mov    0x4(%ebx),%ax
 		add    %edx,%eax
 		xor    %edx,%edx
-		mov    EXPORT_SYMBOL(lbDisplay)+76,%dx	/* lbDisplay.MouseY */
+		mov    EXPORT_SYMBOL(lbDisplay__MouseY_400),%dx	/* lbDisplay.MouseY but scaled */
 		cmp    %eax,%edx
 		jl     jump_2eb6f
 		xor    %edx,%edx
 		mov    0x7(%ebx),%dl
 		add    %edx,%eax
 		xor    %edx,%edx
-		mov    EXPORT_SYMBOL(lbDisplay)+76,%dx
+		mov    EXPORT_SYMBOL(lbDisplay__MouseY_400),%dx
 		cmp    %eax,%edx
 		jl     jump_2eb80
 	jump_2eb6f:
@@ -41337,14 +41329,14 @@ func_2ebef:
 		mov    0x2(%ebx),%dx
 		add    %edx,%eax
 		xor    %edx,%edx
-		mov    EXPORT_SYMBOL(lbDisplay)+72,%dx	/* lbDisplay.MouseX */
+		mov    EXPORT_SYMBOL(lbDisplay__MouseX_640),%dx	/* lbDisplay.MouseX but scaled */
 		cmp    %eax,%edx
 		jl     jump_2ecc8
 		xor    %edx,%edx
 		mov    0x6(%ebx),%dl
 		add    %edx,%eax
 		xor    %edx,%edx
-		mov    EXPORT_SYMBOL(lbDisplay)+72,%dx
+		mov    EXPORT_SYMBOL(lbDisplay__MouseX_640),%dx
 		cmp    %eax,%edx
 		jge    jump_2ecc8
 		xor    %edx,%edx
@@ -41352,14 +41344,14 @@ func_2ebef:
 		mov    0x4(%ebx),%dx
 		add    %edx,%eax
 		xor    %edx,%edx
-		mov    EXPORT_SYMBOL(lbDisplay)+76,%dx	/* lbDisplay.MouseY */
+		mov    EXPORT_SYMBOL(lbDisplay__MouseY_400),%dx	/* lbDisplay.MouseY but scaled */
 		cmp    %eax,%edx
 		jl     jump_2ecc8
 		xor    %edx,%edx
 		mov    0x7(%ebx),%dl
 		add    %edx,%eax
 		xor    %edx,%edx
-		mov    EXPORT_SYMBOL(lbDisplay)+76,%dx
+		mov    EXPORT_SYMBOL(lbDisplay__MouseY_400),%dx
 		cmp    %eax,%edx
 		jge    jump_2ecc8
 		xor    %ecx,%ecx
@@ -50417,18 +50409,18 @@ ResearchAndDevelop:	/* 0x34ad0 */
 		call   DrawScreenGadget
 		add    $0x1c,%esp
 		push   $0xc
-		mov    EXPORT_SYMBOL(lbDisplay)+84,%ax
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseY_400),%ax
 		mov    data_5b6ac,%cx
 		push   $0xfffffffe
 		cmp    %cx,%ax
 		jbe    jump_34bbc
-		mov    EXPORT_SYMBOL(lbDisplay)+84,%ax
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseY_400),%ax
 		cmp    data_5b6b0,%ax
 		jae    jump_34bbc
-		mov    EXPORT_SYMBOL(lbDisplay)+80,%ax	/* lbDisplay.MMouseX */
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseX_640),%ax	/* lbDisplay.MMouseX but scaled */
 		cmp    data_5b6aa,%ax
 		jbe    jump_34bbc
-		mov    EXPORT_SYMBOL(lbDisplay)+80,%ax
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseX_640),%ax
 		cmp    data_5b6ae,%ax
 		jae    jump_34bbc
 		mov    $0x166,%eax
@@ -50512,18 +50504,18 @@ ResearchAndDevelop:	/* 0x34ad0 */
 		push   %edx
 		call   DrawScreenGadget
 		add    $0x1c,%esp
-		mov    EXPORT_SYMBOL(lbDisplay)+84,%ax
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseY_400),%ax
 		mov    data_5b6b6,%di
 		cmp    %di,%ax
 		jbe    jump_34d3b
-		mov    EXPORT_SYMBOL(lbDisplay)+84,%ax
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseY_400),%ax
 		cmp    data_5b6ba,%ax
 		jae    jump_34d3b
-		mov    EXPORT_SYMBOL(lbDisplay)+80,%ax	/* lbDisplay.MMouseX */
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseX_640),%ax	/* lbDisplay.MMouseX but scaled */
 		mov    data_5b6b4,%bx
 		cmp    %bx,%ax
 		jbe    jump_34d3b
-		mov    EXPORT_SYMBOL(lbDisplay)+80,%ax
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseX_640),%ax
 		mov    data_5b6b8,%cx
 		cmp    %cx,%ax
 		jae    jump_34d3b
@@ -50551,18 +50543,18 @@ ResearchAndDevelop:	/* 0x34ad0 */
 		call   DrawScreenGadget
 		add    $0x1c,%esp
 	jump_34d3b:
-		mov    EXPORT_SYMBOL(lbDisplay)+84,%ax
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseY_400),%ax
 		mov    data_5b6c0,%di
 		cmp    %di,%ax
 		jbe    jump_34dc8
-		mov    EXPORT_SYMBOL(lbDisplay)+84,%ax
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseY_400),%ax
 		cmp    data_5b6c4,%ax
 		jae    jump_34dc8
-		mov    EXPORT_SYMBOL(lbDisplay)+80,%ax
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseX_640),%ax
 		mov    data_5b6be,%bx
 		cmp    %bx,%ax
 		jbe    jump_34dc8
-		mov    EXPORT_SYMBOL(lbDisplay)+80,%ax
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseX_640),%ax
 		mov    data_5b6c2,%cx
 		cmp    %cx,%ax
 		jae    jump_34dc8
@@ -50894,15 +50886,15 @@ ResearchAndDevelop:	/* 0x34ad0 */
 		call   func_1b3a0
 		add    $0x14,%esp
 		push   $0xc
-		mov    EXPORT_SYMBOL(lbDisplay)+84,%cx
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseY_400),%cx
 		push   $0xfffffffe
 		cmp    $0x13e,%cx
 		jbe    jump_351b6
-		cmpw   $0x156,EXPORT_SYMBOL(lbDisplay)+84
+		cmpw   $0x156,EXPORT_SYMBOL(lbDisplay__MMouseY_400)
 		jae    jump_351b6
-		cmpw   $0x1f4,EXPORT_SYMBOL(lbDisplay)+80	/* lbDisplay.MMouseX */
+		cmpw   $0x1f4,EXPORT_SYMBOL(lbDisplay__MMouseX_640)	/* lbDisplay.MMouseX but scaled */
 		jbe    jump_351b6
-		cmpw   $0x272,EXPORT_SYMBOL(lbDisplay)+80
+		cmpw   $0x272,EXPORT_SYMBOL(lbDisplay__MMouseX_640)
 		jae    jump_351b6
 		mov    $0x166,%eax
 		jmp    jump_351bb
@@ -50941,15 +50933,15 @@ ResearchAndDevelop:	/* 0x34ad0 */
 		call   func_1b3a0
 		add    $0x14,%esp
 		push   $0xc
-		mov    EXPORT_SYMBOL(lbDisplay)+84,%di
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseY_400),%di
 		push   $0xfffffffe
 		cmp    $0x13e,%di
 		jbe    jump_35265
-		cmpw   $0x156,EXPORT_SYMBOL(lbDisplay)+84
+		cmpw   $0x156,EXPORT_SYMBOL(lbDisplay__MMouseY_400)
 		jae    jump_35265
-		cmpw   $0x1f4,EXPORT_SYMBOL(lbDisplay)+80
+		cmpw   $0x1f4,EXPORT_SYMBOL(lbDisplay__MMouseX_640)
 		jbe    jump_35265
-		cmpw   $0x272,EXPORT_SYMBOL(lbDisplay)+80
+		cmpw   $0x272,EXPORT_SYMBOL(lbDisplay__MMouseX_640)
 		jae    jump_35265
 		mov    $0x166,%eax
 		jmp    jump_3526a
@@ -51192,15 +51184,15 @@ ResearchAndDevelop:	/* 0x34ad0 */
 		call   func_1b3a0
 		add    $0x14,%esp
 		push   $0xc
-		mov    EXPORT_SYMBOL(lbDisplay)+84,%dx
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseY_400),%dx
 		push   $0xfffffffe
 		cmp    $0x9e,%dx
 		jbe    jump_35598
-		cmpw   $0xb8,EXPORT_SYMBOL(lbDisplay)+84
+		cmpw   $0xb8,EXPORT_SYMBOL(lbDisplay__MMouseY_400)
 		jae    jump_35598
-		cmpw   $0x10,EXPORT_SYMBOL(lbDisplay)+80	/* lbDisplay.MMouseX */
+		cmpw   $0x10,EXPORT_SYMBOL(lbDisplay__MMouseX_640)	/* lbDisplay.MMouseX but scaled */
 		jbe    jump_35598
-		cmpw   $0x92,EXPORT_SYMBOL(lbDisplay)+80
+		cmpw   $0x92,EXPORT_SYMBOL(lbDisplay__MMouseX_640)
 		jae    jump_35598
 		mov    $0x166,%eax
 		jmp    jump_3559d
@@ -51219,15 +51211,15 @@ ResearchAndDevelop:	/* 0x34ad0 */
 		call   DrawScreenGadget
 		add    $0x1c,%esp
 		push   $0xc
-		mov    EXPORT_SYMBOL(lbDisplay)+84,%di
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseY_400),%di
 		push   $0xfffffffe
 		cmp    $0xb6,%di
 		jbe    jump_355ff
-		cmpw   $0xd0,EXPORT_SYMBOL(lbDisplay)+84
+		cmpw   $0xd0,EXPORT_SYMBOL(lbDisplay__MMouseY_400)
 		jae    jump_355ff
-		cmpw   $0x10,EXPORT_SYMBOL(lbDisplay)+80
+		cmpw   $0x10,EXPORT_SYMBOL(lbDisplay__MMouseX_640)
 		jbe    jump_355ff
-		cmpw   $0x92,EXPORT_SYMBOL(lbDisplay)+80
+		cmpw   $0x92,EXPORT_SYMBOL(lbDisplay__MMouseX_640)
 		jae    jump_355ff
 		mov    $0x166,%eax
 		jmp    jump_35604
@@ -51301,10 +51293,10 @@ ResearchAndDevelop:	/* 0x34ad0 */
 		lea    0x42(%ebp),%eax
 		push   %eax
 		xor    %eax,%eax
-		mov    EXPORT_SYMBOL(lbDisplay)+84,%ax
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseY_400),%ax
 		push   %eax
 		xor    %eax,%eax
-		mov    EXPORT_SYMBOL(lbDisplay)+80,%ax	/* lbDisplay.MMouseX */
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseX_640),%ax	/* lbDisplay.MMouseX but scaled */
 		push   %eax
 		push   $0x14
 		call   which_item_selected
@@ -51393,10 +51385,10 @@ ResearchAndDevelop:	/* 0x34ad0 */
 		lea    0x42(%ebp),%eax
 		push   %eax
 		xor    %eax,%eax
-		mov    EXPORT_SYMBOL(lbDisplay)+84,%ax
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseY_400),%ax
 		push   %eax
 		xor    %eax,%eax
-		mov    EXPORT_SYMBOL(lbDisplay)+80,%ax	/* lbDisplay.MMouseX */
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseX_640),%ax	/* lbDisplay.MMouseX but scaled */
 		push   %eax
 		push   $0x12
 		call   which_item_selected
@@ -51564,10 +51556,10 @@ func_3597a:
 		push   $0x0
 		xor    %eax,%eax
 		push   $0x0
-		mov    EXPORT_SYMBOL(lbDisplay)+76,%ax	/* lbDisplay.MouseY */
+		mov    EXPORT_SYMBOL(lbDisplay__MouseY_400),%ax	/* lbDisplay.MouseY but scaled */
 		push   %eax
 		xor    %eax,%eax
-		mov    EXPORT_SYMBOL(lbDisplay)+72,%ax	/* lbDisplay.MouseX */
+		mov    EXPORT_SYMBOL(lbDisplay__MouseX_640),%ax	/* lbDisplay.MouseX but scaled */
 		push   %eax
 		xor    %eax,%eax
 		mov    %bx,%ax
@@ -51600,10 +51592,10 @@ func_359e6:
 		push   $0x1
 		xor    %eax,%eax
 		push   $0x0
-		mov    EXPORT_SYMBOL(lbDisplay)+84,%ax
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseY_400),%ax
 		push   %eax
 		xor    %eax,%eax
-		mov    EXPORT_SYMBOL(lbDisplay)+80,%ax	/* lbDisplay.MMouseX */
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseX_640),%ax	/* lbDisplay.MMouseX but scaled */
 		push   %eax
 		push   $0x14
 		jmp    jump_35a3c
@@ -51616,10 +51608,10 @@ func_359e6:
 		push   $0x1
 		xor    %eax,%eax
 		push   $0x0
-		mov    EXPORT_SYMBOL(lbDisplay)+84,%ax
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseY_400),%ax
 		push   %eax
 		xor    %eax,%eax
-		mov    EXPORT_SYMBOL(lbDisplay)+80,%ax
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseX_640),%ax
 		push   %eax
 		push   $0x12
 	jump_35a3c:
@@ -51641,13 +51633,13 @@ func_359e6:
 		mov    %bl,0x72(%ebp)
 		jmp    def_35899
 	jump_35a71:
-		cmpw   $0x10,EXPORT_SYMBOL(lbDisplay)+72	/* lbDisplay.MouseX */
+		cmpw   $0x10,EXPORT_SYMBOL(lbDisplay__MouseX_640)	/* lbDisplay.MouseX but scaled */
 		jbe    jump_35cd2
-		cmpw   $0x92,EXPORT_SYMBOL(lbDisplay)+72
+		cmpw   $0x92,EXPORT_SYMBOL(lbDisplay__MouseX_640)
 		jae    jump_35cd2
-		cmpw   $0x9e,EXPORT_SYMBOL(lbDisplay)+76	/* lbDisplay.MouseY */
+		cmpw   $0x9e,EXPORT_SYMBOL(lbDisplay__MouseY_400)	/* lbDisplay.MouseY but scaled */
 		jbe    jump_35cd2
-		cmpw   $0xb8,EXPORT_SYMBOL(lbDisplay)+76
+		cmpw   $0xb8,EXPORT_SYMBOL(lbDisplay__MouseY_400)
 		jae    jump_35cd2
 		mov    data_55595,%bh
 		test   %bh,%bh
@@ -51818,13 +51810,13 @@ func_359e6:
 		mov    %eax,data_55597
 		mov    %bl,0x7e(%ebp)
 	jump_35cd2:
-		cmpw   $0x10,EXPORT_SYMBOL(lbDisplay)+80	/* lbDisplay.MMouseX */
+		cmpw   $0x10,EXPORT_SYMBOL(lbDisplay__MMouseX_640)	/* lbDisplay.MMouseX but scaled */
 		jbe    def_35899
-		cmpw   $0x92,EXPORT_SYMBOL(lbDisplay)+80
+		cmpw   $0x92,EXPORT_SYMBOL(lbDisplay__MMouseX_640)
 		jae    def_35899
-		cmpw   $0xb6,EXPORT_SYMBOL(lbDisplay)+84
+		cmpw   $0xb6,EXPORT_SYMBOL(lbDisplay__MMouseY_400)
 		jbe    def_35899
-		cmpw   $0xd0,EXPORT_SYMBOL(lbDisplay)+84
+		cmpw   $0xd0,EXPORT_SYMBOL(lbDisplay__MMouseY_400)
 		jae    def_35899
 		xor    %bh,%bh
 		mov    %bh,0x7e(%ebp)
@@ -51872,18 +51864,18 @@ func_359e6:
 		cmpb   $0x0,0x7e(%ebp)
 		jne    jump_34c03
 		push   $0xc
-		mov    EXPORT_SYMBOL(lbDisplay)+84,%ax
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseY_400),%ax
 		mov    data_5b6a2,%cx
 		push   $0xfffffffe
 		cmp    %cx,%ax
 		jbe    jump_34b2b
-		mov    EXPORT_SYMBOL(lbDisplay)+84,%ax
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseY_400),%ax
 		cmp    data_5b6a6,%ax
 		jae    jump_34b2b
-		mov    EXPORT_SYMBOL(lbDisplay)+80,%ax
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseX_640),%ax
 		cmp    data_5b6a0,%ax
 		jbe    jump_34b2b
-		mov    EXPORT_SYMBOL(lbDisplay)+80,%ax
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseX_640),%ax
 		cmp    data_5b6a4,%ax
 		jae    jump_34b2b
 		mov    $0x166,%eax
@@ -54364,12 +54356,12 @@ func_378c3:
 		call   DisplayScreenTitle
 		add    $0x4,%esp
 		xor    %eax,%eax
-		cmpw   $0x7c,EXPORT_SYMBOL(lbDisplay)+84
+		cmpw   $0x7c,EXPORT_SYMBOL(lbDisplay__MMouseY_400)
 		jbe    jump_3790f
-		cmpw   $0x148,EXPORT_SYMBOL(lbDisplay)+84
+		cmpw   $0x148,EXPORT_SYMBOL(lbDisplay__MMouseY_400)
 		jae    jump_3790f
 		xor    %edx,%edx
-		mov    EXPORT_SYMBOL(lbDisplay)+84,%dx
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseY_400),%dx
 		sub    $0x5a,%edx
 		mov    $0x22,%ebx
 		mov    %edx,%eax
@@ -54429,12 +54421,12 @@ func_378c3:
 		je     jump_37a42
 		xor    %al,%al
 		mov    %al,EXPORT_SYMBOL(lbDisplay)+103	/* lbDisplay.LeftButton */
-		cmpw   $0x7c,EXPORT_SYMBOL(lbDisplay)+76	/* lbDisplay.MouseY */
+		cmpw   $0x7c,EXPORT_SYMBOL(lbDisplay__MouseY_400)	/* lbDisplay.MouseY but scaled */
 		jbe    jump_37a42
-		cmpw   $0x126,EXPORT_SYMBOL(lbDisplay)+76
+		cmpw   $0x126,EXPORT_SYMBOL(lbDisplay__MouseY_400)
 		jae    jump_37a42
 		xor    %edx,%edx
-		mov    EXPORT_SYMBOL(lbDisplay)+76,%dx
+		mov    EXPORT_SYMBOL(lbDisplay__MouseY_400),%dx
 		sub    $0x5a,%edx
 		mov    $0x22,%ebx
 		mov    %edx,%eax
@@ -55988,18 +55980,18 @@ DrawAcceptGadget:	/* 0x38b50 */
 /*----------------------------------------------------------------*/
 		push   %edi
 		push   $0xc
-		mov    EXPORT_SYMBOL(lbDisplay)+84,%ax
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseY_400),%ax
 		mov    data_5b6ca,%dx
 		push   $0xfffffffe
 		cmp    %dx,%ax
 		jbe    jump_38b9b
-		mov    EXPORT_SYMBOL(lbDisplay)+84,%ax
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseY_400),%ax
 		cmp    data_5b6ce,%ax
 		jae    jump_38b9b
-		mov    EXPORT_SYMBOL(lbDisplay)+80,%ax	/* lbDisplay.MMouseX */
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseX_640),%ax	/* lbDisplay.MMouseX but scaled */
 		cmp    data_5b6c8,%ax
 		jbe    jump_38b9b
-		mov    EXPORT_SYMBOL(lbDisplay)+80,%ax
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseX_640),%ax
 		cmp    data_5b6cc,%ax
 		jae    jump_38b9b
 		mov    $0x166,%eax
@@ -56035,18 +56027,18 @@ DrawMenuGadget:	/* 0x38bf0 */
 /*----------------------------------------------------------------*/
 		push   %edi
 		push   $0xc
-		mov    EXPORT_SYMBOL(lbDisplay)+84,%ax
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseY_400),%ax
 		mov    data_5b6d4,%dx
 		push   $0xfffffffe
 		cmp    %dx,%ax
 		jbe    jump_38c3b
-		mov    EXPORT_SYMBOL(lbDisplay)+84,%ax
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseY_400),%ax
 		cmp    data_5b6d8,%ax
 		jae    jump_38c3b
-		mov    EXPORT_SYMBOL(lbDisplay)+80,%ax
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseX_640),%ax
 		cmp    data_5b6d2,%ax
 		jbe    jump_38c3b
-		mov    EXPORT_SYMBOL(lbDisplay)+80,%ax
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseX_640),%ax
 		cmp    data_5b6d6,%ax
 		jae    jump_38c3b
 		mov    $0x166,%eax
@@ -62694,16 +62686,16 @@ BackupMouse:	/* 0x41323 */
 		push   %edx
 		push   %edi
 		push   %esi
-		mov    EXPORT_SYMBOL(lbDisplay)+80,%ax	/* lbDisplay.MMouseX */
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseX_640),%ax	/* lbDisplay.MMouseX but scaled */
 		mov    %ax,MouseOldX
-		mov    EXPORT_SYMBOL(lbDisplay)+84,%ax
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseY_400),%ax
 		mov    %ax,MouseOldY
 		movzbw EXPORT_SYMBOL(DrawFlags),%ax
 		cmp    $0x1,%ax
 		je     jump_413cb
 		cmp    $0x2,%ax
 		je     jump_41394
-		mov    EXPORT_SYMBOL(lbDisplay)+80,%ax
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseX_640),%ax
 		add    $0xfff0,%ax
 		add    $0xfff0,%ax
 		cmp    $0x0,%ax
@@ -62711,29 +62703,29 @@ BackupMouse:	/* 0x41323 */
 		add    $0x280,%ax
 	jump_4136d:
 		mov    %ax,MouseOldX
-		mov    EXPORT_SYMBOL(lbDisplay)+84,%ax
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseY_400),%ax
 		add    $0xfff0,%ax
 		add    $0xfff0,%ax
 		mov    %ax,MouseOldY
 		movzbw EXPORT_SYMBOL(DrawFlags),%ax
 		jmp    jump_41468
 	jump_41394:
-		mov    EXPORT_SYMBOL(lbDisplay)+80,%ax
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseX_640),%ax
 		add    $0xfff0,%ax
 		cmp    $0x0,%ax
 		jge    jump_413a8
 		add    $0x280,%ax
 	jump_413a8:
 		mov    %ax,MouseOldX
-		mov    EXPORT_SYMBOL(lbDisplay)+84,%ax
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseY_400),%ax
 		add    $0xfff0,%ax
 		mov    %ax,MouseOldY
 		movzbw EXPORT_SYMBOL(DrawFlags),%ax
 		jmp    jump_41468
 	jump_413cb:
-		mov    EXPORT_SYMBOL(lbDisplay)+80,%ax	/* lbDisplay.MMouseX */
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseX_640),%ax	/* lbDisplay.MMouseX but scaled */
 		mov    %ax,MouseOldX
-		mov    EXPORT_SYMBOL(lbDisplay)+84,%ax
+		mov    EXPORT_SYMBOL(lbDisplay__MMouseY_400),%ax
 		mov    %ax,MouseOldY
 		mov    $MouseOldData,%edi
 		mov    MouseOldY,%ax
