@@ -28266,23 +28266,53 @@ set_network_player:	/* 0x25790 */
 		pop    %esi
 		pop    %ebx
 		ret
+
 jpt_25910:	/* 0x25830 */
 		.long   func_25918
+		.long   jump_258fc
 		.long   func_25918
 		.long   func_25918
 		.long   func_25918
 		.long   func_25918
+		.long   jump_258fc
+		.long   jump_258fc
+		.long   jump_258fc
+		.long   jump_258fc
+		.long   jump_258fc
+		.long   jump_258fc
+		.long   jump_258fc
+		.long   jump_258fc
 		.long   func_25918
 		.long   func_25918
+		.long   jump_258fc
+		.long   jump_258fc
+		.long   jump_258fc
+		.long   jump_258fc
+		.long   jump_258fc
+		.long   jump_258fc
+		.long   jump_258fc
+		.long   jump_258fc
+		.long   jump_258fc
+		.long   jump_258fc
+		.long   jump_258fc
+		.long   jump_258fc
 		.long   func_25918
+		.long   jump_258fc
+		.long   jump_258fc
 		.long   func_25918
+		.long   jump_258fc
+		.long   jump_258fc
+		.long   jump_258fc
+		.long   jump_258fc
 		.long   jump_2591d
+		.long   jump_258fc
 		.long   func_25918
+		.long   jump_258fc
 		.long   jump_2591d
 		.long   jump_2591d
 		.long   jump_2591d
+		.long   jump_258fc
 		.long   func_25918
-
 
 /*----------------------------------------------------------------*/
 give_person_new_command:	/* 0x258f0 */
@@ -28291,6 +28321,7 @@ give_person_new_command:	/* 0x258f0 */
 		mov    0x8(%esp),%edx
 		cmpw   $0x0,0x20(%edx)
 		je     jump_25900
+jump_258fc:
 		xor    %eax,%eax
 		pop    %ebx
 		ret
@@ -28303,13 +28334,12 @@ give_person_new_command:	/* 0x258f0 */
 		jmp    *%cs:jpt_25910(,%edx,4)
 
 
-/*----------------------------------------------------------------*/
 func_25918:
-/*----------------------------------------------------------------*/
 		mov    $0x1,%eax
-	jump_2591d:
+jump_2591d:
 		pop    %ebx
 		ret
+
 jpt_25A67:	/* 0x25920 */
 		.long   def_25A67
 		.long   func_25a6f
