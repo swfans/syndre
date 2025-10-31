@@ -98,6 +98,17 @@ game_handle_sdl_events (void)
     if (!contn) {
         game_quit();
     }
+    if (DrawFlags & DrwF_ScreenVres16) {
+        lbDisplay__MouseX_640 = lbDisplay.MouseX;
+        lbDisplay__MouseY_400 = lbDisplay.MouseY;
+        lbDisplay__MMouseX_640 = lbDisplay.MMouseX;
+        lbDisplay__MMouseY_400 = lbDisplay.MMouseY;
+    } else {
+        lbDisplay__MouseX_640 = lbDisplay.MouseX * 2;
+        lbDisplay__MouseY_400 = lbDisplay.MouseY * 2;
+        lbDisplay__MMouseX_640 = lbDisplay.MMouseX * 2;
+        lbDisplay__MMouseY_400 = lbDisplay.MMouseY * 2;
+    }
 }
 
 void

@@ -48,6 +48,13 @@ extern ubyte *VScreen;
 
 extern ubyte *GraphicsPalette;
 
+/* rescaled coords from real lbDisplay */
+extern short lbDisplay__MouseX_640;
+extern short lbDisplay__MouseY_400;
+extern short lbDisplay__MMouseX_640;
+extern short lbDisplay__MMouseY_400;
+
+
 void display_lock (void);
 void display_unlock (void);
 const char * AppResourceMapping(short index);

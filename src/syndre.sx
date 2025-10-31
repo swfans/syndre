@@ -239,7 +239,7 @@ GLOBAL_FUNC(syndicate)	/* 0x101e0 */
 		call   check_end_level
 		call   ac_LbScreenWaitVbi
 		call   nullsub_1
-		call   func_1d2c0
+		call   swap_screen_vres16
 		cmp    $0x2,%ebx
 		jne    jump_1028e
 		mov    EXPORT_SYMBOL(GraphicsPalette),%ecx
@@ -17866,7 +17866,7 @@ set_block_changes:	/* 0x1d1d0 */
 
 
 /*----------------------------------------------------------------*/
-func_1d2c0:
+swap_screen_vres16:
 /*----------------------------------------------------------------*/
 		push   %ebx
 		push   %esi
@@ -83755,9 +83755,9 @@ GraphicsWindowWidth:	/* 0x55388 */
 		.ascii  "\x80\x02\x00\x00"
 GraphicsWindowHeight:	/* 0x5538c */
 		.ascii  "\x90\x01\x00\x00"
-ASM_lbDisplay__MMouseX:	/* 0x55390 */
+GLOBAL (lbDisplay__MMouseX_640)	/* 0x55390 mouse coord scaled as is the screen was 640 px */
 		.ascii  "\x40\x01"
-ASM_lbDisplay__MMouseY:	/* 0x55392 */
+GLOBAL (lbDisplay__MMouseY_400)	/* 0x55392 mouse coord scaled as is the screen was 400 px */
 		.ascii  "\xc8\x00\x01\x00\x01\x00"
 AniArrayCount:	/* 0x55398 */
 		.ascii  "\x00\x00"
@@ -85415,9 +85415,9 @@ data_60b1e:
 		.ascii  "\x00\x00"
 data_60b20:
 		.ascii  "\x00\x00"
-ASM_lbDisplay__MouseX:	/* 0x60b22 */
+GLOBAL (lbDisplay__MouseX_640)	/* 0x60b22 mouse coord scaled as is the screen was 640 px */
 		.ascii  "\x00\x00"
-ASM_lbDisplay__MouseY:	/* 0x60b24 */
+GLOBAL (lbDisplay__MouseY_400)	/* 0x60b24 mouse coord scaled as is the screen was 400 px */
 		.fill   0x4
 data_60b28:
 		.ascii  "\x00\x00"
