@@ -54147,20 +54147,7 @@ select:	/* 0x37600 */
 		add    $0x4,%esp
 		call   sound_bank_setup
 	jump_37654:
-		mov    $0x1,%edi
-		mov    m_sprites,%eax
-		xor    %ebp,%ebp
 		xor    %edx,%edx
-		mov    %edi,EXPORT_SYMBOL(MouseSwap)
-		add    $0x17a,%eax
-		mov    %ebp,MouseOldW
-#if defined(USE_BFLIB_MOUSE_CURSOR)
-		push   %eax
-		call   ac_LbMouseChangeSprite
-		add    $0x4,%esp
-#else
-		mov    %eax,EXPORT_SYMBOL(mouse_sprite)
-#endif
 		jmp    jump_37699
 	jump_3767a:
 		mov    m_spr_data,%ebx
@@ -54180,6 +54167,19 @@ select:	/* 0x37600 */
 		add    %edx,%eax
 		cmp    %ebx,%eax
 		jne    jump_3767a
+		mov    $0x1,%edi
+		mov    %edi,EXPORT_SYMBOL(MouseSwap)
+		xor    %ebp,%ebp
+		mov    %ebp,MouseOldW
+		mov    m_sprites,%eax
+		add    $0x17a,%eax
+#if defined(USE_BFLIB_MOUSE_CURSOR) /* moved as sprites need to be set up before use for mouse */
+		push   %eax
+		call   ac_LbMouseChangeSprite
+		add    $0x4,%esp
+#else
+		mov    %eax,EXPORT_SYMBOL(mouse_sprite)
+#endif
 		xor    %esi,%esi
 		jmp    jump_376cd
 	jump_376ae:
