@@ -17921,7 +17921,7 @@ swap_screen_vres16:
 		call   LbScreenSwapVres16
 		jmp    jump_1d388
 	jump_1d35d:
-/* TODO not sure if this is correct */
+/* TODO handle this differently when we can switch to 8bpp mouse cursor */
 #if !defined(DOS) /* new bflibrary has generic screen swapping routine */
 		call   ac_update_vscreen_whole_vres16
 		call   ac_swap_wscreen
@@ -38630,9 +38630,7 @@ change_mouse_pointer:	/* 0x2cb40 */
 		jmp    *%cs:vtable_2cad8(,%eax,4)
 
 
-/*----------------------------------------------------------------*/
 func_2cca4:
-/*----------------------------------------------------------------*/
 		xor    %ecx,%ecx
 		mov    %si,%cx
 		lea    0x0(,%ecx,4),%eax
@@ -38647,16 +38645,10 @@ func_2cca4:
 #else
 		mov    %eax,EXPORT_SYMBOL(mouse_sprite)
 #endif
-		pop    %ebp
-		pop    %edi
-		pop    %esi
-		pop    %ebx
-		ret
+		jmp    jump_2d0ce
 
 
-/*----------------------------------------------------------------*/
 func_2ccc6:
-/*----------------------------------------------------------------*/
 		mov    $0x1,%cl
 		xor    %edi,%edi
 		mov    data_5e398,%ch
@@ -38674,9 +38666,7 @@ func_2ccc6:
 		jmp    *%cs:vtable_2caf0(,%eax,4)
 
 
-/*----------------------------------------------------------------*/
 func_2cd0c:
-/*----------------------------------------------------------------*/
 		movswl %bx,%ecx
 		lea    0x0(,%ecx,8),%eax
 		add    %ecx,%eax
@@ -38689,9 +38679,7 @@ func_2cd0c:
 		jmp    jump_2d004
 
 
-/*----------------------------------------------------------------*/
 func_2cd3b:
-/*----------------------------------------------------------------*/
 		movswl %bx,%ecx
 		lea    0x0(,%ecx,8),%eax
 		add    %ecx,%eax
@@ -38704,9 +38692,7 @@ func_2cd3b:
 		jmp    jump_2d004
 
 
-/*----------------------------------------------------------------*/
 func_2cd6a:
-/*----------------------------------------------------------------*/
 		movswl %bx,%ecx
 		lea    0x0(,%ecx,8),%eax
 		add    %ecx,%eax
@@ -38719,9 +38705,7 @@ func_2cd6a:
 		jmp    jump_2d004
 
 
-/*----------------------------------------------------------------*/
 func_2cd99:
-/*----------------------------------------------------------------*/
 		movswl %bx,%ecx
 		lea    0x0(,%ecx,8),%eax
 		add    %ecx,%eax
@@ -38734,9 +38718,7 @@ func_2cd99:
 		jmp    jump_2d004
 
 
-/*----------------------------------------------------------------*/
 func_2cdc8:
-/*----------------------------------------------------------------*/
 		movswl %bx,%ecx
 		lea    0x0(,%ecx,8),%eax
 		add    %ecx,%eax
@@ -38749,9 +38731,7 @@ func_2cdc8:
 		jmp    jump_2d004
 
 
-/*----------------------------------------------------------------*/
 func_2cdf7:
-/*----------------------------------------------------------------*/
 		movswl %bx,%ecx
 		lea    0x0(,%ecx,8),%eax
 		add    %ecx,%eax
@@ -38764,9 +38744,7 @@ func_2cdf7:
 		jmp    jump_2d004
 
 
-/*----------------------------------------------------------------*/
 func_2ce26:
-/*----------------------------------------------------------------*/
 		movswl %bx,%ecx
 		lea    0x0(,%ecx,8),%eax
 		add    %ecx,%eax
@@ -38779,9 +38757,7 @@ func_2ce26:
 		jmp    jump_2d004
 
 
-/*----------------------------------------------------------------*/
 func_2ce55:
-/*----------------------------------------------------------------*/
 		movswl %bx,%ecx
 		lea    0x0(,%ecx,8),%eax
 		add    %ecx,%eax
@@ -38794,9 +38770,7 @@ func_2ce55:
 		jmp    jump_2d004
 
 
-/*----------------------------------------------------------------*/
 func_2ce84:
-/*----------------------------------------------------------------*/
 		movswl %bx,%ecx
 		lea    0x0(,%ecx,8),%eax
 		add    %ecx,%eax
@@ -38809,9 +38783,7 @@ func_2ce84:
 		jmp    jump_2d004
 
 
-/*----------------------------------------------------------------*/
 func_2ceb3:
-/*----------------------------------------------------------------*/
 		movswl %bx,%ecx
 		lea    0x0(,%ecx,8),%eax
 		add    %ecx,%eax
@@ -38824,9 +38796,7 @@ func_2ceb3:
 		jmp    jump_2d004
 
 
-/*----------------------------------------------------------------*/
 func_2cee2:
-/*----------------------------------------------------------------*/
 		movswl %bx,%ecx
 		lea    0x0(,%ecx,8),%eax
 		add    %ecx,%eax
@@ -38839,9 +38809,7 @@ func_2cee2:
 		jmp    jump_2d004
 
 
-/*----------------------------------------------------------------*/
 func_2cf11:
-/*----------------------------------------------------------------*/
 		movswl %bx,%ecx
 		lea    0x0(,%ecx,8),%eax
 		add    %ecx,%eax
@@ -38871,9 +38839,7 @@ func_2cf11:
 		jmp    jump_2d012
 
 
-/*----------------------------------------------------------------*/
 func_2cf82:
-/*----------------------------------------------------------------*/
 		movswl %bx,%ecx
 		lea    0x0(,%ecx,8),%eax
 		add    %ecx,%eax
@@ -38886,9 +38852,7 @@ func_2cf82:
 		jmp    jump_2d004
 
 
-/*----------------------------------------------------------------*/
 func_2cfae:
-/*----------------------------------------------------------------*/
 		movswl %bx,%ecx
 		lea    0x0(,%ecx,8),%eax
 		add    %ecx,%eax
@@ -38901,9 +38865,7 @@ func_2cfae:
 		jmp    jump_2d004
 
 
-/*----------------------------------------------------------------*/
 func_2cfda:
-/*----------------------------------------------------------------*/
 		movswl %bx,%ecx
 		lea    0x0(,%ecx,8),%eax
 		add    %ecx,%eax
@@ -38913,6 +38875,7 @@ func_2cfda:
 		push   %eax
 		mov    starts_ani,%eax
 		mov    0x2c2(%eax),%ax
+
 	jump_2d004:
 		and    $0xffff,%eax
 		push   %eax
@@ -38968,16 +38931,10 @@ func_2cfda:
 #else
 		mov    %eax,EXPORT_SYMBOL(mouse_sprite)
 #endif
-		pop    %ebp
-		pop    %edi
-		pop    %esi
-		pop    %ebx
-		ret
+		jmp    jump_2d0ce
 
 
-/*----------------------------------------------------------------*/
 func_2d0b0:
-/*----------------------------------------------------------------*/
 		xor    %ecx,%ecx
 		mov    %si,%cx
 		lea    0x0(,%ecx,4),%eax
@@ -38986,12 +38943,13 @@ func_2d0b0:
 		add    %eax,%eax
 		add    %eax,%ecx
 #if defined(USE_BFLIB_MOUSE_CURSOR)
-		push   %eax
+		push   %ecx
 		call   ac_LbMouseChangeSprite
 		add    $0x4,%esp
 #else
 		mov    %ecx,EXPORT_SYMBOL(mouse_sprite)
 #endif
+
 	jump_2d0ce:
 		pop    %ebp
 		pop    %edi
@@ -62803,8 +62761,9 @@ BackupMouse:	/* 0x41323 */
 		cmp    EXPORT_SYMBOL(VScreen),%edx
 		jne    jump_41530
 		movzwl %bx,%ebx
-		mov    $0x4,%dx
+		mov    $0x4,%dx /* VGA command - switch bit plane */
 	jump_414f2:
+#if defined(DOS) /* TODO without the plane switching, the writes following this will overwrite stuff */
 		push   %dx
 		push   %ax
 		push   %esi
@@ -62829,6 +62788,7 @@ BackupMouse:	/* 0x41323 */
 		pop    %esi
 		pop    %ax
 		pop    %dx
+#endif
 		add    $0x100,%dx
 		cmp    $0x404,%dx
 		jne    jump_414f2
@@ -62893,8 +62853,9 @@ BackupMouse:	/* 0x41323 */
 		cmp    EXPORT_SYMBOL(VScreen),%edx
 		jne    jump_41623
 		movzwl %bx,%ebx
-		mov    $0x4,%dx
+		mov    $0x4,%dx /* VGA command - switch bit plane */
 	jump_415e8:
+#if defined(DOS) /* TODO without the plane switching, the writes following this will overwrite stuff */
 		push   %dx
 		push   %ax
 		push   %esi
@@ -62919,6 +62880,7 @@ BackupMouse:	/* 0x41323 */
 		pop    %esi
 		pop    %ax
 		pop    %dx
+#endif
 		add    $0x100,%dx
 		cmp    $0x404,%dx
 		jne    jump_415e8
@@ -62969,7 +62931,11 @@ PlaceMouse_A:	/* 0x4165e */
 		call   BackupMouse
 		cmpb   $0x1,EXPORT_SYMBOL(DrawFlags)
 		jne    jump_416ae
+#if defined(USE_BFLIB_MOUSE_CURSOR)
+		push   EXPORT_SYMBOL(lbDisplay)+20
+#else
 		push   EXPORT_SYMBOL(mouse_sprite)
+#endif
 		sub    $0x2,%esp
 		pushw  MouseOldY
 		sub    $0x2,%esp
@@ -62985,7 +62951,11 @@ PlaceMouse_A:	/* 0x4165e */
 		ret
 	jump_416ae:
 		push   $0x0
+#if defined(USE_BFLIB_MOUSE_CURSOR)
+		push   EXPORT_SYMBOL(lbDisplay)+20
+#else
 		push   EXPORT_SYMBOL(mouse_sprite)
+#endif
 		sub    $0x2,%esp
 		pushw  MouseOldY
 		sub    $0x2,%esp
@@ -63033,7 +63003,11 @@ PlaceMouse_B:	/* 0x416ef */
 		mov    %eax,ScrSeg
 		cmpb   $0x1,EXPORT_SYMBOL(DrawFlags)
 		jne    jump_4173a
+#if defined(USE_BFLIB_MOUSE_CURSOR)
+		push   EXPORT_SYMBOL(lbDisplay)+20
+#else
 		push   EXPORT_SYMBOL(mouse_sprite)
+#endif
 		sub    $0x2,%esp
 		pushw  MouseOldY
 		sub    $0x2,%esp
@@ -63049,7 +63023,11 @@ PlaceMouse_B:	/* 0x416ef */
 		ret
 	jump_4173a:
 		push   $0x0
+#if defined(USE_BFLIB_MOUSE_CURSOR)
+		push   EXPORT_SYMBOL(lbDisplay)+20
+#else
 		push   EXPORT_SYMBOL(mouse_sprite)
+#endif
 		sub    $0x2,%esp
 		pushw  MouseOldY
 		sub    $0x2,%esp
@@ -63060,7 +63038,11 @@ PlaceMouse_B:	/* 0x416ef */
 		mov    %eax,ScrSeg
 		cmpb   $0x1,EXPORT_SYMBOL(DrawFlags)
 		jne    jump_4179a
+#if defined(USE_BFLIB_MOUSE_CURSOR)
+		push   EXPORT_SYMBOL(lbDisplay)+20
+#else
 		push   EXPORT_SYMBOL(mouse_sprite)
+#endif
 		sub    $0x2,%esp
 		pushw  MouseOldY
 		sub    $0x2,%esp
@@ -63078,7 +63060,11 @@ PlaceMouse_B:	/* 0x416ef */
 		call   GetScreenBoxHires16
 		mov    MouseOldX,%ax
 		and    $0x7,%ax
+#if defined(USE_BFLIB_MOUSE_CURSOR)
+		push   EXPORT_SYMBOL(lbDisplay)+20
+#else
 		push   EXPORT_SYMBOL(mouse_sprite)
+#endif
 		push   $0x0
 		push   $0x0
 		sub    $0x2,%esp

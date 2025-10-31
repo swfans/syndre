@@ -20,8 +20,28 @@
 #include <stdint.h>
 
 #include "mouse.h"
+
 #include "bfscreen.h"
 #include "bfplanar.h"
 #include "bfmouse.h"
+#include "bfutility.h"
+
 #include "display.h"
+
+void mouse_update_scaled_coords(void)
+{
+    if (DrawFlags & DrwF_ScreenVres16) {
+        lbDisplay__MouseX_640 = lbDisplay.MouseX;
+        lbDisplay__MouseY_400 = max(lbDisplay.MouseY - 40, 0);
+        lbDisplay__MMouseX_640 = lbDisplay.MMouseX;
+        lbDisplay__MMouseY_400 = max(lbDisplay.MMouseY - 40, 0);
+    } else {
+        lbDisplay__MouseX_640 = lbDisplay.MouseX * 2;
+        lbDisplay__MouseY_400 = lbDisplay.MouseY * 2;
+        lbDisplay__MMouseX_640 = lbDisplay.MMouseX * 2;
+        lbDisplay__MMouseY_400 = lbDisplay.MMouseY * 2;
+    }
+    if (lbDisplay__MMouseY_400 > 399)
+        lbDisplay__MMouseY_400 = 399;
+}
 

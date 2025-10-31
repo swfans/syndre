@@ -25,6 +25,7 @@
 
 struct TbPoint;
 
+void mouse_update_scaled_coords(void);
 
 /******************************************************************************/
 #endif // MOUSE_H
