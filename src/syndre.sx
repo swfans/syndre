@@ -27703,7 +27703,7 @@ init_level_data:	/* 0x25110 */
 		push   %ecx
 		mov    h_sprites,%esi
 		push   %esi
-		call   LbSpriteSetup
+		call   ac_LbSpriteSetup
 		add    $0xc,%esp
 		mov    data_55334,%edi
 		push   %edi
@@ -27711,7 +27711,7 @@ init_level_data:	/* 0x25110 */
 		push   %ebp
 		mov    data_5531c,%eax
 		push   %eax
-		call   LbSpriteSetup
+		call   ac_LbSpriteSetup
 		mov    EXPORT_SYMBOL(is_multiplayer_game),%ah
 		xor    %edx,%edx
 		add    $0xc,%esp
@@ -31499,7 +31499,7 @@ GLOBAL_FUNC(reset_input)	/* 0x27c00 */
 
 
 /*----------------------------------------------------------------*/
-LbSpriteSetup:	/* 0x27c30 */
+ASM_LbSpriteSetup:	/* 0x27c30 */
 /*----------------------------------------------------------------*/
 		push   %ebx
 		mov    0x8(%esp),%eax
@@ -54236,6 +54236,7 @@ select:	/* 0x37600 */
 
 
 func_37764:
+		movb   $0x1,EXPORT_SYMBOL(lbMouseOffline)
 		push   $sound_array
 		mov    $0xf,%edx
 		mov    $AniName,%edi
@@ -54267,6 +54268,7 @@ func_37764:
 		mov    $0x5,%ebp
 		mov    %cl,data_55591
 		mov    %ebp,AniSpeed
+		movb   $0x0,EXPORT_SYMBOL(lbMouseOffline)
 
 
 func_377c5:
