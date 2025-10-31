@@ -1163,6 +1163,9 @@ func_10cd9:
 	jump_10df6:
 		mov    $0x1,%al
 	jump_10df8:
+#if !defined(DOS) /* add input refresh, as otherwise this in infinite loop */
+		call   ac_game_handle_sdl_events
+#endif
 		cmp    EXPORT_SYMBOL(lbKeyOn)+0x39,%al
 		je     jump_10df8
 		cmp    EXPORT_SYMBOL(lbKeyOn)+0x01,%al	/* lbKeyOn[KC_ESCAPE] */
@@ -11455,6 +11458,9 @@ process_day:	/* 0x18810 */
 		cmpb   $0x0,EXPORT_SYMBOL(lbKeyOn)+0x3b
 		je     jump_18846
 	jump_1882f:
+#if !defined(DOS) /* add input refresh, as otherwise this in infinite loop */
+		call   ac_game_handle_sdl_events
+#endif
 		cmpb   $0x1,EXPORT_SYMBOL(lbKeyOn)+0x3b
 		je     jump_1882f
 		mov    SoundActive,%al
@@ -11465,6 +11471,9 @@ process_day:	/* 0x18810 */
 		cmpb   $0x0,EXPORT_SYMBOL(lbKeyOn)+0x3c
 		je     jump_18866
 	jump_1884f:
+#if !defined(DOS) /* add input refresh, as otherwise this in infinite loop */
+		call   ac_game_handle_sdl_events
+#endif
 		cmpb   $0x1,EXPORT_SYMBOL(lbKeyOn)+0x3c
 		je     jump_1884f
 		mov    MusicActive,%al
@@ -11477,6 +11486,9 @@ process_day:	/* 0x18810 */
 		test   %edi,%edi
 		jbe    jump_1887d
 	jump_18873:
+#if !defined(DOS) /* add input refresh, as otherwise this in infinite loop */
+		call   ac_game_handle_sdl_events
+#endif
 		cmpb   $0x1,EXPORT_SYMBOL(lbKeyOn)+0x3d	/* lbKeyOn[KC_F3] */
 		je     jump_18873
 		dec    %edi
@@ -11486,13 +11498,22 @@ process_day:	/* 0x18810 */
 		cmp    $0xc,%edi
 		jae    jump_18895
 	jump_1888b:
+#if !defined(DOS) /* add input refresh, as otherwise this in infinite loop */
+		call   ac_game_handle_sdl_events
+#endif
 		cmpb   $0x1,EXPORT_SYMBOL(lbKeyOn)+0x3e
 		je     jump_1888b
 		inc    %edi
 	jump_18895:
+#if !defined(DOS) /* add input refresh, as otherwise this in infinite loop */
+		call   ac_game_handle_sdl_events
+#endif
 		cmpb   $0x0,EXPORT_SYMBOL(lbKeyOn)+0x3f
 		je     jump_188b5
 	jump_1889e:
+#if !defined(DOS) /* add input refresh, as otherwise this in infinite loop */
+		call   ac_game_handle_sdl_events
+#endif
 		cmpb   $0x1,EXPORT_SYMBOL(lbKeyOn)+0x3f
 		je     jump_1889e
 		mov    ScannerPulse,%al
