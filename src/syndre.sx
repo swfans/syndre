@@ -2039,13 +2039,21 @@ mission_briefing:	/* 0x10e60 */
 		push   %eax
 		call   draw_brief_tact_map
 		add    $0x28,%esp
+#if defined(USE_BFLIB_MOUSE_CURSOR)
+		call   ac_LbMousePlace
+#else
 		call   PlaceMouse_A
+#endif
 #if !defined(DOS) /* new bflibrary has generic screen swapping routine */
 		call   ac_swap_wscreen
 #else
 		call   LbScreenSwapMCGA
 #endif
+#if defined(USE_BFLIB_MOUSE_CURSOR)
+		call   ac_LbMouseRemove
+#else
 		call   RemoveMouse_A
+#endif
 #if !defined(DOS) /* add input refresh, as DOS interrupts are not available */
 		call   ac_game_update
 #endif
@@ -10499,13 +10507,21 @@ configure_company:	/* 0x175c0 */
 		je     jump_17c16
 		mov    %bl,0xe0(%esp)
 	jump_17c16:
+#if defined(USE_BFLIB_MOUSE_CURSOR)
+		call   ac_LbMousePlace
+#else
 		call   PlaceMouse_A
+#endif
 #if !defined(DOS) /* new bflibrary has generic screen swapping routine */
 		call   ac_swap_wscreen
 #else
 		call   LbScreenSwapMCGA
 #endif
+#if defined(USE_BFLIB_MOUSE_CURSOR)
+		call   ac_LbMouseRemove
+#else
 		call   RemoveMouse_A
+#endif
 #if !defined(DOS) /* add input refresh, as DOS interrupts are not available */
 		call   ac_game_update
 #endif
@@ -11225,13 +11241,21 @@ func_184e8:
 /*----------------------------------------------------------------*/
 swap_screen:	/* 0x18650 */
 /*----------------------------------------------------------------*/
+#if defined(USE_BFLIB_MOUSE_CURSOR)
+		call   ac_LbMousePlace
+#else
 		call   PlaceMouse_A
+#endif
 #if !defined(DOS) /* new bflibrary has generic screen swapping routine */
 		call   ac_swap_wscreen
 #else
 		call   LbScreenSwapMCGA
 #endif
+#if defined(USE_BFLIB_MOUSE_CURSOR)
+		call   ac_LbMouseRemove
+#else
 		call   RemoveMouse_A
+#endif
 		jmp    LbCopyScreenFromBackMCGA
 
 
@@ -11258,13 +11282,21 @@ draw_config_menu_box:	/* 0x18670 */
 		push   $0x1e
 		call   func_186c0
 		add    $0x4,%esp
+#if defined(USE_BFLIB_MOUSE_CURSOR)
+		call   ac_LbMousePlace
+#else
 		call   PlaceMouse_A
+#endif
 #if !defined(DOS) /* new bflibrary has generic screen swapping routine */
 		call   ac_swap_wscreen
 #else
 		call   LbScreenSwapMCGA
 #endif
+#if defined(USE_BFLIB_MOUSE_CURSOR)
+		call   ac_LbMouseRemove
+#else
 		call   RemoveMouse_A
+#endif
 		ret
 
 
@@ -13382,13 +13414,21 @@ debrief:	/* 0x18ff0 */
 		movb   $0x1,-0x14(%ebp)
 	jump_1a164:
 		movb   $0x3,-0xc(%ebp)
+#if defined(USE_BFLIB_MOUSE_CURSOR)
+		call   ac_LbMousePlace
+#else
 		call   PlaceMouse_A
+#endif
 #if !defined(DOS) /* new bflibrary has generic screen swapping routine */
 		call   ac_swap_wscreen
 #else
 		call   LbScreenSwapMCGA
 #endif
+#if defined(USE_BFLIB_MOUSE_CURSOR)
+		call   ac_LbMouseRemove
+#else
 		call   RemoveMouse_A
+#endif
 #if !defined(DOS) /* add input refresh, as DOS interrupts are not available */
 		call   ac_game_update
 #endif
@@ -17830,7 +17870,11 @@ func_1d2c0:
 /*----------------------------------------------------------------*/
 		push   %ebx
 		push   %esi
+#if defined(USE_BFLIB_MOUSE_CURSOR)
+		mov    EXPORT_SYMBOL(lbDisplay)+20,%ebx	/* lbDisplay.MouseSprite */
+#else
 		mov    EXPORT_SYMBOL(mouse_sprite),%ebx
+#endif
 		movzbw 0x5(%ebx),%si
 		add    EXPORT_SYMBOL(lbDisplay)+84,%si
 		mov    0x4(%ebx),%bl
@@ -17859,13 +17903,21 @@ func_1d2c0:
 		push   %ebx
 		call   func_4cce7
 		add    $0x4,%esp
+#if defined(USE_BFLIB_MOUSE_CURSOR)
+		call   ac_LbMousePlace
+#else
 		call   PlaceMouse_A
+#endif
 		push   %ebx
 		call   func_4cc84
 		add    $0x4,%esp
 		jmp    jump_1d345
 	jump_1d340:
+#if defined(USE_BFLIB_MOUSE_CURSOR)
+		call   ac_LbMousePlace
+#else
 		call   PlaceMouse_A
+#endif
 	jump_1d345:
 		cmpb   $0x0,data_60b4f
 		je     jump_1d35d
@@ -17896,7 +17948,11 @@ func_1d2c0:
 		call   func_4cd4a
 #endif
 	jump_1d388:
+#if defined(USE_BFLIB_MOUSE_CURSOR)
+		call   ac_LbMouseRemove
+#else
 		call   RemoveMouse_A
+#endif
 		pop    %esi
 		pop    %ebx
 		ret
@@ -24404,13 +24460,21 @@ func_227c8:
 		movb   $0x1,-0x20(%ebp)
 	def_21874:	/* 0x227d9 */
 		movb   $0x18,-0x8(%ebp)
+#if defined(USE_BFLIB_MOUSE_CURSOR)
+		call   ac_LbMousePlace
+#else
 		call   PlaceMouse_A
+#endif
 #if !defined(DOS) /* new bflibrary has generic screen swapping routine */
 		call   ac_swap_wscreen
 #else
 		call   LbScreenSwapMCGA
 #endif
+#if defined(USE_BFLIB_MOUSE_CURSOR)
+		call   ac_LbMouseRemove
+#else
 		call   RemoveMouse_A
+#endif
 #if !defined(DOS) /* add input refresh, as DOS interrupts are not available */
 		call   ac_game_update
 #endif
@@ -27695,7 +27759,13 @@ init_level_data:	/* 0x25110 */
 		add    $0x4,%esp
 		add    $0x6,%eax
 		xor    %dh,%dh
+#if defined(USE_BFLIB_MOUSE_CURSOR)
+		push   %eax
+		call   ac_LbMouseChangeSprite
+		add    $0x4,%esp
+#else
 		mov    %eax,EXPORT_SYMBOL(mouse_sprite)
+#endif
 		mov    %dh,EXPORT_SYMBOL(lbDisplay)+103	/* lbDisplay.LeftButton */
 		mov    %dh,EXPORT_SYMBOL(lbDisplay)+104	/* lbDisplay.RightButton */
 		mov    %dh,data_60b50
@@ -30514,13 +30584,21 @@ func_27280:
 
 	def_27219:	/* 0x272a8 */
 		movb   $0xd,0x8(%esp)
+#if defined(USE_BFLIB_MOUSE_CURSOR)
+		call   ac_LbMousePlace
+#else
 		call   PlaceMouse_A
+#endif
 #if !defined(DOS) /* new bflibrary has generic screen swapping routine */
 		call   ac_swap_wscreen
 #else
 		call   LbScreenSwapMCGA
 #endif
+#if defined(USE_BFLIB_MOUSE_CURSOR)
+		call   ac_LbMouseRemove
+#else
 		call   RemoveMouse_A
+#endif
 #if !defined(DOS) /* add input refresh, as DOS interrupts are not available */
 		call   ac_game_update
 #endif
@@ -31117,7 +31195,13 @@ GLOBAL_FUNC (ASM_main)	/* 0x274a0 */
 		call   ApSpriteSetup_ForceHeight
 		mov    EXPORT_SYMBOL(pointer_sprites),%eax
 		add    $0x6,%eax
+#if defined(USE_BFLIB_MOUSE_CURSOR)
+		push   %eax
+		call   ac_LbMouseChangeSprite
+		add    $0x4,%esp
+#else
 		mov    %eax,EXPORT_SYMBOL(mouse_sprite)
+#endif
 		mov    $0x1,%eax
 		add    $0xc,%esp
 		mov    %ax,EXPORT_SYMBOL(MouseSwap)
@@ -31767,13 +31851,21 @@ map_selection:	/* 0x27e00 */
 		push   %eax
 		call   draw_logo
 		add    $0x1c,%esp
+#if defined(USE_BFLIB_MOUSE_CURSOR)
+		call   ac_LbMousePlace
+#else
 		call   PlaceMouse_A
+#endif
 #if !defined(DOS) /* new bflibrary has generic screen swapping routine */
 		call   ac_swap_wscreen
 #else
 		call   LbScreenSwapMCGA
 #endif
+#if defined(USE_BFLIB_MOUSE_CURSOR)
+		call   ac_LbMouseRemove
+#else
 		call   RemoveMouse_A
+#endif
 #if !defined(DOS) /* add input refresh, as DOS interrupts are not available */
 		call   ac_game_update
 #endif
@@ -33661,14 +33753,22 @@ func_29818:
 		movb   $0x1,(%esp)
 
 	def_2998D:	/* 0x29825 */
+#if defined(USE_BFLIB_MOUSE_CURSOR)
+		call   ac_LbMousePlace
+#else
 		call   PlaceMouse_A
+#endif
 #if !defined(DOS) /* new bflibrary has generic screen swapping routine */
 		call   ac_swap_wscreen
 #else
 		call   LbScreenSwapMCGA
 #endif
 		mov    $0xc,%bh
+#if defined(USE_BFLIB_MOUSE_CURSOR)
+		call   ac_LbMouseRemove
+#else
 		call   RemoveMouse_A
+#endif
 		mov    %bh,0x4(%esp)
 #if !defined(DOS) /* add input refresh, as DOS interrupts are not available */
 		call   ac_game_update
@@ -36165,7 +36265,11 @@ MouseHandler256:	/* 0x2b290 */
 		mov    %eax,ScrSeg
 		call   UndoMouse
 		call   BackupMouse
+#if defined(USE_BFLIB_MOUSE_CURSOR)
+		mov    EXPORT_SYMBOL(lbDisplay)+20,%esi	/* lbDisplay.MouseSprite */
+#else
 		mov    EXPORT_SYMBOL(mouse_sprite),%esi
+#endif
 		xor    %eax,%eax
 		push   %esi
 		mov    MouseOldY,%ax
@@ -36187,7 +36291,11 @@ MouseHandler256:	/* 0x2b290 */
 		call   UndoMouse
 		call   BackupMouse
 		call   GetScreenBoxHires16
+#if defined(USE_BFLIB_MOUSE_CURSOR)
+		mov    EXPORT_SYMBOL(lbDisplay)+20,%ecx	/* lbDisplay.MouseSprite */
+#else
 		mov    EXPORT_SYMBOL(mouse_sprite),%ecx
+#endif
 		push   %ecx
 		jmp    jump_2b415
 	jump_2b3f0:
@@ -36198,7 +36306,11 @@ MouseHandler256:	/* 0x2b290 */
 		call   UndoMouse
 		call   BackupMouse
 		call   GetScreenBoxHires16
+#if defined(USE_BFLIB_MOUSE_CURSOR)
+		mov    EXPORT_SYMBOL(lbDisplay)+20,%ebx	/* lbDisplay.MouseSprite */
+#else
 		mov    EXPORT_SYMBOL(mouse_sprite),%ebx
+#endif
 		push   %ebx
 	jump_2b415:
 		mov    MouseOldX,%ax
@@ -38536,7 +38648,13 @@ func_2cca4:
 		lea    (%eax,%eax,1),%ecx
 		mov    EXPORT_SYMBOL(pointer_sprites),%eax
 		add    %ecx,%eax
+#if defined(USE_BFLIB_MOUSE_CURSOR)
+		push   %eax
+		call   ac_LbMouseChangeSprite
+		add    $0x4,%esp
+#else
 		mov    %eax,EXPORT_SYMBOL(mouse_sprite)
+#endif
 		pop    %ebp
 		pop    %edi
 		pop    %esi
@@ -38851,7 +38969,13 @@ func_2cfda:
 		mov    EXPORT_SYMBOL(pointer_sprites),%eax
 		add    %ecx,%eax
 		add    $0x8,%esp
+#if defined(USE_BFLIB_MOUSE_CURSOR)
+		push   %eax
+		call   ac_LbMouseChangeSprite
+		add    $0x4,%esp
+#else
 		mov    %eax,EXPORT_SYMBOL(mouse_sprite)
+#endif
 		pop    %ebp
 		pop    %edi
 		pop    %esi
@@ -38869,7 +38993,13 @@ func_2d0b0:
 		mov    EXPORT_SYMBOL(pointer_sprites),%ecx
 		add    %eax,%eax
 		add    %eax,%ecx
+#if defined(USE_BFLIB_MOUSE_CURSOR)
+		push   %eax
+		call   ac_LbMouseChangeSprite
+		add    $0x4,%esp
+#else
 		mov    %ecx,EXPORT_SYMBOL(mouse_sprite)
+#endif
 	jump_2d0ce:
 		pop    %ebp
 		pop    %edi
@@ -51702,13 +51832,21 @@ func_359e6:
 
 	def_35899:	/* 0x35d05 */
 		movb   $0x8,0x76(%ebp)
+#if defined(USE_BFLIB_MOUSE_CURSOR)
+		call   ac_LbMousePlace
+#else
 		call   PlaceMouse_A
+#endif
 #if !defined(DOS) /* new bflibrary has generic screen swapping routine */
 		call   ac_swap_wscreen
 #else
 		call   LbScreenSwapMCGA
 #endif
+#if defined(USE_BFLIB_MOUSE_CURSOR)
+		call   ac_LbMouseRemove
+#else
 		call   RemoveMouse_A
+#endif
 #if !defined(DOS) /* add input refresh, as DOS interrupts are not available */
 		call   ac_game_update
 #endif
@@ -54015,7 +54153,13 @@ select:	/* 0x37600 */
 		mov    %edi,EXPORT_SYMBOL(MouseSwap)
 		add    $0x17a,%eax
 		mov    %ebp,MouseOldW
+#if defined(USE_BFLIB_MOUSE_CURSOR)
+		push   %eax
+		call   ac_LbMouseChangeSprite
+		add    $0x4,%esp
+#else
 		mov    %eax,EXPORT_SYMBOL(mouse_sprite)
+#endif
 		jmp    jump_37699
 	jump_3767a:
 		mov    m_spr_data,%ebx
@@ -54505,14 +54649,22 @@ func_37bdd:
 		mov    %esi,AniSpeed
 		cmp    $0xa,%edi
 		je     jump_37c21
+#if defined(USE_BFLIB_MOUSE_CURSOR)
+		call   ac_LbMousePlace
+#else
 		call   PlaceMouse_A
+#endif
 	jump_37c21:
 #if !defined(DOS) /* new bflibrary has generic screen swapping routine */
 		call   ac_swap_wscreen
 #else
 		call   LbScreenSwapMCGA
 #endif
+#if defined(USE_BFLIB_MOUSE_CURSOR)
+		call   ac_LbMouseRemove
+#else
 		call   RemoveMouse_A
+#endif
 #if !defined(DOS) /* add input refresh, as DOS interrupts are not available */
 		call   ac_game_update
 #endif
@@ -62949,7 +63101,10 @@ PlaceMouse_B:	/* 0x416ef */
 		pop    %ebx
 		pop    %eax
 		ret
+
+/*----------------------------------------------------------------*/
 RemoveMouse_B:	/* 0x417cc */
+/*----------------------------------------------------------------*/
 		push   %eax
 		push   %ebx
 		push   %ecx
@@ -62964,7 +63119,10 @@ RemoveMouse_B:	/* 0x417cc */
 		pop    %ebx
 		pop    %eax
 		ret
+
+/*----------------------------------------------------------------*/
 UndrawWMouse:	/* 0x417e2 */
+/*----------------------------------------------------------------*/
 		push   %eax
 		push   %ebx
 		push   %ecx

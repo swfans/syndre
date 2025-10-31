@@ -299,11 +299,11 @@ int main (int argc, char **argv)
         LbDataLoadAll(load_files_mcga);
     }
     ApSpriteSetup_ForceHeight(pointer_sprites, pointer_sprites_end, pointer_data);
-    mouse_sprite = &pointer_sprites[1];
     MouseSwap = 1;
 
     lbMouseAutoReset = false;
-    LbMouseSetup(mouse_sprite, 256, 256);
+    mouse_sprite = &pointer_sprites[1]; // used only for non-bflib mouse cursor; remove pending
+    LbMouseSetup(&pointer_sprites[1], 256, 256);
 
     nullsub_3();
 # if defined(DOS)
