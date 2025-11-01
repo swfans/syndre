@@ -90,7 +90,7 @@ check_for_danger:	/* 0x10010 */
 	jump_10080:
 		xor    %edx,%edx
 		mov    %edx,(%esp)
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%eax
 		shl    $0x5,%eax
 		add    %edx,%eax
@@ -113,7 +113,7 @@ check_for_danger:	/* 0x10010 */
 		mov    $0x5c,%ebp
 	jump_100de:
 		xor    %edx,%edx
-		movswl Network__Slot,%eax
+		movswl EXPORT_SYMBOL(Network__Slot),%eax
 		mov    %di,%dx
 		cmp    %eax,%edx
 		je     jump_101a8
@@ -287,7 +287,7 @@ GLOBAL_FUNC(syndicate)	/* 0x101e0 */
 		jne    jump_101ec
 		xor    %eax,%eax
 		mov    $0x1,%edx
-		mov    Network__Slot,%ax
+		mov    EXPORT_SYMBOL(Network__Slot),%ax
 		xor    %ebx,%ebx
 		push   %eax
 		mov    %edx,EXPORT_SYMBOL(MouseSwap)
@@ -340,7 +340,7 @@ func_10381:
 		shl    $0x3,%edx
 		sbb    %edx,%eax
 		sar    $0x3,%eax
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		cmp    %edx,%eax
 		jne    jump_10441
 		jmp    jump_1043c
@@ -366,7 +366,7 @@ func_103b6:
 		shl    $0x3,%edx
 		sbb    %edx,%eax
 		sar    $0x3,%eax
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		cmp    %edx,%eax
 		jne    jump_10441
 		jmp    jump_1043c
@@ -392,7 +392,7 @@ func_103fc:
 		shl    $0x3,%edx
 		sbb    %edx,%eax
 		sar    $0x3,%eax
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		cmp    %edx,%eax
 		jne    jump_10441
 	jump_1043c:
@@ -574,7 +574,7 @@ check_end_level:	/* 0x105e0 */
 		je     jump_1067e
 		cmpw   $0x1,Network__NumberOfSlots
 		jg     jump_10e0f
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		lea    0x0(,%edx,8),%eax
 		sub    %edx,%eax
 		movb   $0x2,data_605e1(,%eax,2)
@@ -598,7 +598,7 @@ check_end_level:	/* 0x105e0 */
 		pop    %ebx
 		ret
 	jump_106b6:
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%eax
 		shl    $0x5,%eax
 		add    %edx,%eax
@@ -612,7 +612,7 @@ check_end_level:	/* 0x105e0 */
 		mov    $level__People,%ebp
 		add    %eax,%ebp
 		mov    $0x5c,%ebx
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		jmp    jump_1070a
 	jump_106f9:
 		testb  $0x4,0x1d(%ebp)
@@ -700,7 +700,7 @@ func_10790:
 		and    $0xffff,%ebx
 		add    $level__things_base,%ebx
 	jump_107f3:
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%eax
 		shl    $0x5,%eax
 		add    %edx,%eax
@@ -775,7 +775,7 @@ func_108b8:
 		and    $0xffff,%edx
 		add    $level__things_base,%edx
 	jump_10904:
-		movswl Network__Slot,%ebx
+		movswl EXPORT_SYMBOL(Network__Slot),%ebx
 		mov    %ebx,%eax
 		shl    $0x5,%eax
 		add    %ebx,%eax
@@ -850,7 +850,7 @@ func_109bf:
 		add    $level__things_base,%esi
 		cmp    $level__People,%esi
 		jb     jump_10a59
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%eax
 		shl    $0x5,%eax
 		add    %edx,%eax
@@ -916,7 +916,7 @@ func_10ac8:
 		mov    0x1c(%ebx),%cx
 		test   %cx,%cx
 		je     jump_10b51
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%eax
 		shl    $0x5,%eax
 		add    %edx,%eax
@@ -952,7 +952,7 @@ func_10b65:
 /*----------------------------------------------------------------*/
 		test   %ebp,%ebp
 		jne    jump_10d38
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%eax
 		shl    $0x5,%eax
 		add    %edx,%eax
@@ -989,7 +989,7 @@ func_10b65:
 	jump_10be3:
 		add    $0x5c,%ebx
 	jump_10be6:
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%eax
 		shl    $0x5,%eax
 		add    %edx,%eax
@@ -1005,7 +1005,7 @@ func_10b65:
 		cmp    %eax,%ebx
 		jb     jump_10bad
 	jump_10c20:
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%eax
 		shl    $0x5,%eax
 		add    %edx,%eax
@@ -1346,7 +1346,7 @@ mission_briefing:	/* 0x10e60 */
 		xor    %eax,%eax
 		add    $0x2,%esi
 		mov    0x62(%ebp),%al
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %esi,-0xa(%ebp,%eax,4)
 		mov    %edx,%eax
 		shl    $0x5,%eax
@@ -1500,7 +1500,7 @@ mission_briefing:	/* 0x10e60 */
 		add    $0x1c,%esp
 		call   ShowGameTime
 		mov    m_logos,%eax
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		push   %eax
 		mov    %edx,%eax
 		shl    $0x5,%eax
@@ -1540,7 +1540,7 @@ mission_briefing:	/* 0x10e60 */
 		mov    -0xa(%eax,%ebp,1),%edx
 		push   %edx
 		call   show_text_file
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%eax
 		shl    $0x5,%eax
 		add    %edx,%eax
@@ -1549,7 +1549,7 @@ mission_briefing:	/* 0x10e60 */
 		lea    0x0(,%eax,8),%eax
 		sub    %edx,%eax
 		add    $0x2c,%esp
-		mov    players(%eax),%ebx
+		mov    EXPORT_SYMBOL(players)(%eax),%ebx
 		push   %ebx
 		push   $aD
 		lea    0x1e(%ebp),%eax
@@ -1881,7 +1881,7 @@ mission_briefing:	/* 0x10e60 */
 		mov    -0x32(%ebx,%ebp,1),%ecx
 		test   %ecx,%ecx
 		je     jump_117c1
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%eax
 		shl    $0x5,%eax
 		add    %edx,%eax
@@ -1889,7 +1889,7 @@ mission_briefing:	/* 0x10e60 */
 		sub    %edx,%eax
 		lea    0x0(,%eax,8),%eax
 		sub    %edx,%eax
-		cmp    players(%eax),%ecx
+		cmp    EXPORT_SYMBOL(players)(%eax),%ecx
 		jae    jump_117c1
 		mov    (%esi),%dl
 		mov    %esi,%eax
@@ -1898,7 +1898,7 @@ mission_briefing:	/* 0x10e60 */
 	jump_11770:
 		cmpb   $0x7c,(%eax)
 		jne    jump_117b9
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		movb   $0x20,(%eax)
 		mov    %edx,%eax
 		shl    $0x5,%eax
@@ -1910,12 +1910,12 @@ mission_briefing:	/* 0x10e60 */
 		xor    %edx,%edx
 		mov    0x6a(%ebp),%dl
 		mov    0x6a(%ebp),%bh
-		mov    players(%eax),%ecx
+		mov    EXPORT_SYMBOL(players)(%eax),%ecx
 		mov    -0x32(%ebp,%edx,4),%edx
 		inc    %bh
 		sub    %edx,%ecx
 		mov    %bh,0x6a(%ebp)
-		mov    %ecx,players(%eax)
+		mov    %ecx,EXPORT_SYMBOL(players)(%eax)
 		jmp    jump_117c1
 	jump_117b9:
 		mov    0x1(%eax),%dh
@@ -1936,7 +1936,7 @@ mission_briefing:	/* 0x10e60 */
 		lea    0x0(,%ebx,4),%ebx
 		cmpl   $0x0,-0x5a(%ebx,%ebp,1)
 		je     jump_11844
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%eax
 		shl    $0x5,%eax
 		add    %edx,%eax
@@ -1945,14 +1945,14 @@ mission_briefing:	/* 0x10e60 */
 		lea    0x0(,%eax,8),%eax
 		sub    %edx,%eax
 		mov    -0x5a(%ebx,%ebp,1),%edx
-		mov    players(%eax),%ecx
+		mov    EXPORT_SYMBOL(players)(%eax),%ecx
 		cmp    %ecx,%edx
 		jae    jump_11844
 		mov    %ecx,%ebx
 		mov    0x5e(%ebp),%cl
 		sub    %edx,%ebx
 		inc    %cl
-		mov    %ebx,players(%eax)
+		mov    %ebx,EXPORT_SYMBOL(players)(%eax)
 		mov    %cl,0x5e(%ebp)
 	jump_11844:
 		cmpw   $0x10,EXPORT_SYMBOL(lbDisplay__MouseX_640)	/* lbDisplay.MouseX but scaled */
@@ -2064,7 +2064,7 @@ mission_briefing:	/* 0x10e60 */
 		cmpb   $0x0,0x6e(%ebp)
 		je     jump_11079
 	jump_11988:
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%eax
 		shl    $0x5,%eax
 		add    %edx,%eax
@@ -7099,7 +7099,7 @@ init_computer_players:	/* 0x15560 */
 		xor    %ebx,%ebx
 		jmp    jump_1563d
 	jump_15602:
-		movswl Network__Slot,%eax
+		movswl EXPORT_SYMBOL(Network__Slot),%eax
 		cmp    %eax,%edx
 		je     jump_1563c
 		mov    %edx,%eax
@@ -7493,7 +7493,7 @@ process_computer_players:	/* 0x15b10 */
 		push   %esi
 		push   %edi
 		sub    $0xc,%esp
-		mov    $players,%edi
+		mov    $EXPORT_SYMBOL(players),%edi
 		mov    comp_plyr_process_timer,%edx
 		mov    comp_plyr_last_process_time,%ebx
 		xor    %ah,%ah
@@ -8862,7 +8862,7 @@ func_168c7:
 		mov    %dh,0x6(%ebx)
 	jump_168d6:
 		xor    %eax,%eax
-		mov    Network__Slot,%ax
+		mov    EXPORT_SYMBOL(Network__Slot),%ax
 		push   %eax
 		mov    0xc(%ebx),%edx
 		push   %edx
@@ -10084,7 +10084,7 @@ configure_company:	/* 0x175c0 */
 		mov    $0x1,%dh
 		mov    %dl,0xd0(%esp)
 		mov    %dh,EXPORT_SYMBOL(byte_60B4C)
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %al,0xc4(%esp)
 		mov    %edx,%eax
 		shl    $0x5,%eax
@@ -10121,7 +10121,7 @@ configure_company:	/* 0x175c0 */
 		call   ac_close
 		add    $0x4,%esp
 	jump_17684:
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%eax
 		shl    $0x5,%eax
 		add    %edx,%eax
@@ -10133,7 +10133,7 @@ configure_company:	/* 0x175c0 */
 		mov    %dl,0xdc(%esp)
 		mov    %dl,0xcc(%esp)
 		mov    data_5e4ac(%eax),%dl
-		add    $players,%eax
+		add    $EXPORT_SYMBOL(players),%eax
 		add    $0x11,%eax
 		push   %eax
 		push   $aS_1
@@ -10142,7 +10142,7 @@ configure_company:	/* 0x175c0 */
 		mov    %dl,0xe4(%esp)
 		mov    %dl,0xe0(%esp)
 		call   ac_sprintf
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%eax
 		shl    $0x5,%eax
 		add    %edx,%eax
@@ -10150,7 +10150,7 @@ configure_company:	/* 0x175c0 */
 		sub    %edx,%eax
 		lea    0x0(,%eax,8),%eax
 		sub    %edx,%eax
-		add    $players,%eax
+		add    $EXPORT_SYMBOL(players),%eax
 		add    $0xc,%esp
 		add    $0x11,%eax
 		push   %eax
@@ -10158,7 +10158,7 @@ configure_company:	/* 0x175c0 */
 		lea    0x94(%esp),%eax
 		push   %eax
 		call   ac_sprintf
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%eax
 		shl    $0x5,%eax
 		add    %edx,%eax
@@ -10166,7 +10166,7 @@ configure_company:	/* 0x175c0 */
 		sub    %edx,%eax
 		lea    0x0(,%eax,8),%eax
 		sub    %edx,%eax
-		add    $players,%eax
+		add    $EXPORT_SYMBOL(players),%eax
 		add    $0xc,%esp
 		add    $0x23,%eax
 		push   %eax
@@ -10174,7 +10174,7 @@ configure_company:	/* 0x175c0 */
 		lea    0x80(%esp),%eax
 		push   %eax
 		call   ac_sprintf
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%eax
 		shl    $0x5,%eax
 		add    %edx,%eax
@@ -10182,7 +10182,7 @@ configure_company:	/* 0x175c0 */
 		sub    %edx,%eax
 		lea    0x0(,%eax,8),%eax
 		sub    %edx,%eax
-		add    $players,%eax
+		add    $EXPORT_SYMBOL(players),%eax
 		add    $0xc,%esp
 		add    $0x23,%eax
 		push   %eax
@@ -10559,7 +10559,7 @@ configure_company:	/* 0x175c0 */
 		jne    jump_17df5
 		cmpw   $0x0,0xbc(%esp)
 		jne    jump_17df5
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%eax
 		shl    $0x5,%eax
 		add    %edx,%eax
@@ -10572,14 +10572,14 @@ configure_company:	/* 0x175c0 */
 		mov    0xd4(%esp),%dl
 		mov    %dl,data_5e4ac(%eax)
 		lea    0x78(%esp),%edx
-		add    $players,%eax
+		add    $EXPORT_SYMBOL(players),%eax
 		push   %edx
 		add    $0x23,%eax
 		push   %eax
 		call   ac_strcpy
 		lea    0xa8(%esp),%eax
 		add    $0x8,%esp
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		push   %eax
 		mov    %edx,%eax
 		shl    $0x5,%eax
@@ -10588,11 +10588,11 @@ configure_company:	/* 0x175c0 */
 		sub    %edx,%eax
 		lea    0x0(,%eax,8),%eax
 		sub    %edx,%eax
-		add    $players,%eax
+		add    $EXPORT_SYMBOL(players),%eax
 		add    $0x11,%eax
 		push   %eax
 		call   ac_strcpy
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%eax
 		shl    $0x5,%eax
 		add    %edx,%eax
@@ -10607,7 +10607,7 @@ configure_company:	/* 0x175c0 */
 		xor    %cl,%cl
 	jump_17d80:
 		xor    %eax,%eax
-		mov    Network__Slot,%dx
+		mov    EXPORT_SYMBOL(Network__Slot),%dx
 		mov    %cl,%al
 		cmp    %dx,%ax
 		je     jump_17dea
@@ -10620,7 +10620,7 @@ configure_company:	/* 0x175c0 */
 		sub    %edx,%ebx
 		lea    0x0(,%ebx,8),%ebx
 		sub    %edx,%ebx
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%eax
 		shl    $0x5,%eax
 		add    %edx,%eax
@@ -11535,7 +11535,7 @@ process_day:	/* 0x18810 */
 	jump_188db:
 		xor    %ah,%ah
 		mov    %ah,data_60b50
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%ecx
 		shl    $0x5,%ecx
 		add    %edx,%ecx
@@ -11565,7 +11565,7 @@ process_day:	/* 0x18810 */
 		call   DoResearch
 		mov    %al,EXPORT_SYMBOL(research)
 	jump_18948:
-		movswl Network__Slot,%eax
+		movswl EXPORT_SYMBOL(Network__Slot),%eax
 		mov    %eax,%ebx
 		shl    $0x5,%ebx
 		add    %eax,%ebx
@@ -11602,7 +11602,7 @@ process_day:	/* 0x18810 */
 		mov    0x4(%esp),%bl
 		push   %ebx
 		call   AdjustStateHappiness
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%esi
 		shl    $0x5,%esi
 		add    %edx,%esi
@@ -11614,11 +11614,11 @@ process_day:	/* 0x18810 */
 		sub    %edx,%esi
 		call   GetRevenueFromCity
 		add    $0x4,%esp
-		mov    players(%esi),%edx
+		mov    EXPORT_SYMBOL(players)(%esi),%edx
 		push   $0x3e8
 		add    %eax,%edx
 		lea    0x0(,%ebx,4),%eax
-		mov    %edx,players(%esi)
+		mov    %edx,EXPORT_SYMBOL(players)(%esi)
 		add    %eax,%ebx
 		call   random
 		mov    $0x1f4,%edx
@@ -11678,7 +11678,7 @@ process_day:	/* 0x18810 */
 		pop    %ebx
 		ret
 	jump_18ad4:
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%ebx
 		shl    $0x5,%ebx
 		add    %edx,%ebx
@@ -11758,7 +11758,7 @@ AdjustStateHappiness:	/* 0x18bd0 */
 		push   %ebx
 		push   %esi
 		push   %edi
-		mov    Network__Slot,%si
+		mov    EXPORT_SYMBOL(Network__Slot),%si
 		mov    0x10(%esp),%ch
 		xor    %edx,%edx
 		mov    %ch,%dl
@@ -11840,7 +11840,7 @@ AdjustStateHappiness:	/* 0x18bd0 */
 		jle    jump_18ce4
 		movw   $0xff,EXPORT_SYMBOL(country_states)(%eax)
 	jump_18ce4:
-		mov    %si,Network__Slot
+		mov    %si,EXPORT_SYMBOL(Network__Slot)
 		pop    %edi
 		pop    %esi
 		pop    %ebx
@@ -11857,7 +11857,7 @@ GetRevenueFromCity:	/* 0x18cf0 */
 		add    %eax,%ebx
 		add    %ebx,%ebx
 		xor    %eax,%eax
-		mov    Network__Slot,%cx
+		mov    EXPORT_SYMBOL(Network__Slot),%cx
 		mov    data_5539e(%ebx),%al
 		xor    %edx,%edx
 		cmp    %cx,%ax
@@ -11901,7 +11901,7 @@ ComputerPlaysMap:	/* 0x18d80 */
 		mov    0x4(%esp),%al
 		movb   $0xff,next_mission_countries(%eax)
 		xor    %edx,%edx
-		mov    Network__Slot,%bx
+		mov    EXPORT_SYMBOL(Network__Slot),%bx
 		mov    %al,%dl
 		cmp    %bx,%dx
 		je     jump_18e98
@@ -11956,7 +11956,7 @@ ComputerPlaysMap:	/* 0x18d80 */
 		mov    data_5539e(%eax),%dl
 		cmp    %ch,%dl
 		je     jump_18e8d
-		mov    Network__Slot,%cx
+		mov    EXPORT_SYMBOL(Network__Slot),%cx
 		mov    %dl,%al
 		xor    %ah,%ah
 		cmp    %cx,%ax
@@ -12055,7 +12055,7 @@ ShowGameTime:	/* 0x18f30 */
 /*----------------------------------------------------------------*/
 		push   %ebx
 		sub    $0x28,%esp
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%eax
 		shl    $0x5,%eax
 		add    %edx,%eax
@@ -12072,7 +12072,7 @@ ShowGameTime:	/* 0x18f30 */
 		jne    jump_18f70
 		mov    $0x17,%ebx
 	jump_18f70:
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%eax
 		shl    $0x5,%eax
 		add    %edx,%eax
@@ -12142,7 +12142,7 @@ debrief:	/* 0x18ff0 */
 		mov    %cl,EXPORT_SYMBOL(lbKeyOn)+0x1c	/* lbKeyOn[KC_RETURN] */
 		mov    %cl,-0x10(%ebp)
 	jump_1903d:
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%ebx
 		shl    $0x5,%ebx
 		add    %edx,%ebx
@@ -12165,7 +12165,7 @@ debrief:	/* 0x18ff0 */
 		xor    %bl,%bl
 		mov    %bl,-0x4(%ebp)
 	jump_190a0:
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%ebx
 		shl    $0x5,%ebx
 		add    %edx,%ebx
@@ -12198,7 +12198,7 @@ debrief:	/* 0x18ff0 */
 		cmpw   $0x0,data_57c05(%eax)
 		jne    jump_196e7
 	jump_19126:
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%ebx
 		shl    $0x5,%ebx
 		add    %edx,%ebx
@@ -12300,7 +12300,7 @@ debrief:	/* 0x18ff0 */
 		mov    %bl,%al
 		cmpw   $0x960,data_5559d(%edx,%eax,2)
 		jl     jump_195f5
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%ebx
 		shl    $0x5,%ebx
 		add    %edx,%ebx
@@ -12354,7 +12354,7 @@ debrief:	/* 0x18ff0 */
 	jump_1935c:
 		xor    %cl,%cl
 	jump_1935e:
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%ebx
 		shl    $0x5,%ebx
 		add    %edx,%ebx
@@ -12395,7 +12395,7 @@ debrief:	/* 0x18ff0 */
 	jump_193eb:
 		test   %cl,%cl
 		je     jump_1948b
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%ebx
 		shl    $0x5,%ebx
 		add    %edx,%ebx
@@ -12434,7 +12434,7 @@ debrief:	/* 0x18ff0 */
 		mov    %dx,data_57c07(%eax)
 		jmp    jump_19525
 	jump_1948b:
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%ebx
 		shl    $0x5,%ebx
 		add    %edx,%ebx
@@ -12473,7 +12473,7 @@ debrief:	/* 0x18ff0 */
 		add    $0x258,%edi
 		mov    %di,data_57c07(%ebx,%eax,2)
 	jump_19525:
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%ebx
 		shl    $0x5,%ebx
 		add    %edx,%ebx
@@ -12529,7 +12529,7 @@ debrief:	/* 0x18ff0 */
 		cmp    $0xa,%ch
 		jb     jump_1935c
 	jump_195f5:
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%ebx
 		shl    $0x5,%ebx
 		add    %edx,%ebx
@@ -12556,7 +12556,7 @@ debrief:	/* 0x18ff0 */
 		mov    %dh,-0x4(%ebp)
 		xor    %esi,%esi
 	jump_19656:
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%ebx
 		shl    $0x5,%ebx
 		add    %edx,%ebx
@@ -12601,7 +12601,7 @@ debrief:	/* 0x18ff0 */
 		mov    %cl,-0x10(%ebp)
 		cmp    $0x4,%cl
 		jb     jump_1903d
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%eax
 		shl    $0x5,%eax
 		add    %edx,%eax
@@ -12643,7 +12643,7 @@ debrief:	/* 0x18ff0 */
 		call   LbCopyScreenFromBackMCGA
 		call   DrawAcceptGadget
 		call   DrawMenuGadget
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%eax
 		shl    $0x5,%eax
 		mov    m_logos,%ebx
@@ -12664,7 +12664,7 @@ debrief:	/* 0x18ff0 */
 		and    $0xff,%eax
 		push   %eax
 		call   draw_logo
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%eax
 		shl    $0x5,%eax
 		add    %edx,%eax
@@ -12685,7 +12685,7 @@ debrief:	/* 0x18ff0 */
 		push   $0x54
 		push   $0x10
 		push   $0x52
-		add    $players,%eax
+		add    $EXPORT_SYMBOL(players),%eax
 		push   $0x12
 		add    $0x23,%eax
 		push   %eax
@@ -13242,7 +13242,7 @@ debrief:	/* 0x18ff0 */
 		mov    data_55596,%al
 		imul   $0x1eb,%eax,%eax
 		xor    %ebx,%ebx
-		mov    cybmods(%eax),%bl
+		mov    EXPORT_SYMBOL(cybmods)(%eax),%bl
 		xor    %edx,%edx
 		lea    0x0(,%ebx,4),%eax
 		mov    EXPORT_SYMBOL(language),%dl
@@ -13261,7 +13261,7 @@ debrief:	/* 0x18ff0 */
 		mov    data_55596,%al
 		imul   $0x1f5,%eax,%eax
 		xor    %ebx,%ebx
-		mov    weapons(%eax),%bl
+		mov    EXPORT_SYMBOL(weapons)(%eax),%bl
 		lea    0x0(,%ebx,4),%eax
 		sub    %ebx,%eax
 		lea    0x0(,%eax,4),%eax
@@ -16545,7 +16545,7 @@ func_1c1a7:
 		shl    $0x3,%edx
 		sbb    %edx,%eax
 		sar    $0x3,%eax
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		cmp    %edx,%eax
 		jne    jump_1c7c0
 	jump_1c310:
@@ -16711,7 +16711,7 @@ func_1c419:
 		mov    %eax,%edx
 	jump_1c528:
 		xor    %ecx,%ecx
-		movswl Network__Slot,%eax
+		movswl EXPORT_SYMBOL(Network__Slot),%eax
 		mov    %dx,%cx
 		cmp    %eax,%ecx
 		je     jump_1c546
@@ -16730,7 +16730,7 @@ func_1c419:
 		mov    0x634(%esp),%ecx
 		mov    %cx,0x2(%esp,%eax,1)
 		xor    %ecx,%ecx
-		movswl Network__Slot,%ebp
+		movswl EXPORT_SYMBOL(Network__Slot),%ebp
 		mov    %dx,%cx
 		cmp    %ebp,%ecx
 		movb   $0x3,0x4(%esp,%eax,1)
@@ -16827,7 +16827,7 @@ func_1c419:
 		mov    0x634(%esp),%ecx
 		and    $0xffff,%edx
 		mov    %cx,0x2(%esp,%eax,1)
-		movswl Network__Slot,%ecx
+		movswl EXPORT_SYMBOL(Network__Slot),%ecx
 		cmp    %ecx,%edx
 		jne    jump_1c726
 		movb   $0x3,0x4(%esp,%eax,1)
@@ -20331,7 +20331,7 @@ func_1efc3:
 		mov    %dl,%dh
 		inc    %dh
 		mov    %dh,0x19(%ebx)
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%eax
 		shl    $0x5,%eax
 		add    %edx,%eax
@@ -20419,7 +20419,7 @@ func_1f034:
 		add    $0x20,%esp
 		test   %eax,%eax
 		je     jump_1f15d
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%eax
 		shl    $0x5,%eax
 		add    %edx,%eax
@@ -20590,7 +20590,7 @@ func_1f2d8:
 		or     $0x1,%al
 		inc    %ah
 		mov    %al,0xa(%ebx)
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %ah,0x19(%ebx)
 		mov    %edx,%eax
 		shl    $0x5,%eax
@@ -20650,7 +20650,7 @@ func_1f341:
 		add    $0x20,%esp
 		test   %ax,%ax
 		je     jump_1f403
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%eax
 		shl    $0x5,%eax
 		add    %edx,%eax
@@ -21349,7 +21349,7 @@ equip_team:	/* 0x1fbc0 */
 		mov    %dh,data_55592
 		mov    %bx,-0x38(%ebp)
 	jump_1fc04:
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%ebx
 		shl    $0x5,%ebx
 		add    %edx,%ebx
@@ -21375,7 +21375,7 @@ equip_team:	/* 0x1fbc0 */
 		xor    %bh,%bh
 		mov    %bh,-0x24(%ebp)
 	jump_1fc5e:
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%ebx
 		shl    $0x5,%ebx
 		add    %edx,%ebx
@@ -21410,7 +21410,7 @@ equip_team:	/* 0x1fbc0 */
 		inc    %bh
 		mov    %bh,-0x4(%ebp)
 	jump_1fcc8:
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%ebx
 		shl    $0x5,%ebx
 		add    %edx,%ebx
@@ -21765,7 +21765,7 @@ equip_team:	/* 0x1fbc0 */
 		add    $0x1c,%esp
 	jump_20191:
 		call   ShowGameTime
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%eax
 		shl    $0x5,%eax
 		mov    m_logos,%ecx
@@ -21812,7 +21812,7 @@ equip_team:	/* 0x1fbc0 */
 		mov    data_5b5b0(,%eax,2),%si
 		add    $0x32,%esi
 	jump_2022f:
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%ecx
 		shl    $0x5,%ecx
 		add    %edx,%ecx
@@ -21941,7 +21941,7 @@ equip_team:	/* 0x1fbc0 */
 		push   %edx
 		push   %eax
 		call   func_29030
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%ebx
 		shl    $0x5,%ebx
 		add    %edx,%ebx
@@ -21985,7 +21985,7 @@ equip_team:	/* 0x1fbc0 */
 		lea    -0x68(%ebp),%eax
 		push   %eax
 		call   new_show_text
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%eax
 		shl    $0x5,%eax
 		add    %edx,%eax
@@ -22022,7 +22022,7 @@ equip_team:	/* 0x1fbc0 */
 		mov    data_5b55e(%ebx),%ax
 		push   %eax
 		call   LbSpriteDrawMCGA
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%ecx
 		shl    $0x5,%ecx
 		add    %edx,%ecx
@@ -22059,7 +22059,7 @@ equip_team:	/* 0x1fbc0 */
 		push   %eax
 		call   LbSpriteDrawMCGA
 		add    $0xc,%esp
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%ecx
 		shl    $0x5,%ecx
 		add    %edx,%ecx
@@ -22093,7 +22093,7 @@ equip_team:	/* 0x1fbc0 */
 		mov    data_5b564(%ebx),%ax
 		push   %eax
 		call   LbSpriteDrawMCGA
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%ebx
 		shl    $0x5,%ebx
 		add    %edx,%ebx
@@ -22124,7 +22124,7 @@ equip_team:	/* 0x1fbc0 */
 		xor    %edx,%edx
 		push   $0xfffffffe
 		mov    m_sprites,%ecx
-		mov    cybmods(%eax),%dl
+		mov    EXPORT_SYMBOL(cybmods)(%eax),%dl
 		push   %ecx
 		lea    0x0(,%edx,4),%eax
 		push   $0x54
@@ -22140,7 +22140,7 @@ equip_team:	/* 0x1fbc0 */
 		call   new_show_text
 		add    $0x28,%esp
 	jump_206dd:
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%ebx
 		shl    $0x5,%ebx
 		add    %edx,%ebx
@@ -22171,7 +22171,7 @@ equip_team:	/* 0x1fbc0 */
 		xor    %edx,%edx
 		push   $0xfffffffe
 		mov    m_sprites,%edi
-		mov    cybmods(%eax),%dl
+		mov    EXPORT_SYMBOL(cybmods)(%eax),%dl
 		push   %edi
 		lea    0x0(,%edx,4),%eax
 		push   $0x54
@@ -22187,7 +22187,7 @@ equip_team:	/* 0x1fbc0 */
 		call   new_show_text
 		add    $0x28,%esp
 	jump_2078e:
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%ecx
 		shl    $0x5,%ecx
 		add    %edx,%ecx
@@ -22233,7 +22233,7 @@ equip_team:	/* 0x1fbc0 */
 		push   $0x6
 		mov    m_sprites,%ecx
 		push   $0xfffffffe
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		push   %ecx
 		mov    %edx,%ecx
 		shl    $0x5,%ecx
@@ -22256,7 +22256,7 @@ equip_team:	/* 0x1fbc0 */
 		add    $0xb,%eax
 		imul   $0x1eb,%eax,%eax
 		xor    %edx,%edx
-		mov    cybmods(%eax),%dl
+		mov    EXPORT_SYMBOL(cybmods)(%eax),%dl
 		lea    0x0(,%edx,4),%eax
 		push   $0x54
 		sub    %edx,%eax
@@ -22271,7 +22271,7 @@ equip_team:	/* 0x1fbc0 */
 		call   new_show_text
 		add    $0x28,%esp
 	jump_208d1:
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%ecx
 		shl    $0x5,%ecx
 		add    %edx,%ecx
@@ -22312,7 +22312,7 @@ equip_team:	/* 0x1fbc0 */
 		and    $0xffff,%eax
 		push   %eax
 		call   LbSpriteDrawMCGA
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%ecx
 		shl    $0x5,%ecx
 		add    %edx,%ecx
@@ -22340,7 +22340,7 @@ equip_team:	/* 0x1fbc0 */
 		push   $0xfffffffe
 		xor    %edx,%edx
 		mov    m_sprites,%edi
-		mov    cybmods(%eax),%dl
+		mov    EXPORT_SYMBOL(cybmods)(%eax),%dl
 		push   %edi
 		lea    0x0(,%edx,4),%eax
 		push   $0x54
@@ -22356,7 +22356,7 @@ equip_team:	/* 0x1fbc0 */
 		call   new_show_text
 		add    $0x28,%esp
 	jump_20a10:
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%ebx
 		shl    $0x5,%ebx
 		add    %edx,%ebx
@@ -22397,7 +22397,7 @@ equip_team:	/* 0x1fbc0 */
 		mov    data_5b570(%edx),%ax
 		push   %eax
 		call   LbSpriteDrawMCGA
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%ebx
 		shl    $0x5,%ebx
 		add    %edx,%ebx
@@ -22425,7 +22425,7 @@ equip_team:	/* 0x1fbc0 */
 		push   $0xfffffffe
 		xor    %edx,%edx
 		mov    m_sprites,%ecx
-		mov    cybmods(%eax),%dl
+		mov    EXPORT_SYMBOL(cybmods)(%eax),%dl
 		push   %ecx
 		lea    0x0(,%edx,4),%eax
 		push   $0x54
@@ -22441,7 +22441,7 @@ equip_team:	/* 0x1fbc0 */
 		call   new_show_text
 		add    $0x28,%esp
 	jump_20b55:
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%ecx
 		shl    $0x5,%ecx
 		add    %edx,%ecx
@@ -22481,7 +22481,7 @@ equip_team:	/* 0x1fbc0 */
 		and    $0xffff,%eax
 		push   %eax
 		call   LbSpriteDrawMCGA
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%ecx
 		shl    $0x5,%ecx
 		add    %edx,%ecx
@@ -22507,7 +22507,7 @@ equip_team:	/* 0x1fbc0 */
 		push   $0xfffffffe
 		xor    %edx,%edx
 		mov    m_sprites,%edi
-		mov    cybmods(%eax),%dl
+		mov    EXPORT_SYMBOL(cybmods)(%eax),%dl
 		push   %edi
 		lea    0x0(,%edx,4),%eax
 		push   $0x54
@@ -22570,7 +22570,7 @@ equip_team:	/* 0x1fbc0 */
 		call   func_1b3a0
 		add    $0x14,%esp
 	jump_20d53:
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%ecx
 		shl    $0x5,%ecx
 		add    %edx,%ecx
@@ -22619,7 +22619,7 @@ equip_team:	/* 0x1fbc0 */
 		mov    %di,%ax
 		cmpb   $0x0,data_5a69a(%eax)
 		je     jump_20e8a
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%ecx
 		shl    $0x5,%ecx
 		add    %edx,%ecx
@@ -22739,7 +22739,7 @@ equip_team:	/* 0x1fbc0 */
 		inc    %ebx
 		cmp    $0x4,%bx
 		jb     jump_20f22
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%ebx
 		shl    $0x5,%ebx
 		add    %edx,%ebx
@@ -22857,7 +22857,7 @@ equip_team:	/* 0x1fbc0 */
 		inc    %ebx
 		cmp    $0x4,%bx
 		jb     jump_210ab
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%ebx
 		shl    $0x5,%ebx
 		add    %edx,%ebx
@@ -23047,7 +23047,7 @@ equip_team:	/* 0x1fbc0 */
 		add    $0x1c,%esp
 		test   %al,%al
 		je     jump_2152d
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%ecx
 		shl    $0x5,%ecx
 		add    %edx,%ecx
@@ -23087,7 +23087,7 @@ equip_team:	/* 0x1fbc0 */
 		mov    strings_reload(,%eax,4),%edx
 		push   %edx
 		call   new_show_text
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%ecx
 		shl    $0x5,%ecx
 		add    %edx,%ecx
@@ -23194,7 +23194,7 @@ equip_team:	/* 0x1fbc0 */
 		add    $0x1c,%esp
 		cmpb   $0x0,-0x14(%ebp)
 		je     jump_216ee
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%ebx
 		shl    $0x5,%ebx
 		add    %edx,%ebx
@@ -23252,7 +23252,7 @@ equip_team:	/* 0x1fbc0 */
 		call   DrawScreenGadget
 		add    $0x1c,%esp
 	jump_216ee:
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%eax
 		shl    $0x5,%eax
 		add    %edx,%eax
@@ -23260,7 +23260,7 @@ equip_team:	/* 0x1fbc0 */
 		sub    %edx,%eax
 		lea    0x0(,%eax,8),%eax
 		sub    %edx,%eax
-		mov    players(%eax),%edx
+		mov    EXPORT_SYMBOL(players)(%eax),%edx
 		push   %edx
 		push   $aD_0
 		lea    -0x68(%ebp),%eax
@@ -23429,7 +23429,7 @@ equip_team:	/* 0x1fbc0 */
 		mov    -0x38(%ebp),%esi
 		cmp    $0x12,%si
 		je     jump_2199b
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%ebx
 		shl    $0x5,%ebx
 		add    %edx,%ebx
@@ -23472,7 +23472,7 @@ equip_team:	/* 0x1fbc0 */
 		mov    %al,%cl
 		xor    %ch,%ch
 	jump_219e7:
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%ebx
 		shl    $0x5,%ebx
 		add    %edx,%ebx
@@ -23500,7 +23500,7 @@ equip_team:	/* 0x1fbc0 */
 		inc    %ah
 		mov    %ah,-0x4(%ebp)
 	jump_21a48:
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%ebx
 		shl    $0x5,%ebx
 		add    %edx,%ebx
@@ -23572,7 +23572,7 @@ equip_team:	/* 0x1fbc0 */
 		xor    %esi,%esi
 		mov    %si,-0x38(%ebp)
 	jump_21b7a:
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%eax
 		shl    $0x5,%eax
 		add    %edx,%eax
@@ -23608,7 +23608,7 @@ equip_team:	/* 0x1fbc0 */
 		sub    -0x3c(%ebp),%edi
 		and    $0xffff,%ebx
 		imul   %edi,%ebx
-		cmp    players(%edx),%ebx
+		cmp    EXPORT_SYMBOL(players)(%edx),%ebx
 		ja     jump_21c4c
 		cmp    -0x3c(%ebp),%esi
 		jle    jump_21c4c
@@ -23616,7 +23616,7 @@ equip_team:	/* 0x1fbc0 */
 		imul   $0x1f5,%ecx,%ecx
 		cmpw   $0x960,data_57c05(%ecx)
 		jne    jump_21c4c
-		sub    %ebx,players(%edx)
+		sub    %ebx,EXPORT_SYMBOL(players)(%edx)
 		xor    %edx,%edx
 		mov    data_5e5c3(%eax),%dx
 		mov    weapon_max_ammo(,%edx,2),%dx
@@ -23634,7 +23634,7 @@ equip_team:	/* 0x1fbc0 */
 		jb     jump_21dbf
 		cmp    $0x12,%dl
 		ja     jump_21dbf
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%ebx
 		shl    $0x5,%ebx
 		add    %edx,%ebx
@@ -23679,7 +23679,7 @@ equip_team:	/* 0x1fbc0 */
 		mov    %dx,-0x38(%ebp)
 		mov    %dx,data_5e5c1(%eax)
 	jump_21d24:
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%ebx
 		shl    $0x5,%ebx
 		add    %edx,%ebx
@@ -23726,7 +23726,7 @@ equip_team:	/* 0x1fbc0 */
 		cmp    $0x3,%bl
 		jne    jump_2184a
 	jump_21dd9:
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%ebx
 		shl    $0x5,%ebx
 		add    %edx,%ebx
@@ -23784,7 +23784,7 @@ func_21e86:
 		inc    %dh
 		mov    %dh,-0x4(%ebp)
 	jump_21e9a:
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%ebx
 		shl    $0x5,%ebx
 		add    %edx,%ebx
@@ -23845,7 +23845,7 @@ func_21f15:
 		inc    %ah
 		mov    %ah,-0x4(%ebp)
 	jump_21f2e:
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%ebx
 		shl    $0x5,%ebx
 		add    %edx,%ebx
@@ -23873,7 +23873,7 @@ func_21f82:
 /*----------------------------------------------------------------*/
 		cmpb   $0x0,data_55592
 		jbe    def_21874
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%ebx
 		shl    $0x5,%ebx
 		add    %edx,%ebx
@@ -23981,7 +23981,7 @@ func_2201c:
 		add    $0x4,%esp
 		test   %al,%al
 		jne    jump_221bd
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%ecx
 		shl    $0x5,%ecx
 		add    %edx,%ecx
@@ -24005,7 +24005,7 @@ func_2201c:
 		je     jump_22149
 		decb   data_55592
 	jump_22149:
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%ebx
 		shl    $0x5,%ebx
 		add    %edx,%ebx
@@ -24084,7 +24084,7 @@ func_2201c:
 		xor    %eax,%eax
 		mov    %ax,-0x38(%ebp)
 	jump_2226f:
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%ebx
 		shl    $0x5,%ebx
 		add    %edx,%ebx
@@ -24136,7 +24136,7 @@ func_2201c:
 		xor    %edi,%edi
 		mov    %di,-0x38(%ebp)
 	jump_22308:
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%ebx
 		shl    $0x5,%ebx
 		add    %edx,%ebx
@@ -24177,7 +24177,7 @@ func_2201c:
 		mov    %al,-0x4(%ebp)
 		jmp    def_21874
 	jump_22390:
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%ebx
 		shl    $0x5,%ebx
 		add    %edx,%ebx
@@ -24219,21 +24219,21 @@ func_2201c:
 		mov    %edx,%eax
 		sar    $0x1f,%edx
 		idiv   %ecx
-		add    %eax,players(%ebx)
+		add    %eax,EXPORT_SYMBOL(players)(%ebx)
 		jmp    jump_2245e
 	jump_2243e:
 		xor    %eax,%eax
 		mov    -0x10(%ebp),%al
 		dec    %eax
 		imul   $0x1f5,%eax,%eax
-		mov    players(%ebx),%edx
+		mov    EXPORT_SYMBOL(players)(%ebx),%edx
 		mov    data_57bf5(%eax),%eax
 		add    %eax,%edx
-		mov    %edx,players(%ebx)
+		mov    %edx,EXPORT_SYMBOL(players)(%ebx)
 	jump_2245e:
 		xor    %dl,%dl
 		mov    %dl,-0x10(%ebp)
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%ebx
 		shl    $0x5,%ebx
 		add    %edx,%ebx
@@ -24259,7 +24259,7 @@ func_2201c:
 		cmp    $0x7,%ax
 		jae    jump_22555
 	jump_224c9:
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%ebx
 		shl    $0x5,%ebx
 		add    %edx,%ebx
@@ -24300,7 +24300,7 @@ func_2201c:
 		inc    %bl
 		mov    %bl,-0x4(%ebp)
 	jump_22563:
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%ebx
 		shl    $0x5,%ebx
 		add    %edx,%ebx
@@ -24334,7 +24334,7 @@ func_2201c:
 		jae    jump_226d3
 		cmpb   $0x0,-0x14(%ebp)
 		je     def_21874
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%eax
 		shl    $0x5,%eax
 		add    %edx,%eax
@@ -24364,7 +24364,7 @@ func_2201c:
 		mov    data_57bfb(%ebx),%edi
 		sub    %esi,%ecx
 		imul   %edi,%ecx
-		cmp    players(%edx),%ecx
+		cmp    EXPORT_SYMBOL(players)(%edx),%ecx
 		ja     def_21874
 		xor    %esi,%esi
 		mov    data_5e5c3(%eax),%si
@@ -24375,7 +24375,7 @@ func_2201c:
 		jge    def_21874
 		cmpw   $0x960,data_57c05(%esi)
 		jne    def_21874
-		sub    %ecx,players(%edx)
+		sub    %ecx,EXPORT_SYMBOL(players)(%edx)
 		mov    data_57bf9(%ebx),%dx
 		mov    %dx,data_5e5c1(%eax)
 		jmp    def_21874
@@ -24390,7 +24390,7 @@ func_2201c:
 		inc    %ah
 		mov    %ah,-0x4(%ebp)
 	jump_226e7:
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%ebx
 		shl    $0x5,%ebx
 		add    %edx,%ebx
@@ -24416,7 +24416,7 @@ func_2201c:
 /*----------------------------------------------------------------*/
 func_2273c:
 /*----------------------------------------------------------------*/
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%ebx
 		shl    $0x5,%ebx
 		add    %edx,%ebx
@@ -24632,7 +24632,7 @@ which_item_selected:	/* 0x228d0 */
 		jbe    jump_229c1
 		cmp    $0x14,%si
 		jne    jump_229fd
-		mov    $weapons,%eax
+		mov    $EXPORT_SYMBOL(weapons),%eax
 		mov    0x20(%esp),%dh
 	jump_22985:
 		movsbl %dl,%ecx
@@ -24658,7 +24658,7 @@ which_item_selected:	/* 0x228d0 */
 		add    $0x1f5,%eax
 		jmp    jump_22985
 	jump_229c1:
-		mov    $cybmods,%eax
+		mov    $EXPORT_SYMBOL(cybmods),%eax
 	jump_229c6:
 		movsbl %dl,%ecx
 		cmp    $0xffffffff,%ecx
@@ -24728,7 +24728,7 @@ ShowInfoOnEquipItem:	/* 0x22a10 */
 		movzbl 0x40(%esp),%ebp
 		lea    -0x1(%ebp),%ebx
 		imul   $0x1f5,%ebx,%ebx
-		movzbl weapons(%ebx),%esi
+		movzbl EXPORT_SYMBOL(weapons)(%ebx),%esi
 		lea    0x0(,%esi,4),%eax
 		sub    %esi,%eax
 		lea    0x0(,%eax,4),%esi
@@ -24938,7 +24938,7 @@ ShowInfoOnEquipItem:	/* 0x22a10 */
 		push   $0x6
 		mov    m_sprites,%edx
 		push   $0xfffffffe
-		movzbl cybmods(%ebx),%esi
+		movzbl EXPORT_SYMBOL(cybmods)(%ebx),%esi
 		push   %edx
 		lea    0x0(,%esi,4),%eax
 		push   $0x54
@@ -25088,7 +25088,7 @@ ShowAvailableParts:	/* 0x22eb0 */
 		xor    %eax,%eax
 		mov    %bx,%ax
 		imul   $0x1eb,%eax,%eax
-		cmpb   $0xff,cybmods(%eax)
+		cmpb   $0xff,EXPORT_SYMBOL(cybmods)(%eax)
 		je     jump_22f33
 		cmpw   $0x960,data_55788(%eax)
 		jne    jump_22f30
@@ -25104,7 +25104,7 @@ ShowAvailableParts:	/* 0x22eb0 */
 		mov    %si,%dx
 		push   %edx
 		xor    %edx,%edx
-		mov    cybmods(%eax),%dl
+		mov    EXPORT_SYMBOL(cybmods)(%eax),%dl
 		lea    0x0(,%edx,4),%eax
 		sub    %edx,%eax
 		lea    0x0(,%eax,4),%edx
@@ -25157,7 +25157,7 @@ ShowAvailableParts:	/* 0x22eb0 */
 		dec    %eax
 		imul   $0x1eb,%eax,%eax
 		xor    %edx,%edx
-		mov    cybmods(%eax),%dl
+		mov    EXPORT_SYMBOL(cybmods)(%eax),%dl
 		lea    0x0(,%edx,4),%eax
 		sub    %edx,%eax
 		lea    0x0(,%eax,4),%edx
@@ -25191,7 +25191,7 @@ ShowAvailableEquipment:	/* 0x22fe0 */
 		xor    %edx,%edx
 		mov    %si,%dx
 		imul   $0x1f5,%edx,%eax
-		cmpb   $0xff,weapons(%eax)
+		cmpb   $0xff,EXPORT_SYMBOL(weapons)(%eax)
 		je     jump_2306d
 		cmpw   $0x960,data_57c05(%eax)
 		jne    jump_2306a
@@ -25204,7 +25204,7 @@ ShowAvailableEquipment:	/* 0x22fe0 */
 		push   %edi
 		push   $0xdd
 		xor    %eax,%eax
-		mov    cybmods(%edx),%dl
+		mov    EXPORT_SYMBOL(cybmods)(%edx),%dl
 		push   $0xe
 		mov    %bx,%ax
 		and    $0xff,%edx
@@ -25261,7 +25261,7 @@ ShowAvailableEquipment:	/* 0x22fe0 */
 		dec    %eax
 		imul   $0x1eb,%eax,%eax
 		xor    %edx,%edx
-		mov    cybmods(%eax),%dl
+		mov    EXPORT_SYMBOL(cybmods)(%eax),%dl
 		lea    0x0(,%edx,4),%eax
 		sub    %edx,%eax
 		xor    %edx,%edx
@@ -25293,7 +25293,7 @@ PurchasePart:	/* 0x23120 */
 		mov    %cl,%dl
 		lea    -0x1(%edx),%eax
 		imul   $0x1eb,%eax,%esi
-		movswl Network__Slot,%ebx
+		movswl EXPORT_SYMBOL(Network__Slot),%ebx
 		mov    %ebx,%eax
 		shl    $0x5,%eax
 		add    %ebx,%eax
@@ -25303,7 +25303,7 @@ PurchasePart:	/* 0x23120 */
 		sub    %ebx,%eax
 		mov    data_55781(%esi),%edi
 		mov    %eax,%ebx
-		cmp    players(%eax),%edi
+		cmp    EXPORT_SYMBOL(players)(%eax),%edi
 		ja     jump_2336a
 		movzbl 0x18(%esp),%esi
 		movzbl EXPORT_SYMBOL(selected_team)(%esi),%esi
@@ -25423,7 +25423,7 @@ PurchasePart:	/* 0x23120 */
 	jump_23324:
 		or     %dx,data_5e5bc(%eax)
 	jump_2332b:
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%eax
 		shl    $0x5,%eax
 		add    %edx,%eax
@@ -25435,10 +25435,10 @@ PurchasePart:	/* 0x23120 */
 		mov    %cl,%dl
 		dec    %edx
 		imul   $0x1eb,%edx,%edx
-		mov    players(%eax),%ebp
+		mov    EXPORT_SYMBOL(players)(%eax),%ebp
 		mov    data_55781(%edx),%edx
 		sub    %edx,%ebp
-		mov    %ebp,players(%eax)
+		mov    %ebp,EXPORT_SYMBOL(players)(%eax)
 	jump_2336a:
 		pop    %ebp
 		pop    %edi
@@ -25462,7 +25462,7 @@ PurchaseWeapon:	/* 0x23370 */
 		mov    0x10(%esp),%al
 		dec    %eax
 		imul   $0x1f5,%eax,%ebx
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%eax
 		shl    $0x5,%eax
 		add    %edx,%eax
@@ -25472,7 +25472,7 @@ PurchaseWeapon:	/* 0x23370 */
 		sub    %edx,%eax
 		mov    data_57bf5(%ebx),%ecx
 		mov    %eax,%edx
-		cmp    players(%eax),%ecx
+		cmp    EXPORT_SYMBOL(players)(%eax),%ecx
 		ja     jump_23425
 		cmpb   $0x8,(%esp)
 		jae    jump_23425
@@ -25494,7 +25494,7 @@ PurchaseWeapon:	/* 0x23370 */
 		mov    %si,data_5e5c3(%eax)
 		mov    %cx,data_5e5c1(%eax)
 		mov    data_57bf5(%ebx),%eax
-		sub    %eax,players(%edx)
+		sub    %eax,EXPORT_SYMBOL(players)(%edx)
 	jump_23425:
 		add    $0x4,%esp
 		pop    %esi
@@ -25507,7 +25507,7 @@ GetNextAvailableWeaponSlot:	/* 0x23430 */
 /*----------------------------------------------------------------*/
 		push   %ebx
 		push   %esi
-		mov    Network__Slot,%si
+		mov    EXPORT_SYMBOL(Network__Slot),%si
 		xor    %ch,%ch
 		xor    %cl,%cl
 	jump_2343d:
@@ -25537,7 +25537,7 @@ GetNextAvailableWeaponSlot:	/* 0x23430 */
 		jb     jump_2343d
 	jump_23491:
 		mov    %ch,%al
-		mov    %si,Network__Slot
+		mov    %si,EXPORT_SYMBOL(Network__Slot)
 		pop    %esi
 		pop    %ebx
 		ret
@@ -25548,7 +25548,7 @@ GetNextAvailableWeaponSlot2:	/* 0x234a0 */
 /*----------------------------------------------------------------*/
 		push   %ebx
 		push   %esi
-		mov    Network__Slot,%si
+		mov    EXPORT_SYMBOL(Network__Slot),%si
 		xor    %ch,%ch
 		xor    %cl,%cl
 	jump_234ad:
@@ -25576,7 +25576,7 @@ GetNextAvailableWeaponSlot2:	/* 0x234a0 */
 		jb     jump_234ad
 	jump_234f9:
 		mov    %ch,%al
-		mov    %si,Network__Slot
+		mov    %si,EXPORT_SYMBOL(Network__Slot)
 		pop    %esi
 		pop    %ebx
 		ret
@@ -25618,7 +25618,7 @@ GetTeamMemberName:	/* 0x23540 */
 		push   %ebx
 		push   %esi
 		sub    $0x4,%esp
-		mov    Network__Slot,%si
+		mov    EXPORT_SYMBOL(Network__Slot),%si
 		push   $0x45
 		call   random
 		add    $0x4,%esp
@@ -25629,12 +25629,12 @@ GetTeamMemberName:	/* 0x23540 */
 		cmp    $0x12,%cl
 		jb     jump_2357d
 		mov    (%esp),%dh
-		mov    %si,Network__Slot
+		mov    %si,EXPORT_SYMBOL(Network__Slot)
 		test   %dh,%dh
 		jne    jump_235c1
 	jump_2356f:
 		mov    $0x1,%ah
-		mov    Network__Slot,%si
+		mov    EXPORT_SYMBOL(Network__Slot),%si
 		xor    %cl,%cl
 		mov    %ah,(%esp)
 	jump_2357d:
@@ -25657,7 +25657,7 @@ GetTeamMemberName:	/* 0x23540 */
 		jb     jump_235b8
 		xor    %ch,%ch
 	jump_235b8:
-		mov    %si,Network__Slot
+		mov    %si,EXPORT_SYMBOL(Network__Slot)
 		jmp    jump_2356f
 	jump_235c1:
 		mov    %ch,%al
@@ -25892,7 +25892,7 @@ set_default_player:	/* 0x23880 */
 		mov    %dx,0xc(%esp)
 		mov    0xc(%esp),%al
 		shl    $0x3,%al
-		mov    %dx,Network__Slot
+		mov    %dx,EXPORT_SYMBOL(Network__Slot)
 		mov    %al,0x10(%esp)
 		mov    $0x3,%ebp
 	jump_238a5:
@@ -25964,10 +25964,10 @@ set_default_player:	/* 0x23880 */
 		mov    %di,data_5e4a6(%edx)
 		test   %bl,%bl
 		je     jump_239c2
-		movl   $0x5f5e100,players(%edx)
+		movl   $0x5f5e100,EXPORT_SYMBOL(players)(%edx)
 		jmp    jump_239cc
 	jump_239c2:
-		movl   $0x7530,players(%edx)
+		movl   $0x7530,EXPORT_SYMBOL(players)(%edx)
 	jump_239cc:
 		xor    %edx,%edx
 		mov    0xc(%esp),%dx
@@ -26259,7 +26259,7 @@ set_default_player:	/* 0x23880 */
 		xor    %eax,%eax
 		mov    %di,%ax
 		imul   %ebp,%eax
-		cmpb   $0xfe,weapons(%eax)
+		cmpb   $0xfe,EXPORT_SYMBOL(weapons)(%eax)
 		je     jump_23ed1
 		xor    %ebx,%ebx
 		mov    $0x960,%edx
@@ -26365,7 +26365,7 @@ cheat:	/* 0x23f10 */
 		push   %ebp
 		sub    $0xc,%esp
 		xor    %ah,%ah
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %ah,EXPORT_SYMBOL(cheat_worldmap)
 		mov    %ah,EXPORT_SYMBOL(cheats_speedup)
 		mov    %ah,EXPORT_SYMBOL(cheat_credits)
@@ -26377,7 +26377,7 @@ cheat:	/* 0x23f10 */
 		sub    %edx,%eax
 		lea    0x0(,%eax,8),%eax
 		sub    %edx,%eax
-		add    $players,%eax
+		add    $EXPORT_SYMBOL(players),%eax
 		push   $aNukThem
 		add    $0x23,%eax
 		push   %eax
@@ -26385,7 +26385,7 @@ cheat:	/* 0x23f10 */
 		add    $0x8,%esp
 		test   %eax,%eax
 		je     jump_23fa5
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%eax
 		shl    $0x5,%eax
 		add    %edx,%eax
@@ -26393,7 +26393,7 @@ cheat:	/* 0x23f10 */
 		sub    %edx,%eax
 		lea    0x0(,%eax,8),%eax
 		sub    %edx,%eax
-		add    $players,%eax
+		add    $EXPORT_SYMBOL(players),%eax
 		push   $aNukThem
 		add    $0x11,%eax
 		push   %eax
@@ -26404,7 +26404,7 @@ cheat:	/* 0x23f10 */
 	jump_23fa5:
 		movb   $0x1,EXPORT_SYMBOL(cheat_worldmap)
 	jump_23fac:
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%eax
 		shl    $0x5,%eax
 		add    %edx,%eax
@@ -26412,7 +26412,7 @@ cheat:	/* 0x23f10 */
 		sub    %edx,%eax
 		lea    0x0(,%eax,8),%eax
 		sub    %edx,%eax
-		add    $players,%eax
+		add    $EXPORT_SYMBOL(players),%eax
 		push   $aWatchTheClock
 		add    $0x23,%eax
 		push   %eax
@@ -26420,7 +26420,7 @@ cheat:	/* 0x23f10 */
 		add    $0x8,%esp
 		test   %eax,%eax
 		je     jump_24020
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%eax
 		shl    $0x5,%eax
 		add    %edx,%eax
@@ -26428,7 +26428,7 @@ cheat:	/* 0x23f10 */
 		sub    %edx,%eax
 		lea    0x0(,%eax,8),%eax
 		sub    %edx,%eax
-		add    $players,%eax
+		add    $EXPORT_SYMBOL(players),%eax
 		push   $aWatchTheClock
 		add    $0x11,%eax
 		push   %eax
@@ -26439,7 +26439,7 @@ cheat:	/* 0x23f10 */
 	jump_24020:
 		movb   $0x1,EXPORT_SYMBOL(cheats_speedup)
 	jump_24027:
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%eax
 		shl    $0x5,%eax
 		add    %edx,%eax
@@ -26447,7 +26447,7 @@ cheat:	/* 0x23f10 */
 		sub    %edx,%eax
 		lea    0x0(,%eax,8),%eax
 		sub    %edx,%eax
-		add    $players,%eax
+		add    $EXPORT_SYMBOL(players),%eax
 		push   $aDoItAgain
 		add    $0x23,%eax
 		push   %eax
@@ -26455,7 +26455,7 @@ cheat:	/* 0x23f10 */
 		add    $0x8,%esp
 		test   %eax,%eax
 		je     jump_2409b
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%eax
 		shl    $0x5,%eax
 		add    %edx,%eax
@@ -26463,7 +26463,7 @@ cheat:	/* 0x23f10 */
 		sub    %edx,%eax
 		lea    0x0(,%eax,8),%eax
 		sub    %edx,%eax
-		add    $players,%eax
+		add    $EXPORT_SYMBOL(players),%eax
 		push   $aDoItAgain
 		add    $0x11,%eax
 		push   %eax
@@ -26474,7 +26474,7 @@ cheat:	/* 0x23f10 */
 	jump_2409b:
 		movb   $0x1,EXPORT_SYMBOL(cheats_mission)
 	jump_240a2:
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%eax
 		shl    $0x5,%eax
 		add    %edx,%eax
@@ -26482,7 +26482,7 @@ cheat:	/* 0x23f10 */
 		sub    %edx,%eax
 		lea    0x0(,%eax,8),%eax
 		sub    %edx,%eax
-		add    $players,%eax
+		add    $EXPORT_SYMBOL(players),%eax
 		push   $aRobABank
 		add    $0x23,%eax
 		push   %eax
@@ -26490,7 +26490,7 @@ cheat:	/* 0x23f10 */
 		add    $0x8,%esp
 		test   %eax,%eax
 		je     jump_24116
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%eax
 		shl    $0x5,%eax
 		add    %edx,%eax
@@ -26498,7 +26498,7 @@ cheat:	/* 0x23f10 */
 		sub    %edx,%eax
 		lea    0x0(,%eax,8),%eax
 		sub    %edx,%eax
-		add    $players,%eax
+		add    $EXPORT_SYMBOL(players),%eax
 		push   $aRobABank
 		add    $0x11,%eax
 		push   %eax
@@ -26508,7 +26508,7 @@ cheat:	/* 0x23f10 */
 		jne    jump_24147
 	jump_24116:
 		mov    $0x1,%al
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %al,EXPORT_SYMBOL(cheat_credits)
 		mov    %edx,%eax
 		shl    $0x5,%eax
@@ -26517,9 +26517,9 @@ cheat:	/* 0x23f10 */
 		sub    %edx,%eax
 		lea    0x0(,%eax,8),%eax
 		sub    %edx,%eax
-		movl   $0x5f5e100,players(%eax)
+		movl   $0x5f5e100,EXPORT_SYMBOL(players)(%eax)
 	jump_24147:
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%eax
 		shl    $0x5,%eax
 		add    %edx,%eax
@@ -26527,7 +26527,7 @@ cheat:	/* 0x23f10 */
 		sub    %edx,%eax
 		lea    0x0(,%eax,8),%eax
 		sub    %edx,%eax
-		add    $players,%eax
+		add    $EXPORT_SYMBOL(players),%eax
 		push   $aToTheTop
 		add    $0x23,%eax
 		push   %eax
@@ -26535,7 +26535,7 @@ cheat:	/* 0x23f10 */
 		add    $0x8,%esp
 		test   %eax,%eax
 		je     jump_241bf
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%eax
 		shl    $0x5,%eax
 		add    %edx,%eax
@@ -26543,7 +26543,7 @@ cheat:	/* 0x23f10 */
 		sub    %edx,%eax
 		lea    0x0(,%eax,8),%eax
 		sub    %edx,%eax
-		add    $players,%eax
+		add    $EXPORT_SYMBOL(players),%eax
 		push   $aToTheTop
 		add    $0x11,%eax
 		push   %eax
@@ -26553,7 +26553,7 @@ cheat:	/* 0x23f10 */
 		jne    jump_24330
 	jump_241bf:
 		mov    $0x1,%ah
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %ah,EXPORT_SYMBOL(cheat_worldmap)
 		mov    %ah,EXPORT_SYMBOL(cheat_credits)
 		mov    %edx,%eax
@@ -26565,7 +26565,7 @@ cheat:	/* 0x23f10 */
 		sub    %edx,%eax
 		mov    $0x5f5e100,%ebx
 		xor    %edi,%edi
-		mov    %ebx,players(%eax)
+		mov    %ebx,EXPORT_SYMBOL(players)(%eax)
 		mov    $0x1eb,%ebp
 		nop
 	jump_24200:
@@ -26613,7 +26613,7 @@ cheat:	/* 0x23f10 */
 		xor    %eax,%eax
 		mov    0x4(%esp),%ax
 		imul   %ebp,%eax
-		cmpb   $0xfe,weapons(%eax)
+		cmpb   $0xfe,EXPORT_SYMBOL(weapons)(%eax)
 		je     jump_2431d
 		mov    $0x960,%ecx
 		xor    %edi,%edi
@@ -26661,7 +26661,7 @@ cheat:	/* 0x23f10 */
 		cmp    $0x14,%si
 		jb     jump_24280
 	jump_24330:
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%eax
 		shl    $0x5,%eax
 		add    %edx,%eax
@@ -26669,7 +26669,7 @@ cheat:	/* 0x23f10 */
 		sub    %edx,%eax
 		lea    0x0(,%eax,8),%eax
 		sub    %edx,%eax
-		add    $players,%eax
+		add    $EXPORT_SYMBOL(players),%eax
 		push   $aCooperTeam
 		add    $0x23,%eax
 		push   %eax
@@ -26677,7 +26677,7 @@ cheat:	/* 0x23f10 */
 		add    $0x8,%esp
 		test   %eax,%eax
 		je     jump_243a8
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%eax
 		shl    $0x5,%eax
 		add    %edx,%eax
@@ -26685,7 +26685,7 @@ cheat:	/* 0x23f10 */
 		sub    %edx,%eax
 		lea    0x0(,%eax,8),%eax
 		sub    %edx,%eax
-		add    $players,%eax
+		add    $EXPORT_SYMBOL(players),%eax
 		push   $aCooperTeam
 		add    $0x11,%eax
 		push   %eax
@@ -26694,7 +26694,7 @@ cheat:	/* 0x23f10 */
 		test   %eax,%eax
 		jne    jump_246aa
 	jump_243a8:
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%eax
 		shl    $0x5,%eax
 		add    %edx,%eax
@@ -26706,7 +26706,7 @@ cheat:	/* 0x23f10 */
 		sub    %edx,%eax
 		mov    %bl,EXPORT_SYMBOL(cheat_worldmap)
 		mov    %bl,EXPORT_SYMBOL(cheat_credits)
-		mov    %edi,players(%eax)
+		mov    %edi,EXPORT_SYMBOL(players)(%eax)
 		xor    %edi,%edi
 		mov    $0x1eb,%ebp
 		lea    0x0(%eax),%eax
@@ -26758,7 +26758,7 @@ cheat:	/* 0x23f10 */
 		xor    %eax,%eax
 		mov    (%esp),%ax
 		imul   %ebp,%eax
-		cmpb   $0xfe,weapons(%eax)
+		cmpb   $0xfe,EXPORT_SYMBOL(weapons)(%eax)
 		je     jump_24509
 		mov    $0x960,%ecx
 		xor    %edi,%edi
@@ -26810,7 +26810,7 @@ cheat:	/* 0x23f10 */
 		lea    0x0(%eax),%eax
 	jump_24530:
 		call   GetTeamMemberName
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%ecx
 		shl    $0x5,%ecx
 		add    %edx,%ecx
@@ -26968,10 +26968,10 @@ transfer_people_into_player:	/* 0x246d0 */
 		sub    %ecx,%eax
 		lea    0x0(,%eax,8),%eax
 		sub    %ecx,%eax
-		mov    players(%eax),%edx
+		mov    EXPORT_SYMBOL(players)(%eax),%edx
 		add    $0x32,%edx
 		push   %ecx
-		mov    %edx,players(%eax)
+		mov    %edx,EXPORT_SYMBOL(players)(%eax)
 		push   %ebp
 		movw   $0x0,0x20(%ebp)
 		mov    data_60afd,%al
@@ -26991,10 +26991,10 @@ transfer_people_into_player:	/* 0x246d0 */
 		sub    %ecx,%eax
 		lea    0x0(,%eax,8),%eax
 		sub    %ecx,%eax
-		mov    players(%eax),%esi
+		mov    EXPORT_SYMBOL(players)(%eax),%esi
 		add    $0x96,%esi
 		push   %ecx
-		mov    %esi,players(%eax)
+		mov    %esi,EXPORT_SYMBOL(players)(%eax)
 		push   %ebp
 		movw   $0x0,0x20(%ebp)
 		mov    data_60afd,%ch
@@ -27014,10 +27014,10 @@ transfer_people_into_player:	/* 0x246d0 */
 		sub    %ecx,%eax
 		lea    0x0(,%eax,8),%eax
 		sub    %ecx,%eax
-		mov    players(%eax),%ebx
+		mov    EXPORT_SYMBOL(players)(%eax),%ebx
 		add    $0x96,%ebx
 		push   %ecx
-		mov    %ebx,players(%eax)
+		mov    %ebx,EXPORT_SYMBOL(players)(%eax)
 		push   %ebp
 		movw   $0x0,0x20(%ebp)
 		mov    data_60afd,%cl
@@ -27037,10 +27037,10 @@ transfer_people_into_player:	/* 0x246d0 */
 		sub    %ecx,%eax
 		lea    0x0(,%eax,8),%eax
 		sub    %ecx,%eax
-		mov    players(%eax),%edx
+		mov    EXPORT_SYMBOL(players)(%eax),%edx
 		add    $0x12c,%edx
 		push   %ecx
-		mov    %edx,players(%eax)
+		mov    %edx,EXPORT_SYMBOL(players)(%eax)
 		push   %ebp
 		movw   $0x0,0x20(%ebp)
 		mov    data_60afd,%bh
@@ -27284,13 +27284,13 @@ transfer_people_into_player:	/* 0x246d0 */
 		lea    0x0(,%eax,8),%eax
 		push   $0x417
 		sub    %edx,%eax
-		push   $players
-		add    $players,%eax
+		push   $EXPORT_SYMBOL(players)
+		add    $EXPORT_SYMBOL(players),%eax
 		push   %eax
 		xor    %ebx,%ebx
 		call   LbMemoryCopy
 		add    $0xc,%esp
-		mov    %bx,Network__Slot
+		mov    %bx,EXPORT_SYMBOL(Network__Slot)
 	jump_24c53:
 		mov    data_60afe,%eax
 		mov    a11,%ebx
@@ -28086,7 +28086,7 @@ multi_play:	/* 0x25580 */
 		push   %esi
 		push   %edi
 		sub    $0x100,%esp
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		lea    0x0(,%edx,8),%eax
 		sub    %edx,%eax
 		mov    EXPORT_SYMBOL(level__Seed),%dx
@@ -28100,7 +28100,7 @@ multi_play:	/* 0x25580 */
 		call   NetworkPlayersCount
 		cmp    $0x1,%ax
 		jne    jump_255ed
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		lea    0x0(,%edx,8),%eax
 		sub    %edx,%eax
 		movb   $0x2,data_605e1(,%eax,2)
@@ -28132,7 +28132,7 @@ multi_play:	/* 0x25580 */
 		push   $0x0
 		mov    h_font,%edx
 		push   %edx
-		movswl Network__Slot,%eax
+		movswl EXPORT_SYMBOL(Network__Slot),%eax
 		push   %eax
 		xor    %edi,%edi
 		add    $0xc,%esi
@@ -28197,7 +28197,7 @@ initialise_player:	/* 0x256f0 */
 		mov    $0x1,%ecx
 		xor    %edx,%edx
 		mov    EXPORT_SYMBOL(is_multiplayer_game),%ah
-		mov    %dx,Network__Slot
+		mov    %dx,EXPORT_SYMBOL(Network__Slot)
 		mov    %cx,Network__NumberOfSlots
 		cmp    $0x1,%ah
 		jne    jump_25776
@@ -28222,12 +28222,12 @@ initialise_player:	/* 0x256f0 */
 		xor    %eax,%eax
 		push   %eax
 		xor    %eax,%eax
-		mov    Network__Slot,%ax
+		mov    EXPORT_SYMBOL(Network__Slot),%ax
 		push   %eax
 		call   set_network_player
 		add    $0x8,%esp
 		call   StartNetwork
-		movswl Network__Slot,%eax
+		movswl EXPORT_SYMBOL(Network__Slot),%eax
 		push   %eax
 		xor    %ebx,%ebx
 		call   ExchangeNetwork_PlayerInfo
@@ -28260,12 +28260,12 @@ set_network_player:	/* 0x25790 */
 		lea    0x0(,%ebx,4),%ebx
 		sub    %esi,%ebx
 		lea    0x0(,%ebx,8),%ebx
-		mov    $players,%eax
+		mov    $EXPORT_SYMBOL(players),%eax
 		sub    %esi,%ebx
 		push   $0x417
 		add    %ebx,%eax
 		push   %eax
-		push   $players
+		push   $EXPORT_SYMBOL(players)
 		call   LbMemoryCopy
 		lea    0x0(,%esi,8),%eax
 		sub    %esi,%eax
@@ -28445,7 +28445,7 @@ process_action:	/* 0x25a10 */
 		lea    0x0(,%eax,4),%eax
 		sub    %ebx,%eax
 		lea    0x0(,%eax,8),%eax
-		mov    $players,%edx
+		mov    $EXPORT_SYMBOL(players),%edx
 		sub    %ebx,%eax
 		add    %eax,%edx
 		mov    0xd(%esi),%ah
@@ -28463,7 +28463,7 @@ func_25a6f:
 		cmpw   $0x1,Network__NumberOfSlots
 		jle    jump_25afa
 		xor    %edx,%edx
-		movswl Network__Slot,%eax
+		movswl EXPORT_SYMBOL(Network__Slot),%eax
 		mov    %di,%dx
 		cmp    %eax,%edx
 		jne    jump_25b20
@@ -28520,7 +28520,7 @@ func_25a6f:
 		add    $0x8,%esp
 	jump_25b20:
 		xor    %edx,%edx
-		movswl Network__Slot,%eax
+		movswl EXPORT_SYMBOL(Network__Slot),%eax
 		mov    %di,%dx
 		cmp    %eax,%edx
 		jne    def_25A67
@@ -28538,7 +28538,7 @@ func_25a6f:
 func_25b45:
 /*----------------------------------------------------------------*/
 		xor    %eax,%eax
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %di,%ax
 		cmp    %eax,%edx
 		jne    jump_25b6f
@@ -31783,7 +31783,7 @@ map_selection:	/* 0x27e00 */
 		mov    data_55030,%dl
 		lea    0x0(,%edx,4),%eax
 		add    %edx,%eax
-		mov    Network__Slot,%dl
+		mov    EXPORT_SYMBOL(Network__Slot),%dl
 		mov    %dl,data_5539e(,%eax,2)
 		call   display_cities
 	jump_27f62:
@@ -31877,7 +31877,7 @@ map_selection:	/* 0x27e00 */
 		mov    data_5b416(%eax),%ax
 		push   %edx
 		and    $0xffff,%eax
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		push   %eax
 		mov    %edx,%eax
 		shl    $0x5,%eax
@@ -31931,7 +31931,7 @@ map_selection:	/* 0x27e00 */
 		mov    %ebx,%edx
 		add    %eax,%eax
 		xor    %ebx,%edx
-		mov    Network__Slot,%cx
+		mov    EXPORT_SYMBOL(Network__Slot),%cx
 		mov    data_5539e(%eax),%dl
 		cmp    %cx,%dx
 		jne    jump_281a7
@@ -31957,7 +31957,7 @@ map_selection:	/* 0x27e00 */
 		mov    %edx,%ebx
 		add    %eax,%eax
 		xor    %edx,%ebx
-		mov    Network__Slot,%cx
+		mov    EXPORT_SYMBOL(Network__Slot),%cx
 		mov    data_5539e(%eax),%bl
 		cmp    %cx,%bx
 		jne    jump_28212
@@ -32085,7 +32085,7 @@ map_selection:	/* 0x27e00 */
 		mov    %edx,%ebx
 		add    %eax,%eax
 		xor    %edx,%ebx
-		mov    Network__Slot,%cx
+		mov    EXPORT_SYMBOL(Network__Slot),%cx
 		mov    data_5539e(%eax),%bl
 		cmp    %cx,%bx
 		jne    jump_283f6
@@ -32111,7 +32111,7 @@ map_selection:	/* 0x27e00 */
 		mov    %edx,%ebx
 		add    %eax,%eax
 		xor    %edx,%ebx
-		mov    Network__Slot,%cx
+		mov    EXPORT_SYMBOL(Network__Slot),%cx
 		mov    data_5539e(%eax),%bl
 		cmp    %cx,%bx
 		jne    jump_27e48
@@ -32382,7 +32382,7 @@ show_city_info:	/* 0x28610 */
 		call   new_show_text
 		add    $0x28,%esp
 		xor    %eax,%eax
-		mov    Network__Slot,%dx
+		mov    EXPORT_SYMBOL(Network__Slot),%dx
 		mov    data_5539e(%esi),%al
 		cmp    %dx,%ax
 		je     jump_287ae
@@ -32514,7 +32514,7 @@ show_city_info:	/* 0x28610 */
 		add    %edx,%eax
 		add    %eax,%eax
 		xor    %edx,%edx
-		mov    Network__Slot,%bx
+		mov    EXPORT_SYMBOL(Network__Slot),%bx
 		mov    data_5539e(%eax),%dl
 		cmp    %bx,%dx
 		je     jump_28985
@@ -32606,7 +32606,7 @@ show_city_info:	/* 0x28610 */
 		sub    %edx,%eax
 		lea    0x0(,%eax,8),%eax
 		sub    %edx,%eax
-		add    $players,%eax
+		add    $EXPORT_SYMBOL(players),%eax
 		add    $0x23,%eax
 		push   %eax
 		push   $aS_0
@@ -32648,7 +32648,7 @@ draw_connecting_cities:	/* 0x28af0 */
 		add    %edx,%eax
 		add    %eax,%eax
 		xor    %edx,%edx
-		mov    Network__Slot,%bx
+		mov    EXPORT_SYMBOL(Network__Slot),%bx
 		mov    data_5539e(%eax),%dl
 		cmp    %bx,%dx
 		jne    jump_28c27
@@ -32741,7 +32741,7 @@ draw_connecting_cities:	/* 0x28af0 */
 		add    %edx,%eax
 		cmpw   $0xff,EXPORT_SYMBOL(country_states)(,%eax,2)
 		jne    jump_28c9e
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%eax
 		shl    $0x5,%eax
 		add    %edx,%eax
@@ -32849,7 +32849,7 @@ can_i_play_this_city:	/* 0x28d60 */
 /*----------------------------------------------------------------*/
 		push   %ebx
 		push   %esi
-		mov    Network__Slot,%si
+		mov    EXPORT_SYMBOL(Network__Slot),%si
 		mov    0xc(%esp),%cl
 		cmpb   $0x0,EXPORT_SYMBOL(cheat_worldmap)
 		je     jump_28d7d
@@ -32894,7 +32894,7 @@ can_i_play_this_city:	/* 0x28d60 */
 		jne    jump_28e0f
 	jump_28e03:
 		mov    $0x1,%al
-		mov    %si,Network__Slot
+		mov    %si,EXPORT_SYMBOL(Network__Slot)
 		pop    %esi
 		pop    %ebx
 		ret
@@ -32928,7 +32928,7 @@ can_i_play_this_city:	/* 0x28d60 */
 		cmp    %cl,%al
 		jne    jump_28e6f
 		mov    $0x1,%al
-		mov    %si,Network__Slot
+		mov    %si,EXPORT_SYMBOL(Network__Slot)
 		pop    %esi
 		pop    %ebx
 		ret
@@ -32943,7 +32943,7 @@ can_i_play_this_city:	/* 0x28d60 */
 	jump_28e7d:
 		xor    %al,%al
 	jump_28e7f:
-		mov    %si,Network__Slot
+		mov    %si,EXPORT_SYMBOL(Network__Slot)
 		pop    %esi
 		pop    %ebx
 		ret
@@ -33027,7 +33027,7 @@ show_tax_and_revenue:	/* 0x28e90 */
 		push   $data_5366c
 		call   new_show_text
 		xor    %eax,%eax
-		mov    Network__Slot,%dx
+		mov    EXPORT_SYMBOL(Network__Slot),%dx
 		mov    data_5539e(%ebx),%al
 		add    $0x28,%esp
 		cmp    %dx,%ax
@@ -33822,7 +33822,7 @@ func_29818:
 		call   LbCopyScreenFromBackMCGA
 		call   DrawAcceptGadget
 		call   DrawMenuGadget
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%eax
 		shl    $0x5,%eax
 		mov    m_logos,%ebx
@@ -33970,7 +33970,7 @@ ExchangeNetwork_Packet:	/* 0x29a10 */
 		mov    $packets,%ebp
 		jmp    jump_29b4f
 	jump_29a2c:
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		cmp    %edx,%eax
 		jne    jump_29b01
 		mov    Network__NumberOfSlots,%bx
@@ -33981,7 +33981,7 @@ ExchangeNetwork_Packet:	/* 0x29a10 */
 		movswl %di,%ebx
 		cmpb   $0x1,Network__Status(%ebx)
 		jne    jump_29aef
-		movswl Network__Slot,%esi
+		movswl EXPORT_SYMBOL(Network__Slot),%esi
 		lea    0x0(,%esi,8),%eax
 		sub    %esi,%eax
 		add    %eax,%eax
@@ -34084,13 +34084,13 @@ ExchangeNetwork_PlayerInfo:	/* 0x29b70 */
 		cmp    $0x1,%dx
 		jle    jump_29cd4
 		mov    0x14(%esp),%ebx
-		cmp    Network__Slot,%bx
+		cmp    EXPORT_SYMBOL(Network__Slot),%bx
 		jne    jump_29cd4
 		xor    %edi,%edi
 		mov    $0x417,%ebp
 		jmp    jump_29cc0
 	jump_29baf:
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		cmp    %edx,%eax
 		jne    jump_29c55
 		xor    %esi,%esi
@@ -34098,7 +34098,7 @@ ExchangeNetwork_PlayerInfo:	/* 0x29b70 */
 	jump_29bc5:
 		cmpb   $0x0,Network__Status(%ebx)
 		je     jump_29c3e
-		movswl Network__Slot,%eax
+		movswl EXPORT_SYMBOL(Network__Slot),%eax
 		cmp    %eax,%ebx
 		je     jump_29c3e
 		push   $aSending
@@ -34114,7 +34114,7 @@ ExchangeNetwork_PlayerInfo:	/* 0x29b70 */
 		add    $0x4,%esp
 		sub    %edx,%eax
 		push   %ebp
-		add    $players,%eax
+		add    $EXPORT_SYMBOL(players),%eax
 		push   %eax
 		lea    0x0(,%ebx,4),%eax
 		sub    %ebx,%eax
@@ -34160,7 +34160,7 @@ ExchangeNetwork_PlayerInfo:	/* 0x29b70 */
 		lea    0x0(,%eax,8),%eax
 		sub    %ebx,%eax
 		push   %esi
-		add    $players,%eax
+		add    $EXPORT_SYMBOL(players),%eax
 		push   %eax
 		lea    0x0(,%ebx,4),%eax
 		mov    %ebx,%edx
@@ -34265,7 +34265,7 @@ NetworkCmdlineSetup:	/* 0x29ce0 */
 		xor    %eax,%eax
 		mov    Network__NumberOfSlots,%cx
 		mov    %ax,0x4c(%esp)
-		mov    %dx,Network__Slot
+		mov    %dx,EXPORT_SYMBOL(Network__Slot)
 		test   %cx,%cx
 		jle    jump_29ea8
 	jump_29dd3:
@@ -34321,7 +34321,7 @@ NetworkCmdlineSetup:	/* 0x29ce0 */
 		test   %ax,%ax
 		jne    jump_29e65
 		mov    0x4c(%esp),%eax
-		mov    %ax,Network__Slot
+		mov    %ax,EXPORT_SYMBOL(Network__Slot)
 		jmp    jump_29ea8
 	jump_29e65:
 		cwtl
@@ -34345,7 +34345,7 @@ NetworkCmdlineSetup:	/* 0x29ce0 */
 		cmp    %di,%si
 		jl     jump_29dd3
 	jump_29ea8:
-		movswl Network__Slot,%eax
+		movswl EXPORT_SYMBOL(Network__Slot),%eax
 		cmp    $0xffffffff,%eax
 		je     jump_29d9a
 		push   $aSearchingForOt
@@ -34358,7 +34358,7 @@ NetworkCmdlineSetup:	/* 0x29ce0 */
 		jle    jump_2a006
 	jump_29edc:
 		mov    0x4c(%esp),%eax
-		mov    Network__Slot,%dx
+		mov    EXPORT_SYMBOL(Network__Slot),%dx
 		cmp    %dx,%ax
 		je     jump_29fcf
 		movswl %dx,%ebx
@@ -34397,7 +34397,7 @@ NetworkCmdlineSetup:	/* 0x29ce0 */
 		pop    %eax
 		pop    %es
 		pop    %ds
-		movswl Network__Slot,%ebx
+		movswl EXPORT_SYMBOL(Network__Slot),%ebx
 		mov    0x40(%esp),%edi
 		lea    0x0(,%ebx,4),%eax
 		push   %edi
@@ -34452,7 +34452,7 @@ NetworkCmdlineSetup:	/* 0x29ce0 */
 		movswl 0x4c(%esp),%ecx
 		mov    0x4c(%esp),%eax
 		xor    %bh,%bh
-		mov    Network__Slot,%si
+		mov    EXPORT_SYMBOL(Network__Slot),%si
 		mov    %bh,Network__Status(%ecx)
 		cmp    %si,%ax
 		je     jump_2a1d5
@@ -34491,7 +34491,7 @@ NetworkCmdlineSetup:	/* 0x29ce0 */
 		push   $0x0
 		lea    0x34(%esp),%eax
 		push   $0x0
-		movswl Network__Slot,%ebx
+		movswl EXPORT_SYMBOL(Network__Slot),%ebx
 		push   %eax
 		lea    0x0(,%ebx,4),%eax
 		sub    %ebx,%eax
@@ -34515,7 +34515,7 @@ NetworkCmdlineSetup:	/* 0x29ce0 */
 		mov    NetUserNcb(%ebx),%ebx
 		push   %ebx
 		call   __NETCancel__
-		movswl Network__Slot,%ebx
+		movswl EXPORT_SYMBOL(Network__Slot),%ebx
 		lea    0x0(,%ebx,4),%eax
 		add    $0x8,%esp
 		sub    %ebx,%eax
@@ -34549,7 +34549,7 @@ NetworkCmdlineSetup:	/* 0x29ce0 */
 		pop    %eax
 		pop    %es
 		pop    %ds
-		movswl Network__Slot,%ebx
+		movswl EXPORT_SYMBOL(Network__Slot),%ebx
 		lea    0x0(,%ebx,4),%eax
 		sub    %ebx,%eax
 		mov    0x48(%esp),%edi
@@ -34605,7 +34605,7 @@ NetworkCmdlineSetup:	/* 0x29ce0 */
 		jne    jump_2a25f
 	jump_2a252:
 		mov    0x4c(%esp),%eax
-		cmp    Network__Slot,%ax
+		cmp    EXPORT_SYMBOL(Network__Slot),%ax
 		jne    jump_2a260
 	jump_2a25f:
 		inc    %edi
@@ -34623,7 +34623,7 @@ NetworkCmdlineSetup:	/* 0x29ce0 */
 		jne    jump_2a205
 		jmp    jump_2a219
 	jump_2a286:
-		movswl Network__Slot,%ebx
+		movswl EXPORT_SYMBOL(Network__Slot),%ebx
 		lea    0x0(,%ebx,8),%eax
 		sub    %ebx,%eax
 		movb   $0x1,data_605e1(,%eax,2)
@@ -34655,7 +34655,7 @@ StartNetwork:	/* 0x2a2b0 */
 		je     jump_2a31a
 		cmpb   $0x0,Network__Status(%edx)
 		jne    jump_2a327
-		movswl Network__Slot,%ecx
+		movswl EXPORT_SYMBOL(Network__Slot),%ecx
 		cmp    %ecx,%edx
 		je     jump_2a327
 		mov    %gs:0x31(%eax),%ch
@@ -34703,14 +34703,14 @@ StopNetwork:	/* 0x2a340 */
 		push   %ebp
 		sub    $0x14,%esp
 		xor    %esi,%esi
-		movswl Network__Slot,%eax
+		movswl EXPORT_SYMBOL(Network__Slot),%eax
 		mov    0x28(%esp),%si
 		cmp    %esi,%eax
 		jne    jump_2a45a
 		xor    %esi,%esi
 		jmp    jump_2a3ef
 	jump_2a364:
-		movswl Network__Slot,%eax
+		movswl EXPORT_SYMBOL(Network__Slot),%eax
 		cmp    %eax,%edx
 		je     jump_2a3ee
 		lea    0x0(,%edx,4),%eax
@@ -34757,7 +34757,7 @@ StopNetwork:	/* 0x2a340 */
 		mov    %si,%dx
 		cmp    %eax,%edx
 		jl     jump_2a364
-		movswl Network__Slot,%eax
+		movswl EXPORT_SYMBOL(Network__Slot),%eax
 		push   %eax
 		push   $EXPORT_SYMBOL(Network__Name)
 		push   $aSD
@@ -34766,7 +34766,7 @@ StopNetwork:	/* 0x2a340 */
 		call   ac_sprintf
 		lea    0x10(%esp),%eax
 		add    $0x10,%esp
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		push   %eax
 		lea    0x0(,%edx,4),%eax
 		sub    %edx,%eax
@@ -38266,7 +38266,7 @@ setup_panel:	/* 0x2c640 */
 		jge    jump_2c6d2
 	jump_2c6ec:
 		call   clear_weapons
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%eax
 		shl    $0x5,%eax
 		add    %edx,%eax
@@ -38313,7 +38313,7 @@ setup_panel:	/* 0x2c640 */
 		add    $0x5c,%ebx
 		mov    %dx,data_5e124
 	jump_2c7a1:
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%eax
 		shl    $0x5,%eax
 		add    %edx,%eax
@@ -38515,7 +38515,7 @@ process_players_turn:	/* 0x2c880 */
 		mov    %ax,index
 		mov    %bx,data_5e118
 	jump_2ca6f:
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		lea    0x0(,%edx,8),%eax
 		sub    %edx,%eax
 		add    %eax,%eax
@@ -38528,7 +38528,7 @@ process_players_turn:	/* 0x2c880 */
 		add    $0x4,%esp
 		cmp    $0x2,%cx
 		jne    jump_2cabd
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		lea    0x0(,%edx,8),%eax
 		sub    %edx,%eax
 		addb   $0x20,data_605e1(,%eax,2)
@@ -38585,7 +38585,7 @@ change_mouse_pointer:	/* 0x2cb40 */
 		mov    %ah,data_552ff
 		cmpw   $0x80,EXPORT_SYMBOL(lbDisplay__MMouseX_640)	/* lbDisplay.MMouseX but scaled */
 		jb     jump_2cc88
-		movswl Network__Slot,%ecx
+		movswl EXPORT_SYMBOL(Network__Slot),%ecx
 		mov    %ecx,%eax
 		shl    $0x5,%eax
 		add    %ecx,%eax
@@ -38611,7 +38611,7 @@ change_mouse_pointer:	/* 0x2cb40 */
 		xor    %edx,%edx
 		div    %ebp
 		mov    %eax,%ebp
-		movswl Network__Slot,%eax
+		movswl EXPORT_SYMBOL(Network__Slot),%eax
 		shr    $0x3,%ebp
 		cmp    %eax,%ebp
 		je     jump_2cc1c
@@ -39014,7 +39014,7 @@ draw_panel:	/* 0x2d0e0 */
 /*----------------------------------------------------------------*/
 		push   %ebx
 		sub    $0x4,%esp
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%eax
 		shl    $0x5,%eax
 		add    %edx,%eax
@@ -39047,7 +39047,7 @@ draw_panel:	/* 0x2d0e0 */
 		push   $0x110
 		push   $0x0
 		call   LbScreenSetGraphicsWindow
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%eax
 		shl    $0x5,%eax
 		add    %edx,%eax
@@ -39079,7 +39079,7 @@ draw_panel:	/* 0x2d0e0 */
 	jump_2d1db:
 		add    $0x5c,%ebx
 	jump_2d1de:
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%eax
 		shl    $0x5,%eax
 		add    %edx,%eax
@@ -39100,7 +39100,7 @@ draw_panel:	/* 0x2d0e0 */
 		mov    %dl,data_552fe
 		movw   $0x8,data_552f8
 	jump_2d22e:
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%eax
 		shl    $0x5,%eax
 		add    %edx,%eax
@@ -39615,7 +39615,7 @@ make_packet:	/* 0x2d610 */
 		cmpb   $0x0,EXPORT_SYMBOL(lbDisplay)+103	/* lbDisplay.LeftButton */
 		jne    jump_2d7d4
 	jump_2d707:
-		movswl Network__Slot,%ecx
+		movswl EXPORT_SYMBOL(Network__Slot),%ecx
 		mov    %ecx,%eax
 		shl    $0x5,%eax
 		add    %ecx,%eax
@@ -39678,7 +39678,7 @@ make_packet:	/* 0x2d610 */
 		pop    %ebx
 		ret
 	jump_2d7d4:
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%eax
 		shl    $0x5,%eax
 		add    %edx,%eax
@@ -39697,7 +39697,7 @@ make_packet:	/* 0x2d610 */
 		testb  $0x4,0x1d(%eax)
 		jne    jump_2d8d3
 	jump_2d820:
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%eax
 		shl    $0x5,%eax
 		add    %edx,%eax
@@ -39731,7 +39731,7 @@ make_packet:	/* 0x2d610 */
 		add    $0x5c,%edx
 		inc    %esi
 	jump_2d899:
-		movswl Network__Slot,%ecx
+		movswl EXPORT_SYMBOL(Network__Slot),%ecx
 		mov    %ecx,%eax
 		shl    $0x5,%eax
 		add    %ecx,%eax
@@ -39747,7 +39747,7 @@ make_packet:	/* 0x2d610 */
 		cmp    %eax,%edx
 		jb     jump_2d867
 	jump_2d8d3:
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%eax
 		shl    $0x5,%eax
 		add    %edx,%eax
@@ -39816,7 +39816,7 @@ make_packet:	/* 0x2d610 */
 		pop    %ebx
 		ret
 	jump_2d9d4:
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%eax
 		shl    $0x5,%eax
 		add    %edx,%eax
@@ -39870,7 +39870,7 @@ make_packet:	/* 0x2d610 */
 	jump_2da8f:
 		cmpw   $0x2,a2
 		jne    jump_2db47
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%eax
 		shl    $0x5,%eax
 		add    %edx,%eax
@@ -39905,7 +39905,7 @@ make_packet:	/* 0x2d610 */
 	jump_2db08:
 		add    $0x5c,%edx
 	jump_2db0b:
-		movswl Network__Slot,%ecx
+		movswl EXPORT_SYMBOL(Network__Slot),%ecx
 		mov    %ecx,%eax
 		shl    $0x5,%eax
 		add    %ecx,%eax
@@ -39922,7 +39922,7 @@ make_packet:	/* 0x2d610 */
 		jae    jump_2dbb0
 		jmp    jump_2dad7
 	jump_2db47:
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%eax
 		shl    $0x5,%eax
 		add    %edx,%eax
@@ -39951,7 +39951,7 @@ make_packet:	/* 0x2d610 */
 		mov    0x19(%edx),%al
 		mov    %ax,(%ebx)
 	jump_2dbb0:
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%eax
 		shl    $0x5,%eax
 		add    %edx,%eax
@@ -40327,7 +40327,7 @@ func_2dd04:
 		je     jump_2e118
 		xor    %eax,%eax
 		mov    index,%ax
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		push   %eax
 		mov    %edx,%eax
 		shl    $0x5,%eax
@@ -40382,7 +40382,7 @@ func_2dd04:
 	jump_2e15f:
 		xor    %eax,%eax
 		mov    index,%ax
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		push   %eax
 		mov    %edx,%eax
 		shl    $0x5,%eax
@@ -40998,7 +40998,7 @@ func_2e7d5:
 		cmp    %eax,%edx
 		jne    jump_2ea0b
 	jump_2e850:
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%eax
 		shl    $0x5,%eax
 		add    %edx,%eax
@@ -41530,7 +41530,7 @@ draw_bars:	/* 0x2ee30 */
 		jb     jump_2ee5d
 		xor    %edi,%edi
 	jump_2ee86:
-		movswl Network__Slot,%eax
+		movswl EXPORT_SYMBOL(Network__Slot),%eax
 		mov    %eax,%ebx
 		shl    $0x5,%ebx
 		add    %eax,%ebx
@@ -42154,7 +42154,7 @@ draw_bars:	/* 0x2ee30 */
 		inc    %edi
 		cmp    $0x4,%di
 		jb     jump_2ee86
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%eax
 		shl    $0x5,%eax
 		add    %edx,%eax
@@ -42292,7 +42292,7 @@ check_player_holding:	/* 0x2f7e0 */
 		push   %ebx
 		push   %esi
 		push   %edi
-		movswl Network__Slot,%ebx
+		movswl EXPORT_SYMBOL(Network__Slot),%ebx
 		mov    %ebx,%eax
 		shl    $0x5,%eax
 		add    %ebx,%eax
@@ -45216,7 +45216,7 @@ who_shot_me:	/* 0x315e0 */
 		mov    0x8(%esp),%ebx
 		cmpw   $0x0,0x16(%ebx)
 		je     jump_316c4
-		movswl Network__Slot,%ecx
+		movswl EXPORT_SYMBOL(Network__Slot),%ecx
 		mov    %ecx,%eax
 		shl    $0x5,%eax
 		add    %ecx,%eax
@@ -50592,7 +50592,7 @@ ResearchAndDevelop:	/* 0x34ad0 */
 		add    $0x1c,%esp
 	jump_34dc8:
 		call   ShowGameTime
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%eax
 		shl    $0x5,%eax
 		mov    m_logos,%esi
@@ -50613,7 +50613,7 @@ ResearchAndDevelop:	/* 0x34ad0 */
 		and    $0xff,%eax
 		push   %eax
 		call   draw_logo
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%eax
 		shl    $0x5,%eax
 		add    %edx,%eax
@@ -50622,7 +50622,7 @@ ResearchAndDevelop:	/* 0x34ad0 */
 		lea    0x0(,%eax,8),%eax
 		sub    %edx,%eax
 		add    $0x1c,%esp
-		mov    players(%eax),%edi
+		mov    EXPORT_SYMBOL(players)(%eax),%edi
 		push   %edi
 		push   $aD_4
 		lea    -0x16(%ebp),%eax
@@ -50723,7 +50723,7 @@ ResearchAndDevelop:	/* 0x34ad0 */
 		mov    data_55596,%al
 		imul   $0x1eb,%eax,%eax
 		xor    %edx,%edx
-		mov    cybmods(%eax),%dl
+		mov    EXPORT_SYMBOL(cybmods)(%eax),%dl
 		lea    0x0(,%edx,4),%eax
 		sub    %edx,%eax
 		lea    0x0(,%eax,4),%edx
@@ -51083,7 +51083,7 @@ ResearchAndDevelop:	/* 0x34ad0 */
 		xor    %edx,%edx
 		push   $0xfffffffe
 		mov    m_sprites,%esi
-		mov    cybmods(%ebx),%dl
+		mov    EXPORT_SYMBOL(cybmods)(%ebx),%dl
 		push   %esi
 		lea    0x0(,%edx,4),%eax
 		push   $0x54
@@ -51258,7 +51258,7 @@ ResearchAndDevelop:	/* 0x34ad0 */
 		xor    %eax,%eax
 		mov    %bx,%ax
 		imul   $0x1f5,%eax,%eax
-		cmpb   $0xff,weapons(%eax)
+		cmpb   $0xff,EXPORT_SYMBOL(weapons)(%eax)
 		je     jump_356ab
 		mov    data_57c05(%eax),%dx
 		cmp    %dx,%di
@@ -51349,7 +51349,7 @@ ResearchAndDevelop:	/* 0x34ad0 */
 		xor    %eax,%eax
 		mov    %bx,%ax
 		imul   $0x1eb,%eax,%eax
-		mov    cybmods(%eax),%cl
+		mov    EXPORT_SYMBOL(cybmods)(%eax),%cl
 		cmp    $0xff,%cl
 		je     jump_357af
 		mov    data_55788(%eax),%dx
@@ -51425,7 +51425,7 @@ ResearchAndDevelop:	/* 0x34ad0 */
 		and    $0xffff,%edx
 		push   %edx
 		xor    %edx,%edx
-		mov    cybmods(%eax),%dl
+		mov    EXPORT_SYMBOL(cybmods)(%eax),%dl
 		lea    0x0(,%edx,4),%eax
 		sub    %edx,%eax
 		lea    0x0(,%eax,4),%edx
@@ -51942,7 +51942,7 @@ DoResearch:	/* 0x35e20 */
 		mov    data_5559b,%bx
 		and    $0xffff,%eax
 		imul   %eax,%ebx
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%eax
 		shl    $0x5,%eax
 		add    %edx,%eax
@@ -51950,14 +51950,14 @@ DoResearch:	/* 0x35e20 */
 		sub    %edx,%eax
 		lea    0x0(,%eax,8),%eax
 		sub    %edx,%eax
-		mov    players(%eax),%ecx
+		mov    EXPORT_SYMBOL(players)(%eax),%ecx
 		cmp    %ecx,%ebx
 		ja     jump_36161
 		mov    %ecx,%esi
 		sub    %ebx,%esi
 		xor    %cl,%cl
 		xor    %bh,%bh
-		mov    %esi,players(%eax)
+		mov    %esi,EXPORT_SYMBOL(players)(%eax)
 	jump_35ea0:
 		xor    %bl,%bl
 	jump_35ea2:
@@ -52355,15 +52355,15 @@ GetWeaponName:	/* 0x36350 */
 		mov    data_57de8(%eax),%bh
 		test   %bh,%bh
 		jne    jump_363b6
-		cmpb   $0xe,weapons(%eax)
+		cmpb   $0xe,EXPORT_SYMBOL(weapons)(%eax)
 		jne    jump_36380
-		movb   $0x10,weapons(%eax)
+		movb   $0x10,EXPORT_SYMBOL(weapons)(%eax)
 	jump_36380:
 		xor    %eax,%eax
 		mov    %bl,%al
 		imul   $0x1f5,%eax,%eax
 		xor    %ebx,%ebx
-		mov    weapons(%eax),%bl
+		mov    EXPORT_SYMBOL(weapons)(%eax),%bl
 		lea    0x0(,%ebx,4),%eax
 		sub    %ebx,%eax
 		lea    0x0(,%eax,4),%ebx
@@ -55015,7 +55015,7 @@ level_finished:	/* 0x37f80 */
 		cmpw   $0xff,EXPORT_SYMBOL(country_states)(%eax)
 		jne    jump_38076
 		xor    %edx,%edx
-		mov    Network__Slot,%bx
+		mov    EXPORT_SYMBOL(Network__Slot),%bx
 		mov    data_5539e(%eax),%dl
 		cmp    %bx,%dx
 		jne    jump_38076
@@ -55027,7 +55027,7 @@ level_finished:	/* 0x37f80 */
 		lea    0x0(,%edx,4),%eax
 		add    %edx,%eax
 		xor    %ecx,%ecx
-		mov    Network__Slot,%dl
+		mov    EXPORT_SYMBOL(Network__Slot),%dl
 		mov    %cx,EXPORT_SYMBOL(country_states)(,%eax,2)
 		mov    %dl,data_5539e(,%eax,2)
 	jump_3809e:
@@ -55036,7 +55036,7 @@ level_finished:	/* 0x37f80 */
 		lea    0x0(,%edx,4),%eax
 		add    %edx,%eax
 		mov    $0x1e,%dh
-		mov    Network__Slot,%di
+		mov    EXPORT_SYMBOL(Network__Slot),%di
 		mov    %dh,data_5539f(,%eax,2)
 		xor    %bh,%bh
 		mov    %dh,data_553a0(,%eax,2)
@@ -55108,7 +55108,7 @@ level_finished:	/* 0x37f80 */
 		lea    0x0(%edx),%edx
 		mov    %ebx,%ebx
 	jump_38190:
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%ebx
 		shl    $0x5,%ebx
 		add    %edx,%ebx
@@ -55274,12 +55274,12 @@ load_player:	/* 0x38350 */
 		test   %eax,%eax
 		jle    jump_38414
 		push   $0x14
-		push   $players
+		push   $EXPORT_SYMBOL(players)
 		push   %eax
 		call   LbFileRead_
 		add    $0xc,%esp
 		push   $0x20b8
-		push   $players
+		push   $EXPORT_SYMBOL(players)
 		push   %ebx
 		call   LbFileRead_
 		add    $0xc,%esp
@@ -55289,12 +55289,12 @@ load_player:	/* 0x38350 */
 		call   LbFileRead_
 		add    $0xc,%esp
 		push   $0x2724
-		push   $weapons
+		push   $EXPORT_SYMBOL(weapons)
 		push   %ebx
 		call   LbFileRead_
 		add    $0xc,%esp
 		push   $0x2286
-		push   $cybmods
+		push   $EXPORT_SYMBOL(cybmods)
 		push   %ebx
 		call   LbFileRead_
 		add    $0xc,%esp
@@ -55324,7 +55324,7 @@ save_player:	/* 0x38420 */
 		push   %esi
 		push   %edi
 		sub    $0x64,%esp
-		movswl Network__Slot,%ebx
+		movswl EXPORT_SYMBOL(Network__Slot),%ebx
 		mov    %ebx,%eax
 		shl    $0x5,%eax
 		add    %ebx,%eax
@@ -55332,7 +55332,7 @@ save_player:	/* 0x38420 */
 		sub    %ebx,%eax
 		lea    0x0(,%eax,8),%eax
 		sub    %ebx,%eax
-		mov    players(%eax),%edx
+		mov    EXPORT_SYMBOL(players)(%eax),%edx
 		mov    %eax,%ebx
 		cmp    $0x7530,%edx
 		jbe    jump_38470
@@ -55342,7 +55342,7 @@ save_player:	/* 0x38420 */
 		add    %eax,%eax
 		xor    %edx,%edx
 		div    %ecx
-		sub    %eax,players(%ebx)
+		sub    %eax,EXPORT_SYMBOL(players)(%ebx)
 	jump_38470:
 		mov    0x78(%esp),%esi
 		push   %esi
@@ -55367,7 +55367,7 @@ save_player:	/* 0x38420 */
 		call   LbFileWrite_
 		add    $0xc,%esp
 		push   $0x20b8
-		push   $players
+		push   $EXPORT_SYMBOL(players)
 		push   %ebx
 		call   LbFileWrite_
 		add    $0xc,%esp
@@ -55377,12 +55377,12 @@ save_player:	/* 0x38420 */
 		call   LbFileWrite_
 		add    $0xc,%esp
 		push   $0x2724
-		push   $weapons
+		push   $EXPORT_SYMBOL(weapons)
 		push   %ebx
 		call   LbFileWrite_
 		add    $0xc,%esp
 		push   $0x2286
-		push   $cybmods
+		push   $EXPORT_SYMBOL(cybmods)
 		push   %ebx
 		call   LbFileWrite_
 		add    $0xc,%esp
@@ -57118,7 +57118,7 @@ vehicle_on_fire:	/* 0x39730 */
 		mov    %ah,0x19(%ebx)
 		test   %si,%si
 		je     jump_397b2
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		mov    %edx,%eax
 		shl    $0x5,%eax
 		add    %edx,%eax
@@ -59627,7 +59627,7 @@ func_3b1f9:
 		sar    $0x3,%eax
 		cmpw   $0x1,0x14(%esp)
 		jne    jump_3b28b
-		movswl Network__Slot,%edx
+		movswl EXPORT_SYMBOL(Network__Slot),%edx
 		and    $0xffff,%eax
 		cmp    %edx,%eax
 		jne    jump_3b287
@@ -83828,7 +83828,7 @@ data_5559d:
 		.fill   0x2e
 data_555cb:
 		.fill   0x1b5
-cybmods:	/* 0x55780 */
+GLOBAL (cybmods)	/* 0x55780 */
 		.ascii  "\x00"
 data_55781:
 		.ascii  "\x70\x17\x00\x00"
@@ -83883,7 +83883,7 @@ data_5596a:
 		.fill   0x1e3
 		.ascii  "\xff"
 		.fill   0x1ed
-weapons:	/* 0x57bf4 */
+GLOBAL (weapons)	/* 0x57bf4 */
 		.ascii  "\x00"
 data_57bf5:
 		.ascii  "\x88\x13\x00\x00"
@@ -85272,7 +85272,7 @@ data_5e398:
 		.fill   0x4
 data_5e39c:
 		.fill   0x100
-players:	/* 0x5e49c */
+GLOBAL (players)	/* 0x5e49c */
 		.fill   0x4
 data_5e4a0:
 		.fill   0x4
@@ -85438,7 +85438,7 @@ data_60b12:
 		.ascii  "\x00\x00"
 data_60b14:
 		.ascii  "\x00\x00"
-Network__Slot:	/* 0x60b16 */
+GLOBAL (Network__Slot)	/* 0x60b16 */
 		.ascii  "\x00\x00"
 data_60b18:
 		.ascii  "\x00\x00"

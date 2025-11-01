@@ -75,6 +75,7 @@ struct PlayerInfo {
 
 extern struct PlayerInfo players[PLAYERS_LIMIT];
 extern ubyte selected_team[4];
+extern ushort Network__Slot;
 
 #pragma pack()
 /******************************************************************************/

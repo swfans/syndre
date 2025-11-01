@@ -18,6 +18,7 @@
 /******************************************************************************/
 #include "game_data.h"
 
+#include <assert.h>
 #include "bftypes.h"
 #include "bffile.h"
 #include "bfdir.h"
@@ -29,6 +30,7 @@
 
 #include "guitext.h"
 #include "player.h"
+#include "research.h"
 #include "weapon.h"
 #include "wrcountry.h"
 
@@ -117,7 +119,7 @@ void load_save_text(char *p_desc, int slot)
     TbFileHandle fh;
 
     p_desc[0] = '\0';
-    sprintf(fname, "%s/%02.2d.gam", "synd/save", slot);
+    sprintf(fname, "%s/%02d.gam", "synd/save", slot);
     fh = LbFileOpen(fname, Lb_FILE_MODE_READ_ONLY);
 
     if (fh != INVALID_FILE)
@@ -131,8 +133,6 @@ void load_save_text(char *p_desc, int slot)
     p_desc[GAME_DESC_TEXT_MAX_LEN-1] = '\0';
 }
 
-#if 0
-
 void load_player(int slot)
 {
     char fname[DISKPATH_SIZE];
@@ -143,7 +143,7 @@ void load_player(int slot)
     assert(sizeof(weapons) == 10020);
     assert(sizeof(cybmods) == 8838);
 
-    sprintf(fname, "%s/%02.2d.gam", "synd/save", slot);
+    sprintf(fname, "%s/%02d.gam", "synd/save", slot);
     fh = LbFileOpen(fname, Lb_FILE_MODE_READ_ONLY);
     if (fh == INVALID_FILE)
         return;
@@ -159,7 +159,7 @@ void load_player(int slot)
     LbFileClose(fh);
 }
 
-int save_player(char *p_desc, int slot)
+TbBool save_player(char *p_desc, int slot)
 {
     char fname[DISKPATH_SIZE];
     uint creds;
@@ -169,10 +169,10 @@ int save_player(char *p_desc, int slot)
     if (creds > 30000)
         players[Network__Slot].Credits -= 10 * creds / 100;
 
-    sprintf(fname, "%s/%02.2d.gam", "synd/save", slot);
+    sprintf(fname, "%s/%02d.gam", "synd/save", slot);
     fh = LbFileOpen(fname, Lb_FILE_MODE_NEW);
     if (fh == INVALID_FILE)
-        return;
+        return false;
 
     LbFileWrite(fh, p_desc, GAME_DESC_TEXT_MAX_LEN);
     LbFileWrite(fh, players, sizeof(players));
@@ -183,7 +183,7 @@ int save_player(char *p_desc, int slot)
     LbFileWrite(fh, selected_team, sizeof(selected_team));
 
     LbFileClose(fh);
+    return true;
 }
-#endif
 
 /******************************************************************************/
