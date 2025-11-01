@@ -119,7 +119,7 @@ void load_save_text(char *p_desc, int slot)
     TbFileHandle fh;
 
     p_desc[0] = '\0';
-    sprintf(fname, "%s/%02d.gam", "synd/save", slot);
+    sprintf(fname, "%s/%02d.gam", "save", slot);
     fh = LbFileOpen(fname, Lb_FILE_MODE_READ_ONLY);
 
     if (fh != INVALID_FILE)
@@ -140,10 +140,10 @@ void load_player(int slot)
 
     assert(sizeof(players) == 8376);
     assert(sizeof(country_states) == 500);
-    assert(sizeof(weapons) == 10020);
-    assert(sizeof(cybmods) == 8838);
+    assert(sizeof(struct EquipmentInfo) * WEP_TYPES_COUNT == 10020);
+    assert(sizeof(struct PartsInfo) * MOD_TYPES_COUNT == 8838);
 
-    sprintf(fname, "%s/%02d.gam", "synd/save", slot);
+    sprintf(fname, "%s/%02d.gam", "save", slot);
     fh = LbFileOpen(fname, Lb_FILE_MODE_READ_ONLY);
     if (fh == INVALID_FILE)
         return;
@@ -151,8 +151,8 @@ void load_player(int slot)
     LbFileRead(fh, players, GAME_DESC_TEXT_MAX_LEN); // skip header
     LbFileRead(fh, players, sizeof(players));
     LbFileRead(fh, country_states, sizeof(country_states));
-    LbFileRead(fh, weapons, sizeof(weapons));
-    LbFileRead(fh, cybmods, sizeof(cybmods));
+    LbFileRead(fh, weapons, sizeof(struct EquipmentInfo) * WEP_TYPES_COUNT);
+    LbFileRead(fh, cybmods, sizeof(struct PartsInfo) * MOD_TYPES_COUNT);
     LbFileRead(fh, &research, sizeof(struct Research));
     LbFileRead(fh, selected_team, sizeof(selected_team));
 
@@ -169,7 +169,7 @@ TbBool save_player(char *p_desc, int slot)
     if (creds > 30000)
         players[Network__Slot].Credits -= 10 * creds / 100;
 
-    sprintf(fname, "%s/%02d.gam", "synd/save", slot);
+    sprintf(fname, "%s/%02d.gam", "save", slot);
     fh = LbFileOpen(fname, Lb_FILE_MODE_NEW);
     if (fh == INVALID_FILE)
         return false;
@@ -177,8 +177,8 @@ TbBool save_player(char *p_desc, int slot)
     LbFileWrite(fh, p_desc, GAME_DESC_TEXT_MAX_LEN);
     LbFileWrite(fh, players, sizeof(players));
     LbFileWrite(fh, country_states, sizeof(country_states));
-    LbFileWrite(fh, weapons, sizeof(weapons));
-    LbFileWrite(fh, cybmods, sizeof(cybmods));
+    LbFileWrite(fh, weapons, sizeof(struct EquipmentInfo) * WEP_TYPES_COUNT);
+    LbFileWrite(fh, cybmods, sizeof(struct PartsInfo) * MOD_TYPES_COUNT);
     LbFileWrite(fh, &research, sizeof(struct Research));
     LbFileWrite(fh, selected_team, sizeof(selected_team));
 

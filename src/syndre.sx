@@ -30601,7 +30601,7 @@ func_2725f:
 		xor    %eax,%eax
 		mov    savegame_slot,%al
 		push   %eax
-		call   load_player
+		call   ac_load_player
 		mov    $0x1,%ah
 		add    $0x4,%esp
 		mov    %ah,0x4(%esp)
@@ -30617,7 +30617,7 @@ func_27280:
 		push   %eax
 		mov    data_54c4c(,%eax,8),%ebp
 		push   %ebp
-		call   save_player
+		call   ac_save_player
 		mov    $0x1,%ch
 		add    $0x8,%esp
 		mov    %ch,0x4(%esp)
@@ -55253,7 +55253,7 @@ load_text:	/* 0x382e0 */
 
 
 /*----------------------------------------------------------------*/
-load_player:	/* 0x38350 */
+ASM_load_player:	/* 0x38350 */
 /*----------------------------------------------------------------*/
 		push   %ebx
 		sub    $0x64,%esp
@@ -55318,7 +55318,7 @@ load_player:	/* 0x38350 */
 
 
 /*----------------------------------------------------------------*/
-save_player:	/* 0x38420 */
+ASM_save_player:	/* 0x38420 */
 /*----------------------------------------------------------------*/
 		push   %ebx
 		push   %esi
