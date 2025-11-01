@@ -11791,7 +11791,7 @@ AdjustStateHappiness:	/* 0x18bd0 */
 		je     jump_18c51
 		lea    0x0(,%ebx,4),%eax
 		add    %ebx,%eax
-		addw   $0x2,country_states(,%eax,2)
+		addw   $0x2,EXPORT_SYMBOL(country_states)(,%eax,2)
 	jump_18c51:
 		inc    %cl
 		cmp    $0x8,%cl
@@ -11809,36 +11809,36 @@ AdjustStateHappiness:	/* 0x18bd0 */
 		sub    %edx,%eax
 		sar    $1,%eax
 		mov    %eax,%edx
-		movswl country_states(%ebx),%eax
+		movswl EXPORT_SYMBOL(country_states)(%ebx),%eax
 		add    %edx,%eax
-		mov    %ax,country_states(%ebx)
+		mov    %ax,EXPORT_SYMBOL(country_states)(%ebx)
 		cmp    $0x1e,%ax
 		jle    jump_18ca0
 		mov    %eax,%edi
 		sub    $0x2,%edi
-		mov    %di,country_states(%ebx)
+		mov    %di,EXPORT_SYMBOL(country_states)(%ebx)
 		jmp    jump_18cae
 	jump_18ca0:
 		jge    jump_18cae
 		mov    %eax,%edx
 		add    $0x2,%edx
-		mov    %dx,country_states(%ebx)
+		mov    %dx,EXPORT_SYMBOL(country_states)(%ebx)
 	jump_18cae:
 		xor    %edx,%edx
 		mov    %ch,%dl
 		lea    0x0(,%edx,4),%eax
 		add    %edx,%eax
 		add    %eax,%eax
-		mov    country_states(%eax),%dx
+		mov    EXPORT_SYMBOL(country_states)(%eax),%dx
 		test   %dx,%dx
 		jge    jump_18cd4
 		xor    %edi,%edi
-		mov    %di,country_states(%eax)
+		mov    %di,EXPORT_SYMBOL(country_states)(%eax)
 		jmp    jump_18ce4
 	jump_18cd4:
 		cmp    $0xff,%dx
 		jle    jump_18ce4
-		movw   $0xff,country_states(%eax)
+		movw   $0xff,EXPORT_SYMBOL(country_states)(%eax)
 	jump_18ce4:
 		mov    %si,Network__Slot
 		pop    %edi
@@ -11866,7 +11866,7 @@ GetRevenueFromCity:	/* 0x18cf0 */
 		mov    data_60b36,%cl
 		lea    0x0(,%ecx,4),%eax
 		add    %ecx,%eax
-		cmpw   $0xa0,country_states(,%eax,2)
+		cmpw   $0xa0,EXPORT_SYMBOL(country_states)(,%eax,2)
 		jge    jump_18d70
 		mov    $0xf4240,%ecx
 		mov    data_553a2(%ebx),%eax
@@ -26148,7 +26148,7 @@ set_default_player:	/* 0x23880 */
 		add    %ebx,%ebx
 		xor    %edi,%edi
 		push   $0x14
-		mov    %di,country_states(%ebx)
+		mov    %di,EXPORT_SYMBOL(country_states)(%ebx)
 		call   random
 		and    $0xffff,%eax
 		lea    0x28(%eax),%edx
@@ -31935,7 +31935,7 @@ map_selection:	/* 0x27e00 */
 		mov    data_5539e(%eax),%dl
 		cmp    %cx,%dx
 		jne    jump_281a7
-		cmpw   $0xff,country_states(%eax)
+		cmpw   $0xff,EXPORT_SYMBOL(country_states)(%eax)
 		je     jump_281a7
 		push   %ebx
 		push   $0xf6
@@ -31961,7 +31961,7 @@ map_selection:	/* 0x27e00 */
 		mov    data_5539e(%eax),%bl
 		cmp    %cx,%bx
 		jne    jump_28212
-		cmpw   $0xff,country_states(%eax)
+		cmpw   $0xff,EXPORT_SYMBOL(country_states)(%eax)
 		je     jump_28212
 		push   %edx
 		push   $0xa
@@ -32089,7 +32089,7 @@ map_selection:	/* 0x27e00 */
 		mov    data_5539e(%eax),%bl
 		cmp    %cx,%bx
 		jne    jump_283f6
-		cmpw   $0xff,country_states(%eax)
+		cmpw   $0xff,EXPORT_SYMBOL(country_states)(%eax)
 		je     jump_283f6
 		push   %edx
 		push   $0xff
@@ -32115,7 +32115,7 @@ map_selection:	/* 0x27e00 */
 		mov    data_5539e(%eax),%bl
 		cmp    %cx,%bx
 		jne    jump_27e48
-		cmpw   $0xff,country_states(%eax)
+		cmpw   $0xff,EXPORT_SYMBOL(country_states)(%eax)
 		je     jump_27e48
 		push   %edx
 		push   $0x1
@@ -32386,7 +32386,7 @@ show_city_info:	/* 0x28610 */
 		mov    data_5539e(%esi),%al
 		cmp    %dx,%ax
 		je     jump_287ae
-		cmpw   $0xff,country_states(%esi)
+		cmpw   $0xff,EXPORT_SYMBOL(country_states)(%esi)
 		jne    jump_28873
 	jump_287ae:
 		xor    %ebx,%ebx
@@ -32411,7 +32411,7 @@ show_city_info:	/* 0x28610 */
 		call   new_show_text
 		lea    0x0(,%ebx,4),%eax
 		add    %ebx,%eax
-		mov    country_states(,%eax,2),%bx
+		mov    EXPORT_SYMBOL(country_states)(,%eax,2),%bx
 		add    $0x28,%esp
 		cmp    $0xff,%bx
 		jne    jump_28952
@@ -32518,7 +32518,7 @@ show_city_info:	/* 0x28610 */
 		mov    data_5539e(%eax),%dl
 		cmp    %bx,%dx
 		je     jump_28985
-		cmpw   $0xff,country_states(%eax)
+		cmpw   $0xff,EXPORT_SYMBOL(country_states)(%eax)
 		jne    jump_28a77
 	jump_28985:
 		xor    %edx,%edx
@@ -32526,7 +32526,7 @@ show_city_info:	/* 0x28610 */
 		lea    0x0(,%edx,4),%eax
 		add    %edx,%eax
 		add    %eax,%eax
-		mov    country_states(%eax),%si
+		mov    EXPORT_SYMBOL(country_states)(%eax),%si
 		cmp    $0x2f,%si
 		jge    jump_289c2
 		xor    %eax,%eax
@@ -32652,7 +32652,7 @@ draw_connecting_cities:	/* 0x28af0 */
 		mov    data_5539e(%eax),%dl
 		cmp    %bx,%dx
 		jne    jump_28c27
-		cmpw   $0xff,country_states(%eax)
+		cmpw   $0xff,EXPORT_SYMBOL(country_states)(%eax)
 		je     jump_28c27
 		xor    %ah,%ah
 		mov    %ah,0x4(%esp)
@@ -32739,7 +32739,7 @@ draw_connecting_cities:	/* 0x28af0 */
 		mov    %bl,%dl
 		lea    0x0(,%edx,4),%eax
 		add    %edx,%eax
-		cmpw   $0xff,country_states(,%eax,2)
+		cmpw   $0xff,EXPORT_SYMBOL(country_states)(,%eax,2)
 		jne    jump_28c9e
 		movswl Network__Slot,%edx
 		mov    %edx,%eax
@@ -32865,7 +32865,7 @@ can_i_play_this_city:	/* 0x28d60 */
 		mov    data_5539e(%eax),%dl
 		cmp    %si,%dx
 		jne    jump_28da8
-		cmpw   $0xff,country_states(%eax)
+		cmpw   $0xff,EXPORT_SYMBOL(country_states)(%eax)
 		jne    jump_28e7d
 	jump_28da8:
 		xor    %ebx,%ebx
@@ -32883,14 +32883,14 @@ can_i_play_this_city:	/* 0x28d60 */
 		mov    data_5539e(%eax),%dl
 		cmp    %si,%dx
 		jne    jump_28e03
-		cmpw   $0xff,country_states(%eax)
+		cmpw   $0xff,EXPORT_SYMBOL(country_states)(%eax)
 		je     jump_28e03
 	jump_28dea:
 		xor    %edx,%edx
 		mov    %cl,%dl
 		lea    0x0(,%edx,4),%eax
 		add    %edx,%eax
-		cmpw   $0xff,country_states(,%eax,2)
+		cmpw   $0xff,EXPORT_SYMBOL(country_states)(,%eax,2)
 		jne    jump_28e0f
 	jump_28e03:
 		mov    $0x1,%al
@@ -32910,7 +32910,7 @@ can_i_play_this_city:	/* 0x28d60 */
 		mov    data_5539e(%eax),%dl
 		cmp    %si,%dx
 		jne    jump_28e76
-		cmpw   $0xff,country_states(%eax)
+		cmpw   $0xff,EXPORT_SYMBOL(country_states)(%eax)
 		je     jump_28e76
 		xor    %bl,%bl
 	jump_28e3a:
@@ -33032,7 +33032,7 @@ show_tax_and_revenue:	/* 0x28e90 */
 		add    $0x28,%esp
 		cmp    %dx,%ax
 		jne    jump_28fd5
-		cmpw   $0xff,country_states(%ebx)
+		cmpw   $0xff,EXPORT_SYMBOL(country_states)(%ebx)
 		je     jump_28fd5
 		mov    m_sprites,%eax
 		add    $0x42,%eax
@@ -55012,14 +55012,14 @@ level_finished:	/* 0x37f80 */
 		lea    0x0(,%edx,4),%eax
 		add    %edx,%eax
 		add    %eax,%eax
-		cmpw   $0xff,country_states(%eax)
+		cmpw   $0xff,EXPORT_SYMBOL(country_states)(%eax)
 		jne    jump_38076
 		xor    %edx,%edx
 		mov    Network__Slot,%bx
 		mov    data_5539e(%eax),%dl
 		cmp    %bx,%dx
 		jne    jump_38076
-		movw   $0xaa,country_states(%eax)
+		movw   $0xaa,EXPORT_SYMBOL(country_states)(%eax)
 		jmp    jump_3809e
 	jump_38076:
 		xor    %edx,%edx
@@ -55028,7 +55028,7 @@ level_finished:	/* 0x37f80 */
 		add    %edx,%eax
 		xor    %ecx,%ecx
 		mov    Network__Slot,%dl
-		mov    %cx,country_states(,%eax,2)
+		mov    %cx,EXPORT_SYMBOL(country_states)(,%eax,2)
 		mov    %dl,data_5539e(,%eax,2)
 	jump_3809e:
 		xor    %edx,%edx
@@ -55056,7 +55056,7 @@ level_finished:	/* 0x37f80 */
 		mov    data_5539e(%eax),%dl
 		cmp    %di,%dx
 		jne    jump_38109
-		cmpw   $0xff,country_states(%eax)
+		cmpw   $0xff,EXPORT_SYMBOL(country_states)(%eax)
 		jge    jump_38109
 		inc    %bh
 	jump_38109:
@@ -55284,7 +55284,7 @@ load_player:	/* 0x38350 */
 		call   LbFileRead_
 		add    $0xc,%esp
 		push   $0x1f4
-		push   $country_states
+		push   $EXPORT_SYMBOL(country_states)
 		push   %ebx
 		call   LbFileRead_
 		add    $0xc,%esp
@@ -55372,7 +55372,7 @@ save_player:	/* 0x38420 */
 		call   LbFileWrite_
 		add    $0xc,%esp
 		push   $0x1f4
-		push   $country_states
+		push   $EXPORT_SYMBOL(country_states)
 		push   %ebx
 		call   LbFileWrite_
 		add    $0xc,%esp
@@ -83798,7 +83798,7 @@ AniArrayCount:	/* 0x55398 */
 		.ascii  "\x00\x00"
 GLOBAL (cheat_worldmap)	/* 0x5539a */
 		.ascii  "\x00\x00"
-country_states:	/* 0x5539c */
+GLOBAL (country_states)	/* 0x5539c */
 		.ascii  "\x00\x00"
 data_5539e:
 		.ascii  "\x00"

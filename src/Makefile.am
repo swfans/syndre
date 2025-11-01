@@ -33,7 +33,9 @@ syndre_SOURCES = \
 	oswindws.c \
 	oswindws.h \
 	util.c \
-	util.h
+	util.h \
+	wrcountry.c \
+	wrcountry.h
 
 syndre_CPPFLAGS =
 

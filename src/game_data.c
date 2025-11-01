@@ -28,6 +28,7 @@
 #include "oswindws.h"
 
 #include "guitext.h"
+#include "wrcountry.h"
 
 static char data_path_user[DISKPATH_SIZE] = "";
 static char data_path_hdd[DISKPATH_SIZE] = "";
@@ -135,18 +136,23 @@ void load_player(int slot)
     char fname[DISKPATH_SIZE];
     TbFileHandle fh;
 
+    assert(sizeof(players) == 8376);
+    assert(sizeof(country_states) == 500);
+    assert(sizeof(weapons) == 10020);
+    assert(sizeof(cybmods) == 8838);
+
     sprintf(fname, "%s/%02.2d.gam", "synd/save", slot);
     fh = LbFileOpen(fname, Lb_FILE_MODE_READ_ONLY);
     if (fh == INVALID_FILE)
         return;
 
     LbFileRead(fh, players, GAME_DESC_TEXT_MAX_LEN); // skip header
-    LbFileRead(fh, players, 8376);
-    LbFileRead(fh, country_states, 500);
-    LbFileRead(fh, weapons, 10020);
-    LbFileRead(fh, cybmods, 8838);
+    LbFileRead(fh, players, sizeof(players));
+    LbFileRead(fh, country_states, sizeof(country_states));
+    LbFileRead(fh, weapons, sizeof(weapons));
+    LbFileRead(fh, cybmods, sizeof(cybmods));
     LbFileRead(fh, &research, sizeof(struct Research));
-    LbFileRead(fh, selected_team, 4);
+    LbFileRead(fh, selected_team, sizeof(selected_team));
 
     LbFileClose(fh);
 }
@@ -154,7 +160,7 @@ void load_player(int slot)
 int save_player(char *p_desc, int slot)
 {
     char fname[DISKPATH_SIZE];
-    unsigned int creds;
+    uint creds;
     TbFileHandle fh;
 
     creds = players[Network__Slot].Credits;
@@ -167,12 +173,12 @@ int save_player(char *p_desc, int slot)
         return;
 
     LbFileWrite(fh, p_desc, GAME_DESC_TEXT_MAX_LEN);
-    LbFileWrite(fh, players, 0x20B8u);
-    LbFileWrite(fh, country_states, 0x1F4u);
-    LbFileWrite(fh, weapons, 0x2724u);
-    LbFileWrite(fh, cybmods, 0x2286u);
+    LbFileWrite(fh, players, sizeof(players));
+    LbFileWrite(fh, country_states, sizeof(country_states));
+    LbFileWrite(fh, weapons, sizeof(weapons));
+    LbFileWrite(fh, cybmods, sizeof(cybmods));
     LbFileWrite(fh, &research, sizeof(struct Research));
-    LbFileWrite(fh, selected_team, 4);
+    LbFileWrite(fh, selected_team, sizeof(selected_team));
 
     LbFileClose(fh);
 }
