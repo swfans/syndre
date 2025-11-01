@@ -145,7 +145,7 @@ void load_player(int slot)
     LbFileRead(fh, country_states, 500);
     LbFileRead(fh, weapons, 10020);
     LbFileRead(fh, cybmods, 8838);
-    LbFileRead(fh, &research, sizeof(Research));
+    LbFileRead(fh, &research, sizeof(struct Research));
     LbFileRead(fh, selected_team, 4);
 
     LbFileClose(fh);
@@ -171,8 +171,8 @@ int save_player(char *p_desc, int slot)
     LbFileWrite(fh, country_states, 0x1F4u);
     LbFileWrite(fh, weapons, 0x2724u);
     LbFileWrite(fh, cybmods, 0x2286u);
-    LbFileWrite(fh, &research, 0x1E9u);
-    LbFileWrite(fh, selected_team, 4u);
+    LbFileWrite(fh, &research, sizeof(struct Research));
+    LbFileWrite(fh, selected_team, 4);
 
     LbFileClose(fh);
 }
