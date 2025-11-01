@@ -22788,7 +22788,7 @@ equip_team:	/* 0x1fbc0 */
 		xor    %eax,%eax
 		mov    EXPORT_SYMBOL(language),%al
 		push   $0x208
-		mov    a4(,%eax,4),%ebx
+		mov    text_empty_slot(,%eax,4),%ebx
 		push   %ebx
 	jump_21023:
 		call   new_show_text
@@ -55444,7 +55444,7 @@ load_save_text:	/* 0x38540 */
 		jne    jump_385b3
 		xor    %ebx,%ebx
 		mov    EXPORT_SYMBOL(language),%bl
-		mov    a4(,%ebx,4),%ecx
+		mov    text_empty_slot(,%ebx,4),%ecx
 		push   %ecx
 		push   %esi
 		call   ac_strcpy
@@ -83060,7 +83060,7 @@ text_city_mood_rebellious:	/* 0x54714 */
 		.long   aRebellious
 		.long   aRebelle
 		.long   aRibelle
-a4:	/* 0x54720 */
+text_empty_slot:	/* 0x54720 */
 		.long   aEmpty
 		.long   aVide
 		.long   aVuoto
@@ -84945,7 +84945,7 @@ data_5b95c:
 data_5b96e:
 		.ascii  "\x64\x00"
 aCSyndSave:	/* 0x5b970 */
-		.string "c:/synd/save"
+		.string "synd/save"
 		.fill   0x7
 unk984_load_files:	/* 0x5b984 */
 		.string "data/mspr-0.dat"

@@ -1,14 +1,14 @@
 /******************************************************************************/
 // SyndicateRE, source port of the classic game from Bullfrog.
 /******************************************************************************/
-/** @file game_data.h
- *     Header file for game_data.c.
+/** @file player.c
+ *     Player state and information handling.
  * @par Purpose:
- *     Structures and functions defining data used by the game.
+ *     Implement functions for getting and updating player state.
  * @par Comment:
- *     Just a header file - #defines, typedefs, function prototypes etc.
+ *     None.
  * @author   Tomasz Lis
- * @date     10 Feb 2020 - 16 Oct 2020
+ * @date     19 Apr 2022 - 27 Aug 2023
  * @par  Copying and copyrights:
  *     This program is free software; you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
@@ -16,41 +16,13 @@
  *     (at your option) any later version.
  */
 /******************************************************************************/
-#ifndef GAME_DATA_H
-#define GAME_DATA_H
+#include "player.h"
 
-#include "bftypes.h"
+#include <assert.h>
 
-#pragma pack(1)
+#include "game.h"
+#include "applog.h"
+/******************************************************************************/
 
-#define GAME_DESC_TEXT_MAX_LEN 20
-
-struct Thing;
-
-struct CPObjective
-{
-    short Child;
-    ushort Parent;
-    short field_4;
-    ubyte field_6;
-    ubyte ActionType;
-    ubyte Action;
-    ushort TargetOffs;
-    short field_B;
-    short field_D;
-};
-
-#pragma pack()
 
 /******************************************************************************/
-extern ushort level__Seed;
-extern struct CPObjective level__CPObjectives[128];
-
-
-const char *GetDirectoryUser(void);
-const char *GetDirectoryHdd(void);
-
-void setup_file_names(void);
-
-/******************************************************************************/
-#endif // GAME_DATA_H

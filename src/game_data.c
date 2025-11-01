@@ -105,4 +105,76 @@ void setup_file_names(void)
     GetDirectoryHdd();
     GetDirectoryUser();
 }
+
+#if 0
+
+void load_save_text(char *p_desc, int slot)
+{
+    char fname[DISKPATH_SIZE];
+    TbFileHandle fh;
+
+    *p_desc = '\0';
+    sprintf(fname, "%s/%02.2d.gam", "c:/synd/save", slot);
+    fh = LbFileOpen(fname, Lb_FILE_MODE_READ_ONLY);
+        return;
+
+    if (fh != INVALID_FILE)
+    {
+        LbFileRead(fh, p_desc, GAME_DESC_TEXT_MAX_LEN);
+        LbFileClose(fh);
+    }
+
+    if (*p_desc == '\0')
+        strcpy(p_desc, strings_lang[language + 351]);
+    p_desc[GAME_DESC_TEXT_MAX_LEN-1] = '\0';
+}
+
+void load_player(int slot)
+{
+    char fname[DISKPATH_SIZE];
+    TbFileHandle fh;
+
+    sprintf(fname, "%s/%02.2d.gam", "synd/save", slot);
+    fh = LbFileOpen(fname, Lb_FILE_MODE_READ_ONLY);
+    if (fh == INVALID_FILE)
+        return;
+
+    LbFileRead(fh, players, GAME_DESC_TEXT_MAX_LEN); // skip header
+    LbFileRead(fh, players, 8376);
+    LbFileRead(fh, country_states, 500);
+    LbFileRead(fh, weapons, 10020);
+    LbFileRead(fh, cybmods, 8838);
+    LbFileRead(fh, &research, sizeof(Research));
+    LbFileRead(fh, selected_team, 4);
+
+    LbFileClose(fh);
+}
+
+int save_player(char *p_desc, int slot)
+{
+    char fname[DISKPATH_SIZE];
+    unsigned int creds;
+    TbFileHandle fh;
+
+    creds = players[Network__Slot].Credits;
+    if (creds > 30000)
+        players[Network__Slot].Credits -= 10 * creds / 100;
+
+    sprintf(fname, "%s/%02.2d.gam", "synd/save", slot);
+    fh = LbFileOpen(fname, Lb_FILE_MODE_NEW);
+    if (fh == INVALID_FILE)
+        return;
+
+    LbFileWrite(fh, p_desc, GAME_DESC_TEXT_MAX_LEN);
+    LbFileWrite(fh, players, 0x20B8u);
+    LbFileWrite(fh, country_states, 0x1F4u);
+    LbFileWrite(fh, weapons, 0x2724u);
+    LbFileWrite(fh, cybmods, 0x2286u);
+    LbFileWrite(fh, &research, 0x1E9u);
+    LbFileWrite(fh, selected_team, 4u);
+
+    LbFileClose(fh);
+}
+#endif
+
 /******************************************************************************/

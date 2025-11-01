@@ -17,6 +17,8 @@ syndre_SOURCES = \
 	main.c \
 	mouse.c \
 	mouse.h \
+	player.c \
+	player.h \
 	sound.c \
 	sound.h \
 	syndre.sx \
