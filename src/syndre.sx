@@ -56523,7 +56523,11 @@ get_line:	/* 0x390c0 */
 		mov    %ecx,0x58(%esp)
 		test   %dx,%dx
 		je     jump_392df
-		call   read_key
+#if defined(DOS) /* get key via interrupts */
+		call   ac_read_key
+#else
+		call   ac_read_char
+#endif
 		mov    %al,%dh
 		test   %al,%al
 		je     jump_3915b
@@ -80143,7 +80147,7 @@ ASM_LbScreenWaitVbi:	/* 0x4fcec */
 
 
 /*----------------------------------------------------------------*/
-read_key:	/* 0x4fcfa */
+ASM_read_key:	/* 0x4fcfa */
 /*----------------------------------------------------------------*/
 		mov    $0x1,%ah
 		int    $0x16

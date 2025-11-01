@@ -27,6 +27,8 @@
 void init_buffered_keys(void);
 void reset_buffered_keys(void);
 ulong next_buffered_key(void);
+char read_buffered_char(void);
+char read_char(void);
 
 /******************************************************************************/
 #endif // KEYBOARD_H

@@ -15,6 +15,7 @@
 #include "display.h"
 #include "game.h"
 #include "game_data.h"
+#include "keyboard.h"
 #include "util.h"
 
 #if defined WIN32 && defined main
@@ -328,6 +329,8 @@ int main (int argc, char **argv)
 # else
         LbIKeyboardOpen();
 # endif
+        init_buffered_keys();
+
         syndicate();
 
         tmend = LbTimerClock() + 72 * 5000/91; // 1 from int08 timer is 1000/18.2 miliseconds

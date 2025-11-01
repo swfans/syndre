@@ -21,7 +21,9 @@
 #include <stdint.h>
 
 #include "keyboard.h"
+
 #include "bfkeybd.h"
+
 #include "game.h"
 
 #define KEYBOARD_BUFFER_SIZE 16
@@ -60,27 +62,31 @@ ulong next_buffered_key(void)
   return key;
 }
 
+char read_buffered_char(void)
+{
+    ulong key;
+
+    key = next_buffered_key();
+    if (key >= 128)
+        return 0;
+    if ((lbShift & KMod_SHIFT) != 0)
+        return lbInkeyToAsciiShift[key];
+    else
+        return lbInkeyToAscii[key];
+}
+
+char read_char(void)
+{
+    if ((lbShift & KMod_SHIFT) != 0)
+        return lbInkeyToAsciiShift[lbInkey];
+    else
+        return lbInkeyToAscii[lbInkey];
+}
+
 void reset_buffered_keys(void)
 {
     buffered_keys_read_index  = 0;
     buffered_keys_write_index = 0;
-}
-
-TbResult handle_custom_key_press(TbKeyAction action, TbKeyCode code)
-{
-    if (action != KActn_KEYDOWN)
-        return false;
-
-    if (lbKeyOn[KC_RCONTROL] || lbKeyOn[KC_LCONTROL])
-    {
-        if (code == KC_Q)
-        {
-            game_quit();
-            return Lb_SUCCESS;
-        }
-    }
-
-    return Lb_OK;
 }
 
 TbResult KEventBufferedKeysUpdate(TbKeyAction action, TbKeyCode code)
@@ -91,7 +97,7 @@ TbResult KEventBufferedKeysUpdate(TbKeyAction action, TbKeyCode code)
             add_key_to_buffer(code);
     }
 
-    return handle_custom_key_press(action, code);
+    return Lb_OK;
 }
 
 void init_buffered_keys(void)
