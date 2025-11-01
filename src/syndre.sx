@@ -1394,7 +1394,7 @@ mission_briefing:	/* 0x10e60 */
 		mov    %eax,0x4a(%ebp)
 		xor    %eax,%eax
 		mov    EXPORT_SYMBOL(language),%al
-		mov    data_54570(,%eax,4),%edx
+		mov    gui_strings_p243(,%eax,4),%edx
 		push   %edx
 		call   DisplayScreenTitle
 		mov    0x6e(%ebp),%al
@@ -11203,7 +11203,7 @@ func_184e8:
 		push   $0x78
 		mov    EXPORT_SYMBOL(language),%al
 		push   $0x122
-		mov    data_545b8(,%eax,4),%ebx
+		mov    gui_strings_p261(,%eax,4),%ebx
 		push   %ebx
 		call   DrawScreenGadget
 		add    $0x1c,%esp
@@ -11230,7 +11230,7 @@ func_184e8:
 		push   $0x78
 		mov    EXPORT_SYMBOL(language),%al
 		push   $0x1da
-		mov    data_545c4(,%eax,4),%ecx
+		mov    gui_strings_p264(,%eax,4),%ecx
 		push   %ecx
 		call   DrawScreenGadget
 		add    $0x1c,%esp
@@ -12631,7 +12631,7 @@ debrief:	/* 0x18ff0 */
 		mov    %eax,%edi
 		xor    %eax,%eax
 		mov    EXPORT_SYMBOL(language),%al
-		mov    data_54594(,%eax,4),%edx
+		mov    gui_strings_p252(,%eax,4),%edx
 		push   %edx
 		mov    %esi,data_60b06
 		call   DisplayScreenTitle
@@ -21430,7 +21430,7 @@ equip_team:	/* 0x1fbc0 */
 		jne    jump_1fcc1
 		xor    %eax,%eax
 		mov    EXPORT_SYMBOL(language),%al
-		mov    data_5457c(,%eax,4),%edx
+		mov    gui_strings_p246(,%eax,4),%edx
 		push   %edx
 		mov    -0x18(%ebp),%bl
 		call   DisplayScreenTitle
@@ -21559,7 +21559,7 @@ equip_team:	/* 0x1fbc0 */
 		push   %eax
 		xor    %eax,%eax
 		mov    EXPORT_SYMBOL(language),%al
-		mov    data_545dc(,%eax,4),%edi
+		mov    gui_strings_p270(,%eax,4),%edi
 		push   %edi
 		call   DrawScreenGadget
 		add    $0x1c,%esp
@@ -22690,7 +22690,7 @@ equip_team:	/* 0x1fbc0 */
 		push   $0x6c
 		mov    EXPORT_SYMBOL(language),%al
 		push   $0x1f8
-		mov    data_543fc(,%eax,4),%edi
+		mov    gui_strings_p150(,%eax,4),%edi
 		push   %edi
 		mov    $0x7c,%esi
 		call   new_show_text
@@ -22981,7 +22981,7 @@ equip_team:	/* 0x1fbc0 */
 		push   $0x10e
 		mov    EXPORT_SYMBOL(language),%al
 		push   $0x1f4
-		mov    data_545c4(,%eax,4),%ecx
+		mov    gui_strings_p264(,%eax,4),%ecx
 		push   %ecx
 		jmp    jump_216e6
 	jump_212e9:
@@ -23040,7 +23040,7 @@ equip_team:	/* 0x1fbc0 */
 		push   $0x10e
 		mov    EXPORT_SYMBOL(language),%al
 		push   $0x1f4
-		mov    data_545c4(,%eax,4),%ecx
+		mov    gui_strings_p264(,%eax,4),%ecx
 		push   %ecx
 		call   DrawScreenGadget
 		mov    -0x14(%ebp),%al
@@ -30371,13 +30371,13 @@ LoadSaveGame:	/* 0x26ef0 */
 		mov    data_54c4c(,%eax,8),%edx
 		push   %edx
 		inc    %ebx
-		call   load_save_text
+		call   ac_load_save_text
 		add    $0x8,%esp
 		cmp    $0xa,%bx
 		jb     jump_26f60
 		xor    %eax,%eax
 		mov    EXPORT_SYMBOL(language),%al
-		mov    data_54558(,%eax,4),%ebx
+		mov    gui_strings_p237(,%eax,4),%ebx
 		push   %ebx
 		call   DisplayScreenTitle
 		add    $0x4,%esp
@@ -32438,7 +32438,7 @@ show_city_info:	/* 0x28610 */
 		push   $0x15a
 		mov    EXPORT_SYMBOL(language),%al
 		push   $0x10
-		mov    text_city_breief(,%eax,4),%edi
+		mov    gui_strings_p267(,%eax,4),%edi
 		push   %edi
 		jmp    jump_2894a
 	jump_28873:
@@ -32502,7 +32502,7 @@ show_city_info:	/* 0x28610 */
 		push   $0x15a
 		mov    EXPORT_SYMBOL(language),%al
 		push   $0x10
-		mov    text_city_breief(,%eax,4),%ebx
+		mov    gui_strings_p267(,%eax,4),%ebx
 		push   %ebx
 	jump_2894a:
 		call   DrawScreenGadget
@@ -33762,7 +33762,7 @@ multi_out:	/* 0x29790 */
 		mov    %ah,EXPORT_SYMBOL(lbDisplay)+104	/* lbDisplay.RightButton */
 		xor    %eax,%eax
 		mov    EXPORT_SYMBOL(language),%al
-		mov    data_54564(,%eax,4),%edx
+		mov    gui_strings_p240(,%eax,4),%edx
 		mov    $0x1,%bh
 		push   %edx
 		mov    %bh,EXPORT_SYMBOL(is_multiplayer_game)
@@ -37893,14 +37893,14 @@ set_mission_complete:	/* 0x2c2e0 */
 		push   %ebx
 		xor    %eax,%eax
 		mov    EXPORT_SYMBOL(language),%al
-		mov    data_54468(,%eax,4),%edx
+		mov    gui_strings_p177(,%eax,4),%edx
 		push   %edx
 		push   $data_60564
 		call   center_panel_string
 		xor    %eax,%eax
 		mov    EXPORT_SYMBOL(language),%al
 		add    $0x8,%esp
-		mov    data_54474(,%eax,4),%ebx
+		mov    gui_strings_p180(,%eax,4),%ebx
 		push   %ebx
 		push   $data_60574
 		call   center_panel_string
@@ -37914,7 +37914,7 @@ set_mission_failed:	/* 0x2c320 */
 /*----------------------------------------------------------------*/
 		xor    %eax,%eax
 		mov    EXPORT_SYMBOL(language),%al
-		mov    data_54480(,%eax,4),%edx
+		mov    gui_strings_p183(,%eax,4),%edx
 		push   %edx
 		push   $data_60564
 		call   center_panel_string
@@ -37980,7 +37980,7 @@ func_2c40a:
 /*----------------------------------------------------------------*/
 		xor    %eax,%eax
 		mov    EXPORT_SYMBOL(language),%al
-		mov    data_54408(,%eax,4),%ecx
+		mov    gui_strings_p153(,%eax,4),%ecx
 		push   %ecx
 		jmp    jump_2c493
 
@@ -37990,7 +37990,7 @@ func_2c41e:
 /*----------------------------------------------------------------*/
 		xor    %eax,%eax
 		mov    EXPORT_SYMBOL(language),%al
-		mov    data_54414(,%eax,4),%ebp
+		mov    gui_strings_p156(,%eax,4),%ebp
 		push   %ebp
 		jmp    jump_2c493
 
@@ -38000,7 +38000,7 @@ func_2c42f:
 /*----------------------------------------------------------------*/
 		xor    %eax,%eax
 		mov    EXPORT_SYMBOL(language),%al
-		mov    data_54420(,%eax,4),%edi
+		mov    gui_strings_p159(,%eax,4),%edi
 		push   %edi
 		jmp    jump_2c493
 
@@ -38010,7 +38010,7 @@ func_2c440:
 /*----------------------------------------------------------------*/
 		xor    %eax,%eax
 		mov    EXPORT_SYMBOL(language),%al
-		mov    data_5442c(,%eax,4),%esi
+		mov    gui_strings_p162(,%eax,4),%esi
 		push   %esi
 		jmp    jump_2c493
 
@@ -38020,7 +38020,7 @@ func_2c451:
 /*----------------------------------------------------------------*/
 		xor    %eax,%eax
 		mov    EXPORT_SYMBOL(language),%al
-		mov    data_54438(,%eax,4),%ebp
+		mov    gui_strings_p165(,%eax,4),%ebp
 		push   %ebp
 		jmp    jump_2c493
 
@@ -38030,7 +38030,7 @@ func_2c462:
 /*----------------------------------------------------------------*/
 		xor    %eax,%eax
 		mov    EXPORT_SYMBOL(language),%al
-		mov    data_54444(,%eax,4),%esi
+		mov    gui_strings_p168(,%eax,4),%esi
 		push   %esi
 		jmp    jump_2c493
 
@@ -38040,7 +38040,7 @@ func_2c473:
 /*----------------------------------------------------------------*/
 		xor    %eax,%eax
 		mov    EXPORT_SYMBOL(language),%al
-		mov    data_54450(,%eax,4),%edi
+		mov    gui_strings_p171(,%eax,4),%edi
 		push   %edi
 		jmp    jump_2c493
 
@@ -38050,7 +38050,7 @@ func_2c484:
 /*----------------------------------------------------------------*/
 		xor    %eax,%eax
 		mov    EXPORT_SYMBOL(language),%al
-		mov    data_5445c(,%eax,4),%edx
+		mov    gui_strings_p174(,%eax,4),%edx
 		push   %edx
 	jump_2c493:
 		push   $data_60564
@@ -39227,7 +39227,7 @@ func_2d3b8:
 		xor    %eax,%eax
 		mov    EXPORT_SYMBOL(language),%al
 		push   $0x32
-		mov    data_5448c(,%eax,4),%edx
+		mov    gui_strings_p186(,%eax,4),%edx
 		push   %edx
 		call   set_panel_string
 		add    $0x8,%esp
@@ -39252,21 +39252,21 @@ func_2d3d6:
 		xor    %eax,%eax
 		mov    EXPORT_SYMBOL(language),%al
 		push   $0x32
-		mov    data_54420(,%eax,4),%edi
+		mov    gui_strings_p159(,%eax,4),%edi
 		push   %edi
 		jmp    jump_2d5ec
 	jump_2d3fb:
 		xor    %eax,%eax
 		mov    EXPORT_SYMBOL(language),%al
 		push   $0x32
-		mov    data_54498(,%eax,4),%esi
+		mov    gui_strings_p189(,%eax,4),%esi
 		push   %esi
 		jmp    jump_2d5ec
 	jump_2d411:
 		xor    %eax,%eax
 		mov    EXPORT_SYMBOL(language),%al
 		push   $0x32
-		mov    data_544a4(,%eax,4),%ebp
+		mov    gui_strings_p192(,%eax,4),%ebp
 		push   %ebp
 		call   set_panel_string
 		add    $0x8,%esp
@@ -39284,7 +39284,7 @@ func_2d42f:
 		push   %eax
 		xor    %eax,%eax
 		mov    EXPORT_SYMBOL(language),%al
-		mov    data_54498(,%eax,4),%ecx
+		mov    gui_strings_p189(,%eax,4),%ecx
 		push   %ecx
 		call   set_panel_string
 		add    $0x8,%esp
@@ -39302,7 +39302,7 @@ func_2d451:
 		push   %eax
 		xor    %eax,%eax
 		mov    EXPORT_SYMBOL(language),%al
-		mov    data_544b0(,%eax,4),%ebx
+		mov    gui_strings_p195(,%eax,4),%ebx
 		push   %ebx
 		call   set_panel_string
 		add    $0x8,%esp
@@ -39319,7 +39319,7 @@ func_2d473:
 		xor    %eax,%eax
 		mov    EXPORT_SYMBOL(language),%al
 		push   $0x32
-		mov    data_544bc(,%eax,4),%edx
+		mov    gui_strings_p198(,%eax,4),%edx
 		push   %edx
 		call   set_panel_string
 		add    $0x8,%esp
@@ -39336,7 +39336,7 @@ func_2d491:
 		xor    %eax,%eax
 		mov    EXPORT_SYMBOL(language),%al
 		push   $0x32
-		mov    data_544c8(,%eax,4),%ebp
+		mov    gui_strings_p201(,%eax,4),%ebp
 		push   %ebp
 		call   set_panel_string
 		add    $0x8,%esp
@@ -39353,7 +39353,7 @@ func_2d4af:
 		xor    %eax,%eax
 		mov    EXPORT_SYMBOL(language),%al
 		push   $0x32
-		mov    data_544d4(,%eax,4),%edi
+		mov    gui_strings_p204(,%eax,4),%edi
 		push   %edi
 		call   set_panel_string
 		add    $0x8,%esp
@@ -39370,7 +39370,7 @@ func_2d4cd:
 		xor    %eax,%eax
 		mov    EXPORT_SYMBOL(language),%al
 		push   $0x32
-		mov    data_544e0(,%eax,4),%esi
+		mov    gui_strings_p207(,%eax,4),%esi
 		push   %esi
 		call   set_panel_string
 		add    $0x8,%esp
@@ -39387,7 +39387,7 @@ func_2d4eb:
 		xor    %eax,%eax
 		mov    EXPORT_SYMBOL(language),%al
 		push   $0x32
-		mov    data_544ec(,%eax,4),%ecx
+		mov    gui_strings_p210(,%eax,4),%ecx
 		push   %ecx
 		call   set_panel_string
 		add    $0x8,%esp
@@ -39404,7 +39404,7 @@ func_2d509:
 		xor    %eax,%eax
 		mov    EXPORT_SYMBOL(language),%al
 		push   $0x32
-		mov    data_544ec(,%eax,4),%ebx
+		mov    gui_strings_p210(,%eax,4),%ebx
 		push   %ebx
 		call   set_panel_string
 		add    $0x8,%esp
@@ -39421,7 +39421,7 @@ func_2d527:
 		xor    %eax,%eax
 		mov    EXPORT_SYMBOL(language),%al
 		push   $0x32
-		mov    data_544f8(,%eax,4),%edx
+		mov    gui_strings_p213(,%eax,4),%edx
 		push   %edx
 		call   set_panel_string
 		add    $0x8,%esp
@@ -39438,7 +39438,7 @@ func_2d545:
 		xor    %eax,%eax
 		mov    EXPORT_SYMBOL(language),%al
 		push   $0x32
-		mov    data_54504(,%eax,4),%ebp
+		mov    gui_strings_p216(,%eax,4),%ebp
 		push   %ebp
 		call   set_panel_string
 		add    $0x8,%esp
@@ -39455,7 +39455,7 @@ func_2d563:
 		xor    %eax,%eax
 		mov    EXPORT_SYMBOL(language),%al
 		push   $0x32
-		mov    data_54510(,%eax,4),%edi
+		mov    gui_strings_p219(,%eax,4),%edi
 		push   %edi
 		call   set_panel_string
 		add    $0x8,%esp
@@ -39472,7 +39472,7 @@ func_2d581:
 		xor    %eax,%eax
 		mov    EXPORT_SYMBOL(language),%al
 		push   $0x32
-		mov    data_5451c(,%eax,4),%esi
+		mov    gui_strings_p222(,%eax,4),%esi
 		push   %esi
 		call   set_panel_string
 		add    $0x8,%esp
@@ -39489,7 +39489,7 @@ func_2d59f:
 		xor    %eax,%eax
 		mov    EXPORT_SYMBOL(language),%al
 		push   $0x32
-		mov    data_54528(,%eax,4),%ecx
+		mov    gui_strings_p225(,%eax,4),%ecx
 		push   %ecx
 		call   set_panel_string
 		add    $0x8,%esp
@@ -39506,7 +39506,7 @@ func_2d5bd:
 		xor    %eax,%eax
 		mov    EXPORT_SYMBOL(language),%al
 		push   $0x32
-		mov    data_54534(,%eax,4),%ebx
+		mov    gui_strings_p228(,%eax,4),%ebx
 		push   %ebx
 		call   set_panel_string
 		add    $0x8,%esp
@@ -39523,7 +39523,7 @@ func_2d5db:
 		xor    %eax,%eax
 		mov    EXPORT_SYMBOL(language),%al
 		push   $0x32
-		mov    data_54540(,%eax,4),%edx
+		mov    gui_strings_p231(,%eax,4),%edx
 		push   %edx
 	jump_2d5ec:
 		call   set_panel_string
@@ -50390,7 +50390,7 @@ ResearchAndDevelop:	/* 0x34ad0 */
 		mov    %ah,EXPORT_SYMBOL(lbDisplay)+104	/* lbDisplay.RightButton */
 		xor    %eax,%eax
 		mov    EXPORT_SYMBOL(language),%al
-		mov    data_54588(,%eax,4),%edx
+		mov    gui_strings_p249(,%eax,4),%edx
 		push   %edx
 		call   DisplayScreenTitle
 		add    $0x4,%esp
@@ -50917,7 +50917,7 @@ ResearchAndDevelop:	/* 0x34ad0 */
 		push   $0x13e
 		mov    EXPORT_SYMBOL(language),%al
 		push   $0x1f4
-		mov    data_545c4(,%eax,4),%esi
+		mov    gui_strings_p264(,%eax,4),%esi
 		push   %esi
 		call   DrawScreenGadget
 		add    $0x1c,%esp
@@ -50964,7 +50964,7 @@ ResearchAndDevelop:	/* 0x34ad0 */
 		push   $0x13e
 		mov    EXPORT_SYMBOL(language),%al
 		push   $0x1f4
-		mov    data_545c4(,%eax,4),%ecx
+		mov    gui_strings_p264(,%eax,4),%ecx
 		push   %ecx
 		call   DrawScreenGadget
 		add    $0x1c,%esp
@@ -51215,7 +51215,7 @@ ResearchAndDevelop:	/* 0x34ad0 */
 		push   $0x9e
 		mov    EXPORT_SYMBOL(language),%al
 		push   $0x10
-		mov    data_545dc(,%eax,4),%edx
+		mov    gui_strings_p270(,%eax,4),%edx
 		push   %edx
 		call   DrawScreenGadget
 		add    $0x1c,%esp
@@ -51242,7 +51242,7 @@ ResearchAndDevelop:	/* 0x34ad0 */
 		push   $0xb6
 		mov    EXPORT_SYMBOL(language),%al
 		push   $0x10
-		mov    data_545c4(,%eax,4),%ebx
+		mov    gui_strings_p264(,%eax,4),%ebx
 		push   %ebx
 		call   DrawScreenGadget
 		add    $0x1c,%esp
@@ -54362,7 +54362,7 @@ func_378c3:
 /*----------------------------------------------------------------*/
 		xor    %edx,%eax
 		mov    EXPORT_SYMBOL(language),%al
-		mov    data_5454c(,%eax,4),%edx
+		mov    gui_strings_p234(,%eax,4),%edx
 		push   %edx
 		call   DisplayScreenTitle
 		add    $0x4,%esp
@@ -54538,7 +54538,7 @@ func_378c3:
 	jump_37b00:
 		push   %esi
 		push   %ebx
-		call   load_save_text
+		call   ac_load_save_text
 		inc    %esi
 		add    $0x8,%esp
 		add    $0x14,%ebx
@@ -55408,7 +55408,7 @@ save_player:	/* 0x38420 */
 
 
 /*----------------------------------------------------------------*/
-load_save_text:	/* 0x38540 */
+ASM_load_save_text:	/* 0x38540 */
 /*----------------------------------------------------------------*/
 		push   %ebx
 		push   %esi
@@ -56025,7 +56025,7 @@ DrawAcceptGadget:	/* 0x38b50 */
 		push   %eax
 		xor    %eax,%eax
 		mov    EXPORT_SYMBOL(language),%al
-		mov    data_545a0(,%eax,4),%edx
+		mov    gui_strings_p255(,%eax,4),%edx
 		push   %edx
 		call   DrawScreenGadget
 		add    $0x1c,%esp
@@ -56072,7 +56072,7 @@ DrawMenuGadget:	/* 0x38bf0 */
 		push   %eax
 		xor    %eax,%eax
 		mov    EXPORT_SYMBOL(language),%al
-		mov    data_545ac(,%eax,4),%edx
+		mov    gui_strings_p258(,%eax,4),%edx
 		push   %edx
 		call   DrawScreenGadget
 		add    $0x1c,%esp
@@ -82793,167 +82793,167 @@ GLOBAL (gui_strings)	/* 0x541a4 */
 		.long   aAtlanticAccele
 		.long   aAccelerateurDe
 		.long   aAcceleratoreAt
-data_543fc:
+gui_strings_p150:
 		.long   aCryoChamber
 		.long   aLeChambreCryo
 		.long   aVaniIbernanti
-data_54408:
+gui_strings_p153:
 		.long   aTakeWeapon
 		.long   aPrendreArme
 		.long   aPrendiArma
-data_54414:
+gui_strings_p156:
 		.long   aDestroyCar
 		.long   aDetruireVoitur
 		.long   aDistruggiAuto
-data_54420:
+gui_strings_p159:
 		.long   aUseVehicle
 		.long   aUtiliserVehicu
 		.long   aUsaIlVeicolo
-data_5442c:
+gui_strings_p162:
 		.long   aEvacuate
 		.long   aEvacuer
 		.long   aSgombera
-data_54438:
+gui_strings_p165:
 		.long   aPersuade
 		.long   aPersuader
 		.long   aConvinci
-data_54444:
+gui_strings_p168:
 		.long   aProtect
 		.long   aProteger
 		.long   aProteggi
-data_54450:
+gui_strings_p171:
 		.long   aAssassinate
 		.long   aAssassiner
 		.long   aUccidi
-data_5445c:
+gui_strings_p174:
 		.long   aEliminateAgent
 		.long   aEliminerAgents
 		.long   aEliminaAgenti
-data_54468:
+gui_strings_p177:
 		.long   aMissionComplet
 		.long   aMissionTermine
 		.long   aMissCompiuta
-data_54474:
+gui_strings_p180:
 		.long   aPressSpace
 		.long   aAppuiBEspace
 		.long   aPremiSpazio
-data_54480:
+gui_strings_p183:
 		.long   aMissionFailed
 		.long   aMissionEchouee
 		.long   aMissioneFallit
-data_5448c:
+gui_strings_p186:
 		.long   aGoing
 		.long   aEnRoute
 		.long   aVai
-data_54498:
+gui_strings_p189:
 		.long   aPickupWeapon
 		.long   aPrendreArme
 		.long   aRaccogliArma
-data_544a4:
+gui_strings_p192:
 		.long   aFollow
 		.long   aSuivre
 		.long   aSegui
-data_544b0:
+gui_strings_p195:
 		.long   aDropWeapon
 		.long   aPoserArme
 		.long   aLasciaArma
-data_544bc:
+gui_strings_p198:
 		.long   aHitByBullet
 		.long   aBlesse
 		.long   aCrivellato
-data_544c8:
+gui_strings_p201:
 		.long   aHitByCar
 		.long   aAccidente
 		.long   aInvestito
-data_544d4:
+gui_strings_p204:
 		.long   aOnFire
 		.long   aEnFeu
 		.long   aIncendiato
-data_544e0:
+gui_strings_p207:
 		.long   aEnergyDrain
 		.long   aPerteEnergie
 		.long   aCaloEnergia
-data_544ec:
+gui_strings_p210:
 		.long   aDead
 		.long   aMort
 		.long   aMorto
-data_544f8:
+gui_strings_p213:
 		.long   aObserving
 		.long   aEnObservation
 		.long   aEsamina
-data_54504:
+gui_strings_p216:
 		.long   aAwol
 		.long   aAbsenceIlleg
 		.long   aAssente
-data_54510:
+gui_strings_p219:
 		.long   aRunningAway
 		.long   aEnFuite
 		.long   aScappo
-data_5451c:
+gui_strings_p222:
 		.long   aDrowning
 		.long   aNoyade
 		.long   aAnnego
-data_54528:
+gui_strings_p225:
 		.long   aDangerCar
 		.long   aDangerVoiture
 		.long   aPericoloAuto
-data_54534:
+gui_strings_p228:
 		.long   aUsingWeapon
 		.long   aUtiliseArme
 		.long   aArmaInUso
-data_54540:
+gui_strings_p231:
 		.long   aChipRemoved
 		.long   aPuceRetiree
 		.long   aChipRimosso
-data_5454c:
+gui_strings_p234:
 		.long   aMainMenu
 		.long   aMenuPrincipal
 		.long   aMenuPrincipale
-data_54558:
+gui_strings_p237:
 		.long   aLoadSaveGame
 		.long   aChSauvPartie
 		.long   aSalvaCaricaGio
-data_54564:
+gui_strings_p240:
 		.long   aMultiPlayer
 		.long   aMultiJoueurs
 		.long   aMultiplayer
-data_54570:
+gui_strings_p243:
 		.long   aMissionBrief
 		.long   aBriefingMissio
 		.long   aPianoMissione
-data_5457c:
+gui_strings_p246:
 		.long   aTeamSelection
 		.long   aChoixDeLEquipe
 		.long   aSelezioneSquad
-data_54588:
+gui_strings_p249:
 		.long   aResearch
 		.long   aRecherche
 		.long   aRicerca
-data_54594:
+gui_strings_p252:
 		.long   aMissionDebrief
 		.long   aDebriefingMiss
 		.long   aResocontoMissi
-data_545a0:
+gui_strings_p255:
 		.long   aAccept
 		.long   aAccepter
 		.long   aConferma
-data_545ac:
+gui_strings_p258:
 		.long   aMenu
 		.long   aMenu
 		.long   aMenu
-data_545b8:
+gui_strings_p261:
 		.long   aOk
 		.long   aOk
 		.long   aOk
-data_545c4:
+gui_strings_p264:
 		.long   aCancel
 		.long   aAnnuler
 		.long   aAnnulla
-text_city_breief:	/* 0x545d0 */
+gui_strings_p267:	/* 0x545d0 */
 		.long   aBrief
 		.long   aBriefing
 		.long   aPiano
-data_545dc:
+gui_strings_p270:
 		.long   aResearch
 		.long   aRecherche
 		.long   aRicerca

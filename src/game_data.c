@@ -113,10 +113,9 @@ void load_save_text(char *p_desc, int slot)
     char fname[DISKPATH_SIZE];
     TbFileHandle fh;
 
-    *p_desc = '\0';
+    p_desc[0] = '\0';
     sprintf(fname, "%s/%02.2d.gam", "synd/save", slot);
     fh = LbFileOpen(fname, Lb_FILE_MODE_READ_ONLY);
-        return;
 
     if (fh != INVALID_FILE)
     {
@@ -124,7 +123,7 @@ void load_save_text(char *p_desc, int slot)
         LbFileClose(fh);
     }
 
-    if (*p_desc == '\0')
+    if (p_desc[0] == '\0')
         strcpy(p_desc, gui_strings[GSTR_SLOT_EMPTY + language]);
     p_desc[GAME_DESC_TEXT_MAX_LEN-1] = '\0';
 }
