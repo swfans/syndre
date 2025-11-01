@@ -1410,7 +1410,7 @@ mission_briefing:	/* 0x10e60 */
 		add    $0x4,%esp
 		test   %al,%al
 		je     jump_1109f
-		cmpb   $0x1,research
+		cmpb   $0x1,EXPORT_SYMBOL(research)
 		jne    jump_1109f
 		call   CompleteResearch
 	jump_1109f:
@@ -11555,7 +11555,7 @@ process_day:	/* 0x18810 */
 		mov    %edi,game_speed
 		cmp    %dl,%al
 		je     jump_18948
-		mov    research,%dh
+		mov    EXPORT_SYMBOL(research),%dh
 		mov    %al,data_53ee8
 		test   %dh,%dh
 		je     jump_1893e
@@ -11563,7 +11563,7 @@ process_day:	/* 0x18810 */
 		jne    jump_18948
 	jump_1893e:
 		call   DoResearch
-		mov    %al,research
+		mov    %al,EXPORT_SYMBOL(research)
 	jump_18948:
 		movswl Network__Slot,%eax
 		mov    %eax,%ebx
@@ -12152,7 +12152,7 @@ debrief:	/* 0x18ff0 */
 		sub    %edx,%ebx
 		xor    %edx,%edx
 		mov    -0x10(%ebp),%dl
-		mov    selected_team(%edx),%dl
+		mov    EXPORT_SYMBOL(selected_team)(%edx),%dl
 		and    $0xff,%edx
 		lea    0x0(,%edx,4),%eax
 		add    %edx,%eax
@@ -12176,7 +12176,7 @@ debrief:	/* 0x18ff0 */
 		mov    -0x10(%ebp),%al
 		sub    %edx,%ebx
 		xor    %edx,%edx
-		mov    selected_team(%eax),%dl
+		mov    EXPORT_SYMBOL(selected_team)(%eax),%dl
 		lea    0x0(,%edx,4),%eax
 		add    %edx,%eax
 		xor    %edx,%edx
@@ -12208,7 +12208,7 @@ debrief:	/* 0x18ff0 */
 		sub    %edx,%ebx
 		xor    %edx,%edx
 		mov    -0x10(%ebp),%dl
-		mov    selected_team(%edx),%dl
+		mov    EXPORT_SYMBOL(selected_team)(%edx),%dl
 		and    $0xff,%edx
 		lea    0x0(,%edx,4),%eax
 		add    %edx,%eax
@@ -12310,7 +12310,7 @@ debrief:	/* 0x18ff0 */
 		sub    %edx,%ebx
 		xor    %edx,%edx
 		mov    -0x10(%ebp),%dl
-		mov    selected_team(%edx),%dl
+		mov    EXPORT_SYMBOL(selected_team)(%edx),%dl
 		and    $0xff,%edx
 		lea    0x0(,%edx,4),%eax
 		add    %edx,%eax
@@ -12365,7 +12365,7 @@ debrief:	/* 0x18ff0 */
 		mov    -0x10(%ebp),%al
 		sub    %edx,%ebx
 		xor    %edx,%edx
-		mov    selected_team(%eax),%dl
+		mov    EXPORT_SYMBOL(selected_team)(%eax),%dl
 		lea    0x0(,%edx,4),%eax
 		add    %edx,%eax
 		xor    %edx,%edx
@@ -12405,7 +12405,7 @@ debrief:	/* 0x18ff0 */
 		sub    %edx,%ebx
 		xor    %edx,%edx
 		mov    -0x10(%ebp),%dl
-		mov    selected_team(%edx),%dl
+		mov    EXPORT_SYMBOL(selected_team)(%edx),%dl
 		and    $0xff,%edx
 		lea    0x0(,%edx,4),%eax
 		add    %edx,%eax
@@ -12445,7 +12445,7 @@ debrief:	/* 0x18ff0 */
 		mov    -0x10(%ebp),%al
 		sub    %edx,%ebx
 		xor    %edx,%edx
-		mov    selected_team(%eax),%dl
+		mov    EXPORT_SYMBOL(selected_team)(%eax),%dl
 		lea    0x0(,%edx,4),%eax
 		add    %edx,%eax
 		xor    %edx,%edx
@@ -12484,7 +12484,7 @@ debrief:	/* 0x18ff0 */
 		mov    -0x10(%ebp),%al
 		sub    %edx,%ebx
 		xor    %edx,%edx
-		mov    selected_team(%eax),%dl
+		mov    EXPORT_SYMBOL(selected_team)(%eax),%dl
 		lea    0x0(,%edx,4),%eax
 		add    %edx,%eax
 		xor    %edx,%edx
@@ -12540,7 +12540,7 @@ debrief:	/* 0x18ff0 */
 		mov    -0x10(%ebp),%al
 		sub    %edx,%ebx
 		xor    %edx,%edx
-		mov    selected_team(%eax),%dl
+		mov    EXPORT_SYMBOL(selected_team)(%eax),%dl
 		lea    0x0(,%edx,4),%eax
 		add    %edx,%eax
 		lea    0x0(,%eax,8),%eax
@@ -12566,7 +12566,7 @@ debrief:	/* 0x18ff0 */
 		sub    %edx,%ebx
 		xor    %edx,%edx
 		mov    -0x10(%ebp),%dl
-		mov    selected_team(%edx),%dl
+		mov    EXPORT_SYMBOL(selected_team)(%edx),%dl
 		and    $0xff,%edx
 		lea    0x0(,%edx,4),%eax
 		add    %edx,%eax
@@ -13227,7 +13227,7 @@ debrief:	/* 0x18ff0 */
 	jump_19e95:
 		call   new_show_text
 		add    $0x28,%esp
-		mov    research,%ah
+		mov    EXPORT_SYMBOL(research),%ah
 		cmp    $0x1,%ah
 		jne    jump_19f87
 		mov    data_55595,%al
@@ -13457,7 +13457,7 @@ debrief:	/* 0x18ff0 */
 		cmpb   $0x0,-0x14(%ebp)
 		je     jump_197a0
 	jump_1a181:
-		cmpb   $0x1,research
+		cmpb   $0x1,EXPORT_SYMBOL(research)
 		jne    jump_1a18f
 		call   CompleteResearch
 	jump_1a18f:
@@ -21360,7 +21360,7 @@ equip_team:	/* 0x1fbc0 */
 		mov    -0x38(%ebp),%ax
 		sub    %edx,%ebx
 		xor    %edx,%edx
-		mov    selected_team(%eax),%dl
+		mov    EXPORT_SYMBOL(selected_team)(%eax),%dl
 		lea    0x0(,%edx,4),%eax
 		add    %edx,%eax
 		cmpb   $0x0,data_5e5c0(%ebx,%eax,8)
@@ -21385,7 +21385,7 @@ equip_team:	/* 0x1fbc0 */
 		sub    %edx,%ebx
 		xor    %edx,%edx
 		mov    -0x24(%ebp),%dl
-		mov    selected_team(%edx),%dl
+		mov    EXPORT_SYMBOL(selected_team)(%edx),%dl
 		and    $0xff,%edx
 		lea    0x0(,%edx,4),%eax
 		add    %edx,%eax
@@ -21446,7 +21446,7 @@ equip_team:	/* 0x1fbc0 */
 		add    $0x4,%esp
 		test   %al,%al
 		je     jump_1fd58
-		cmpb   $0x1,research
+		cmpb   $0x1,EXPORT_SYMBOL(research)
 		jne    jump_1fd58
 		call   CompleteResearch
 	jump_1fd58:
@@ -21823,7 +21823,7 @@ equip_team:	/* 0x1fbc0 */
 		xor    %edx,%edx
 		mov    -0x38(%ebp),%dx
 		xor    %ebx,%ebx
-		mov    selected_team(%edx),%bl
+		mov    EXPORT_SYMBOL(selected_team)(%edx),%bl
 		lea    0x0(,%ebx,4),%eax
 		add    %ebx,%eax
 		lea    0x0(,%eax,8),%eax
@@ -21950,7 +21950,7 @@ equip_team:	/* 0x1fbc0 */
 		lea    0x0(,%ebx,8),%ebx
 		sub    %edx,%ebx
 		xor    %edx,%edx
-		mov    selected_team(%esi),%dl
+		mov    EXPORT_SYMBOL(selected_team)(%esi),%dl
 		lea    0x0(,%edx,4),%eax
 		add    %edx,%eax
 		lea    0x0(,%eax,8),%eax
@@ -21994,7 +21994,7 @@ equip_team:	/* 0x1fbc0 */
 		lea    0x0(,%eax,8),%eax
 		xor    %ebx,%ebx
 		sub    %edx,%eax
-		mov    selected_team(%esi),%bl
+		mov    EXPORT_SYMBOL(selected_team)(%esi),%bl
 		mov    %eax,%edx
 		lea    0x0(,%ebx,4),%eax
 		add    %ebx,%eax
@@ -22031,7 +22031,7 @@ equip_team:	/* 0x1fbc0 */
 		lea    0x0(,%ecx,8),%ecx
 		sub    %edx,%ecx
 		xor    %edx,%edx
-		mov    selected_team(%esi),%dl
+		mov    EXPORT_SYMBOL(selected_team)(%esi),%dl
 		lea    0x0(,%edx,4),%eax
 		add    %edx,%eax
 		lea    0x0(,%eax,8),%eax
@@ -22068,7 +22068,7 @@ equip_team:	/* 0x1fbc0 */
 		lea    0x0(,%ecx,8),%ecx
 		sub    %edx,%ecx
 		xor    %edx,%edx
-		mov    selected_team(%esi),%dl
+		mov    EXPORT_SYMBOL(selected_team)(%esi),%dl
 		lea    0x0(,%edx,4),%eax
 		add    %edx,%eax
 		lea    0x0(,%eax,8),%eax
@@ -22102,7 +22102,7 @@ equip_team:	/* 0x1fbc0 */
 		lea    0x0(,%ebx,8),%ebx
 		sub    %edx,%ebx
 		xor    %edx,%edx
-		mov    selected_team(%esi),%dl
+		mov    EXPORT_SYMBOL(selected_team)(%esi),%dl
 		lea    0x0(,%edx,4),%eax
 		add    %edx,%eax
 		lea    0x0(,%eax,8),%eax
@@ -22150,7 +22150,7 @@ equip_team:	/* 0x1fbc0 */
 		sub    %edx,%ebx
 		xor    %edx,%edx
 		mov    -0x24(%ebp),%dl
-		mov    selected_team(%edx),%dl
+		mov    EXPORT_SYMBOL(selected_team)(%edx),%dl
 		and    $0xff,%edx
 		lea    0x0(,%edx,4),%eax
 		add    %edx,%eax
@@ -22198,7 +22198,7 @@ equip_team:	/* 0x1fbc0 */
 		mov    -0x24(%ebp),%bl
 		sub    %edx,%ecx
 		xor    %edx,%edx
-		mov    selected_team(%ebx),%dl
+		mov    EXPORT_SYMBOL(selected_team)(%ebx),%dl
 		lea    0x0(,%edx,4),%eax
 		add    %edx,%eax
 		lea    0x0(,%eax,8),%eax
@@ -22243,7 +22243,7 @@ equip_team:	/* 0x1fbc0 */
 		lea    0x0(,%ecx,8),%ecx
 		sub    %edx,%ecx
 		xor    %edx,%edx
-		mov    selected_team(%ebx),%dl
+		mov    EXPORT_SYMBOL(selected_team)(%ebx),%dl
 		lea    0x0(,%edx,4),%eax
 		add    %edx,%eax
 		lea    0x0(,%eax,8),%eax
@@ -22282,7 +22282,7 @@ equip_team:	/* 0x1fbc0 */
 		mov    -0x24(%ebp),%bl
 		sub    %edx,%ecx
 		xor    %edx,%edx
-		mov    selected_team(%ebx),%dl
+		mov    EXPORT_SYMBOL(selected_team)(%ebx),%dl
 		lea    0x0(,%edx,4),%eax
 		add    %edx,%eax
 		lea    0x0(,%eax,8),%eax
@@ -22321,7 +22321,7 @@ equip_team:	/* 0x1fbc0 */
 		lea    0x0(,%ecx,8),%ecx
 		sub    %edx,%ecx
 		xor    %edx,%edx
-		mov    selected_team(%ebx),%dl
+		mov    EXPORT_SYMBOL(selected_team)(%ebx),%dl
 		lea    0x0(,%edx,4),%eax
 		add    %edx,%eax
 		lea    0x0(,%eax,8),%eax
@@ -22366,7 +22366,7 @@ equip_team:	/* 0x1fbc0 */
 		movzbl -0x24(%ebp),%esi
 		sub    %edx,%ebx
 		xor    %edx,%edx
-		mov    selected_team(%esi),%dl
+		mov    EXPORT_SYMBOL(selected_team)(%esi),%dl
 		lea    0x0(,%edx,4),%eax
 		add    %edx,%eax
 		lea    0x0(,%eax,8),%eax
@@ -22406,7 +22406,7 @@ equip_team:	/* 0x1fbc0 */
 		lea    0x0(,%ebx,8),%ebx
 		sub    %edx,%ebx
 		xor    %edx,%edx
-		mov    selected_team(%esi),%dl
+		mov    EXPORT_SYMBOL(selected_team)(%esi),%dl
 		lea    0x0(,%edx,4),%eax
 		add    %edx,%eax
 		lea    0x0(,%eax,8),%eax
@@ -22452,7 +22452,7 @@ equip_team:	/* 0x1fbc0 */
 		mov    -0x24(%ebp),%bl
 		sub    %edx,%ecx
 		xor    %edx,%edx
-		mov    selected_team(%ebx),%dl
+		mov    EXPORT_SYMBOL(selected_team)(%ebx),%dl
 		lea    0x0(,%edx,4),%eax
 		add    %edx,%eax
 		lea    0x0(,%eax,8),%eax
@@ -22490,7 +22490,7 @@ equip_team:	/* 0x1fbc0 */
 		lea    0x0(,%ecx,8),%ecx
 		sub    %edx,%ecx
 		xor    %edx,%edx
-		mov    selected_team(%ebx),%dl
+		mov    EXPORT_SYMBOL(selected_team)(%ebx),%dl
 		lea    0x0(,%edx,4),%eax
 		add    %edx,%eax
 		lea    0x0(,%eax,8),%eax
@@ -22580,7 +22580,7 @@ equip_team:	/* 0x1fbc0 */
 		sub    %edx,%ecx
 		xor    %edx,%edx
 		mov    -0x24(%ebp),%dl
-		mov    selected_team(%edx),%dl
+		mov    EXPORT_SYMBOL(selected_team)(%edx),%dl
 		and    $0xff,%edx
 		lea    0x0(,%edx,4),%eax
 		add    %edx,%eax
@@ -22629,7 +22629,7 @@ equip_team:	/* 0x1fbc0 */
 		sub    %edx,%ecx
 		xor    %edx,%edx
 		mov    -0x24(%ebp),%dl
-		mov    selected_team(%edx),%dl
+		mov    EXPORT_SYMBOL(selected_team)(%edx),%dl
 		and    $0xff,%edx
 		lea    0x0(,%edx,4),%eax
 		add    %edx,%eax
@@ -22709,7 +22709,7 @@ equip_team:	/* 0x1fbc0 */
 		mov    %bx,%ax
 		xor    %ecx,%ecx
 		mov    -0x38(%ebp),%dx
-		mov    selected_team(%eax),%cl
+		mov    EXPORT_SYMBOL(selected_team)(%eax),%cl
 		cmp    %ecx,%edx
 		jne    jump_20f76
 		inc    %eax
@@ -22827,7 +22827,7 @@ equip_team:	/* 0x1fbc0 */
 		mov    %bx,%ax
 		xor    %edx,%edx
 		mov    -0x38(%ebp),%cx
-		mov    selected_team(%eax),%dl
+		mov    EXPORT_SYMBOL(selected_team)(%eax),%dl
 		cmp    %edx,%ecx
 		jne    jump_210fd
 		inc    %eax
@@ -23058,7 +23058,7 @@ equip_team:	/* 0x1fbc0 */
 		mov    -0x24(%ebp),%bl
 		sub    %edx,%ecx
 		xor    %edx,%edx
-		mov    selected_team(%ebx),%dl
+		mov    EXPORT_SYMBOL(selected_team)(%ebx),%dl
 		lea    0x0(,%edx,4),%eax
 		add    %edx,%eax
 		movzbl -0x4(%ebp),%esi
@@ -23096,7 +23096,7 @@ equip_team:	/* 0x1fbc0 */
 		lea    0x0(,%ecx,8),%ecx
 		sub    %edx,%ecx
 		xor    %edx,%edx
-		mov    selected_team(%ebx),%dl
+		mov    EXPORT_SYMBOL(selected_team)(%ebx),%dl
 		lea    0x0(,%edx,4),%eax
 		add    %edx,%eax
 		lea    0x0(,%eax,8),%eax
@@ -23204,7 +23204,7 @@ equip_team:	/* 0x1fbc0 */
 		sub    %edx,%ebx
 		xor    %edx,%edx
 		mov    -0x24(%ebp),%dl
-		mov    selected_team(%edx),%dl
+		mov    EXPORT_SYMBOL(selected_team)(%edx),%dl
 		and    $0xff,%edx
 		lea    0x0(,%edx,4),%eax
 		add    %edx,%eax
@@ -23388,7 +23388,7 @@ equip_team:	/* 0x1fbc0 */
 		jbe    jump_218bf
 		cmpw   $0xa2,EXPORT_SYMBOL(lbDisplay__MMouseY_400)
 		jae    jump_218bf
-		mov    selected_team,%al
+		mov    EXPORT_SYMBOL(selected_team),%al
 		jmp    jump_21954
 	jump_218bf:
 		cmpw   $0x50,EXPORT_SYMBOL(lbDisplay__MMouseX_640)
@@ -23446,7 +23446,7 @@ equip_team:	/* 0x1fbc0 */
 	jump_2199b:
 		xor    %eax,%eax
 		mov    -0x24(%ebp),%al
-		mov    selected_team(%eax),%al
+		mov    EXPORT_SYMBOL(selected_team)(%eax),%al
 		xor    %ah,%ah
 		mov    %ax,-0x38(%ebp)
 	jump_219ac:
@@ -23461,7 +23461,7 @@ equip_team:	/* 0x1fbc0 */
 		jbe    jump_219e7
 		xor    %eax,%eax
 		mov    -0x24(%ebp),%al
-		mov    selected_team(%eax),%al
+		mov    EXPORT_SYMBOL(selected_team)(%eax),%al
 		xor    %ah,%ah
 		mov    %ax,-0x38(%ebp)
 		xor    %eax,%eax
@@ -23510,7 +23510,7 @@ equip_team:	/* 0x1fbc0 */
 		sub    %edx,%ebx
 		xor    %edx,%edx
 		mov    -0x24(%ebp),%dl
-		mov    selected_team(%edx),%dl
+		mov    EXPORT_SYMBOL(selected_team)(%edx),%dl
 		and    $0xff,%edx
 		lea    0x0(,%edx,4),%eax
 		add    %edx,%eax
@@ -23581,7 +23581,7 @@ equip_team:	/* 0x1fbc0 */
 		sub    %edx,%eax
 		mov    -0x24(%ebp),%bl
 		lea    0x0(,%eax,8),%eax
-		mov    selected_team(%ebx),%bl
+		mov    EXPORT_SYMBOL(selected_team)(%ebx),%bl
 		sub    %edx,%eax
 		and    $0xff,%ebx
 		mov    %eax,%edx
@@ -23645,7 +23645,7 @@ equip_team:	/* 0x1fbc0 */
 		mov    -0x24(%ebp),%al
 		sub    %edx,%ebx
 		xor    %edx,%edx
-		mov    selected_team(%eax),%dl
+		mov    EXPORT_SYMBOL(selected_team)(%eax),%dl
 		lea    0x0(,%edx,4),%eax
 		add    %edx,%eax
 		xor    %edx,%edx
@@ -23690,7 +23690,7 @@ equip_team:	/* 0x1fbc0 */
 		mov    -0x24(%ebp),%al
 		sub    %edx,%ebx
 		xor    %edx,%edx
-		mov    selected_team(%eax),%dl
+		mov    EXPORT_SYMBOL(selected_team)(%eax),%dl
 		lea    0x0(,%edx,4),%eax
 		add    %edx,%eax
 		xor    %edx,%edx
@@ -23736,7 +23736,7 @@ equip_team:	/* 0x1fbc0 */
 		sub    %edx,%ebx
 		xor    %edx,%edx
 		mov    -0x8(%ebp),%dl
-		mov    selected_team(%edx),%dl
+		mov    EXPORT_SYMBOL(selected_team)(%edx),%dl
 		and    $0xff,%edx
 		lea    0x0(,%edx,4),%eax
 		add    %edx,%eax
@@ -23795,7 +23795,7 @@ func_21e86:
 		mov    -0x24(%ebp),%al
 		sub    %edx,%ebx
 		xor    %edx,%edx
-		mov    selected_team(%eax),%dl
+		mov    EXPORT_SYMBOL(selected_team)(%eax),%dl
 		lea    0x0(,%edx,4),%eax
 		add    %edx,%eax
 		xor    %edx,%edx
@@ -23856,7 +23856,7 @@ func_21f15:
 		mov    -0x24(%ebp),%al
 		sub    %edx,%ebx
 		xor    %edx,%edx
-		mov    selected_team(%eax),%dl
+		mov    EXPORT_SYMBOL(selected_team)(%eax),%dl
 		lea    0x0(,%edx,4),%eax
 		add    %edx,%eax
 		lea    0x0(,%eax,8),%eax
@@ -23998,7 +23998,7 @@ func_2201c:
 		xor    %eax,%eax
 		mov    -0x24(%ebp),%al
 		xor    %edx,%edx
-		mov    selected_team(%eax),%dl
+		mov    EXPORT_SYMBOL(selected_team)(%eax),%dl
 		lea    0x0(,%edx,4),%eax
 		add    %edx,%eax
 		cmpb   $0x0,data_5e5c0(%ecx,%eax,8)
@@ -24016,7 +24016,7 @@ func_2201c:
 		xor    %edx,%edx
 		mov    -0x24(%ebp),%dl
 		xor    %ecx,%ecx
-		mov    selected_team(%edx),%cl
+		mov    EXPORT_SYMBOL(selected_team)(%edx),%cl
 		lea    0x0(,%ecx,4),%eax
 		add    %ecx,%eax
 		xor    %cl,%cl
@@ -24024,7 +24024,7 @@ func_2201c:
 		mov    -0x28(%ebp),%al
 		dec    %al
 		mov    %dl,%cl
-		mov    %al,selected_team(%edx)
+		mov    %al,EXPORT_SYMBOL(selected_team)(%edx)
 		mov    %al,%dl
 		and    $0xff,%edx
 		mov    data_55592,%ch
@@ -24095,7 +24095,7 @@ func_2201c:
 		mov    -0x38(%ebp),%ax
 		sub    %edx,%ebx
 		xor    %edx,%edx
-		mov    selected_team(%eax),%dl
+		mov    EXPORT_SYMBOL(selected_team)(%eax),%dl
 		lea    0x0(,%edx,4),%eax
 		add    %edx,%eax
 		cmpb   $0x0,data_5e5c0(%ebx,%eax,8)
@@ -24146,7 +24146,7 @@ func_2201c:
 		sub    %edx,%ebx
 		xor    %edx,%edx
 		mov    -0x38(%ebp),%dx
-		mov    selected_team(%edx),%dl
+		mov    EXPORT_SYMBOL(selected_team)(%edx),%dl
 		and    $0xff,%edx
 		lea    0x0(,%edx,4),%eax
 		add    %edx,%eax
@@ -24169,7 +24169,7 @@ func_2201c:
 	jump_2236f:
 		xor    %eax,%eax
 		mov    -0x24(%ebp),%al
-		mov    selected_team(%eax),%al
+		mov    EXPORT_SYMBOL(selected_team)(%eax),%al
 		and    $0xff,%eax
 		push   %eax
 		call   GetNextAvailableWeaponSlot
@@ -24187,7 +24187,7 @@ func_2201c:
 		sub    %edx,%ebx
 		xor    %edx,%edx
 		mov    -0x24(%ebp),%dl
-		mov    selected_team(%edx),%dl
+		mov    EXPORT_SYMBOL(selected_team)(%edx),%dl
 		and    $0xff,%edx
 		lea    0x0(,%edx,4),%eax
 		add    %edx,%eax
@@ -24244,7 +24244,7 @@ func_2201c:
 		mov    -0x24(%ebp),%al
 		sub    %edx,%ebx
 		xor    %edx,%edx
-		mov    selected_team(%eax),%dl
+		mov    EXPORT_SYMBOL(selected_team)(%eax),%dl
 		lea    0x0(,%edx,4),%eax
 		add    %edx,%eax
 		lea    0x0(,%eax,8),%eax
@@ -24270,7 +24270,7 @@ func_2201c:
 		mov    -0x24(%ebp),%al
 		sub    %edx,%ebx
 		xor    %edx,%edx
-		mov    selected_team(%eax),%dl
+		mov    EXPORT_SYMBOL(selected_team)(%eax),%dl
 		lea    0x0(,%edx,4),%eax
 		add    %edx,%eax
 		xor    %edx,%edx
@@ -24310,7 +24310,7 @@ func_2201c:
 		sub    %edx,%ebx
 		xor    %edx,%edx
 		mov    -0x24(%ebp),%dl
-		mov    selected_team(%edx),%dl
+		mov    EXPORT_SYMBOL(selected_team)(%edx),%dl
 		and    $0xff,%edx
 		lea    0x0(,%edx,4),%eax
 		add    %edx,%eax
@@ -24346,7 +24346,7 @@ func_2201c:
 		xor    %eax,%eax
 		mov    -0x24(%ebp),%al
 		xor    %ebx,%ebx
-		mov    selected_team(%eax),%bl
+		mov    EXPORT_SYMBOL(selected_team)(%eax),%bl
 		lea    0x0(,%ebx,4),%eax
 		add    %ebx,%eax
 		lea    0x0(,%eax,8),%eax
@@ -24401,7 +24401,7 @@ func_2201c:
 		mov    -0x24(%ebp),%al
 		sub    %edx,%ebx
 		xor    %edx,%edx
-		mov    selected_team(%eax),%dl
+		mov    EXPORT_SYMBOL(selected_team)(%eax),%dl
 		lea    0x0(,%edx,4),%eax
 		add    %edx,%eax
 		lea    0x0(,%eax,8),%eax
@@ -24426,7 +24426,7 @@ func_2273c:
 		sub    %edx,%ebx
 		xor    %edx,%edx
 		mov    -0x24(%ebp),%dl
-		mov    selected_team(%edx),%dl
+		mov    EXPORT_SYMBOL(selected_team)(%edx),%dl
 		and    $0xff,%edx
 		lea    0x0(,%edx,4),%eax
 		add    %edx,%eax
@@ -25306,7 +25306,7 @@ PurchasePart:	/* 0x23120 */
 		cmp    players(%eax),%edi
 		ja     jump_2336a
 		movzbl 0x18(%esp),%esi
-		movzbl selected_team(%esi),%esi
+		movzbl EXPORT_SYMBOL(selected_team)(%esi),%esi
 		lea    0x0(,%esi,4),%eax
 		add    %esi,%eax
 		lea    0x0(,%eax,8),%eax
@@ -25477,7 +25477,7 @@ PurchaseWeapon:	/* 0x23370 */
 		cmpb   $0x8,(%esp)
 		jae    jump_23425
 		xor    %ecx,%ecx
-		mov    selected_team(%esi),%cl
+		mov    EXPORT_SYMBOL(selected_team)(%esi),%cl
 		lea    0x0(,%ecx,4),%eax
 		add    %ecx,%eax
 		lea    0x0(,%eax,8),%eax
@@ -25522,7 +25522,7 @@ GetNextAvailableWeaponSlot:	/* 0x23430 */
 		mov    0xc(%esp),%al
 		sub    %edx,%ebx
 		xor    %edx,%edx
-		mov    selected_team(%eax),%dl
+		mov    EXPORT_SYMBOL(selected_team)(%eax),%dl
 		lea    0x0(,%edx,4),%eax
 		add    %edx,%eax
 		lea    0x0(,%eax,8),%eax
@@ -25593,7 +25593,7 @@ ThisPlayerInTeam:	/* 0x23510 */
 		xor    %eax,%eax
 		mov    %bl,%al
 		xor    %edx,%edx
-		mov    selected_team(%eax),%dl
+		mov    EXPORT_SYMBOL(selected_team)(%eax),%dl
 		xor    %eax,%eax
 		mov    %bh,%al
 		dec    %eax
@@ -26054,7 +26054,7 @@ set_default_player:	/* 0x23880 */
 		mov    0x14(%esp),%dl
 		mov    %dl,data_5e5c0(%ecx,%eax,8)
 		mov    (%esp),%al
-		mov    %al,selected_team(%ebx)
+		mov    %al,EXPORT_SYMBOL(selected_team)(%ebx)
 		jmp    jump_23b44
 	jump_23b0d:
 		xor    %edx,%edx
@@ -26341,13 +26341,13 @@ set_default_player:	/* 0x23880 */
 		jb     jump_23db0
 		push   $0x1e9
 		push   $0x0
-		push   $research
+		push   $EXPORT_SYMBOL(research)
 		mov    $0xffffffff,%edi
 		call   ac_LbMemorySet
 		mov    $0x2,%ch
 		add    $0xc,%esp
 		mov    %edi,data_55597
-		mov    %ch,research
+		mov    %ch,EXPORT_SYMBOL(research)
 		add    $0x18,%esp
 		pop    %ebp
 		pop    %edi
@@ -31716,7 +31716,7 @@ map_selection:	/* 0x27e00 */
 		add    $0x4,%esp
 		test   %al,%al
 		je     jump_27f12
-		cmpb   $0x1,research
+		cmpb   $0x1,EXPORT_SYMBOL(research)
 		jne    jump_27e80
 		call   CompleteResearch
 	jump_27e80:
@@ -51729,7 +51729,7 @@ func_359e6:
 		jb     jump_35b50
 	jump_35baa:
 		xor    %al,%al
-		mov    %al,research
+		mov    %al,EXPORT_SYMBOL(research)
 		mov    0x72(%ebp),%al
 		mov    0x6e(%ebp),%ah
 		mov    %al,data_55596
@@ -51857,7 +51857,7 @@ func_359e6:
 		push   $0xfc0
 		mov    0x46(%ebp),%ebx
 		call   process_day
-		mov    research,%ah
+		mov    EXPORT_SYMBOL(research),%ah
 		inc    %ebx
 		add    $0x4,%esp
 		mov    %bx,0x46(%ebp)
@@ -52204,7 +52204,7 @@ CompleteResearch:	/* 0x36190 */
 		sub    $0x10,%esp
 		mov    $0x2,%ah
 		mov    data_55595,%al
-		mov    %ah,research
+		mov    %ah,EXPORT_SYMBOL(research)
 		cmp    $0x1,%al
 		jb     jump_362c9
 		jbe    jump_361b9
@@ -55299,12 +55299,12 @@ load_player:	/* 0x38350 */
 		call   LbFileRead_
 		add    $0xc,%esp
 		push   $0x1e9
-		push   $research
+		push   $EXPORT_SYMBOL(research)
 		push   %ebx
 		call   LbFileRead_
 		add    $0xc,%esp
 		push   $0x4
-		push   $selected_team
+		push   $EXPORT_SYMBOL(selected_team)
 		push   %ebx
 		call   LbFileRead_
 		add    $0xc,%esp
@@ -55387,12 +55387,12 @@ save_player:	/* 0x38420 */
 		call   LbFileWrite_
 		add    $0xc,%esp
 		push   $0x1e9
-		push   $research
+		push   $EXPORT_SYMBOL(research)
 		push   %ebx
 		call   LbFileWrite_
 		add    $0xc,%esp
 		push   $0x4
-		push   $selected_team
+		push   $EXPORT_SYMBOL(selected_team)
 		push   %ebx
 		call   LbFileWrite_
 		add    $0xc,%esp
@@ -83814,7 +83814,7 @@ data_55591:
 		.ascii  "\x00"
 data_55592:
 		.ascii  "\x04\x00"
-research:	/* 0x55594 */
+GLOBAL (research)	/* 0x55594 */
 		.ascii  "\x00"
 data_55595:
 		.ascii  "\x00"
@@ -85364,7 +85364,7 @@ data_60a9c:
 		.fill   0x4
 m_select_pal:	/* 0x60aa0 */
 		.fill   0x4
-selected_team:	/* 0x60aa4 */
+GLOBAL (selected_team)	/* 0x60aa4 */
 		.ascii  "\x00"
 data_60aa5:
 		.ascii  "\x00"

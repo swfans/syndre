@@ -73,7 +73,8 @@ struct PlayerInfo {
 };
 
 
-extern struct PlayerInfo players[8];
+extern struct PlayerInfo players[PLAYERS_LIMIT];
+extern ubyte selected_team[4];
 
 #pragma pack()
 /******************************************************************************/
