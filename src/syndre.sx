@@ -32299,7 +32299,7 @@ show_city_info:	/* 0x28610 */
 		lea    0x0(,%eax,4),%edx
 		xor    %eax,%eax
 		mov    EXPORT_SYMBOL(language),%al
-		mov    text_lang(%edx,%eax,4),%ecx
+		mov    EXPORT_SYMBOL(gui_strings)(%edx,%eax,4),%ecx
 		push   %ecx
 		call   GetLineWidth
 		xor    %edx,%edx
@@ -32321,7 +32321,7 @@ show_city_info:	/* 0x28610 */
 		xor    %edx,%edx
 		mov    EXPORT_SYMBOL(language),%dl
 		lea    0x0(,%edx,4),%edx
-		mov    text_lang(%edx,%eax,4),%esi
+		mov    EXPORT_SYMBOL(gui_strings)(%edx,%eax,4),%esi
 		push   %esi
 		call   new_show_text
 		add    $0x28,%esp
@@ -82642,7 +82642,7 @@ level_palettes:	/* 0x54170 */
 		.ascii  "\x03\x04\x05\x01\x02\x03\x04\x05"
 		.ascii  "\x01\x02\x03\x04\x05\x01\x02\x03"
 		.ascii  "\x04\x05\x00\x00"
-text_lang:	/* 0x541a4 */
+GLOBAL (gui_strings)	/* 0x541a4 */
 		.long   aAlgeria
 		.long   aAlgerie
 		.long   aAlgeria

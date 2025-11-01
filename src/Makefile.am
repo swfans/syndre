@@ -12,6 +12,8 @@ syndre_SOURCES = \
 	game_data.h \
 	game.c \
 	game.h \
+	guitext.c \
+	guitext.h \
 	keyboard.c \
 	keyboard.h \
 	main.c \

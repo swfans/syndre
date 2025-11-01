@@ -15,6 +15,7 @@
 #include "display.h"
 #include "game.h"
 #include "game_data.h"
+#include "guitext.h"
 #include "keyboard.h"
 #include "util.h"
 
@@ -36,7 +37,6 @@ extern char Network__Name[18];
 extern TbBool SoundAble;
 extern TbBool MusicAble;
 
-extern ubyte language;
 extern ubyte byte_60B4C;
 extern ushort current_levno;
 extern ushort level__MapNumber;
