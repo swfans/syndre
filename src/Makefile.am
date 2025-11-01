@@ -34,6 +34,8 @@ syndre_SOURCES = \
 	oswindws.h \
 	util.c \
 	util.h \
+	weapon.c \
+	weapon.h \
 	wrcountry.c \
 	wrcountry.h
 

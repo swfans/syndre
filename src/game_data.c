@@ -28,6 +28,8 @@
 #include "oswindws.h"
 
 #include "guitext.h"
+#include "player.h"
+#include "weapon.h"
 #include "wrcountry.h"
 
 static char data_path_user[DISKPATH_SIZE] = "";
