@@ -40,8 +40,8 @@ struct gpoly_state {
     int ratioCA_X2Y;
     int ratioBA_X2Y;
     int ratioCB_X2Y;
-    int incA_S;
-    int incB_S;
+    struct gpoly_factors incC;
+    struct gpoly_factors incD;
     int ptA_Y;
     int ptA_X;
     int ptA_X_prc;
@@ -67,12 +67,6 @@ struct gpoly_state {
     int var_0B8;
     int var_0B4;
     int var_0A8;
-    int var_0A4;
-    int var_0A0;
-    int var_09C;
-    int var_098;
-    int var_094;
-    int var_090;
     struct gpoly_blends bldA;
     struct gpoly_blends bldB;
 };

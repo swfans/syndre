@@ -537,6 +537,76 @@ static void gpoly_stb_drw_decr4(struct gpoly_blends *p_bld, const struct gpoly_f
     p_bld->B[1] = (a3b_h << 8) | a3b_l;
 }
 
+static void gpoly_convert_uv2(struct gpoly_factors *p_inc, uint u, uint v)
+{
+    uint fctr_us, fctr_vs, fctr_vu;
+    TbBool mone;
+
+    fctr_us = u >> 16;
+    fctr_vs = v >> 16;
+    fctr_vu = ((v << 16) & 0xFFFFFF00) | ((fctr_us) & 0xFF);
+    if ((fctr_vu & 0x80) != 0) {
+        mone = fctr_vu < 0x100;
+        fctr_vu -= 0x100;
+        fctr_vs = ((fctr_vs) & 0xFFFFFF00) | ((fctr_vs - mone) & 0xFF);
+    }
+    p_inc->S[1] = u << 16;
+    p_inc->S[2] = fctr_vu;
+    p_inc->S[3] = fctr_vs;
+}
+
+static void gpoly_convert_uv3a(struct gpoly_factors *p_inc, uint u, uint v)
+{
+    uint fctr_us, fctr_vs, fctr_vu;
+    TbBool mone;
+
+    fctr_vs = p_inc->S[0] >> 8;
+    fctr_us = u >> 16;
+    fctr_vu = ((u << 16) & 0xFFFF0000) | ((fctr_vs) & 0xFFFF);
+    if ((fctr_vu & 0x8000) != 0) {
+        mone = fctr_vu < 0x10000;
+        fctr_vu -= 0x10000;
+        fctr_us = (fctr_us & 0xFFFFFF00) | ((fctr_us - mone) & 0xFF);
+    }
+
+    fctr_vs = v >> 16;
+    fctr_vu = ((v << 16) & 0xFFFFFF00) | (fctr_us & 0xFF);
+    if ((fctr_vu & 0x80) != 0) {
+        mone = fctr_vu < 0x100;
+        fctr_vu -= 0x100;
+        fctr_vs = (fctr_vs & 0xFFFFFF00) | ((fctr_vs - mone) & 0xFF);
+    }
+    p_inc->S[1] = fctr_vu;
+    p_inc->S[2] = fctr_vu;
+    p_inc->S[3] = fctr_vs;
+}
+
+static void gpoly_convert_uv3b(struct gpoly_factors *p_inc, uint u, uint v)
+{
+    uint fctr_us, fctr_vs, fctr_vu;
+    TbBool mone;
+
+    fctr_vs = p_inc->S[0] >> 8;
+    fctr_us = u >> 16;
+    fctr_vu = ((u << 16) & 0xFFFF0000) | ((fctr_vs) & 0xFFFF);
+    if ((fctr_vu & 0x8000) != 0) {
+        mone = fctr_vu < 0x10000;
+        fctr_vu -= 0x10000;
+        fctr_us = ((fctr_us) & 0xFFFFFF00) | ((fctr_us - mone) & 0xFF);
+    }
+    p_inc->S[1] = fctr_vu;
+
+    fctr_vs = v >> 16;
+    fctr_vu = ((v << 16) & 0xFFFFFF00) | ((fctr_us) & 0xFF);
+    if ((fctr_vu & 0x80) != 0) {
+        mone = fctr_vu < 0x100;
+        fctr_vu -= 0x100;
+        fctr_vs = ((fctr_vs) & 0xFFFFFF00) | ((fctr_vs - mone) & 0xFF);
+    }
+    p_inc->S[2] = fctr_vu;
+    p_inc->S[3] = fctr_vs;
+}
+
 void gpoly_sta_md03(struct gpoly_state *st)
 {
     int loc_incA_V, loc_incB_V, loc_incA_U, loc_incB_U;
@@ -612,35 +682,8 @@ void gpoly_sta_md03(struct gpoly_state *st)
     ptB_V_prc = st->ptB_V << 16;
 
     {
-        TbBool mone;
-        int fctr_e;
-        unsigned int fctr_f;
-
-        st->incB.S[1] = base_U << 16;
-        st->incB.S[2] = base_U >> 16;
-
-        fctr_e = base_V >> 16;
-        fctr_f = ((base_V << 16) & 0xFFFFFF00) | ((st->incB.S[2]) & 0xFF);
-        if ((fctr_f & 0x80) != 0) {
-            mone = fctr_f < 0x100;
-            fctr_f -= 0x100;
-            fctr_e = ((fctr_e) & 0xFFFFFF00) | ((fctr_e - mone) & 0xFF);
-        }
-        st->incB.S[2] = fctr_f;
-        st->incB.S[3] = fctr_e;
-
-        st->var_0A4 = loc_incA_U << 16;
-        st->var_0A0 = loc_incA_U >> 16;
-
-        fctr_e = loc_incA_V >> 16;
-        fctr_f = ((loc_incA_V << 16) & 0xFFFFFF00) | ((st->var_0A0) & 0xFF);
-        if ((fctr_f & 0x80) != 0) {
-            mone = fctr_f < 0x100;
-            fctr_f -= 0x100;
-            fctr_e = ((fctr_e) & 0xFFFFFF00) | ((fctr_e - mone) & 0xFF);
-        }
-        st->var_0A0 = fctr_f;
-        st->var_09C = fctr_e;
+        gpoly_convert_uv2(&st->incB, base_U, base_V);
+        gpoly_convert_uv2(&st->incD, loc_incA_U, loc_incA_U);
 
         st->bldA.B[2] = ptA_U_prc << 16;
         st->bldA.B[0] = ((ptA_V_prc << 16) & 0xFFFFFF00) | ((ptA_U_prc >> 16) & 0xFF);
@@ -649,21 +692,7 @@ void gpoly_sta_md03(struct gpoly_state *st)
 
     if (st->var_134 >= 0)
     {
-        TbBool mone;
-        int fctr_e;
-        unsigned int fctr_f;
-
-        st->var_098 = loc_incB_U << 16;
-        st->var_094 = loc_incB_U >> 16;
-        fctr_e = loc_incB_V >> 16;
-        fctr_f = ((loc_incB_V << 16) & 0xFFFFFF00) | (st->var_094 & 0xFF);
-        if ((fctr_f & 0x80) != 0) {
-          mone = fctr_f < 0x100;
-          fctr_f -= 0x100;
-          fctr_e = ((fctr_e) & 0xFFFFFF00) | ((fctr_e - mone) & 0xFF);
-        }
-        st->var_094 = fctr_f;
-        st->var_090 = fctr_e;
+        gpoly_convert_uv2(&st->incC, loc_incB_U, loc_incB_V);
 
         st->bldB.B[2] = ptB_U_prc << 16;
         st->bldB.B[0] = ((ptB_V_prc << 16) & 0xFFFFFF00) | ((ptB_U_prc >> 16) & 0xFF);
@@ -709,7 +738,7 @@ void gpoly_sta_md04(struct gpoly_state *st)
             mag_a1 = 0x7FFFFFFF / dist_c5;
         else
             mag_a1 = gpoly_reptable[dist_c5];
-        st->incA_S = gpoly_mul_rot_2(mag_a1, 2 * (st->ptC_S - st->ptA_S));
+        st->incD.S[0] = gpoly_mul_rot_2(mag_a1, 2 * (st->ptC_S - st->ptA_S));
     }
     else
     {
@@ -720,14 +749,14 @@ void gpoly_sta_md04(struct gpoly_state *st)
             mag_a1 = 0x7FFFFFFF / dist_c5;
         else
             mag_a1 = gpoly_reptable[dist_c5];
-        st->incA_S = gpoly_mul_rot_2(mag_a1, 2 * (st->ptB_S - st->ptA_S));
+        st->incD.S[0] = gpoly_mul_rot_2(mag_a1, 2 * (st->ptB_S - st->ptA_S));
 
         dist_c5 = st->ptC_Y - st->ptB_Y;
         if (dist_c5 > 255)
             mag_a1 = 0x7FFFFFFF / dist_c5;
         else
             mag_a1 = gpoly_reptable[dist_c5];
-        st->incB_S = gpoly_mul_rot_2(mag_a1, 2 * (st->ptC_S - st->ptB_S));
+        st->incC.S[0] = gpoly_mul_rot_2(mag_a1, 2 * (st->ptC_S - st->ptB_S));
     }
 }
 
@@ -777,7 +806,7 @@ void gpoly_sta_md05(struct gpoly_state *st)
           mag_a1 = 0x7FFFFFFF / dist_c5;
         else
           mag_a1 = gpoly_reptable[dist_c5];
-        st->incA_S = gpoly_mul_rot_2(mag_a1, 2 * (st->ptC_S - st->ptA_S));
+        st->incD.S[0] = gpoly_mul_rot_2(mag_a1, 2 * (st->ptC_S - st->ptA_S));
         loc_incA_U = gpoly_mul_rot_2(mag_a1, 2 * (st->ptC_U - st->ptA_U));
         loc_incA_V = gpoly_mul_rot_2(mag_a1, 2 * (st->ptC_V - st->ptA_V));
     }
@@ -790,7 +819,7 @@ void gpoly_sta_md05(struct gpoly_state *st)
           mag_a1 = 0x7FFFFFFF / dist_c5;
         else
           mag_a1 = gpoly_reptable[dist_c5];
-        st->incA_S = gpoly_mul_rot_2(mag_a1, 2 * (st->ptB_S - st->ptA_S));
+        st->incD.S[0] = gpoly_mul_rot_2(mag_a1, 2 * (st->ptB_S - st->ptA_S));
         loc_incA_U = gpoly_mul_rot_2(mag_a1, 2 * (st->ptB_U - st->ptA_U));
         loc_incA_V = gpoly_mul_rot_2(mag_a1, 2 * (st->ptB_V - st->ptA_V));
 
@@ -799,7 +828,7 @@ void gpoly_sta_md05(struct gpoly_state *st)
           mag_a1 = 0x7FFFFFFF / dist_c5;
         else
           mag_a1 = gpoly_reptable[dist_c5];
-        st->incB_S = gpoly_mul_rot_2(mag_a1, 2 * (st->ptC_S - st->ptB_S));
+        st->incC.S[0] = gpoly_mul_rot_2(mag_a1, 2 * (st->ptC_S - st->ptB_S));
         loc_incB_U = gpoly_mul_rot_2(mag_a1, 2 * (st->ptC_U - st->ptB_U));
         loc_incB_V = gpoly_mul_rot_2(mag_a1, 2 * (st->ptC_V - st->ptB_V));
     }
@@ -814,84 +843,25 @@ void gpoly_sta_md05(struct gpoly_state *st)
     ptB_V_prc = st->ptB_V << 16;
 
     {
-        TbBool mone;
-        int fctr_e, fctr_s;
-        unsigned int fctr_f;
+        int fctr_s;
 
-        fctr_e = base_U >> 16;
-        fctr_f = ((base_U << 16) & 0xFFFF0000) | ((st->incB.S[0] >> 8) & 0xFFFF);
-        if ((fctr_f & 0x8000) != 0) {
-            mone = fctr_f < 0xFFFF;
-            fctr_f -= 0xFFFF;
-            fctr_e = ((fctr_e) & 0xFFFFFF00) | ((fctr_e - mone) & 0xFF);
-        }
-        st->incB.S[1] = fctr_f;
-        st->incB.S[2] = fctr_e;
+        gpoly_convert_uv3b(&st->incB, base_U, base_V);
+        gpoly_convert_uv3b(&st->incD, loc_incA_U, loc_incA_V);
 
-        fctr_e = base_V >> 16;
-        fctr_f = ((base_V << 16) & 0xFFFFFF00) | (st->incB.S[2] & 0xFF);
-        if ((fctr_f & 0x80u) != 0) {
-            mone = fctr_f < 0x100;
-            fctr_f -= 0x100;
-            fctr_e = ((fctr_e) & 0xFFFFFF00) | ((fctr_e - mone) & 0xFF);
-        }
-        st->incB.S[2] = fctr_f;
-        st->incB.S[3] = fctr_e;
-
-        fctr_e = loc_incA_U >> 16;
-        fctr_f = ((loc_incA_U << 16) & 0xFFFF0000) | ((st->incA_S >> 8) & 0xFFFF);
-        if ((fctr_f & 0x8000) != 0) {
-            mone = fctr_f < 0x10000;
-            fctr_f -= 0x10000;
-            fctr_e = ((fctr_e) & 0xFFFFFF00) | ((fctr_e - mone) & 0xFF);
-        }
-        st->var_0A4 = fctr_f;
-        st->var_0A0 = fctr_e;
-
-        fctr_e = loc_incA_V >> 16;
-        fctr_f = ((loc_incA_V << 16) & 0xFFFFFF00) | (st->var_0A0 & 0xFF);
-        if ((fctr_f & 0x80) != 0) {
-            mone = fctr_f < 0x100;
-            fctr_f -= 0x100;
-            fctr_e = ((fctr_e) & 0xFFFFFF00) | ((fctr_e - mone) & 0xFF);
-        }
-        st->var_0A0 = fctr_f;
-        st->var_09C = fctr_e;
-
+        fctr_s = (uint)(ptA_V_prc << 8) >> 24 << 8;
         st->bldA.B[2] = ((ptA_U_prc << 16) & 0xFFFF0000) | ((ptA_S_prc >> 8) & 0xFFFF);
-        fctr_s = (unsigned int)(ptA_V_prc << 8) >> 24 << 8;
         st->bldA.B[0] = ((ptA_V_prc << 16) & 0xFFFFFF00) | ((ptA_U_prc >> 16) & 0xFF);
         st->bldA.B[1] = ((fctr_s) & 0xFFFFFF00) | ((ptA_S_prc) & 0xFF);
     }
 
     if (st->var_134 >= 0)
     {
-        TbBool mone;
-        int fctr_e, fctr_s;
-        unsigned int fctr_f;
+        int fctr_s;
 
-        fctr_e = loc_incB_U >> 16;
-        fctr_f = ((loc_incB_U << 16) & 0xFFFF0000) | ((st->incB_S >> 8) & 0xFFFF);
-        if ((fctr_f & 0x8000) != 0) {
-          mone = fctr_f < 0x10000;
-          fctr_f -= 0x10000;
-          fctr_e = ((fctr_e) & 0xFFFFFF00) | ((fctr_e - mone) & 0xFF);
-        }
-        st->var_098 = fctr_f;
-        st->var_094 = fctr_e;
+        gpoly_convert_uv3b(&st->incC, loc_incB_U, loc_incB_V);
 
-        fctr_e = loc_incB_V >> 16;
-        fctr_f = ((loc_incB_V << 16) & 0xFFFFFF00) | (st->var_094 & 0xFF);
-        if ((fctr_f & 0x80) != 0) {
-          mone = fctr_f < 0x100;
-          fctr_f -= 0x100;
-          fctr_e = ((fctr_e) & 0xFFFFFF00) | ((fctr_e - mone) & 0xFF);
-        }
-        st->var_094 = fctr_f;
-        st->var_090 = fctr_e;
-
+        fctr_s = (uint)(ptB_V_prc << 8) >> 24 << 8;
         st->bldB.B[2] = ((ptB_U_prc << 16) & 0xFFFF0000) | ((ptB_S_prc >> 8) & 0xFFFF);
-        fctr_s = (unsigned int)(ptB_V_prc << 8) >> 24 << 8;
         st->bldB.B[0] = ((ptB_V_prc << 16) & 0xFFFFFF00) | ((ptB_U_prc >> 16) & 0xFF);
         st->bldB.B[1] = (fctr_s & 0xFFFFFF00) | ((ptB_S_prc) & 0xFF);
     }
@@ -949,7 +919,7 @@ void gpoly_sta_md27(struct gpoly_state *st)
         tmp = ((base_V * st->ratioCA_X2Y) & 0xFFFF0000) | (((base_V * (s64)st->ratioCA_X2Y) >> 32) & 0xFFFF);
         loc_incA_V -= bw_rotl32(tmp, 16);
         tmp = ((st->incB.S[0] * st->ratioCA_X2Y) & 0xFFFF0000) | (((st->incB.S[0] * (s64)st->ratioCA_X2Y) >> 32) & 0xFFFF);
-        st->incA_S -= bw_rotl32(tmp, 16);
+        st->incD.S[0] -= bw_rotl32(tmp, 16);
     }
     else
     {
@@ -964,7 +934,7 @@ void gpoly_sta_md27(struct gpoly_state *st)
         loc_incA_V = gpoly_mul_rot_2(mag_a1, 2 * (st->ptB_V - st->ptA_V));
 
         dist_c5 = st->ptC_Y - st->ptB_Y;
-        if ( dist_c5 > 255 )
+        if (dist_c5 > 255)
             mag_a1 = 0x7FFFFFFF / dist_c5;
         else
             mag_a1 = gpoly_reptable[dist_c5];
@@ -976,13 +946,13 @@ void gpoly_sta_md27(struct gpoly_state *st)
         tmp = ((base_V * st->ratioBA_X2Y) & 0xFFFF0000) | (((base_V * (s64)st->ratioBA_X2Y) >> 32) & 0xFFFF);
         loc_incA_V -= bw_rotl32(tmp, 16);
         tmp = ((st->incB.S[0] * st->ratioBA_X2Y) & 0xFFFF0000) | (((st->incB.S[0] * (s64)st->ratioBA_X2Y) >> 32) & 0xFFFF);
-        st->incA_S -= bw_rotl32(tmp, 16);
+        st->incD.S[0] -= bw_rotl32(tmp, 16);
         tmp = ((base_U * st->ratioCB_X2Y) & 0xFFFF0000) | (((base_U * (s64)st->ratioCB_X2Y) >> 32) & 0xFFFF);
         loc_incB_U -= bw_rotl32(tmp, 16);
         tmp = ((base_V * st->ratioCB_X2Y) & 0xFFFF0000) | (((base_V * (s64)st->ratioCB_X2Y) >> 32) & 0xFFFF);
         loc_incB_V -= bw_rotl32(tmp, 16);
         tmp = ((st->incB.S[0] * st->ratioCB_X2Y) & 0xFFFF0000) | (((st->incB.S[0] * (s64)st->ratioCB_X2Y) >> 32) & 0xFFFF);
-        st->incB_S -= bw_rotl32(tmp, 16);
+        st->incC.S[0] -= bw_rotl32(tmp, 16);
     }
 
     int ptA_U_prc, ptA_V_prc, ptB_U_prc, ptB_V_prc;
@@ -993,61 +963,21 @@ void gpoly_sta_md27(struct gpoly_state *st)
     ptB_V_prc = base_V + (st->ptB_V << 16);
 
     {
-        TbBool mone;
-        int fctr_e;
-        unsigned int fctr_f;
-
-        st->incB.S[1] = base_U << 16;
-        st->incB.S[2] = base_U >> 16;
-        fctr_e = base_V >> 16;
-        fctr_f = ((base_V << 16) & 0xFFFFFF00) | (st->incB.S[2] & 0xFF);
-        if ((fctr_f & 0x80) != 0) {
-            mone = fctr_f < 0x100;
-            fctr_f -= 0x100;
-            fctr_e = ((fctr_e) & 0xFFFFFF00) | ((fctr_e - mone) & 0xFF);
-        }
-        st->incB.S[2] = fctr_f;
-        st->incB.S[3] = fctr_e;
-
-        st->var_0A4 = loc_incA_U << 16;
-        st->var_0A0 = loc_incA_U >> 16;
-
-        fctr_e = loc_incA_V >> 16;
-        fctr_f = ((loc_incA_V << 16) & 0xFFFFFF00) | (st->var_0A0 & 0xFF);
-        if ((fctr_f & 0x80) != 0) {
-            mone = fctr_f < 0x100;
-            fctr_f -= 0x100;
-            fctr_e = ((fctr_e) & 0xFFFFFF00) | ((fctr_e - mone) & 0xFF);
-        }
-        st->var_0A0 = fctr_f;
-        st->var_09C = fctr_e;
+        gpoly_convert_uv2(&st->incB, base_U, base_V);
+        gpoly_convert_uv2(&st->incD, loc_incA_U, loc_incA_V);
 
         st->bldA.B[2] = ptA_U_prc << 16;
         st->bldA.B[0] = ((ptA_V_prc << 16) & 0xFFFFFF00) | ((ptA_U_prc >> 16) & 0xFF);
-        st->bldA.B[1] = (unsigned int)(ptA_V_prc << 8) >> 24 << 8;
+        st->bldA.B[1] = (uint)(ptA_V_prc << 8) >> 24 << 8;
     }
 
     if (st->var_134 >= 0)
     {
-        TbBool mone;
-        int fctr_e;
-        unsigned int fctr_f;
-
-        st->var_098 = loc_incB_U << 16;
-        st->var_094 = loc_incB_U >> 16;
-        fctr_e = loc_incB_V >> 16;
-        fctr_f = ((loc_incB_V << 16) & 0xFFFFFF00) | (st->var_094 & 0xFF);
-        if ((fctr_f & 0x80) != 0) {
-            mone = fctr_f < 0x100;
-            fctr_f -= 256;
-            fctr_e = ((fctr_e) & 0xFFFFFF00) | ((fctr_e - mone) & 0xFF);
-        }
-        st->var_094 = fctr_f;
-        st->var_090 = fctr_e;
+        gpoly_convert_uv2(&st->incC, loc_incB_U, loc_incB_V);
 
         st->bldB.B[2] = ptB_U_prc << 16;
         st->bldB.B[0] = ((ptB_V_prc << 16) & 0xFFFFFF00) | ((ptB_U_prc >> 16) & 0xFF);
-        st->bldB.B[1] = (unsigned int)(ptB_V_prc << 8) >> 24 << 8;
+        st->bldB.B[1] = (uint)(ptB_V_prc << 8) >> 24 << 8;
     }
 }
 
@@ -1097,7 +1027,7 @@ void gpoly_sta_md28(struct gpoly_state *st)
             mag_a1 = 0x7FFFFFFF / dist_c5;
         else
             mag_a1 = gpoly_reptable[dist_c5];
-        st->incA_S = gpoly_mul_rot_2(mag_a1, 2 * (st->ptC_S - st->ptA_S));
+        st->incD.S[0] = gpoly_mul_rot_2(mag_a1, 2 * (st->ptC_S - st->ptA_S));
         loc_incA_U = gpoly_mul_rot_2(mag_a1, 2 * (st->ptC_U - st->ptA_U));
         loc_incA_V = gpoly_mul_rot_2(mag_a1, 2 * (st->ptC_V - st->ptA_V));
 
@@ -1106,7 +1036,7 @@ void gpoly_sta_md28(struct gpoly_state *st)
         tmp = ((base_V * st->ratioCA_X2Y) & 0xFFFF0000) | (((base_V * (s64)st->ratioCA_X2Y) >> 32) & 0xFFFF);
         loc_incA_V -= bw_rotl32(tmp, 16);
         tmp = ((st->incB.S[0] * st->ratioCA_X2Y) & 0xFFFF0000) | (((st->incB.S[0] * (s64)st->ratioCA_X2Y) >> 32) & 0xFFFF);
-        st->incA_S -= bw_rotl32(tmp, 16);
+        st->incD.S[0] -= bw_rotl32(tmp, 16);
     }
     else
     {
@@ -1117,7 +1047,7 @@ void gpoly_sta_md28(struct gpoly_state *st)
           mag_a1 = 0x7FFFFFFF / dist_c5;
         else
           mag_a1 = gpoly_reptable[dist_c5];
-        st->incA_S = gpoly_mul_rot_2(mag_a1, 2 * (st->ptB_S - st->ptA_S));
+        st->incD.S[0] = gpoly_mul_rot_2(mag_a1, 2 * (st->ptB_S - st->ptA_S));
         loc_incA_U = gpoly_mul_rot_2(mag_a1, 2 * (st->ptB_U - st->ptA_U));
         loc_incA_V = gpoly_mul_rot_2(mag_a1, 2 * (st->ptB_V - st->ptA_V));
 
@@ -1126,7 +1056,7 @@ void gpoly_sta_md28(struct gpoly_state *st)
           mag_a1 = 0x7FFFFFFF / dist_c5;
         else
           mag_a1 = gpoly_reptable[dist_c5];
-        st->incB_S = gpoly_mul_rot_2(mag_a1, 2 * (st->ptC_S - st->ptB_S));
+        st->incC.S[0] = gpoly_mul_rot_2(mag_a1, 2 * (st->ptC_S - st->ptB_S));
         loc_incB_U = gpoly_mul_rot_2(mag_a1, 2 * (st->ptC_U - st->ptB_U));
         loc_incB_V = gpoly_mul_rot_2(mag_a1, 2 * (st->ptC_V - st->ptB_V));
 
@@ -1135,13 +1065,13 @@ void gpoly_sta_md28(struct gpoly_state *st)
         tmp = ((base_V * st->ratioBA_X2Y) & 0xFFFF0000) | (((base_V * (s64)st->ratioBA_X2Y) >> 32) & 0xFFFF);
         loc_incA_V -= bw_rotl32(tmp, 16);
         tmp = ((st->incB.S[0] * st->ratioBA_X2Y) & 0xFFFF0000) | (((st->incB.S[0] * (s64)st->ratioBA_X2Y) >> 32) & 0xFFFF);
-        st->incA_S -= bw_rotl32(tmp, 16);
+        st->incD.S[0] -= bw_rotl32(tmp, 16);
         tmp = ((base_U * st->ratioCB_X2Y) & 0xFFFF0000) | (((base_U * (s64)st->ratioCB_X2Y) >> 32) & 0xFFFF);
         loc_incB_U -= bw_rotl32(tmp, 16);
         tmp = ((base_V * st->ratioCB_X2Y) & 0xFFFF0000) | (((base_V * (s64)st->ratioCB_X2Y) >> 32) & 0xFFFF);
         loc_incB_V -= bw_rotl32(tmp, 16);
         tmp = ((st->incB.S[0] * st->ratioCB_X2Y) & 0xFFFF0000) | (((st->incB.S[0] * (s64)st->ratioCB_X2Y) >> 32) & 0xFFFF);
-        st->incB_S -= bw_rotl32(tmp, 16);
+        st->incC.S[0] -= bw_rotl32(tmp, 16);
     }
 
     int ptA_S_prc, ptA_U_prc, ptA_V_prc, ptB_S_prc, ptB_U_prc, ptB_V_prc;
@@ -1154,84 +1084,25 @@ void gpoly_sta_md28(struct gpoly_state *st)
     ptB_V_prc = base_V + (st->ptB_V << 16);
 
     {
-        TbBool mone;
-        int fctr_e, fctr_s;
-        unsigned int fctr_f;
+        int fctr_s;
 
-        fctr_e = base_U >> 16;
-        fctr_f = ((base_U << 16) & 0xFFFF0000) | ((st->incB.S[0] >> 8) & 0xFFFF);
-        if ((fctr_f & 0x8000) != 0) {
-            mone = fctr_f < 0xFFFF;
-            fctr_f -= 0xFFFF;
-            fctr_e = (fctr_e & 0xFFFFFF00) | ((fctr_e - mone) & 0xFF);
-        }
-        st->incB.S[1] = fctr_f;
-        st->incB.S[2] = fctr_e;
+        gpoly_convert_uv3a(&st->incB, base_U, base_V);
+        gpoly_convert_uv3a(&st->incD, loc_incA_U, loc_incA_V);
 
-        fctr_e = base_V >> 16;
-        fctr_f = ((base_V << 16) & 0xFFFFFF00) | (st->incB.S[2] & 0xFF);
-        if ((fctr_f & 0x80) != 0) {
-            mone = fctr_f < 0x100;
-            fctr_f -= 0x100;
-            fctr_e = (fctr_e & 0xFFFFFF00) | ((fctr_e - mone) & 0xFF);
-        }
-        st->incB.S[2] = fctr_f;
-        st->incB.S[3] = fctr_e;
-
-        fctr_e = loc_incA_U >> 16;
-        fctr_f = ((loc_incA_U << 16) & 0xFFFF0000) | ((st->incA_S >> 8) & 0xFFFF);
-        if ((fctr_f & 0x8000) != 0) {
-            mone = fctr_f < 0x10000;
-            fctr_f -= 0x10000;
-            fctr_e = (fctr_e & 0xFFFFFF00) | ((fctr_e - mone) & 0xFF);
-        }
-        st->var_0A4 = fctr_f;
-        st->var_0A0 = fctr_e;
-
-        fctr_e = loc_incA_V >> 16;
-        fctr_f = ((loc_incA_V << 16) & 0xFFFFFF00) | (st->var_0A0 & 0xFF);
-        if ((fctr_f & 0x80) != 0) {
-            mone = fctr_f < 0x100;
-            fctr_f -= 0x100;
-            fctr_e = (fctr_e & 0xFFFFFF00) | ((fctr_e - mone) & 0xFF);
-        }
-        st->var_0A0 = fctr_f;
-        st->var_09C = fctr_e;
-
+        fctr_s = (uint)(ptA_V_prc << 8) >> 24 << 8;
         st->bldA.B[2] = ((ptA_U_prc << 16) & 0xFFFF0000) | ((ptA_S_prc >> 8) & 0xFFFF);
-        fctr_s = (unsigned int)(ptA_V_prc << 8) >> 24 << 8;
         st->bldA.B[0] = ((ptA_V_prc << 16) & 0xFFFFFF00) | ((ptA_U_prc >> 16) & 0xFF);
         st->bldA.B[1] = (fctr_s & 0xFFFFFF00) | ((ptA_S_prc) & 0xFF);
     }
 
     if (st->var_134 >= 0)
     {
-        TbBool mone;
-        int fctr_e, fctr_s;
-        unsigned int fctr_f;
+        int fctr_s;
 
-        fctr_e = loc_incB_U >> 16;
-        fctr_f = ((loc_incB_U << 16) & 0xFFFF0000) | ((st->incB_S >> 8) & 0xFFFF);
-        if ((fctr_f & 0x8000) != 0) {
-            mone = fctr_f < 0x10000;
-            fctr_f -= 0x10000;
-            fctr_e = (fctr_e & 0xFFFFFF00) | ((fctr_e - mone) & 0xFF);
-        }
-        st->var_098 = fctr_f;
-        st->var_094 = fctr_e;
+        gpoly_convert_uv3a(&st->incC, loc_incB_U, loc_incB_V);
 
-        fctr_e = loc_incB_V >> 16;
-        fctr_f = ((loc_incB_V << 16) & 0xFFFFFF00) | (st->var_094 & 0xFF);
-        if ((fctr_f & 0x80) != 0) {
-            mone = fctr_f < 0x100;
-            fctr_f -= 0x100;
-            fctr_e = (fctr_e & 0xFFFFFF00) | ((fctr_e - mone) & 0xFF);
-        }
-        st->var_094 = fctr_f;
-        st->var_090 = fctr_e;
-
+        fctr_s = (uint)(ptB_V_prc << 8) >> 24 << 8;
         st->bldB.B[2] = ((ptB_U_prc << 16) & 0xFFFF0000) | ((ptB_S_prc >> 8) & 0xFFFF);
-        fctr_s = (unsigned int)(ptB_V_prc << 8) >> 24 << 8;
         st->bldB.B[0] = ((ptB_V_prc << 16) & 0xFFFFFF00) | ((st->bldB.B[2] >> 16) & 0xFF);
         st->bldB.B[1] = (fctr_s & 0xFFFFFF00) | ((ptB_S_prc) & 0xFF);
     }
@@ -1252,10 +1123,10 @@ void gpoly_rasterize_shaded_bound(struct gpoly_state *st)
 
     ln_len = vec_screen_width;
     loc_180 = 2;
-    st->incA.S[0] = st->incA_S;
-    st->incA.S[1] = st->var_0A4;
-    st->incA.S[2] = st->var_0A0;
-    st->incA.S[3] = st->var_09C;
+    st->incA.S[0] = st->incD.S[0];
+    st->incA.S[1] = st->incD.S[1];
+    st->incA.S[2] = st->incD.S[2];
+    st->incA.S[3] = st->incD.S[3];
 
     if (st->var_134 < 0) {
         loc_12C = st->ratioCA_X2Y;
@@ -1377,10 +1248,10 @@ void gpoly_rasterize_shaded_bound(struct gpoly_state *st)
         if (st->var_134 >= 0)
         {
             loc_12C = st->ratioCB_X2Y;
-            st->incA.S[0] = st->incB_S;
-            st->incA.S[1] = st->var_098;
-            st->incA.S[2] = st->var_094;
-            st->incA.S[3] = st->var_090;
+            st->incA.S[0] = st->incC.S[0];
+            st->incA.S[1] = st->incC.S[1];
+            st->incA.S[2] = st->incC.S[2];
+            st->incA.S[3] = st->incC.S[3];
             bld = st->bldB;
             curr_X = st->ptB_X;
             range_beg = st->ptB_X_prc;
@@ -1418,10 +1289,10 @@ void gpoly_rasterize_shaded_nobound(struct gpoly_state *st)
 
     ln_len = vec_screen_width;
     loc_180 = 2;
-    st->incA.S[0] = st->incA_S;
-    st->incA.S[1] = st->var_0A4;
-    st->incA.S[2] = st->var_0A0;
-    st->incA.S[3] = st->var_09C;
+    st->incA.S[0] = st->incD.S[0];
+    st->incA.S[1] = st->incD.S[1];
+    st->incA.S[2] = st->incD.S[2];
+    st->incA.S[3] = st->incD.S[3];
 
     if (st->var_134 < 0) {
         loc_12C = st->ratioCA_X2Y;
@@ -1518,10 +1389,10 @@ void gpoly_rasterize_shaded_nobound(struct gpoly_state *st)
         if (st->var_134 >= 0)
         {
             loc_12C = st->ratioCB_X2Y;
-            st->incA.S[0] = st->incB_S;
-            st->incA.S[1] = st->var_098;
-            st->incA.S[2] = st->var_094;
-            st->incA.S[3] = st->var_090;
+            st->incA.S[0] = st->incC.S[0];
+            st->incA.S[1] = st->incC.S[1];
+            st->incA.S[2] = st->incC.S[2];
+            st->incA.S[3] = st->incC.S[3];
             bld = st->bldB;
             curr_X = st->ptB_X;
             range_beg = st->ptB_X_prc;
@@ -1559,9 +1430,9 @@ void gpoly_rasterize_noshade_bound(struct gpoly_state *st)
 
     ln_len = vec_screen_width;
     loc_180 = 2;
-    st->incA.S[1] = st->var_0A4;
-    st->incA.S[2] = st->var_0A0;
-    st->incA.S[3] = st->var_09C;
+    st->incA.S[1] = st->incD.S[1];
+    st->incA.S[2] = st->incD.S[2];
+    st->incA.S[3] = st->incD.S[3];
 
     if (st->var_134 < 0) {
         loc_12C = st->ratioCA_X2Y;
@@ -1674,9 +1545,9 @@ void gpoly_rasterize_noshade_bound(struct gpoly_state *st)
         if (st->var_134 >= 0)
         {
             loc_12C = st->ratioCB_X2Y;
-            st->incA.S[1] = st->var_098;
-            st->incA.S[2] = st->var_094;
-            st->incA.S[3] = st->var_090;
+            st->incA.S[1] = st->incC.S[1];
+            st->incA.S[2] = st->incC.S[2];
+            st->incA.S[3] = st->incC.S[3];
             bld = st->bldB;
             curr_X = st->ptB_X;
             range_beg = st->ptB_X_prc;
@@ -1714,9 +1585,9 @@ void gpoly_rasterize_noshade_nobound(struct gpoly_state *st)
 
     ln_len = vec_screen_width;
     loc_180 = 2;
-    st->incA.S[1] = st->var_0A4;
-    st->incA.S[2] = st->var_0A0;
-    st->incA.S[3] = st->var_09C;
+    st->incA.S[1] = st->incD.S[1];
+    st->incA.S[2] = st->incD.S[2];
+    st->incA.S[3] = st->incD.S[3];
 
     if (st->var_134 < 0) {
         loc_12C = st->ratioCA_X2Y;
@@ -1821,9 +1692,9 @@ void gpoly_rasterize_noshade_nobound(struct gpoly_state *st)
         if (st->var_134 >= 0)
         {
             loc_12C = st->ratioCB_X2Y;
-            st->incA.S[1] = st->var_098;
-            st->incA.S[2] = st->var_094;
-            st->incA.S[3] = st->var_090;
+            st->incA.S[1] = st->incC.S[1];
+            st->incA.S[2] = st->incC.S[2];
+            st->incA.S[3] = st->incC.S[3];
             bld = st->bldB;
             curr_X = st->ptB_X;
             range_beg = st->ptB_X_prc;
