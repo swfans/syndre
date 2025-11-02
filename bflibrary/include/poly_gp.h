@@ -33,8 +33,10 @@ struct gpoly_point {
     int X;
     int X_prc;
     int S;
-    int U;
-    int V;
+    /** Texture UV mapping coordinate */
+    int Ua;
+    /** Texture UV mapping coordinate */
+    int Vb;
 };
 
 struct gpoly_factors {
