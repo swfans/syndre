@@ -60,6 +60,26 @@ typedef struct {
     uint8_t data[1];
 } WAVE_DATA;
 
+/** Terminate playback of .WAV file.
+ *
+ * Invoke application callback function, if any, and release the sample
+ * allocated to play this file.
+ * Used also as End-of-sample callback handler for .WAV file playback.
+ */
+void AIL_WAV_terminate(SNDSAMPLE *s)
+{
+    AILSAMPLECB cb;
+
+    cb = (AILSAMPLECB)s->system_data[SmpSD_EOD_CALLBACK];
+    if (cb != NULL)
+        cb(s);
+
+    if (s->system_data[SmpSD_RELEASE] > 0)
+        AIL_release_sample_handle(s);
+
+    s->system_data[SmpSD_RELEASE] = -1;
+}
+
 void AIL_process_WAV_image(const uint8_t *image, SNDSAMPLE *s)
 {
 #if 0

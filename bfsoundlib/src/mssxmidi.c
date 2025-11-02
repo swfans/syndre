@@ -713,7 +713,7 @@ MDI_DRIVER *XMI_construct_MDI_driver(AIL_DRIVER *drvr, const SNDCARD_IO_PARMS *i
     WildMidi_MasterVolume(100);
 #endif
 
-    mdidrv->system_data[0] = smp_rate;
+    mdidrv->system_data[MdiSD_SAMPLE_RATE] = smp_rate;
 
     // Allocate timer for XMIDI sequencing
     mdidrv->timer = AIL_register_timer(XMI_serve);

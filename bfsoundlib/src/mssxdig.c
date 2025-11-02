@@ -74,7 +74,7 @@ int32_t XDIG_MIDI_trap(MDI_DRIVER *mdidrv, SNDSEQUENCE *seq,
     uint32_t t;
     WAVE_SYNTH *ws;
 
-    ws = (WAVE_SYNTH*) mdidrv->system_data[0];
+    ws = (WAVE_SYNTH*) mdidrv->system_data[MdiSD_WAVE_SYNTH];
 
     // Get physical MIDI channel and status byte for event
     st = status & 0xf0;

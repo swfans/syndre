@@ -321,6 +321,46 @@ enum SndDigSampleFormatFlags {
 #define DIG_F_STEREO_16        (DIG_F_STEREO_MASK|DIG_F_16BITS_MASK)
 #define DIG_F_MULTICHANNEL_16  (DIG_F_MULTICHANNEL_MASK|DIG_F_16BITS_MASK)
 
+
+/** Usage of fields in SNDSAMPLE.system_data[] array - general.
+ */
+enum SndDigSampleSystemDataUse {
+    SmpSD_EOD_CALLBACK = 0, /**< Application end-of-data callback; can be NULL */
+    SmpSD_RELEASE      = 6, /**< Release on termination enable; releases sample handle upon termination if >0 */
+    SmpSD_TEMP         = 7, /**< Temporary storage location for general use */
+};
+
+/** Usage of fields in SNDSAMPLE.system_data[] array - valid for VOC only.
+ */
+enum SndDigSampleSystemDataUseVOC {
+    SmpSD_VOC_BLK_PTR  = 1, /**< Pointer to current block */
+    SmpSD_VOC_REP_BLK  = 2, /**< Pointer to beginning of repeat loop block */
+    SmpSD_VOC_N_REPS   = 3, /**< # of iterations left in repeat loop */
+    SmpSD_VOC_MRKR     = 4, /**< Marker to search for, or -1 if all */
+    SmpSD_VOC_MRKR_FND = 5, /**< Desired marker found if 1, else 0 */
+};
+
+/** Usage of fields in SNDSAMPLE.system_data[] array - valid for OpenAL only.
+ */
+enum SndDigSampleSystemDataUseOAL {
+    SmpSD_OAL_BUFS_USE = 4, /**< Amount of already used buffers */
+    SmpSD_OAL_SOURCE   = 5, /**< OpenAL Source created for the sequence */
+};
+
+/** Usage of fields in SNDSEQUENCE.system_data[] array - valid for OpenAL only.
+ */
+enum SndSequenceSystemDataUseOAL {
+    SeqSD_OAL_BUFS_USE = 4, /**< Amount of already used buffers */
+    SeqSD_OAL_SOURCE   = 5, /**< OpenAL Source created for the sequence */
+};
+
+/** Usage of fields in MDI_DRIVER.system_data[] array.
+ */
+enum MdiDriverSystemDataUse {
+    MdiSD_WAVE_SYNTH   = 0, /**< Reference to the WAVE_SYNTH structure */
+    MdiSD_SAMPLE_RATE  = 1, /**< Sampling rate used for playback by the MIDI diver */
+};
+
 /** Handle to timer.
  *
  * Originally named `HTIMER`. This less generic name helps to remember this is sound-related.

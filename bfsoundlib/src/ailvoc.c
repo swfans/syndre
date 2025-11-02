@@ -86,19 +86,20 @@ uint32_t AIL_VOC_block_len(void *block)
  *
  * Invoke application callback function, if any, and release the sample
  * allocated to play this file.
+ * Used also as End-of-sample callback handler for .VOC file playback.
  */
 void AIL_VOC_terminate(SNDSAMPLE *s)
 {
     AILSAMPLECB cb;
 
-    cb = (AILSAMPLECB)s->system_data[0];
+    cb = (AILSAMPLECB)s->system_data[SmpSD_EOD_CALLBACK];
     if (cb != NULL)
         cb(s);
 
-    if (s->system_data[6] > 0)
+    if (s->system_data[SmpSD_RELEASE] > 0)
         AIL_release_sample_handle(s);
 
-    s->system_data[6] = -1;
+    s->system_data[SmpSD_RELEASE] = -1;
 }
 
 void AIL_process_VOC_block(SNDSAMPLE *s, int32_t play_flag)
@@ -119,7 +120,7 @@ void AIL_process_VOC_block(SNDSAMPLE *s, int32_t play_flag)
     // Loop until voice block is found
     while (!voice_block)
     {
-        b = (void*)s->system_data[1]; // Pointer to current block
+        b = (void*)s->system_data[SmpSD_VOC_BLK_PTR]; // Pointer to current block
 
         switch (*(uint8_t*)b)
         {
@@ -130,7 +131,7 @@ void AIL_process_VOC_block(SNDSAMPLE *s, int32_t play_flag)
 
         case 1: // Voice block
             // Skip block if desired marker has not been found
-            if (!s->system_data[5]) // Whether desired marker is found
+            if (!s->system_data[SmpSD_VOC_MRKR_FND]) // Whether desired marker is found
                 break;
             // Set up sample data and start playback
             AIL_set_sample_address(s, b + sizeof(BLK_VOIC), AIL_VOC_block_len(b) - 2);
@@ -145,37 +146,38 @@ void AIL_process_VOC_block(SNDSAMPLE *s, int32_t play_flag)
 
         case 4: // Marker block
             // Ignore if entire file to be played
-            if (s->system_data[4] == (uintptr_t)-1) // Marker to search for, -1 if all
+            if (s->system_data[SmpSD_VOC_MRKR] == (uintptr_t)-1) // Marker to search for, -1 if all
                 break;
             // If this is the desired marker, set MARKER_FOUND flag --
             // otherwise, clear MARKER_FOUND flag to prevent playback
             // of future voice blocks
-            if (s->system_data[4] == (uintptr_t)((BLK_MRKR*)b)->marker)
-                s->system_data[5] = 1;
+            if (s->system_data[SmpSD_VOC_MRKR] == (uintptr_t)((BLK_MRKR*)b)->marker)
+                s->system_data[SmpSD_VOC_MRKR_FND] = 1;
             else
-                s->system_data[5] = 0;
+                s->system_data[SmpSD_VOC_MRKR_FND] = 0;
             break;
 
         case 6: // Repeat block
             // Log repeat count and starting address of repeat block
-            s->system_data[2] = (uintptr_t)b; // Pointer to beginning of repeat loop block
-            s->system_data[3] = (uintptr_t)((BLK_RLOOP*)b)->repeat_count; // # of iterations left in repeat loop
+            s->system_data[SmpSD_VOC_REP_BLK] = (uintptr_t)b; // Pointer to beginning of repeat loop block
+            // # of iterations left in repeat loop
+            s->system_data[SmpSD_VOC_N_REPS] = (uintptr_t)((BLK_RLOOP*)b)->repeat_count;
             break;
 
         case 7: // End repeat block
             // If finite repeat block active, check and decrement repeat
             // count
-            if (s->system_data[3] != 0xffff) // # of iterations left in repeat loop
+            if (s->system_data[SmpSD_VOC_N_REPS] != 0xffff) // # of iterations left in repeat loop
             {
-                if (s->system_data[3]-- == 0)
+                if (s->system_data[SmpSD_VOC_N_REPS]-- == 0)
                     break;
             }
-            b = (void*)s->system_data[2]; // Pointer to beginning of repeat loop block
+            b = (void*)s->system_data[SmpSD_VOC_REP_BLK]; // Pointer to beginning of repeat loop block
             break;
 
         case 8: // Extended attribute block (followed by block 1)
             // Skip block if desired marker has not been found
-            if (!s->system_data[5])
+            if (!s->system_data[SmpSD_VOC_MRKR_FND])
                 break;
 
             // Set up sample data and start playback
@@ -202,7 +204,7 @@ void AIL_process_VOC_block(SNDSAMPLE *s, int32_t play_flag)
 
         case 9: // Extended voice block
             // Skip block if desired marker has not been found
-            if (!s->system_data[5])
+            if (!s->system_data[SmpSD_VOC_MRKR_FND])
                 break;
             // Set up sample data and start playback
             AIL_set_sample_address(s, b + sizeof(BLK_EVOIC), AIL_VOC_block_len(b) - 12);
@@ -228,7 +230,7 @@ void AIL_process_VOC_block(SNDSAMPLE *s, int32_t play_flag)
         }
 
         // Advance pointer to next block in .VOC image
-        s->system_data[1] = (uintptr_t)(b + AIL_VOC_block_len(b) + 4);
+        s->system_data[SmpSD_VOC_BLK_PTR] = (uintptr_t)(b + AIL_VOC_block_len(b) + 4);
     }
 }
 

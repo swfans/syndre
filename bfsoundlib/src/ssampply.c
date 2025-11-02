@@ -175,7 +175,9 @@ struct SampleInfo *PlaySampleFromAddress(long source_id, short smp_id,
     if (StereoSound)
         AIL_set_sample_pan(p_smpinf->SampleHandle, pan);
     AIL_set_sample_loop_count(p_smpinf->SampleHandle, loop_count + 1);
+
     AIL_start_sample(p_smpinf->SampleHandle);
+
     p_smpinf->SourceID = source_id;
     p_smpinf->SampleNumber = smp_id;
     p_smpinf->SampleVolume = volume;
