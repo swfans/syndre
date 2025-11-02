@@ -581,11 +581,29 @@ static void gpoly_convert_uv3(struct gpoly_factors *p_inc, uint u, uint v)
     p_inc->S[3] = fctr_vs;
 }
 
+static void gpoly_get_uv_inc(struct gpoly_factors *p_inc, const struct gpoly_factors *p_base, int ratio_X2Y, const struct gpoly_point *p_pt1, const struct gpoly_point *p_pt2)
+{
+    int dist_c5, mag_a1, tmp;
+
+    dist_c5 = p_pt2->Y - p_pt1->Y;
+    if (dist_c5 > 255)
+        mag_a1 = 0x7FFFFFFF / dist_c5;
+    else
+        mag_a1 = gpoly_reptable[dist_c5];
+    p_inc->S[0] = gpoly_mul_rot_2(mag_a1, 2 * (p_pt2->S - p_pt1->S));
+    p_inc->S[1] = gpoly_mul_rot_2(mag_a1, 2 * (p_pt2->Ua - p_pt1->Ua));
+    p_inc->S[2] = gpoly_mul_rot_2(mag_a1, 2 * (p_pt2->Vb - p_pt1->Vb));
+
+    tmp = ((p_base->S[1] * ratio_X2Y) & 0xFFFF0000) | (((p_base->S[1] * (s64)ratio_X2Y) >> 32) & 0xFFFF);
+    p_inc->S[1] -= bw_rotl32(tmp, 16);
+    tmp = ((p_base->S[2] * ratio_X2Y) & 0xFFFF0000) | (((p_base->S[2] * (s64)ratio_X2Y) >> 32) & 0xFFFF);
+    p_inc->S[2] -= bw_rotl32(tmp, 16);
+    tmp = ((p_base->S[0] * ratio_X2Y) & 0xFFFF0000) | (((p_base->S[0] * (s64)ratio_X2Y) >> 32) & 0xFFFF);
+    p_inc->S[0] -= bw_rotl32(tmp, 16);
+}
+
 void gpoly_sta_md03(struct gpoly_state *st)
 {
-    int loc_incA_Vb, loc_incB_Vb, loc_incA_Ua, loc_incB_Ua;
-    int base_Ua, base_Vb;
-
     {
         int dist_c1, dist_c2, dist_c3, dist_c4;
         int fctr_a, fctr_d;
@@ -604,15 +622,15 @@ void gpoly_sta_md03(struct gpoly_state *st)
             distCA_Y = st->ptC.Y - st->ptA.Y;
             distBA_Y = st->ptB.Y - st->ptA.Y;
 
-            base_Ua = gpoly_mul_rot_1(0x7FFFFFFF / fctr_d,
+            st->incB.S[1] = gpoly_mul_rot_1(0x7FFFFFFF / fctr_d,
               distBA_Y * (st->ptC.Ua - st->ptA.Ua) - distCA_Y * (st->ptB.Ua - st->ptA.Ua));
-            base_Vb = gpoly_mul_rot_1(0x7FFFFFFF / fctr_d,
+            st->incB.S[2] = gpoly_mul_rot_1(0x7FFFFFFF / fctr_d,
               distBA_Y * (st->ptC.Vb - st->ptA.Vb) - distCA_Y * (st->ptB.Vb - st->ptA.Vb));
         }
         else
         {
-            base_Ua = 0;
-            base_Vb = 0;
+            st->incB.S[1] = 0;
+            st->incB.S[2] = 0;
         }
     }
     if (st->var_134 < 0)
@@ -624,8 +642,8 @@ void gpoly_sta_md03(struct gpoly_state *st)
             mag_a1 = 0x7FFFFFFF / dist_c5;
         else
             mag_a1 = gpoly_reptable[dist_c5];
-        loc_incA_Ua = gpoly_mul_rot_2(mag_a1, 2 * (st->ptC.Ua - st->ptA.Ua));
-        loc_incA_Vb = gpoly_mul_rot_2(mag_a1, 2 * (st->ptC.Vb - st->ptA.Vb));
+        st->incD.S[1] = gpoly_mul_rot_2(mag_a1, 2 * (st->ptC.Ua - st->ptA.Ua));
+        st->incD.S[2] = gpoly_mul_rot_2(mag_a1, 2 * (st->ptC.Vb - st->ptA.Vb));
     }
     else
     {
@@ -636,16 +654,16 @@ void gpoly_sta_md03(struct gpoly_state *st)
             mag_a1 = 0x7FFFFFFF / dist_c5;
         else
             mag_a1 = gpoly_reptable[dist_c5];
-        loc_incA_Ua = gpoly_mul_rot_2(mag_a1, 2 * (st->ptB.Ua - st->ptA.Ua));
-        loc_incA_Vb = gpoly_mul_rot_2(mag_a1, 2 * (st->ptB.Vb - st->ptA.Vb));
+        st->incD.S[1] = gpoly_mul_rot_2(mag_a1, 2 * (st->ptB.Ua - st->ptA.Ua));
+        st->incD.S[2] = gpoly_mul_rot_2(mag_a1, 2 * (st->ptB.Vb - st->ptA.Vb));
 
         dist_c5 = st->ptC.Y - st->ptB.Y;
         if (dist_c5 > 255)
             mag_a1 = 0x7FFFFFFF / dist_c5;
         else
             mag_a1 = gpoly_reptable[dist_c5];
-        loc_incB_Ua = gpoly_mul_rot_2(mag_a1, 2 * (st->ptC.Ua - st->ptB.Ua));
-        loc_incB_Vb = gpoly_mul_rot_2(mag_a1, 2 * (st->ptC.Vb - st->ptB.Vb));
+        st->incC.S[1] = gpoly_mul_rot_2(mag_a1, 2 * (st->ptC.Ua - st->ptB.Ua));
+        st->incC.S[2] = gpoly_mul_rot_2(mag_a1, 2 * (st->ptC.Vb - st->ptB.Vb));
     }
 
     int ptA_Ua_prc, ptA_Vb_prc, ptB_Ua_prc, ptB_Vb_prc;
@@ -656,8 +674,8 @@ void gpoly_sta_md03(struct gpoly_state *st)
     ptB_Vb_prc = st->ptB.Vb << 16;
 
     {
-        gpoly_convert_uv2(&st->incB, base_Ua, base_Vb);
-        gpoly_convert_uv2(&st->incD, loc_incA_Ua, loc_incA_Vb);
+        gpoly_convert_uv2(&st->incB, st->incB.S[1], st->incB.S[2]);
+        gpoly_convert_uv2(&st->incD, st->incD.S[1], st->incD.S[2]);
 
         st->bldA.B[2] = ptA_Ua_prc << 16;
         st->bldA.B[0] = ((ptA_Vb_prc << 16) & 0xFFFFFF00) | ((ptA_Ua_prc >> 16) & 0xFF);
@@ -666,7 +684,7 @@ void gpoly_sta_md03(struct gpoly_state *st)
 
     if (st->var_134 >= 0)
     {
-        gpoly_convert_uv2(&st->incC, loc_incB_Ua, loc_incB_Vb);
+        gpoly_convert_uv2(&st->incC, st->incC.S[1], st->incC.S[2]);
 
         st->bldB.B[2] = ptB_Ua_prc << 16;
         st->bldB.B[0] = ((ptB_Vb_prc << 16) & 0xFFFFFF00) | ((ptB_Ua_prc >> 16) & 0xFF);
@@ -736,9 +754,6 @@ void gpoly_sta_md04(struct gpoly_state *st)
 
 void gpoly_sta_md05(struct gpoly_state *st)
 {
-    int loc_incA_Vb, loc_incB_Vb, loc_incA_Ua, loc_incB_Ua;
-    int base_Ua, base_Vb;
-
     {
         int dist_c1, dist_c2, dist_c3, dist_c4;
         int fctr_a, fctr_d;
@@ -759,16 +774,16 @@ void gpoly_sta_md05(struct gpoly_state *st)
 
             st->incB.S[0] = gpoly_mul_rot_1(0x7FFFFFFF / fctr_d,
                             distBA_Y * (st->ptC.S - st->ptA.S) - distCA_Y * (st->ptB.S - st->ptA.S));
-            base_Ua = gpoly_mul_rot_1(0x7FFFFFFF / fctr_d,
+            st->incB.S[1] = gpoly_mul_rot_1(0x7FFFFFFF / fctr_d,
                             distBA_Y * (st->ptC.Ua - st->ptA.Ua) - distCA_Y * (st->ptB.Ua - st->ptA.Ua));
-            base_Vb = gpoly_mul_rot_1(0x7FFFFFFF / fctr_d,
+            st->incB.S[2] = gpoly_mul_rot_1(0x7FFFFFFF / fctr_d,
                             distBA_Y * (st->ptC.Vb - st->ptA.Vb) - distCA_Y * (st->ptB.Vb - st->ptA.Vb));
         }
         else
         {
             st->incB.S[0] = 0;
-            base_Ua = 0;
-            base_Vb = 0;
+            st->incB.S[1] = 0;
+            st->incB.S[2] = 0;
         }
     }
     if (st->var_134 < 0)
@@ -781,8 +796,8 @@ void gpoly_sta_md05(struct gpoly_state *st)
         else
           mag_a1 = gpoly_reptable[dist_c5];
         st->incD.S[0] = gpoly_mul_rot_2(mag_a1, 2 * (st->ptC.S - st->ptA.S));
-        loc_incA_Ua = gpoly_mul_rot_2(mag_a1, 2 * (st->ptC.Ua - st->ptA.Ua));
-        loc_incA_Vb = gpoly_mul_rot_2(mag_a1, 2 * (st->ptC.Vb - st->ptA.Vb));
+        st->incD.S[1] = gpoly_mul_rot_2(mag_a1, 2 * (st->ptC.Ua - st->ptA.Ua));
+        st->incD.S[2] = gpoly_mul_rot_2(mag_a1, 2 * (st->ptC.Vb - st->ptA.Vb));
     }
     else
     {
@@ -794,8 +809,8 @@ void gpoly_sta_md05(struct gpoly_state *st)
         else
           mag_a1 = gpoly_reptable[dist_c5];
         st->incD.S[0] = gpoly_mul_rot_2(mag_a1, 2 * (st->ptB.S - st->ptA.S));
-        loc_incA_Ua = gpoly_mul_rot_2(mag_a1, 2 * (st->ptB.Ua - st->ptA.Ua));
-        loc_incA_Vb = gpoly_mul_rot_2(mag_a1, 2 * (st->ptB.Vb - st->ptA.Vb));
+        st->incD.S[1] = gpoly_mul_rot_2(mag_a1, 2 * (st->ptB.Ua - st->ptA.Ua));
+        st->incD.S[2] = gpoly_mul_rot_2(mag_a1, 2 * (st->ptB.Vb - st->ptA.Vb));
 
         dist_c5 = st->ptC.Y - st->ptB.Y;
         if (dist_c5 > 255)
@@ -803,8 +818,8 @@ void gpoly_sta_md05(struct gpoly_state *st)
         else
           mag_a1 = gpoly_reptable[dist_c5];
         st->incC.S[0] = gpoly_mul_rot_2(mag_a1, 2 * (st->ptC.S - st->ptB.S));
-        loc_incB_Ua = gpoly_mul_rot_2(mag_a1, 2 * (st->ptC.Ua - st->ptB.Ua));
-        loc_incB_Vb = gpoly_mul_rot_2(mag_a1, 2 * (st->ptC.Vb - st->ptB.Vb));
+        st->incC.S[1] = gpoly_mul_rot_2(mag_a1, 2 * (st->ptC.Ua - st->ptB.Ua));
+        st->incC.S[2] = gpoly_mul_rot_2(mag_a1, 2 * (st->ptC.Vb - st->ptB.Vb));
     }
 
     int ptA_S_prc, ptA_Ua_prc, ptA_Vb_prc, ptB_S_prc, ptB_Ua_prc, ptB_Vb_prc;
@@ -819,8 +834,8 @@ void gpoly_sta_md05(struct gpoly_state *st)
     {
         int fctr_s;
 
-        gpoly_convert_uv3(&st->incB, base_Ua, base_Vb);
-        gpoly_convert_uv3(&st->incD, loc_incA_Ua, loc_incA_Vb);
+        gpoly_convert_uv3(&st->incB, st->incB.S[1], st->incB.S[2]);
+        gpoly_convert_uv3(&st->incD, st->incD.S[1], st->incD.S[2]);
 
         fctr_s = (uint)(ptA_Vb_prc << 8) >> 24 << 8;
         st->bldA.B[2] = ((ptA_Ua_prc << 16) & 0xFFFF0000) | ((ptA_S_prc >> 8) & 0xFFFF);
@@ -832,7 +847,7 @@ void gpoly_sta_md05(struct gpoly_state *st)
     {
         int fctr_s;
 
-        gpoly_convert_uv3(&st->incC, loc_incB_Ua, loc_incB_Vb);
+        gpoly_convert_uv3(&st->incC, st->incC.S[1], st->incC.S[2]);
 
         fctr_s = (uint)(ptB_Vb_prc << 8) >> 24 << 8;
         st->bldB.B[2] = ((ptB_Ua_prc << 16) & 0xFFFF0000) | ((ptB_S_prc >> 8) & 0xFFFF);
@@ -843,9 +858,6 @@ void gpoly_sta_md05(struct gpoly_state *st)
 
 void gpoly_sta_md27(struct gpoly_state *st)
 {
-    int loc_incA_Vb, loc_incB_Vb, loc_incA_Ua, loc_incB_Ua;
-    int base_Ua, base_Vb;
-
     {
         int dist_c1, dist_c2, dist_c3, dist_c4;
         int fctr_a, fctr_d;
@@ -864,81 +876,38 @@ void gpoly_sta_md27(struct gpoly_state *st)
             distCA_Y = st->ptC.Y - st->ptA.Y;
             distBA_Y = st->ptB.Y - st->ptA.Y;
 
-            base_Ua = gpoly_mul_rot_1(0x7FFFFFFF / fctr_d,
+            st->incB.S[1] = gpoly_mul_rot_1(0x7FFFFFFF / fctr_d,
                           distBA_Y * (st->ptC.Ua - st->ptA.Ua) - distCA_Y * (st->ptB.Ua - st->ptA.Ua));
-            base_Vb = gpoly_mul_rot_1(0x7FFFFFFF / fctr_d,
+            st->incB.S[2] = gpoly_mul_rot_1(0x7FFFFFFF / fctr_d,
                           distBA_Y * (st->ptC.Vb - st->ptA.Vb) - distCA_Y * (st->ptB.Vb - st->ptA.Vb));
         }
         else
         {
-            base_Ua = 0;
-            base_Vb = 0;
+            st->incB.S[1] = 0;
+            st->incB.S[2] = 0;
         }
     }
 
     if (st->var_134 < 0)
     {
-        int dist_c5, mag_a1, tmp;
-
-        dist_c5 = st->ptC.Y - st->ptA.Y;
-        if (dist_c5 > 255)
-            mag_a1 = 0x7FFFFFFF / dist_c5;
-        else
-            mag_a1 = gpoly_reptable[dist_c5];
-        loc_incA_Ua = gpoly_mul_rot_2(mag_a1, 2 * (st->ptC.Ua - st->ptA.Ua));
-        loc_incA_Vb = gpoly_mul_rot_2(mag_a1, 2 * (st->ptC.Vb - st->ptA.Vb));
-
-        tmp = ((base_Ua * st->ratioCA_X2Y) & 0xFFFF0000) | (((base_Ua * (s64)st->ratioCA_X2Y) >> 32) & 0xFFFF);
-        loc_incA_Ua -= bw_rotl32(tmp, 16);
-        tmp = ((base_Vb * st->ratioCA_X2Y) & 0xFFFF0000) | (((base_Vb * (s64)st->ratioCA_X2Y) >> 32) & 0xFFFF);
-        loc_incA_Vb -= bw_rotl32(tmp, 16);
-        tmp = ((st->incB.S[0] * st->ratioCA_X2Y) & 0xFFFF0000) | (((st->incB.S[0] * (s64)st->ratioCA_X2Y) >> 32) & 0xFFFF);
-        st->incD.S[0] -= bw_rotl32(tmp, 16);
+        gpoly_get_uv_inc(&st->incD, &st->incB, st->ratioCA_X2Y, &st->ptA, &st->ptC);
     }
     else
     {
-        int dist_c5, mag_a1, tmp;
-
-        dist_c5 = st->ptB.Y - st->ptA.Y;
-        if (dist_c5 > 255)
-            mag_a1 = 0x7FFFFFFF / dist_c5;
-        else
-            mag_a1 = gpoly_reptable[dist_c5];
-        loc_incA_Ua = gpoly_mul_rot_2(mag_a1, 2 * (st->ptB.Ua - st->ptA.Ua));
-        loc_incA_Vb = gpoly_mul_rot_2(mag_a1, 2 * (st->ptB.Vb - st->ptA.Vb));
-
-        dist_c5 = st->ptC.Y - st->ptB.Y;
-        if (dist_c5 > 255)
-            mag_a1 = 0x7FFFFFFF / dist_c5;
-        else
-            mag_a1 = gpoly_reptable[dist_c5];
-        loc_incB_Ua = gpoly_mul_rot_2(mag_a1, 2 * (st->ptC.Ua - st->ptB.Ua));
-        loc_incB_Vb = gpoly_mul_rot_2(mag_a1, 2 * (st->ptC.Vb - st->ptB.Vb));
-
-        tmp = ((base_Ua * st->ratioBA_X2Y) & 0xFFFF0000) | (((base_Ua * (s64)st->ratioBA_X2Y) >> 32) & 0xFFFF);
-        loc_incA_Ua -= bw_rotl32(tmp, 16);
-        tmp = ((base_Vb * st->ratioBA_X2Y) & 0xFFFF0000) | (((base_Vb * (s64)st->ratioBA_X2Y) >> 32) & 0xFFFF);
-        loc_incA_Vb -= bw_rotl32(tmp, 16);
-        tmp = ((st->incB.S[0] * st->ratioBA_X2Y) & 0xFFFF0000) | (((st->incB.S[0] * (s64)st->ratioBA_X2Y) >> 32) & 0xFFFF);
-        st->incD.S[0] -= bw_rotl32(tmp, 16);
-        tmp = ((base_Ua * st->ratioCB_X2Y) & 0xFFFF0000) | (((base_Ua * (s64)st->ratioCB_X2Y) >> 32) & 0xFFFF);
-        loc_incB_Ua -= bw_rotl32(tmp, 16);
-        tmp = ((base_Vb * st->ratioCB_X2Y) & 0xFFFF0000) | (((base_Vb * (s64)st->ratioCB_X2Y) >> 32) & 0xFFFF);
-        loc_incB_Vb -= bw_rotl32(tmp, 16);
-        tmp = ((st->incB.S[0] * st->ratioCB_X2Y) & 0xFFFF0000) | (((st->incB.S[0] * (s64)st->ratioCB_X2Y) >> 32) & 0xFFFF);
-        st->incC.S[0] -= bw_rotl32(tmp, 16);
+        gpoly_get_uv_inc(&st->incD, &st->incB, st->ratioBA_X2Y, &st->ptA, &st->ptB);
+        gpoly_get_uv_inc(&st->incC, &st->incB, st->ratioCB_X2Y, &st->ptB, &st->ptC);
     }
 
     int ptA_Ua_prc, ptA_Vb_prc, ptB_Ua_prc, ptB_Vb_prc;
 
-    ptA_Ua_prc = base_Ua + (st->ptA.Ua << 16);
-    ptA_Vb_prc = base_Vb + (st->ptA.Vb << 16);
-    ptB_Ua_prc = base_Ua + (st->ptB.Ua << 16);
-    ptB_Vb_prc = base_Vb + (st->ptB.Vb << 16);
+    ptA_Ua_prc = st->incB.S[1] + (st->ptA.Ua << 16);
+    ptA_Vb_prc = st->incB.S[2] + (st->ptA.Vb << 16);
+    ptB_Ua_prc = st->incB.S[1] + (st->ptB.Ua << 16);
+    ptB_Vb_prc = st->incB.S[2] + (st->ptB.Vb << 16);
 
     {
-        gpoly_convert_uv2(&st->incB, base_Ua, base_Vb);
-        gpoly_convert_uv2(&st->incD, loc_incA_Ua, loc_incA_Vb);
+        gpoly_convert_uv2(&st->incB, st->incB.S[1], st->incB.S[2]);
+        gpoly_convert_uv2(&st->incD, st->incD.S[1], st->incD.S[2]);
 
         st->bldA.B[2] = ptA_Ua_prc << 16;
         st->bldA.B[0] = ((ptA_Vb_prc << 16) & 0xFFFFFF00) | ((ptA_Ua_prc >> 16) & 0xFF);
@@ -947,7 +916,7 @@ void gpoly_sta_md27(struct gpoly_state *st)
 
     if (st->var_134 >= 0)
     {
-        gpoly_convert_uv2(&st->incC, loc_incB_Ua, loc_incB_Vb);
+        gpoly_convert_uv2(&st->incC, st->incC.S[1], st->incC.S[2]);
 
         st->bldB.B[2] = ptB_Ua_prc << 16;
         st->bldB.B[0] = ((ptB_Vb_prc << 16) & 0xFFFFFF00) | ((ptB_Ua_prc >> 16) & 0xFF);
@@ -957,9 +926,6 @@ void gpoly_sta_md27(struct gpoly_state *st)
 
 void gpoly_sta_md28(struct gpoly_state *st)
 {
-    int loc_incA_Vb, loc_incB_Vb, loc_incA_Ua, loc_incB_Ua;
-    int base_Ua, base_Vb;
-
     {
         int dist_c1, dist_c2, dist_c3, dist_c4;
         int fctr_a, fctr_d;
@@ -980,88 +946,42 @@ void gpoly_sta_md28(struct gpoly_state *st)
 
             st->incB.S[0] = gpoly_mul_rot_1(0x7FFFFFFF / fctr_d,
               distBA_Y * (st->ptC.S - st->ptA.S) - distCA_Y * (st->ptB.S - st->ptA.S));
-            base_Ua = gpoly_mul_rot_1(0x7FFFFFFF / fctr_d,
+            st->incB.S[1] = gpoly_mul_rot_1(0x7FFFFFFF / fctr_d,
               distBA_Y * (st->ptC.Ua - st->ptA.Ua) - distCA_Y * (st->ptB.Ua - st->ptA.Ua));
-            base_Vb = gpoly_mul_rot_1(0x7FFFFFFF / fctr_d,
+            st->incB.S[2] = gpoly_mul_rot_1(0x7FFFFFFF / fctr_d,
               distBA_Y * (st->ptC.Vb - st->ptA.Vb) - distCA_Y * (st->ptB.Vb - st->ptA.Vb));
         }
         else
         {
             st->incB.S[0] = 0;
-            base_Ua = 0;
-            base_Vb = 0;
+            st->incB.S[1] = 0;
+            st->incB.S[2] = 0;
         }
     }
     if (st->var_134 < 0)
     {
-        int dist_c5, mag_a1, tmp;
-
-        dist_c5 = st->ptC.Y - st->ptA.Y;
-        if (dist_c5 > 255)
-            mag_a1 = 0x7FFFFFFF / dist_c5;
-        else
-            mag_a1 = gpoly_reptable[dist_c5];
-        st->incD.S[0] = gpoly_mul_rot_2(mag_a1, 2 * (st->ptC.S - st->ptA.S));
-        loc_incA_Ua = gpoly_mul_rot_2(mag_a1, 2 * (st->ptC.Ua - st->ptA.Ua));
-        loc_incA_Vb = gpoly_mul_rot_2(mag_a1, 2 * (st->ptC.Vb - st->ptA.Vb));
-
-        tmp = ((base_Ua * st->ratioCA_X2Y) & 0xFFFF0000) | (((base_Ua * (s64)st->ratioCA_X2Y) >> 32) & 0xFFFF);
-        loc_incA_Ua -= bw_rotl32(tmp, 16);
-        tmp = ((base_Vb * st->ratioCA_X2Y) & 0xFFFF0000) | (((base_Vb * (s64)st->ratioCA_X2Y) >> 32) & 0xFFFF);
-        loc_incA_Vb -= bw_rotl32(tmp, 16);
-        tmp = ((st->incB.S[0] * st->ratioCA_X2Y) & 0xFFFF0000) | (((st->incB.S[0] * (s64)st->ratioCA_X2Y) >> 32) & 0xFFFF);
-        st->incD.S[0] -= bw_rotl32(tmp, 16);
+        gpoly_get_uv_inc(&st->incD, &st->incB, st->ratioCA_X2Y, &st->ptA, &st->ptC);
     }
     else
     {
-        int dist_c5, mag_a1, tmp;
-
-        dist_c5 = st->ptB.Y - st->ptA.Y;
-        if (dist_c5 > 255)
-          mag_a1 = 0x7FFFFFFF / dist_c5;
-        else
-          mag_a1 = gpoly_reptable[dist_c5];
-        st->incD.S[0] = gpoly_mul_rot_2(mag_a1, 2 * (st->ptB.S - st->ptA.S));
-        loc_incA_Ua = gpoly_mul_rot_2(mag_a1, 2 * (st->ptB.Ua - st->ptA.Ua));
-        loc_incA_Vb = gpoly_mul_rot_2(mag_a1, 2 * (st->ptB.Vb - st->ptA.Vb));
-
-        dist_c5 = st->ptC.Y - st->ptB.Y;
-        if (dist_c5 > 255)
-          mag_a1 = 0x7FFFFFFF / dist_c5;
-        else
-          mag_a1 = gpoly_reptable[dist_c5];
-        st->incC.S[0] = gpoly_mul_rot_2(mag_a1, 2 * (st->ptC.S - st->ptB.S));
-        loc_incB_Ua = gpoly_mul_rot_2(mag_a1, 2 * (st->ptC.Ua - st->ptB.Ua));
-        loc_incB_Vb = gpoly_mul_rot_2(mag_a1, 2 * (st->ptC.Vb - st->ptB.Vb));
-
-        tmp = ((base_Ua * st->ratioBA_X2Y) & 0xFFFF0000) | (((base_Ua * (s64)st->ratioBA_X2Y) >> 32) & 0xFFFF);
-        loc_incA_Ua -= bw_rotl32(tmp, 16);
-        tmp = ((base_Vb * st->ratioBA_X2Y) & 0xFFFF0000) | (((base_Vb * (s64)st->ratioBA_X2Y) >> 32) & 0xFFFF);
-        loc_incA_Vb -= bw_rotl32(tmp, 16);
-        tmp = ((st->incB.S[0] * st->ratioBA_X2Y) & 0xFFFF0000) | (((st->incB.S[0] * (s64)st->ratioBA_X2Y) >> 32) & 0xFFFF);
-        st->incD.S[0] -= bw_rotl32(tmp, 16);
-        tmp = ((base_Ua * st->ratioCB_X2Y) & 0xFFFF0000) | (((base_Ua * (s64)st->ratioCB_X2Y) >> 32) & 0xFFFF);
-        loc_incB_Ua -= bw_rotl32(tmp, 16);
-        tmp = ((base_Vb * st->ratioCB_X2Y) & 0xFFFF0000) | (((base_Vb * (s64)st->ratioCB_X2Y) >> 32) & 0xFFFF);
-        loc_incB_Vb -= bw_rotl32(tmp, 16);
-        tmp = ((st->incB.S[0] * st->ratioCB_X2Y) & 0xFFFF0000) | (((st->incB.S[0] * (s64)st->ratioCB_X2Y) >> 32) & 0xFFFF);
-        st->incC.S[0] -= bw_rotl32(tmp, 16);
+        gpoly_get_uv_inc(&st->incD, &st->incB, st->ratioBA_X2Y, &st->ptA, &st->ptB);
+        gpoly_get_uv_inc(&st->incC, &st->incB, st->ratioCB_X2Y, &st->ptB, &st->ptC);
     }
 
     int ptA_S_prc, ptA_Ua_prc, ptA_Vb_prc, ptB_S_prc, ptB_Ua_prc, ptB_Vb_prc;
 
     ptA_S_prc = st->incB.S[0] + (st->ptA.S << 16);
-    ptA_Ua_prc = base_Ua + (st->ptA.Ua << 16);
-    ptA_Vb_prc = base_Vb + (st->ptA.Vb << 16);
+    ptA_Ua_prc = st->incB.S[1] + (st->ptA.Ua << 16);
+    ptA_Vb_prc = st->incB.S[2] + (st->ptA.Vb << 16);
     ptB_S_prc = st->incB.S[0] + (st->ptB.S << 16);
-    ptB_Ua_prc = base_Ua + (st->ptB.Ua << 16);
-    ptB_Vb_prc = base_Vb + (st->ptB.Vb << 16);
+    ptB_Ua_prc = st->incB.S[1] + (st->ptB.Ua << 16);
+    ptB_Vb_prc = st->incB.S[2] + (st->ptB.Vb << 16);
 
     {
         int fctr_s;
 
-        gpoly_convert_uv3(&st->incB, base_Ua, base_Vb);
-        gpoly_convert_uv3(&st->incD, loc_incA_Ua, loc_incA_Vb);
+        gpoly_convert_uv3(&st->incB, st->incB.S[1], st->incB.S[2]);
+        gpoly_convert_uv3(&st->incD, st->incD.S[1], st->incD.S[2]);
 
         fctr_s = (uint)(ptA_Vb_prc << 8) >> 24 << 8;
         st->bldA.B[2] = ((ptA_Ua_prc << 16) & 0xFFFF0000) | ((ptA_S_prc >> 8) & 0xFFFF);
@@ -1073,7 +993,7 @@ void gpoly_sta_md28(struct gpoly_state *st)
     {
         int fctr_s;
 
-        gpoly_convert_uv3(&st->incC, loc_incB_Ua, loc_incB_Vb);
+        gpoly_convert_uv3(&st->incC, st->incC.S[1], st->incC.S[2]);
 
         fctr_s = (uint)(ptB_Vb_prc << 8) >> 24 << 8;
         st->bldB.B[2] = ((ptB_Ua_prc << 16) & 0xFFFF0000) | ((ptB_S_prc >> 8) & 0xFFFF);
