@@ -104,7 +104,11 @@ DIG_DRIVER *SS_construct_DIG_driver(AIL_DRIVER *drvr, const SNDCARD_IO_PARMS *io
 
     // Ensure that all AIL code and data is locked into memory
     AIL2OAL_start();
+#if !defined(LBS_ENABLE_STRUCTS_EXPAND)
     assert(sizeof(SNDSAMPLE) == 0x894);
+#else
+    assert(sizeof(SNDSAMPLE) >= 0x894);
+#endif
 
     // Allocate memory for DIG_DRIVER structure
     digdrv = (DIG_DRIVER *)AIL_MEM_alloc_lock(sizeof(*digdrv));

@@ -26,6 +26,7 @@
 #include <assert.h>
 
 #include "ailss.h"
+
 #include "aildebug.h"
 #include "ail.h"
 #include "memfile.h"
@@ -666,12 +667,17 @@ int32_t AIL2OAL_API_set_sample_file(SNDSAMPLE *s, const void *file_image, int32_
         AIL_process_WAV_image(file_image, s);
         break;
     case SMP_FTYP_VOC:
+#if !defined(LBS_ENABLE_STRUCTS_EXPAND)
+        AIL_set_error("VOC samples are not compatible with OpenAL unless STRUCTS_EXPAND is used.");
+#endif
         // Store pointer to sample data
         s->system_data[SmpSD_VOC_BLK_PTR] =
           (uintptr_t)file_image + *(uint16_t *)(file_image + 20);
         s->system_data[SmpSD_RELEASE] = 0;
-        //s->system_data[SmpSD_VOC_MRKR] = block; // used by OpenAL
-        //s->system_data[SmpSD_VOC_MRKR_FND] = (block == -1); // used by OpenAL
+#if defined(LBS_ENABLE_STRUCTS_EXPAND) // without extra fields, these are used by OpenAL
+        s->system_data[SmpSD_VOC_MRKR] = block;
+        s->system_data[SmpSD_VOC_MRKR_FND] = (block == -1);
+#endif
         AIL_process_VOC_block(s, 0);
         break;
     default: // s->system_data[6] == -1

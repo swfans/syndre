@@ -25,6 +25,8 @@
 #include <stdint.h>
 #include <strings.h>
 
+#include "bsndconf.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -343,15 +345,25 @@ enum SndDigSampleSystemDataUseVOC {
 /** Usage of fields in SNDSAMPLE.system_data[] array - valid for OpenAL only.
  */
 enum SndDigSampleSystemDataUseOAL {
-    SmpSD_OAL_BUFS_USE = 4, /**< Amount of already used buffers */
-    SmpSD_OAL_SOURCE   = 5, /**< OpenAL Source created for the sequence */
+#if !defined(LBS_ENABLE_STRUCTS_EXPAND)
+    SmpSD_OAL_BUFS_USE = 4,
+    SmpSD_OAL_SOURCE   = 5,
+#else
+    SmpSD_OAL_BUFS_USE = 8, /**< Amount of already used buffers */
+    SmpSD_OAL_SOURCE   = 9, /**< OpenAL Source created for the sequence */
+#endif
 };
 
 /** Usage of fields in SNDSEQUENCE.system_data[] array - valid for OpenAL only.
  */
 enum SndSequenceSystemDataUseOAL {
-    SeqSD_OAL_BUFS_USE = 4, /**< Amount of already used buffers */
-    SeqSD_OAL_SOURCE   = 5, /**< OpenAL Source created for the sequence */
+#if !defined(LBS_ENABLE_STRUCTS_EXPAND)
+    SeqSD_OAL_BUFS_USE = 4,
+    SeqSD_OAL_SOURCE   = 5,
+#else
+    SeqSD_OAL_BUFS_USE = 8, /**< Amount of already used buffers */
+    SeqSD_OAL_SOURCE   = 9, /**< OpenAL Source created for the sequence */
+#endif
 };
 
 /** Usage of fields in MDI_DRIVER.system_data[] array.
@@ -515,26 +527,30 @@ struct MDI_DRIVER {
  * Originally named `_SAMPLE`. This less generic name helps when analyzing old code.
  */
 struct SNDSAMPLE {
-  DIG_DRIVER *driver;                        /**< offs=0x00 Driver for playback */
-  uint32_t status;                           /**< offs=0x04 SNDSMP_ flags: _FREE, _DONE, _PLAYING */
-  void *start[2];                            /**< offs=0x08 Sample buffer address (W) */
-  uint32_t len[2];                           /**< offs=0x10 Sample buffer size in bytes (W) */
-  uint32_t pos[2];                           /**< offs=0x18 Index to next byte (R/W) */
-  uint32_t done[2];                          /**< offs=0x20 Nonzero if buffer with len=0 sent by app */
-  int32_t current_buffer;                    /**< offs=0x28 Buffer # active (0/1) */
-  int32_t last_buffer;                       /**< offs=0x2C Last active buffer (for double-buffering) */
-  int32_t loop_count;                        /**< offs=0x30 0-inf, 1-1 */
-  int32_t format;                            /**< offs=0x34 DIG_F format (8/16 bits, mono/stereo) */
-  uint32_t flags;                            /**< offs=0x38 DIG_PCM_SIGN / DIG_PCM_ORDER (stereo only) */
-  int32_t playback_rate;                     /**< offs=0x3C Playback rate in hertz */
-  int32_t volume;                            /**< offs=0x40 Sample volume 0-127 */
-  int32_t pan;                               /**< offs=0x44 Mono panpot/stereo balance (0=L ... 127=R) */
-  int32_t vol_scale[2][256];                 /**< offs=0x48 [left/mono=0,right=1][256] channel volume */
-  AILSAMPLECB SOB;                           /**< offs=0x848 Start-of-block callback function */
-  AILSAMPLECB EOB;                           /**< offs=0x84C End-of-buffer callback function */
-  AILSAMPLECB EOS;                           /**< offs=0x850 End-of-sample callback function */
-  uintptr_t user_data[8];                    /**< offs=0x854 Miscellaneous user data */
-  uintptr_t system_data[8];                  /**< offs=0x874 Miscellaneous system data */
+    DIG_DRIVER *driver;                      /**< offs=0x00 Driver for playback */
+    uint32_t status;                         /**< offs=0x04 SNDSMP_ flags: _FREE, _DONE, _PLAYING */
+    void *start[2];                          /**< offs=0x08 Sample buffer address (W) */
+    uint32_t len[2];                         /**< offs=0x10 Sample buffer size in bytes (W) */
+    uint32_t pos[2];                         /**< offs=0x18 Index to next byte (R/W) */
+    uint32_t done[2];                        /**< offs=0x20 Nonzero if buffer with len=0 sent by app */
+    int32_t current_buffer;                  /**< offs=0x28 Buffer # active (0/1) */
+    int32_t last_buffer;                     /**< offs=0x2C Last active buffer (for double-buffering) */
+    int32_t loop_count;                      /**< offs=0x30 0-inf, 1-1 */
+    int32_t format;                          /**< offs=0x34 DIG_F format (8/16 bits, mono/stereo) */
+    uint32_t flags;                          /**< offs=0x38 DIG_PCM_SIGN / DIG_PCM_ORDER (stereo only) */
+    int32_t playback_rate;                   /**< offs=0x3C Playback rate in hertz */
+    int32_t volume;                          /**< offs=0x40 Sample volume 0-127 */
+    int32_t pan;                             /**< offs=0x44 Mono panpot/stereo balance (0=L ... 127=R) */
+    int32_t vol_scale[2][256];               /**< offs=0x48 [left/mono=0,right=1][256] channel volume */
+    AILSAMPLECB SOB;                         /**< offs=0x848 Start-of-block callback function */
+    AILSAMPLECB EOB;                         /**< offs=0x84C End-of-buffer callback function */
+    AILSAMPLECB EOS;                         /**< offs=0x850 End-of-sample callback function */
+    uintptr_t user_data[8];                  /**< offs=0x854 Miscellaneous user data */
+#if !defined(LBS_ENABLE_STRUCTS_EXPAND)
+    uintptr_t system_data[8];                /**< offs=0x874 Miscellaneous system data */
+#else
+    uintptr_t system_data[12];               /**< Miscellaneous system data */
+#endif
 };
 
 struct AILSOUNDINFO {
@@ -618,7 +634,11 @@ struct SNDSEQUENCE {
     int32_t note_num[32];                    /**< offset=1496 */
     int32_t note_time[32];                   /**< offset=1624 */
     uintptr_t user_data[8];                  /**< offset=1752 */
-    uintptr_t system_data[8];                /**< offset=1784 */
+#if !defined(LBS_ENABLE_STRUCTS_EXPAND)
+    uintptr_t system_data[8];                /**< offset=1784 Miscellaneous system data */
+#else
+    uintptr_t system_data[12];               /**< Miscellaneous system data */
+#endif
 };
 
 /** Standard MSS Vendor Device Interface driver header.

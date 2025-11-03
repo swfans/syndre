@@ -19,8 +19,15 @@ AM_INIT_AUTOMAKE([foreign subdir-objects])
 AC_ARG_WITH([wildmidi],
     AS_HELP_STRING([--without-wildmidi], [Build without use of WildMIDI library]))
 
-AC_ARG_WITH([structs_expand],
-    AS_HELP_STRING([--with-structs-expand], [Build with extra fields within structs to store new properties]))
+AC_ARG_ENABLE([lbs-structs-expand],
+    AS_HELP_STRING([--enable-lbs-structs-expand],
+        [build bfsoundlib with extra fields within structs to store new properties]),
+    [lbs_structs_expand=$enableval], [lbs_structs_expand=no])
+
+AS_IF([test "$lbs_structs_expand" = "yes"], [
+    AC_DEFINE([ENABLE_STRUCTS_EXPAND], 1,
+        [Define for extra fields within structs to store new properties])
+])
 
 # Checks for programs.
 
