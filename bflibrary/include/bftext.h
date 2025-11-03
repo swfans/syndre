@@ -36,7 +36,7 @@ struct TbSprite;
 #pragma pack()
 
 extern ubyte lbSpacesPerTab;
-extern struct TbSprite *lbFontPtr;
+extern const struct TbSprite *lbFontPtr;
 
 /**
  * Computes length of given text if drawn on screen.

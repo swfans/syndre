@@ -39,7 +39,7 @@
 #endif
 
 ubyte lbSpacesPerTab;
-struct TbSprite *lbFontPtr;
+const struct TbSprite *lbFontPtr;
 
 /** @internal
  * Returns if the given char starts a wide charcode.
