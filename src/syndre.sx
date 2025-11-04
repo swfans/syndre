@@ -1440,7 +1440,7 @@ mission_briefing:	/* 0x10e60 */
 		push   $0x15a
 		mov    EXPORT_SYMBOL(language),%al
 		push   $0x94
-		mov    text_map(,%eax,4),%edx
+		mov    gui_strings_p309(,%eax,4),%edx
 		push   %edx
 		call   DrawScreenGadget
 		add    $0x1c,%esp
@@ -1467,7 +1467,7 @@ mission_briefing:	/* 0x10e60 */
 		push   $0x6c
 		mov    EXPORT_SYMBOL(language),%al
 		push   $0x1f4
-		mov    text_info(,%eax,4),%ebx
+		mov    gui_strings_p297(,%eax,4),%ebx
 		push   %ebx
 		call   DrawScreenGadget
 		add    $0x1c,%esp
@@ -1494,7 +1494,7 @@ mission_briefing:	/* 0x10e60 */
 		push   $0xa2
 		mov    EXPORT_SYMBOL(language),%al
 		push   $0x1f4
-		mov    text_enhance(,%eax,4),%ecx
+		mov    gui_strings_p300(,%eax,4),%ecx
 		push   %ecx
 		call   DrawScreenGadget
 		add    $0x1c,%esp
@@ -10442,7 +10442,7 @@ configure_company:	/* 0x175c0 */
 		push   $0x46
 		mov    EXPORT_SYMBOL(language),%al
 		push   $0x16a
-		mov    str(,%eax,4),%ebp
+		mov    gui_strings_p360(,%eax,4),%ebp
 		push   %ebp
 		call   new_show_text
 		mov    m_sprites,%eax
@@ -10468,7 +10468,7 @@ configure_company:	/* 0x175c0 */
 		push   $0x5e
 		mov    EXPORT_SYMBOL(language),%al
 		push   $0x16a
-		mov    data_54750(,%eax,4),%esi
+		mov    gui_strings_p363(,%eax,4),%esi
 		push   %esi
 		call   new_show_text
 		mov    m_sprites,%eax
@@ -10494,7 +10494,7 @@ configure_company:	/* 0x175c0 */
 		push   $0x76
 		mov    EXPORT_SYMBOL(language),%al
 		push   $0x16a
-		mov    data_5475c(,%eax,4),%edx
+		mov    gui_strings_p366(,%eax,4),%edx
 		push   %edx
 		call   new_show_text
 		mov    m_sprites,%eax
@@ -10950,7 +10950,7 @@ func_18278:
 		push   $0x22
 		mov    EXPORT_SYMBOL(language),%al
 		push   $0x12c
-		mov    data_54738(,%eax,4),%edi
+		mov    gui_strings_p357(,%eax,4),%edi
 		push   %edi
 		call   new_show_text
 		add    $0x28,%esp
@@ -10966,7 +10966,7 @@ func_18278:
 		push   $0x46
 		mov    EXPORT_SYMBOL(language),%al
 		push   $0x16a
-		mov    str(,%eax,4),%edx
+		mov    gui_strings_p360(,%eax,4),%edx
 		push   %edx
 		call   new_show_text
 		mov    m_sprites,%eax
@@ -10989,7 +10989,7 @@ func_18278:
 		push   $0x5e
 		mov    EXPORT_SYMBOL(language),%al
 		push   $0x16a
-		mov    data_54750(,%eax,4),%esi
+		mov    gui_strings_p363(,%eax,4),%esi
 		push   %esi
 		call   new_show_text
 		mov    m_sprites,%eax
@@ -11012,7 +11012,7 @@ func_18278:
 		push   $0x76
 		mov    EXPORT_SYMBOL(language),%al
 		push   $0x16a
-		mov    data_5475c(,%eax,4),%edx
+		mov    gui_strings_p366(,%eax,4),%edx
 		push   %edx
 		call   new_show_text
 		mov    m_sprites,%eax
@@ -11039,7 +11039,7 @@ func_18394:
 		push   $0x22
 		mov    EXPORT_SYMBOL(language),%al
 		push   $0x12e
-		mov    data_54768(,%eax,4),%edx
+		mov    gui_strings_p369(,%eax,4),%edx
 		push   %edx
 		call   new_show_text
 		add    $0x28,%esp
@@ -11055,7 +11055,7 @@ func_18394:
 		push   $0x3c
 		mov    EXPORT_SYMBOL(language),%al
 		push   $0x1dc
-		mov    data_54774(,%eax,4),%esi
+		mov    gui_strings_p372(,%eax,4),%esi
 		push   %esi
 		call   new_show_text
 		add    $0x28,%esp
@@ -11071,7 +11071,7 @@ func_18394:
 		push   $0x5e
 		mov    EXPORT_SYMBOL(language),%al
 		push   $0x1dc
-		mov    data_54780(,%eax,4),%edx
+		mov    gui_strings_p375(,%eax,4),%edx
 		push   %edx
 		call   new_show_text
 		add    $0x28,%esp
@@ -11133,7 +11133,7 @@ func_184ba:
 		push   $0x22
 		mov    EXPORT_SYMBOL(language),%al
 		push   $0x158
-		mov    data_54798(,%eax,4),%edi
+		mov    gui_strings_p381(,%eax,4),%edi
 		push   %edi
 		jmp    jump_18514
 
@@ -11151,7 +11151,7 @@ func_184e8:
 		push   $0x22
 		mov    EXPORT_SYMBOL(language),%al
 		push   $0x142
-		mov    a5(,%eax,4),%ecx
+		mov    gui_strings_p378(,%eax,4),%ecx
 		push   %ecx
 	jump_18514:
 		call   new_show_text
@@ -12704,7 +12704,7 @@ debrief:	/* 0x18ff0 */
 		push   $0x64
 		mov    EXPORT_SYMBOL(language),%al
 		push   $0x12
-		mov    data_54954(,%eax,4),%edx
+		mov    gui_strings_p492(,%eax,4),%edx
 		push   %edx
 		call   new_show_text
 		add    $0x28,%esp
@@ -12720,7 +12720,7 @@ debrief:	/* 0x18ff0 */
 		push   $0x78
 		mov    EXPORT_SYMBOL(language),%al
 		push   $0x12
-		mov    strings_mission_status(,%eax,4),%esi
+		mov    gui_strings_p429(,%eax,4),%esi
 		push   %esi
 		mov    $0x78,%ebx
 		call   new_show_text
@@ -12740,7 +12740,7 @@ debrief:	/* 0x18ff0 */
 		push   $0x78
 		mov    EXPORT_SYMBOL(language),%al
 		push   $0x140
-		mov    strings_misstat_complete(,%eax,4),%edx
+		mov    gui_strings_p432(,%eax,4),%edx
 		jmp    jump_19950
 	jump_198ee:
 		test   $0x8,%cl
@@ -12757,7 +12757,7 @@ debrief:	/* 0x18ff0 */
 		push   $0x78
 		mov    EXPORT_SYMBOL(language),%al
 		push   $0x140
-		mov    strings_misstat_withdrew(,%eax,4),%esi
+		mov    gui_strings_p435(,%eax,4),%esi
 		push   %esi
 		jmp    jump_19951
 	jump_19921:
@@ -12775,7 +12775,7 @@ debrief:	/* 0x18ff0 */
 		push   $0x78
 		mov    EXPORT_SYMBOL(language),%al
 		push   $0x140
-		mov    strings_misstat_failed(,%eax,4),%edx
+		mov    gui_strings_p438(,%eax,4),%edx
 	jump_19950:
 		push   %edx
 	jump_19951:
@@ -12797,7 +12797,7 @@ debrief:	/* 0x18ff0 */
 		push   %esi
 		mov    EXPORT_SYMBOL(language),%al
 		push   $0x12
-		mov    strings_debrief_agents_used(,%eax,4),%edx
+		mov    gui_strings_p441(,%eax,4),%edx
 		push   %edx
 		call   new_show_text
 		xor    %eax,%eax
@@ -12837,7 +12837,7 @@ debrief:	/* 0x18ff0 */
 		push   %esi
 		mov    EXPORT_SYMBOL(language),%al
 		push   $0x12
-		mov    strings_debrief_agents_gained(,%eax,4),%edx
+		mov    gui_strings_p444(,%eax,4),%edx
 		push   %edx
 		call   new_show_text
 		xor    %eax,%eax
@@ -12877,18 +12877,18 @@ debrief:	/* 0x18ff0 */
 		push   %esi
 		mov    EXPORT_SYMBOL(language),%al
 		push   $0x12
-		mov    strings_debrief_time(,%eax,4),%edx
+		mov    gui_strings_p447(,%eax,4),%edx
 		push   %edx
 		call   new_show_text
 		add    $0x28,%esp
 		xor    %eax,%eax
 		mov    EXPORT_SYMBOL(language),%al
-		mov    data_548b8(,%eax,4),%ecx
+		mov    gui_strings_p453(,%eax,4),%ecx
 		xor    %edx,%edx
 		push   %ecx
 		mov    -0x18(%ebp),%dx
 		push   %edx
-		mov    data_548ac(,%eax,4),%edx
+		mov    gui_strings_p450(,%eax,4),%edx
 		xor    %eax,%eax
 		push   %edx
 		mov    %di,%ax
@@ -12927,7 +12927,7 @@ debrief:	/* 0x18ff0 */
 		push   %esi
 		mov    EXPORT_SYMBOL(language),%al
 		push   $0x12
-		mov    strings_debrief_agents_killed(,%eax,4),%edx
+		mov    gui_strings_p459(,%eax,4),%edx
 		push   %edx
 		call   new_show_text
 		xor    %eax,%eax
@@ -12967,7 +12967,7 @@ debrief:	/* 0x18ff0 */
 		push   %esi
 		mov    EXPORT_SYMBOL(language),%al
 		push   $0x12
-		mov    strings_debrief_criminals_killed(,%eax,4),%edx
+		mov    gui_strings_p462(,%eax,4),%edx
 		push   %edx
 		call   new_show_text
 		xor    %eax,%eax
@@ -13007,7 +13007,7 @@ debrief:	/* 0x18ff0 */
 		push   %esi
 		mov    EXPORT_SYMBOL(language),%al
 		push   $0x12
-		mov    strings_debrief_civilians_killed(,%eax,4),%edx
+		mov    gui_strings_p465(,%eax,4),%edx
 		push   %edx
 		call   new_show_text
 		xor    %eax,%eax
@@ -13047,7 +13047,7 @@ debrief:	/* 0x18ff0 */
 		push   %esi
 		mov    EXPORT_SYMBOL(language),%al
 		push   $0x12
-		mov    strings_debrief_police_killed(,%eax,4),%edx
+		mov    gui_strings_p468(,%eax,4),%edx
 		push   %edx
 		call   new_show_text
 		xor    %eax,%eax
@@ -13087,7 +13087,7 @@ debrief:	/* 0x18ff0 */
 		push   %esi
 		mov    EXPORT_SYMBOL(language),%al
 		push   $0x12
-		mov    strings_debrief_guards_killed(,%eax,4),%edx
+		mov    gui_strings_p471(,%eax,4),%edx
 		push   %edx
 		call   new_show_text
 		xor    %eax,%eax
@@ -13127,7 +13127,7 @@ debrief:	/* 0x18ff0 */
 		push   %esi
 		mov    EXPORT_SYMBOL(language),%al
 		push   $0x12
-		mov    strings_debrief_people_persuaded(,%eax,4),%edx
+		mov    gui_strings_p474(,%eax,4),%edx
 		push   %edx
 		call   new_show_text
 		xor    %eax,%eax
@@ -13167,7 +13167,7 @@ debrief:	/* 0x18ff0 */
 		push   %esi
 		mov    EXPORT_SYMBOL(language),%al
 		push   $0x12
-		mov    strings_debrief_hit_accuracy(,%eax,4),%edx
+		mov    gui_strings_p477(,%eax,4),%edx
 		push   %edx
 		call   new_show_text
 		add    $0x28,%esp
@@ -13222,7 +13222,7 @@ debrief:	/* 0x18ff0 */
 		push   %esi
 		mov    EXPORT_SYMBOL(language),%al
 		push   $0x140
-		mov    strings_debrief_no_bullets(,%eax,4),%edx
+		mov    gui_strings_p480(,%eax,4),%edx
 		push   %edx
 	jump_19e95:
 		call   new_show_text
@@ -13247,15 +13247,15 @@ debrief:	/* 0x18ff0 */
 		lea    0x0(,%ebx,4),%eax
 		mov    EXPORT_SYMBOL(language),%dl
 		sub    %ebx,%eax
-		mov    strings_misstat_complete(,%edx,4),%esi
+		mov    gui_strings_p432(,%edx,4),%esi
 		lea    0x0(,%eax,4),%eax
 		push   %esi
-		mov    strings_cybmod_names(%eax,%edx,4),%ebx
+		mov    gui_strings_p549(%eax,%edx,4),%ebx
 		jmp    jump_19f3e
 	jump_19f02:
 		xor    %edx,%edx
 		mov    EXPORT_SYMBOL(language),%dl
-		mov    strings_misstat_complete(,%edx,4),%eax
+		mov    gui_strings_p432(,%edx,4),%eax
 		push   %eax
 		xor    %eax,%eax
 		mov    data_55596,%al
@@ -13265,10 +13265,10 @@ debrief:	/* 0x18ff0 */
 		lea    0x0(,%ebx,4),%eax
 		sub    %ebx,%eax
 		lea    0x0(,%eax,4),%eax
-		mov    strings_weapon_names(%eax,%edx,4),%ebx
+		mov    gui_strings_p603(%eax,%edx,4),%ebx
 	jump_19f3e:
 		push   %ebx
-		mov    data_54930(,%edx,4),%ecx
+		mov    gui_strings_p483(,%edx,4),%ecx
 		push   %ecx
 		push   $aSSS
 		lea    -0x11c(%ebp),%eax
@@ -13305,7 +13305,7 @@ debrief:	/* 0x18ff0 */
 		push   $0x138
 		mov    EXPORT_SYMBOL(language),%al
 		push   $0x12
-		mov    data_5493c(,%eax,4),%edx
+		mov    gui_strings_p486(,%eax,4),%edx
 		push   %edx
 		call   new_show_text
 		add    $0x28,%esp
@@ -13321,7 +13321,7 @@ debrief:	/* 0x18ff0 */
 		push   $0x144
 		mov    EXPORT_SYMBOL(language),%al
 		push   $0x12
-		mov    data_54948(,%eax,4),%ecx
+		mov    gui_strings_p489(,%eax,4),%ecx
 		push   %ecx
 		call   new_show_text
 		add    $0x28,%esp
@@ -13382,7 +13382,7 @@ debrief:	/* 0x18ff0 */
 		push   %eax
 		xor    %eax,%eax
 		mov    EXPORT_SYMBOL(language),%al
-		mov    text_replay(,%eax,4),%esi
+		mov    gui_strings_p312(,%eax,4),%esi
 		push   %esi
 		call   DrawScreenGadget
 		add    $0x1c,%esp
@@ -21472,7 +21472,7 @@ equip_team:	/* 0x1fbc0 */
 		push   %eax
 		xor    %eax,%eax
 		mov    EXPORT_SYMBOL(language),%al
-		mov    text_equip(,%eax,4),%esi
+		mov    gui_strings_p279(,%eax,4),%esi
 		push   %esi
 		jmp    jump_1fe39
 	jump_1fdb1:
@@ -21494,7 +21494,7 @@ equip_team:	/* 0x1fbc0 */
 		push   %eax
 		xor    %eax,%eax
 		mov    EXPORT_SYMBOL(language),%al
-		mov    text_mods(,%eax,4),%ecx
+		mov    gui_strings_p276(,%eax,4),%ecx
 		push   %ecx
 		jmp    jump_1fe39
 	jump_1fdf5:
@@ -21516,7 +21516,7 @@ equip_team:	/* 0x1fbc0 */
 		push   %eax
 		xor    %eax,%eax
 		mov    EXPORT_SYMBOL(language),%al
-		mov    text_team(,%eax,4),%ebx
+		mov    gui_strings_p273(,%eax,4),%ebx
 		push   %ebx
 	jump_1fe39:
 		call   DrawScreenGadget
@@ -21600,7 +21600,7 @@ equip_team:	/* 0x1fbc0 */
 		push   %eax
 		xor    %eax,%eax
 		mov    EXPORT_SYMBOL(language),%al
-		mov    text_team(,%eax,4),%edx
+		mov    gui_strings_p273(,%eax,4),%edx
 		push   %edx
 		call   DrawScreenGadget
 		add    $0x1c,%esp
@@ -21622,7 +21622,7 @@ equip_team:	/* 0x1fbc0 */
 		push   %eax
 		xor    %eax,%eax
 		mov    EXPORT_SYMBOL(language),%al
-		mov    text_equip(,%eax,4),%ecx
+		mov    gui_strings_p279(,%eax,4),%ecx
 		push   %ecx
 		call   DrawScreenGadget
 		add    $0x1c,%esp
@@ -21644,7 +21644,7 @@ equip_team:	/* 0x1fbc0 */
 		push   %eax
 		xor    %eax,%eax
 		mov    EXPORT_SYMBOL(language),%al
-		mov    text_mods(,%eax,4),%esi
+		mov    gui_strings_p276(,%eax,4),%esi
 		push   %esi
 		call   DrawScreenGadget
 		add    $0x1c,%esp
@@ -21682,7 +21682,7 @@ equip_team:	/* 0x1fbc0 */
 		push   %eax
 		xor    %eax,%eax
 		mov    EXPORT_SYMBOL(language),%al
-		mov    text_team(,%eax,4),%edi
+		mov    gui_strings_p273(,%eax,4),%edi
 		push   %edi
 		call   DrawScreenGadget
 		add    $0x1c,%esp
@@ -21721,7 +21721,7 @@ equip_team:	/* 0x1fbc0 */
 		push   %eax
 		xor    %eax,%eax
 		mov    EXPORT_SYMBOL(language),%al
-		mov    text_mods(,%eax,4),%edx
+		mov    gui_strings_p276(,%eax,4),%edx
 		push   %edx
 		call   DrawScreenGadget
 		add    $0x1c,%esp
@@ -21759,7 +21759,7 @@ equip_team:	/* 0x1fbc0 */
 		push   %eax
 		xor    %eax,%eax
 		mov    EXPORT_SYMBOL(language),%al
-		mov    text_equip(,%eax,4),%ebx
+		mov    gui_strings_p279(,%eax,4),%ebx
 		push   %ebx
 		call   DrawScreenGadget
 		add    $0x1c,%esp
@@ -21965,7 +21965,7 @@ equip_team:	/* 0x1fbc0 */
 		xor    %eax,%eax
 		mov    EXPORT_SYMBOL(language),%al
 		push   %edi
-		mov    text_spec_agent(,%eax,4),%edx
+		mov    gui_strings_p354(,%eax,4),%edx
 		push   %edx
 		push   $aSS
 		lea    -0x68(%ebp),%eax
@@ -22135,7 +22135,7 @@ equip_team:	/* 0x1fbc0 */
 		push   $0xe4
 		mov    EXPORT_SYMBOL(language),%al
 		push   $0x16e
-		mov    strings_cybmod_names(%edx,%eax,4),%esi
+		mov    gui_strings_p549(%edx,%eax,4),%esi
 		push   %esi
 		call   new_show_text
 		add    $0x28,%esp
@@ -22182,7 +22182,7 @@ equip_team:	/* 0x1fbc0 */
 		push   $0xfc
 		mov    EXPORT_SYMBOL(language),%al
 		push   $0x16e
-		mov    strings_cybmod_names(%edx,%eax,4),%ebx
+		mov    gui_strings_p549(%edx,%eax,4),%ebx
 		push   %ebx
 		call   new_show_text
 		add    $0x28,%esp
@@ -22266,7 +22266,7 @@ equip_team:	/* 0x1fbc0 */
 		push   $0x8a
 		lea    0x0(,%edx,4),%edx
 		push   $0x16e
-		mov    strings_cybmod_names(%edx,%eax,4),%esi
+		mov    gui_strings_p549(%edx,%eax,4),%esi
 		push   %esi
 		call   new_show_text
 		add    $0x28,%esp
@@ -22351,7 +22351,7 @@ equip_team:	/* 0x1fbc0 */
 		push   $0x72
 		mov    EXPORT_SYMBOL(language),%al
 		push   $0x16e
-		mov    strings_cybmod_names(%edx,%eax,4),%ebx
+		mov    gui_strings_p549(%edx,%eax,4),%ebx
 		push   %ebx
 		call   new_show_text
 		add    $0x28,%esp
@@ -22436,7 +22436,7 @@ equip_team:	/* 0x1fbc0 */
 		push   $0xce
 		lea    0x0(,%edx,4),%edx
 		push   $0x16e
-		mov    strings_cybmod_names(%edx,%eax,4),%esi
+		mov    gui_strings_p549(%edx,%eax,4),%esi
 		push   %esi
 		call   new_show_text
 		add    $0x28,%esp
@@ -22518,7 +22518,7 @@ equip_team:	/* 0x1fbc0 */
 		push   $0xa2
 		mov    EXPORT_SYMBOL(language),%al
 		push   $0x16e
-		mov    strings_cybmod_names(%edx,%eax,4),%ebx
+		mov    gui_strings_p549(%edx,%eax,4),%ebx
 		push   %ebx
 		call   new_show_text
 		add    $0x28,%esp
@@ -22788,7 +22788,7 @@ equip_team:	/* 0x1fbc0 */
 		xor    %eax,%eax
 		mov    EXPORT_SYMBOL(language),%al
 		push   $0x208
-		mov    text_empty_slot(,%eax,4),%ebx
+		mov    gui_strings_p351(,%eax,4),%ebx
 		push   %ebx
 	jump_21023:
 		call   new_show_text
@@ -22953,7 +22953,7 @@ equip_team:	/* 0x1fbc0 */
 		push   $0x13e
 		mov    EXPORT_SYMBOL(language),%al
 		push   $0x1f4
-		mov    data_54618(,%eax,4),%ebx
+		mov    gui_strings_p285(,%eax,4),%ebx
 		push   %ebx
 		call   DrawScreenGadget
 		add    $0x1c,%esp
@@ -23084,7 +23084,7 @@ equip_team:	/* 0x1fbc0 */
 		push   $0x100
 		mov    EXPORT_SYMBOL(language),%al
 		push   $0x1f8
-		mov    strings_reload(,%eax,4),%edx
+		mov    gui_strings_p396(,%eax,4),%edx
 		push   %edx
 		call   new_show_text
 		movswl EXPORT_SYMBOL(Network__Slot),%edx
@@ -23160,7 +23160,7 @@ equip_team:	/* 0x1fbc0 */
 		push   $0x13e
 		mov    EXPORT_SYMBOL(language),%al
 		push   $0x1f4
-		mov    text_button_sell(,%eax,4),%edi
+		mov    gui_strings_p282(,%eax,4),%edi
 		push   %edi
 		jmp    jump_215f3
 	jump_21595:
@@ -23187,7 +23187,7 @@ equip_team:	/* 0x1fbc0 */
 		push   $0x13e
 		mov    EXPORT_SYMBOL(language),%al
 		push   $0x1f4
-		mov    data_54618(,%eax,4),%esi
+		mov    gui_strings_p285(,%eax,4),%esi
 		push   %esi
 	jump_215f3:
 		call   DrawScreenGadget
@@ -23246,7 +23246,7 @@ equip_team:	/* 0x1fbc0 */
 		push   $0x126
 		mov    EXPORT_SYMBOL(language),%al
 		push   $0x1f4
-		mov    text_button_reload(,%eax,4),%edx
+		mov    gui_strings_p288(,%eax,4),%edx
 		push   %edx
 	jump_216e6:
 		call   DrawScreenGadget
@@ -24734,7 +24734,7 @@ ShowInfoOnEquipItem:	/* 0x22a10 */
 		lea    0x0(,%eax,4),%esi
 		xor    %eax,%eax
 		mov    EXPORT_SYMBOL(language),%al
-		mov    strings_weapon_names(%esi,%eax,4),%edi
+		mov    gui_strings_p603(%esi,%eax,4),%edi
 		push   %edi
 		push   $aS
 		lea    0x8(%esp),%eax
@@ -24767,7 +24767,7 @@ ShowInfoOnEquipItem:	/* 0x22a10 */
 		push   $0xd0
 		mov    EXPORT_SYMBOL(language),%al
 		push   $0x1f8
-		mov    strings_cost(,%eax,4),%ecx
+		mov    gui_strings_p384(,%eax,4),%ecx
 		push   %ecx
 		call   new_show_text
 		add    $0x28,%esp
@@ -24808,7 +24808,7 @@ ShowInfoOnEquipItem:	/* 0x22a10 */
 		push   $0xdc
 		mov    EXPORT_SYMBOL(language),%al
 		push   $0x1f8
-		mov    strings_ammo(,%eax,4),%edx
+		mov    gui_strings_p387(,%eax,4),%edx
 		push   %edx
 		call   new_show_text
 		movswl data_57bf9(%ebx),%eax
@@ -24850,7 +24850,7 @@ ShowInfoOnEquipItem:	/* 0x22a10 */
 		push   %esi
 		mov    EXPORT_SYMBOL(language),%al
 		push   $0x1f8
-		mov    strings_range(,%eax,4),%ebp
+		mov    gui_strings_p390(,%eax,4),%ebp
 		push   %ebp
 		xor    %ebx,%ebx
 		call   new_show_text
@@ -24897,7 +24897,7 @@ ShowInfoOnEquipItem:	/* 0x22a10 */
 		push   %ebx
 		mov    EXPORT_SYMBOL(language),%al
 		push   $0x1f8
-		mov    strings_shot(,%eax,4),%ecx
+		mov    gui_strings_p393(,%eax,4),%ecx
 		push   %ecx
 		call   new_show_text
 		add    $0x28,%esp
@@ -24949,7 +24949,7 @@ ShowInfoOnEquipItem:	/* 0x22a10 */
 		push   $0x6e
 		mov    EXPORT_SYMBOL(language),%al
 		push   $0x1f8
-		mov    strings_cybmod_names(%esi,%eax,4),%ecx
+		mov    gui_strings_p549(%esi,%eax,4),%ecx
 		push   %ecx
 		call   new_show_text
 		add    $0x28,%esp
@@ -24965,7 +24965,7 @@ ShowInfoOnEquipItem:	/* 0x22a10 */
 		push   $0x7e
 		mov    EXPORT_SYMBOL(language),%al
 		push   $0x1f8
-		mov    strings_cost(,%eax,4),%edi
+		mov    gui_strings_p384(,%eax,4),%edi
 		push   %edi
 		call   new_show_text
 		add    $0x28,%esp
@@ -24993,7 +24993,7 @@ ShowInfoOnEquipItem:	/* 0x22a10 */
 		and    $0xff,%ebx
 		lea    0x0(,%ebx,4),%eax
 		sub    %ebx,%eax
-		mov    $data_54960,%ebx
+		mov    $gui_strings_p495,%ebx
 		lea    0x0(,%eax,4),%eax
 		add    $0x28,%esp
 		add    %eax,%ebx
@@ -25011,7 +25011,7 @@ ShowInfoOnEquipItem:	/* 0x22a10 */
 		push   $0x8e
 		mov    EXPORT_SYMBOL(language),%bl
 		push   $0x1f8
-		mov    data_54960(%eax,%ebx,4),%ecx
+		mov    gui_strings_p495(%eax,%ebx,4),%ecx
 		push   %ecx
 		call   show_text_file
 		add    $0x2c,%esp
@@ -25111,7 +25111,7 @@ ShowAvailableParts:	/* 0x22eb0 */
 		xor    %eax,%eax
 		mov    EXPORT_SYMBOL(language),%al
 		push   $0x1f8
-		mov    strings_cybmod_names(%edx,%eax,4),%ebp
+		mov    gui_strings_p549(%edx,%eax,4),%ebp
 		push   %ebp
 		add    $0xc,%esi
 		call   new_show_text
@@ -25164,7 +25164,7 @@ ShowAvailableParts:	/* 0x22eb0 */
 		xor    %eax,%eax
 		mov    EXPORT_SYMBOL(language),%al
 		push   $0x1f8
-		mov    strings_cybmod_names(%edx,%eax,4),%ecx
+		mov    gui_strings_p549(%edx,%eax,4),%ecx
 		push   %ecx
 		call   new_show_text
 		add    $0x28,%esp
@@ -25215,7 +25215,7 @@ ShowAvailableEquipment:	/* 0x22fe0 */
 		xor    %eax,%eax
 		mov    EXPORT_SYMBOL(language),%al
 		push   $0x1f8
-		mov    strings_weapon_names(%edx,%eax,4),%ebp
+		mov    gui_strings_p603(%edx,%eax,4),%ebp
 		push   %ebp
 		add    $0xc,%ebx
 		call   new_show_text
@@ -25268,7 +25268,7 @@ ShowAvailableEquipment:	/* 0x22fe0 */
 		mov    EXPORT_SYMBOL(language),%dl
 		lea    0x0(,%edx,4),%edx
 		push   $0x1f8
-		mov    strings_weapon_names(%edx,%eax,4),%ecx
+		mov    gui_strings_p603(%edx,%eax,4),%ecx
 		push   %ecx
 		call   new_show_text
 		add    $0x28,%esp
@@ -30421,7 +30421,7 @@ LoadSaveGame:	/* 0x26ef0 */
 		push   %eax
 		xor    %eax,%eax
 		mov    EXPORT_SYMBOL(language),%al
-		mov    text_load(,%eax,4),%ecx
+		mov    gui_strings_p303(,%eax,4),%ecx
 		push   %ecx
 		call   DrawScreenGadget
 		add    $0x1c,%esp
@@ -30459,7 +30459,7 @@ LoadSaveGame:	/* 0x26ef0 */
 		push   %eax
 		xor    %eax,%eax
 		mov    EXPORT_SYMBOL(language),%al
-		mov    text_save(,%eax,4),%esi
+		mov    gui_strings_p306(,%eax,4),%esi
 		push   %esi
 		call   DrawScreenGadget
 		add    $0x1c,%esp
@@ -32338,7 +32338,7 @@ show_city_info:	/* 0x28610 */
 		mov    EXPORT_SYMBOL(language),%al
 		lea    0x0(,%ebx,4),%esi
 		push   $0xc2
-		mov    text_city_pop(,%eax,4),%edx
+		mov    gui_strings_p318(,%eax,4),%edx
 		add    %ebx,%esi
 		push   %edx
 		add    %esi,%esi
@@ -32377,7 +32377,7 @@ show_city_info:	/* 0x28610 */
 		push   $0x15c
 		mov    EXPORT_SYMBOL(language),%al
 		push   $0xc2
-		mov    text_city_tax(,%eax,4),%edx
+		mov    gui_strings_p324(,%eax,4),%edx
 		push   %edx
 		call   new_show_text
 		add    $0x28,%esp
@@ -32406,7 +32406,7 @@ show_city_info:	/* 0x28610 */
 		push   $0x16a
 		mov    EXPORT_SYMBOL(language),%al
 		push   $0xc2
-		mov    text_city_stat(,%eax,4),%esi
+		mov    gui_strings_p321(,%eax,4),%esi
 		push   %esi
 		call   new_show_text
 		lea    0x0(,%ebx,4),%eax
@@ -32454,7 +32454,7 @@ show_city_info:	/* 0x28610 */
 		push   $0x15c
 		mov    EXPORT_SYMBOL(language),%al
 		push   $0x10c
-		mov    data_546cc(,%eax,4),%esi
+		mov    gui_strings_p330(,%eax,4),%esi
 		push   %esi
 		call   new_show_text
 		add    $0x28,%esp
@@ -32470,7 +32470,7 @@ show_city_info:	/* 0x28610 */
 		push   $0x16a
 		mov    EXPORT_SYMBOL(language),%al
 		push   $0xc2
-		mov    data_546c0(,%eax,4),%edx
+		mov    gui_strings_p327(,%eax,4),%edx
 		push   %edx
 		call   new_show_text
 		add    $0x28,%esp
@@ -32531,7 +32531,7 @@ show_city_info:	/* 0x28610 */
 		jge    jump_289c2
 		xor    %eax,%eax
 		mov    EXPORT_SYMBOL(language),%al
-		mov    text_city_mood_vhappy(,%eax,4),%edx
+		mov    gui_strings_p333(,%eax,4),%edx
 		push   %edx
 		lea    -0x28(%ebp),%eax
 		push   %eax
@@ -32543,7 +32543,7 @@ show_city_info:	/* 0x28610 */
 		jge    jump_289e8
 		xor    %eax,%eax
 		mov    EXPORT_SYMBOL(language),%al
-		mov    text_city_mood_happy(,%eax,4),%edi
+		mov    gui_strings_p336(,%eax,4),%edi
 		push   %edi
 		lea    -0x28(%ebp),%eax
 		push   %eax
@@ -32555,7 +32555,7 @@ show_city_info:	/* 0x28610 */
 		jge    jump_28a0f
 		xor    %eax,%eax
 		mov    EXPORT_SYMBOL(language),%al
-		mov    text_city_mood_content(,%eax,4),%esi
+		mov    gui_strings_p339(,%eax,4),%esi
 		push   %esi
 		lea    -0x28(%ebp),%eax
 		push   %eax
@@ -32567,7 +32567,7 @@ show_city_info:	/* 0x28610 */
 		jge    jump_28a36
 		xor    %eax,%eax
 		mov    EXPORT_SYMBOL(language),%al
-		mov    text_city_mood_unhappy(,%eax,4),%ecx
+		mov    gui_strings_p342(,%eax,4),%ecx
 		push   %ecx
 		lea    -0x28(%ebp),%eax
 		push   %eax
@@ -32579,7 +32579,7 @@ show_city_info:	/* 0x28610 */
 		jge    jump_28a5a
 		xor    %eax,%eax
 		mov    EXPORT_SYMBOL(language),%al
-		mov    text_city_mood_discontent(,%eax,4),%ebx
+		mov    gui_strings_p345(,%eax,4),%ebx
 		push   %ebx
 		lea    -0x28(%ebp),%eax
 		push   %eax
@@ -32589,7 +32589,7 @@ show_city_info:	/* 0x28610 */
 	jump_28a5a:
 		xor    %eax,%eax
 		mov    EXPORT_SYMBOL(language),%al
-		mov    text_city_mood_rebellious(,%eax,4),%edx
+		mov    gui_strings_p348(,%eax,4),%edx
 		push   %edx
 		lea    -0x28(%ebp),%eax
 		push   %eax
@@ -38882,7 +38882,7 @@ func_2cf11:
 		xor    %eax,%eax
 		mov    EXPORT_SYMBOL(language),%al
 		add    $0xc,%esp
-		mov    strings_weapon_names(%ecx,%eax,4),%edx
+		mov    gui_strings_p603(%ecx,%eax,4),%edx
 		push   %edx
 		push   $data_60584
 		call   center_panel_string
@@ -38963,7 +38963,7 @@ func_2cfda:
 		xor    %ecx,%ecx
 		mov    EXPORT_SYMBOL(language),%cl
 		lea    0x0(,%ecx,4),%ecx
-		mov    strings_weapon_names(%ecx,%eax,4),%ebx
+		mov    gui_strings_p603(%ecx,%eax,4),%ebx
 		push   %ebx
 		push   $data_60584
 		call   center_panel_string
@@ -50413,7 +50413,7 @@ ResearchAndDevelop:	/* 0x34ad0 */
 		push   %eax
 		xor    %eax,%eax
 		mov    EXPORT_SYMBOL(language),%al
-		mov    data_54630(,%eax,4),%ebx
+		mov    gui_strings_p291(,%eax,4),%ebx
 		push   %ebx
 		call   DrawScreenGadget
 		add    $0x1c,%esp
@@ -50452,7 +50452,7 @@ ResearchAndDevelop:	/* 0x34ad0 */
 		push   %eax
 		xor    %eax,%eax
 		mov    EXPORT_SYMBOL(language),%al
-		mov    strings_research_funddec(,%eax,4),%ecx
+		mov    gui_strings_p294(,%eax,4),%ecx
 		push   %ecx
 		call   DrawScreenGadget
 		add    $0x1c,%esp
@@ -50487,7 +50487,7 @@ ResearchAndDevelop:	/* 0x34ad0 */
 		push   %eax
 		xor    %eax,%eax
 		mov    EXPORT_SYMBOL(language),%al
-		mov    text_equip(,%eax,4),%edi
+		mov    gui_strings_p279(,%eax,4),%edi
 		push   %edi
 		call   DrawScreenGadget
 		add    $0x1c,%esp
@@ -50509,7 +50509,7 @@ ResearchAndDevelop:	/* 0x34ad0 */
 		push   %eax
 		xor    %eax,%eax
 		mov    EXPORT_SYMBOL(language),%al
-		mov    text_mods(,%eax,4),%edx
+		mov    gui_strings_p276(,%eax,4),%edx
 		push   %edx
 		call   DrawScreenGadget
 		add    $0x1c,%esp
@@ -50547,7 +50547,7 @@ ResearchAndDevelop:	/* 0x34ad0 */
 		push   %eax
 		xor    %eax,%eax
 		mov    EXPORT_SYMBOL(language),%al
-		mov    text_mods(,%eax,4),%ebx
+		mov    gui_strings_p276(,%eax,4),%ebx
 		push   %ebx
 		call   DrawScreenGadget
 		add    $0x1c,%esp
@@ -50586,7 +50586,7 @@ ResearchAndDevelop:	/* 0x34ad0 */
 		push   %eax
 		xor    %eax,%eax
 		mov    EXPORT_SYMBOL(language),%al
-		mov    text_equip(,%eax,4),%ecx
+		mov    gui_strings_p279(,%eax,4),%ecx
 		push   %ecx
 		call   DrawScreenGadget
 		add    $0x1c,%esp
@@ -50729,9 +50729,9 @@ ResearchAndDevelop:	/* 0x34ad0 */
 		lea    0x0(,%eax,4),%edx
 		xor    %eax,%eax
 		mov    EXPORT_SYMBOL(language),%al
-		mov    strings_cybmod_names(%edx,%eax,4),%edi
+		mov    gui_strings_p549(%edx,%eax,4),%edi
 		push   %edi
-		mov    strings_researching(,%eax,4),%edx
+		mov    gui_strings_p417(,%eax,4),%edx
 		push   %edx
 		jmp    jump_34fd0
 	jump_34fa9:
@@ -50746,7 +50746,7 @@ ResearchAndDevelop:	/* 0x34ad0 */
 		push   %eax
 		xor    %eax,%eax
 		mov    EXPORT_SYMBOL(language),%al
-		mov    strings_researching(,%eax,4),%esi
+		mov    gui_strings_p417(,%eax,4),%esi
 		push   %esi
 	jump_34fd0:
 		push   $aSS_0
@@ -50986,7 +50986,7 @@ ResearchAndDevelop:	/* 0x34ad0 */
 		push   $0x6a
 		mov    EXPORT_SYMBOL(language),%al
 		push   $0x14
-		mov    strings_research_min_funding(,%eax,4),%edx
+		mov    gui_strings_p411(,%eax,4),%edx
 		push   %edx
 		call   new_show_text
 		add    $0x28,%esp
@@ -51002,7 +51002,7 @@ ResearchAndDevelop:	/* 0x34ad0 */
 		push   $0x82
 		mov    EXPORT_SYMBOL(language),%al
 		push   $0x14
-		mov    strings_research_max_funding(,%eax,4),%ecx
+		mov    gui_strings_p414(,%eax,4),%ecx
 		push   %ecx
 		call   new_show_text
 		mov    0x6e(%ebp),%dh
@@ -51094,7 +51094,7 @@ ResearchAndDevelop:	/* 0x34ad0 */
 		push   $0x56
 		mov    EXPORT_SYMBOL(language),%al
 		push   $0x14
-		mov    strings_cybmod_names(%edx,%eax,4),%edi
+		mov    gui_strings_p549(%edx,%eax,4),%edi
 		push   %edi
 		call   new_show_text
 		xor    %edx,%edx
@@ -51376,7 +51376,7 @@ ResearchAndDevelop:	/* 0x34ad0 */
 		xor    %eax,%eax
 		mov    EXPORT_SYMBOL(language),%al
 		push   $0x14
-		mov    strings_cybmod_names(%edx,%eax,4),%ecx
+		mov    gui_strings_p549(%edx,%eax,4),%ecx
 		push   %ecx
 		add    $0xc,%esi
 		call   new_show_text
@@ -51432,7 +51432,7 @@ ResearchAndDevelop:	/* 0x34ad0 */
 		xor    %eax,%eax
 		mov    EXPORT_SYMBOL(language),%al
 		push   $0x14
-		mov    strings_cybmod_names(%edx,%eax,4),%esi
+		mov    gui_strings_p549(%edx,%eax,4),%esi
 		push   %esi
 	jump_35842:
 		call   new_show_text
@@ -52369,7 +52369,7 @@ GetWeaponName:	/* 0x36350 */
 		lea    0x0(,%eax,4),%ebx
 		xor    %eax,%eax
 		mov    EXPORT_SYMBOL(language),%al
-		mov    strings_weapon_names(%ebx,%eax,4),%ebp
+		mov    gui_strings_p603(%ebx,%eax,4),%ebp
 		push   %ebp
 		jmp    jump_36431
 	jump_363b6:
@@ -52386,7 +52386,7 @@ func_363cb:
 /*----------------------------------------------------------------*/
 		xor    %eax,%eax
 		mov    EXPORT_SYMBOL(language),%al
-		mov    strings_weapon_category_automatic(,%eax,4),%edi
+		mov    gui_strings_p399(,%eax,4),%edi
 		push   %edi
 		push   %edx
 		call   ac_strcpy
@@ -52403,7 +52403,7 @@ func_363e8:
 /*----------------------------------------------------------------*/
 		xor    %eax,%eax
 		mov    EXPORT_SYMBOL(language),%al
-		mov    strings_weapon_category_heavy(,%eax,4),%esi
+		mov    gui_strings_p402(,%eax,4),%esi
 		push   %esi
 		push   %edx
 		call   ac_strcpy
@@ -52420,7 +52420,7 @@ func_36405:
 /*----------------------------------------------------------------*/
 		xor    %eax,%eax
 		mov    EXPORT_SYMBOL(language),%al
-		mov    strings_weapon_category_assault(,%eax,4),%ecx
+		mov    gui_strings_p405(,%eax,4),%ecx
 		push   %ecx
 		push   %edx
 		call   ac_strcpy
@@ -52437,7 +52437,7 @@ func_36422:
 /*----------------------------------------------------------------*/
 		xor    %eax,%eax
 		mov    EXPORT_SYMBOL(language),%al
-		mov    strings_weapon_category_misc(,%eax,4),%ebx
+		mov    gui_strings_p408(,%eax,4),%ebx
 		push   %ebx
 	jump_36431:
 		push   %edx
@@ -54422,7 +54422,7 @@ func_378c3:
 		xor    %ebx,%ebx
 		mov    EXPORT_SYMBOL(language),%bl
 		push   $0xd0
-		mov    data_54c00(%eax,%ebx,4),%ecx
+		mov    gui_strings_p663(%eax,%ebx,4),%ecx
 		push   %ecx
 		call   new_show_text
 		add    $0x28,%esp
@@ -54703,7 +54703,7 @@ func_37bdd:
 		push   $0x38a
 		mov    EXPORT_SYMBOL(language),%al
 		push   %ecx
-		mov    strings_logging_out(,%eax,4),%edi
+		mov    gui_strings_p420(,%eax,4),%edi
 		push   %edi
 		call   GetLineWidth
 		xor    %edx,%edx
@@ -54719,7 +54719,7 @@ func_37bdd:
 		push   %eax
 		xor    %eax,%eax
 		mov    EXPORT_SYMBOL(language),%al
-		mov    strings_logging_out(,%eax,4),%ebp
+		mov    gui_strings_p420(,%eax,4),%ebp
 		push   %ebp
 		jmp    jump_37da0
 	jump_37cc7:
@@ -54741,7 +54741,7 @@ func_37bdd:
 		push   $0x38a
 		mov    EXPORT_SYMBOL(language),%al
 		push   %ebp
-		mov    strings_multiplayer(,%eax,4),%edx
+		mov    gui_strings_p423(,%eax,4),%edx
 		push   %edx
 		call   GetLineWidth
 		xor    %edx,%edx
@@ -54757,7 +54757,7 @@ func_37bdd:
 		push   %eax
 		xor    %eax,%eax
 		mov    EXPORT_SYMBOL(language),%al
-		mov    strings_multiplayer(,%eax,4),%ebx
+		mov    gui_strings_p423(,%eax,4),%ebx
 		push   %ebx
 		jmp    jump_37da0
 	jump_37d3a:
@@ -54776,7 +54776,7 @@ func_37bdd:
 		push   $0x38a
 		mov    EXPORT_SYMBOL(language),%al
 		push   %ebx
-		mov    strings_loading(,%eax,4),%esi
+		mov    gui_strings_p426(,%eax,4),%esi
 		push   %esi
 		call   GetLineWidth
 		xor    %edx,%edx
@@ -54792,7 +54792,7 @@ func_37bdd:
 		push   %eax
 		xor    %eax,%eax
 		mov    EXPORT_SYMBOL(language),%al
-		mov    strings_loading(,%eax,4),%edi
+		mov    gui_strings_p426(,%eax,4),%edi
 		push   %edi
 	jump_37da0:
 		call   new_show_text
@@ -55448,7 +55448,7 @@ ASM_load_save_text:	/* 0x38540 */
 		jne    jump_385b3
 		xor    %ebx,%ebx
 		mov    EXPORT_SYMBOL(language),%bl
-		mov    text_empty_slot(,%ebx,4),%ecx
+		mov    gui_strings_p351(,%ebx,4),%ecx
 		push   %ecx
 		push   %esi
 		call   ac_strcpy
@@ -82961,301 +82961,301 @@ gui_strings_p270:
 		.long   aResearch
 		.long   aRecherche
 		.long   aRicerca
-text_team:	/* 0x545e8 */
+gui_strings_p273:	/* 0x545e8 */
 		.long   aTeam
 		.long   aEquipe
 		.long   aSquadra
-text_mods:	/* 0x545f4 */
+gui_strings_p276:	/* 0x545f4 */
 		.long   aMods
 		.long   aModifs
 		.long   aModif
-text_equip:	/* 0x54600 */
+gui_strings_p279:	/* 0x54600 */
 		.long   aEquip
 		.long   aEquiper
 		.long   aEquipag
-text_button_sell:	/* 0x5460c */
+gui_strings_p282:	/* 0x5460c */
 		.long   aSell
 		.long   aVendre
 		.long   aVendi
-data_54618:
+gui_strings_p285:
 		.long   aPurchase
 		.long   aAcheter
 		.long   aCompra
-text_button_reload:	/* 0x54624 */
+gui_strings_p288:	/* 0x54624 */
 		.long   aReload
 		.long   aRecharg
 		.long   aRicar
-data_54630:
+gui_strings_p291:
 		.long   aFunding
 		.long   aBudget
 		.long   aFondi
-strings_research_funddec:	/* 0x5463c */
+gui_strings_p294:	/* 0x5463c */
 		.long   aFunding_0
 		.long   aBudget_0
 		.long   aFondi_0
-text_info:	/* 0x54648 */
+gui_strings_p297:	/* 0x54648 */
 		.long   aInfo
 		.long   aInfo
 		.long   aInfo
-text_enhance:	/* 0x54654 */
+gui_strings_p300:	/* 0x54654 */
 		.long   aEnhance
 		.long   aDetails
 		.long   aDettagli
-text_load:	/* 0x54660 */
+gui_strings_p303:	/* 0x54660 */
 		.long   aLoad
 		.long   aCharg
 		.long   aCarica
-text_save:	/* 0x5466c */
+gui_strings_p306:	/* 0x5466c */
 		.long   aSave
 		.long   aSauver
 		.long   aSalva
-text_map:	/* 0x54678 */
+gui_strings_p309:	/* 0x54678 */
 		.long   aMap
 		.long   aCarte
 		.long   aMappa
-text_replay:	/* 0x54684 */
+gui_strings_p312:	/* 0x54684 */
 		.long   aReplay
 		.long   aRejouer
 		.long   aReplay
 		.long   aName
 		.long   aNom
 		.long   aNome
-text_city_pop:	/* 0x5469c */
+gui_strings_p318:	/* 0x5469c */
 		.long   aPop
 		.long   aPop_0
 		.long   aPop_0
-text_city_stat:	/* 0x546a8 */
+gui_strings_p321:	/* 0x546a8 */
 		.long   aStat
 		.long   aStat
 		.long   aStat
-text_city_tax:	/* 0x546b4 */
+gui_strings_p324:	/* 0x546b4 */
 		.long   aTax
 		.long   aTaxe
 		.long   aTass
-data_546c0:
+gui_strings_p327:
 		.long   aOwn
 		.long   aProp
 		.long   aProp
-data_546cc:
+gui_strings_p330:
 		.long   aUnknown
 		.long   aInconnue
 		.long   aSconosciuto
-text_city_mood_vhappy:	/* 0x546d8 */
+gui_strings_p333:	/* 0x546d8 */
 		.long   aVeryHappy
 		.long   data_5105c
 		.long   aMoltoFelice
-text_city_mood_happy:	/* 0x546e4 */
+gui_strings_p336:	/* 0x546e4 */
 		.long   aHappy
 		.long   aGaie
 		.long   aFelice
-text_city_mood_content:	/* 0x546f0 */
+gui_strings_p339:	/* 0x546f0 */
 		.long   aContent
 		.long   aContente
 		.long   aSoddisfatto
-text_city_mood_unhappy:	/* 0x546fc */
+gui_strings_p342:	/* 0x546fc */
 		.long   aUnhappy
 		.long   aMecontente
 		.long   aInfelice
-text_city_mood_discontent:	/* 0x54708 */
+gui_strings_p345:	/* 0x54708 */
 		.long   aDiscontent
 		.long   aFurieuse
 		.long   aInsoddisfatto
-text_city_mood_rebellious:	/* 0x54714 */
+gui_strings_p348:	/* 0x54714 */
 		.long   aRebellious
 		.long   aRebelle
 		.long   aRibelle
-text_empty_slot:	/* 0x54720 */
+gui_strings_p351:	/* 0x54720 */
 		.long   aEmpty
 		.long   aVide
 		.long   aVuoto
-text_spec_agent:	/* 0x5472c */
+gui_strings_p354:	/* 0x5472c */
 		.long   aSpecialAgent
 		.long   aAgentSpecial
 		.long   aAgenteSpeciale
-data_54738:
+gui_strings_p357:
 		.long   aSelectDetailTo
 		.long   aChoixDuDetailA
 		.long   aScegliLeModifi
-str:	/* 0x54744 */
+gui_strings_p360:	/* 0x54744 */
 		.long   aColourAndLogo
 		.long   aCouleurEtLogo
 		.long   aColoreELogo
-data_54750:
+gui_strings_p363:
 		.long   aCompanyName
 		.long   aNomDeLaSociete
 		.long   aNomeCompagnia
-data_5475c:
+gui_strings_p366:
 		.long   aYourName
 		.long   aVotreNom
 		.long   aIlTuoNome
-data_54768:
+gui_strings_p369:
 		.long   aChangeColourAn
 		.long   aChangerCouleur
 		.long   aCambiaColoreEL
-data_54774:
+gui_strings_p372:
 		.long   aColour
 		.long   aCouleur
 		.long   aColore
-data_54780:
+gui_strings_p375:
 		.long   aLogo
 		.long   aLogo
 		.long   aLogo
-a5:	/* 0x5478c */
+gui_strings_p378:	/* 0x5478c */
 		.long   aChangeCompanyN
 		.long   aModifierNomSoc
 		.long   aCambiaNomeComp
-data_54798:
+gui_strings_p381:
 		.long   aEnterYourName
 		.long   aEntrezVotreNom
 		.long   aInserisciIlNom
-strings_cost:	/* 0x547a4 */
+gui_strings_p384:	/* 0x547a4 */
 		.long   aCost
 		.long   aPrix
 		.long   aCosto
-strings_ammo:	/* 0x547b0 */
+gui_strings_p387:	/* 0x547b0 */
 		.long   aAmmo
 		.long   aMun
 		.long   aMun
-strings_range:	/* 0x547bc */
+gui_strings_p390:	/* 0x547bc */
 		.long   aRange
 		.long   aPortee
 		.long   aRaggio
-strings_shot:	/* 0x547c8 */
+gui_strings_p393:	/* 0x547c8 */
 		.long   aShot
 		.long   aCoups
 		.long   aColpo
-strings_reload:	/* 0x547d4 */
+gui_strings_p396:	/* 0x547d4 */
 		.long   aReload
 		.long   aCharg
 		.long   aRicar
-strings_weapon_category_automatic:	/* 0x547e0 */
+gui_strings_p399:	/* 0x547e0 */
 		.long   aAutomatic
 		.long   aAutomatique
 		.long   aAutomatica
-strings_weapon_category_heavy:	/* 0x547ec */
+gui_strings_p402:	/* 0x547ec */
 		.long   aHeavy
 		.long   aArmeLourde
 		.long   aGrossoCalibro
-strings_weapon_category_assault:	/* 0x547f8 */
+gui_strings_p405:	/* 0x547f8 */
 		.long   aAssault
 		.long   aArmeDAssaut
 		.long   aAssalto
-strings_weapon_category_misc:	/* 0x54804 */
+gui_strings_p408:	/* 0x54804 */
 		.long   aMiscellaneous
 		.long   aDivers
 		.long   aVarioTipo
-strings_research_min_funding:	/* 0x54810 */
+gui_strings_p411:	/* 0x54810 */
 		.long   aMinFunding
 		.long   aBudgetMini
 		.long   aFondiMin
-strings_research_max_funding:	/* 0x5481c */
+gui_strings_p414:	/* 0x5481c */
 		.long   aMaxFunding
 		.long   aBudgetMaxi
 		.long   aFondiMax
-strings_researching:	/* 0x54828 */
+gui_strings_p417:	/* 0x54828 */
 		.long   aResearching
 		.long   aRecherche
 		.long   aInRicerca
-strings_logging_out:	/* 0x54834 */
+gui_strings_p420:	/* 0x54834 */
 		.long   aLoggingOut
 		.long   aFinDuJeu
 		.long   aInUscita
-strings_multiplayer:	/* 0x54840 */
+gui_strings_p423:	/* 0x54840 */
 		.long   aLoadingMultipl
 		.long   aChargMultijoue
 		.long   aCaricaMultipla
-strings_loading:	/* 0x5484c */
+gui_strings_p426:	/* 0x5484c */
 		.long   aLoadingGame
 		.long   aChargementPart
 		.long   aCaricamentoGio
-strings_mission_status:	/* 0x54858 */
+gui_strings_p429:	/* 0x54858 */
 		.long   aMissionStatus
 		.long   aStatutDeLaMiss
 		.long   aStatoMissione
-strings_misstat_complete:	/* 0x54864 */
+gui_strings_p432:	/* 0x54864 */
 		.long   aCompleted
 		.long   aTerminee
 		.long   aCompletata
-strings_misstat_withdrew:	/* 0x54870 */
+gui_strings_p435:	/* 0x54870 */
 		.long   aWithdrewFromMi
 		.long   aRetireDeLaMiss
 		.long   aRitiratoDallaM
-strings_misstat_failed:	/* 0x5487c */
+gui_strings_p438:	/* 0x5487c */
 		.long   aFailed
 		.long   aEchouee
 		.long   aFallita
-strings_debrief_agents_used:	/* 0x54888 */
+gui_strings_p441:	/* 0x54888 */
 		.long   aAgentsUsed
 		.long   aAgentsUtilises
 		.long   aAgentiImpiegat
-strings_debrief_agents_gained:	/* 0x54894 */
+gui_strings_p444:	/* 0x54894 */
 		.long   aNewAgentsGaine
 		.long   aAgentsRecupere
 		.long   aNuoviAgentiAcq
-strings_debrief_time:	/* 0x548a0 */
+gui_strings_p447:	/* 0x548a0 */
 		.long   aTimeInMission
 		.long   aDureeDeLaMissi
 		.long   aTempoDellaMiss
-data_548ac:
+gui_strings_p450:
 		.long   aHours
 		.long   aHeures
 		.long   aOre
-data_548b8:
+gui_strings_p453:
 		.long   aDays
 		.long   aJours
 		.long   aGiorni
 		.long   aValueOfDamage
 		.long   aDegatsSubis
 		.long   aAmmontareDeiDa
-strings_debrief_agents_killed:	/* 0x548d0 */
+gui_strings_p459:	/* 0x548d0 */
 		.long   aEnemyAgentsKil
 		.long   aAgentsEnnemisT
 		.long   aAgentiNemiciEl
-strings_debrief_criminals_killed:	/* 0x548dc */
+gui_strings_p462:	/* 0x548dc */
 		.long   aCriminalsKille
 		.long   aCriminelsElimi
 		.long   aCriminaliElimi
-strings_debrief_civilians_killed:	/* 0x548e8 */
+gui_strings_p465:	/* 0x548e8 */
 		.long   aCiviliansKille
 		.long   aCivilsTues
 		.long   aCiviliUccisi
-strings_debrief_police_killed:	/* 0x548f4 */
+gui_strings_p468:	/* 0x548f4 */
 		.long   aPoliceKilled
 		.long   aPoliciersTues
 		.long   aPoliziottiUcci
-strings_debrief_guards_killed:	/* 0x54900 */
+gui_strings_p471:	/* 0x54900 */
 		.long   aGuardsKilled
 		.long   aGardesTues
 		.long   aGuardieUccise
-strings_debrief_people_persuaded:	/* 0x5490c */
+gui_strings_p474:	/* 0x5490c */
 		.long   aPeoplePersuade
 		.long   aPersonnesConva
 		.long   aPersoneConvint
-strings_debrief_hit_accuracy:	/* 0x54918 */
+gui_strings_p477:	/* 0x54918 */
 		.long   aHitAccuracy
 		.long   aPrecisionDeTir
 		.long   aColpiPrecisi
-strings_debrief_no_bullets:	/* 0x54924 */
+gui_strings_p480:	/* 0x54924 */
 		.long   aNoBulletsFired
 		.long   aPasDeBallesUti
 		.long   aProiettiliNonS
-data_54930:
+gui_strings_p483:
 		.long   aResearchOn
 		.long   aRechercheSur
 		.long   aRicercaAttivat
-data_5493c:
+gui_strings_p486:
 		.long   aNewWeaponryHas
 		.long   aUneNouvelleArm
 		.long   aNuoviArmamenti
-data_54948:
+gui_strings_p489:	/* 0x54948 */
 		.long   aToTheResearchD
 		.long   aAuDepartementD
 		.long   aAlDipartimento
-data_54954:
+gui_strings_p492:
 		.long   aMissionStatist
 		.long   aStatistiquesMi
 		.long   aDatiStatistici
-data_54960:
+gui_strings_p495:	/* 0x54960 */
 		.long   aReplacementMet
 		.long   aJambesDeRempla
 		.long   aGambeMetallich
@@ -83310,7 +83310,7 @@ data_54960:
 		.long   aCerebralMultip
 		.long   aMultiplicateur
 		.long   aMoltiplicatore
-strings_cybmod_names:	/* 0x54a38 */
+gui_strings_p549:	/* 0x54a38 */
 		.long   aLegsV1
 		.long   aJambesV1
 		.long   aGambeV1
@@ -83365,7 +83365,7 @@ strings_cybmod_names:	/* 0x54a38 */
 		.long   aBrainV3
 		.long   aCerveauV3
 		.long   aCervelloV3
-strings_weapon_names:	/* 0x54b10 */
+gui_strings_p603:	/* 0x54b10 */
 		.long   aPersuadertron
 		.long   aPersuadotron
 		.long   aPersuadertron
@@ -83423,8 +83423,10 @@ strings_weapon_names:	/* 0x54b10 */
 		.long   aShield2
 		.long   data_53388
 		.long   data_53388
-		.fill   0xc
-data_54c00:
+		.long   data_53388
+		.long   data_53388
+		.long   data_53388
+gui_strings_p663:	/* 0x54c00 */
 		.long   aConfigureCompa
 		.long   aConfigurerSoci
 		.long   aConfiguraCompa
