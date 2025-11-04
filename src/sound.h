@@ -29,6 +29,25 @@
 /******************************************************************************/
 #pragma pack(1)
 
+struct BFSample {
+  int field_0;
+  int field_4;
+  int field_8;
+  short field_C;
+  int data_shifted;
+  void *data_start;
+  short field_16;
+  int field_18;
+  short field_1C;
+  ubyte field_1E;
+  ubyte field_1F;
+};
+
+struct BFSampleStatus {
+  ubyte field_0;
+  ubyte field_1;
+};
+
 #pragma pack()
 /******************************************************************************/
 
@@ -36,9 +55,18 @@ extern short startscr_samplevol;
 extern short startscr_midivol;
 extern short startscr_cdvolume;
 
+extern struct BFSample *smptable;
+extern struct BFSample *smptable_end;
+extern ubyte *smpdata;
+extern struct BFSampleStatus sample_status[256];
+
 int LoadMusic(ushort bankNo);
 
-void fill_ail_sample_ids(void);
+void sound_bank_setup(void);
+void BFPlaySample(ubyte smp_id);
+void BFSonundUnkn1(void);
+void ClearBFSampleStatus(void);
+void SetBFSampleStatus(ubyte smp_id, ubyte stat);
 
 /******************************************************************************/
 #endif // SOUND_H

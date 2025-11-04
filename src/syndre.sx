@@ -231,7 +231,7 @@ GLOBAL_FUNC(syndicate)	/* 0x101e0 */
 		call   correct_buttons
 		cmp    $0x2,%ebx
 		jbe    jump_10258
-		call   BFSonundUnkn1
+		call   ac_BFSonundUnkn1
 	jump_10258:
 		call   check_for_danger
 		push   %ebp
@@ -439,7 +439,7 @@ func_103fc:
 		push   $0x7f
 		mov    0x10(%esp),%al
 		push   %eax
-		call   SetBFSampleStatus
+		call   ac_SetBFSampleStatus
 		add    $0x8,%esp
 	jump_104bd:
 		pop    %esi
@@ -463,7 +463,7 @@ level_failed:	/* 0x104c0 */
 		mov    $0x1,%edx
 		mov    %eax,data_5c34c
 		mov    %edx,data_5c354
-		call   SetBFSampleStatus
+		call   ac_SetBFSampleStatus
 		add    $0x8,%esp
 	jump_10500:
 		ret
@@ -481,7 +481,7 @@ level_complete:	/* 0x10510 */
 		mov    EXPORT_SYMBOL(debug_k),%eax
 		push   $0x17
 		mov    %eax,data_5c34c
-		call   SetBFSampleStatus
+		call   ac_SetBFSampleStatus
 		mov    $0x1,%edx
 		add    $0x8,%esp
 		mov    %edx,data_5c354
@@ -2097,7 +2097,7 @@ mission_briefing:	/* 0x10e60 */
 		movsw  %ds:(%esi),%es:(%edi)
 		push   $0x2
 		mov    %ah,EXPORT_SYMBOL(lbDisplay)+103	/* lbDisplay.LeftButton */
-		call   BFPlaySample
+		call   ac_BFPlaySample
 		add    $0x4,%esp
 		push   $sound_array
 		push   $0x0
@@ -10894,7 +10894,7 @@ func_18084:
 		mov    %eax,EXPORT_SYMBOL(MouseSwap)
 		push   $0x2
 		mov    %bl,EXPORT_SYMBOL(lbDisplay)+103	/* lbDisplay.LeftButton */
-		call   BFPlaySample
+		call   ac_BFPlaySample
 		add    $0x4,%esp
 		push   $sound_array
 		push   $0x0
@@ -13496,7 +13496,7 @@ debrief:	/* 0x18ff0 */
 		xor    %ah,%ah
 		push   $0x2
 		mov    %ah,EXPORT_SYMBOL(lbDisplay)+103	/* lbDisplay.LeftButton */
-		call   BFPlaySample
+		call   ac_BFPlaySample
 		add    $0x4,%esp
 		push   $sound_array
 		push   $0x0
@@ -17140,7 +17140,7 @@ func_1c9f7:
 	jump_1cac6:
 		push   $0x7f
 		push   $0x11
-		call   SetBFSampleStatus
+		call   ac_SetBFSampleStatus
 		add    $0x8,%esp
 	jump_1cad2:
 		test   %si,%si
@@ -17250,7 +17250,7 @@ func_1cb44:
 		je     jump_1cc17
 		push   $0x7f
 		push   $0x11
-		call   SetBFSampleStatus
+		call   ac_SetBFSampleStatus
 		add    $0x8,%esp
 	jump_1cc17:
 		push   $0xc
@@ -18247,7 +18247,7 @@ func_1d5b3:
 		push   $0x7f
 		mov    %bl,%al
 		push   %eax
-		call   SetBFSampleStatus
+		call   ac_SetBFSampleStatus
 		add    $0x8,%esp
 	jump_1d750:
 		mov    0x14(%esp),%eax
@@ -19049,7 +19049,7 @@ draw_pelement:	/* 0x1e050 */
 		push   $0x7f
 		mov    0x4(%ebx),%al
 		push   %eax
-		call   SetBFSampleStatus
+		call   ac_SetBFSampleStatus
 		add    $0x8,%esp
 	jump_1e088:
 		xor    %edx,%edx
@@ -20099,7 +20099,7 @@ func_1ed0d:
 		push   %eax
 		mov    $0x9,%eax
 		push   %eax
-		call   SetBFSampleStatus
+		call   ac_SetBFSampleStatus
 		mov    data_60b28,%di
 		add    $0x8,%esp
 		sub    $0x180,%edi
@@ -20195,7 +20195,7 @@ func_1ee2f:
 		push   %eax
 		mov    $0x9,%eax
 		push   %eax
-		call   SetBFSampleStatus
+		call   ac_SetBFSampleStatus
 		mov    data_60b28,%di
 		add    $0x8,%esp
 		sub    $0x80,%edi
@@ -20289,7 +20289,7 @@ func_1ef51:
 /*----------------------------------------------------------------*/
 		push   $0x7f
 		push   $0x9
-		call   SetBFSampleStatus
+		call   ac_SetBFSampleStatus
 		add    $0x8,%esp
 		push   $0x80
 		push   $0x200
@@ -24508,7 +24508,7 @@ func_227c8:
 		movsb  %ds:(%esi),%es:(%edi)
 		push   $0x2
 		mov    %bl,EXPORT_SYMBOL(lbDisplay)+103	/* lbDisplay.LeftButton */
-		call   BFPlaySample
+		call   ac_BFPlaySample
 		add    $0x4,%esp
 		push   $sound_array
 		push   $0x0
@@ -27783,7 +27783,7 @@ init_level_data:	/* 0x25110 */
 		mov    %dh,EXPORT_SYMBOL(lbDisplay)+104	/* lbDisplay.RightButton */
 		mov    %dh,data_60b50
 		call   set_structure_ends
-		call   ClearBFSampleStatus
+		call   ac_ClearBFSampleStatus
 		mov    $0x10,%cl
 		mov    $0x14,%al
 		mov    $0xd48,%edx
@@ -27885,7 +27885,7 @@ load_map_level:	/* 0x252b0 */
 		push   $sound_load_files
 		call   ac_LbDataLoadAll
 		add    $0x4,%esp
-		call   sound_bank_setup
+		call   ac_sound_bank_setup
 	jump_253a4:
 		call   init_hires_blocks
 	jump_253a9:
@@ -29790,7 +29790,7 @@ func_267be:
 	jump_26868:
 		push   $0x7f
 		push   $0x16
-		call   SetBFSampleStatus
+		call   ac_SetBFSampleStatus
 		add    $0x8,%esp
 		push   $0xff
 		call   random
@@ -29956,7 +29956,7 @@ func_26a18:
 	jump_26a99:
 		push   $0x7f
 		push   $0x16
-		call   SetBFSampleStatus
+		call   ac_SetBFSampleStatus
 		add    $0x8,%esp
 		push   $0xff
 		call   random
@@ -30677,7 +30677,7 @@ func_27280:
 		mov    %eax,EXPORT_SYMBOL(MouseSwap)
 		push   $0x2
 		mov    %bl,EXPORT_SYMBOL(lbDisplay)+103	/* lbDisplay.LeftButton */
-		call   BFPlaySample
+		call   ac_BFPlaySample
 		add    $0x4,%esp
 		push   $sound_array
 		push   $0x0
@@ -33932,7 +33932,7 @@ func_29818:
 		xor    %ch,%ch
 		push   $0x2
 		mov    %ch,EXPORT_SYMBOL(lbDisplay)+103	/* lbDisplay.LeftButton */
-		call   BFPlaySample
+		call   ac_BFPlaySample
 		add    $0x4,%esp
 		push   $sound_array
 		push   $0x0
@@ -51904,7 +51904,7 @@ func_359e6:
 		movsb  %ds:(%esi),%es:(%edi)
 		push   $0x2
 		mov    %ah,EXPORT_SYMBOL(lbDisplay)+103	/* lbDisplay.LeftButton */
-		call   BFPlaySample
+		call   ac_BFPlaySample
 		add    $0x4,%esp
 		push   $sound_array
 		push   %ebx
@@ -54148,7 +54148,7 @@ select:	/* 0x37600 */
 		push   $sound_bank_files
 		call   ac_LbDataLoadAll
 		add    $0x4,%esp
-		call   sound_bank_setup
+		call   ac_sound_bank_setup
 	jump_37654:
 		xor    %edx,%edx
 		jmp    jump_37699
@@ -54283,7 +54283,7 @@ func_377c5:
 		movsl  %ds:(%esi),%es:(%edi)
 		movsl  %ds:(%esi),%es:(%edi)
 		movsw  %ds:(%esi),%es:(%edi)
-		call   BFPlaySample
+		call   ac_BFPlaySample
 		add    $0x4,%esp
 		push   $sound_array
 		push   $0x1
@@ -54309,7 +54309,7 @@ func_37800:
 		movsl  %ds:(%esi),%es:(%edi)
 		movsl  %ds:(%esi),%es:(%edi)
 		movsw  %ds:(%esi),%es:(%edi)
-		call   BFPlaySample
+		call   ac_BFPlaySample
 		add    $0x4,%esp
 		push   $sound_array
 		push   $0x1
@@ -54471,7 +54471,7 @@ func_378c3:
 		movsl  %ds:(%esi),%es:(%edi)
 		movsl  %ds:(%esi),%es:(%edi)
 		movsb  %ds:(%esi),%es:(%edi)
-		call   BFPlaySample
+		call   ac_BFPlaySample
 		add    $0x4,%esp
 		push   $sound_array
 		push   %ebx
@@ -54520,7 +54520,7 @@ func_378c3:
 		movsl  %ds:(%esi),%es:(%edi)
 		movsl  %ds:(%esi),%es:(%edi)
 		movsb  %ds:(%esi),%es:(%edi)
-		call   BFPlaySample
+		call   ac_BFPlaySample
 		add    $0x4,%esp
 		push   $sound_array
 		push   $0x0
@@ -54573,7 +54573,7 @@ func_37b29:
 		movsl  %ds:(%esi),%es:(%edi)
 		movsl  %ds:(%esi),%es:(%edi)
 		movsb  %ds:(%esi),%es:(%edi)
-		call   BFPlaySample
+		call   ac_BFPlaySample
 		add    $0x4,%esp
 		push   $sound_array
 		push   $0x0
@@ -55006,7 +55006,7 @@ level_finished:	/* 0x37f80 */
 		push   $sound_bank_files
 		call   ac_LbDataLoadAll
 		add    $0x4,%esp
-		call   sound_bank_setup
+		call   ac_sound_bank_setup
 	jump_3802c:
 		testb  $0x2,data_60afc
 		je     jump_38176
@@ -55600,23 +55600,23 @@ GLOBAL_FUNC(init_sound)	/* 0x385c0 */
 
 
 /*----------------------------------------------------------------*/
-sound_bank_setup:	/* 0x38720 */
+ASM_sound_bank_setup:	/* 0x38720 */
 /*----------------------------------------------------------------*/
 		push   %ebx
 		push   %esi
 		push   %edi
 		push   %ebp
-		mov    smptable,%edx
+		mov    EXPORT_SYMBOL(smptable),%edx
 		test   %edx,%edx
 		je     jump_38782
 		cmpb   $0x0,EXPORT_SYMBOL(SoundAble)
 		je     jump_38782
-		mov    smptable_end,%ebx
+		mov    EXPORT_SYMBOL(smptable_end),%ebx
 		lea    0x20(%edx),%esi
 		cmp    %ebx,%esi
 		jae    jump_38782
 	jump_38744:
-		mov    smpdata,%ecx
+		mov    EXPORT_SYMBOL(smpdata),%ecx
 		mov    0x12(%esi),%eax
 		add    %ecx,%eax
 		mov    %eax,%edx
@@ -55632,7 +55632,7 @@ sound_bank_setup:	/* 0x38720 */
 		push   %edi
 		mov    %eax,-0xe(%esi)
 		call   AIL_format_VOC_file
-		mov    smptable_end,%ebp
+		mov    EXPORT_SYMBOL(smptable_end),%ebp
 		add    $0x10,%esp
 		cmp    %ebp,%esi
 		jb     jump_38744
@@ -55645,7 +55645,7 @@ sound_bank_setup:	/* 0x38720 */
 
 
 /*----------------------------------------------------------------*/
-ClearBFSampleStatus:	/* 0x38790 */
+ASM_ClearBFSampleStatus:	/* 0x38790 */
 /*----------------------------------------------------------------*/
 		xor    %eax,%eax
 		xor    %dl,%dl
@@ -55667,40 +55667,40 @@ ClearBFSampleStatus:	/* 0x38790 */
 
 
 /*----------------------------------------------------------------*/
-SetBFSampleStatus:	/* 0x387e0 */
+ASM_SetBFSampleStatus:	/* 0x387e0 */
 /*----------------------------------------------------------------*/
 		push   %ebx
 		mov    0xc(%esp),%cl
 		xor    %eax,%eax
 		mov    0x8(%esp),%al
 		mov    %eax,%edx
-		mov    smptable,%ebx
+		mov    EXPORT_SYMBOL(smptable),%ebx
 		cmp    $0x0,%ebx
 		je     jump_3882e
 		shl    $0x5,%edx
 		cmpb   $0x0,0x1e(%edx,%ebx,1)
 		je     jump_3882e
 		add    %eax,%eax
-		cmpb   $0x0,sample_status(%eax)
+		cmpb   $0x0,EXPORT_SYMBOL(sample_status)(%eax)
 		je     jump_38820
 		cmp    data_61bed(%eax),%cl
 		jbe    jump_3882e
 		mov    $0x1,%bh
 		mov    %cl,data_61bed(%eax)
-		mov    %bh,sample_status(%eax)
+		mov    %bh,EXPORT_SYMBOL(sample_status)(%eax)
 		pop    %ebx
 		ret
 	jump_38820:
 		mov    $0x1,%dh
 		mov    %cl,data_61bed(%eax)
-		mov    %dh,sample_status(%eax)
+		mov    %dh,EXPORT_SYMBOL(sample_status)(%eax)
 	jump_3882e:
 		pop    %ebx
 		ret
 
 
 /*----------------------------------------------------------------*/
-BFPlaySample:	/* 0x38830 */
+ASM_BFPlaySample:	/* 0x38830 */
 /*----------------------------------------------------------------*/
 		push   %ebx
 		push   %esi
@@ -55711,7 +55711,7 @@ BFPlaySample:	/* 0x38830 */
 		xor    %eax,%eax
 		mov    0xc(%esp),%al
 		mov    %eax,%edx
-		mov    smptable,%eax
+		mov    EXPORT_SYMBOL(smptable),%eax
 		shl    $0x5,%edx
 		add    %edx,%eax
 		push   $0xffffffff
@@ -55771,13 +55771,13 @@ BFSoundResume:	/* 0x388c0 */
 
 
 /*----------------------------------------------------------------*/
-BFSonundUnkn1:	/* 0x388f0 */
+ASM_BFSonundUnkn1:	/* 0x388f0 */
 /*----------------------------------------------------------------*/
 		push   %ebx
 		push   %esi
 		push   %edi
 		push   %ebp
-		mov    smptable,%edi
+		mov    EXPORT_SYMBOL(smptable),%edi
 		mov    EXPORT_SYMBOL(SoundAble),%ah
 		xor    %ebp,%ebp
 		test   %ah,%ah
@@ -55791,23 +55791,23 @@ BFSonundUnkn1:	/* 0x388f0 */
 		cmp    $0x3,%eax
 		jne    jump_38933
 		xor    %dh,%dh
-		mov    %dh,data_5bbe8
+		mov    %dh,EXPORT_SYMBOL(byte_5BBE8)
 	jump_38933:
 		mov    $0x1,%ebx
 		mov    $0x2,%eax
 		mov    $0x20,%edx
-		mov    smptable,%edi
+		mov    EXPORT_SYMBOL(smptable),%edi
 		xor    %ch,%ch
 		lea    0x0(%eax),%eax
 	jump_38950:
-		mov    sample_status(%eax),%cl
+		mov    EXPORT_SYMBOL(sample_status)(%eax),%cl
 		cmp    %cl,%ch
 		je     jump_389ad
 		dec    %cl
 		lea    (%edi,%edx,1),%esi
-		mov    %cl,sample_status(%eax)
+		mov    %cl,EXPORT_SYMBOL(sample_status)(%eax)
 		mov    0x1e(%esi),%cl
-		cmp    data_5bbe8,%cl
+		cmp    EXPORT_SYMBOL(byte_5BBE8),%cl
 		ja     jump_38993
 		jne    jump_38977
 		cmp    0x1f(%esi),%ch
@@ -55815,25 +55815,25 @@ BFSonundUnkn1:	/* 0x388f0 */
 	jump_38977:
 		mov    %edi,%esi
 		mov    0x1e(%edx,%esi,1),%cl
-		cmp    data_5bbe8,%cl
+		cmp    EXPORT_SYMBOL(byte_5BBE8),%cl
 		jne    jump_389ad
 		mov    data_61bed(%eax),%cl
-		cmp    data_5bbe9,%cl
+		cmp    EXPORT_SYMBOL(byte_5BBE9),%cl
 		jbe    jump_389ad
 	jump_38993:
 		mov    %edi,%esi
 		mov    0x1e(%edx,%esi,1),%cl
-		mov    %cl,data_5bbe8
+		mov    %cl,EXPORT_SYMBOL(byte_5BBE8)
 		mov    data_61bed(%eax),%cl
 		mov    %ebx,%ebp
-		mov    %cl,data_5bbe9
+		mov    %cl,EXPORT_SYMBOL(byte_5BBE9)
 	jump_389ad:
 		add    $0x2,%eax
 		inc    %ebx
 		add    $0x20,%edx
 		cmp    $0x100,%ebx
 		jl     jump_38950
-		mov    %edi,smptable
+		mov    %edi,EXPORT_SYMBOL(smptable)
 		test   %ebp,%ebp
 		je     jump_38a0f
 		mov    %ebp,%eax
@@ -55855,12 +55855,12 @@ BFSonundUnkn1:	/* 0x388f0 */
 		mov    DIGhdriver,%esi
 		push   %esi
 		call   AIL_start_digital_playback
-		mov    smptable,%edi
+		mov    EXPORT_SYMBOL(smptable),%edi
 		xor    %ch,%ch
 		add    $0x4,%esp
-		mov    %ch,sample_status(,%ebp,2)
+		mov    %ch,EXPORT_SYMBOL(sample_status)(,%ebp,2)
 	jump_38a0f:
-		mov    smptable,%edi
+		mov    EXPORT_SYMBOL(smptable),%edi
 		pop    %ebp
 		pop    %edi
 		pop    %esi
@@ -60440,7 +60440,7 @@ CheckArray:	/* 0x3ba60 */
 		and    $0xff,%eax
 		push   %eax
 		mov    %si,AniArrayCount
-		call   BFPlaySample
+		call   ac_BFPlaySample
 		jmp    jump_3bb1e
 	jump_3baea:
 		movswl %si,%eax
@@ -82627,13 +82627,13 @@ data_53f3d:
 sound_load_files:	/* 0x540c0 */
 		.string "data/sound-0.dat"
 		.fill   0xb
-		.long   smpdata
+		.long   EXPORT_SYMBOL(smpdata)
 		.fill   0x8
 		.ascii  "\x01\x00\x00\x00"
 		.string "data/sound-0.tab"
 		.fill   0xb
-		.long   smptable
-		.long   smptable_end
+		.long   EXPORT_SYMBOL(smptable)
+		.long   EXPORT_SYMBOL(smptable_end)
 		.fill   0x34
 unkn1_empty_load_files:	/* 0x54144 */
 		.fill   0x2c
@@ -83755,11 +83755,11 @@ elements_ani_end:	/* 0x55344 */
 		.fill   0x4
 starts_ani:	/* 0x55348 */
 		.fill   0x4
-smpdata:	/* 0x5534c */
+GLOBAL (smpdata)	/* 0x5534c */
 		.fill   0x4
-smptable:	/* 0x55350 */
+GLOBAL (smptable)	/* 0x55350 */
 		.fill   0x4
-smptable_end:	/* 0x55354 */
+GLOBAL (smptable_end)	/* 0x55354 */
 		.fill   0x4
 data_55358:
 		.fill   0x4
@@ -84991,13 +84991,13 @@ sound_bank_files:	/* 0x5bb10 */
 		.string "data/sound-1.dat"
 		.fill   0xb
 data_5bb2c:
-		.long   smpdata
+		.long   EXPORT_SYMBOL(smpdata)
 		.fill   0x8
 		.ascii  "\x01\x00\x00\x00"
 		.string "data/sound-1.tab"
 		.fill   0xb
-		.long   smptable
-		.long   smptable_end
+		.long   EXPORT_SYMBOL(smptable)
+		.long   EXPORT_SYMBOL(smptable_end)
 		.fill   0x34
 data_5bb94:
 		.ascii  "\x23\x00\x41\x06\x23\x00\x53\x0d"
@@ -85015,9 +85015,9 @@ data_5bbd4:
 		.ascii  "\x01\x00\x53\x03\x01\x00\x4d\x02"
 		.ascii  "\x02\x00\x41\x0a\xff\xff"
 		.fill   0x6
-data_5bbe8:
+GLOBAL (byte_5BBE8)	/* 0x5BBE8 */
 		.ascii  "\x00"
-data_5bbe9:
+GLOBAL (byte_5BBE9)	/* 0x5BBE9 */
 		.ascii  "\x00\x00\x00"
 SongCurrentlyPlaying:	/* 0x5bbec */
 		.ascii  "\xff\x00\x00\x00"
@@ -85507,9 +85507,9 @@ GLOBAL (cheats_mission)	/* 0x60b48 */
 		.ascii  "\x00"
 
 #if 0 /* defined in bfsoundlib */
-GLOBAL (MusicAble)	/* 0x60b49 */
+GLOBAL (ASM_MusicAble)	/* 0x60b49 */
 		.ascii  "\x00"
-GLOBAL (SoundAble)	/* 0x60b4a */
+GLOBAL (ASM_SoundAble)	/* 0x60b4a */
 		.ascii  "\x00"
 #endif
 
@@ -85573,7 +85573,7 @@ data_61be8:
 		.ascii  "\x00\x00"
 data_61bea:
 		.ascii  "\x00\x00"
-sample_status:	/* 0x61bec */
+GLOBAL (sample_status)	/* 0x61bec */
 		.ascii  "\x00"
 data_61bed:
 		.fill   0x1ff
