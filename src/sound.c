@@ -13,6 +13,7 @@
 #include "sb16.h"
 #include "sndtimer.h"
 #include "snderr.h"
+#include "ssampply.h"
 #include "streamfx.h"
 #include "aila.h"
 #include "ailss.h"
@@ -117,6 +118,8 @@ void BFPlaySample(ubyte smp_id)
 #if defined(WITH_AIL2)
     AIL_play_VOC_file(DIGhdriver, p_smp->data_start);
     AIL_start_digital_playback(DIGhdriver);
+#else
+    PlaySampleFromAddress(0, smp_id, 127, 64, 100, 0, 1, p_smp->data_start);
 #endif
 }
 
@@ -135,10 +138,10 @@ void BFSonundUnkn1(void)
 
     sel_smp_id = 0;
 #if defined(WITH_AIL2)
-    if (AIL_VOC_playback_status(DIGhdriver) == 3)
-      byte_5BBE8 = 0;
+    if (AIL_VOC_playback_status(DIGhdriver) == 3) // 3=DAC_DONE
+        byte_5BBE8 = 0;
 #else
-//TODO
+    byte_5BBE8 = 0; // No need to prioritize a single sample, we now have a mixer
 #endif
 
     for (smp_id = 1; smp_id < 256; smp_id++)
@@ -177,6 +180,8 @@ void BFSonundUnkn1(void)
 #if defined(WITH_AIL2)
         AIL_play_VOC_file(DIGhdriver, p_smp->data_start);
         AIL_start_digital_playback(DIGhdriver);
+#else
+        PlaySampleFromAddress(0, sel_smp_id, 127, 64, 100, 0, 1, p_smp->data_start);
 #endif
         p_status->field_0 = 0;
     }
