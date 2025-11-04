@@ -27626,7 +27626,7 @@ free_map_level:	/* 0x24fe0 */
 		test   %ah,%ah
 		je     jump_25016
 		call   StopAllSounds
-		push   $sound_load_files
+		push   $EXPORT_SYMBOL(sound_bank_files0)
 		call   ac_LbDataFreeAll
 		add    $0x4,%esp
 	jump_25016:
@@ -27882,7 +27882,7 @@ load_map_level:	/* 0x252b0 */
 		add    $0x4,%esp
 		test   %dl,%dl
 		je     jump_253a4
-		push   $sound_load_files
+		push   $EXPORT_SYMBOL(sound_bank_files0)
 		call   ac_LbDataLoadAll
 		add    $0x4,%esp
 		call   ac_sound_bank_setup
@@ -54145,7 +54145,7 @@ select:	/* 0x37600 */
 		mov    data_5bb2c,%eax
 		cmpl   $0x0,(%eax)
 		jne    jump_37654
-		push   $sound_bank_files
+		push   $EXPORT_SYMBOL(sound_bank_files1)
 		call   ac_LbDataLoadAll
 		add    $0x4,%esp
 		call   ac_sound_bank_setup
@@ -54808,7 +54808,8 @@ func_37bdd:
 		add    $0x4,%esp
 		test   %bl,%bl
 		je     jump_37dd1
-		push   $sound_bank_files
+		call   ac_StopAllSamples
+		push   $EXPORT_SYMBOL(sound_bank_files1)
 		call   ac_LbDataFreeAll
 		add    $0x4,%esp
 	jump_37dd1:
@@ -55003,7 +55004,7 @@ level_finished:	/* 0x37f80 */
 	jump_38011:
 		cmpb   $0x0,EXPORT_SYMBOL(SoundAble)
 		je     jump_3802c
-		push   $sound_bank_files
+		push   $EXPORT_SYMBOL(sound_bank_files1)
 		call   ac_LbDataLoadAll
 		add    $0x4,%esp
 		call   ac_sound_bank_setup
@@ -82624,7 +82625,7 @@ data_53f3d:
 		.fill   0xc
 		.long   starts_ani
 		.fill   0x38
-sound_load_files:	/* 0x540c0 */
+GLOBAL (sound_bank_files0)	/* 0x540c0 */
 		.string "data/sound-0.dat"
 		.fill   0xb
 		.long   EXPORT_SYMBOL(smpdata)
@@ -84987,7 +84988,7 @@ unk984_load_files:	/* 0x5b984 */
 		.fill   0xb
 		.long   m_select_pal
 		.fill   0x38
-sound_bank_files:	/* 0x5bb10 */
+GLOBAL (sound_bank_files1)	/* 0x5bb10 */
 		.string "data/sound-1.dat"
 		.fill   0xb
 data_5bb2c:
