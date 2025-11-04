@@ -195,6 +195,12 @@ game_update_full(bool wait)
     display_lock();
 }
 
+void reset_input(void)
+{
+    LbMouseReset();
+    LbKeyboardClose();
+}
+
 void
 game_update(void)
 {
@@ -203,10 +209,41 @@ game_update(void)
 
 void host_reset(void)
 {
-    StopCD();
+# if defined(DOS)
+    ShutdownMIDI();
+    FreeSound();
+#else
     FreeAudio();
-    LbMouseReset();
-    LbKeyboardClose();
+#endif
+    reset_input();
     LbScreenReset();
+}
+
+void init_audio(void)
+{
+# if defined(DOS)
+    if (SoundAble)
+        SoundAble = init_sound(sndcard_irq, sndcard_dma, sndcard_ioaddr);
+    if (MusicAble)
+        MusicAble = InitMIDI("data/syngame.xmi", "data/gamefm.dll", sndcard_irq, sndcard_dma, sndcard_ioaddr);
+# else
+    AudioInitOptions audOpts;
+
+    LOGSYNC("Starting");
+    //sprintf(locstr, "%sSound", cd_drive); -- unused
+
+    audOpts.SoundDataPath = "data";
+    audOpts.SoundDriverPath = "data";
+    audOpts.IniPath = ".";
+    audOpts.AutoScan = 1;
+    audOpts.StereoOption = 1;
+    audOpts.DisableLoadSounds = 1;
+    audOpts.InitRedbookAudio = 0;
+    audOpts.UseCurrentAwe32Soundfont = 1;
+    audOpts.AbleFlags = 3;
+    audOpts.SoundType = 1622;
+    audOpts.MaxSamples = 10;
+    InitAudio(&audOpts);
+# endif
 }
 /******************************************************************************/

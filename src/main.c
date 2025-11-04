@@ -66,7 +66,6 @@ extern struct TbLoadFiles load_files_mcga[];
 int * _cdecl ApSpriteSetup_ForceHeight(struct TbSprite *p_start, struct TbSprite *p_end, ubyte *data);
 int _cdecl init_sound(ushort sc_irq, ushort sc_dma, ushort sc_ioaddr);
 int _cdecl InitMIDI(const char *fname1, char *fname2, ushort sc_irq, ushort sc_dma, ushort sc_ioaddr);
-void _cdecl reset_input(void);
 void _cdecl ShutdownMIDI(void);
 void _cdecl syndicate(void);
 
@@ -74,26 +73,6 @@ void _cdecl syndicate(void);
 
 int *ApSpriteSetup_ForceHeight(struct TbSprite *p_start, struct TbSprite *p_end, ubyte *data)
 {
-}
-
-int init_sound(ushort sc_irq, ushort sc_dma, ushort sc_ioaddr)
-{
-}
-
-int InitMIDI(const char *fname1, char *fname2, ushort sc_irq, ushort sc_dma, ushort sc_ioaddr)
-{
-}
-
-void reset_input(void)
-{
-    asm volatile ("call ASM_reset_input\n"
-      :  : );
-}
-
-void ShutdownMIDI(void)
-{
-    asm volatile ("call ASM_ShutdownMIDI\n"
-      :  : );
 }
 
 void syndicate(void)
@@ -305,16 +284,14 @@ int main (int argc, char **argv)
     lbMouseAutoReset = false;
     mouse_sprite = &pointer_sprites[1]; // used only for non-bflib mouse cursor; remove pending
     LbMouseSetup(&pointer_sprites[1], 256, 256);
+# if defined(DOS)
+    OpenIKeyboard_0();
+# else
+    LbIKeyboardOpen();
+# endif
 
     nullsub_3();
-# if defined(DOS)
-    if (SoundAble)
-        SoundAble = init_sound(sndcard_irq, sndcard_dma, sndcard_ioaddr);
-# else
-    InitSound();
-# endif
-    if (MusicAble)
-        MusicAble = InitMIDI("data/syngame.xmi", "data/gamefm.dll", sndcard_irq, sndcard_dma, sndcard_ioaddr);
+    init_audio();
 
     if (byte_60B42)
     {
@@ -324,28 +301,17 @@ int main (int argc, char **argv)
     {
         TbClockMSec tmend;
 
-# if defined(DOS)
-        OpenIKeyboard_0();
-# else
-        LbIKeyboardOpen();
-# endif
         init_buffered_keys();
 
         syndicate();
 
         tmend = LbTimerClock() + 72 * 5000/91; // 1 from int08 timer is 1000/18.2 miliseconds
         LbSleepUntil(tmend);
-
-# if defined(DOS)
-        CloseIKeyboard();
-# else
-        LbIKeyboardClose();
-# endif
     }
-    reset_input();
     LbDataFreeAll(load_files_vres16);
+# if 0 // the audio and input are being freed within game_quit() now
+    reset_input();
     ShutdownMIDI();
-# if 0 // there is broader FreeAudio() call within game_quit()
     FreeSound();
 # endif
 #endif
