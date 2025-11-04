@@ -27,6 +27,12 @@
 extern "C" {
 #endif
 /******************************************************************************/
+#define FULL_VOL 127
+#define HALF_VOL 64
+#define EQUL_PAN 64
+#define NORM_PTCH 100
+#define LOOP_NO 0
+#define LOOP_4EVER -1
 
 typedef void * TbSampleHandle;
 
