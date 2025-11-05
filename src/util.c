@@ -1,3 +1,22 @@
+/******************************************************************************/
+// SyndicateRE, source port of the classic game from Bullfrog.
+/******************************************************************************/
+/** @file util.c
+ *     Routines implementing small utilities.
+ * @par Purpose:
+ *     Simple utilities for general use.
+ * @par Comment:
+ *     When keys are handled outside the event, it is possible that some
+ *     keypresses will not be registered, making typing text frustrating.
+ * @author   Tomasz Lis
+ * @date     10 Oct 2012 - 12 Oct 2025
+ * @par  Copying and copyrights:
+ *     This program is free software; you can redistribute it and/or modify
+ *     it under the terms of the GNU General Public License as published by
+ *     the Free Software Foundation; either version 2 of the License, or
+ *     (at your option) any later version.
+ */
+/******************************************************************************/
 #include <assert.h>
 #include <ctype.h>
 #include <errno.h>
@@ -12,7 +31,11 @@
 #endif
 
 #include "util.h"
+
 #include "bffile.h"
+#include "bfutility.h"
+
+/******************************************************************************/
 
 void
 strtolower (char *string)
@@ -109,9 +132,10 @@ extract_path_segment (const char *path, char *buffer, size_t size)
       return (path + 1);
     }
 
-  seg_len = MIN (sep - path, (int) size);
+  seg_len = min(sep - path, (int) size);
   snprintf (buffer, size, "%.*s", seg_len, path);
 
   return sep;
 }
 
+/******************************************************************************/

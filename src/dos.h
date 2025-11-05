@@ -25,6 +25,9 @@
 
 #include "bfdos.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 /******************************************************************************/
 
 #define DOS_O_RDONLY    0x0000
@@ -98,4 +101,7 @@ void dos_setvect (int num, void *function) __attribute__ ((noreturn));
 int dos_access(const char *path, int access_flags);
 
 /******************************************************************************/
+#ifdef __cplusplus
+}
+#endif
 #endif // DOS_H

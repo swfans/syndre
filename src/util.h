@@ -2,14 +2,13 @@
 // SyndicateRE, source port of the classic game from Bullfrog.
 /******************************************************************************/
 /** @file util.h
- *     Header file for buffered handler for keystrokes.
+ *     Header file for util.c.
  * @par Purpose:
- *     Taps keyboard event handler and stores each key pressed.
+ *     Simple utilities for general use.
  * @par Comment:
- *     When keys are handled outside the event, it is possible that some
- *     keypresses will not be registered, making typing text frustrating.
+ *     Routines implementing small utilities.
  * @author   Tomasz Lis
- * @date     10 Oct 2012 - 13 Oct 2021
+ * @date     10 Oct 2012 - 12 Oct 2025
  * @par  Copying and copyrights:
  *     This program is free software; you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
@@ -24,15 +23,10 @@
 #include <stdbool.h>
 #include <sys/stat.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 /******************************************************************************/
-
-#ifndef MIN
-# define MIN(a, b) ((a) < (b) ? (a) : (b))
-#endif
-
-#ifndef MAX
-# define MAX(a, b) ((a) > (b) ? (a) : (b))
-#endif
 
 #ifdef WIN32
 #ifndef strcasecmp
@@ -60,4 +54,7 @@ void xfree (void *ptr);
 char *xstrdup (const char *str);
 
 /******************************************************************************/
+#ifdef __cplusplus
+}
+#endif
 #endif // UTIL_H

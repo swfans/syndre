@@ -32,6 +32,8 @@
 #include <time.h>
 
 #include "bffile.h"
+#include "bfutility.h"
+
 #include "applog.h"
 #include "dos.h"
 #include "game.h"
@@ -126,7 +128,7 @@ size_t dos_low_level_read(int fd, void *buffer, uint16_t ds, size_t size,
     ssize_t count;
 
     count = read(fd, buffer, size);
-    *bytes_read = MAX(0, count);
+    *bytes_read = max(0, count);
 
     return *bytes_read;
 }
@@ -136,7 +138,7 @@ size_t dos_low_level_seek_relative(int fd, int32_t pos)
     off_t new_pos;
 
     new_pos = lseek(fd, pos, SEEK_CUR);
-    new_pos = MAX(0, new_pos);
+    new_pos = max(0, new_pos);
 
     return new_pos;
 }
@@ -156,7 +158,7 @@ size_t dos_low_level_seek(int fd, uint32_t pos)
     off_t new_pos;
 
     new_pos = lseek(fd, pos, SEEK_SET);
-    new_pos = MAX(0, new_pos);
+    new_pos = max(0, new_pos);
 
     return new_pos;
 }
@@ -221,7 +223,7 @@ void dos_gettime(struct dostime_t *t)
 
     t->hour    = tm->tm_hour;
     t->minute  = tm->tm_min;
-    t->second  = MAX(tm->tm_sec, 59);
+    t->second  = max(tm->tm_sec, 59);
     t->hsecond = tv.tv_usec / 10000;
 }
 

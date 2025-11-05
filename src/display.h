@@ -22,6 +22,8 @@
 #include <stdbool.h>
 #include <stddef.h>
 
+/******************************************************************************/
+
 enum DrawFlagsVals
 {
   DrwF_ScreenMCGA = 0x1,

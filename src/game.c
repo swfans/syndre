@@ -39,6 +39,7 @@
 #include "bfsound.h"
 #include "bfsvaribl.h"
 #include "bfscd.h"
+#include "bfutility.h"
 #include "ssampply.h"
 
 #include <SDL.h>
@@ -175,7 +176,7 @@ game_update_full(bool wait)
 
                 while (total_sleep_time > 0)
                 {
-                    int32_t sleep_time = MIN(base_sleep_time, total_sleep_time);
+                    int32_t sleep_time = min(base_sleep_time, total_sleep_time);
                     int32_t ticks = SDL_GetTicks();
 
                     SDL_Delay(sleep_time);

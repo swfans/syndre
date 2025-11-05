@@ -1,3 +1,21 @@
+/******************************************************************************/
+// SyndicateRE, source port of the classic game from Bullfrog.
+/******************************************************************************/
+/** @file display.c
+ *     Display and graphics mode related function.
+ * @par Purpose:
+ *     Wrappers for bflibrary functions and other helpers related to display.
+ * @par Comment:
+ *     Extended wrappers for bflibrary functionalities.
+ * @author   Tomasz Lis
+ * @date     12 Nov 2008 - 25 May 2022
+ * @par  Copying and copyrights:
+ *     This program is free software; you can redistribute it and/or modify
+ *     it under the terms of the GNU General Public License as published by
+ *     the Free Software Foundation; either version 2 of the License, or
+ *     (at your option) any later version.
+ */
+/******************************************************************************/
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -14,6 +32,8 @@
 #include "applog.h"
 #include "display.h"
 #include "util.h"
+
+/******************************************************************************/
 
 ubyte *VGABuffer = NULL;
 
@@ -277,3 +297,5 @@ void swap_wscreen(void)
         ;
     }
 }
+
+/******************************************************************************/

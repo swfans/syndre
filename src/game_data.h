@@ -21,6 +21,11 @@
 
 #include "bftypes.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+/******************************************************************************/
+
 #pragma pack(1)
 
 #define GAME_DESC_TEXT_MAX_LEN 20
@@ -53,4 +58,7 @@ const char *GetDirectoryHdd(void);
 void setup_file_names(void);
 
 /******************************************************************************/
+#ifdef __cplusplus
+}
+#endif
 #endif // GAME_DATA_H
