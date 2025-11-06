@@ -61,7 +61,7 @@ check_for_danger:	/* 0x10010 */
 		je     jump_1004a
 		cmpl   $0x1,data_5c354
 		jne    jump_1004a
-		push   $0x3
+		push   $0x4
 		call   ac_BFMidiStartMusic
 		add    $0x4,%esp
 		call   ac_BFMidiIsMusicPlaying
@@ -74,7 +74,7 @@ check_for_danger:	/* 0x10010 */
 		je     jump_10080
 		cmpl   $0x1,data_5c354
 		jne    jump_10080
-		push   $0x4
+		push   $0x5
 		call   ac_BFMidiStartMusic
 		add    $0x4,%esp
 		call   ac_BFMidiIsMusicPlaying
@@ -149,7 +149,7 @@ check_for_danger:	/* 0x10010 */
 		add    $0x8,%esp
 		cmp    $0x1000,%ax
 		jae    jump_10169
-		push   $0x1
+		push   $0x2
 		call   ac_BFMidiStartMusic
 		mov    $0x1,%eax
 		add    $0x4,%esp
@@ -181,7 +181,7 @@ check_for_danger:	/* 0x10010 */
 	jump_101b3:
 		cmpw   $0x0,(%esp)
 		jne    jump_101c4
-		push   $0x0
+		push   $0x1
 		call   ac_BFMidiStartMusic
 		add    $0x4,%esp
 	jump_101c4:
@@ -60458,6 +60458,8 @@ CheckArray:	/* 0x3ba60 */
 	jump_3bb09:
 		movswl %si,%eax
 		movsbl 0x3(%ebx,%eax,4),%eax
+/* compared to original game, all songs have index+1 */
+		inc    %eax
 		push   %eax
 		mov    %si,AniArrayCount
 		call   ac_BFMidiStartMusic

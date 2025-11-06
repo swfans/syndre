@@ -51,7 +51,7 @@
 
 extern ubyte byte_5BBE8;
 extern ubyte byte_5BBE9;
-extern sbyte SongCurrentlyPlaying;
+extern ushort SongCurrentlyPlaying;
 
 extern void *MUSdrvr;
 extern struct SNDSEQUENCE *sSOSTrackMap[8];
@@ -359,15 +359,16 @@ int InitMIDI(const char *bank_fname, char *drv_fname,
         AIL_define_timbre_cache(MUSdrvr, p_cache, tc_size);
     }
 
+    sSOSTrackMap[0] = NULL;
     GTL_fh = fopen(GTL_filename, "rb");
-    for (sequence_num = 0; sequence_num < 8; sequence_num++)
+    for (sequence_num = 1; sequence_num < 8; sequence_num++)
     {
         void *p_state;
         void *global_timbre;
         struct SNDSEQUENCE *seq;
 
         p_state = malloc(state_size);
-        seq = AIL_register_sequence(MUSdrvr, p_musbank, sequence_num, p_state, 0);
+        seq = AIL_register_sequence(MUSdrvr, p_musbank, sequence_num - 1, p_state, 0);
         sSOSTrackMap[sequence_num] = seq;
         if (seq == (struct SNDSEQUENCE *)-1) {
             free(p_state);
@@ -401,9 +402,10 @@ int InitMIDI(const char *bank_fname, char *drv_fname,
     struct MDI_DRIVER *mus_drvr;
     short n_prepared;
 
+    sSOSTrackMap[0] = NULL;
     mus_drvr = GetMusicDriver();
     n_prepared = 0;
-    for (sequence_num = 0; sequence_num < 8; sequence_num++)
+    for (sequence_num = 1; sequence_num < 8; sequence_num++)
     {
         struct SNDSEQUENCE *seq;
         int ret;
@@ -423,7 +425,7 @@ int InitMIDI(const char *bank_fname, char *drv_fname,
             break;
         }
 
-        ret = AIL_init_sequence(seq, p_musbank, sequence_num);
+        ret = AIL_init_sequence(seq, p_musbank, sequence_num - 1);
         if (ret != 1)
             LOGSYNC("Sequence %d init returned %d", (int)sequence_num, ret);
         if (ret == 0) {// no such sequence
@@ -460,17 +462,17 @@ void ShutdownMIDI(void)
 
 static void BfI_MidiStopMusic(void)
 {
-    if (SongCurrentlyPlaying >= 0) {
+    if (SongCurrentlyPlaying > 0) {
 #if defined(WITH_AIL2)
         AIL_stop_sequence(MUSdrvr, sSOSTrackMap[SongCurrentlyPlaying]);
 #else
         AIL_stop_sequence(sSOSTrackMap[SongCurrentlyPlaying]);
 #endif
-        SongCurrentlyPlaying = -1;
+        SongCurrentlyPlaying = 0;
     }
 }
 
-void BFMidiStartMusic(short song_no)
+void BFMidiStartMusic(ushort song_no)
 {
     if (!GetMusicAble()) {
         LOGNO("Cannot start - no music ability");
@@ -481,8 +483,10 @@ void BFMidiStartMusic(short song_no)
         LOGNO("Cannot start - music not active");
         return;
     }
+    /* In original game, song numbers are lower by 1 */
     if (SongCurrentlyPlaying != song_no)
     {
+        LOGSYNC("Switch song %d to %d", (int)SongCurrentlyPlaying, (int)song_no);
         BfI_MidiStopMusic();
         SongCurrentlyPlaying = song_no;
 #if defined(WITH_AIL2)
@@ -516,7 +520,7 @@ void BFMidiPauseSong(void)
         LOGNO("Cannot pause - music not active");
         return;
     }
-    if (SongCurrentlyPlaying >= 0) {
+    if (SongCurrentlyPlaying > 0) {
 #if defined(WITH_AIL2)
         AIL_stop_sequence(MUSdrvr, sSOSTrackMap[SongCurrentlyPlaying]);
 #else
@@ -535,7 +539,7 @@ void BFMidiResumeSong(void)
         LOGNO("Cannot resume - music not active");
         return;
     }
-    if (SongCurrentlyPlaying >= 0) {
+    if (SongCurrentlyPlaying > 0) {
 #if defined(WITH_AIL2)
         AIL_resume_sequence(MUSdrvr, sSOSTrackMap[SongCurrentlyPlaying]);
 #else
@@ -548,7 +552,7 @@ bool BFMidiIsMusicPlaying(void)
 {
     uint32_t status;
 
-    if (SongCurrentlyPlaying < 0)
+    if (SongCurrentlyPlaying <= 0)
         return false;
 
 #if defined(WITH_AIL2)
