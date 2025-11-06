@@ -382,6 +382,18 @@ int InitMIDI(const char *bank_fname, char *drv_fname,
 #endif
 }
 
+static void BfI_MidiStopMusic(void)
+{
+    if (SongCurrentlyPlaying >= 0) {
+#if defined(WITH_AIL2)
+        AIL_stop_sequence(MUSdrvr, sSOSTrackMap[SongCurrentlyPlaying]);
+#else
+        AIL_stop_sequence(sSOSTrackMap[SongCurrentlyPlaying]);
+#endif
+        SongCurrentlyPlaying = -1;
+    }
+}
+
 void BFMidiStartMusic(short song_no)
 {
     if (!GetMusicAble()) {
@@ -389,30 +401,69 @@ void BFMidiStartMusic(short song_no)
         return;
     }
     if (!GetMusicActive()) {
-        if (SongCurrentlyPlaying >= 0) {
-#if defined(WITH_AIL2)
-            AIL_stop_sequence(MUSdrvr, sSOSTrackMap[SongCurrentlyPlaying]);
-#else
-            AIL_stop_sequence(sSOSTrackMap[SongCurrentlyPlaying]);
-#endif
-            SongCurrentlyPlaying = -1;
-        }
+        BfI_MidiStopMusic();
         LOGNO("Cannot start - music not active");
         return;
     }
     if (SongCurrentlyPlaying != song_no)
     {
-        if (SongCurrentlyPlaying >= 0)
-#if defined(WITH_AIL2)
-            AIL_stop_sequence(MUSdrvr, sSOSTrackMap[SongCurrentlyPlaying]);
-#else
-            AIL_stop_sequence(sSOSTrackMap[SongCurrentlyPlaying]);
-#endif
+        BfI_MidiStopMusic();
         SongCurrentlyPlaying = song_no;
 #if defined(WITH_AIL2)
         AIL_start_sequence(MUSdrvr, sSOSTrackMap[song_no]);
 #else
         AIL_start_sequence(sSOSTrackMap[song_no]);
+#endif
+    }
+}
+
+void BFMidiStopMusic(void)
+{
+    if (!GetMusicAble()) {
+        LOGNO("Cannot stop - no music ability");
+        return;
+    }
+    if (!GetMusicActive()) {
+        LOGNO("Cannot stop - music not active");
+        return;
+    }
+    BfI_MidiStopMusic();
+}
+
+void BFMidiPauseSong(void)
+{
+    if (!GetMusicAble()) {
+        LOGNO("Cannot pause - no music ability");
+        return;
+    }
+    if (!GetMusicActive()) {
+        LOGNO("Cannot pause - music not active");
+        return;
+    }
+    if (SongCurrentlyPlaying >= 0) {
+#if defined(WITH_AIL2)
+        AIL_stop_sequence(MUSdrvr, sSOSTrackMap[SongCurrentlyPlaying]);
+#else
+        AIL_stop_sequence(sSOSTrackMap[SongCurrentlyPlaying]);
+#endif
+    }
+}
+
+void BFMidiResumeSong(void)
+{
+    if (!GetMusicAble()) {
+        LOGNO("Cannot resume - no music ability");
+        return;
+    }
+    if (!GetMusicActive()) {
+        LOGNO("Cannot resume - music not active");
+        return;
+    }
+    if (SongCurrentlyPlaying >= 0) {
+#if defined(WITH_AIL2)
+        AIL_resume_sequence(MUSdrvr, sSOSTrackMap[SongCurrentlyPlaying]);
+#else
+        AIL_resume_sequence(sSOSTrackMap[SongCurrentlyPlaying]);
 #endif
     }
 }

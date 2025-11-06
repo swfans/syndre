@@ -280,7 +280,7 @@ GLOBAL_FUNC(syndicate)	/* 0x101e0 */
 	jump_102e9:
 		cmpb   $0x0,EXPORT_SYMBOL(MusicAble)
 		je     jump_102f7
-		call   BFMidiStopMusic
+		call   ac_BFMidiStopMusic
 	jump_102f7:
 		call   free_map_level
 		cmpb   $0x0,EXPORT_SYMBOL(lbKeyOn)+0x44
@@ -539,7 +539,7 @@ check_end_level:	/* 0x105e0 */
 		xor    %esi,%esi
 		cmpb   $0x0,EXPORT_SYMBOL(lbKeyOn)+0x19
 		je     jump_1064a
-		call   BFMidiPauseSong
+		call   ac_BFMidiPauseSong
 		call   ac_BFSoundPause
 		mov    $0x1,%ebx
 		mov    $0x3,%ebp
@@ -570,7 +570,7 @@ check_end_level:	/* 0x105e0 */
 		cmp    $0x3,%ebx
 		jne    jump_10611
 	jump_10640:
-		call   BFMidiResumeSong
+		call   ac_BFMidiResumeSong
 		call   ac_BFSoundResume
 	jump_1064a:
 		cmpb   $0x0,EXPORT_SYMBOL(is_multiplayer_game)
@@ -55204,7 +55204,7 @@ level_finished:	/* 0x37f80 */
 		add    $0xc,%esp
 	jump_382b9:
 		movl   $0x5,AniSpeed
-		call   BFMidiStopMusic
+		call   ac_BFMidiStopMusic
 		movb   $0x1,data_55590
 	jump_382cf:
 		add    $0x8,%esp
@@ -60297,7 +60297,7 @@ ASM_BFMidiStartMusic:	/* 0x3b8a0 */
 
 
 /*----------------------------------------------------------------*/
-BFMidiStopMusic:	/* 0x3b940 */
+ASM_BFMidiStopMusic:	/* 0x3b940 */
 /*----------------------------------------------------------------*/
 		push   %ebx
 		cmpb   $0x0,EXPORT_SYMBOL(MusicAble)
@@ -60322,7 +60322,7 @@ BFMidiStopMusic:	/* 0x3b940 */
 
 
 /*----------------------------------------------------------------*/
-BFMidiPauseSong:	/* 0x3b990 */
+ASM_BFMidiPauseSong:	/* 0x3b990 */
 /*----------------------------------------------------------------*/
 		push   %ebx
 		cmpb   $0x0,EXPORT_SYMBOL(MusicAble)
@@ -60345,7 +60345,7 @@ BFMidiPauseSong:	/* 0x3b990 */
 
 
 /*----------------------------------------------------------------*/
-BFMidiResumeSong:	/* 0x3b9d0 */
+ASM_BFMidiResumeSong:	/* 0x3b9d0 */
 /*----------------------------------------------------------------*/
 		push   %ebx
 		cmpb   $0x0,EXPORT_SYMBOL(MusicAble)
