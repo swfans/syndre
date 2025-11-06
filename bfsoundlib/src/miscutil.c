@@ -65,8 +65,8 @@ const void *XMI_find_sequence(const uint8_t *image, int32_t sequence)
         image += len;
 
         // Exit if not FORM or CAT block
-        if ((strncasecmp((char *)image, "FORM", 4)) &&
-          (strncasecmp((char *)image, "CAT ", 4)))
+        if ((strncasecmp((char *)image, "FORM", 4) != 0) &&
+          (strncasecmp((char *)image, "CAT ", 4) != 0))
             return NULL;
 
         // Continue searching if not FORM XMID or CAT XMID
@@ -75,7 +75,7 @@ const void *XMI_find_sequence(const uint8_t *image, int32_t sequence)
         // odd-byte compensation is needed
         len = 8 + XMI_swap32(*(uint32_t *)(image+4));
     }
-    while (strncasecmp((char *)image+8, "XMID", 4));
+    while (strncasecmp((char *)image+8, "XMID", 4) != 0);
 
     // If outer header was a FORM, return successfully if first sequence
     // requested
