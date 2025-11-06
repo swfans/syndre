@@ -126,7 +126,8 @@ void init_audio(void)
     InitAudio(&audOpts);
 # endif
     if (MusicAble)
-        MusicAble = InitMIDI("data/syngame.xmi", "data/gamefm.dll", sndcard_irq, sndcard_dma, sndcard_ioaddr);
+        MusicAble = InitMIDI("data/syngame.xmi", "data/gamefm.dll",
+          sndcard_irq, sndcard_dma, sndcard_ioaddr);
 }
 
 void ClearBFSampleStatus(void)
@@ -185,7 +186,8 @@ void BFPlaySample(ubyte smp_id)
     AIL_play_VOC_file(DIGhdriver, p_smp->data_start);
     AIL_start_digital_playback(DIGhdriver);
 #else
-    PlaySampleFromAddress(0, smp_id, 127, 64, 100, 0, 1, p_smp->data_start);
+    PlaySampleFromAddress(0, smp_id, FULL_VOL, EQUL_PAN, NORM_PTCH,
+      0, 1, p_smp->data_start);
 #endif
 }
 
@@ -384,7 +386,8 @@ int InitMIDI(const char *bank_fname, char *drv_fname,
             rq_h = req / 256;
             global_timbre = load_global_timbre(GTL_fh, rq_h, rq_l);
             if (global_timbre == NULL) {
-                LOGERR("Cannot load global timbre, sequence %d request 0x%04x", sequence_num, (uint)req);
+                LOGERR("Cannot load global timbre, sequence %d request 0x%04x",
+                  sequence_num, (uint)req);
                 return 0;
             }
             AIL_install_timbre(MUSdrvr, rq_h, rq_l, global_timbre);
