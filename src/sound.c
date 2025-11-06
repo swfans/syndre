@@ -255,11 +255,11 @@ int InitMIDI(const char *bank_fname, char *drv_fname,
   ushort sc_irq, ushort sc_dma, ushort sc_ioaddr)
 {
     void *p_musbank;
+    uint sequence_num;
 #if defined(WITH_AIL2)
     char GTL_filename[96];
     FILE *GTL_fh;
     struct drvr_desc *desc;
-    uint sequence_num;
     int sc_drq;
     int state_size;
     ushort tc_size;
@@ -357,13 +357,28 @@ int InitMIDI(const char *bank_fname, char *drv_fname,
         fclose(GTL_fh);
     return 1;
 #else
+    struct MDI_DRIVER *mus_drvr;
+
     p_musbank = FILE_read(bank_fname, 0);
     if (p_musbank == NULL) {
         LOGERR("Cannot read music bank - %s", strerror(errno));
         return 0;
     }
-    //TODO unfinished
-    return 0;
+
+    mus_drvr = GetMusicDriver();
+    for (sequence_num = 0; sequence_num < 8; sequence_num++)
+    {
+        struct SNDSEQUENCE *seq;
+        seq = AIL_allocate_sequence_handle(mus_drvr);
+
+        sSOSTrackMap[sequence_num] = seq;
+        if (seq == NULL) {
+            LOGERR("Cannot alloc handle, sequence %d", (int)sequence_num);
+            return 0;
+        }
+        //TODO unfinished
+    }
+    return 1;
 #endif
 }
 
