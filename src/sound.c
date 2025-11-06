@@ -396,14 +396,10 @@ int InitMIDI(const char *bank_fname, char *drv_fname,
     return 1;
 #else
     struct MDI_DRIVER *mus_drvr;
-
-    p_musbank = FILE_read(bank_fname, 0);
-    if (p_musbank == NULL) {
-        LOGERR("Cannot read music bank - %s", strerror(errno));
-        return 0;
-    }
+    short n_prepared;
 
     mus_drvr = GetMusicDriver();
+    n_prepared = 0;
     for (sequence_num = 0; sequence_num < 8; sequence_num++)
     {
         struct SNDSEQUENCE *seq;
@@ -414,14 +410,34 @@ int InitMIDI(const char *bank_fname, char *drv_fname,
         sSOSTrackMap[sequence_num] = seq;
         if (seq == NULL) {
             LOGERR("Cannot alloc handle, sequence %d", (int)sequence_num);
-            return 0;
+            break;
         }
+
+        // AIL consumes the memory reference - need to load for each sequence
+        p_musbank = FILE_read(bank_fname, 0);
+        if (p_musbank == NULL) {
+            LOGERR("Cannot read music bank - %s", strerror(errno));
+            break;
+        }
+
         ret = AIL_init_sequence(seq, p_musbank, sequence_num);
-        if (ret != 1) {
-            LOGERR("Sequence %d init returned %d", (int)sequence_num, ret);
+        if (ret != 1)
+            LOGSYNC("Sequence %d init returned %d", (int)sequence_num, ret);
+        if (ret == 0) {// no such sequence
+            sSOSTrackMap[sequence_num] = NULL;
+            AIL_release_sequence_handle(seq);
+            break;
         }
+        n_prepared++;
     }
-    return 1;
+    // Clear any unset slots
+    for (; sequence_num < 8; sequence_num++)
+    {
+        sSOSTrackMap[sequence_num] = NULL;
+    }
+    if (n_prepared <= 0)
+        LOGERR("No sequences prepared");
+    return (n_prepared > 0);
 #endif
 }
 
