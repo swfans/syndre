@@ -53,6 +53,8 @@ void ReleaseLoopedSample(ushort source_id, short smp_id);
 
 void StopSample(long source_id, short smp_id);
 void StopAllSamples(void);
+void PauseAllSamples(void);
+void ResumeAllSamples(void);
 
 /******************************************************************************/
 #ifdef __cplusplus

@@ -304,4 +304,30 @@ void StopAllSamples(void)
     StopSampleQueueList();
 }
 
+void PauseAllSamples(void)
+{
+    struct SampleInfo *p_smpinf;
+
+    if (!SoundInstalled || !SoundAble || !SoundActive)
+        return;
+
+    for (p_smpinf = sample_id; p_smpinf <= end_sample_id; p_smpinf++)
+    {
+        AIL_stop_sample(p_smpinf->SampleHandle);
+    }
+}
+
+void ResumeAllSamples(void)
+{
+    struct SampleInfo *p_smpinf;
+
+    if (!SoundInstalled || !SoundAble || !SoundActive)
+        return;
+
+    for (p_smpinf = sample_id; p_smpinf <= end_sample_id; p_smpinf++)
+    {
+        AIL_resume_sample(p_smpinf->SampleHandle);
+    }
+}
+
 /******************************************************************************/
