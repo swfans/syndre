@@ -580,6 +580,48 @@ void AIL2OAL_API_end_sample(SNDSAMPLE *s)
     }
 }
 
+void AIL2OAL_API_stop_sample(SNDSAMPLE *s)
+{
+    if (s == NULL)
+        return;
+
+    // Make sure sample is currently playing
+    if (s->status != SNDSMP_PLAYING)
+        return;
+
+    // Mask 'playing' status
+    s->status = SNDSMP_STOPPED;
+}
+
+void AIL2OAL_API_resume_sample(SNDSAMPLE *s)
+{
+    if (s == NULL)
+        return;
+
+    if (s->status == SNDSMP_FREE)
+        return;
+
+    // See if sample has been previously stopped or not managed to start yet
+    if ((s->status != SNDSMP_STOPPED) && (s->status != SNDSMP_FREE))
+        return;
+
+    // Extra checks if resume got called before start (good for non-zero start offsets)
+    if (s->status == SNDSMP_FREE)
+    {
+        // Make sure valid sample data exists
+        if ((s->len[s->current_buffer] == 0) ||
+         (s->start[s->current_buffer] == NULL))
+            return;
+    }
+
+    // Start reverb if parameters say it is needed - NO SUPPORT
+
+    s->status = SNDSMP_PLAYING;
+
+    // If driver is not already transmitting data, start it
+    SS_start_DIG_driver_playback(s->driver);
+}
+
 uint32_t AIL2OAL_API_sample_status(SNDSAMPLE *s)
 {
     assert(s != NULL);

@@ -279,6 +279,21 @@ void AIL_start_sample(SNDSAMPLE *s);
  */
 void AIL_end_sample(SNDSAMPLE *s);
 
+/** Stop playback of sample, allowing to continue it later.
+ *
+ * Sample playback may be resumed with AIL_resume_sample(), or
+ * restarted from the beginning with AIL_start_sample().
+ *
+ * Playback will stop at the next DMA half-buffer transition.
+ */
+void AIL_stop_sample(SNDSAMPLE *s);
+
+/** Resume playback of sample from current position.
+ *
+ * Playback will resume at the next DMA half-buffer transition.
+ */
+void AIL_resume_sample(SNDSAMPLE *s);
+
 /** Free a SAMPLE structure for later allocation.
  */
 void AIL_release_sample_handle(SNDSAMPLE *s);

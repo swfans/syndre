@@ -55,6 +55,9 @@ int32_t OPENAL_free_sources_for_samples(DIG_DRIVER *digdrv);
 
 void OPENAL_stop_sample(SNDSAMPLE *s);
 
+void OPENAL_pause_sample(SNDSAMPLE *s);
+void OPENAL_resume_sample(SNDSAMPLE *s);
+
 /** Creates OpenAL sources used for MIDI driver playback.
  */
 int32_t OPENAL_create_sources_for_sequences(MDI_DRIVER *mdidrv);

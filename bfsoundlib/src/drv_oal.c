@@ -373,6 +373,26 @@ void OPENAL_stop_sample(SNDSAMPLE *s)
     check_al("alSourceStop");
 }
 
+void OPENAL_pause_sample(SNDSAMPLE *s)
+{
+    ALuint source;
+
+    source = s->system_data[SmpSD_OAL_SOURCE];
+
+    alSourcePause(source);
+    check_al("alSourcePause");
+}
+
+void OPENAL_resume_sample(SNDSAMPLE *s)
+{
+    ALuint source;
+
+    source = s->system_data[SmpSD_OAL_SOURCE];
+
+    alSourcePlay(source);
+    check_al("alSourcePlay");
+}
+
 static void
 queue_dig_sample_buffers(DIG_DRIVER *digdrv, SNDSAMPLE *s)
 {

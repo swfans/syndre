@@ -123,6 +123,10 @@ void AIL2OAL_API_start_sample(SNDSAMPLE *s);
 
 void AIL2OAL_API_end_sample(SNDSAMPLE *s);
 
+void AIL2OAL_API_stop_sample(SNDSAMPLE *s);
+
+void AIL2OAL_API_resume_sample(SNDSAMPLE *s);
+
 void AIL2OAL_API_release_sample_handle(SNDSAMPLE *s);
 
 /******************************************************************************/
