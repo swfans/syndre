@@ -407,6 +407,8 @@ int InitMIDI(const char *bank_fname, char *drv_fname,
     for (sequence_num = 0; sequence_num < 8; sequence_num++)
     {
         struct SNDSEQUENCE *seq;
+        int ret;
+
         seq = AIL_allocate_sequence_handle(mus_drvr);
 
         sSOSTrackMap[sequence_num] = seq;
@@ -414,7 +416,10 @@ int InitMIDI(const char *bank_fname, char *drv_fname,
             LOGERR("Cannot alloc handle, sequence %d", (int)sequence_num);
             return 0;
         }
-        AIL_init_sequence(seq, p_musbank, sequence_num);
+        ret = AIL_init_sequence(seq, p_musbank, sequence_num);
+        if (ret != 1) {
+            LOGERR("Sequence %d init returned %d", (int)sequence_num, ret);
+        }
     }
     return 1;
 #endif
