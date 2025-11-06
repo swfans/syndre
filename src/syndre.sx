@@ -549,6 +549,9 @@ check_end_level:	/* 0x105e0 */
 	jump_10611:
 		test   %ebx,%ebx
 		je     jump_10640
+#if !defined(DOS) /* add input and screen refresh, as otherwise this in infinite loop and game can be paused for long */
+		call   ac_game_update
+#endif
 	jump_10615:
 		cmp    EXPORT_SYMBOL(lbKeyOn)+0x19,%al
 		jne    jump_10624
