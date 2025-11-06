@@ -1649,7 +1649,7 @@ int32_t AIL2OAL_API_init_sequence(SNDSEQUENCE *seq, const void *start,  int32_t 
     // Find requested sequence in XMIDI image
     image = XMI_find_sequence(start, sequence_num);
     if (image == NULL) {
-        AIL_set_error("Invalid XMIDI sequence.");
+        AIL_set_error("Invalid XMIDI sequence, cannot find num.");
         return 0;
     }
 
@@ -1680,7 +1680,7 @@ int32_t AIL2OAL_API_init_sequence(SNDSEQUENCE *seq, const void *start,  int32_t 
 
     // Sequence must contain EVNT chunk
     if (seq->EVNT == NULL) {
-        AIL_set_error("Invalid XMIDI sequence.");
+        AIL_set_error("Invalid XMIDI sequence, EVNT missing.");
         return 0;
     }
 
