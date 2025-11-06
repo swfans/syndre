@@ -23,8 +23,9 @@
 #include <stdint.h>
 
 #include "bftypes.h"
-#include "timer.h"
+#include "bfaudio.h"
 #include "mssal.h"
+#include "timer.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -58,10 +59,19 @@ extern short startscr_samplevol;
 extern short startscr_midivol;
 extern short startscr_cdvolume;
 
+extern ushort sndcard_irq;
+extern ushort sndcard_dma;
+extern ushort sndcard_ioaddr;
+
+extern AudioInitOptions audOpts;
+
 extern struct BFSample *smptable;
 extern struct BFSample *smptable_end;
 extern ubyte *smpdata;
 extern struct BFSampleStatus sample_status[256];
+
+void init_audio(void);
+void audio_options_set_default(void);
 
 int init_sound(ushort sc_irq, ushort sc_dma, ushort sc_ioaddr);
 int InitMIDI(const char *bank_fname, char *drv_fname,

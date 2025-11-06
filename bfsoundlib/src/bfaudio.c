@@ -153,9 +153,9 @@ void InitAudio(AudioInitOptions *audOpts)
     SNDLOGSYNC("Init audio", "initial MA   %d", MusicAble);
     SNDLOGSYNC("Init audio", "initial SA   %d", SoundAble);
     SNDLOGSYNC("Init audio", "initial CDA  %d", CDAble);
-    if (!(audOpts->AbleFlags & 0x01))
+    if (!(audOpts->AbleFlags & AudioAble_Music))
         MusicAble = 0;
-    if (!(audOpts->AbleFlags & 0x02))
+    if (!(audOpts->AbleFlags & AudioAble_Sound))
         SoundAble = 0;
 
     InitSound();

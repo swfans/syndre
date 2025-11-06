@@ -25,6 +25,7 @@
 
 #include "sound.h"
 
+#include "bfaudio.h"
 #include "bffile.h"
 #include "bfmusic.h"
 #include "bfsound.h"
@@ -54,6 +55,12 @@ extern sbyte SongCurrentlyPlaying;
 
 extern void *MUSdrvr;
 extern struct SNDSEQUENCE *sSOSTrackMap[8];
+
+// From bfsoundlib
+extern TbBool SoundAble;
+extern TbBool MusicAble;
+
+AudioInitOptions audOpts;
 
 short startscr_samplevol;
 short startscr_midivol;
@@ -89,6 +96,37 @@ void sound_bank_setup(void)
 #endif
     }
     LOGSYNC("Prepared %d samples", p_smp - smptable - 1);
+}
+
+void audio_options_set_default(void)
+{
+    audOpts.SoundDataPath = "data";
+    audOpts.SoundDriverPath = "data";
+    audOpts.IniPath = ".";
+    audOpts.AutoScan = 1;
+    audOpts.StereoOption = 1;
+    audOpts.DisableLoadSounds = 1;
+    audOpts.DisableLoadMusic = 1;
+    audOpts.InitRedbookAudio = 0;
+    audOpts.UseCurrentAwe32Soundfont = 1;
+    audOpts.AbleFlags = AudioAble_Music|AudioAble_Sound;
+    audOpts.SoundType = 1622;
+    audOpts.MaxSamples = 10;
+}
+
+void init_audio(void)
+{
+# if defined(DOS)
+    if (SoundAble)
+        SoundAble = init_sound(sndcard_irq, sndcard_dma, sndcard_ioaddr);
+# else
+    LOGSYNC("Starting");
+    //sprintf(locstr, "%sSound", cd_drive); -- unused
+
+    InitAudio(&audOpts);
+# endif
+    if (MusicAble)
+        MusicAble = InitMIDI("data/syngame.xmi", "data/gamefm.dll", sndcard_irq, sndcard_dma, sndcard_ioaddr);
 }
 
 void ClearBFSampleStatus(void)
@@ -376,7 +414,7 @@ int InitMIDI(const char *bank_fname, char *drv_fname,
             LOGERR("Cannot alloc handle, sequence %d", (int)sequence_num);
             return 0;
         }
-        //TODO unfinished
+        AIL_init_sequence(seq, p_musbank, sequence_num);
     }
     return 1;
 #endif

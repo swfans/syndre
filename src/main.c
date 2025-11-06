@@ -18,6 +18,7 @@
 #include "game_data.h"
 #include "guitext.h"
 #include "keyboard.h"
+#include "sound.h"
 #include "util.h"
 
 #if defined WIN32 && defined main
@@ -28,15 +29,8 @@
 TbBool cmdln_fullscreen = true;
 TbBool cmdln_lores_stretch = true;
 
-extern ushort sndcard_irq;
-extern ushort sndcard_dma;
-extern ushort sndcard_ioaddr;
 extern ubyte unused_option_p;
 extern char Network__Name[18];
-
-// From bfsoundlib
-extern TbBool SoundAble;
-extern TbBool MusicAble;
 
 extern ubyte byte_60B4C;
 extern ushort current_levno;
@@ -182,8 +176,8 @@ process_options (int *argc, char ***argv)
           break;
 
       case 's':
-          SoundAble = 0;
-          MusicAble = 0;
+          audOpts.AbleFlags &= ~AudioAble_Music;
+          audOpts.AbleFlags &= ~AudioAble_Sound;
           break;
 
       case 'w':
@@ -224,6 +218,7 @@ int main (int argc, char **argv)
 {
     run_intro(argc, argv);
 
+    audio_options_set_default();
     current_levno = 1;
     level__MapNumber = 1;
     DrawFlags = DrwF_ScreenVres16;
@@ -235,8 +230,6 @@ int main (int argc, char **argv)
     byte_60B4C = 0;
     byte_60B47 = 1;
     cheat_credits = 0;
-    SoundAble = 1;
-    MusicAble = 1;
     cheat_worldmap = 0;
     debug_k = 0;
     byte_60B51 = 0;

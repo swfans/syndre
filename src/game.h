@@ -33,7 +33,6 @@ void game_update (void);
 void game_quit (void);
 void host_reset(void);
 void reset_input(void);
-void init_audio(void);
 void game_transform_path (const char *file_name, char *result);
 const char *game_get_data_path (void);
 const char *game_get_user_path (void);

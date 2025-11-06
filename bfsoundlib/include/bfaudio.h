@@ -30,6 +30,11 @@ extern "C" {
 
 typedef struct AudioInitOptions AudioInitOptions;
 
+enum AudioInitOptionsAbleFlags {
+    AudioAble_Music = 0x01,
+    AudioAble_Sound = 0x02,
+};
+
 struct AudioInitOptions {
   /** Custom path to where INI files are. If NULL, "$PWD/sound" is used. */
   const char *IniPath;
