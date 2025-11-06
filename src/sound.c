@@ -382,6 +382,20 @@ int InitMIDI(const char *bank_fname, char *drv_fname,
 #endif
 }
 
+void ShutdownMIDI(void)
+{
+    if (!GetMusicAble()) {
+        LOGNO("Cannot shutdown - no music ability");
+        return;
+    }
+#if defined(WITH_AIL2)
+    AIL_shutdown("BYE FOLKS");
+#else
+    LOGERR("Invalid API used");
+    FreeMusic();
+#endif
+}
+
 static void BfI_MidiStopMusic(void)
 {
     if (SongCurrentlyPlaying >= 0) {
@@ -466,6 +480,21 @@ void BFMidiResumeSong(void)
         AIL_resume_sequence(sSOSTrackMap[SongCurrentlyPlaying]);
 #endif
     }
+}
+
+bool BFMidiIsMusicPlaying(void)
+{
+    uint32_t status;
+
+    if (SongCurrentlyPlaying < 0)
+        return false;
+
+#if defined(WITH_AIL2)
+    status = AIL_sequence_status(MUSdrvr, sSOSTrackMap[SongCurrentlyPlaying]);
+#else
+    status = AIL_sequence_status(sSOSTrackMap[SongCurrentlyPlaying]);
+#endif
+    return (status == SNDSEQ_PLAYING);
 }
 
 /******************************************************************************/

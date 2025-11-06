@@ -71,6 +71,7 @@ void BFMidiStartMusic(short song_no);
 void BFMidiStopMusic(void);
 void BFMidiPauseSong(void);
 void BFMidiResumeSong(void);
+bool BFMidiIsMusicPlaying(void);
 
 int LoadMusic(ushort bankNo);
 
