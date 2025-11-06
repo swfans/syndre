@@ -1,4 +1,5 @@
 #include <assert.h>
+#include <errno.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -17,6 +18,7 @@
 #include "ssampply.h"
 #include "streamfx.h"
 #include "aila.h"
+#include "aildebug.h"
 #include "ailss.h"
 #include "awe32.h"
 
@@ -28,8 +30,10 @@
 
 extern ubyte byte_5BBE8;
 extern ubyte byte_5BBE9;
+extern sbyte SongCurrentlyPlaying;
 
 extern void *MUSdrvr;
+extern struct SNDSEQUENCE *sSOSTrackMap[8];
 
 short startscr_samplevol;
 short startscr_midivol;
@@ -340,4 +344,39 @@ int InitMIDI(const char *bank_fname, char *drv_fname,
     //TODO unfinished
     return 0;
 #endif
+}
+
+void BFMidiStartMusic(short song_no)
+{
+    if (!GetMusicAble()) {
+        LOGNO("Cannot start - no music ability");
+        return;
+    }
+    if (!GetMusicActive()) {
+        if (SongCurrentlyPlaying >= 0) {
+#if defined(WITH_AIL2)
+            AIL_stop_sequence(MUSdrvr, sSOSTrackMap[SongCurrentlyPlaying]);
+#else
+            AIL_stop_sequence(sSOSTrackMap[SongCurrentlyPlaying]);
+#endif
+            SongCurrentlyPlaying = -1;
+        }
+        LOGNO("Cannot start - music not active");
+        return;
+    }
+    if (SongCurrentlyPlaying != song_no)
+    {
+        if (SongCurrentlyPlaying >= 0)
+#if defined(WITH_AIL2)
+            AIL_stop_sequence(MUSdrvr, sSOSTrackMap[SongCurrentlyPlaying]);
+#else
+            AIL_stop_sequence(sSOSTrackMap[SongCurrentlyPlaying]);
+#endif
+        SongCurrentlyPlaying = song_no;
+#if defined(WITH_AIL2)
+        AIL_start_sequence(MUSdrvr, sSOSTrackMap[song_no]);
+#else
+        AIL_start_sequence(sSOSTrackMap[song_no]);
+#endif
+    }
 }

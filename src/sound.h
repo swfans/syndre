@@ -64,6 +64,7 @@ int init_sound(ushort sc_irq, ushort sc_dma, ushort sc_ioaddr);
 int InitMIDI(const char *bank_fname, char *drv_fname,
   ushort sc_irq, ushort sc_dma, ushort sc_ioaddr);
 void ShutdownMIDI(void);
+void BFMidiStartMusic(short song_no);
 
 int LoadMusic(ushort bankNo);
 

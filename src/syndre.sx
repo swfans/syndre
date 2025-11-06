@@ -62,7 +62,7 @@ check_for_danger:	/* 0x10010 */
 		cmpl   $0x1,data_5c354
 		jne    jump_1004a
 		push   $0x3
-		call   BFMidiStartMusic
+		call   ac_BFMidiStartMusic
 		add    $0x4,%esp
 		call   BFMidiIsMusicPlaying
 		test   %eax,%eax
@@ -75,7 +75,7 @@ check_for_danger:	/* 0x10010 */
 		cmpl   $0x1,data_5c354
 		jne    jump_10080
 		push   $0x4
-		call   BFMidiStartMusic
+		call   ac_BFMidiStartMusic
 		add    $0x4,%esp
 		call   BFMidiIsMusicPlaying
 		test   %eax,%eax
@@ -150,7 +150,7 @@ check_for_danger:	/* 0x10010 */
 		cmp    $0x1000,%ax
 		jae    jump_10169
 		push   $0x1
-		call   BFMidiStartMusic
+		call   ac_BFMidiStartMusic
 		mov    $0x1,%eax
 		add    $0x4,%esp
 		mov    %eax,(%esp)
@@ -182,7 +182,7 @@ check_for_danger:	/* 0x10010 */
 		cmpw   $0x0,(%esp)
 		jne    jump_101c4
 		push   $0x0
-		call   BFMidiStartMusic
+		call   ac_BFMidiStartMusic
 		add    $0x4,%esp
 	jump_101c4:
 		add    $0x4,%esp
@@ -60142,7 +60142,7 @@ ASM_InitMIDI:	/* 0x3b5b0 */
 		call   AIL_register_sequence
 		add    $0x14,%esp
 		mov    0x64(%esp),%edx
-		mov    %eax,sSOSTrackMap(%edx)
+		mov    %eax,EXPORT_SYMBOL(sSOSTrackMap)(%edx)
 		cmp    $0xffffffff,%eax
 		jne    jump_3b7cf
 		mov    0x40(%esp,%edx,1),%ecx
@@ -60153,7 +60153,7 @@ ASM_InitMIDI:	/* 0x3b5b0 */
 	jump_3b7cf:
 		mov    %edx,%ebp
 	jump_3b7d1:
-		mov    sSOSTrackMap(%ebp),%esi
+		mov    EXPORT_SYMBOL(sSOSTrackMap)(%ebp),%esi
 		push   %esi
 		mov    EXPORT_SYMBOL(MUSdrvr),%edi
 		push   %edi
@@ -60235,7 +60235,7 @@ ASM_InitMIDI:	/* 0x3b5b0 */
 
 
 /*----------------------------------------------------------------*/
-BFMidiStartMusic:	/* 0x3b8a0 */
+ASM_BFMidiStartMusic:	/* 0x3b8a0 */
 /*----------------------------------------------------------------*/
 		push   %ebx
 		push   %esi
@@ -60246,14 +60246,14 @@ BFMidiStartMusic:	/* 0x3b8a0 */
 		cmpb   $0x0,MusicActive
 		je     jump_3b909
 		mov    0x14(%esp),%bh
-		mov    SongCurrentlyPlaying,%al
+		mov    EXPORT_SYMBOL(SongCurrentlyPlaying),%al
 		cmp    %bh,%al
 		je     jump_3b935
 		test   %al,%al
 		jl     jump_3b8e1
 		cbtw
 		cwtl
-		mov    sSOSTrackMap(,%eax,4),%ecx
+		mov    EXPORT_SYMBOL(sSOSTrackMap)(,%eax,4),%ecx
 		push   %ecx
 		mov    EXPORT_SYMBOL(MUSdrvr),%esi
 		push   %esi
@@ -60261,10 +60261,10 @@ BFMidiStartMusic:	/* 0x3b8a0 */
 		add    $0x8,%esp
 	jump_3b8e1:
 		mov    0x14(%esp),%al
-		mov    %al,SongCurrentlyPlaying
+		mov    %al,EXPORT_SYMBOL(SongCurrentlyPlaying)
 		cbtw
 		cwtl
-		mov    sSOSTrackMap(,%eax,4),%edi
+		mov    EXPORT_SYMBOL(sSOSTrackMap)(,%eax,4),%edi
 		push   %edi
 		mov    EXPORT_SYMBOL(MUSdrvr),%ebp
 		push   %ebp
@@ -60276,18 +60276,18 @@ BFMidiStartMusic:	/* 0x3b8a0 */
 		pop    %ebx
 		ret
 	jump_3b909:
-		mov    SongCurrentlyPlaying,%dh
+		mov    EXPORT_SYMBOL(SongCurrentlyPlaying),%dh
 		test   %dh,%dh
 		jl     jump_3b935
 		movsbl %dh,%eax
-		mov    sSOSTrackMap(,%eax,4),%edx
+		mov    EXPORT_SYMBOL(sSOSTrackMap)(,%eax,4),%edx
 		push   %edx
 		mov    EXPORT_SYMBOL(MUSdrvr),%ebx
 		push   %ebx
 		call   AIL_stop_sequence
 		mov    $0xff,%bl
 		add    $0x8,%esp
-		mov    %bl,SongCurrentlyPlaying
+		mov    %bl,EXPORT_SYMBOL(SongCurrentlyPlaying)
 	jump_3b935:
 		pop    %ebp
 		pop    %edi
@@ -60304,18 +60304,18 @@ BFMidiStopMusic:	/* 0x3b940 */
 		je     jump_3b97f
 		cmpb   $0x0,MusicActive
 		je     jump_3b97f
-		mov    SongCurrentlyPlaying,%dh
+		mov    EXPORT_SYMBOL(SongCurrentlyPlaying),%dh
 		test   %dh,%dh
 		jl     jump_3b97f
 		movsbl %dh,%eax
-		mov    sSOSTrackMap(,%eax,4),%edx
+		mov    EXPORT_SYMBOL(sSOSTrackMap)(,%eax,4),%edx
 		push   %edx
 		mov    EXPORT_SYMBOL(MUSdrvr),%ebx
 		push   %ebx
 		call   AIL_stop_sequence
 		mov    $0xff,%bl
 		add    $0x8,%esp
-		mov    %bl,SongCurrentlyPlaying
+		mov    %bl,EXPORT_SYMBOL(SongCurrentlyPlaying)
 	jump_3b97f:
 		pop    %ebx
 		ret
@@ -60329,11 +60329,11 @@ BFMidiPauseSong:	/* 0x3b990 */
 		je     jump_3b9c7
 		cmpb   $0x0,MusicActive
 		je     jump_3b9c7
-		mov    SongCurrentlyPlaying,%dh
+		mov    EXPORT_SYMBOL(SongCurrentlyPlaying),%dh
 		test   %dh,%dh
 		jl     jump_3b9c7
 		movsbl %dh,%eax
-		mov    sSOSTrackMap(,%eax,4),%edx
+		mov    EXPORT_SYMBOL(sSOSTrackMap)(,%eax,4),%edx
 		push   %edx
 		mov    EXPORT_SYMBOL(MUSdrvr),%ebx
 		push   %ebx
@@ -60352,11 +60352,11 @@ BFMidiResumeSong:	/* 0x3b9d0 */
 		je     jump_3ba07
 		cmpb   $0x0,MusicActive
 		je     jump_3ba07
-		mov    SongCurrentlyPlaying,%dh
+		mov    EXPORT_SYMBOL(SongCurrentlyPlaying),%dh
 		test   %dh,%dh
 		jl     jump_3ba07
 		movsbl %dh,%eax
-		mov    sSOSTrackMap(,%eax,4),%edx
+		mov    EXPORT_SYMBOL(sSOSTrackMap)(,%eax,4),%edx
 		push   %edx
 		mov    EXPORT_SYMBOL(MUSdrvr),%ebx
 		push   %ebx
@@ -60371,8 +60371,8 @@ BFMidiResumeSong:	/* 0x3b9d0 */
 BFMidiIsMusicPlaying:	/* 0x3ba10 */
 /*----------------------------------------------------------------*/
 		push   %ebx
-		movsbl SongCurrentlyPlaying,%eax
-		mov    sSOSTrackMap(,%eax,4),%edx
+		movsbl EXPORT_SYMBOL(SongCurrentlyPlaying),%eax
+		mov    EXPORT_SYMBOL(sSOSTrackMap)(,%eax,4),%edx
 		push   %edx
 		mov    EXPORT_SYMBOL(MUSdrvr),%ebx
 		push   %ebx
@@ -60460,7 +60460,7 @@ CheckArray:	/* 0x3ba60 */
 		movsbl 0x3(%ebx,%eax,4),%eax
 		push   %eax
 		mov    %si,AniArrayCount
-		call   BFMidiStartMusic
+		call   ac_BFMidiStartMusic
 	jump_3bb1e:
 		mov    AniArrayCount,%si
 		add    $0x4,%esp
@@ -85025,8 +85025,10 @@ GLOBAL (byte_5BBE8)	/* 0x5BBE8 */
 		.ascii  "\x00"
 GLOBAL (byte_5BBE9)	/* 0x5BBE9 */
 		.ascii  "\x00\x00\x00"
-SongCurrentlyPlaying:	/* 0x5bbec */
+#if 0	/* declared in bfsoundlib */
+GLOBAL (SongCurrentlyPlaying)	/* 0x5bbec */
 		.ascii  "\xff\x00\x00\x00"
+#endif
 active_timers:	/* 0x5bbf0 */
 		.ascii  "\x00\x00"
 timer_busy:	/* 0x5bbf2 */
@@ -85593,7 +85595,7 @@ data_61dfc:
 		.fill   0x4
 data_61e00:
 		.fill   0xc
-sSOSTrackMap:	/* 0x61e0c */
+GLOBAL (sSOSTrackMap)	/* 0x61e0c */
 		.fill   0x20
 GLOBAL (MUSdrvr)	/* 0x61e2c */
 		.fill   0x4
