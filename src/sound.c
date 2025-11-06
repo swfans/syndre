@@ -10,6 +10,7 @@
 #include "bfsound.h"
 #include "bfwindows.h"
 #include "bfsvaribl.h"
+#include "dllload.h"
 #include "sb16.h"
 #include "sndtimer.h"
 #include "snderr.h"
@@ -27,6 +28,8 @@
 
 extern ubyte byte_5BBE8;
 extern ubyte byte_5BBE9;
+
+extern void *MUSdrvr;
 
 short startscr_samplevol;
 short startscr_midivol;
@@ -220,5 +223,121 @@ void BFSoundResume(void)
     AIL_resume_digital_playback(DIGhdriver);
 #else
     ResumeAllSamples();
+#endif
+}
+
+int InitMIDI(const char *bank_fname, char *drv_fname,
+  ushort sc_irq, ushort sc_dma, ushort sc_ioaddr)
+{
+    void *p_musbank;
+#if defined(WITH_AIL2)
+    char GTL_filename[96];
+    FILE *GTL_fh;
+    struct drvr_desc *desc;
+    uint sequence_num;
+    int sc_drq;
+    int state_size;
+    ushort tc_size;
+
+    {
+        void *drvr_buf;
+        void *drvr_base;
+
+        drvr_buf = FILE_read(drv_fname, 0);
+        if (drvr_buf == NULL) {
+            LOGERR("Cannot read driver - %s", strerror(errno));
+            return 0;
+        }
+        drvr_base = DLL_load(drvr_buf, 5u, 0);
+        if (drvr_base == NULL) {
+            LOGERR("Cannot load driver DLL");
+            return 0;
+        }
+        free(drvr_buf);
+
+        MUSdrvr = AIL_register_driver(drvr_base);
+        if (MUSdrvr == (void *)-1) {
+            LOGERR("Cannot register driver");
+            return 0;
+        }
+    }
+
+    desc = AIL_describe_driver(MUSdrvr);
+    if (desc->drvr_type != 3) {
+        LOGERR("Invalid driver type");
+        return 0;
+    }
+    if (sc_irq == 0)
+        sc_irq = desc->default_IRQ;
+    if (sc_dma == 0)
+        sc_dma = desc->default_DMA;
+    if (sc_ioaddr == 0)
+        sc_ioaddr = desc->default_IO;
+    sc_drq = desc->default_DRQ;
+    if (!AIL_detect_device(MUSdrvr, sc_ioaddr, sc_irq, sc_dma, sc_drq))
+        return 0;
+    AIL_init_driver(MUSdrvr, sc_ioaddr, sc_irq, sc_dma, desc->default_DRQ);
+    state_size = AIL_state_table_size(MUSdrvr);
+
+    p_musbank = FILE_read(bank_fname, 0);
+    if (p_musbank == NULL) {
+        LOGERR("Cannot read music bank - %s", strerror(errno));
+        return 0;
+    }
+    strcpy(GTL_filename, "data/sample.");
+    strcat(GTL_filename, desc->data_suffix);
+    tc_size = AIL_default_timbre_cache_size(MUSdrvr);
+    if (tc_size > 0)
+    {
+        void *p_cache;
+        p_cache = malloc(tc_size);
+        AIL_define_timbre_cache(MUSdrvr, p_cache, tc_size);
+    }
+
+    GTL_fh = fopen(GTL_filename, "rb");
+    for (sequence_num = 0; sequence_num < 8; sequence_num++)
+    {
+        void *p_state;
+        void *global_timbre;
+        struct SNDSEQUENCE *seq;
+
+        p_state = malloc(state_size);
+        seq = AIL_register_sequence(MUSdrvr, p_musbank, sequence_num, p_state, 0);
+        sSOSTrackMap[sequence_num] = seq;
+        if (seq == (struct SNDSEQUENCE *)-1) {
+            free(p_state);
+            break;
+        }
+        while ( 1 )
+        {
+            ushort req;
+            int rq_l, rq_h;
+
+            req = AIL_timbre_request(MUSdrvr, sSOSTrackMap[sequence_num]);
+            if (req == 0xFFFF) {
+                break;
+            }
+            rq_l = req % 256;
+            rq_h = req / 256;
+            global_timbre = load_global_timbre(GTL_fh, rq_h, rq_l);
+            if (global_timbre == NULL) {
+                LOGERR("Cannot load global timbre, sequence %d request 0x%04x", sequence_num, (uint)req);
+                return 0;
+            }
+            AIL_install_timbre(MUSdrvr, rq_h, rq_l, global_timbre);
+            free(global_timbre);
+        }
+    }
+    if (GTL_fh != NULL)
+        fclose(GTL_fh);
+    return 1;
+#else
+    p_musbank = FILE_read(bank_fname, 0);
+    if (p_musbank == NULL) {
+        LOGERR("Cannot read music bank - %s", strerror(errno));
+        return 0;
+    }
+    //TODO unfinished
+    return 0;
 #endif
 }

@@ -60,6 +60,11 @@ extern struct BFSample *smptable_end;
 extern ubyte *smpdata;
 extern struct BFSampleStatus sample_status[256];
 
+int init_sound(ushort sc_irq, ushort sc_dma, ushort sc_ioaddr);
+int InitMIDI(const char *bank_fname, char *drv_fname,
+  ushort sc_irq, ushort sc_dma, ushort sc_ioaddr);
+void ShutdownMIDI(void);
+
 int LoadMusic(ushort bankNo);
 
 void sound_bank_setup(void);

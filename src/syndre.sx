@@ -31281,7 +31281,7 @@ GLOBAL_FUNC (ASM_main)	/* 0x274a0 */
 		push   %eax
 		push   $fname2
 		push   $fname1
-		call   InitMIDI
+		call   ac_InitMIDI
 		add    $0x14,%esp
 		mov    %al,EXPORT_SYMBOL(MusicAble)
 	jump_27988:
@@ -59946,7 +59946,7 @@ load_global_timbre:	/* 0x3b4e0 */
 
 
 /*----------------------------------------------------------------*/
-GLOBAL_FUNC(InitMIDI)	/* 0x3b5b0 */
+ASM_InitMIDI:	/* 0x3b5b0 */
 /*----------------------------------------------------------------*/
 		push   %ebx
 		push   %esi
@@ -59989,7 +59989,7 @@ GLOBAL_FUNC(InitMIDI)	/* 0x3b5b0 */
 		push   %ebx
 		call   AIL_register_driver
 		add    $0x4,%esp
-		mov    %eax,MUSdrvr
+		mov    %eax,EXPORT_SYMBOL(MUSdrvr)
 		cmp    $0xffffffff,%eax
 		jne    jump_3b629
 		xor    %eax,%eax
@@ -60039,7 +60039,7 @@ GLOBAL_FUNC(InitMIDI)	/* 0x3b5b0 */
 		push   %esi
 		mov    0xa8(%esp),%ax
 		push   %eax
-		mov    MUSdrvr,%edx
+		mov    EXPORT_SYMBOL(MUSdrvr),%edx
 		push   %edx
 		mov    %eax,0x74(%esp)
 		call   AIL_detect_device
@@ -60060,11 +60060,11 @@ GLOBAL_FUNC(InitMIDI)	/* 0x3b5b0 */
 		push   %esi
 		mov    0x6c(%esp),%ecx
 		push   %ecx
-		mov    MUSdrvr,%esi
+		mov    EXPORT_SYMBOL(MUSdrvr),%esi
 		push   %esi
 		call   AIL_init_driver
 		add    $0x14,%esp
-		mov    MUSdrvr,%edi
+		mov    EXPORT_SYMBOL(MUSdrvr),%edi
 		push   %edi
 		call   AIL_state_table_size
 		add    $0x4,%esp
@@ -60097,7 +60097,7 @@ GLOBAL_FUNC(InitMIDI)	/* 0x3b5b0 */
 		movsb  %ds:(%esi),%es:(%edi)
 		call   ac_strcat
 		add    $0x8,%esp
-		mov    MUSdrvr,%edx
+		mov    EXPORT_SYMBOL(MUSdrvr),%edx
 		push   %edx
 		call   AIL_default_timbre_cache_size
 		add    $0x4,%esp
@@ -60110,7 +60110,7 @@ GLOBAL_FUNC(InitMIDI)	/* 0x3b5b0 */
 		add    $0x4,%esp
 		push   %ebx
 		push   %eax
-		mov    MUSdrvr,%ebx
+		mov    EXPORT_SYMBOL(MUSdrvr),%ebx
 		push   %ebx
 		call   AIL_define_timbre_cache
 		add    $0xc,%esp
@@ -60137,7 +60137,7 @@ GLOBAL_FUNC(InitMIDI)	/* 0x3b5b0 */
 		push   %eax
 		mov    0x74(%esp),%edx
 		push   %edx
-		mov    MUSdrvr,%ebx
+		mov    EXPORT_SYMBOL(MUSdrvr),%ebx
 		push   %ebx
 		call   AIL_register_sequence
 		add    $0x14,%esp
@@ -60155,7 +60155,7 @@ GLOBAL_FUNC(InitMIDI)	/* 0x3b5b0 */
 	jump_3b7d1:
 		mov    sSOSTrackMap(%ebp),%esi
 		push   %esi
-		mov    MUSdrvr,%edi
+		mov    EXPORT_SYMBOL(MUSdrvr),%edi
 		push   %edi
 		call   AIL_timbre_request
 		add    $0x8,%esp
@@ -60199,7 +60199,7 @@ GLOBAL_FUNC(InitMIDI)	/* 0x3b5b0 */
 		push   %eax
 		push   %ebx
 		push   %edi
-		mov    MUSdrvr,%edi
+		mov    EXPORT_SYMBOL(MUSdrvr),%edi
 		push   %edi
 		call   AIL_install_timbre
 		add    $0x10,%esp
@@ -60255,7 +60255,7 @@ BFMidiStartMusic:	/* 0x3b8a0 */
 		cwtl
 		mov    sSOSTrackMap(,%eax,4),%ecx
 		push   %ecx
-		mov    MUSdrvr,%esi
+		mov    EXPORT_SYMBOL(MUSdrvr),%esi
 		push   %esi
 		call   AIL_stop_sequence
 		add    $0x8,%esp
@@ -60266,7 +60266,7 @@ BFMidiStartMusic:	/* 0x3b8a0 */
 		cwtl
 		mov    sSOSTrackMap(,%eax,4),%edi
 		push   %edi
-		mov    MUSdrvr,%ebp
+		mov    EXPORT_SYMBOL(MUSdrvr),%ebp
 		push   %ebp
 		call   AIL_start_sequence
 		add    $0x8,%esp
@@ -60282,7 +60282,7 @@ BFMidiStartMusic:	/* 0x3b8a0 */
 		movsbl %dh,%eax
 		mov    sSOSTrackMap(,%eax,4),%edx
 		push   %edx
-		mov    MUSdrvr,%ebx
+		mov    EXPORT_SYMBOL(MUSdrvr),%ebx
 		push   %ebx
 		call   AIL_stop_sequence
 		mov    $0xff,%bl
@@ -60310,7 +60310,7 @@ BFMidiStopMusic:	/* 0x3b940 */
 		movsbl %dh,%eax
 		mov    sSOSTrackMap(,%eax,4),%edx
 		push   %edx
-		mov    MUSdrvr,%ebx
+		mov    EXPORT_SYMBOL(MUSdrvr),%ebx
 		push   %ebx
 		call   AIL_stop_sequence
 		mov    $0xff,%bl
@@ -60335,7 +60335,7 @@ BFMidiPauseSong:	/* 0x3b990 */
 		movsbl %dh,%eax
 		mov    sSOSTrackMap(,%eax,4),%edx
 		push   %edx
-		mov    MUSdrvr,%ebx
+		mov    EXPORT_SYMBOL(MUSdrvr),%ebx
 		push   %ebx
 		call   AIL_stop_sequence
 		add    $0x8,%esp
@@ -60358,7 +60358,7 @@ BFMidiResumeSong:	/* 0x3b9d0 */
 		movsbl %dh,%eax
 		mov    sSOSTrackMap(,%eax,4),%edx
 		push   %edx
-		mov    MUSdrvr,%ebx
+		mov    EXPORT_SYMBOL(MUSdrvr),%ebx
 		push   %ebx
 		call   AIL_resume_sequence
 		add    $0x8,%esp
@@ -60374,7 +60374,7 @@ BFMidiIsMusicPlaying:	/* 0x3ba10 */
 		movsbl SongCurrentlyPlaying,%eax
 		mov    sSOSTrackMap(,%eax,4),%edx
 		push   %edx
-		mov    MUSdrvr,%ebx
+		mov    EXPORT_SYMBOL(MUSdrvr),%ebx
 		push   %ebx
 		call   AIL_sequence_status
 		add    $0x8,%esp
@@ -85595,7 +85595,7 @@ data_61e00:
 		.fill   0xc
 sSOSTrackMap:	/* 0x61e0c */
 		.fill   0x20
-MUSdrvr:	/* 0x61e2c */
+GLOBAL (MUSdrvr)	/* 0x61e2c */
 		.fill   0x4
 data_61e30:
 		.fill   0x4
