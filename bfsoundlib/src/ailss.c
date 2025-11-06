@@ -718,7 +718,7 @@ int32_t AIL2OAL_API_set_sample_file(SNDSAMPLE *s, const void *file_image, int32_
         s->system_data[SmpSD_RELEASE] = 0;
 #if defined(LBS_ENABLE_STRUCTS_EXPAND) // without extra fields, these are used by OpenAL
         s->system_data[SmpSD_VOC_MRKR] = block;
-        s->system_data[SmpSD_VOC_MRKR_FND] = (block == -1);
+        s->system_data[SmpSD_VOC_MRKR_FND] = (block != -1);
 #endif
         AIL_process_VOC_block(s, 0);
         break;

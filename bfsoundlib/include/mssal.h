@@ -22,10 +22,14 @@
 #ifndef AIL2OAL_MSSAL_H_
 #define AIL2OAL_MSSAL_H_
 
+#include "bsndconf.h"
+
+#if !defined(LBS_PACKAGE)
+#  error This library requires correct inclusion of config header
+#endif
+
 #include <stdint.h>
 #include <strings.h>
-
-#include "bsndconf.h"
 
 #ifdef __cplusplus
 extern "C" {
