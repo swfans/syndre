@@ -37,6 +37,8 @@
 
 ubyte *VGABuffer = NULL;
 
+/******************************************************************************/
+
 #if defined(WIN32)
 
 const char * AppResourceMapping(short index)

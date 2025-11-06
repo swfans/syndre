@@ -25,7 +25,6 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-
 /******************************************************************************/
 
 bool game_initialise (void);
@@ -43,5 +42,4 @@ const char *game_get_user_path (void);
 #ifdef __cplusplus
 };
 #endif
-
 #endif // GAME_H

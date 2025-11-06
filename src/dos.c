@@ -48,6 +48,7 @@
 # endif
 #endif
 
+/******************************************************************************/
 
 static int open_flag_mapping[][2] =
 {
@@ -481,4 +482,5 @@ void __attribute__ ((noreturn)) dos_setvect(int num, void *function)
     void *eip_caller = *(&eip_caller + 7);
     print_caller_info_and_abort("dos_setvect", eip_caller);
 }
+
 /******************************************************************************/

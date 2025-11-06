@@ -26,6 +26,8 @@
 
 #include "game.h"
 
+/******************************************************************************/
+
 #define KEYBOARD_BUFFER_SIZE 16
 
 #pragma pack(1)
@@ -35,6 +37,7 @@ ulong buffered_keys_read_index;
 ulong buffered_keys_write_index;
 
 #pragma pack()
+/******************************************************************************/
 
 static void add_key_to_buffer(uint8_t key)
 {
@@ -104,4 +107,5 @@ void init_buffered_keys(void)
 {
     LbKeyboardCustomHandler(KEventBufferedKeysUpdate);
 }
+
 /******************************************************************************/

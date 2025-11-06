@@ -26,6 +26,9 @@
 #include "timer.h"
 #include "mssal.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 /******************************************************************************/
 #pragma pack(1)
 
@@ -77,4 +80,7 @@ void BFSoundPause(void);
 void BFSoundResume(void);
 
 /******************************************************************************/
+#ifdef __cplusplus
+}
+#endif
 #endif // SOUND_H

@@ -25,7 +25,6 @@
 extern "C" {
 #endif
 /******************************************************************************/
-
 #pragma pack(1)
 
 #define GAME_DESC_TEXT_MAX_LEN 20
@@ -46,7 +45,6 @@ struct CPObjective
 };
 
 #pragma pack()
-
 /******************************************************************************/
 extern ushort level__Seed;
 extern struct CPObjective level__CPObjectives[128];

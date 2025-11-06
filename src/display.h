@@ -22,6 +22,9 @@
 #include <stdbool.h>
 #include <stddef.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 /******************************************************************************/
 
 enum DrawFlagsVals
@@ -56,6 +59,7 @@ extern short lbDisplay__MouseY_400;
 extern short lbDisplay__MMouseX_640;
 extern short lbDisplay__MMouseY_400;
 
+/******************************************************************************/
 
 void display_lock (void);
 void display_unlock (void);
@@ -69,4 +73,7 @@ void display_create_vga_buffer(void);
 void display_free_vga_buffer(void);
 
 /******************************************************************************/
+#ifdef __cplusplus
+};
+#endif
 #endif // DISPLAY_H

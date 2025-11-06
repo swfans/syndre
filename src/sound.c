@@ -1,3 +1,22 @@
+/******************************************************************************/
+// SyndicateRE, source port of the classic game from Bullfrog.
+/******************************************************************************/
+/** @file sound.c
+ *     Sound related routines.
+ * @par Purpose:
+ *     Implements routines which help adjust functions from bfsoundlib to
+ *     the games needs.
+ * @par Comment:
+ *     Just a header file - #defines, typedefs, function prototypes etc.
+ * @author   Tomasz Lis
+ * @date     22 Apr 2023 - 02 Nov 2025
+ * @par  Copying and copyrights:
+ *     This program is free software; you can redistribute it and/or modify
+ *     it under the terms of the GNU General Public License as published by
+ *     the Free Software Foundation; either version 2 of the License, or
+ *     (at your option) any later version.
+ */
+/******************************************************************************/
 #include <assert.h>
 #include <errno.h>
 #include <stdio.h>
@@ -26,6 +45,7 @@
 #include "game_data.h"
 #include "util.h"
 
+/******************************************************************************/
 #pragma pack(1)
 
 extern ubyte byte_5BBE8;
@@ -40,6 +60,7 @@ short startscr_midivol;
 short startscr_cdvolume;
 
 #pragma pack()
+/******************************************************************************/
 
 void sound_bank_setup(void)
 {
@@ -380,3 +401,5 @@ void BFMidiStartMusic(short song_no)
 #endif
     }
 }
+
+/******************************************************************************/

@@ -19,6 +19,7 @@
 #include "game_data.h"
 
 #include <assert.h>
+#include <string.h>
 #include "bftypes.h"
 #include "bffile.h"
 #include "bfdir.h"
@@ -33,6 +34,8 @@
 #include "research.h"
 #include "weapon.h"
 #include "wrcountry.h"
+
+/******************************************************************************/
 
 static char data_path_user[DISKPATH_SIZE] = "";
 static char data_path_hdd[DISKPATH_SIZE] = "";

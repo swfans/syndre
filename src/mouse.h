@@ -21,6 +21,9 @@
 
 #include "bftypes.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 /******************************************************************************/
 
 struct TbPoint;
@@ -28,4 +31,7 @@ struct TbPoint;
 void mouse_update_scaled_coords(void);
 
 /******************************************************************************/
+#ifdef __cplusplus
+}
+#endif
 #endif // MOUSE_H
