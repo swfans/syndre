@@ -186,3 +186,69 @@ void BFSonundUnkn1(void)
         p_status->field_0 = 0;
     }
 }
+
+void PauseAllSamples(void)
+{
+#if 0
+    struct SampleInfo *p_smpinf;
+
+    if (!SoundInstalled || !SoundAble || !SoundActive)
+        return;
+
+    for (p_smpinf = sample_id; p_smpinf <= end_sample_id; p_smpinf++)
+    {
+        AIL_stop_sample(s);
+    }
+#endif
+}
+
+void ResumeAllSamples(void)
+{
+#if 0
+    struct SampleInfo *p_smpinf;
+
+    if (!SoundInstalled || !SoundAble || !SoundActive)
+        return;
+
+    for (p_smpinf = sample_id; p_smpinf <= end_sample_id; p_smpinf++)
+    {
+        AIL_resume_sample(s);
+    }
+#endif
+}
+
+void BFSoundPause(void)
+{
+    if (!GetSoundAble()) {
+        LOGNO("Cannot pause - no sound ability");
+        return;
+    }
+    if (!GetSoundActive()) {
+        LOGNO("Cannot pause - sound not active");
+        return;
+    }
+
+#if defined(WITH_AIL2)
+    AIL_pause_digital_playback(DIGhdriver);
+#else
+    PauseAllSamples();
+#endif
+}
+
+void BFSoundResume(void)
+{
+    if (!GetSoundAble()) {
+        LOGNO("Cannot resume - no sound ability");
+        return;
+    }
+    if (!GetSoundActive()) {
+        LOGNO("Cannot resume - sound not active");
+        return;
+    }
+
+#if defined(WITH_AIL2)
+    AIL_resume_digital_playback(DIGhdriver);
+#else
+    ResumeAllSamples();
+#endif
+}

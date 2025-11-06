@@ -67,6 +67,8 @@ void BFPlaySample(ubyte smp_id);
 void BFSonundUnkn1(void);
 void ClearBFSampleStatus(void);
 void SetBFSampleStatus(ubyte smp_id, ubyte stat);
+void BFSoundPause(void);
+void BFSoundResume(void);
 
 /******************************************************************************/
 #endif // SOUND_H

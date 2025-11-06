@@ -540,7 +540,7 @@ check_end_level:	/* 0x105e0 */
 		cmpb   $0x0,EXPORT_SYMBOL(lbKeyOn)+0x19
 		je     jump_1064a
 		call   BFMidiPauseSong
-		call   BFSoundPause
+		call   ac_BFSoundPause
 		mov    $0x1,%ebx
 		mov    $0x3,%ebp
 		mov    $0x2,%edx
@@ -568,7 +568,7 @@ check_end_level:	/* 0x105e0 */
 		jne    jump_10611
 	jump_10640:
 		call   BFMidiResumeSong
-		call   BFSoundResume
+		call   ac_BFSoundResume
 	jump_1064a:
 		cmpb   $0x0,EXPORT_SYMBOL(is_multiplayer_game)
 		je     jump_1067e
@@ -55738,7 +55738,7 @@ ASM_BFPlaySample:	/* 0x38830 */
 
 
 /*----------------------------------------------------------------*/
-BFSoundPause:	/* 0x38890 */
+ASM_BFSoundPause:	/* 0x38890 */
 /*----------------------------------------------------------------*/
 		push   %ebx
 		cmpb   $0x0,EXPORT_SYMBOL(SoundAble)
@@ -55755,7 +55755,7 @@ BFSoundPause:	/* 0x38890 */
 
 
 /*----------------------------------------------------------------*/
-BFSoundResume:	/* 0x388c0 */
+ASM_BFSoundResume:	/* 0x388c0 */
 /*----------------------------------------------------------------*/
 		push   %ebx
 		cmpb   $0x0,EXPORT_SYMBOL(SoundAble)
