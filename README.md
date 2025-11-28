@@ -9,52 +9,88 @@ out, and maybe help us in making this work.
 
 ## About
 
-**SyndicateRE** is a port of the 1990s DOS game Syndicate to modern
+**SyndicateRE** is a port of the 1993 DOS game Syndicate to modern
 operating systems. In particular, it runs on GNU, Mac OS and Windows, but it
 should also work on any system supported by the SDL library on the i386
 architecture.
 
 The port was created by disassembling the original DOS executable and replacing
 the DOS-specific parts with platform-independent code, using [SDL](https://www.libsdl.org/)
-for input and video display, [Vorbis](https://xiph.org/vorbis/) for music and
+for input and video display, [WildMIDI](https://github.com/Mindwerks/wildmidi) for music and
 [OpenAL](https://www.openal.org/) for sound.
 
-Only the modernised executable is provided with this port. This means that game
-data are not included. To install the **SyndicateRE**, you will need to
-have the original data from either *Syndicate Plus CD*, or digital distribution.
+An executable and some, but not all, neccessary data files are provided with this
+port. This means that some of game data are not included. To install the
+**SyndicateRE**, you will need to have the original data from either
+*Syndicate Plus CD*, or digital distribution.
+
+## Community
+
+If you wish to discuss the **SyndicateRE** or if you have any problems,
+you may post to [discussion page of the project repo](https://github.com/swfans/syndre/discussions)
+or join [Syndicate discord channel](https://discord.gg/cnHmWqe49t).
 
 ## Installation
 
 To install **SyndicateRE**, you will need either the original *Syndicate
-Plus PC CD*, or digital distribution of the game. There were several physical
-versions released. It is uncertain whether this port will work with all
-releases, so choose the most popular, english version.
+Plus PC CD*, or a *Synd Plus CD image* from digital distribution
+of the game. There were several physical versions released. It is uncertain
+whether this port will work with all releases, so choose the most popular,
+english version. Floppy disk release was not tested.
 
 The CD version which you use narrows the range of available languages.
 
-* Multi-lingual CD contains `eng` `fre` `ita` `spa` `swe`,
+* Multi-lingual CD contains `eng` `fre` `ita`,
 * German release is required to use `ger`,
+
+Currently, only multi-lingual release is fully supported, as the translation
+is built into the executable.
 
 The steps you need to take vary depending on your operating system.
 
 ### Installing on GNU or UNIX
 
-If you're installing on GNU or UNIX, you will have to compile from source.
-The steps are:
+If you're installing on GNU or UNIX, you will have to compile from source,
+and then add the neccessary data files. The steps are:
 
-1. download and unpack the source tarball or clone git repo
-2. follow [building instructions](#general-building-instructions) below to get
-   a compiled executable
-3. after the build succeeded, do `make install` in the directory where build
-   commands were executed, to copy built files into an installation folder
-   (`/usr/local/share/syndre` by default)
-4. insert the *Syndicate Plus CD* and make sure it is mounted (e.g. in `/media/cdrom`)
-5. do `util/install -f SOURCE -t TARGET -l LANG`, where
-   * *SOURCE* is the game CD path, like `/media/cdrom`,
-   * *TARGET* is the destination path, in this case `/usr/local/share/syndre`,
-   * *LANG* is the installation language, and can be one of: `eng` `fre` `ger` `ita` `spa` `swe`.
+1. Insert the *Syndicate Plus PC CD* and make sure it is mounted, or mount a *Synd Plus CD image*
+   (e.g. in `/media/cdrom`).
+2. Choose an installation folder, like `/usr/local/share/syndre` (this is the default).
+3. Do `util/install -f <SOURCE> -t <TARGET> -l <LANG>`, where
+   * *\<SOURCE\>* is the game CD path, like `/media/cdrom`,
+   * *\<TARGET\>* is the destination path, meaning the installation folder you've chosen,
+   * *\<LANG\>* is the installation language, and can be one of: `eng` `fre` `ita`.
 
-If all went well, you can now play the game.
+   The install script will copy files from the CD or mounted CD image, but also
+   will download additional data files from their repositories:
+   [gfx](https://github.com/swfans/syndicatfx-gfx/releases) and
+   [sfx](https://github.com/swfans/syndicatfx-sfx/releases).
+4. Now we finally get to this code repository. Download and unpack the source
+   tarball or clone git repo. You can also try downloading the prebuilt *patch*
+   release; but that will only  work if your Linux environment happens to be
+   compatible to the one where the release patch package was built.
+   Depending on what you've chosen, follow further steps:
+
+Route "a" - compiling the game by yourself.
+
+7. a. Follow [building instructions](#general-building-instructions) below to get
+     a compiled executable and configuration files.
+8. a. After the build succeeded, do `make prefix=<TARGET> install` in the
+     directory where build commands were executed, to copy built files into the
+     *\<TARGET\>/syndre* installation folder you've chosen. If you've built the
+     binary yourself, you already have all the tools neccessary for that install
+     command to work. After installation, verify the folder to make sure you
+     didn't installed these files to `syndre/syndre/` directory; you can just
+     move them one dir higher if that's the case.
+
+Route "b" - using the prebuilt *patch* release.
+
+7. b. Extract the downloaded patch file.
+8. b. Move all extracted files and folders to the selected installation folder.
+     Place them all in one folder, so that sub-olders `conf`, `data`
+     and the executable file `syndre` are all next to each other.
+
+If all went well, you can now [start the game](#starting-the-game).
 
 ### Installing on Mac OS X
 
