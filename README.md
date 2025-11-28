@@ -123,39 +123,82 @@ There are two ways to install **SyndicateRE** on Windows - either download
 the installer, or download the source code and compile it by hand.
 It is recommended to use the installer!
 
-The installer requires the original *Syndicate Plus CD* to be present in the
-CD-ROM drive. It will copy the files from the original *Syndicate Plus CD* and
-optionally encode the game music from the CD to ogg files used by this port.
+The installer requires either the original *Syndicate Plus PC CD* to be present in
+the CD-ROM drive, or a *Synd Plus CD image* file on disk. The CD image can come
+from any popular digital distribution platform. The installer will copy the files
+from the original *Syndicate Plus CD* or *Synd Plus CD image* and download and
+install additional data specific to the port.
 
-The *Syndicate Plus CD* is not required to play the game, it is used only during
-the installation process.
+The *Syndicate Plus PC CD* or *Synd Plus CD image* is not required to play the game,
+it is used only during the installation process.
 
 If you've decided on the hand-compilation option, proceed with the following steps:
 
-1. download and unpack the source tarball or clone git repo
-2. follow [building instructions](#building-on-windows) below to get
-   a compiled executable and configuration files
-3. copy all the files and directories, except for the Language directory, from
-   the `Game` directory within the *Syndicate Plus CD* to the location of your
-   desire, say `SyndRELocation`.
-4. copy all the files, except `sound.dat`, from the `game\language\LANGUAGE\` from
-   the *Syndicate Plus CD* to the `SyndRELocation\Data` directory, where *LANGUAGE*
-   stands for the appropriate subdirectory fo the language you want
-5. copy the `sound.dat` file (from the directory stated above) to the
-   `SyndRELocation\sound` directory
-6. *[optional]* rip the game CD Audio tracks to `track_{1,2,3}.ogg` (vorbis)
-7. *[optional]* create a `SyndRELocation\music` directory and copy the
-   previously encoded ogg files there
-8. from the compilation folder, copy `syndre.exe` and `conf` folder to your
-   `SyndRELocation` directory
+1. Insert the *Syndicate Plus PC CD* and make sure it is mounted, or mount a
+   *Synd Plus CD image* (so that you get drive letter or path, ie. `e:`).
+2. Choose an installation folder which ends with project name, like
+   `c:\Program Files\syndre`.
+3. Use `util/install` script to both copy required files from CD and download
+   additional data, and place them all into your chosen installation folder.
+   If you have UNIX or GNU support on your Windows (ie. Linux Windows Subsystem,
+   or MINGW, or MSYS2, or Cygwin), you can just run the script in `bash` - see
+   [Installing on GNU or UNIX](installing-on-gnu-or-unix) for details.
+   If you don't have that, you will have to analyze said script to figure out
+   what should be copied where - detailed instructions are not part of the
+   documentation.
+5. Now we finally get to this code repository. Download and unpack the source
+   tarball or clone git repo. Or you can instead download the prebuilt *patch*
+   release. Depending on what you've chosen, follow further steps:
 
-If instead of the above points you prefer more technical description on what to
-copy and where, read the script `util/install` which is used to perform
-installation on GNU or UNIX systems. If your Windows has a Linux subsystem
-installed, you may even use it to perform the installation automatically - see
-[GNU or UNIX chapter](#installing-on-gnu-or-unix) for details.
+Route "a" - compiling the game by yourself.
 
-You can now launch `syndre.exe` and have fun!
+6. a. Follow [building instructions](#build-examples-on-windows) below to get
+     a compiled executable and configuration files.
+7. a. After the build succeeded, do `make prefix=<TARGET> install` in the
+     directory where build commands were executed, to copy built files into the
+     *\<TARGET\>/syndre* installation folder you've chosen. If you've built the
+     binary yourself, you already have all the tools neccessary for that install
+     command to work. After installation, verify the folder to make sure you
+     didn't installed these files to `syndre/syndre/` directory; you can just
+     move them one dir higher if that's the case.
+
+Route "b" - using the prebuilt *patch* release.
+
+6. b. Extract the downloaded patch file.
+7. b. Move all extracted files and folders to the selected installation folder.
+     Place them all in one folder, so that sub-olders `conf`, `data`
+     and the executable file `syndre.exe` are all next to each other.
+
+You can now [start the game](#starting-the-game).
+
+## Starting the game
+
+The original game needed to be started with parameters to play normally. With
+SyndicateRE, the parameters can still be used, and are required for language
+selection. The executable can be run with
+`--help` parameter to show a short description of all parameters.
+
+Parameter `-c` (used in the original game) is required for language selection.
+
+The typical command line for running SyndicateRE on bash-like shell is:
+
+```
+./syndre -c 0
+```
+
+If running on Windows, the command line above should work as well. Though more
+Windows-centric way of doing that is:
+
+
+```
+syndre.exe /c 0
+```
+
+The game will start witout intro animation, and present you with a menu where
+you can start playing.
+
+In case something doesn't work, check `error.log` file generated while the game
+was starting.
 
 ## Building
 
