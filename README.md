@@ -212,8 +212,6 @@ To build **SyndicateRE**, you will need the following:
 * GNU Autotools
 * GNU C compiler
 * Python 3 (with module: polib)
-* vorbis-tools (oggenc in particular)
-* cdparanoia
 * development versions of the following libraries:
   * SDL2 or SDL1.2
   * OpenAL (we recommend OpenAL Soft)
@@ -232,23 +230,37 @@ Once you've made sure you have the above, proceed with the following steps:
 
 You should now have a working `src/syndre` executable file.
 
-#### Build example - Ubuntu 20.04 64-bit
+### Build examples on Linux
+
+#### Build on Ubuntu 20.04 64-bit
 
 Here are specific commands required to compile the executable on Ubuntu linux.
 
-Install the dependencies - remember that some must be 32-bit (i386):
+First, dependencies have to be installed. But this project can be built only
+for 32-bit address space - some installed packages have to be compatible with
+it. To even allow installing packages for a different architecture, it needs
+to be added:
+
+```
+dpkg --add-architecture i386
+```
+
+Now install the dependencies - remember that some must be 32-bit (i386):
 
 ```
 sudo apt install gcc-multilib g++-multilib lib32z1
 sudo apt install python3 python3-polib
-sudo apt install vorbis-tools
-sudo apt install cdparanoia
 sudo apt install libsdl2-dev:i386
 sudo apt install libopenal-dev:i386
 sudo apt install libvorbis-dev:i386 libvorbisfile3:i386
 sudo apt install libogg-dev:i386
 sudo apt install libwildmidi-dev:i386
 ```
+
+Be warned - your package manager may assume you want to replace the architecture
+if you did not explicitly added it. If the information on screen suggests
+that the installation would remove a group of currently installed packages,
+do not proceed with the changes and find another way.
 
 Now as our host is ready, we can start working on the actual `syndre` sources.
 Go to that folder, and generate build scripts from templates using autotools:
@@ -296,7 +308,9 @@ Some tests to verify the build are included in the project. To execute them:
 make V=1 check
 ```
 
-#### Build example - MSYS2 updated 2023-01 on Windows
+### Build examples on Windows
+
+#### Build on Windows with MSYS2 updated 2023-01
 
 Using Minimal System and the MinGW toolchain available within, it is possible
 to build the executable using the same way as for UNIX systems, with bash and autotools.
@@ -366,7 +380,9 @@ Also, the build system may expect to find `python` binary within `mingw32` folde
 failing to find it if you have it somewhere else. In both cases, just creating a symbolic
 link with name expected by build system will fix the issue.
 
-### Building on Mac OS X
+### Build examples on Mac OS
+
+#### Build on Mac OS X
 
 Mac OS X is at its core a UNIX system. To build the **SyndicateRE** it is
 enough to follow the [general building instructions](#general-building-instructions).
@@ -389,7 +405,7 @@ you will need to pass `CFLAGS="-arch i386"`, like so:
 ```
 
 If you are planning to create [Mac OS app bundle](#making-a-mac-os-app-bundle),
-you will also need to pass `data-path`, so youf final command will be:
+you will also need to pass `data-path`, so your final command will be:
 
 
 ```
