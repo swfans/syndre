@@ -23,23 +23,21 @@ if [ $# -eq 1 -a "x$1" = "x--help" ]; then
   exit 0
 fi
 
-WITH_MUSIC="yes"
 OWN_TARGET="no"
-DEVICE=""
 SOURCE=""
 TARGET=""
 LANGS="eng fre ger ita spa swe"
 LANG="eng"
 
-GFX_VERSION="1.0.0.2"
-GFX_PACKAGE="syndre-gfx-1_0_0_2"
-GFX_PKG_MD5="944b13618593cf7659959745b338d0f4"
+GFX_VERSION="0.0.1.14"
+GFX_PACKAGE="syndicatfx-gfx-0_0_1_14"
+GFX_PKG_MD5="20bfa8bdecf691e43e3acf4246622e3c"
 
-SFX_VERSION="1.0.0.3"
-SFX_PACKAGE="syndre-sfx-1_0_0_3"
-SFX_PKG_MD5="802295bb0bea825a3772d1d120229d93"
+SFX_VERSION="0.1.0.7"
+SFX_PACKAGE="syndicatfx-sfx-0_1_0_7"
+SFX_PKG_MD5="e691526436910cb4e4bed7e65480ebd1"
 
-OPTS="f:t:Md:l:h"
+OPTS="f:t:l:h"
 
 while getopts "$OPTS" arg; do
   case "$arg" in
@@ -48,12 +46,6 @@ while getopts "$OPTS" arg; do
       ;;
     t)
       TARGET="$OPTARG"
-      ;;
-    M)
-      WITH_MUSIC="no"
-      ;;
-    d)
-      DEVICE="$OPTARG"
       ;;
     l)
       LANG="$OPTARG"
@@ -133,9 +125,8 @@ dl_package()
 
 download_packages()
 {
-  dl_package "swfans/syndre-levels" "${LEVELS_PACKAGE}" "${LEVELS_VERSION}" "${LEVELS_PKG_MD5}" || return 1
-  dl_package "swfans/syndre-gfx" "${GFX_PACKAGE}" "${GFX_VERSION}" "${GFX_PKG_MD5}" || return 1
-  dl_package "swfans/syndre-sfx" "${SFX_PACKAGE}" "${SFX_VERSION}" "${SFX_PKG_MD5}" || return 1
+  dl_package "swfans/syndicatfx-gfx" "${GFX_PACKAGE}" "${GFX_VERSION}" "${GFX_PKG_MD5}" || return 1
+  dl_package "swfans/syndicatfx-sfx" "${SFX_PACKAGE}" "${SFX_VERSION}" "${SFX_PKG_MD5}" || return 1
 
   return 0
 }
@@ -226,7 +217,7 @@ copy_data()
     install_file "data/${fn}.tab" || return 1
   done
 
-  for fn in mfnt-0 mspr-0; do
+  for fn in mfnt-0; do
     install_file "data/${fn}.dat" || return 1
     install_file "data/${fn}.tab" || return 1
   done
@@ -296,21 +287,27 @@ check_language()
   case "$LANG" in
     eng)
       LANG_NAME="English"
+      LANG_NUM=0
       ;;
     fre)
       LANG_NAME="French"
+      LANG_NUM=1
       ;;
     ger)
       LANG_NAME="German"
+      LANG_NUM=0
       ;;
     ita)
       LANG_NAME="Italian"
+      LANG_NUM=2
       ;;
     spa)
       LANG_NAME="Spanish"
+      LANG_NUM=0
       ;;
     swe)
       LANG_NAME="Swedish"
+      LANG_NUM=0
       ;;
     *)
       echo "Unsupported language: $LANG." >&2
@@ -320,12 +317,11 @@ check_language()
   return 0
 }
 
-create_config_ini()
+create_run_script()
 {
-  cat<<EOF >"$TARGET/config.ini"
-CD="D:\\GAME\\"
-InstallDrive="C:\\"
-Language="$LANG_NAME"
+  cat<<EOF >"$TARGET/run.sh"
+#!/bin/sh
+./syndre -c ${LANG_NUM}
 EOF
   [ $? -eq 0 ] || return 1
   return 0
@@ -347,6 +343,6 @@ check_target || error
 download_packages || error
 copy_data || error
 extract_packages || error
-create_config_ini || error
+create_run_script || error
 
 echo "Data successfully installed."
