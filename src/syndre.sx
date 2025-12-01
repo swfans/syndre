@@ -80401,24 +80401,26 @@ aDataMseloutDat:	/* 0x50188 */
 		.ascii  "\x00\x00\x00"
 aS:	/* 0x5019c */
 		.ascii  "\x25\x73\x00\x00"
+
 aNukThem:	/* 0x501a0 */
 		.string "NUK THEM"
-		.ascii  "\x00\x00\x00"
+		.align	4
 aWatchTheClock:	/* 0x501ac */
 		.string "WATCH THE CLOCK"
 aDoItAgain:	/* 0x501bc */
 		.string "DO IT AGAIN"
 aRobABank:	/* 0x501c8 */
 		.string "ROB A BANK"
-		.ascii  "\x00"
+		.align	4
 aToTheTop:	/* 0x501d4 */
 		.string "TO THE TOP"
-		.ascii  "\x00"
+		.align	4
 aCooperTeam:	/* 0x501e0 */
 		.string "COOPER TEAM"
+
 aSD_0:	/* 0x501ec */
 		.string "%s %d\n"
-		.ascii  "\x00"
+		.align	4
 aDataHpal01Dat:	/* 0x501f4 */
 		.string "data/hpal01.dat"
 aDataHpal02dDat:	/* 0x50204 */
@@ -80426,146 +80428,148 @@ aDataHpal02dDat:	/* 0x50204 */
 		.ascii  "\x00\x00"
 a01dPlayer05dSe:	/* 0x50218 */
 		.string "%01d(player) -- %05d(seed) -- %05d(game turn)."
-		.ascii  "\x00"
-aLoginHasFailed:	/* 0x50248 */
-		.string "LOGIN HAS FAILED.\n"
-		.ascii  "\x00"
-aLoginAborted:	/* 0x5025c */
-		.string "LOGIN ABORTED.\n"
+		.align	4
+
 level_fname:	/* 0x5026c */
 		.string "data/game01.dat"
+		.align	4
+
+aLoginHasFailed:	/* 0x50248 */
+		.string "LOGIN HAS FAILED.\n"
+		.align	4
+aLoginAborted:	/* 0x5025c */
+		.string "LOGIN ABORTED.\n"
+
 aAlgeria:	/* 0x5027c */
 		.string "ALGERIA"
 aAlgerie:	/* 0x50284 */
 		.string "ALGERIE"
 aLybia:	/* 0x5028c */
 		.string "LYBIA"
-		.ascii  "\x00\x00"
+		.align	4
 aLybie:	/* 0x50294 */
 		.string "LYBIE"
-		.ascii  "\x00\x00"
+		.align	4
 aLibia:	/* 0x5029c */
 		.string "LIBIA"
-		.ascii  "\x00\x00"
+		.align	4
 aMauritania:	/* 0x502a4 */
 		.string "MAURITANIA"
-		.ascii  "\x00"
+		.align	4
 aMauritanie:	/* 0x502b0 */
 		.string "MAURITANIE"
-		.ascii  "\x00"
+		.align	4
 aNigeria:	/* 0x502bc */
 		.string "NIGERIA"
 aIraq:	/* 0x502c4 */
 		.string "IRAQ"
-		.ascii  "\x00\x00\x00"
+		.align	4
 aArabia:	/* 0x502cc */
 		.string "ARABIA"
-		.ascii  "\x00"
+		.align	4
 aArabie:	/* 0x502d4 */
 		.string "ARABIE"
-		.ascii  "\x00"
+		.align	4
 aSudan:	/* 0x502dc */
 		.string "SUDAN"
-		.ascii  "\x00\x00"
+		.align	4
 aSoudan:	/* 0x502e4 */
 		.string "SOUDAN"
-		.ascii  "\x00"
+		.align	4
 aZaire:	/* 0x502ec */
 		.string "ZAIRE"
-		.ascii  "\x00\x00"
+		.align	4
 aKenya:	/* 0x502f4 */
 		.string "KENYA"
-		.ascii  "\x00\x00"
+		.align	4
 aKenia:	/* 0x502fc */
 		.string "KENIA"
-		.ascii  "\x00\x00"
+		.align	4
 aMozambique:	/* 0x50304 */
 		.string "MOZAMBIQUE"
-		.ascii  "\x00"
+		.align	4
 aMozambico:	/* 0x50310 */
 		.string "MOZAMBICO"
-		.ascii  "\x00\x00"
+		.align	4
 aSouthAfrica:	/* 0x5031c */
 		.string "SOUTH AFRICA"
-		.ascii  "\x00\x00\x00"
+		.align	4
 aAfriqueDuSud:	/* 0x5032c */
 		.string "AFRIQUE DU SUD"
-		.ascii  "\x00"
+		.align	4
 aSudAfrica:	/* 0x5033c */
 		.string "SUD AFRICA"
-		.ascii  "\x49"
+		.align	4
 aWesternEurope:	/* 0x50348 */
 		.string "WESTERN EUROPE"
-		.ascii  "\x52"
+		.align	4
 aEuropeDeLOuest:	/* 0x50358 */
 		.string "EUROPE DE L'OUEST"
-		.ascii  "\x00\x00"
+		.align	4
 aEuropaOccident:	/* 0x5036c */
 		.string "EUROPA OCCIDENTALE"
-		.ascii  "\x42"
+		.align	4
 aScandinavia:	/* 0x50380 */
 		.string "SCANDINAVIA"
 aScandinavie:	/* 0x5038c */
 		.string "SCANDINAVIE"
 aCentralEurope:	/* 0x50398 */
 		.string "CENTRAL EUROPE"
-		.ascii  "\x59"
+		.align	4
 aEuropeCentrale:	/* 0x503a8 */
 		.string "EUROPE CENTRALE"
 aEuropaCentrale:	/* 0x503b8 */
 		.string "EUROPA CENTRALE"
 aEasternEurope:	/* 0x503c8 */
 		.string "EASTERN EUROPE"
-		.ascii  "\x00"
+		.align	4
 aEuropeDeLEst:	/* 0x503d8 */
 		.string "EUROPE DE L'EST"
 aEuropaOriental:	/* 0x503e8 */
 		.string "EUROPA ORIENTALE"
-		.ascii  "\x52\x4e\x20"
+		.align	4
 aIran:	/* 0x503fc */
 		.string "IRAN"
-aE:	/* 0x50401 */
-		.ascii  "\x45\x00\x52"
+		.align	4
 aIndia:	/* 0x50404 */
 		.string "INDIA"
-		.ascii  "\x20\x44"
+		.align	4
 aInde:	/* 0x5040c */
 		.string "INDE"
-		.ascii  "\x55\x45\x53"
+		.align	4
 aPacificRim:	/* 0x50414 */
 		.string "PACIFIC RIM"
 aCeintureDuPaci:	/* 0x50420 */
 		.string "CEINTURE DU PACIFIQUE"
-aA:	/* 0x50436 */
-		.ascii  "\x41\x00"
+		.align	4
 aBacinoPacifico:	/* 0x50438 */
 		.string "BACINO PACIFICO"
 aIndonesia:	/* 0x50448 */
 		.string "INDONESIA"
-		.ascii  "\x00\x59"
+		.align	4
 aIndonesie:	/* 0x50454 */
 		.string "INDONESIE"
-		.ascii  "\x54\x52"
+		.align	4
 aChina:	/* 0x50460 */
 		.string "CHINA"
-		.ascii  "\x52\x4f"
+		.align	4
 aChine:	/* 0x50468 */
 		.string "CHINE"
-		.ascii  "\x54\x52"
+		.align	4
 aCina:	/* 0x50470 */
 		.string "CINA"
-		.ascii  "\x41\x53\x54"
+		.align	4
 aFarEast:	/* 0x50478 */
 		.string "FAR EAST"
-		.ascii  "\x00\x00\x00"
+		.align	4
 aExtremeOrient:	/* 0x50484 */
 		.string "EXTREME-ORIENT"
-		.ascii  "\x00"
+		.align	4
 aEstremoOriente:	/* 0x50494 */
 		.string "ESTREMO ORIENTE"
 aKazakhstan:	/* 0x504a4 */
 		.string "KAZAKHSTAN"
-		.ascii  "\x52"
+		.align	4
 aKazakhistan:	/* 0x504b0 */
 		.string "KAZAKHISTAN"
 aSiberia:	/* 0x504bc */
@@ -80574,131 +80578,131 @@ aSiberie:	/* 0x504c4 */
 		.string "SIBERIE"
 aUrals:	/* 0x504cc */
 		.string "URALS"
-		.ascii  "\x52\x45"
+		.align	4
 aOural:	/* 0x504d4 */
 		.string "OURAL"
-		.ascii  "\x43\x49"
+		.align	4
 aUrali:	/* 0x504dc */
 		.string "URALI"
-		.ascii  "\x41\x00"
+		.align	4
 aMongolia:	/* 0x504e4 */
 		.string "MONGOLIA"
-		.ascii  "\x43\x49\x46"
+		.align	4
 aMongolie:	/* 0x504f0 */
 		.string "MONGOLIE"
-		.ascii  "\x45\x53\x49"
+		.align	4
 aGreenland:	/* 0x504fc */
 		.string "GREENLAND"
-		.ascii  "\x53\x49"
+		.align	4
 aGroenland:	/* 0x50508 */
 		.string "GROENLAND"
-		.ascii  "\x52\x4f"
+		.align	4
 aGroenlandia:	/* 0x50514 */
 		.string "GROENLANDIA"
 aNortheastTerri:	/* 0x50520 */
 		.string "NORTHEAST TERRITORIES"
-		.ascii  "\x00\x00"
+		.align	4
 aTerritoiresDuN:	/* 0x50538 */
 		.string "TERRITOIRES DU NORD-EST"
 aTerritoriNordO:	/* 0x50550 */
 		.string "TERRITORI NORD-ORIENTALI"
-		.ascii  "\x48\x49\x53"
+		.align	4
 aYukon:	/* 0x5056c */
 		.string "YUKON"
-		.ascii  "\x42\x45"
+		.align	4
 aAlaska:	/* 0x50574 */
 		.string "ALASKA"
-		.ascii  "\x45"
+		.align	4
 aNorthwestTerri:	/* 0x5057c */
 		.string "NORTHWEST TERRITORIES"
-		.ascii  "\x41\x4c"
+		.align	4
 aTerritoiresDuN_0:	/* 0x50594 */
 		.string "TERRITOIRES DU NORD-OUEST"
-		.ascii  "\x53\x49"
+		.align	4
 aTerritoriNordO_0:	/* 0x505b0 */
 		.string "TERRITORI NORD-OCCIDENTALI"
-		.ascii  "\x45"
+		.align	4
 aNewfoundland:	/* 0x505cc */
 		.string "NEWFOUNDLAND"
-		.ascii  "\x45\x41\x53"
+		.align	4
 aTerreNeuve:	/* 0x505dc */
 		.string "TERRE-NEUVE"
 aTerranova:	/* 0x505e8 */
 		.string "TERRANOVA"
-		.ascii  "\x53\x20"
+		.align	4
 aKamchatka:	/* 0x505f4 */
 		.string "KAMCHATKA"
-		.ascii  "\x54\x00"
+		.align	4
 aWesternAustral:	/* 0x50600 */
 		.string "WESTERN AUSTRALIA"
-		.ascii  "\x45\x4e"
+		.align	4
 aAustralieOccid:	/* 0x50614 */
 		.string "AUSTRALIE OCCIDENTALE"
-		.ascii  "\x00\x45"
+		.align	4
 aAustraliaOrien:	/* 0x5062c */
 		.string "AUSTRALIA ORIENTALE"
 aNorthernTerrit:	/* 0x50640 */
 		.string "NORTHERN TERRITORIES"
-		.ascii  "\x52\x44\x2d"
+		.align	4
 aTerritoireDuNo:	/* 0x50658 */
 		.string "TERRITOIRE DU NORD"
-		.ascii  "\x4f"
+		.align	4
 aTerritoriSette:	/* 0x5066c */
 		.string "TERRITORI SETTENTRIONALI"
-		.ascii  "\x41\x4e\x44"
+		.align	4
 aNewSouthWales:	/* 0x50688 */
 		.string "NEW SOUTH WALES"
 aNouvellesGalle:	/* 0x50698 */
 		.string "NOUVELLES GALLES DU SUD"
 aNuovoGallesDel:	/* 0x506b0 */
 		.string "NUOVO GALLES DEL SUD"
-		.ascii  "\x55\x53\x54"
+		.align	4
 aColombia:	/* 0x506c8 */
 		.string "COLOMBIA"
-		.ascii  "\x49\x44\x45"
+		.align	4
 aColombie:	/* 0x506d4 */
 		.string "COLOMBIE"
-		.ascii  "\x55\x53\x54"
+		.align	4
 aColumbia:	/* 0x506e0 */
 		.string "COLUMBIA"
-		.ascii  "\x45\x4e\x54"
+		.align	4
 aPeru:	/* 0x506ec */
 		.string "PERU"
-		.ascii  "\x4f\x52\x54"
+		.align	4
 aPerou:	/* 0x506f4 */
 		.string "PEROU"
-		.ascii  "\x45\x52"
+		.align	4
 aPeru_0:	/* 0x506fc */
 		.string "PERU'"
-		.ascii  "\x45\x53"
+		.align	4
 aArgentina:	/* 0x50704 */
 		.string "ARGENTINA"
-		.ascii  "\x4f\x49"
+		.align	4
 aArgentine:	/* 0x50710 */
 		.string "ARGENTINE"
-		.ascii  "\x00\x4f"
+		.align	4
 aUruguay:	/* 0x5071c */
 		.string "URUGUAY"
 aParaguay:	/* 0x50724 */
 		.string "PARAGUAY"
-		.ascii  "\x52\x49\x4f"
+		.align	4
 aBrazil:	/* 0x50730 */
 		.string "BRAZIL"
-		.ascii  "\x44"
+		.align	4
 aBresil:	/* 0x50738 */
 		.string "BRESIL"
-		.ascii  "\x54"
+		.align	4
 aBrasile:	/* 0x50740 */
 		.string "BRASILE"
 aVenezuala:	/* 0x50748 */
 		.string "VENEZUALA"
-		.ascii  "\x47\x41"
+		.align	4
 aVenezuela:	/* 0x50754 */
 		.string "VENEZUELA"
-		.ascii  "\x44\x00"
+		.align	4
 aMexico:	/* 0x50760 */
 		.string "MEXICO"
-		.ascii  "\x41"
+		.align	4
 aMexique:	/* 0x50768 */
 		.string "MEXIQUE"
 aMessico:	/* 0x50770 */
@@ -80707,29 +80711,29 @@ aSouthernStates:	/* 0x50778 */
 		.string "SOUTHERN STATES"
 aEtatsDuSud:	/* 0x50788 */
 		.string "ETATS DU SUD"
-		.ascii  "\x42\x49\x41"
+		.align	4
 aStatiDelSud:	/* 0x50798 */
 		.string "STATI DEL SUD"
-		.ascii  "\x52\x4f"
+		.align	4
 aCalifornia:	/* 0x507a8 */
 		.string "CALIFORNIA"
-		.ascii  "\x53"
+		.align	4
 aCalifornie:	/* 0x507b4 */
 		.string "CALIFORNIE"
-		.ascii  "\x49"
+		.align	4
 aColorado:	/* 0x507c0 */
 		.string "COLORADO"
-		.ascii  "\x00\x00\x4f"
+		.align	4
 aNewEngland:	/* 0x507cc */
 		.string "NEW ENGLAND"
 aNouvelleAnglet:	/* 0x507d8 */
 		.string "NOUVELLE ANGLETERRE"
 aNuovaInghilter:	/* 0x507ec */
 		.string "NUOVA INGHILTERRA"
-		.ascii  "\x00\x00"
+		.align	4
 aMidWest:	/* 0x50800 */
 		.string "MID WEST"
-		.ascii  "\x00\x47\x41"
+		.align	4
 aMidwest:	/* 0x5080c */
 		.string "MIDWEST"
 aStatiMedioOcci:	/* 0x50814 */
@@ -80740,551 +80744,544 @@ aMontagnesRoche:	/* 0x50834 */
 		.string "MONTAGNES ROCHEUSES"
 aMontagneRoccio:	/* 0x50848 */
 		.string "MONTAGNE ROCCIOSE"
-		.ascii  "\x53\x55"
+		.align	4
 aAtlanticAccele:	/* 0x5085c */
 		.string "ATLANTIC ACCELERATOR"
-		.ascii  "\x4f\x52\x4e"
+		.align	4
 aAccelerateurDe:	/* 0x50874 */
 		.string "ACCELERATEUR DE L'ATLANTIQUE"
-		.ascii  "\x4f\x55\x56"
+		.align	4
 aAcceleratoreAt:	/* 0x50894 */
 		.string "ACCELERATORE ATLANTICO"
-		.ascii  "\x00"
+		.align	4
 aCryoChamber:	/* 0x508ac */
 		.string "CRYO CHAMBER"
-		.ascii  "\x49\x44\x57"
+		.align	4
 aLeChambreCryo:	/* 0x508bc */
 		.string "LE CHAMBRE CRYO"
 aVaniIbernanti:	/* 0x508cc */
 		.string "VANI IBERNANTI"
-		.ascii  "\x4b"
+		.align	4
 aTakeWeapon:	/* 0x508dc */
 		.string "TAKE WEAPON"
 aPrendreArme:	/* 0x508e8 */
 		.string "PRENDRE ARME"
-		.ascii  "\x4f\x4e\x54"
+		.align	4
 aPrendiArma:	/* 0x508f8 */
 		.string "PRENDI ARMA"
 aDestroyCar:	/* 0x50904 */
 		.string "DESTROY CAR"
 aDetruireVoitur:	/* 0x50910 */
 		.string "DETRUIRE VOITURE"
-		.ascii  "\x43\x43\x45"
+		.align	4
 aDistruggiAuto:	/* 0x50924 */
 		.string "DISTRUGGI AUTO"
-		.ascii  "\x54"
+		.align	4
 aUseVehicle:	/* 0x50934 */
 		.string "USE VEHICLE"
 aUtiliserVehicu:	/* 0x50940 */
 		.string "UTILISER VEHICULE"
-		.ascii  "\x54\x49"
+		.align	4
 aUsaIlVeicolo:	/* 0x50954 */
 		.string "USA IL VEICOLO"
-		.ascii  "\x00"
+		.align	4
 aEvacuate:	/* 0x50964 */
 		.string "EVACUATE"
-		.ascii  "\x42\x45\x52"
+		.align	4
 aEvacuer:	/* 0x50970 */
 		.string "EVACUER"
 aSgombera:	/* 0x50978 */
 		.string "SGOMBERA"
-aYo:	/* 0x50981 */
-		.ascii  "\x59\x4f\x00"
+		.align	4
 aPersuade:	/* 0x50984 */
 		.string "PERSUADE"
-		.ascii  "\x4e\x41\x4e"
+		.align	4
 aPersuader:	/* 0x50990 */
 		.string "PERSUADER"
-		.ascii  "\x45\x41"
+		.align	4
 aConvinci:	/* 0x5099c */
 		.string "CONVINCI"
-		.ascii  "\x52\x45\x20"
+		.align	4
 aProtect:	/* 0x509a8 */
 		.string "PROTECT"
 aProteger:	/* 0x509b0 */
 		.string "PROTEGER"
-aMa:	/* 0x509b9 */
-		.ascii  "\x4d\x41\x00"
+		.align	4
 aProteggi:	/* 0x509bc */
 		.string "PROTEGGI"
-aAr:	/* 0x509c5 */
-		.ascii  "\x41\x52\x00"
+		.align	4
 aAssassinate:	/* 0x509c8 */
 		.string "ASSASSINATE"
 aAssassiner:	/* 0x509d4 */
 		.string "ASSASSINER"
-		.ascii  "\x54"
+		.align	4
 aUccidi:	/* 0x509e0 */
 		.string "UCCIDI"
-		.ascii  "\x55"
+		.align	4
 aEliminateAgent:	/* 0x509e8 */
 		.string "ELIMINATE AGENTS"
-		.ascii  "\x54\x49\x4c"
+		.align	4
 aEliminerAgents:	/* 0x509fc */
 		.string "ELIMINER AGENTS"
 aEliminaAgenti:	/* 0x50a0c */
 		.string "ELIMINA AGENTI"
-		.ascii  "\x00"
+		.align	4
 aMissionComplet:	/* 0x50a1c */
 		.string "MISSION COMPLETE"
-aEr:	/* 0x50a2d */
-		.ascii  "\x45\x52\x00"
+		.align	4
 aMissionTermine:	/* 0x50a30 */
 		.string "MISSION TERMINEE"
-		.ascii  "\x41\x44\x45"
+		.align	4
 aMissCompiuta:	/* 0x50a44 */
 		.string "MISS. COMPIUTA"
-		.ascii  "\x41"
+		.align	4
 aPressSpace:	/* 0x50a54 */
 		.string "PRESS SPACE"
 aAppuiBEspace:	/* 0x50a60 */
 		.string "APPUI B.ESPACE"
-		.ascii  "\x52"
+		.align	4
 aPremiSpazio:	/* 0x50a70 */
 		.string "PREMI SPAZIO"
-aAr_0:	/* 0x50a7d */
-		.ascii  "\x41\x52\x00"
+		.align	4
 aMissionFailed:	/* 0x50a80 */
 		.string "MISSION FAILED"
-		.ascii  "\x41"
+		.align	4
 aMissionEchouee:	/* 0x50a90 */
 		.string "MISSION ECHOUEE"
 aMissioneFallit:	/* 0x50aa0 */
 		.string "MISSIONE FALLITA"
-		.ascii  "\x54\x49\x4c"
+		.align	4
 aGoing:	/* 0x50ab4 */
 		.string "GOING"
-		.ascii  "\x45\x52"
+		.align	4
 aEnRoute:	/* 0x50abc */
 		.string "EN ROUTE"
-		.ascii  "\x00\x00\x00"
+		.align	4
 aVai:	/* 0x50ac8 */
-		.ascii  "\x56\x41\x49\x00"
+		.string "VAI"
 aPickupWeapon:	/* 0x50acc */
 		.string "PICKUP WEAPON"
-aR:	/* 0x50ada */
-		.ascii  "\x52\x00"
+		.align	4
 aRaccogliArma:	/* 0x50adc */
 		.string "RACCOGLI ARMA"
-		.ascii  "\x45\x45"
+		.align	4
 aFollow:	/* 0x50aec */
 		.string "FOLLOW"
-		.ascii  "\x53"
+		.align	4
 aSuivre:	/* 0x50af4 */
 		.string "SUIVRE"
-		.ascii  "\x55"
+		.align	4
 aSegui:	/* 0x50afc */
 		.string "SEGUI"
-		.ascii  "\x45\x53"
+		.align	4
 aDropWeapon:	/* 0x50b04 */
 		.string "DROP WEAPON"
 aPoserArme:	/* 0x50b10 */
 		.string "POSER ARME"
-		.ascii  "\x52"
+		.align	4
 aLasciaArma:	/* 0x50b1c */
 		.string "LASCIA ARMA"
 aHitByBullet:	/* 0x50b28 */
 		.string "HIT BY BULLET"
-		.ascii  "\x49\x4c"
+		.align	4
 aBlesse:	/* 0x50b38 */
 		.string "BLESSE"
-		.ascii  "\x53"
+		.align	4
 aCrivellato:	/* 0x50b40 */
 		.string "CRIVELLATO"
-		.ascii  "\x00"
+		.align	4
 aHitByCar:	/* 0x50b4c */
 		.string "HIT BY CAR"
-		.ascii  "\x4c"
+		.align	4
 aAccidente:	/* 0x50b58 */
 		.string "ACCIDENTE"
-		.ascii  "\x49\x4e"
+		.align	4
 aInvestito:	/* 0x50b64 */
 		.string "INVESTITO"
-		.ascii  "\x54\x45"
+		.align	4
 aOnFire:	/* 0x50b70 */
 		.string "ON FIRE"
 aEnFeu:	/* 0x50b78 */
 		.string "EN FEU"
-		.ascii  "\x4b"
+		.align	4
 aIncendiato:	/* 0x50b80 */
 		.string "INCENDIATO"
-		.ascii  "\x00"
+		.align	4
 aEnergyDrain:	/* 0x50b8c */
 		.string "ENERGY DRAIN"
-		.ascii  "\x00\x45\x45"
+		.align	4
 aPerteEnergie:	/* 0x50b9c */
 		.string "PERTE ENERGIE"
-		.ascii  "\x00\x55"
+		.align	4
 aCaloEnergia:	/* 0x50bac */
 		.string "CALO ENERGIA"
-		.ascii  "\x57\x45\x41"
+		.align	4
 aDead:	/* 0x50bbc */
 		.string "DEAD"
-		.ascii  "\x4f\x53\x45"
+		.align	4
 aMort:	/* 0x50bc4 */
 		.string "MORT"
-aE_0:	/* 0x50bc9 */
-		.ascii  "\x45\x00\x52"
+		.align	4
 aMorto:	/* 0x50bcc */
 		.string "MORTO"
-		.ascii  "\x20\x41"
+		.align	4
 aObserving:	/* 0x50bd4 */
 		.string "OBSERVING"
-		.ascii  "\x20\x42"
+		.align	4
 aEnObservation:	/* 0x50be0 */
 		.string "EN OBSERVATION"
-		.ascii  "\x53"
+		.align	4
 aEsamina:	/* 0x50bf0 */
 		.string "ESAMINA"
 aAwol:	/* 0x50bf8 */
 		.string "AWOL"
-		.ascii  "\x49\x54\x20"
+		.align	4
 aAbsenceIlleg:	/* 0x50c00 */
 		.string "ABSENCE ILLEG."
-		.ascii  "\x54"
+		.align	4
 aAssente:	/* 0x50c10 */
 		.string "ASSENTE"
 aRunningAway:	/* 0x50c18 */
 		.string "RUNNING AWAY"
-		.ascii  "\x00\x00\x00"
+		.align	4
 aEnFuite:	/* 0x50c28 */
 		.string "EN FUITE"
-		.ascii  "\x4e\x43\x45"
+		.align	4
 aScappo:	/* 0x50c34 */
 		.string "SCAPPO"
-		.ascii  "\x00"
+		.align	4
 aDrowning:	/* 0x50c3c */
 		.string "DROWNING"
-		.ascii  "\x41\x49\x4e"
+		.align	4
 aNoyade:	/* 0x50c48 */
 		.string "NOYADE"
-		.ascii  "\x54"
+		.align	4
 aAnnego:	/* 0x50c50 */
 		.string "ANNEGO"
-		.ascii  "\x49"
+		.align	4
 aDangerCar:	/* 0x50c58 */
 		.string "DANGER CAR"
-		.ascii  "\x45"
+		.align	4
 aDangerVoiture:	/* 0x50c64 */
 		.string "DANGER!VOITURE"
-		.ascii  "\x45"
+		.align	4
 aPericoloAuto:	/* 0x50c74 */
 		.string "PERICOLO AUTO"
-		.ascii  "\x20\x41"
+		.align	4
 aUsingWeapon:	/* 0x50c84 */
 		.string "USING WEAPON"
-		.ascii  "\x4e\x20\x4f"
+		.align	4
 aUtiliseArme:	/* 0x50c94 */
 		.string "UTILISE ARME"
-		.ascii  "\x53\x41\x4d"
+		.align	4
 aArmaInUso:	/* 0x50ca4 */
 		.string "ARMA IN USO"
 aChipRemoved:	/* 0x50cb0 */
 		.string "CHIP REMOVED"
-		.ascii  "\x2e\x00\x54"
+		.align	4
 aPuceRetiree:	/* 0x50cc0 */
 		.string "PUCE RETIREE"
-		.ascii  "\x4e\x47\x20"
+		.align	4
 aChipRimosso:	/* 0x50cd0 */
 		.string "CHIP RIMOSSO"
-		.ascii  "\x00\x00\x00"
+		.align	4
 aMainMenu:	/* 0x50ce0 */
 		.string "MAIN MENU"
-		.ascii  "\x43\x45"
+		.align	4
 aMenuPrincipal:	/* 0x50cec */
 		.string "MENU PRINCIPAL"
-		.ascii  "\x47"
+		.align	4
 aMenuPrincipale:	/* 0x50cfc */
 		.string "MENU PRINCIPALE"
 aLoadSaveGame:	/* 0x50d0c */
 		.string "LOAD-SAVE GAME"
-		.ascii  "\x45"
+		.align	4
 aChSauvPartie:	/* 0x50d1c */
 		.string "CH/SAUV. PARTIE"
 aSalvaCaricaGio:	/* 0x50d2c */
 		.string "SALVA-CARICA GIOCO"
-		.ascii  "\x4e"
+		.align	4
 aMultiPlayer:	/* 0x50d40 */
 		.string "MULTI PLAYER"
-		.ascii  "\x54\x49\x4c"
+		.align	4
 aMultiJoueurs:	/* 0x50d50 */
 		.string "MULTI JOUEURS"
-		.ascii  "\x4d\x41"
+		.align	4
 aMultiplayer:	/* 0x50d60 */
 		.string "MULTIPLAYER"
 aMissionBrief:	/* 0x50d6c */
 		.string "MISSION BRIEF"
-		.ascii  "\x43\x45"
+		.align	4
 aBriefingMissio:	/* 0x50d7c */
 		.string "BRIEFING MISSION"
-		.ascii  "\x00\x00\x00"
+		.align	4
 aPianoMissione:	/* 0x50d90 */
 		.string "PIANO MISSIONE"
-		.ascii  "\x55"
+		.align	4
 aTeamSelection:	/* 0x50da0 */
 		.string "TEAM SELECTION"
-		.ascii  "\x55"
+		.align	4
 aChoixDeLEquipe:	/* 0x50db0 */
 		.string "CHOIX DE L'EQUIPE"
-		.ascii  "\x41\x56"
+		.align	4
 aSelezioneSquad:	/* 0x50dc4 */
 		.string "SELEZIONE SQUADRA"
-		.ascii  "\x41\x52"
+		.align	4
 aResearch:	/* 0x50dd8 */
 		.string "RESEARCH"
-		.ascii  "\x2d\x43\x41"
+		.align	4
 aRecherche:	/* 0x50de4 */
 		.string "RECHERCHE"
-		.ascii  "\x00\x4e"
+		.align	4
 aRicerca:	/* 0x50df0 */
 		.string "RICERCA"
 aMissionDebrief:	/* 0x50df8 */
 		.string "MISSION DEBRIEFING"
-		.ascii  "\x52"
+		.align	4
 aDebriefingMiss:	/* 0x50e0c */
 		.string "DEBRIEFING MISSION"
-		.ascii  "\x53"
+		.align	4
 aResocontoMissi:	/* 0x50e20 */
 		.string "RESOCONTO MISSIONE"
-		.ascii  "\x47"
+		.align	4
 aAccept:	/* 0x50e34 */
 		.string "ACCEPT"
-		.ascii  "\x00"
+		.align	4
 aAccepter:	/* 0x50e3c */
 		.string "ACCEPTER"
-		.ascii  "\x53\x49\x4f"
+		.align	4
 aConferma:	/* 0x50e48 */
 		.string "CONFERMA"
-		.ascii  "\x53\x45\x4c"
+		.align	4
 aMenu:	/* 0x50e54 */
 		.string "MENU"
-aN:	/* 0x50e59 */
-		.ascii  "\x4e\x00\x55"
+		.align	4
 aOk:	/* 0x50e5c */
-		.ascii  "\x4f\x4b\x00\x49"
+		.string "OK"
+		.align	4
 aCancel:	/* 0x50e60 */
 		.string "CANCEL"
-		.ascii  "\x45"
+		.align	4
 aAnnuler:	/* 0x50e68 */
 		.string "ANNULER"
 aAnnulla:	/* 0x50e70 */
 		.string "ANNULLA"
 aBrief:	/* 0x50e78 */
 		.string "BRIEF"
-		.ascii  "\x44\x52"
+		.align	4
 aBriefing:	/* 0x50e80 */
 		.string "BRIEFING"
-		.ascii  "\x52\x43\x48"
+		.align	4
 aPiano:	/* 0x50e8c */
 		.string "PIANO"
-		.ascii  "\x43\x48"
+		.align	4
 aTeam:	/* 0x50e94 */
 		.string "TEAM"
-		.ascii  "\x00\x00\x4e"
+		.align	4
 aEquipe:	/* 0x50e9c */
 		.string "EQUIPE"
-		.ascii  "\x00"
+		.align	4
 aSquadra:	/* 0x50ea4 */
 		.string "SQUADRA"
 aMods:	/* 0x50eac */
 		.string "MODS"
-		.ascii  "\x45\x46\x49"
+		.align	4
 aModifs:	/* 0x50eb4 */
 		.string "MODIFS"
-		.ascii  "\x52"
+		.align	4
 aModif:	/* 0x50ebc */
 		.string "MODIF."
-		.ascii  "\x4d"
+		.align	4
 aEquip:	/* 0x50ec4 */
 		.string "EQUIP"
-		.ascii  "\x00\x53"
+		.align	4
 aEquiper:	/* 0x50ecc */
 		.string "EQUIPER"
 aEquipag:	/* 0x50ed4 */
 		.string "EQUIPAG."
-		.ascii  "\x45\x00\x47"
+		.align	4
 aSell:	/* 0x50ee0 */
 		.string "SELL"
-		.ascii  "\x00\x00\x00"
+		.align	4
 aVendre:	/* 0x50ee8 */
 		.string "VENDRE"
-		.ascii  "\x52"
+		.align	4
 aVendi:	/* 0x50ef0 */
 		.string "VENDI"
-		.ascii  "\x4e\x46"
+		.align	4
 aPurchase:	/* 0x50ef8 */
 		.string "PURCHASE"
-		.ascii  "\x45\x4e\x55"
+		.align	4
 aAcheter:	/* 0x50f04 */
 		.string "ACHETER"
 aCompra:	/* 0x50f0c */
 		.string "COMPRA"
-		.ascii  "\x45"
+		.align	4
 aReload:	/* 0x50f14 */
 		.string "RELOAD"
-		.ascii  "\x00"
+		.align	4
 aRecharg:	/* 0x50f1c */
 		.string "RECHARG."
-		.ascii  "\x52\x49\x45"
+		.align	4
 aRicar:	/* 0x50f28 */
 		.string "RICAR."
-		.ascii  "\x45"
+		.align	4
 aFunding:	/* 0x50f30 */
 		.string "FUNDING+"
-		.ascii  "\x49\x41\x4e"
+		.align	4
 aBudget:	/* 0x50f3c */
 		.string "BUDGET +"
-		.ascii  "\x00\x00\x4e"
+		.align	4
 aFondi:	/* 0x50f48 */
 		.string "+ FONDI"
 aFunding_0:	/* 0x50f50 */
 		.string "FUNDING-"
-		.ascii  "\x4f\x44\x53"
+		.align	4
 aBudget_0:	/* 0x50f5c */
 		.string "BUDGET -"
-aS_2:	/* 0x50f65 */
-		.ascii  "\x53\x00\x52"
+		.align	4
 aFondi_0:	/* 0x50f68 */
 		.string "- FONDI"
 aInfo:	/* 0x50f70 */
 		.string "INFO"
-		.ascii  "\x00\x00\x53"
+		.align	4
 aEnhance:	/* 0x50f78 */
 		.string "ENHANCE"
 aDetails:	/* 0x50f80 */
 		.string "DETAILS"
 aDettagli:	/* 0x50f88 */
 		.string "DETTAGLI"
-		.ascii  "\x00\x00\x00"
+		.align	4
 aLoad:	/* 0x50f94 */
 		.string "LOAD"
 aE_1:	/* 0x50f99 */
-		.ascii  "\x45\x00\x52"
+		.align	4
 aCharg:	/* 0x50f9c */
 		.string "CHARG."
-		.ascii  "\x46"
+		.align	4
 aCarica:	/* 0x50fa4 */
 		.string "CARICA"
-		.ascii  "\x45"
+		.align	4
 aSave:	/* 0x50fac */
 		.string "SAVE"
-		.ascii  "\x43\x48\x45"
+		.align	4
 aSauver:	/* 0x50fb4 */
 		.string "SAUVER"
-		.ascii  "\x50"
+		.align	4
 aSalva:	/* 0x50fbc */
 		.string "SALVA"
-		.ascii  "\x4c\x4f"
+		.align	4
 aMap:	/* 0x50fc4 */
-		.ascii  "\x4d\x41\x50\x00"
+		.string "MAP"
+		.align	4
 aCarte:	/* 0x50fc8 */
 		.string "CARTE"
-		.ascii  "\x47\x2e"
+		.align	4
 aMappa:	/* 0x50fd0 */
 		.string "MAPPA"
-		.ascii  "\x43\x41"
+		.align	4
 aReplay:	/* 0x50fd8 */
 		.string "REPLAY"
-		.ascii  "\x44"
+		.align	4
 aRejouer:	/* 0x50fe0 */
 		.string "REJOUER"
 aName:	/* 0x50fe8 */
 		.string "NAME"
-		.ascii  "\x54\x20\x2b"
+		.align	4
 aNom:	/* 0x50ff0 */
-		.ascii  "\x4e\x4f\x4d\x00"
+		.string "NOM"
+		.align	4
 aNome:	/* 0x50ff4 */
 		.string "NOME"
-aDi:	/* 0x50ff9 */
-		.ascii  "\x44\x49\x00"
+		.align	4
 aPop:	/* 0x50ffc */
-		.ascii  "\x50\x4f\x50\x00"
+		.string "POP"
+		.align	4
 aPop_0:	/* 0x51000 */
 		.string "POP."
-		.ascii  "\x4f\x44\x53"
+		.align	4
 aStat:	/* 0x51008 */
 		.string "STAT"
-		.ascii  "\x54\x20\x2d"
+		.align	4
 aTax:	/* 0x51010 */
-		.ascii  "\x54\x41\x58\x00"
+		.string "TAX"
+		.align	4
 aTaxe:	/* 0x51014 */
 		.string "TAXE"
-aDi_0:	/* 0x51019 */
-		.ascii  "\x44\x49\x00"
+		.align	4
 aTass:	/* 0x5101c */
 		.string "TASS"
-		.ascii  "\x00\x00\x53"
+		.align	4
 aOwn:	/* 0x51024 */
-		.ascii  "\x4f\x57\x4e\x00"
+		.string "OWN"
+		.align	4
 aProp:	/* 0x51028 */
 		.string "PROP"
-		.ascii  "\x45\x54\x41"
+		.align	4
 aUnknown:	/* 0x51030 */
 		.string "UNKNOWN"
 aInconnue:	/* 0x51038 */
 		.string "INCONNUE"
-		.ascii  "\x00\x00\x00"
+		.align	4
 aSconosciuto:	/* 0x51044 */
 		.string "SCONOSCIUTO"
 aVeryHappy:	/* 0x51050 */
 		.string "VERY HAPPY"
-aEjoyeuse:	/* 0x5105b */
-		.ascii  "\x45"
-data_5105c:
+		.align	4
+aJoyeuse0:
 		.string "JOYEUSE"
 aMoltoFelice:	/* 0x51064 */
 		.string "MOLTO FELICE"
-		.ascii  "\x00\x4c\x4f"
+		.align	4
 aHappy:	/* 0x51074 */
 		.string "HAPPY"
-		.ascii  "\x52\x54"
+		.align	4
 aGaie:	/* 0x5107c */
 		.string "GAIE"
-		.ascii  "\x41\x50\x50"
+		.align	4
 aFelice:	/* 0x51084 */
 		.string "FELICE"
-		.ascii  "\x4c"
+		.align	4
 aContent:	/* 0x5108c */
 		.string "CONTENT"
 aContente:	/* 0x51094 */
 		.string "CONTENTE"
-		.ascii  "\x54\x20\x2b"
+		.align	4
 aSoddisfatto:	/* 0x510a0 */
 		.string "SODDISFATTO"
 aUnhappy:	/* 0x510ac */
 		.string "UNHAPPY"
 aMecontente:	/* 0x510b4 */
 		.string "MECONTENTE"
-		.ascii  "\x2d"
+		.align	4
 aInfelice:	/* 0x510c0 */
 		.string "INFELICE"
-aDi_1:	/* 0x510c9 */
-		.ascii  "\x44\x49\x00"
+		.align	4
 aDiscontent:	/* 0x510cc */
 		.string "DISCONTENT"
-		.ascii  "\x00"
+		.align	4
 aFurieuse:	/* 0x510d8 */
 		.string "FURIEUSE"
-		.ascii  "\x4e\x4b\x4e"
+		.align	4
 aInsoddisfatto:	/* 0x510e4 */
 		.string "INSODDISFATTO"
-		.ascii  "\x00\x00"
+		.align	4
 aRebellious:	/* 0x510f4 */
 		.string "REBELLIOUS"
-		.ascii  "\x00"
+		.align	4
 aRebelle:	/* 0x51100 */
 		.string "REBELLE"
 aRibelle:	/* 0x51108 */
 		.string "RIBELLE"
 aEmpty:	/* 0x51110 */
 		.string "EMPTY"
-		.ascii  "\x4c\x54"
+		.align	4
 aVide:	/* 0x51118 */
 		.string "VIDE"
-		.ascii  "\x49\x43\x45"
+		.align	4
 aVuoto:	/* 0x51120 */
 		.string "VUOTO"
-		.ascii  "\x50\x50"
+		.align	4
 aSpecialAgent:	/* 0x51128 */
 		.string "SPECIAL AGENT"
 		.ascii  "\x4c\x49"
@@ -82117,9 +82114,10 @@ aQuitToDos:	/* 0x53520 */
 		.string "QUIT TO DOS"
 aRetourAuDos:	/* 0x5352c */
 		.string "RETOUR AU DOS"
-		.ascii  "\x50\x41"
+		.align	4
 aEsciAlDos:	/* 0x5353c */
 		.string "ESCI AL DOS"
+
 aDataMlosaoutDa:	/* 0x53548 */
 		.string "data/mlosaout.dat"
 		.ascii  "\x00\x00"
@@ -82439,7 +82437,7 @@ aSeat:	/* 0x53bcc */
 		.string "SEAT"
 		.ascii  "\x00\x00\x00"
 aSen:	/* 0x53bd4 */
-		.ascii  "\x53\x45\x4e\x00"
+		.string  "SEN"
 aShaw:	/* 0x53bd8 */
 		.string "SHAW"
 		.ascii  "\x49\x4e\x44"
@@ -83047,7 +83045,7 @@ gui_strings_p330:
 		.long   aSconosciuto
 gui_strings_p333:	/* 0x546d8 */
 		.long   aVeryHappy
-		.long   data_5105c
+		.long   aJoyeuse0
 		.long   aMoltoFelice
 gui_strings_p336:	/* 0x546e4 */
 		.long   aHappy
