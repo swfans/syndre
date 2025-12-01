@@ -27848,7 +27848,7 @@ load_map_level:	/* 0x252b0 */
 		cmp    $0x2,%ah
 		jne    jump_253a9
 		mov    EXPORT_SYMBOL(VGABuffer),%edx
-		add    $0x0c80,%edx
+		add    $0x6400,%edx
 		mov    EXPORT_SYMBOL(WScreen),%ebx
 		push   $EXPORT_SYMBOL(level__Seed)
 		lea    0x1f408(%ebx),%eax

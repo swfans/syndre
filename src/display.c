@@ -147,64 +147,15 @@ void display_unlock(void)
 
 void update_vscreen_whole_vres16(void)
 {
-    const ushort *i;
-    ushort *o;
-    int n, k;
-
-    LbMemorySet(VScreen, 0, 320*400);
-
-    i = (const ushort *)WScreen;
-    o = (ushort *)VScreen;
-    for (k = 50; k > 0; k--)
-    {
-        for (n = 320; n > 0; n--)
-        {
-            *o |= (*i) & 0x1111;
-            o++;
-            i++;
-        }
-
-        i += 320 * 49;
-        o -= 320;
-        for (n = 320; n > 0; n--)
-        {
-            *o |= (*i) & 0x2222;
-            o++;
-            i++;
-        }
-
-        i += 320 * 49;
-        o -= 320;
-        for (n = 320; n > 0; n--)
-        {
-            *o |= (*i) & 0x4444;
-            o++;
-            i++;
-        }
-
-        i += 320 * 49;
-        o -= 320;
-        for (n = 320; n > 0; n--)
-        {
-            *o |= (*i) & 0x8888;
-            o++;
-            i++;
-        }
-        i -= 320 * 150;
-    }
-}
-
-void blit_wscreen_vres16(const ubyte *buf)
-{
     const ubyte *i;
     ubyte *o;
     int n, k;
 
-    LbMemorySet(lbDisplay.WScreen, 0, 640*480);
+    LbMemorySet(VScreen, 0, 640*480);
 
-    i = buf;
-    o = lbDisplay.WScreen;
-    for (k = 480; k > 0; k--)
+    i = WScreen + 0 * 400*80;
+    o = VScreen;
+    for (k = 400; k > 0; k--)
     {
         for (n = 80; n > 0; n--)
         {
@@ -221,8 +172,9 @@ void blit_wscreen_vres16(const ubyte *buf)
         }
     }
 
-    o = lbDisplay.WScreen;
-    for (k = 480; k > 0; k--)
+    i = WScreen + 1 * 400*80;
+    o = VScreen;
+    for (k = 400; k > 0; k--)
     {
         for (n = 80; n > 0; n--)
         {
@@ -239,41 +191,48 @@ void blit_wscreen_vres16(const ubyte *buf)
         }
     }
 
-    o = lbDisplay.WScreen;
-    for (k = 480; k > 0; k--)
+    i = WScreen + 2 * 400*80;
+    o = VScreen;
+    for (k = 400; k > 0; k--)
     {
         for (n = 80; n > 0; n--)
         {
-            o[7] |= ((*i) << 2) & 0x03;
-            o[6] |= ((*i) << 1) & 0x03;
-            o[5] |= ((*i) >> 0) & 0x03;
-            o[4] |= ((*i) >> 1) & 0x03;
-            o[3] |= ((*i) >> 2) & 0x03;
-            o[2] |= ((*i) >> 3) & 0x03;
-            o[1] |= ((*i) >> 4) & 0x03;
-            o[0] |= ((*i) >> 5) & 0x03;
+            o[7] |= ((*i) << 2) & 0x04;
+            o[6] |= ((*i) << 1) & 0x04;
+            o[5] |= ((*i) >> 0) & 0x04;
+            o[4] |= ((*i) >> 1) & 0x04;
+            o[3] |= ((*i) >> 2) & 0x04;
+            o[2] |= ((*i) >> 3) & 0x04;
+            o[1] |= ((*i) >> 4) & 0x04;
+            o[0] |= ((*i) >> 5) & 0x04;
             o += 8;
             i++;
         }
     }
 
-    o = lbDisplay.WScreen;
-    for (k = 480; k > 0; k--)
+    i = WScreen + 3 * 400*80;
+    o = VScreen;
+    for (k = 400; k > 0; k--)
     {
         for (n = 80; n > 0; n--)
         {
-            o[7] |= ((*i) << 3) & 0x04;
-            o[6] |= ((*i) << 2) & 0x04;
-            o[5] |= ((*i) << 1) & 0x04;
-            o[4] |= ((*i) >> 0) & 0x04;
-            o[3] |= ((*i) >> 1) & 0x04;
-            o[2] |= ((*i) >> 2) & 0x04;
-            o[1] |= ((*i) >> 3) & 0x04;
-            o[0] |= ((*i) >> 4) & 0x04;
+            o[7] |= ((*i) << 3) & 0x08;
+            o[6] |= ((*i) << 2) & 0x08;
+            o[5] |= ((*i) << 1) & 0x08;
+            o[4] |= ((*i) >> 0) & 0x08;
+            o[3] |= ((*i) >> 1) & 0x08;
+            o[2] |= ((*i) >> 2) & 0x08;
+            o[1] |= ((*i) >> 3) & 0x08;
+            o[0] |= ((*i) >> 4) & 0x08;
             o += 8;
             i++;
         }
     }
+}
+
+void blit_wscreen_vres16(const ubyte *buf)
+{
+    LbMemoryCopy(lbDisplay.WScreen, buf, 640*480);
 }
 
 void blit_wscreen_mcga(const ubyte *buf)
