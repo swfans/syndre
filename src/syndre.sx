@@ -81284,17 +81284,17 @@ aVuoto:	/* 0x51120 */
 		.align	4
 aSpecialAgent:	/* 0x51128 */
 		.string "SPECIAL AGENT"
-		.ascii  "\x4c\x49"
+		.align	4
 aAgentSpecial:	/* 0x51138 */
 		.string "AGENT SPECIAL"
-		.ascii  "\x4e\x54"
+		.align	4
 aAgenteSpeciale:	/* 0x51148 */
 		.string "AGENTE SPECIALE"
 aSelectDetailTo:	/* 0x51158 */
 		.string "SELECT DETAIL TO CHANGE"
 aChoixDuDetailA:	/* 0x51170 */
 		.string "CHOIX DU DETAIL A MODIFIER"
-		.ascii  "\x49"
+		.align	4
 aScegliLeModifi:	/* 0x5118c */
 		.string "SCEGLI LE MODIFICHE"
 aColourAndLogo:	/* 0x511a0 */
@@ -81303,421 +81303,414 @@ aCouleurEtLogo:	/* 0x511b0 */
 		.string "COULEUR ET LOGO"
 aColoreELogo:	/* 0x511c0 */
 		.string "COLORE E LOGO"
-		.ascii  "\x4f\x54"
+		.align	4
 aCompanyName:	/* 0x511d0 */
 		.string "COMPANY NAME"
-		.ascii  "\x47\x45\x4e"
+		.align	4
 aNomDeLaSociete:	/* 0x511e0 */
 		.string "NOM DE LA SOCIETE"
-		.ascii  "\x4e\x54"
+		.align	4
 aNomeCompagnia:	/* 0x511f4 */
 		.string "NOME COMPAGNIA"
-		.ascii  "\x00"
+		.align	4
 aYourName:	/* 0x51204 */
 		.string "YOUR NAME"
-		.ascii  "\x41\x49"
+		.align	4
 aVotreNom:	/* 0x51210 */
 		.string "VOTRE NOM"
-aE_2:	/* 0x5121a */
-		.ascii  "\x45\x00"
+		.align	4
 aIlTuoNome:	/* 0x5121c */
 		.string "IL TUO NOME"
 aChangeColourAn:	/* 0x51228 */
 		.string "CHANGE COLOUR AND LOGO"
-		.ascii  "\x4c"
+		.align	4
 aChangerCouleur:	/* 0x51240 */
 		.string "CHANGER COULEUR ET LOGO"
 aCambiaColoreEL:	/* 0x51258 */
 		.string "CAMBIA COLORE E LOGO"
-		.ascii  "\x55\x52\x20"
+		.align	4
 aColour:	/* 0x51270 */
 		.string "COLOUR"
-		.ascii  "\x00"
+		.align	4
 aCouleur:	/* 0x51278 */
 		.string "COULEUR"
 aColore:	/* 0x51280 */
 		.string "COLORE"
-		.ascii  "\x54"
+		.align	4
 aLogo:	/* 0x51288 */
 		.string "LOGO"
-		.ascii  "\x4e\x59\x20"
+		.align	4
 aChangeCompanyN:	/* 0x51290 */
 		.string "CHANGE COMPANY NAME"
 aModifierNomSoc:	/* 0x512a4 */
 		.string "MODIFIER NOM SOCIETE"
-aA_0:	/* 0x512b9 */
-		.ascii  "\x41\x00\x00"
+		.align	4
 aCambiaNomeComp:	/* 0x512bc */
 		.string "CAMBIA NOME COMPAGNIA"
-aE_3:	/* 0x512d2 */
-		.ascii  "\x45\x00"
+		.align	4
 aEnterYourName:	/* 0x512d4 */
 		.string "ENTER YOUR NAME"
 aEntrezVotreNom:	/* 0x512e4 */
 		.string "ENTREZ VOTRE NOM"
-aO:	/* 0x512f5 */
-		.ascii  "\x4f\x00\x4c"
+		.align	4
 aInserisciIlNom:	/* 0x512f8 */
 		.string "INSERISCI IL NOME"
-		.ascii  "\x00\x00"
+		.align	4
 aCost:	/* 0x5130c */
 		.string "COST"
-		.ascii  "\x41\x20\x43"
+		.align	4
 aPrix:	/* 0x51314 */
 		.string "PRIX"
-		.ascii  "\x20\x45\x20"
+		.align	4
 aCosto:	/* 0x5131c */
 		.string "COSTO"
-		.ascii  "\x52\x20"
+		.align	4
 aAmmo:	/* 0x51324 */
 		.string "AMMO"
-aR_0:	/* 0x51329 */
-		.ascii  "\x52\x00\x00"
+		.align	4
 aMun:	/* 0x5132c */
 		.string "MUN."
-aUr:	/* 0x51331 */
-		.ascii  "\x55\x52\x00"
+		.align	4
 aRange:	/* 0x51334 */
 		.string "RANGE"
-		.ascii  "\x00\x54"
+		.align	4
 aPortee:	/* 0x5133c */
 		.string "PORTEE"
-		.ascii  "\x20"
+		.align	4
 aRaggio:	/* 0x51344 */
 		.string "RAGGIO"
-		.ascii  "\x43"
+		.align	4
 aShot:	/* 0x5134c */
 		.string "SHOT"
-		.ascii  "\x59\x20\x4e"
+		.align	4
 aCoups:	/* 0x51354 */
 		.string "COUPS"
-		.ascii  "\x44\x49"
+		.align	4
 aColpo:	/* 0x5135c */
 		.string "COLPO"
-		.ascii  "\x4f\x4d"
+		.align	4
 aAutomatic:	/* 0x51364 */
 		.string "AUTOMATIC"
-		.ascii  "\x00\x00"
+		.align	4
 aAutomatique:	/* 0x51370 */
 		.string "AUTOMATIQUE"
 aAutomatica:	/* 0x5137c */
 		.string "AUTOMATICA"
-		.ascii  "\x00"
+		.align	4
 aHeavy:	/* 0x51388 */
 		.string "HEAVY"
-		.ascii  "\x59\x4f"
+		.align	4
 aArmeLourde:	/* 0x51390 */
 		.string "ARME LOURDE"
 aGrossoCalibro:	/* 0x5139c */
 		.string "GROSSO CALIBRO"
-		.ascii  "\x4c"
+		.align	4
 aAssault:	/* 0x513ac */
 		.string "ASSAULT"
 aArmeDAssaut:	/* 0x513b4 */
 		.string "ARME D'ASSAUT"
-		.ascii  "\x00\x00"
+		.align	4
 aAssalto:	/* 0x513c4 */
 		.string "ASSALTO"
 aMiscellaneous:	/* 0x513cc */
 		.string "MISCELLANEOUS"
-		.ascii  "\x52\x20"
+		.align	4
 aDivers:	/* 0x513dc */
 		.string "DIVERS"
-		.ascii  "\x00"
+		.align	4
 aVarioTipo:	/* 0x513e4 */
 		.string "VARIO TIPO"
-		.ascii  "\x47"
+		.align	4
 aMinFunding:	/* 0x513f0 */
 		.string "MIN FUNDING"
 aBudgetMini:	/* 0x513fc */
 		.string "BUDGET MINI"
 aFondiMin:	/* 0x51408 */
 		.string "FONDI MIN"
-		.ascii  "\x44\x49"
+		.align	4
 aMaxFunding:	/* 0x51414 */
 		.string "MAX FUNDING"
 aBudgetMaxi:	/* 0x51420 */
 		.string "BUDGET MAXI"
 aFondiMax:	/* 0x5142c */
 		.string "FONDI MAX"
-		.ascii  "\x54\x4f"
+		.align	4
 aResearching:	/* 0x51438 */
 		.string "RESEARCHING"
 aInRicerca:	/* 0x51444 */
 		.string "IN RICERCA"
-		.ascii  "\x55"
+		.align	4
 aLoggingOut:	/* 0x51450 */
 		.string "LOGGING OUT"
 aFinDuJeu:	/* 0x5145c */
 		.string "FIN DU JEU"
-		.ascii  "\x41"
+		.align	4
 aInUscita:	/* 0x51468 */
 		.string "IN USCITA"
-		.ascii  "\x00\x00"
+		.align	4
 aLoadingMultipl:	/* 0x51474 */
 		.string "LOADING MULTIPLAYER"
 aChargMultijoue:	/* 0x51488 */
 		.string "CHARG.MULTIJOUEURS"
-		.ascii  "\x49"
+		.align	4
 aCaricaMultipla:	/* 0x5149c */
 		.string "CARICA MULTIPLAYER"
-		.ascii  "\x47"
+		.align	4
 aLoadingGame:	/* 0x514b0 */
 		.string "LOADING GAME"
-		.ascii  "\x20\x4d\x49"
+		.align	4
 aChargementPart:	/* 0x514c0 */
 		.string "CHARGEMENT PARTIE"
-		.ascii  "\x44\x47"
+		.align	4
 aCaricamentoGio:	/* 0x514d4 */
 		.string "CARICAMENTO GIOCO"
-		.ascii  "\x54\x4f"
+		.align	4
 aMissionStatus:	/* 0x514e8 */
 		.string "MISSION STATUS:"
 aStatutDeLaMiss:	/* 0x514f8 */
 		.string "STATUT DE LA MISSION:"
-		.ascii  "\x4e\x20"
+		.align	4
 aStatoMissione:	/* 0x51510 */
 		.string "STATO MISSIONE"
-		.ascii  "\x00"
+		.align	4
 aCompleted:	/* 0x51520 */
 		.string "COMPLETED"
-		.ascii  "\x4c\x54"
+		.align	4
 aTerminee:	/* 0x5152c */
 		.string "TERMINEE"
-		.ascii  "\x48\x41\x52"
+		.align	4
 aCompletata:	/* 0x51538 */
 		.string "COMPLETATA"
-		.ascii  "\x55"
+		.align	4
 aWithdrewFromMi:	/* 0x51544 */
 		.string "WITHDREW FROM MISSION"
-		.ascii  "\x00\x47"
+		.align	4
 aRetireDeLaMiss:	/* 0x5155c */
 		.string "RETIRE DE LA MISSION"
-		.ascii  "\x45\x4d\x45"
+		.align	4
 aRitiratoDallaM:	/* 0x51574 */
 		.string "RITIRATO DALLA MISSIONE"
 aFailed:	/* 0x5158c */
 		.string "FAILED"
-		.ascii  "\x4f"
+		.align	4
 aEchouee:	/* 0x51594 */
 		.string "ECHOUEE"
 aFallita:	/* 0x5159c */
 		.string "FALLITA"
 aAgentsUsed:	/* 0x515a4 */
 		.string "AGENTS USED:"
-		.ascii  "\x4d\x49\x53"
+		.align	4
 aAgentsUtilises:	/* 0x515b4 */
 		.string "AGENTS UTILISES"
 aAgentiImpiegat:	/* 0x515c4 */
 		.string "AGENTI IMPIEGATI"
-		.ascii  "\x00\x00\x00"
+		.align	4
 aNewAgentsGaine:	/* 0x515d8 */
 		.string "NEW AGENTS GAINED:"
-		.ascii  "\x45"
+		.align	4
 aAgentsRecupere:	/* 0x515ec */
 		.string "AGENTS RECUPERES"
-		.ascii  "\x49\x54\x48"
+		.align	4
 aNuoviAgentiAcq:	/* 0x51600 */
 		.string "NUOVI AGENTI ACQUISITI"
-		.ascii  "\x49"
+		.align	4
 aTimeInMission:	/* 0x51618 */
 		.string "TIME IN MISSION:"
-		.ascii  "\x45\x4d\x45"
+		.align	4
 aDureeDeLaMissi:	/* 0x5162c */
 		.string "DUREE DE LA MISSION"
 aTempoDellaMiss:	/* 0x51640 */
 		.string "TEMPO DELLA MISSIONE"
-		.ascii  "\x41\x4c\x4c"
+		.align	4
 aHours:	/* 0x51658 */
 		.string "HOURS"
-		.ascii  "\x45\x4e"
+		.align	4
 aHeures:	/* 0x51660 */
 		.string "HEURES"
-		.ascii  "\x3a"
+		.align	4
 aOre:	/* 0x51668 */
-		.ascii  "\x4f\x52\x45\x00"
+		.string "ORE"
+		.align	4
 aDays:	/* 0x5166c */
 		.string "DAYS"
-		.ascii  "\x53\x20\x55"
+		.align	4
 aJours:	/* 0x51674 */
 		.string "JOURS"
-aS_3:	/* 0x5167a */
-		.ascii  "\x53\x00"
+		.align	4
 aGiorni:	/* 0x5167c */
 		.string "GIORNI"
-		.ascii  "\x00"
+		.align	4
 aValueOfDamage:	/* 0x51684 */
 		.string "VALUE OF DAMAGE:"
-		.ascii  "\x3a\x00\x45"
+		.align	4
 aDegatsSubis:	/* 0x51698 */
 		.string "DEGATS SUBIS"
-		.ascii  "\x52\x45\x53"
+		.align	4
 aAmmontareDeiDa:	/* 0x516a8 */
 		.string "AMMONTARE DEI DANNI"
 aEnemyAgentsKil:	/* 0x516bc */
 		.string "ENEMY AGENTS KILLED:"
-		.ascii  "\x4f\x4e\x3a"
+		.align	4
 aAgentsEnnemisT:	/* 0x516d4 */
 		.string "AGENTS ENNEMIS TUES"
 aAgentiNemiciEl:	/* 0x516e8 */
 		.string "AGENTI NEMICI ELIMINATI"
 aCriminalsKille:	/* 0x51700 */
 		.string "CRIMINALS KILLED:"
-		.ascii  "\x00\x3a"
+		.align	4
 aCriminelsElimi:	/* 0x51714 */
 		.string "CRIMINELS ELIMINES"
-		.ascii  "\x00"
+		.align	4
 aCriminaliElimi:	/* 0x51728 */
 		.string "CRIMINALI ELIMINATI"
 aCiviliansKille:	/* 0x5173c */
 		.string "CIVILIANS KILLED"
-		.ascii  "\x3a\x00\x45"
+		.align	4
 aCivilsTues:	/* 0x51750 */
 		.string "CIVILS TUES"
 aCiviliUccisi:	/* 0x5175c */
 		.string "CIVILI UCCISI"
-		.ascii  "\x44\x45"
+		.align	4
 aPoliceKilled:	/* 0x5176c */
 		.string "POLICE KILLED:"
-		.ascii  "\x47"
+		.align	4
 aPoliciersTues:	/* 0x5177c */
 		.string "POLICIERS TUES:"
 aPoliziottiUcci:	/* 0x5178c */
 		.string "POLIZIOTTI UCCISI"
-aS_4:	/* 0x5179e */
-		.ascii  "\x53\x00"
+		.align	4
 aGuardsKilled:	/* 0x517a0 */
 		.string "GUARDS KILLED:"
-		.ascii  "\x4c"
+		.align	4
 aGardesTues:	/* 0x517b0 */
 		.string "GARDES TUES"
 aGuardieUccise:	/* 0x517bc */
 		.string "GUARDIE UCCISE"
-		.ascii  "\x3a"
+		.align	4
 aPeoplePersuade:	/* 0x517cc */
 		.string "PEOPLE PERSUADED:"
-		.ascii  "\x00\x00"
+		.align	4
 aPersonnesConva:	/* 0x517e0 */
 		.string "PERSONNES CONVAINCUES"
-		.ascii  "\x00\x00"
+		.align	4
 aPersoneConvint:	/* 0x517f8 */
 		.string "PERSONE CONVINTE"
-		.ascii  "\x3a\x00\x45"
+		.align	4
 aHitAccuracy:	/* 0x5180c */
 		.string "HIT ACCURACY:"
-		.ascii  "\x56\x49"
+		.align	4
 aPrecisionDeTir:	/* 0x5181c */
 		.string "PRECISION DE TIR"
-		.ascii  "\x45\x20\x4b"
+		.align	4
 aColpiPrecisi:	/* 0x51830 */
 		.string "COLPI PRECISI"
-		.ascii  "\x45\x52"
+		.align	4
 aNoBulletsFired:	/* 0x51840 */
 		.string "NO BULLETS FIRED"
-		.ascii  "\x49\x20\x55"
+		.align	4
 aPasDeBallesUti:	/* 0x51854 */
 		.string "PAS DE BALLES UTILISEES"
 aProiettiliNonS:	/* 0x5186c */
 		.string "PROIETTILI NON SPARATI"
-		.ascii  "\x49"
+		.align	4
 aResearchOn:	/* 0x51884 */
 		.string "RESEARCH ON"
 aRechercheSur:	/* 0x51890 */
 		.string "RECHERCHE SUR"
-		.ascii  "\x52\x53"
+		.align	4
 aRicercaAttivat:	/* 0x518a0 */
 		.string "RICERCA ATTIVATA"
-		.ascii  "\x00\x00\x00"
+		.align	4
 aNewWeaponryHas:	/* 0x518b4 */
 		.string "NEW WEAPONRY HAS BEEN SUBMITTED"
 aUneNouvelleArm:	/* 0x518d4 */
 		.string "UNE NOUVELLE ARME A ETE SOUMISE"
 aNuoviArmamenti:	/* 0x518f4 */
 		.string "NUOVI ARMAMENTI SOTTOPOSTI"
-		.ascii  "\x55"
+		.align	4
 aToTheResearchD:	/* 0x51910 */
 		.string "TO THE RESEARCH DEPARTMENT"
-		.ascii  "\x49"
+		.align	4
 aAuDepartementD:	/* 0x5192c */
 		.string "AU DEPARTEMENT DE LA RECHERCHE"
-		.ascii  "\x00"
+		.align	4
 aAlDipartimento:	/* 0x5194c */
 		.string "AL DIPARTIMENTO DI RICERCA"
-		.ascii  "\x00"
+		.align	4
 aMissionStatist:	/* 0x51968 */
 		.string "MISSION STATISTICS"
-		.ascii  "\x45"
+		.align	4
 aStatistiquesMi:	/* 0x5197c */
 		.string "STATISTIQUES MISSION"
-		.ascii  "\x4c\x4c\x45"
+		.align	4
 aDatiStatistici:	/* 0x51994 */
 		.string "DATI STATISTICI MISSIONE"
-		.ascii  "\x20\x41\x52"
+		.align	4
 aReplacementMet:	/* 0x519b0 */
 		.string "REPLACEMENT METAL LEGS. SERVO ASSISTED HYDRAULICS ALLOW QUICKER MOVEMENT."
-		.ascii  "\x52\x43"
+		.align	4
 aJambesDeRempla:	/* 0x519fc */
 		.string "JAMBES DE REMPLACEMENT METALLIQUES. LE SYSTEME HYDRAULIQUE PERMET UNE PLUS GRANDE RAPIDITE."
 aGambeMetallich:	/* 0x51a58 */
 		.string "GAMBE METALLICHE DI RICAMBIO. SERVO ASSISTITE DA CIRCUITO IDRAULICO CONSENTONO MOVIMENTI PIU' RAPIDI."
-		.ascii  "\x41\x43"
+		.align	4
 aPlasteelLegsLi:	/* 0x51ac0 */
 		.string "PLASTEEL LEGS. LIGHTER AND TOUGHER THAN METAL LEGS. ENHANCED HYDRAULIC SYSTEM AND BALANCE CONTROL."
-		.ascii  "\x20"
+		.align	4
 aJambesEnPlaSte:	/* 0x51b24 */
 		.string "JAMBES EN PLA- STEEL. PLUS LEGERES ET PLUS SOLIDES. SYSTEME HYDRAULIQUE ET CONTROLE DE L'EQUILIBRE."
 aGambeInPlastee:	/* 0x51b88 */
 		.string "GAMBE IN PLASTEEL. PIU' LEGGERE E RESISTENTI DELLE METALLICHE. SISTEMA IDRAULICO AVANZATO E CONTROLLO DI ASSETTO."
-		.ascii  "\x54\x20"
+		.align	4
 aCybermeshLegsP:	/* 0x51bfc */
 		.string "CYBERMESH LEGS. PLASTEEL CORE WITH SYNTHETIC MUSCLE FIBRE. SUPERB RESPONSE AND BALANCE COUPLED WITH HIGH SPEED."
 aJambesCyberMes:	/* 0x51c6c */
 		.string "JAMBES CYBER- MESH. NOYAU EN PLASTEEL ET MUSCULES SYN- THETIQUES. TRES RAPIDE ET EXCELLENT EQUILIBRE."
-		.ascii  "\x52\x45"
+		.align	4
 aGambeCyberMesh:	/* 0x51cd4 */
 		.string "GAMBE CYBER- MESH. INTERNO IN PLASTEEL CON FIBRE MUSCOLARI SINTETICHE. REAZIONE E ASSETTO ECCELLENTI ABBINATI AD ALTA VELOCITA'."
-		.ascii  "\x45\x54\x49"
+		.align	4
 aReplacementMet_0:	/* 0x51d58 */
 		.string "REPLACEMENT METAL ARMS. SERVO ASSISTED HYDRAULICS ALLOW THE CARRYING OF HEAVIER ITEMS."
-		.ascii  "\x4e"
+		.align	4
 aBrasDeRemplace:	/* 0x51db0 */
 		.string "BRAS DE REMPLACEMENT METALLIQUES. SYSTEME HYDRAULIQUE SERVO-ASSISTE PERMETTANT LE TRANSPORT D'OBJETS PLUS LOURDS."
-		.ascii  "\x53\x45"
+		.align	4
 aBracciaMetalli:	/* 0x51e24 */
 		.string "BRACCIA METALLICHE DI RICAMBIO. SERVO ASSISTITE DA CIRCUITO IDRAULICO CONSENTONO IL TRASPORTO DI OGGETTI PESANTI."
-		.ascii  "\x59\x44"
+		.align	4
 aPlasteelArmsLi:	/* 0x51e98 */
 		.string "PLASTEEL ARMS. LIGHTER AND TOUGHER THAN METAL ARMS. ENHANCED HYDRAULIC SYSTEM AND PRESSURE CONTROL."
 aEnPlasteelPlus:	/* 0x51efc */
 		.string "EN PLASTEEL. PLUS LEGERS ET PLUS SOLIDES. SYSTEME HYDRAULIQUE ET CONTROLE DE PRESSION."
-		.ascii  "\x50"
+		.align	4
 aBracciaInPlast:	/* 0x51f54 */
 		.string "BRACCIA IN PLASTEEL. PIU' LEGGERE E RE- SISTENTI DELLE METALLICHE. SISTEMA IDRAULICO AVANZATO E CONTROLLO DELLA PRESSIONE."
-		.ascii  "\x00"
+		.align	4
 aCybermeshArmsP:	/* 0x51fd0 */
 		.string "CYBERMESH ARMS. PLASTEEL CORE WITH SYNTHETIC MUSCLE FIBRE. EXCELLENT TACTILE CONTROL AND WEIGHT LOADING."
-		.ascii  "\x20\x44\x45"
+		.align	4
 aBrasCybermeshN:	/* 0x5203c */
 		.string "BRAS CYBERMESH. NOYAU DE PLASTEEL ET FIBRES MUSCULAIRES SYNTHETIQUES. EXCELLENT CONTROLE TACTILE ET GROSSE CHARGE UTILE."
-		.ascii  "\x20\x4d\x55"
+		.align	4
 aBracciaCyberMe:	/* 0x520b8 */
 		.string "BRACCIA CYBER- MESH. INTERNO IN PLASTEEL CON FIBRE MUSCOLARI SINTETICHE. CONTROLLO TATTILE E PORTATA DI CARICO ECCELLENTI."
-		.ascii  "\x54"
+		.align	4
 aMetalChestCage:	/* 0x52134 */
 		.string "METAL CHEST CAGE. ALL INTERNAL ORGANS ARE SHIELDED BY HEAVY METAL CASING."
-		.ascii  "\x45\x52"
+		.align	4
 aPoitrineMetall:	/* 0x52180 */
 		.string "POITRINE METALLIQUE. TOUS LES ORGANES INTERNES SONT PROTEGES PAR UN EPAIS BLINDAGE METALLIQUE."
-		.ascii  "\x43"
+		.align	4
 aGabbiaToracica_0:	/* 0x521e0 */
 		.string "GABBIA TORACICA IN METALLO. TUTTI GLI ORGANI INTERNI SONO PROTETTI DA UN INVOLUCRO IN METALLO PESANTE."
-		.ascii  "\x41"
+		.align	4
 aPlasteelChestC:	/* 0x52248 */
 		.string "PLASTEEL CHEST CAGE. LIGHTER AND TOUGHER THAN THE METAL VERSION WITH BETTER MOBILITY."
-		.ascii  "\x42\x49"
+		.align	4
 aPlasteelPlusLe:	/* 0x522a0 */
 		.string "PLASTEEL. PLUS LEGERE ET SO- LIDE QUE LA VERSION METAL. LES ORGANES SONT PROTEGES PAR UN CHAMP DE FORCE."
-		.ascii  "\x45\x4c\x20"
+		.align	4
 aGabbiaToracica_1:	/* 0x5230c */
 		.string "GABBIA TORACICA IN PLASTEEL. PIU' LEGGERA E RESISTENTE DELLA VERSIONE METALLICA CON MIGLIORE MOBILITA'."
 aCybermeshChest:	/* 0x52374 */
@@ -81726,390 +81719,387 @@ aPoitrineCyberm:	/* 0x523e0 */
 		.string "POITRINE CYBERMESH AVEC BOUCLIERS. LES ORGANES INTERNES SONT PROTEGES PAR UN FAIBLE CHAMP DE FORCE."
 aGabbiaToracica:	/* 0x52444 */
 		.string "GABBIA TORACICA CYBERMESH CON SCHERMATURA AD ENERGIA. TUTTI GLI ORGANI INTERNI SONO PROTETTI DA UN CAMPO DI FORZA A BASSA POTENZA."
-		.ascii  "\x20"
+		.align	4
 aHeartStimulato:	/* 0x524c8 */
 		.string "HEART STIMULATOR. MONITORS AND MAINTAINS THE HEART RATE OF THE INDIVIDUAL."
-		.ascii  "\x4d"
+		.align	4
 aStimulateurCar:	/* 0x52514 */
 		.string "STIMULATEUR CARDIAQUE. SURVEILLE ET MAINTIENT LE RYTHME CARDIAQUE DE L'INDIVIDU."
-		.ascii  "\x4f\x20\x44"
+		.align	4
 aStimolatoreCar:	/* 0x52568 */
 		.string "STIMOLATORE CARDIACO. CONTROLLA E MANTIENE IL BATTITO CARDIACO DELL'INDIVIDUO."
-		.ascii  "\x41"
+		.align	4
 aHeartAccelerat:	/* 0x525b8 */
 		.string "HEART ACCELERATOR AND MONITOR. HEART RATE IS ALMOST DOUBLED ALLOWING THE QUICKER DISTRIBUTION OF HORMONES."
-		.ascii  "\x53"
+		.align	4
 aAccelerateurEt:	/* 0x52624 */
 		.string "ACCELERATEUR ET MONITEUR CARDIAQUE. LE RYTHME EST DOUBLE, ACCE- LERANT AINSI LA DIFFUSION DES HORMONES."
 aAcceleratoreCa:	/* 0x5268c */
 		.string "ACCELERATORE CARDIACO. IL BATTITO CARDIACO VIENE QUASI RADDOPPIATO PER PERMETTERE UNA PIU' RAPIDA DISTRIBUZIONE DI ORMONI."
-		.ascii  "\x59"
+		.align	4
 aCyberneticHear:	/* 0x52708 */
 		.string "CYBERNETIC HEART. POWERFUL PUMP WITH IN BUILT SYSTEM ANALYSIS AND OVERIDE FACILITIES. TRIPLES OUTPUT OF A STANDARD HUMAN HEART."
 aCoeurCyberneTi:	/* 0x52788 */
 		.string "COEUR CYBERNE- TIQUE. SYSTE- ME D'ANALYSE INTEGRE ET ACCELERATEUR. TROIS FOIS + EFFICACE QU'UN COEUR HUMAIN."
-		.ascii  "\x45\x4d\x20"
+		.align	4
 aCuoreCiberneTi:	/* 0x527f8 */
 		.string "CUORE CIBERNE- TICO. UNA POTENTE POMPA CON ACCLUSO UN SISTEMA DI ANALISI E RESISTENZA AGLI SFORZI. TRIPLICA IL RENDIMENTO DI UN CUORE UMANO."
-		.ascii  "\x00\x00\x00"
+		.align	4
 aVisionEnhancer:	/* 0x52888 */
 		.string "VISION ENHANCER WITH LIMITED ZOOM FACILITY. ALLOWS NEAR PERFECT SIGHT EVEN AT NIGHT."
-		.ascii  "\x53\x4f\x20"
+		.align	4
 aOptimiseurDeVi:	/* 0x528e0 */
 		.string "OPTIMISEUR DE VISION AVEC FONCTIONS LIMITEES DE ZOOM. PERMET DE VOIR PRESQUE PARFAITEMENT, MEME LA NUIT."
-		.ascii  "\x20\x45\x4e"
+		.align	4
 aAmplificatoreV:	/* 0x5294c */
 		.string "AMPLIFICATORE VISIVO CON ZOOM LIMITATO. PERMETTE UNA VISTA QUASI PERFETTA ANCHE DI NOTTE"
-		.ascii  "\x20\x44\x45"
+		.align	4
 aEnhancedModelO:	/* 0x529a8 */
 		.string "ENHANCED MODEL OF THE V1 INCORPORATING A TARGET AQUISITION FACILITY AND RANGE FINDER."
-		.ascii  "\x41\x4d"
+		.align	4
 aModeleV1Amelio:	/* 0x52a00 */
 		.string "MODELE V1 AMELIORE MUNI D'UN SYSTEME D'ACQUISITION DE CIBLE ET D'UN DETECTEUR DE PORTEE."
-		.ascii  "\x45\x45\x4e"
+		.align	4
 aModelloAvanzat:	/* 0x52a5c */
 		.string "MODELLO AVANZATO DELLA V1 CON INCORPORATO UN ACQUISITORE DI BERSAGLIO E UN MIRINO DI GITTATA."
-		.ascii  "\x20\x56"
+		.align	4
 aLatestNeurocyb:	/* 0x52abc */
 		.string "LATEST NEUROCYBERNETIC IMPLANTS. GIVES PERFECT NIGHT VISION WITH THE AID OF TARGETERS RANGE FINDERS AND THREAT IDENTIFIER."
-		.ascii  "\x54"
+		.align	4
 aImplantsNeuroC:	/* 0x52b38 */
 		.string "IMPLANTS NEURO CYBERNETIQUES. EXCELLENTE VI- SION DE NUIT, SYS. DE VISEE, DETECTEURS DE PORTEE ET ALERTES RADAR."
-		.ascii  "\x48\x20\x54"
+		.align	4
 aLUltimoInnesto:	/* 0x52bac */
 		.string "L'ULTIMO INNESTO CIBERNETICO. PERMETTE UNA VISIONE NOTTURNA CON L'AIUTO DI ACQUISITORI DI BERSAGLI E MIRINI DI RAGGIO."
-		.ascii  "\x4e"
+		.align	4
 aNeuralEnhancer:	/* 0x52c24 */
 		.string "NEURAL ENHANCER THAT SPEEDS UP BRAIN STEM RESPONSE TIME."
-		.ascii  "\x52\x41\x44"
+		.align	4
 aOptimiseurNeur:	/* 0x52c60 */
 		.string "OPTIMISEUR NEUROLOGIQUE. ACCELERE LE TEMPS DE REPONSE DU PEDONCULE CEREBRAL."
-		.ascii  "\x4f\x20\x44"
+		.align	4
 aIntensificator:	/* 0x52cb0 */
 		.string "INTENSIFICATORE NEURALE. PERMETTE DI ACCELERARE IL TEMPO DI REAZIONE DEL CERVELLO."
-		.ascii  "\x20"
+		.align	4
 aNeuroCnsDevice:	/* 0x52d04 */
 		.string "NEURO CNS DEVICE THAT INTERCEPTS MOST LOW LEVEL FUNCTIONS LEAVING THE BRAIN FREE TO DEAL WITH HIGH END DESICIONS."
-		.ascii  "\x54\x4f"
+		.align	4
 aAppareilNeuroL:	/* 0x52d78 */
 		.string "APPAREIL NEURO LOGIQUE CNS, CONTROLANT LES FONCTIONS COU- RANTES POUR DECHARGER LE CERVEAU DE CES OCCUPATIONS."
-		.ascii  "\x57"
+		.align	4
 aDispositivoNeu:	/* 0x52de8 */
 		.string "DISPOSITIVO NEURO CNS. INTERCETTA LA MAGGIOR PARTE DELLE FUNZIONI A BASSO LIVELLO LASCIANDO IL CERVELLO LIBERO."
 aCerebralMultip:	/* 0x52e58 */
 		.string "CEREBRAL MULTIPLIER. CONNECTED TO A COMPUNET GIVING ACCESS TO A MASS OF TACTICAL INFO. ADAPTED FROM THE MILITARY VERSION."
-		.ascii  "\x49\x4f"
+		.align	4
 aMultiplicateur:	/* 0x52ed4 */
 		.string "MULTIPLICATEUR CEREBRAL BRAN- CHE SUR UN RESEAU D'INFOS TACTIQUES. DERIVE DU MODELE MILITAIRE."
-		.ascii  "\x4f"
+		.align	4
 aMoltiplicatore:	/* 0x52f34 */
 		.string "MOLTIPLICATORE CEREBRALE. COLLEGATO A UNA RETE COMPUTERIZZATA DA' ACCESSO AD INFORMAZIONI TATTICHE. VERSIONE MILITARE MODIFICATA."
-		.ascii  "\x4e\x20"
+		.align	4
 aLegsV1:	/* 0x52fb8 */
 		.string "LEGS V1"
 aJambesV1:	/* 0x52fc0 */
 		.string "JAMBES V1"
-		.ascii  "\x54\x49"
+		.align	4
 aGambeV1:	/* 0x52fcc */
 		.string "GAMBE V1"
-		.ascii  "\x49\x56\x45"
+		.align	4
 aLegsV2:	/* 0x52fd8 */
 		.string "LEGS V2"
 aJambesV2:	/* 0x52fe0 */
 		.string "JAMBES V2"
-		.ascii  "\x52\x45"
+		.align	4
 aGambeV2:	/* 0x52fec */
 		.string "GAMBE V2"
-		.ascii  "\x4c\x49\x43"
+		.align	4
 aLegsV3:	/* 0x52ff8 */
 		.string "LEGS V3"
 aJambesV3:	/* 0x53000 */
 		.string "JAMBES V3"
-		.ascii  "\x4f\x4c"
+		.align	4
 aGambeV3:	/* 0x5300c */
 		.string "GAMBE V3"
-		.ascii  "\x55\x4e\x41"
+		.align	4
 aArmsV1:	/* 0x53018 */
 		.string "ARMS V1"
 aBrasV1:	/* 0x53020 */
 		.string "BRAS V1"
 aBracciaV1:	/* 0x53028 */
 		.string "BRACCIA V1"
-		.ascii  "\x43"
+		.align	4
 aArmsV2:	/* 0x53034 */
 		.string "ARMS V2"
 aBrasV2:	/* 0x5303c */
 		.string "BRAS V2"
 aBracciaV2:	/* 0x53044 */
 		.string "BRACCIA V2"
-		.ascii  "\x48"
+		.align	4
 aArmsV3:	/* 0x53050 */
 		.string "ARMS V3"
 aBrasV3:	/* 0x53058 */
 		.string "BRAS V3"
 aBracciaV3:	/* 0x53060 */
 		.string "BRACCIA V3"
-		.ascii  "\x31"
+		.align	4
 aChestV1:	/* 0x5306c */
 		.string "CHEST V1"
-a1:	/* 0x53075 */
-		.ascii  "\x31\x00\x54"
+		.align	4
 aPoitrineV1:	/* 0x53078 */
 		.string "POITRINE V1"
 aToraceV1:	/* 0x53084 */
 		.string "TORACE V1"
-		.ascii  "\x41\x4d"
+		.align	4
 aChestV2:	/* 0x53090 */
 		.string "CHEST V2"
-		.ascii  "\x47\x41\x4d"
+		.align	4
 aPoitrineV2:	/* 0x5309c */
 		.string "POITRINE V2"
 aToraceV2:	/* 0x530a8 */
 		.string "TORACE V2"
-		.ascii  "\x53\x20"
+		.align	4
 aChestV3:	/* 0x530b4 */
 		.string "CHEST V3"
-		.ascii  "\x45\x20\x56"
+		.align	4
 aPoitrineV3:	/* 0x530c0 */
 		.string "POITRINE V3"
 aToraceV3:	/* 0x530cc */
 		.string "TORACE V3"
-		.ascii  "\x52\x41"
+		.align	4
 aHeartV1:	/* 0x530d8 */
 		.string "HEART V1"
-		.ascii  "\x41\x52\x4d"
+		.align	4
 aCoeurV1:	/* 0x530e4 */
 		.string "COEUR V1"
-		.ascii  "\x20\x56\x32"
+		.align	4
 aCuoreV1:	/* 0x530f0 */
 		.string "CUORE V1"
-aV2:	/* 0x530f9 */
-		.ascii  "\x56\x32\x00"
+		.align	4
 aHeartV2:	/* 0x530fc */
 		.string "HEART V2"
-		.ascii  "\x00\x00\x00"
+		.align	4
 aCoeurV2:	/* 0x53108 */
 		.string "COEUR V2"
-		.ascii  "\x52\x41\x43"
+		.align	4
 aCuoreV2:	/* 0x53114 */
 		.string "CUORE V2"
-		.ascii  "\x48\x45\x53"
+		.align	4
 aHeartV3:	/* 0x53120 */
 		.string "HEART V3"
-		.ascii  "\x4f\x49\x54"
+		.align	4
 aCoeurV3:	/* 0x5312c */
 		.string "COEUR V3"
-		.ascii  "\x4f\x52\x41"
+		.align	4
 aCuoreV3:	/* 0x53138 */
 		.string "CUORE V3"
-		.ascii  "\x48\x45\x53"
+		.align	4
 aEyesV1:	/* 0x53144 */
 		.string "EYES V1"
 aYeuxV1:	/* 0x5314c */
 		.string "YEUX V1"
 aOcchiV1:	/* 0x53154 */
 		.string "OCCHI V1"
-		.ascii  "\x45\x20\x56"
+		.align	4
 aEyesV2:	/* 0x53160 */
 		.string "EYES V2"
 aYeuxV2:	/* 0x53168 */
 		.string "YEUX V2"
 aOcchiV2:	/* 0x53170 */
 		.string "OCCHI V2"
-aV3:	/* 0x53179 */
-		.ascii  "\x56\x33\x00"
+		.align	4
 aEyesV3:	/* 0x5317c */
 		.string "EYES V3"
 aYeuxV3:	/* 0x53184 */
 		.string "YEUX V3"
 aOcchiV3:	/* 0x5318c */
 		.string "OCCHI V3"
-		.ascii  "\x4f\x45\x55"
+		.align	4
 aBrainV1:	/* 0x53198 */
 		.string "BRAIN V1"
-		.ascii  "\x55\x4f\x52"
+		.align	4
 aCerveauV1:	/* 0x531a4 */
 		.string "CERVEAU V1"
-		.ascii  "\x52"
+		.align	4
 aCervelloV1:	/* 0x531b0 */
 		.string "CERVELLO V1"
 aBrainV2:	/* 0x531bc */
 		.string "BRAIN V2"
-		.ascii  "\x52\x41\x43"
+		.align	4
 aCerveauV2:	/* 0x531c8 */
 		.string "CERVEAU V2"
-		.ascii  "\x53"
+		.align	4
 aCervelloV2:	/* 0x531d4 */
 		.string "CERVELLO V2"
 aBrainV3:	/* 0x531e0 */
 		.string "BRAIN V3"
-		.ascii  "\x4f\x52\x41"
+		.align	4
 aCerveauV3:	/* 0x531ec */
 		.string "CERVEAU V3"
-		.ascii  "\x53"
+		.align	4
 aCervelloV3:	/* 0x531f8 */
 		.string "CERVELLO V3"
 aPersuadertron:	/* 0x53204 */
 		.string "PERSUADERTRON"
-		.ascii  "\x20\x56"
+		.align	4
 aPersuadotron:	/* 0x53214 */
 		.string "PERSUADOTRON"
-aV2_0:	/* 0x53221 */
-		.ascii  "\x56\x32\x00"
+		.align	4
 aPistol:	/* 0x53224 */
 		.string "PISTOL"
-		.ascii  "\x32"
+		.align	4
 aPistolet:	/* 0x5322c */
 		.string "PISTOLET"
-aV3_0:	/* 0x53235 */
-		.ascii  "\x56\x33\x00"
+		.align	4
 aPistola:	/* 0x53238 */
 		.string "PISTOLA"
 aGaussGun:	/* 0x53240 */
 		.string "GAUSS GUN"
-		.ascii  "\x45\x55"
+		.align	4
 aPistoletGauss:	/* 0x5324c */
 		.string "PISTOLET GAUSS"
-		.ascii  "\x56"
+		.align	4
 aPistolaGauss:	/* 0x5325c */
 		.string "PISTOLA GAUSS"
-		.ascii  "\x00\x00"
+		.align	4
 aShotgun:	/* 0x5326c */
 		.string "SHOTGUN"
 aFusil:	/* 0x53274 */
 		.string "FUSIL"
-		.ascii  "\x52\x56"
+		.align	4
 aFucile:	/* 0x5327c */
 		.string "FUCILE"
-		.ascii  "\x53"
+		.align	4
 aUzi:	/* 0x53284 */
-		.ascii  "\x55\x5a\x49\x00"
+		.string "'UZI"
+		.align	4
 aMiniGun:	/* 0x53288 */
 		.string "MINI-GUN"
-		.ascii  "\x52\x41\x49"
+		.align	4
 aPM:	/* 0x53294 */
-		.ascii  "\x50\x2e\x4d\x00"
+		.string "P.M"
+		.align	4
 aMiniPistola:	/* 0x53298 */
 		.string "MINI-PISTOLA"
-a3:	/* 0x532a5 */
-		.ascii  "\x33\x00\x53"
+		.align	4
 aLaser:	/* 0x532a8 */
 		.string "LASER"
-		.ascii  "\x4c\x4f"
+		.align	4
 aFlamer:	/* 0x532b0 */
 		.string "FLAMER"
-		.ascii  "\x53"
+		.align	4
 aLanceFlammes:	/* 0x532b8 */
 		.string "LANCE-FLAMMES"
-		.ascii  "\x52\x53"
+		.align	4
 aLanciafiamme:	/* 0x532c8 */
 		.string "LANCIAFIAMME"
-		.ascii  "\x49\x53\x54"
+		.align	4
 aLongRange:	/* 0x532d8 */
 		.string "LONG RANGE"
-		.ascii  "\x54"
+		.align	4
 aLonguePortee:	/* 0x532e4 */
 		.string "LONGUE PORTEE"
-		.ascii  "\x55\x53"
+		.align	4
 aLungaGittata:	/* 0x532f4 */
 		.string "LUNGA GITTATA"
-		.ascii  "\x45\x54"
+		.align	4
 aScanner:	/* 0x53304 */
 		.string "SCANNER"
 aMedikit:	/* 0x5330c */
 		.string "MEDIKIT"
 aKitMedico:	/* 0x53314 */
 		.string "KIT MEDICO"
-		.ascii  "\x00"
+		.align	4
 aTimeBomb:	/* 0x53320 */
 		.string "TIME BOMB"
-		.ascii  "\x53\x49"
+		.align	4
 aBombeARetrd:	/* 0x5332c */
 		.string "BOMBE A RETRD."
-		.ascii  "\x00"
+		.align	4
 aBombaATempo:	/* 0x5333c */
 		.string "BOMBA A TEMPO"
-aM:	/* 0x5334a */
-		.ascii  "\x4d\x00"
+		.align	4
 aAccessCard:	/* 0x5334c */
 		.string "ACCESS CARD"
 aCarteDAcces:	/* 0x53358 */
 		.string "CARTE D'ACCES"
-		.ascii  "\x41\x4d"
+		.align	4
 aSchedaAccesso:	/* 0x53368 */
 		.string "SCHEDA ACCESSO"
-		.ascii  "\x45"
+		.align	4
 aAccessCard1:	/* 0x53378 */
 		.string "ACCESS CARD1"
-		.ascii  "\x4d\x4d\x45"
+		.align	4
 data_53388:
-		.ascii  "\x2e\x00\x53\x54"
+		.string "."
+		.align	4
 aAccessCard2:	/* 0x5338c */
 		.string "ACCESS CARD2"
-		.ascii  "\x4f\x4e\x47"
+		.align	4
 data_5339c:
-		.ascii  "\xff\x00\x20\x50"
+		.string "."
+		.align	4
 aAutoMapper:	/* 0x533a0 */
 		.string "AUTO MAPPER"
 aCartographe:	/* 0x533ac */
 		.string "CARTOGRAPHE"
 aEnergyShield:	/* 0x533b8 */
 		.string "ENERGY SHIELD"
-		.ascii  "\x54\x00"
+		.align	4
 aBouclier:	/* 0x533c8 */
 		.string "BOUCLIER"
-		.ascii  "\x00\x00\x00"
+		.align	4
 aScudoEnergia:	/* 0x533d4 */
 		.string "SCUDO ENERGIA"
-		.ascii  "\x4d\x42"
+		.align	4
 aShield1:	/* 0x533e4 */
 		.string "SHIELD1."
-		.ascii  "\x2e\x00\x00"
+		.align	4
 aShield2:	/* 0x533f0 */
 		.string "SHIELD2."
-		.ascii  "\x45\x4d\x50"
+		.align	4
 aConfigureCompa:	/* 0x533fc */
 		.string "CONFIGURE COMPANY"
-		.ascii  "\x52\x54"
+		.align	4
 aConfigurerSoci:	/* 0x53410 */
 		.string "CONFIGURER SOCIETE"
-		.ascii  "\x41"
+		.align	4
 aConfiguraCompa:	/* 0x53424 */
 		.string "CONFIGURA COMPAGNIA"
 aBeginMission:	/* 0x53438 */
 		.string "BEGIN MISSION"
-		.ascii  "\x20\x43"
+		.align	4
 aCommencerMissi:	/* 0x53448 */
 		.string "COMMENCER MISSION"
-		.ascii  "\x41\x50"
+		.align	4
 aInizioMissione:	/* 0x5345c */
 		.string "INIZIO MISSIONE"
 aLoadAndSaveGam:	/* 0x5346c */
 		.string "LOAD AND SAVE GAME"
-		.ascii  "\x00"
+		.align	4
 aChargSauverPar:	/* 0x53480 */
 		.string "CHARG./SAUVER PARTIE"
-		.ascii  "\x44\x31\x2e"
+		.align	4
 aCaricaESalvaGi:	/* 0x53498 */
 		.string "CARICA E SALVA GIOCO"
-		.ascii  "\x47\x55\x52"
+		.align	4
 aMultiplayerGam:	/* 0x534b0 */
 		.string "MULTIPLAYER GAME"
-		.ascii  "\x47\x55\x52"
+		.align	4
 aJeuMultiJoueur:	/* 0x534c4 */
 		.string "JEU MULTI-JOUEURS"
-		.ascii  "\x55\x52"
+		.align	4
 aGiocoMultiplay:	/* 0x534d8 */
 		.string "GIOCO MULTIPLAYER"
-		.ascii  "\x4d\x49"
+		.align	4
 aRestartGame:	/* 0x534ec */
 		.string "RESTART GAME"
-		.ascii  "\x4e\x43\x45"
+		.align	4
 aNouvellePartie:	/* 0x534fc */
 		.string "NOUVELLE PARTIE"
 aRicominciaPart:	/* 0x5350c */
 		.string "RICOMINCIA PARTITA"
-		.ascii  "\x44"
+		.align	4
 aQuitToDos:	/* 0x53520 */
 		.string "QUIT TO DOS"
 aRetourAuDos:	/* 0x5352c */
@@ -82118,9 +82108,221 @@ aRetourAuDos:	/* 0x5352c */
 aEsciAlDos:	/* 0x5353c */
 		.string "ESCI AL DOS"
 
+aMultiplayerLev:	/* 0x53914 */
+		.string "MULTIPLAYER LEVEL 1"
+aMultiplayerLev_0:	/* 0x53928 */
+		.string "MULTIPLAYER LEVEL 2"
+aMultiplayerLev_1:	/* 0x5393c */
+		.string "MULTIPLAYER LEVEL 3"
+aMultiplayerLev_2:	/* 0x53950 */
+		.string "MULTIPLAYER LEVEL 4"
+aMultiplayerLev_3:	/* 0x53964 */
+		.string "MULTIPLAYER LEVEL 5"
+aMultiplayerLev_4:	/* 0x53978 */
+		.string "MULTIPLAYER LEVEL 6"
+aMultiplayerLev_5:	/* 0x5398c */
+		.string "MULTIPLAYER LEVEL 7"
+aMultiplayerLev_6:	/* 0x539a0 */
+		.string "MULTIPLAYER LEVEL 8"
+aMultiplayerLev_7:	/* 0x539b4 */
+		.string "MULTIPLAYER LEVEL 9"
+aMultiplayerLev_8:	/* 0x539c8 */
+		.string "MULTIPLAYER LEVEL 10"
+		.align	4
+aAfshar:	/* 0x539e0 */
+		.string "AFSHAR"
+		.align	4
+aArnold:	/* 0x539e8 */
+		.string "ARNOLD"
+		.align	4
+aBaird:	/* 0x539f0 */
+		.string "BAIRD"
+		.align	4
+aBaldwin:	/* 0x539f8 */
+		.string "BALDWIN"
+aBlack:	/* 0x53a00 */
+		.string "BLACK"
+		.align	4
+aBoyd:	/* 0x53a08 */
+		.string "BOYD"
+		.align	4
+aBoyesen:	/* 0x53a10 */
+		.string "BOYESEN"
+aBrazier:	/* 0x53a18 */
+		.string "BRAZIER"
+aBrown:	/* 0x53a20 */
+		.string "BROWN"
+		.align	4
+aBush:	/* 0x53a28 */
+		.string "BUSH"
+		.align	4
+aCarr:	/* 0x53a30 */
+		.string "CARR"
+		.align	4
+aChrismas:	/* 0x53a38 */
+		.string "CHRISMAS"
+		.align	4
+aClinton:	/* 0x53a44 */
+		.string "CLINTON"
+aCooper:	/* 0x53a4c */
+		.string "COOPER"
+		.align	4
+aCorpes:	/* 0x53a54 */
+		.string "CORPES"
+		.align	4
+aCox:	/* 0x53a5c */
+		.string "COX"
+		.align	4
+aDawson:	/* 0x53a60 */
+		.string "DAWSON"
+		.align	4
+aDonkin:	/* 0x53a68 */
+		.string "DONKIN"
+		.align	4
+aDiskett:	/* 0x53a70 */
+		.string "DISKETT"
+aDunne:	/* 0x53a78 */
+		.string "DUNNE"
+		.align	4
+aEdgar:	/* 0x53a80 */
+		.string "EDGAR"
+		.align	4
+aEvans:	/* 0x53a88 */
+		.string "EVANS"
+		.align	4
+aFairley:	/* 0x53a90 */
+		.string "FAIRLEY"
+aFawcett:	/* 0x53a98 */
+		.string "FAWCETT"
+aFlint:	/* 0x53aa0 */
+		.string "FLINT"
+		.align	4
+aFloyd:	/* 0x53aa8 */
+		.string "FLOYD"
+		.align	4
+aGriffiths:	/* 0x53ab0 */
+		.string "GRIFFITHS"
+		.align	4
+aHarris:	/* 0x53abc */
+		.string "HARRIS"
+		.align	4
+aHastings:	/* 0x53ac4 */
+		.string "HASTINGS"
+		.align	4
+aHerbert:	/* 0x53ad0 */
+		.string "HERBERT"
+aHickman:	/* 0x53ad8 */
+		.string "HICKMAN"
+aHicks:	/* 0x53ae0 */
+		.string "HICKS"
+		.align	4
+aHill:	/* 0x53ae8 */
+		.string "HILL"
+		.align	4
+aJames:	/* 0x53af0 */
+		.string "JAMES"
+		.align	4
+aJeffery:	/* 0x53af8 */
+		.string "JEFFERY"
+aJoeseph:	/* 0x53b00 */
+		.string "JOESEPH"
+aJohnson:	/* 0x53b08 */
+		.string "JOHNSON"
+aJohnston:	/* 0x53b10 */
+		.string "JOHNSTON"
+		.align	4
+aJones:	/* 0x53b1c */
+		.string "JONES"
+		.align	4
+aLewis:	/* 0x53b24 */
+		.string "LEWIS"
+		.align	4
+aLindsell:	/* 0x53b2c */
+		.string "LINDSELL"
+		.align	4
+aLockley:	/* 0x53b38 */
+		.string "LOCKLEY"
+aMartin:	/* 0x53b40 */
+		.string "MARTIN"
+		.align	4
+aMcentee:	/* 0x53b48 */
+		.string "MCENTEE"
+aMclaughin:	/* 0x53b50 */
+		.string "MCLAUGHIN"
+		.align	4
+aMolyneux:	/* 0x53b5c */
+		.string "MOLYNEUX"
+		.align	4
+aMunro:	/* 0x53b68 */
+		.string "MUNRO"
+		.align	4
+aMorris:	/* 0x53b70 */
+		.string "MORRIS"
+		.align	4
+aMumford:	/* 0x53b78 */
+		.string "MUMFORD"
+aNixon:	/* 0x53b80 */
+		.string "NIXON"
+		.align	4
+aParker:	/* 0x53b88 */
+		.string "PARKER"
+		.align	4
+aPratt:	/* 0x53b90 */
+		.string "PRATT"
+		.align	4
+aReid:	/* 0x53b98 */
+		.string "REID"
+		.align	4
+aRennie:	/* 0x53ba0 */
+		.string "RENNIE"
+		.align	4
+aRice:	/* 0x53ba8 */
+		.string "RICE"
+		.align	4
+aRipley:	/* 0x53bb0 */
+		.string "RIPLEY"
+		.align	4
+aRobertson:	/* 0x53bb8 */
+		.string "ROBERTSON"
+		.align	4
+aRomano:	/* 0x53bc4 */
+		.string "ROMANO"
+		.align	4
+aSeat:	/* 0x53bcc */
+		.string "SEAT"
+		.align	4
+aSen:	/* 0x53bd4 */
+		.string  "SEN"
+aShaw:	/* 0x53bd8 */
+		.string "SHAW"
+		.align	4
+aSimmons:	/* 0x53be0 */
+		.string "SIMMONS"
+aSnelling:	/* 0x53be8 */
+		.string "SNELLING"
+		.align	4
+aTaylor:	/* 0x53bf4 */
+		.string "TAYLOR"
+		.align	4
+aTrowers:	/* 0x53bfc */
+		.string "TROWERS"
+aWebley:	/* 0x53c04 */
+		.string "WEBLEY"
+		.align	4
+aWellesley:	/* 0x53c0c */
+		.string "WELLESLEY"
+		.align	4
+aWild:	/* 0x53c18 */
+		.string "WILD"
+		.align	4
+aWillis:	/* 0x53c20 */
+		.string "WILLIS"
+		.align	4
+
+
 aDataMlosaoutDa:	/* 0x53548 */
 		.string "data/mlosaout.dat"
-		.ascii  "\x00\x00"
+		.align	4
 aIntroNul:	/* 0x5355c */
 		.string "intro >nul:"
 data_53568:
@@ -82251,232 +82453,21 @@ aDataMresrchDat:	/* 0x538ec */
 aDataMultioptDa:	/* 0x53900 */
 		.string "data/multiopt.dat"
 		.ascii  "\x00\x00"
-aMultiplayerLev:	/* 0x53914 */
-		.string "MULTIPLAYER LEVEL 1"
-aMultiplayerLev_0:	/* 0x53928 */
-		.string "MULTIPLAYER LEVEL 2"
-aMultiplayerLev_1:	/* 0x5393c */
-		.string "MULTIPLAYER LEVEL 3"
-aMultiplayerLev_2:	/* 0x53950 */
-		.string "MULTIPLAYER LEVEL 4"
-aMultiplayerLev_3:	/* 0x53964 */
-		.string "MULTIPLAYER LEVEL 5"
-aMultiplayerLev_4:	/* 0x53978 */
-		.string "MULTIPLAYER LEVEL 6"
-aMultiplayerLev_5:	/* 0x5398c */
-		.string "MULTIPLAYER LEVEL 7"
-aMultiplayerLev_6:	/* 0x539a0 */
-		.string "MULTIPLAYER LEVEL 8"
-aMultiplayerLev_7:	/* 0x539b4 */
-		.string "MULTIPLAYER LEVEL 9"
-aMultiplayerLev_8:	/* 0x539c8 */
-		.string "MULTIPLAYER LEVEL 10"
-		.ascii  "\x55\x4c\x54"
-aAfshar:	/* 0x539e0 */
-		.string "AFSHAR"
-		.ascii  "\x20"
-aArnold:	/* 0x539e8 */
-		.string "ARNOLD"
-		.ascii  "\x00"
-aBaird:	/* 0x539f0 */
-		.string "BAIRD"
-		.ascii  "\x4c\x41"
-aBaldwin:	/* 0x539f8 */
-		.string "BALDWIN"
-aBlack:	/* 0x53a00 */
-		.string "BLACK"
-		.ascii  "\x4c\x54"
-aBoyd:	/* 0x53a08 */
-		.string "BOYD"
-		.ascii  "\x45\x52\x20"
-aBoyesen:	/* 0x53a10 */
-		.string "BOYESEN"
-aBrazier:	/* 0x53a18 */
-		.string "BRAZIER"
-aBrown:	/* 0x53a20 */
-		.string "BROWN"
-		.ascii  "\x56\x45"
-aBush:	/* 0x53a28 */
-		.string "BUSH"
-		.ascii  "\x55\x4c\x54"
-aCarr:	/* 0x53a30 */
-		.string "CARR"
-		.ascii  "\x45\x52\x20"
-aChrismas:	/* 0x53a38 */
-		.string "CHRISMAS"
-		.ascii  "\x55\x4c\x54"
-aClinton:	/* 0x53a44 */
-		.string "CLINTON"
-aCooper:	/* 0x53a4c */
-		.string "COOPER"
-		.ascii  "\x00"
-aCorpes:	/* 0x53a54 */
-		.string "CORPES"
-		.ascii  "\x41"
-aCox:	/* 0x53a5c */
-		.ascii  "\x43\x4f\x58\x00"
-aDawson:	/* 0x53a60 */
-		.string "DAWSON"
-		.ascii  "\x00"
-aDonkin:	/* 0x53a68 */
-		.string "DONKIN"
-		.ascii  "\x41"
-aDiskett:	/* 0x53a70 */
-		.string "DISKETT"
-aDunne:	/* 0x53a78 */
-		.string "DUNNE"
-		.ascii  "\x4c\x41"
-aEdgar:	/* 0x53a80 */
-		.string "EDGAR"
-		.ascii  "\x56\x45"
-aEvans:	/* 0x53a88 */
-		.string "EVANS"
-		.ascii  "\x4c\x54"
-aFairley:	/* 0x53a90 */
-		.string "FAIRLEY"
-aFawcett:	/* 0x53a98 */
-		.string "FAWCETT"
-aFlint:	/* 0x53aa0 */
-		.string "FLINT"
-		.ascii  "\x4c\x41"
-aFloyd:	/* 0x53aa8 */
-		.string "FLOYD"
-aN_0:	/* 0x53aae */
-		.ascii  "\x4e\x00"
-aGriffiths:	/* 0x53ab0 */
-		.string "GRIFFITHS"
-		.ascii  "\x59\x44"
-aHarris:	/* 0x53abc */
-		.string "HARRIS"
-		.ascii  "\x45"
-aHastings:	/* 0x53ac4 */
-		.string "HASTINGS"
-aEr_0:	/* 0x53acd */
-		.ascii  "\x45\x52\x00"
-aHerbert:	/* 0x53ad0 */
-		.string "HERBERT"
-aHickman:	/* 0x53ad8 */
-		.string "HICKMAN"
-aHicks:	/* 0x53ae0 */
-		.string "HICKS"
-		.ascii  "\x52\x20"
-aHill:	/* 0x53ae8 */
-		.string "HILL"
-		.ascii  "\x4d\x41\x53"
-aJames:	/* 0x53af0 */
-		.string "JAMES"
-		.ascii  "\x49\x4e"
-aJeffery:	/* 0x53af8 */
-		.string "JEFFERY"
-aJoeseph:	/* 0x53b00 */
-		.string "JOESEPH"
-aJohnson:	/* 0x53b08 */
-		.string "JOHNSON"
-aJohnston:	/* 0x53b10 */
-		.string "JOHNSTON"
-		.ascii  "\x4f\x4e\x4b"
-aJones:	/* 0x53b1c */
-		.string "JONES"
-		.ascii  "\x00\x00"
-aLewis:	/* 0x53b24 */
-		.string "LEWIS"
-		.ascii  "\x4c\x41"
-aLindsell:	/* 0x53b2c */
-		.string "LINDSELL"
-		.ascii  "\x56\x41\x4e"
-aLockley:	/* 0x53b38 */
-		.string "LOCKLEY"
-aMartin:	/* 0x53b40 */
-		.string "MARTIN"
-		.ascii  "\x43"
-aMcentee:	/* 0x53b48 */
-		.string "MCENTEE"
-aMclaughin:	/* 0x53b50 */
-		.string "MCLAUGHIN"
-aN_1:	/* 0x53b5a */
-		.ascii  "\x4e\x00"
-aMolyneux:	/* 0x53b5c */
-		.string "MOLYNEUX"
-		.ascii  "\x00\x59\x44"
-aMunro:	/* 0x53b68 */
-		.string "MUNRO"
-		.ascii  "\x00\x45"
-aMorris:	/* 0x53b70 */
-		.string "MORRIS"
-		.ascii  "\x53"
-aMumford:	/* 0x53b78 */
-		.string "MUMFORD"
-aNixon:	/* 0x53b80 */
-		.string "NIXON"
-		.ascii  "\x43\x4b"
-aParker:	/* 0x53b88 */
-		.string "PARKER"
-		.ascii  "\x4b"
-aPratt:	/* 0x53b90 */
-		.string "PRATT"
-		.ascii  "\x4c\x4c"
-aReid:	/* 0x53b98 */
-		.string "REID"
-		.ascii  "\x41\x4d\x45"
-aRennie:	/* 0x53ba0 */
-		.string "RENNIE"
-		.ascii  "\x46"
-aRice:	/* 0x53ba8 */
-		.string "RICE"
-		.ascii  "\x4f\x45\x53"
-aRipley:	/* 0x53bb0 */
-		.string "RIPLEY"
-		.ascii  "\x4e"
-aRobertson:	/* 0x53bb8 */
-		.string "ROBERTSON"
-		.ascii  "\x4f\x4e"
-aRomano:	/* 0x53bc4 */
-		.string "ROMANO"
-		.ascii  "\x45"
-aSeat:	/* 0x53bcc */
-		.string "SEAT"
-		.ascii  "\x00\x00\x00"
-aSen:	/* 0x53bd4 */
-		.string  "SEN"
-aShaw:	/* 0x53bd8 */
-		.string "SHAW"
-		.ascii  "\x49\x4e\x44"
-aSimmons:	/* 0x53be0 */
-		.string "SIMMONS"
-aSnelling:	/* 0x53be8 */
-		.string "SNELLING"
-		.ascii  "\x41\x52\x54"
-aTaylor:	/* 0x53bf4 */
-		.string "TAYLOR"
-		.ascii  "\x4e"
-aTrowers:	/* 0x53bfc */
-		.string "TROWERS"
-aWebley:	/* 0x53c04 */
-		.string "WEBLEY"
-		.ascii  "\x00"
-aWellesley:	/* 0x53c0c */
-		.string "WELLESLEY"
-		.ascii  "\x59\x44"
-aWild:	/* 0x53c18 */
-		.string "WILD"
-		.ascii  "\x00\x00\x45"
-aWillis:	/* 0x53c20 */
-		.string "WILLIS"
-		.ascii  "\x00"
+
 aDataMtitleDat:	/* 0x53c28 */
 		.string "data/mtitle.dat"
 aDataMscrenupDa:	/* 0x53c38 */
 		.string "data/mscrenup.dat"
-		.ascii  "\x00\x00"
+		.align	4
 aDataMoptoutDat:	/* 0x53c4c */
 		.string "data/moptout.dat"
-		.ascii  "\x00\x00\x00"
+		.align	4
 aDataMmapoutDat:	/* 0x53c60 */
 		.string "data/mmapout.dat"
-		.ascii  "\x00\x00\x00"
+		.align	4
 aDataMgamewinDa:	/* 0x53c74 */
 		.string "data/mgamewin.dat"
-		.ascii  "\x00\x00"
+		.align	4
 aDataMendwinDat:	/* 0x53c88 */
 		.string "data/mendwin.dat"
 		.ascii  "\x00\x00\x00"
@@ -82649,6 +82640,7 @@ level_palettes:	/* 0x54170 */
 		.ascii  "\x03\x04\x05\x01\x02\x03\x04\x05"
 		.ascii  "\x01\x02\x03\x04\x05\x01\x02\x03"
 		.ascii  "\x04\x05\x00\x00"
+
 GLOBAL (gui_strings)	/* 0x541a4 */
 		.long   aAlgeria
 		.long   aAlgerie
@@ -84945,6 +84937,7 @@ text_cyborg_names:	/* 0x5b844 */
 		.long   aWellesley
 		.long   aWild
 		.long   aWillis
+
 sound_array:	/* 0x5b958 */
 		.ascii  "\xff\xff\x00\x00"
 data_5b95c:
