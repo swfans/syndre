@@ -70,8 +70,8 @@ check_source()
     return 1
   fi
 
-  if [ -d "$SOURCE/game" ]; then
-    SOURCE="$SOURCE/game"
+  if [ -d "$SOURCE/syndicat" ]; then
+    SOURCE="$SOURCE/syndicat"
     return 0
   fi
 
@@ -254,30 +254,28 @@ copy_data()
 
   install_dir "sound" || return 1
 
+  # these folders, the game will create automatically when needed
+  #install_dir "save" || return 1
+  #install_dir "screenshots" || return 1
+
   return 0
 }
 
 extract_packages()
 {
   unzip -o "${GFX_PACKAGE}.zip" -d "${TARGET}" || return 1
-  find "$TARGET/syndre/data" -mindepth 1 -maxdepth 1 -type f -iname '*.*' \
+  find "$TARGET/syndicatfx/data" -mindepth 1 -maxdepth 1 -type f -iname '*.*' \
     | while read file; do
         mv -vn "$file" -t "${TARGET}/data" || return 1
       done
-  for dirn in $(echo ${LANGS}); do
-    find "$TARGET/syndre/language/${dirn}" -mindepth 1 -maxdepth 1 -type f -iname '*.*' \
-      | while read file; do
-          mv -vn "$file" -t "${TARGET}/language/${dirn}" || return 1
-        done
-  done
-  rm -rf "${TARGET}/syndre" || return 1
+  rm -rf "${TARGET}/syndicatfx" || return 1
 
   unzip -o "${SFX_PACKAGE}.zip" -d "${TARGET}" || return 1
-  find "$TARGET/syndre/sound" -mindepth 1 -maxdepth 1 -type f -iname '*.dat' \
+  find "$TARGET/syndicatfx/sound" -mindepth 1 -maxdepth 1 -type f -iname '*.*' \
     | while read file; do
         mv -vn "$file" -t "${TARGET}/sound" || return 1
       done
-  rm -rf "${TARGET}/syndre" || return 1
+  rm -rf "${TARGET}/syndicatfx" || return 1
 
   return 0
 }
