@@ -1,5 +1,5 @@
 /******************************************************************************/
-// SyndicateRE, source port of the classic game from Bullfrog.
+// SyndicatFX, source port of the classic game from Bullfrog.
 /******************************************************************************/
 /** @file osunix.c
  *     Implementation of few functions which is specific to UNIX systems.
@@ -45,7 +45,7 @@ bool sys_get_user_path(char *buffer, size_t size)
     if (xdg_config_home != NULL)
     {
         snprintf(buffer, size,
-          "%s" FS_SEP_STR "syndre", xdg_config_home);
+          "%s" FS_SEP_STR "syndicatfx", xdg_config_home);
         return true;
     }
 
@@ -58,10 +58,10 @@ bool sys_get_user_path(char *buffer, size_t size)
 
 #ifndef __APPLE__
     snprintf(buffer, size,
-      "%s" FS_SEP_STR ".config" FS_SEP_STR "syndre", home);
+      "%s" FS_SEP_STR ".config" FS_SEP_STR "syndicatfx", home);
 #else
     snprintf(buffer, size,
-      "%s/Library/Preferences/SyndicateRE", home);
+      "%s/Library/Preferences/SyndicatFX", home);
 #endif
 
     return true;

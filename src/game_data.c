@@ -1,5 +1,5 @@
 /******************************************************************************/
-// SyndicateRE, source port of the classic game from Bullfrog.
+// SyndicatFX, source port of the classic game from Bullfrog.
 /******************************************************************************/
 /** @file game_data.c
  *     Memory managing routines.
@@ -90,7 +90,7 @@ static void replace_backslash_with_fs_separator(char *path)
     }
 }
 
-void SyndREFileNameTransform(char *out_fname, const char *inp_fname)
+void SyndFXFileNameTransform(char *out_fname, const char *inp_fname)
 {
     char fs_fname[DISKPATH_SIZE];
     const char *base_dir;
@@ -110,7 +110,7 @@ void SyndREFileNameTransform(char *out_fname, const char *inp_fname)
 
 void setup_file_names(void)
 {
-    lbFileNameTransform = SyndREFileNameTransform;
+    lbFileNameTransform = SyndFXFileNameTransform;
     // This fills the path variable; for user, it also creates the folder
     GetDirectoryHdd();
     GetDirectoryUser();

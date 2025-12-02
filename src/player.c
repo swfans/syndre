@@ -1,5 +1,5 @@
 /******************************************************************************/
-// SyndicateRE, source port of the classic game from Bullfrog.
+// SyndicatFX, source port of the classic game from Bullfrog.
 /******************************************************************************/
 /** @file player.c
  *     Player state and information handling.

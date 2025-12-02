@@ -1,5 +1,5 @@
 /******************************************************************************/
-// SyndicateRE, source port of the classic game from Bullfrog.
+// SyndicatFX, source port of the classic game from Bullfrog.
 /******************************************************************************/
 /** @file oswindows.h
  *     Implementation of few functions which is specific to Windows OS.
@@ -28,7 +28,7 @@
 
 #include "oswindws.h"
 
-#define REGISTRY_KEY "Software\\SyndicateRE\\CurrentVersion"
+#define REGISTRY_KEY "Software\\SyndicatFX\\CurrentVersion"
 #define REGISTRY_VALUE "InstallPath"
 
 #ifndef HAVE_GETTIMEOFDAY
@@ -131,7 +131,7 @@ bool sys_get_user_path (char *buffer, size_t size)
     if (app_data == NULL)
         return false;
 
-    snprintf (buffer, size, "%s\\SyndicateRE", app_data);
+    snprintf (buffer, size, "%s\\SyndicatFX", app_data);
     return true;
 }
 

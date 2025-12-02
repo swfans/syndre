@@ -1,5 +1,5 @@
 /******************************************************************************/
-// SyndicateRE, source port of the classic game from Bullfrog.
+// SyndicatFX, source port of the classic game from Bullfrog.
 /******************************************************************************/
 /** @file player.h
  *     Header file for player.c.

@@ -1,5 +1,5 @@
 /******************************************************************************/
-// SyndicateRE, source port of the classic game from Bullfrog.
+// SyndicatFX, source port of the classic game from Bullfrog.
 /******************************************************************************/
 /** @file display.c
  *     Display and graphics mode related function.
@@ -60,7 +60,7 @@ const char * AppResourceMapping(short index)
     switch (index)
     {
     case 1:
-        return "syndre_icon64.png";
+        return "syndicatfx_icon64.png";
     default:
         return NULL;
     }

@@ -8,10 +8,10 @@ m4_define([ver_release], [4])
 # Set build number to commit count only if ".git" folder is present
 m4_define([ver_build], m4_if(m4_esyscmd_s([ls -1 -d ".git" 2>&1]),.git,[m4_esyscmd_s([git rev-list --count HEAD])],[0]))
 
-m4_define([syndre_version],
+m4_define([syndicatfx_version],
       [ver_major.ver_minor.ver_release.ver_build])
 
-AC_INIT([SyndicateRE], [syndre_version], [mefistotelis@gmail.com], [syndre])
+AC_INIT([SyndicatFX], [syndicatfx_version], [mefistotelis@gmail.com], [syndicatfx])
 
 AC_CONFIG_SUBDIRS([bflibrary bfsoundlib])
 
@@ -46,13 +46,13 @@ AC_ARG_WITH([wildmidi],
 AC_ARG_WITH([data-path],
 	    AS_HELP_STRING(
 	      [--with-data-path],
-	      [path to game data @<:@DATAROOTDIR/syndre@:>@]),
+	      [path to game data @<:@DATAROOTDIR/syndicatfx@:>@]),
 	    [data_path=$withval], [data_path=])
 AS_IF([test "$data_path" = "yes"], [
   AC_MSG_ERROR([The data path must be explicitly specified])
 ])
 AS_IF([test -z "$data_path"], [
-  eval data_path="$datadir/syndre"
+  eval data_path="$datadir/syndicatfx"
   eval data_path="$data_path"
 ])
 
@@ -91,7 +91,7 @@ AC_COMPILE_IFELSE([AC_LANG_SOURCE([
   AC_MSG_RESULT([yes])
 ], [
   AC_MSG_RESULT([no])
-  AC_MSG_FAILURE([this SyndicateRE will only run on i386 processors])
+  AC_MSG_FAILURE([this SyndicatFX will only run on i386 processors])
 ])
 
 AC_MSG_CHECKING([if C symbols need an underscore])

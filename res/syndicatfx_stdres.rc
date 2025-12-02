@@ -1,8 +1,8 @@
 /******************************************************************************/
-// Free implementation of Bullfrog's Syndicate classic game.
+// SyndicatFX, source port of the classic game from Bullfrog.
 /******************************************************************************/
-/** @file syndre_stdres.rc
- *     Standard Windows resoures used by SyndicateRE application.
+/** @file syndicatfx_stdres.rc
+ *     Standard Windows resoures used by SyndicatFX application.
  * @par Purpose:
  *     Defines icons and executable information data (VersionInfo)
  *     used by Ms Windows as description of the application.
@@ -19,9 +19,9 @@
 /******************************************************************************/
 
 #include <windows.h> // include for version info constants
-#include "syndre_ver.h" // define values for version info
+#include "syndicatfx_ver.h" // define values for version info
 
-A ICON MOVEABLE PURE LOADONCALL DISCARDABLE "syndre_icon.ico"
+A ICON MOVEABLE PURE LOADONCALL DISCARDABLE "syndicatfx_icon.ico"
 
 // Create version info block, using defines from the header file
 1 VERSIONINFO

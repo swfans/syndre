@@ -7,7 +7,7 @@ Usage: $0 [OPTIONS] -f SOURCE -t TARGET
 
 Available options:
   -f PATH  copy data from PATH (e.g. /media/cdrom)
-  -t PATH  copy data to PATH (e.g. /usr/local/share/syndre)
+  -t PATH  copy data to PATH (e.g. /usr/local/share/syndicatfx)
 
   -M       do not copy music
   -l LANG  choose language LANG
@@ -319,7 +319,7 @@ create_run_script()
 {
   cat<<EOF >"$TARGET/run.sh"
 #!/bin/sh
-./syndre -c ${LANG_NUM}
+./syndicatfx -c ${LANG_NUM}
 EOF
   [ $? -eq 0 ] || return 1
   return 0

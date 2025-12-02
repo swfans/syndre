@@ -12,9 +12,9 @@ res_DATA =
 resdir = $(prefix)/$(PACKAGE)
 
 if TARGET_WINDOWS
-res_DATA += res/syndre_icon.ico
+res_DATA += res/syndicatfx_icon.ico
 else
-res_DATA += res/syndre_icon16.png res/syndre_icon32.png res/syndre_icon64.png
+res_DATA += res/syndicatfx_icon16.png res/syndicatfx_icon32.png res/syndicatfx_icon64.png
 endif
 
 instscript_DATA = util/install

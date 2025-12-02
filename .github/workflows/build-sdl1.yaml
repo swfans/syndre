@@ -89,8 +89,8 @@ jobs:
           # Get version marking from C header
           PKG_VERSION=$(sed -n 's/^#define[ ]\+PACKAGE_VERSION "\([^"]\+\)"$/\1/p' src/config.h | head -n 1 | tr '.' '_')
           make V=1 DESTDIR=$PWD/pkg install
-          echo "PKG_NAME=syndre-$PKG_VERSION-ubuntu-sdl1-patch" >> $GITHUB_ENV
-          echo "TST_NAME=syndre-$PKG_VERSION-ubuntu-sdl1-tests" >> $GITHUB_ENV
+          echo "PKG_NAME=syndicatfx-$PKG_VERSION-ubuntu-sdl1-patch" >> $GITHUB_ENV
+          echo "TST_NAME=syndicatfx-$PKG_VERSION-ubuntu-sdl1-tests" >> $GITHUB_ENV
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
@@ -186,8 +186,8 @@ jobs:
           # Get version marking from C header
           PKG_VERSION=$(sed -n 's/^#define[ ]\+PACKAGE_VERSION "\([^"]\+\)"$/\1/p' src/config.h | head -n 1 | tr '.' '_')
           make V=1 DESTDIR=$PWD/pkg install
-          echo "PKG_NAME=syndre-$PKG_VERSION-win32-sdl1-patch" >> $GITHUB_ENV
-          echo "TST_NAME=syndre-$PKG_VERSION-win32-sdl1-tests" >> $GITHUB_ENV
+          echo "PKG_NAME=syndicatfx-$PKG_VERSION-win32-sdl1-patch" >> $GITHUB_ENV
+          echo "TST_NAME=syndicatfx-$PKG_VERSION-win32-sdl1-tests" >> $GITHUB_ENV
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4

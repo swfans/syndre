@@ -1,5 +1,5 @@
 /******************************************************************************/
-// SyndicateRE, source port of the classic game from Bullfrog.
+// SyndicatFX, source port of the classic game from Bullfrog.
 /******************************************************************************/
 /** @file applog.h
  *     Application debug logging macros.
@@ -27,14 +27,14 @@ extern "C" {
 /******************************************************************************/
 
 /** Macro for logging messages of error severity within this module. */
-#define LOGERR(format,args...) LbErrorLog("SyndRE: %s: " format "\n", __func__ , ## args)
+#define LOGERR(format,args...) LbErrorLog("SyndFX: %s: " format "\n", __func__ , ## args)
 
 /** Macro for logging messages of warning severity within this module. */
-#define LOGWARN(format,args...) LbWarnLog("SyndRE: %s: " format "\n", __func__ , ## args)
+#define LOGWARN(format,args...) LbWarnLog("SyndFX: %s: " format "\n", __func__ , ## args)
 
 #ifdef DEBUG
-#define LOGSYNC(format,args...) LbSyncLog("SyndRE: %s: " format "\n", __func__ , ## args)
-#define LOGDBG(format,args...) LbDbgLog("SyndRE: %s: " format "\n", __func__ , ## args)
+#define LOGSYNC(format,args...) LbSyncLog("SyndFX: %s: " format "\n", __func__ , ## args)
+#define LOGDBG(format,args...) LbDbgLog("SyndFX: %s: " format "\n", __func__ , ## args)
 #else
 #define LOGSYNC(format,args...)
 #define LOGDBG(format,args...)
