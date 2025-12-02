@@ -217,6 +217,10 @@ sbyte GetCDVolume(void)
         fvol = ogg_vorbis_stream_get_gain(&sound_music_stream);
         vol = fvol * (127.f / 1.f);
         break;
+    default:
+        vol = 0;
+        SNDLOGFAIL("CDA play", "wrong CDType, cannot get volume");
+        break;
     }
     return vol;
 }
@@ -236,6 +240,9 @@ void SetCDVolume(short vol)
         break;
     case CDTYP_OGG:
         ogg_vorbis_stream_set_gain(&sound_music_stream, vol * (1.f / 127.f));
+        break;
+    default:
+        SNDLOGFAIL("CDA play", "wrong CDType, cannot set volume");
         break;
     }
 }

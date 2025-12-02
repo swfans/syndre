@@ -674,8 +674,15 @@ struct VDI_CALL {
   int16_t AX;
   int16_t BX;
   int16_t CX;
-  int16_t DX;
-  int16_t SI;
+  union {
+    struct {
+      int16_t DX;
+      int16_t SI;
+    };
+    /** Some commands are transferring a pointer over DX:DI.
+     * This definition makes it possible regardless of architecture. */
+    uintptr_t pDXSI;
+  };
   int16_t DI;
 };
 

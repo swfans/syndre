@@ -269,6 +269,7 @@ int32_t SS_configure_buffers(DIG_DRIVER *digdrv)
         pref[3] = DIG_F_MONO_16;
         break;
 
+    default:
     case DIG_F_STEREO_16:
         pref[0] = DIG_F_STEREO_16;
         pref[1] = DIG_F_STEREO_8;
@@ -366,6 +367,7 @@ int32_t SS_configure_buffers(DIG_DRIVER *digdrv)
     // Round half-buffer size to nearest binary power between 8 and
     // DIG_DMA_RESERVE / 2; ensure result within driver limits
     delta = LONG_MAX;
+    match = bsmax;
 
     for (n = 8; n <= (AIL_preference[DIG_DMA_RESERVE] / 2); n <<= 1)
     {

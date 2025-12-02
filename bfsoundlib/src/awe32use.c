@@ -72,7 +72,7 @@ int AWEDefMemMap(MDI_DRIVER *mdidrv, short part_cnt, long *memMap, uint16_t memM
     regs.SI = 0;
 #else
     assert(sizeof(VDI_CALL) - offsetof(VDI_CALL, DX) >= sizeof(SF_DATA *));
-    *(SF_DATA **)(&regs.DX) = awe_data;
+    *(SF_DATA **)(&regs.pDXSI) = awe_data;
 #endif
     AIL_call_driver(mdidrv->drvr, MDI_VSE, &regs, &regs);
     return regs.AX;
@@ -102,7 +102,7 @@ SF_INFO *AWEGetSFInfo(MDI_DRIVER *mdidrv, short bank_no, uint8_t *hdr_data, uint
     regs.SI = 0;
 #else
     assert(sizeof(VDI_CALL) - offsetof(VDI_CALL, DX) >= sizeof(SF_DATA *));
-    *(SF_DATA **)(&regs.DX) = awe_data;
+    *(SF_DATA **)(&regs.pDXSI) = awe_data;
 #endif
     AIL_call_driver(mdidrv->drvr, MDI_VSE, &regs, &regs);
 
@@ -111,7 +111,7 @@ SF_INFO *AWEGetSFInfo(MDI_DRIVER *mdidrv, short bank_no, uint8_t *hdr_data, uint
 #if defined(DOS)||defined(GO32)
         ret = MK_FP(CreateSelector(regs.DX), regs.SI);
 #else
-        ret = *(SF_INFO **)(&regs.DX);
+        ret = *(SF_INFO **)(&regs.pDXSI);
 #endif
         return ret;
     }
@@ -142,7 +142,7 @@ int AWEStreamSample(MDI_DRIVER *mdidrv, short bank_no, uint8_t *smpl_data, uint1
     regs.SI = 0;
 #else
     assert(sizeof(VDI_CALL) - offsetof(VDI_CALL, DX) >= sizeof(SF_DATA *));
-    *(SF_DATA **)(&regs.DX) = awe_data;
+    *(SF_DATA **)(&regs.pDXSI) = awe_data;
 #endif
 
     AIL_call_driver(mdidrv->drvr, MDI_VSE, &regs, &regs);
@@ -173,7 +173,7 @@ int AWELoadPreset(MDI_DRIVER *mdidrv, short bank_no, uint8_t *preset_data, uint1
     regs.SI = 0;
 #else
     assert(sizeof(VDI_CALL) - offsetof(VDI_CALL, DX) >= sizeof(SF_DATA *));
-    *(SF_DATA **)(&regs.DX) = awe_data;
+    *(SF_DATA **)(&regs.pDXSI) = awe_data;
 #endif
     AIL_call_driver(mdidrv->drvr, MDI_VSE, &regs, &regs);
     return regs.AX;
