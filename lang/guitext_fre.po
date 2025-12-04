@@ -1,7 +1,7 @@
 # *****************************************************************************
 #  Syndicate Fan Expansion, source port of the classic game from Bullfrog.
 # *****************************************************************************
-#   @file guitext_eng.pot
+#   @file guitext_fre.po
 #      GUI text for SyndicatFX translation template file
 #  @par Purpose:
 #      Contains translation of the national text in the game.
@@ -24,7 +24,7 @@ msgstr ""
 "PO-Revision-Date: 2025-09-01 12:00+0100\n"
 "Last-Translator: Mefistotelis <mefistotelis@gmail.com>\n"
 "Language-Team: Syndicate Wars Fans <github.com/swfans>\n"
-"Language: en_GB\n"
+"Language: fr_FR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -35,1709 +35,1732 @@ msgstr ""
 #: guitext:1
 msgctxt "Uncommented"
 msgid "Algeria"
-msgstr ""
+msgstr "Algerie"
 
 #. Unrecognized string.
 #: guitext:2
 msgctxt "Uncommented"
 msgid "Lybia"
-msgstr ""
+msgstr "Lybie"
 
 #. Unrecognized string.
 #: guitext:3
 msgctxt "Uncommented"
 msgid "Mauritania"
-msgstr ""
+msgstr "Mauritanie"
 
 #. Unrecognized string.
 #: guitext:4
 msgctxt "Uncommented"
 msgid "Nigeria"
-msgstr ""
+msgstr "Nigeria"
 
 #. Unrecognized string.
 #: guitext:5
 msgctxt "Uncommented"
 msgid "Iraq"
-msgstr ""
+msgstr "Iraq"
 
 #. Unrecognized string.
 #: guitext:6
 msgctxt "Uncommented"
 msgid "Iraq"
-msgstr ""
+msgstr "Arabie"
 
 #. Unrecognized string.
 #: guitext:7
 msgctxt "Uncommented"
 msgid "Arabia"
-msgstr ""
+msgstr "Arabie"
 
 #. Unrecognized string.
 #: guitext:8
 msgctxt "Uncommented"
 msgid "Sudan"
-msgstr ""
+msgstr "Soudan"
 
 #. Unrecognized string.
 #: guitext:9
 msgctxt "Uncommented"
 msgid "Zaire"
-msgstr ""
+msgstr "Zaire"
 
 #. Unrecognized string.
 #: guitext:10
 msgctxt "Uncommented"
 msgid "Kenya"
-msgstr ""
+msgstr "Kenya"
 
 #. Unrecognized string.
 #: guitext:11
 msgctxt "Uncommented"
 msgid "Mozambique"
-msgstr ""
+msgstr "Mozambique"
 
 #. Unrecognized string.
 #: guitext:12
 msgctxt "Uncommented"
 msgid "South Africa"
-msgstr ""
+msgstr "Afrique Du Sud"
 
 #. Unrecognized string.
 #: guitext:13
 msgctxt "Uncommented"
 msgid "South Africa"
-msgstr ""
+msgstr "Europe De l'Ouest"
 
 #. Unrecognized string.
 #: guitext:14
 msgctxt "Uncommented"
 msgid "Western Europe"
-msgstr ""
+msgstr "Europe De l'Ouest"
 
 #. Unrecognized string.
 #: guitext:15
 msgctxt "Uncommented"
 msgid "Scandinavia"
-msgstr ""
+msgstr "Scandinavie"
 
 #. Unrecognized string.
 #: guitext:16
 msgctxt "Uncommented"
 msgid "Central Europe"
-msgstr ""
+msgstr "Europe Centrale"
 
 #. Unrecognized string.
 #: guitext:17
 msgctxt "Uncommented"
 msgid "Eastern Europe"
-msgstr ""
+msgstr "Europe De l'Est"
 
 #. Unrecognized string.
 #: guitext:18
 msgctxt "Uncommented"
 msgid "Iran"
-msgstr ""
+msgstr "Iran"
 
 #. Unrecognized string.
 #: guitext:19
 msgctxt "Uncommented"
 msgid "India"
-msgstr ""
+msgstr "Inde"
 
 #. Unrecognized string.
 #: guitext:20
 msgctxt "Uncommented"
 msgid "India"
-msgstr ""
+msgstr "Ceinture Du Pacifique"
 
 #. Unrecognized string.
 #: guitext:21
 msgctxt "Uncommented"
 msgid "Pacific Rim"
-msgstr ""
+msgstr "Ceinture Du Pacifique"
 
 #. Unrecognized string.
 #: guitext:22
 msgctxt "Uncommented"
 msgid "Indonesia"
-msgstr ""
+msgstr "Indonesie"
 
 #. Unrecognized string.
 #: guitext:23
 msgctxt "Uncommented"
 msgid "China"
-msgstr ""
+msgstr "Chine"
 
 #. Unrecognized string.
 #: guitext:24
 msgctxt "Uncommented"
 msgid "Far East"
-msgstr ""
+msgstr "Extreme-Orient"
 
 #. Unrecognized string.
 #: guitext:25
 msgctxt "Uncommented"
 msgid "Kazakhstan"
-msgstr ""
+msgstr "Kazakhstan"
 
 #. Unrecognized string.
 #: guitext:26
 msgctxt "Uncommented"
 msgid "Siberia"
-msgstr ""
+msgstr "Siberie"
 
 #. Unrecognized string.
 #: guitext:27
 msgctxt "Uncommented"
 msgid "Siberia"
-msgstr ""
+msgstr "Oural"
 
 #. Unrecognized string.
 #: guitext:28
 msgctxt "Uncommented"
 msgid "Urals"
-msgstr ""
+msgstr "Oural"
 
 #. Unrecognized string.
 #: guitext:29
 msgctxt "Uncommented"
 msgid "Mongolia"
-msgstr ""
+msgstr "Mongolie"
 
 #. Unrecognized string.
 #: guitext:30
 msgctxt "Uncommented"
 msgid "Greenland"
-msgstr ""
+msgstr "Groenland"
 
 #. Unrecognized string.
 #: guitext:31
 msgctxt "Uncommented"
 msgid "Northeast Territories"
-msgstr ""
+msgstr "Territoires Du Nord-Est"
 
 #. Unrecognized string.
 #: guitext:32
 msgctxt "Uncommented"
 msgid "Yukon"
-msgstr ""
+msgstr "Yukon"
 
 #. Unrecognized string.
 #: guitext:33
 msgctxt "Uncommented"
 msgid "Alaska"
-msgstr ""
+msgstr "Alaska"
 
 #. Unrecognized string.
 #: guitext:34
 msgctxt "Uncommented"
 msgid "Alaska"
-msgstr ""
+msgstr "Territoires Du Nord-Ouest"
 
 #. Unrecognized string.
 #: guitext:35
 msgctxt "Uncommented"
 msgid "Northwest Territories"
-msgstr ""
+msgstr "Territoires Du Nord-Ouest"
 
 #. Unrecognized string.
 #: guitext:36
 msgctxt "Uncommented"
 msgid "Newfoundland"
-msgstr ""
+msgstr "Terre-Neuve"
 
 #. Unrecognized string.
 #: guitext:37
 msgctxt "Uncommented"
 msgid "Kamchatka"
-msgstr ""
+msgstr "Kamchatka"
 
 #. Unrecognized string.
 #: guitext:38
 msgctxt "Uncommented"
 msgid "Western Australia"
-msgstr ""
+msgstr "Australie Occidentale"
 
 #. Unrecognized string.
 #: guitext:39
 msgctxt "Uncommented"
 msgid "Northern Territories"
-msgstr ""
+msgstr "Territoire Du Nord"
 
 #. Unrecognized string.
 #: guitext:40
 msgctxt "Uncommented"
 msgid "New South Wales"
-msgstr ""
+msgstr "Nouvelles Galles Du Sud"
 
 #. Unrecognized string.
 #: guitext:41
 msgctxt "Uncommented"
 msgid "New South Wales"
-msgstr ""
+msgstr "Colombie"
 
 #. Unrecognized string.
 #: guitext:42
 msgctxt "Uncommented"
 msgid "Colombia"
-msgstr ""
+msgstr "Colombie"
 
 #. Unrecognized string.
 #: guitext:43
 msgctxt "Uncommented"
 msgid "Peru"
-msgstr ""
+msgstr "Perou"
 
 #. Unrecognized string.
 #: guitext:44
 msgctxt "Uncommented"
 msgid "Argentina"
-msgstr ""
+msgstr "Argentine"
 
 #. Unrecognized string.
 #: guitext:45
 msgctxt "Uncommented"
 msgid "Uruguay"
-msgstr ""
+msgstr "Uruguay"
 
 #. Unrecognized string.
 #: guitext:46
 msgctxt "Uncommented"
 msgid "Paraguay"
-msgstr ""
+msgstr "Paraguay"
 
 #. Unrecognized string.
 #: guitext:47
 msgctxt "Uncommented"
 msgid "Brazil"
-msgstr ""
+msgstr "Bresil"
 
 #. Unrecognized string.
 #: guitext:48
 msgctxt "Uncommented"
 msgid "Brazil"
-msgstr ""
+msgstr "Venezuela"
 
 #. Unrecognized string.
 #: guitext:49
 msgctxt "Uncommented"
 msgid "Venezuala"
-msgstr ""
+msgstr "Venezuela"
 
 #. Unrecognized string.
 #: guitext:50
 msgctxt "Uncommented"
 msgid "Mexico"
-msgstr ""
+msgstr "Mexique"
 
 #. Unrecognized string.
 #: guitext:51
 msgctxt "Uncommented"
 msgid "Southern States"
-msgstr ""
+msgstr "Etats Du Sud"
 
 #. Unrecognized string.
 #: guitext:52
 msgctxt "Uncommented"
 msgid "California"
-msgstr ""
+msgstr "Californie"
 
 #. Unrecognized string.
 #: guitext:53
 msgctxt "Uncommented"
 msgid "Colorado"
-msgstr ""
+msgstr "Colorado"
 
 #. Unrecognized string.
 #: guitext:54
 msgctxt "Uncommented"
 msgid "New England"
-msgstr ""
+msgstr "Nouvelle Angleterre"
 
 #. Unrecognized string.
 #: guitext:55
 msgctxt "Uncommented"
 msgid "New England"
-msgstr ""
+msgstr "Midwest"
 
 #. Unrecognized string.
 #: guitext:56
 msgctxt "Uncommented"
 msgid "Mid West"
-msgstr ""
+msgstr "Midwest"
 
 #. Unrecognized string.
 #: guitext:57
 msgctxt "Uncommented"
 msgid "Rockies"
-msgstr ""
+msgstr "Montagnes Rocheuses"
 
 #. Unrecognized string.
 #: guitext:58
 msgctxt "Uncommented"
 msgid "Atlantic Accelerator"
-msgstr ""
+msgstr "Accelerateur De l'Atlantique"
 
 #. Unrecognized string.
 #: guitext:59
 msgctxt "Uncommented"
 msgid "Cryo Chamber"
-msgstr ""
+msgstr "Le Chambre Cryo"
 
 #. Unrecognized string.
 #: guitext:60
 msgctxt "Uncommented"
 msgid "Take Weapon"
-msgstr ""
+msgstr "Prendre Arme"
 
 #. Unrecognized string.
 #: guitext:61
 msgctxt "Uncommented"
 msgid "Destroy Car"
-msgstr ""
+msgstr "Detruire Voiture"
 
 #. Unrecognized string.
 #: guitext:62
 msgctxt "Uncommented"
 msgid "Destroy Car"
-msgstr ""
+msgstr "Utiliser Vehicule"
 
 #. Unrecognized string.
 #: guitext:63
 msgctxt "Uncommented"
 msgid "Use Vehicle"
-msgstr ""
+msgstr "Utiliser Vehicule"
 
 #. Unrecognized string.
 #: guitext:64
 msgctxt "Uncommented"
 msgid "Evacuate"
-msgstr ""
+msgstr "Evacuer"
 
 #. Unrecognized string.
 #: guitext:65
 msgctxt "Uncommented"
 msgid "Persuade"
-msgstr ""
+msgstr "Persuader"
 
 #. Unrecognized string.
 #: guitext:66
 msgctxt "Uncommented"
 msgid "Protect"
-msgstr ""
+msgstr "Proteger"
 
 #. Unrecognized string.
 #: guitext:67
 msgctxt "Uncommented"
 msgid "Assassinate"
-msgstr ""
+msgstr "Assassiner"
 
 #. Unrecognized string.
 #: guitext:68
 msgctxt "Uncommented"
 msgid "Eliminate Agents"
-msgstr ""
+msgstr "Eliminer Agents"
 
 #. Unrecognized string.
 #: guitext:69
 msgctxt "Uncommented"
 msgid "Eliminate Agents"
-msgstr ""
+msgstr "Mission Terminee"
 
 #. Unrecognized string.
 #: guitext:70
 msgctxt "Uncommented"
 msgid "Mission Complete"
-msgstr ""
+msgstr "Mission Terminee"
 
 #. Unrecognized string.
 #: guitext:71
 msgctxt "Uncommented"
 msgid "Press Space"
-msgstr ""
+msgstr "Appui B.Espace"
 
 #. Unrecognized string.
 #: guitext:72
 msgctxt "Uncommented"
 msgid "Mission Failed"
-msgstr ""
+msgstr "Mission Echouee"
 
 #. Unrecognized string.
 #: guitext:73
 msgctxt "Uncommented"
 msgid "Going"
-msgstr ""
+msgstr "En Route"
 
 #. Unrecognized string.
 #: guitext:74
 msgctxt "Uncommented"
 msgid "Pickup Weapon"
-msgstr ""
+msgstr "Prendre Arme"
 
 #. Unrecognized string.
 #: guitext:75
 msgctxt "Uncommented"
 msgid "Follow"
-msgstr ""
+msgstr "Suivre"
 
 #. Unrecognized string.
 #: guitext:76
 msgctxt "Uncommented"
 msgid "Follow"
-msgstr ""
+msgstr "Poser Arme"
 
 #. Unrecognized string.
 #: guitext:77
 msgctxt "Uncommented"
 msgid "Drop Weapon"
-msgstr ""
+msgstr "Poser Arme"
 
 #. Unrecognized string.
 #: guitext:78
 msgctxt "Uncommented"
 msgid "Hit By Bullet"
-msgstr ""
+msgstr "Blesse"
 
 #. Unrecognized string.
 #: guitext:79
 msgctxt "Uncommented"
 msgid "Hit By Car"
-msgstr ""
+msgstr "Accidente"
 
 #. Unrecognized string.
 #: guitext:80
 msgctxt "Uncommented"
 msgid "On Fire"
-msgstr ""
+msgstr "En Feu"
 
 #. Unrecognized string.
 #: guitext:81
 msgctxt "Uncommented"
 msgid "Energy Drain"
-msgstr ""
+msgstr "Perte Energie"
 
 #. Unrecognized string.
 #: guitext:82
 msgctxt "Uncommented"
 msgid "Dead"
-msgstr ""
+msgstr "Mort"
 
 #. Unrecognized string.
 #: guitext:83
 msgctxt "Uncommented"
 msgid "Dead"
-msgstr ""
+msgstr "En Observation"
 
 #. Unrecognized string.
 #: guitext:84
 msgctxt "Uncommented"
 msgid "Observing"
-msgstr ""
+msgstr "En Observation"
 
 #. Unrecognized string.
 #: guitext:85
 msgctxt "Uncommented"
 msgid "Awol"
-msgstr ""
+msgstr "Absence Illeg."
 
 #. Unrecognized string.
 #: guitext:86
 msgctxt "Uncommented"
 msgid "Running Away"
-msgstr ""
+msgstr "En Fuite"
 
 #. Unrecognized string.
 #: guitext:87
 msgctxt "Uncommented"
 msgid "Drowning"
-msgstr ""
+msgstr "Noyade"
 
 #. Unrecognized string.
 #: guitext:88
 msgctxt "Uncommented"
 msgid "Danger Car"
-msgstr ""
+msgstr "Danger!Voiture"
 
 #. Unrecognized string.
 #: guitext:89
 msgctxt "Uncommented"
 msgid "Using Weapon"
-msgstr ""
+msgstr "Utilise Arme"
 
 #. Unrecognized string.
 #: guitext:90
 msgctxt "Uncommented"
 msgid "Using Weapon"
-msgstr ""
+msgstr "Puce Retiree"
 
 #. Unrecognized string.
 #: guitext:91
 msgctxt "Uncommented"
 msgid "Chip Removed"
-msgstr ""
+msgstr "Puce Retiree"
 
 #. Unrecognized string.
 #: guitext:92
 msgctxt "Uncommented"
 msgid "Main Menu"
-msgstr ""
+msgstr "Menu Principal"
 
 #. Unrecognized string.
 #: guitext:93
 msgctxt "Uncommented"
 msgid "Load-Save Game"
-msgstr ""
+msgstr "Ch/Sauv. Partie"
 
 #. Unrecognized string.
 #: guitext:94
 msgctxt "Uncommented"
 msgid "Multi Player"
-msgstr ""
+msgstr "Multi Joueurs"
 
 #. Unrecognized string.
 #: guitext:95
 msgctxt "Uncommented"
 msgid "Mission Brief"
-msgstr ""
+msgstr "Briefing Mission"
 
 #. Unrecognized string.
 #: guitext:96
 msgctxt "Uncommented"
 msgid "Team Selection"
-msgstr ""
+msgstr "Choix De l'Equipe"
 
 #. Unrecognized string.
 #: guitext:97
 msgctxt "Uncommented"
 msgid "Team Selection"
-msgstr ""
+msgstr "Recherche"
 
 #. Unrecognized string.
 #: guitext:98
 msgctxt "Uncommented"
 msgid "Research"
-msgstr ""
+msgstr "Recherche"
 
 #. Unrecognized string.
 #: guitext:99
 msgctxt "Uncommented"
 msgid "Mission Debriefing"
-msgstr ""
+msgstr "Debriefing Mission"
 
 #. Unrecognized string.
 #: guitext:100
 msgctxt "Uncommented"
 msgid "Accept"
-msgstr ""
+msgstr "Accepter"
 
 #. Unrecognized string.
 #: guitext:101
 msgctxt "Uncommented"
 msgid "Menu"
-msgstr ""
+msgstr "Menu"
 
 #. Unrecognized string.
 #: guitext:102
 msgctxt "Uncommented"
 msgid "Ok"
-msgstr ""
+msgstr "Ok"
 
 #. Unrecognized string.
 #: guitext:103
 msgctxt "Uncommented"
 msgid "Cancel"
-msgstr ""
+msgstr "Annuler"
 
 #. Unrecognized string.
 #: guitext:104
 msgctxt "Uncommented"
 msgid "Cancel"
-msgstr ""
+msgstr "Briefing"
 
 #. Unrecognized string.
 #: guitext:105
 msgctxt "Uncommented"
 msgid "Brief"
-msgstr ""
+msgstr "Briefing"
 
 #. Unrecognized string.
 #: guitext:106
 msgctxt "Uncommented"
 msgid "Team"
-msgstr ""
+msgstr "Equipe"
 
 #. Unrecognized string.
 #: guitext:107
 msgctxt "Uncommented"
 msgid "Mods"
-msgstr ""
+msgstr "Modifs"
 
 #. Unrecognized string.
 #: guitext:108
 msgctxt "Uncommented"
 msgid "Equip"
-msgstr ""
+msgstr "Equiper"
 
 #. Unrecognized string.
 #: guitext:109
 msgctxt "Uncommented"
 msgid "Sell"
-msgstr ""
+msgstr "Vendre"
 
 #. Unrecognized string.
 #: guitext:110
 msgctxt "Uncommented"
 msgid "Purchase"
-msgstr ""
+msgstr "Acheter"
 
 #. Unrecognized string.
 #: guitext:111
 msgctxt "Uncommented"
 msgid "Purchase"
-msgstr ""
+msgstr "Recharg."
 
 #. Unrecognized string.
 #: guitext:112
 msgctxt "Uncommented"
 msgid "Reload"
-msgstr ""
+msgstr "Recharg."
 
 #. Unrecognized string.
 #: guitext:113
 msgctxt "Uncommented"
 msgid "Funding+"
-msgstr ""
+msgstr "Budget +"
 
 #. Unrecognized string.
 #: guitext:114
 msgctxt "Uncommented"
 msgid "Funding-"
-msgstr ""
+msgstr "Budget -"
 
 #. Unrecognized string.
 #: guitext:115
 msgctxt "Uncommented"
 msgid "Info"
-msgstr ""
+msgstr "Info"
 
 #. Unrecognized string.
 #: guitext:116
 msgctxt "Uncommented"
 msgid "Enhance"
-msgstr ""
+msgstr "Details"
 
 #. Unrecognized string.
 #: guitext:117
 msgctxt "Uncommented"
 msgid "Load"
-msgstr ""
+msgstr "Charg."
 
 #. Unrecognized string.
 #: guitext:118
 msgctxt "Uncommented"
 msgid "Load"
-msgstr ""
+msgstr "Sauver"
 
 #. Unrecognized string.
 #: guitext:119
 msgctxt "Uncommented"
 msgid "Save"
-msgstr ""
+msgstr "Sauver"
 
 #. Unrecognized string.
 #: guitext:120
 msgctxt "Uncommented"
 msgid "Map"
-msgstr ""
+msgstr "Carte"
 
 #. Unrecognized string.
 #: guitext:121
 msgctxt "Uncommented"
 msgid "Replay"
-msgstr ""
+msgstr "Rejouer"
 
 #. Unrecognized string.
 #: guitext:122
 msgctxt "Uncommented"
 msgid "Name"
-msgstr ""
+msgstr "Nom"
 
 #. Unrecognized string.
 #: guitext:123
 msgctxt "Uncommented"
 msgid "Pop"
-msgstr ""
+msgstr "Pop."
 
 #. Unrecognized string.
 #: guitext:124
 msgctxt "Uncommented"
 msgid "Tax"
-msgstr ""
+msgstr "Taxe"
 
 #. Unrecognized string.
 #: guitext:125
 msgctxt "Uncommented"
 msgid "Tax"
-msgstr ""
+msgstr "Prop"
 
 #. Unrecognized string.
 #: guitext:126
 msgctxt "Uncommented"
 msgid "Own"
-msgstr ""
+msgstr "Prop"
 
 #. Unrecognized string.
 #: guitext:127
 msgctxt "Uncommented"
 msgid "Unknown"
-msgstr ""
+msgstr "Inconnue"
 
 #. Unrecognized string.
 #: guitext:128
 msgctxt "Uncommented"
 msgid "Very Happy"
-msgstr ""
+msgstr "Joyeuse"
 
 #. Unrecognized string.
 #: guitext:129
 msgctxt "Uncommented"
 msgid "Happy"
-msgstr ""
+msgstr "Gaie"
 
 #. Unrecognized string.
 #: guitext:130
 msgctxt "Uncommented"
 msgid "Content"
-msgstr ""
+msgstr "Contente"
 
 #. Unrecognized string.
 #: guitext:131
 msgctxt "Uncommented"
 msgid "Unhappy"
-msgstr ""
+msgstr "Mecontente"
 
 #. Unrecognized string.
 #: guitext:132
 msgctxt "Uncommented"
 msgid "Unhappy"
-msgstr ""
+msgstr "Furieuse"
 
 #. Unrecognized string.
 #: guitext:133
 msgctxt "Uncommented"
 msgid "Discontent"
-msgstr ""
+msgstr "Furieuse"
 
 #. Unrecognized string.
 #: guitext:134
 msgctxt "Uncommented"
 msgid "Rebellious"
-msgstr ""
+msgstr "Rebelle"
 
 #. Unrecognized string.
 #: guitext:135
 msgctxt "Uncommented"
 msgid "Empty"
-msgstr ""
+msgstr "Vide"
 
 #. Unrecognized string.
 #: guitext:136
 msgctxt "Uncommented"
 msgid "Special Agent"
-msgstr ""
+msgstr "Agent Special"
 
 #. Unrecognized string.
 #: guitext:137
 msgctxt "Uncommented"
 msgid "Select Detail To Change"
-msgstr ""
+msgstr "Choix Du Detail A Modifier"
 
 #. Unrecognized string.
 #: guitext:138
 msgctxt "Uncommented"
 msgid "Colour And Logo"
-msgstr ""
+msgstr "Couleur Et Logo"
 
 #. Unrecognized string.
 #: guitext:139
 msgctxt "Uncommented"
 msgid "Colour And Logo"
-msgstr ""
+msgstr "Nom De La Societe"
 
 #. Unrecognized string.
 #: guitext:140
 msgctxt "Uncommented"
 msgid "Company Name"
-msgstr ""
+msgstr "Nom De La Societe"
 
 #. Unrecognized string.
 #: guitext:141
 msgctxt "Uncommented"
 msgid "Your Name"
-msgstr ""
+msgstr "Votre Nom"
 
 #. Unrecognized string.
 #: guitext:142
 msgctxt "Uncommented"
 msgid "Change Colour And Logo"
-msgstr ""
+msgstr "Changer Couleur Et Logo"
 
 #. Unrecognized string.
 #: guitext:143
 msgctxt "Uncommented"
 msgid "Colour"
-msgstr ""
+msgstr "Couleur"
 
 #. Unrecognized string.
 #: guitext:144
 msgctxt "Uncommented"
 msgid "Logo"
-msgstr ""
+msgstr "Logo"
 
 #. Unrecognized string.
 #: guitext:145
 msgctxt "Uncommented"
 msgid "Change Company Name"
-msgstr ""
+msgstr "Modifier Nom Societe"
 
 #. Unrecognized string.
 #: guitext:146
 msgctxt "Uncommented"
 msgid "Change Company Name"
-msgstr ""
+msgstr "Entrez Votre Nom"
 
 #. Unrecognized string.
 #: guitext:147
 msgctxt "Uncommented"
 msgid "Enter Your Name"
-msgstr ""
+msgstr "Entrez Votre Nom"
 
 #. Unrecognized string.
 #: guitext:148
 msgctxt "Uncommented"
 msgid "Cost"
-msgstr ""
+msgstr "Prix"
 
 #. Unrecognized string.
 #: guitext:149
 msgctxt "Uncommented"
 msgid "Ammo"
-msgstr ""
+msgstr "Mun."
 
 #. Unrecognized string.
 #: guitext:150
 msgctxt "Uncommented"
 msgid "Range"
-msgstr ""
+msgstr "Portee"
 
 #. Unrecognized string.
 #: guitext:151
 msgctxt "Uncommented"
 msgid "Shot"
-msgstr ""
+msgstr "Coups"
 
 #. Unrecognized string.
 #: guitext:152
 msgctxt "Uncommented"
 msgid "Automatic"
-msgstr ""
+msgstr "Automatique"
 
 #. Unrecognized string.
 #: guitext:153
 msgctxt "Uncommented"
 msgid "Automatic"
-msgstr ""
+msgstr "Arme Lourde"
 
 #. Unrecognized string.
 #: guitext:154
 msgctxt "Uncommented"
 msgid "Heavy"
-msgstr ""
+msgstr "Arme Lourde"
 
 #. Unrecognized string.
 #: guitext:155
 msgctxt "Uncommented"
 msgid "Assault"
-msgstr ""
+msgstr "Arme D'Assaut"
 
 #. Unrecognized string.
 #: guitext:156
 msgctxt "Uncommented"
 msgid "Miscellaneous"
-msgstr ""
+msgstr "Divers"
 
 #. Unrecognized string.
 #: guitext:157
 msgctxt "Uncommented"
 msgid "Min Funding"
-msgstr ""
+msgstr "Budget Mini"
 
 #. Unrecognized string.
 #: guitext:158
 msgctxt "Uncommented"
 msgid "Max Funding"
-msgstr ""
+msgstr "Budget Maxi"
 
 #. Unrecognized string.
 #: guitext:159
 msgctxt "Uncommented"
 msgid "Researching"
-msgstr ""
+msgstr "Recherche"
 
 #. Unrecognized string.
 #: guitext:160
 msgctxt "Uncommented"
 msgid "Researching"
-msgstr ""
+msgstr "Fin Du Jeu"
 
 #. Unrecognized string.
 #: guitext:161
 msgctxt "Uncommented"
 msgid "Logging Out"
-msgstr ""
+msgstr "Fin Du Jeu"
 
 #. Unrecognized string.
 #: guitext:162
 msgctxt "Uncommented"
 msgid "Loading Multiplayer"
-msgstr ""
+msgstr "Charg.Multijoueurs"
 
 #. Unrecognized string.
 #: guitext:163
 msgctxt "Uncommented"
 msgid "Loading Game"
-msgstr ""
+msgstr "Chargement Partie"
 
 #. Unrecognized string.
 #: guitext:164
 msgctxt "Uncommented"
 msgid "Mission Status:"
-msgstr ""
+msgstr "Statut De La Mission:"
 
 #. Unrecognized string.
 #: guitext:165
 msgctxt "Uncommented"
 msgid "Completed"
-msgstr ""
+msgstr "Terminee"
 
 #. Unrecognized string.
 #: guitext:166
 msgctxt "Uncommented"
 msgid "Withdrew From Mission"
-msgstr ""
+msgstr "Retire De La Mission"
 
 #. Unrecognized string.
 #: guitext:167
 msgctxt "Uncommented"
 msgid "Withdrew From Mission"
-msgstr ""
+msgstr "Echouee"
 
 #. Unrecognized string.
 #: guitext:168
 msgctxt "Uncommented"
 msgid "Failed"
-msgstr ""
+msgstr "Echouee"
 
 #. Unrecognized string.
 #: guitext:169
 msgctxt "Uncommented"
 msgid "Agents Used:"
-msgstr ""
+msgstr "Agents Utilises"
 
 #. Unrecognized string.
 #: guitext:170
 msgctxt "Uncommented"
 msgid "New Agents Gained:"
-msgstr ""
+msgstr "Agents Recuperes"
 
 #. Unrecognized string.
 #: guitext:171
 msgctxt "Uncommented"
 msgid "Time In Mission:"
-msgstr ""
+msgstr "Duree De La Mission"
 
 #. Unrecognized string.
 #: guitext:172
 msgctxt "Uncommented"
 msgid "Hours"
-msgstr ""
+msgstr "Heures"
 
 #. Unrecognized string.
 #: guitext:173
 msgctxt "Uncommented"
 msgid "Days"
-msgstr ""
+msgstr "Jours"
 
 #. Unrecognized string.
 #: guitext:174
 msgctxt "Uncommented"
 msgid "Days"
-msgstr ""
+msgstr "Degats Subis"
 
 #. Unrecognized string.
 #: guitext:175
 msgctxt "Uncommented"
 msgid "Value Of Damage:"
-msgstr ""
+msgstr "Degats Subis"
 
 #. Unrecognized string.
 #: guitext:176
 msgctxt "Uncommented"
 msgid "Enemy Agents Killed:"
-msgstr ""
+msgstr "Agents Ennemis Tues"
 
 #. Unrecognized string.
 #: guitext:177
 msgctxt "Uncommented"
 msgid "Criminals Killed:"
-msgstr ""
+msgstr "Criminels Elimines"
 
 #. Unrecognized string.
 #: guitext:178
 msgctxt "Uncommented"
 msgid "Civilians Killed"
-msgstr ""
+msgstr "Civils Tues"
 
 #. Unrecognized string.
 #: guitext:179
 msgctxt "Uncommented"
 msgid "Police Killed:"
-msgstr ""
+msgstr "Policiers Tues:"
 
 #. Unrecognized string.
 #: guitext:180
 msgctxt "Uncommented"
 msgid "Guards Killed:"
-msgstr ""
+msgstr "Gardes Tues"
 
 #. Unrecognized string.
 #: guitext:181
 msgctxt "Uncommented"
 msgid "Guards Killed:"
-msgstr ""
+msgstr "Personnes Convaincues"
 
 #. Unrecognized string.
 #: guitext:182
 msgctxt "Uncommented"
 msgid "People Persuaded:"
-msgstr ""
+msgstr "Personnes Convaincues"
 
 #. Unrecognized string.
 #: guitext:183
 msgctxt "Uncommented"
 msgid "Hit Accuracy:"
-msgstr ""
+msgstr "Precision De Tir"
 
 #. Unrecognized string.
 #: guitext:184
 msgctxt "Uncommented"
 msgid "No Bullets Fired"
-msgstr ""
+msgstr "Pas De Balles Utilisees"
 
 #. Unrecognized string.
 #: guitext:185
 msgctxt "Uncommented"
 msgid "Research On"
-msgstr ""
+msgstr "Recherche Sur"
 
 #. Unrecognized string.
 #: guitext:186
 msgctxt "Uncommented"
 msgid "New Weaponry Has Been Submitted"
-msgstr ""
+msgstr "Une Nouvelle Arme A Ete Soumise"
 
 #. Unrecognized string.
 #: guitext:187
 msgctxt "Uncommented"
 msgid "To The Research Department"
-msgstr ""
+msgstr "Au Departement De La Recherche"
 
 #. Unrecognized string.
 #: guitext:188
 msgctxt "Uncommented"
 msgid "To The Research Department"
-msgstr ""
+msgstr "Statistiques Mission"
 
 #. Unrecognized string.
 #: guitext:189
 msgctxt "Uncommented"
 msgid "Mission Statistics"
-msgstr ""
+msgstr "Statistiques Mission"
 
 #. Unrecognized string.
 #: guitext:190
 msgctxt "Uncommented"
 msgid "Replacement Metal Legs. Servo Assisted Hydraulics Allow Quicker Movement."
-msgstr ""
+msgstr "Jambes De Remplacement Metalliques. Le Systeme Hydraulique Permet Une Plus Grande Rapidite."
 
 #. Unrecognized string.
 #: guitext:191
 msgctxt "Uncommented"
 msgid "Plasteel Legs. Lighter And Tougher Than Metal Legs. Enhanced Hydraulic System And Balance Control."
-msgstr ""
+msgstr "Jambes En Pla- Steel. Plus Legeres Et Plus Solides. Systeme Hydraulique Et Controle De l'Equilibre."
 
 #. Unrecognized string.
 #: guitext:192
 msgctxt "Uncommented"
 msgid "Cybermesh Legs. Plasteel Core With Synthetic Muscle Fibre. Superb Response And Balance Coupled With High Speed."
-msgstr ""
+msgstr "Jambes Cyber- Mesh. Noyau En Plasteel Et Muscules Syn- Thetiques. Tres Rapide Et Excellent Equilibre."
 
 #. Unrecognized string.
 #: guitext:193
 msgctxt "Uncommented"
 msgid "Replacement Metal Arms. Servo Assisted Hydraulics Allow The Carrying Of Heavier Items."
-msgstr ""
+msgstr "Bras De Remplacement Metalliques. Systeme Hydraulique Servo-Assiste Permettant Le Transport D'Objets Plus Lourds."
 
 #. Unrecognized string.
 #: guitext:194
 msgctxt "Uncommented"
 msgid "Plasteel Arms. Lighter And Tougher Than Metal Arms. Enhanced Hydraulic System And Pressure Control."
-msgstr ""
+msgstr "En Plasteel. Plus Legers Et Plus Solides. Systeme Hydraulique Et Controle De Pression."
 
 #. Unrecognized string.
 #: guitext:195
 msgctxt "Uncommented"
 msgid "Plasteel Arms. Lighter And Tougher Than Metal Arms. Enhanced Hydraulic System And Pressure Control."
-msgstr ""
+msgstr "Bras Cybermesh. Noyau De Plasteel Et Fibres Musculaires Synthetiques. Excellent Controle Tactile Et Grosse Charge Utile."
 
 #. Unrecognized string.
 #: guitext:196
 msgctxt "Uncommented"
 msgid "Cybermesh Arms. Plasteel Core With Synthetic Muscle Fibre. Excellent Tactile Control And Weight Loading."
-msgstr ""
+msgstr "Bras Cybermesh. Noyau De Plasteel Et Fibres Musculaires Synthetiques. Excellent Controle Tactile Et Grosse Charge Utile."
 
 #. Unrecognized string.
 #: guitext:197
 msgctxt "Uncommented"
 msgid "Metal Chest Cage. All Internal Organs Are Shielded By Heavy Metal Casing."
-msgstr ""
+msgstr "Poitrine Metallique. Tous Les Organes Internes Sont Proteges Par Un Epais Blindage Metallique."
 
 #. Unrecognized string.
 #: guitext:198
 msgctxt "Uncommented"
 msgid "Plasteel Chest Cage. Lighter And Tougher Than The Metal Version With Better Mobility."
-msgstr ""
+msgstr "Plasteel. Plus Legere Et So- Lide Que La Version Metal. Les Organes Sont Proteges Par Un Champ De Force."
 
 #. Unrecognized string.
 #: guitext:199
 msgctxt "Uncommented"
 msgid "Cybermesh Chest Cage With Power Shielding. All Internal Organs Are Shielded By A Low Power Field Generator."
-msgstr ""
+msgstr "Poitrine Cybermesh Avec Boucliers. Les Organes Internes Sont Proteges Par Un Faible Champ De Force."
 
 #. Unrecognized string.
 #: guitext:200
 msgctxt "Uncommented"
 msgid "Heart Stimulator. Monitors And Maintains The Heart Rate Of The Individual."
-msgstr ""
+msgstr "Stimulateur Cardiaque. Surveille Et Maintient Le Rythme Cardiaque De l'Individu."
 
 #. Unrecognized string.
 #: guitext:201
 msgctxt "Uncommented"
 msgid "Heart Accelerator And Monitor. Heart Rate Is Almost Doubled Allowing The Quicker Distribution Of Hormones."
-msgstr ""
+msgstr "Accelerateur Et Moniteur Cardiaque. Le Rythme Est Double, Acce- Lerant Ainsi La Diffusion Des Hormones."
 
 #. Unrecognized string.
 #: guitext:202
 msgctxt "Uncommented"
 msgid "Heart Accelerator And Monitor. Heart Rate Is Almost Doubled Allowing The Quicker Distribution Of Hormones."
-msgstr ""
+msgstr "Coeur Cyberne- Tique. Syste- Me D'Analyse Integre Et Accelerateur. Trois Fois + Efficace Qu'Un Coeur Humain."
 
 #. Unrecognized string.
 #: guitext:203
 msgctxt "Uncommented"
 msgid "Cybernetic Heart. Powerful Pump With In Built System Analysis And Overide Facilities. Triples Output Of A Standard Human Heart."
-msgstr ""
+msgstr "Coeur Cyberne- Tique. Syste- Me D'Analyse Integre Et Accelerateur. Trois Fois + Efficace Qu'Un Coeur Humain."
 
 #. Unrecognized string.
 #: guitext:204
 msgctxt "Uncommented"
 msgid "Vision Enhancer With Limited Zoom Facility. Allows Near Perfect Sight Even At Night."
-msgstr ""
+msgstr "Optimiseur De Vision Avec Fonctions Limitees De Zoom. Permet De Voir Presque Parfaitement, Meme La Nuit."
 
 #. Unrecognized string.
 #: guitext:205
 msgctxt "Uncommented"
 msgid "Enhanced Model Of The V1 Incorporating A Target Aquisition Facility And Range Finder."
-msgstr ""
+msgstr "Modele V1 Ameliore Muni D'Un Systeme D'Acquisition De Cible Et D'Un Detecteur De Portee."
 
 #. Unrecognized string.
 #: guitext:206
 msgctxt "Uncommented"
 msgid "Latest Neurocybernetic Implants. Gives Perfect Night Vision With The Aid Of Targeters Range Finders And Threat Identifier."
-msgstr ""
+msgstr "Implants Neuro Cybernetiques. Excellente Vi- Sion De Nuit, Sys. De Visee, Detecteurs De Portee Et Alertes Radar."
 
 #. Unrecognized string.
 #: guitext:207
 msgctxt "Uncommented"
 msgid "Neural Enhancer That Speeds Up Brain Stem Response Time."
-msgstr ""
+msgstr "Optimiseur Neurologique. Accelere Le Temps De Reponse Du Pedoncule Cerebral."
 
 #. Unrecognized string.
 #: guitext:208
 msgctxt "Uncommented"
 msgid "Neuro Cns Device That Intercepts Most Low Level Functions Leaving The Brain Free To Deal With High End Desicions."
-msgstr ""
+msgstr "Appareil Neuro Logique Cns, Controlant Les Fonctions Cou- Rantes Pour Decharger Le Cerveau De Ces Occupations."
 
 #. Unrecognized string.
 #: guitext:209
 msgctxt "Uncommented"
 msgid "Neuro Cns Device That Intercepts Most Low Level Functions Leaving The Brain Free To Deal With High End Desicions."
-msgstr ""
+msgstr "Multiplicateur Cerebral Bran- Che Sur Un Reseau D'Infos Tactiques. Derive Du Modele Militaire."
 
 #. Unrecognized string.
 #: guitext:210
 msgctxt "Uncommented"
 msgid "Cerebral Multiplier. Connected To A Compunet Giving Access To A Mass Of Tactical Info. Adapted From The Military Version."
-msgstr ""
+msgstr "Multiplicateur Cerebral Bran- Che Sur Un Reseau D'Infos Tactiques. Derive Du Modele Militaire."
 
 #. Unrecognized string.
 #: guitext:211
 msgctxt "Uncommented"
 msgid "Legs V1"
-msgstr ""
+msgstr "Jambes V1"
 
 #. Unrecognized string.
 #: guitext:212
 msgctxt "Uncommented"
 msgid "Legs V2"
-msgstr ""
+msgstr "Jambes V2"
 
 #. Unrecognized string.
 #: guitext:213
 msgctxt "Uncommented"
 msgid "Legs V3"
-msgstr ""
+msgstr "Jambes V3"
 
 #. Unrecognized string.
 #: guitext:214
 msgctxt "Uncommented"
 msgid "Arms V1"
-msgstr ""
+msgstr "Bras V1"
 
 #. Unrecognized string.
 #: guitext:215
 msgctxt "Uncommented"
 msgid "Arms V2"
-msgstr ""
+msgstr "Bras V2"
 
 #. Unrecognized string.
 #: guitext:216
 msgctxt "Uncommented"
 msgid "Arms V2"
-msgstr ""
+msgstr "Bras V3"
 
 #. Unrecognized string.
 #: guitext:217
 msgctxt "Uncommented"
 msgid "Arms V3"
-msgstr ""
+msgstr "Bras V3"
 
 #. Unrecognized string.
 #: guitext:218
 msgctxt "Uncommented"
 msgid "Chest V1"
-msgstr ""
+msgstr "Poitrine V1"
 
 #. Unrecognized string.
 #: guitext:219
 msgctxt "Uncommented"
 msgid "Chest V2"
-msgstr ""
+msgstr "Poitrine V2"
 
 #. Unrecognized string.
 #: guitext:220
 msgctxt "Uncommented"
 msgid "Chest V3"
-msgstr ""
+msgstr "Poitrine V3"
 
 #. Unrecognized string.
 #: guitext:221
 msgctxt "Uncommented"
 msgid "Heart V1"
-msgstr ""
+msgstr "Coeur V1"
 
 #. Unrecognized string.
 #: guitext:222
 msgctxt "Uncommented"
 msgid "Heart V2"
-msgstr ""
+msgstr "Coeur V2"
 
 #. Unrecognized string.
 #: guitext:223
 msgctxt "Uncommented"
 msgid "Heart V2"
-msgstr ""
+msgstr "Coeur V3"
 
 #. Unrecognized string.
 #: guitext:224
 msgctxt "Uncommented"
 msgid "Heart V3"
-msgstr ""
+msgstr "Coeur V3"
 
 #. Unrecognized string.
 #: guitext:225
 msgctxt "Uncommented"
 msgid "Eyes V1"
-msgstr ""
+msgstr "Yeux V1"
 
 #. Unrecognized string.
 #: guitext:226
 msgctxt "Uncommented"
 msgid "Eyes V2"
-msgstr ""
+msgstr "Yeux V2"
 
 #. Unrecognized string.
 #: guitext:227
 msgctxt "Uncommented"
 msgid "Eyes V3"
-msgstr ""
+msgstr "Yeux V3"
 
 #. Unrecognized string.
 #: guitext:228
 msgctxt "Uncommented"
 msgid "Brain V1"
-msgstr ""
+msgstr "Cerveau V1"
 
 #. Unrecognized string.
 #: guitext:229
 msgctxt "Uncommented"
 msgid "Brain V2"
-msgstr ""
+msgstr "Cerveau V2"
 
 #. Unrecognized string.
 #: guitext:230
 msgctxt "Uncommented"
 msgid "Brain V2"
-msgstr ""
+msgstr "Cerveau V3"
 
 #. Unrecognized string.
 #: guitext:231
 msgctxt "Uncommented"
 msgid "Brain V3"
-msgstr ""
+msgstr "Cerveau V3"
 
 #. Unrecognized string.
 #: guitext:232
 msgctxt "Uncommented"
 msgid "Persuadertron"
-msgstr ""
+msgstr "Persuadotron"
 
 #. Unrecognized string.
 #: guitext:233
 msgctxt "Uncommented"
 msgid "Pistol"
-msgstr ""
+msgstr "Pistolet"
 
 #. Unrecognized string.
 #: guitext:234
 msgctxt "Uncommented"
 msgid "Gauss Gun"
-msgstr ""
+msgstr "Pistolet Gauss"
 
 #. Unrecognized string.
 #: guitext:235
 msgctxt "Uncommented"
 msgid "Shotgun"
-msgstr ""
+msgstr "Fusil"
 
 #. Unrecognized string.
 #: guitext:236
 msgctxt "Uncommented"
 msgid "'Uzi"
-msgstr ""
+msgstr "'Uzi"
 
 #. Unrecognized string.
 #: guitext:237
 msgctxt "Uncommented"
 msgid "'Uzi"
-msgstr ""
+msgstr "P.M"
 
 #. Unrecognized string.
 #: guitext:238
 msgctxt "Uncommented"
 msgid "Mini-Gun"
-msgstr ""
+msgstr "P.M"
 
 #. Unrecognized string.
 #: guitext:239
 msgctxt "Uncommented"
 msgid "Laser"
-msgstr ""
+msgstr "Laser"
 
 #. Unrecognized string.
 #: guitext:240
 msgctxt "Uncommented"
 msgid "Flamer"
-msgstr ""
+msgstr "Lance-Flammes"
 
 #. Unrecognized string.
 #: guitext:241
 msgctxt "Uncommented"
 msgid "Long Range"
-msgstr ""
+msgstr "Longue Portee"
 
 #. Unrecognized string.
 #: guitext:242
 msgctxt "Uncommented"
 msgid "Scanner"
-msgstr ""
+msgstr "Scanner"
 
 #. Unrecognized string.
 #: guitext:243
 msgctxt "Uncommented"
 msgid "Medikit"
-msgstr ""
+msgstr "Medikit"
 
 #. Unrecognized string.
 #: guitext:244
 msgctxt "Uncommented"
 msgid "Medikit"
-msgstr ""
+msgstr "Bombe A Retrd."
 
 #. Unrecognized string.
 #: guitext:245
 msgctxt "Uncommented"
 msgid "Time Bomb"
-msgstr ""
+msgstr "Bombe A Retrd."
 
 #. Unrecognized string.
 #: guitext:246
 msgctxt "Uncommented"
 msgid "Access Card"
-msgstr ""
+msgstr "Carte D'Acces"
 
 #. Unrecognized string.
 #: guitext:247
 msgctxt "Uncommented"
 msgid "Access Card1"
-msgstr ""
+msgstr "Access Card1"
 
 #. Unrecognized string.
 #: guitext:248
 msgctxt "Uncommented"
 msgid "Access Card2"
-msgstr ""
+msgstr "Access Card2"
 
 #. Unrecognized string.
 #: guitext:249
 msgctxt "Uncommented"
 msgid "Auto Mapper"
-msgstr ""
+msgstr "Cartographe"
 
 #. Unrecognized string.
 #: guitext:250
 msgctxt "Uncommented"
 msgid "Energy Shield"
-msgstr ""
+msgstr "Bouclier"
 
 #. Unrecognized string.
 #: guitext:251
 msgctxt "Uncommented"
 msgid "Energy Shield"
-msgstr ""
+msgstr "Shield1."
 
 #. Unrecognized string.
 #: guitext:252
 msgctxt "Uncommented"
 msgid "Shield1."
-msgstr ""
+msgstr "Shield1."
 
 #. Unrecognized string.
 #: guitext:253
 msgctxt "Uncommented"
 msgid "Shield2."
-msgstr ""
+msgstr "Shield2."
 
 #. Unrecognized string.
 #: guitext:254
 msgctxt "Uncommented"
 msgid "Wep20."
-msgstr ""
+msgstr "Wep20."
 
 #. Unrecognized string.
 #: guitext:255
 msgctxt "Uncommented"
 msgid "Configure Company"
-msgstr ""
+msgstr "Configurer Societe"
 
 #. Unrecognized string.
 #: guitext:256
 msgctxt "Uncommented"
 msgid "Begin Mission"
-msgstr ""
+msgstr "Commencer Mission"
 
 #. Unrecognized string.
 #: guitext:257
 msgctxt "Uncommented"
 msgid "Load And Save Game"
-msgstr ""
+msgstr "Charg./Sauver Partie"
 
 #. Unrecognized string.
 #: guitext:258
 msgctxt "Uncommented"
 msgid "Load And Save Game"
-msgstr ""
+msgstr "Jeu Multi-Joueurs"
 
 #. Unrecognized string.
 #: guitext:259
 msgctxt "Uncommented"
 msgid "Multiplayer Game"
-msgstr ""
+msgstr "Jeu Multi-Joueurs"
 
 #. Unrecognized string.
 #: guitext:260
 msgctxt "Uncommented"
 msgid "Restart Game"
-msgstr ""
+msgstr "Nouvelle Partie"
 
 #. Unrecognized string.
 #: guitext:261
 msgctxt "Uncommented"
 msgid "Quit To Dos"
-msgstr ""
+msgstr "Retour Au Dos"
 
 #. Unrecognized string.
 #: guitext:262
 msgctxt "Uncommented"
 msgid "Multiplayer Level 1"
-msgstr ""
+msgstr "Multiplayer Level 1"
 
 #. Unrecognized string.
 #: guitext:263
 msgctxt "Uncommented"
 msgid "Multiplayer Level 2"
-msgstr ""
+msgstr "Multiplayer Level 2"
 
 #. Unrecognized string.
 #: guitext:264
 msgctxt "Uncommented"
 msgid "Multiplayer Level 3"
-msgstr ""
+msgstr "Multiplayer Level 3"
 
 #. Unrecognized string.
 #: guitext:265
 msgctxt "Uncommented"
-msgid "Multiplayer Level 4"
-msgstr ""
+msgid "Multiplayer Level 3"
+msgstr "Multiplayer Level 4"
 
 #. Unrecognized string.
 #: guitext:266
 msgctxt "Uncommented"
-msgid "Multiplayer Level 5"
-msgstr ""
+msgid "Multiplayer Level 4"
+msgstr "Multiplayer Level 4"
 
 #. Unrecognized string.
 #: guitext:267
 msgctxt "Uncommented"
-msgid "Multiplayer Level 6"
-msgstr ""
+msgid "Multiplayer Level 5"
+msgstr "Multiplayer Level 5"
 
 #. Unrecognized string.
 #: guitext:268
 msgctxt "Uncommented"
-msgid "Multiplayer Level 7"
-msgstr ""
+msgid "Multiplayer Level 6"
+msgstr "Multiplayer Level 6"
 
 #. Unrecognized string.
 #: guitext:269
 msgctxt "Uncommented"
-msgid "Multiplayer Level 8"
-msgstr ""
+msgid "Multiplayer Level 7"
+msgstr "Multiplayer Level 7"
 
 #. Unrecognized string.
 #: guitext:270
 msgctxt "Uncommented"
-msgid "Multiplayer Level 9"
-msgstr ""
+msgid "Multiplayer Level 8"
+msgstr "Multiplayer Level 8"
 
 #. Unrecognized string.
 #: guitext:271
 msgctxt "Uncommented"
-msgid "Multiplayer Level 10"
-msgstr ""
+msgid "Multiplayer Level 9"
+msgstr "Multiplayer Level 9"
 
-#. For future use.
-#: guitext:272 guitext:273 guitext:274 guitext:275 guitext:276 guitext:277 guitext:278 guitext:279
-#: guitext:280 guitext:281 guitext:282 guitext:283 guitext:284 guitext:285 guitext:286
-msgctxt "Unused"
-msgid "N"
-msgstr ""
+#. Unrecognized string.
+#: guitext:272
+msgctxt "Uncommented"
+msgid "Multiplayer Level 9"
+msgstr "Multiplayer Level 10"
+
+#. Unrecognized string.
+#: guitext:273
+msgctxt "Uncommented"
+msgid "Multiplayer Level 10"
+msgstr "Multiplayer Level 10"
 
 #. Syndicate agents are called by their surnames.
-#: guitext:287
+#: guitext:274
 msgctxt "Agent names pool"
 msgid "Afshar"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:288
+#: guitext:275
+msgctxt "Agent names pool"
+msgid "Afshar"
+msgstr ""
+
+#. Syndicate agents are called by their surnames.
+#: guitext:276
 msgctxt "Agent names pool"
 msgid "Arnold"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:289
+#: guitext:277
 msgctxt "Agent names pool"
 msgid "Baird"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:290
+#: guitext:278
 msgctxt "Agent names pool"
 msgid "Baldwin"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:291
+#: guitext:279
 msgctxt "Agent names pool"
 msgid "Black"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:292
+#: guitext:280
 msgctxt "Agent names pool"
 msgid "Boyd"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:293
+#: guitext:281
 msgctxt "Agent names pool"
 msgid "Boyesen"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:294
+#: guitext:282
+msgctxt "Agent names pool"
+msgid "Boyesen"
+msgstr ""
+
+#. Syndicate agents are called by their surnames.
+#: guitext:283
 msgctxt "Agent names pool"
 msgid "Brazier"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:295
+#: guitext:284
 msgctxt "Agent names pool"
 msgid "Brown"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:296
+#: guitext:285
 msgctxt "Agent names pool"
 msgid "Bush"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:297
+#: guitext:286
 msgctxt "Agent names pool"
 msgid "Carr"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:298
+#: guitext:287
 msgctxt "Agent names pool"
 msgid "Chrismas"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:299
+#: guitext:288
+msgctxt "Agent names pool"
+msgid "Clinton"
+msgstr ""
+
+#. Syndicate agents are called by their surnames.
+#: guitext:289
 msgctxt "Agent names pool"
 msgid "Clinton"
 msgstr ""
@@ -1749,315 +1772,369 @@ msgid "Cooper"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:300
+#: guitext:291
 msgctxt "Agent names pool"
 msgid "Corpes"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:301
+#: guitext:292
 msgctxt "Agent names pool"
 msgid "Cox"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:302
+#: guitext:293
 msgctxt "Agent names pool"
 msgid "Dawson"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:303
+#: guitext:294
 msgctxt "Agent names pool"
 msgid "Donkin"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:304
+#: guitext:295
 msgctxt "Agent names pool"
 msgid "Diskett"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:305
+#: guitext:296
+msgctxt "Agent names pool"
+msgid "Diskett"
+msgstr ""
+
+#. Syndicate agents are called by their surnames.
+#: guitext:297
 msgctxt "Agent names pool"
 msgid "Dunne"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:306
+#: guitext:298
 msgctxt "Agent names pool"
 msgid "Edgar"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:307
+#: guitext:299
 msgctxt "Agent names pool"
 msgid "Evans"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:308
+#: guitext:300
 msgctxt "Agent names pool"
 msgid "Fairley"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:309
+#: guitext:301
 msgctxt "Agent names pool"
 msgid "Fawcett"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:310
+#: guitext:302
 msgctxt "Agent names pool"
 msgid "Flint"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:311
+#: guitext:303
+msgctxt "Agent names pool"
+msgid "Flint"
+msgstr ""
+
+#. Syndicate agents are called by their surnames.
+#: guitext:304
 msgctxt "Agent names pool"
 msgid "Floyd"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:312
+#: guitext:305
 msgctxt "Agent names pool"
 msgid "Griffiths"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:313
+#: guitext:306
 msgctxt "Agent names pool"
 msgid "Harris"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:314
+#: guitext:307
 msgctxt "Agent names pool"
 msgid "Hastings"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:315
+#: guitext:308
 msgctxt "Agent names pool"
 msgid "Herbert"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:316
+#: guitext:309
 msgctxt "Agent names pool"
 msgid "Hickman"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:317
+#: guitext:310
+msgctxt "Agent names pool"
+msgid "Hickman"
+msgstr ""
+
+#. Syndicate agents are called by their surnames.
+#: guitext:311
 msgctxt "Agent names pool"
 msgid "Hicks"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:318
+#: guitext:312
 msgctxt "Agent names pool"
 msgid "Hill"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:319
+#: guitext:313
 msgctxt "Agent names pool"
 msgid "James"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:320
+#: guitext:314
 msgctxt "Agent names pool"
 msgid "Jeffery"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:321
+#: guitext:315
 msgctxt "Agent names pool"
 msgid "Joeseph"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:322
+#: guitext:316
 msgctxt "Agent names pool"
 msgid "Johnson"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:323
+#: guitext:317
+msgctxt "Agent names pool"
+msgid "Johnson"
+msgstr ""
+
+#. Syndicate agents are called by their surnames.
+#: guitext:318
 msgctxt "Agent names pool"
 msgid "Johnston"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:324
+#: guitext:319
 msgctxt "Agent names pool"
 msgid "Jones"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:325
+#: guitext:320
 msgctxt "Agent names pool"
 msgid "Lewis"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:326
+#: guitext:321
 msgctxt "Agent names pool"
 msgid "Lindsell"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:327
+#: guitext:322
 msgctxt "Agent names pool"
 msgid "Lockley"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:328
+#: guitext:323
 msgctxt "Agent names pool"
 msgid "Martin"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:329
+#: guitext:324
+msgctxt "Agent names pool"
+msgid "Martin"
+msgstr ""
+
+#. Syndicate agents are called by their surnames.
+#: guitext:325
 msgctxt "Agent names pool"
 msgid "Mcentee"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:330
+#: guitext:326
 msgctxt "Agent names pool"
 msgid "Mclaughin"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:331
+#: guitext:327
 msgctxt "Agent names pool"
 msgid "Molyneux"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:332
+#: guitext:328
 msgctxt "Agent names pool"
 msgid "Munro"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:333
+#: guitext:329
 msgctxt "Agent names pool"
 msgid "Morris"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:334
+#: guitext:330
 msgctxt "Agent names pool"
 msgid "Mumford"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:335
+#: guitext:331
+msgctxt "Agent names pool"
+msgid "Mumford"
+msgstr ""
+
+#. Syndicate agents are called by their surnames.
+#: guitext:332
 msgctxt "Agent names pool"
 msgid "Nixon"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:336
+#: guitext:333
 msgctxt "Agent names pool"
 msgid "Parker"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:337
+#: guitext:334
 msgctxt "Agent names pool"
 msgid "Pratt"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:338
+#: guitext:335
 msgctxt "Agent names pool"
 msgid "Reid"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:339
+#: guitext:336
 msgctxt "Agent names pool"
 msgid "Rennie"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:340
+#: guitext:337
 msgctxt "Agent names pool"
 msgid "Rice"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:341
+#: guitext:338
+msgctxt "Agent names pool"
+msgid "Rice"
+msgstr ""
+
+#. Syndicate agents are called by their surnames.
+#: guitext:339
 msgctxt "Agent names pool"
 msgid "Ripley"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:342
+#: guitext:340
 msgctxt "Agent names pool"
 msgid "Robertson"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:343
+#: guitext:341
 msgctxt "Agent names pool"
 msgid "Romano"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:344
+#: guitext:342
 msgctxt "Agent names pool"
 msgid "Seat"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:345
+#: guitext:343
 msgctxt "Agent names pool"
 msgid "Sen"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:346
+#: guitext:344
 msgctxt "Agent names pool"
 msgid "Shaw"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:347
+#: guitext:345
+msgctxt "Agent names pool"
+msgid "Shaw"
+msgstr ""
+
+#. Syndicate agents are called by their surnames.
+#: guitext:346
 msgctxt "Agent names pool"
 msgid "Simmons"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:348
+#: guitext:347
 msgctxt "Agent names pool"
 msgid "Snelling"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:349
+#: guitext:348
 msgctxt "Agent names pool"
 msgid "Taylor"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:350
+#: guitext:349
 msgctxt "Agent names pool"
 msgid "Trowers"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:351
+#: guitext:350
 msgctxt "Agent names pool"
 msgid "Webley"
+msgstr ""
+
+#. Syndicate agents are called by their surnames.
+#: guitext:351
+msgctxt "Agent names pool"
+msgid "Wellesley"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
