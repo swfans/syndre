@@ -65,6 +65,9 @@ jobs:
           apt install -y \
             build-essential autoconf libtool make
 
+          apt install -y \
+            python3-polib
+
       - name: Autoreconf
         run: autoreconf -ivf
 
@@ -147,6 +150,7 @@ jobs:
           install: >-
               git
               unzip
+              mingw-w64-i686-python-pip
               mingw-w64-i686-toolchain
               mingw-w64-i686-autotools
               mingw-w64-i686-libpng
@@ -154,6 +158,10 @@ jobs:
               mingw-w64-i686-openal
               mingw-w64-i686-libvorbis
               mingw-w64-i686-libogg
+
+      - name: Install python modules
+        run: |
+          python -m pip install polib
 
       - name: Install WildMIDI
         run: |

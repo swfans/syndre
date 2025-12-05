@@ -1610,13 +1610,13 @@ msgctxt "Agent names pool"
 msgid "Clinton"
 msgstr ""
 
-#. Syndicate agents are called by their surnames.
+#. Syndicate agents are called by their surnames; one based on Bullfrog employee, Sean.
 #: guitext:300
 msgctxt "Agent names pool"
 msgid "Cooper"
 msgstr ""
 
-#. Syndicate agents are called by their surnames.
+#. Syndicate agents are called by their surnames; one based on Bullfrog employee, Glenn.
 #: guitext:301
 msgctxt "Agent names pool"
 msgid "Corpes"
@@ -1634,13 +1634,13 @@ msgctxt "Agent names pool"
 msgid "Dawson"
 msgstr ""
 
-#. Syndicate agents are called by their surnames.
+#. Syndicate agents are called by their surnames; one based on Bullfrog employee, Kevin.
 #: guitext:304
 msgctxt "Agent names pool"
 msgid "Donkin"
 msgstr ""
 
-#. Syndicate agents are called by their surnames.
+#. Syndicate agents are called by their surnames; one based on Bullfrog employee, Mike.
 #: guitext:305
 msgctxt "Agent names pool"
 msgid "Diskett"
@@ -1652,7 +1652,7 @@ msgctxt "Agent names pool"
 msgid "Dunne"
 msgstr ""
 
-#. Syndicate agents are called by their surnames.
+#. Syndicate agents are called by their surnames; one based on Bullfrog founder, Les.
 #: guitext:307
 msgctxt "Agent names pool"
 msgid "Edgar"
@@ -1724,7 +1724,7 @@ msgctxt "Agent names pool"
 msgid "Hicks"
 msgstr ""
 
-#. Syndicate agents are called by their surnames.
+#. Syndicate agents are called by their surnames; one based on Bullfrog employee, Chris.
 #: guitext:319
 msgctxt "Agent names pool"
 msgid "Hill"
@@ -1760,7 +1760,7 @@ msgctxt "Agent names pool"
 msgid "Johnston"
 msgstr ""
 
-#. Syndicate agents are called by their surnames.
+#. Syndicate agents are called by their surnames; one based on Bullfrog employee, Andy.
 #: guitext:325
 msgctxt "Agent names pool"
 msgid "Jones"
@@ -1802,7 +1802,7 @@ msgctxt "Agent names pool"
 msgid "Mclaughin"
 msgstr ""
 
-#. Syndicate agents are called by their surnames.
+#. Syndicate agents are called by their surnames; one based on Bullfrog founder, Peter.
 #: guitext:332
 msgctxt "Agent names pool"
 msgid "Molyneux"
@@ -1892,7 +1892,7 @@ msgctxt "Agent names pool"
 msgid "Sen"
 msgstr ""
 
-#. Syndicate agents are called by their surnames.
+#. Syndicate agents are called by their surnames; one based on Bullfrog employee, Russell.
 #: guitext:347
 msgctxt "Agent names pool"
 msgid "Shaw"
@@ -1916,13 +1916,13 @@ msgctxt "Agent names pool"
 msgid "Taylor"
 msgstr ""
 
-#. Syndicate agents are called by their surnames.
+#. Syndicate agents are called by their surnames; one based on Bullfrog employee, Alex.
 #: guitext:351
 msgctxt "Agent names pool"
 msgid "Trowers"
 msgstr ""
 
-#. Syndicate agents are called by their surnames.
+#. Syndicate agents are called by their surnames; one based on Bullfrog employee, Mark.
 #: guitext:352
 msgctxt "Agent names pool"
 msgid "Webley"
