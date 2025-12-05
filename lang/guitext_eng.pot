@@ -1228,7 +1228,7 @@ msgstr ""
 #. Cybernetic modification names in Team and Research menus.
 #: guitext:216
 msgctxt "Cyborg mod part"
-msgid "Arms V2"
+msgid "Arms V3"
 msgstr ""
 
 #. Cybernetic modification names in Team and Research menus.
