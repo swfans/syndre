@@ -775,82 +775,88 @@ msgctxt "Uncommented"
 msgid "Special Agent"
 msgstr ""
 
-#. Unrecognized string.
+#. Label text within configure company screen.
 #: guitext:137
-msgctxt "Uncommented"
+msgctxt "Conf.comp. label"
 msgid "Select Detail To Change"
 msgstr ""
 
-#. Unrecognized string.
+#. Label text within configure company screen.
 #: guitext:138
-msgctxt "Uncommented"
+msgctxt "Conf.comp. label"
 msgid "Colour And Logo"
 msgstr ""
 
-#. Unrecognized string.
+#. Label text within configure company screen.
 #: guitext:139
-msgctxt "Uncommented"
+msgctxt "Conf.comp. label"
 msgid "Company Name"
 msgstr ""
 
-#. Unrecognized string.
+#. Label text within configure company screen.
 #: guitext:140
-msgctxt "Uncommented"
+msgctxt "Conf.comp. label"
 msgid "Your Name"
 msgstr ""
 
-#. Unrecognized string.
+#. Label text within configure company screen.
 #: guitext:141
-msgctxt "Uncommented"
+msgctxt "Conf.comp. label"
 msgid "Change Colour And Logo"
 msgstr ""
 
-#. Unrecognized string.
+#. Label text within configure company screen.
 #: guitext:142
-msgctxt "Uncommented"
+msgctxt "Conf.comp. label"
 msgid "Colour"
 msgstr ""
 
-#. Unrecognized string.
+#. Label text within configure company screen.
 #: guitext:143
-msgctxt "Uncommented"
+msgctxt "Conf.comp. label"
 msgid "Logo"
 msgstr ""
 
-#. Unrecognized string.
+#. Label text within configure company screen.
 #: guitext:144
-msgctxt "Uncommented"
+msgctxt "Conf.comp. label"
 msgid "Change Company Name"
 msgstr ""
 
-#. Unrecognized string.
+#. Label text within configure company screen.
 #: guitext:145
-msgctxt "Uncommented"
+msgctxt "Conf.comp. label"
 msgid "Enter Your Name"
 msgstr ""
 
-#. Unrecognized string.
+#. Label text within equip screen.
 #: guitext:146
-msgctxt "Uncommented"
+msgctxt "Equipment label"
 msgid "Cost"
 msgstr ""
 
-#. Unrecognized string.
+#. Label text within equip screen.
 #: guitext:147
-msgctxt "Uncommented"
+msgctxt "Equipment label"
 msgid "Ammo"
 msgstr ""
 
-#. Unrecognized string.
+#. Label text within equip screen.
 #: guitext:148
-msgctxt "Uncommented"
+msgctxt "Equipment label"
 msgid "Range"
 msgstr ""
 
-#. Unrecognized string.
+#. Label text within equip screen.
 #: guitext:149
-msgctxt "Uncommented"
+msgctxt "Equipment label"
 msgid "Shot"
+msgstr ""
+
+#. Label text within equip screen.
+#: guitext:150 guitext:151
+msgctxt "Equipment label"
+msgid "N"
 msgstr ""
 
 #. Weapon category, used for research thread selection.
@@ -883,201 +889,177 @@ msgctxt "Wep. category"
 msgid "N"
 msgstr ""
 
-#. Unrecognized string.
+#. Label text within research screen.
 #: guitext:157
-msgctxt "Uncommented"
+msgctxt "Research label"
 msgid "Min Funding"
 msgstr ""
 
-#. Unrecognized string.
+#. Label text within research screen.
 #: guitext:158
-msgctxt "Uncommented"
+msgctxt "Research label"
 msgid "Max Funding"
 msgstr ""
 
-#. Unrecognized string.
+#. Label text within research screen.
 #: guitext:159
-msgctxt "Uncommented"
+msgctxt "Research label"
 msgid "Researching"
 msgstr ""
 
-#. Unrecognized string.
-#: guitext:160
-msgctxt "Uncommented"
-msgid "Researching"
-msgstr ""
-
-#. Unrecognized string.
+#. Label showing on screen while exiting game.
 #: guitext:161
-msgctxt "Uncommented"
+msgctxt "Fullscr. Message"
 msgid "Logging Out"
 msgstr ""
 
-#. Unrecognized string.
+#. Label showing on screen while starting multiplayer mission.
 #: guitext:162
-msgctxt "Uncommented"
+msgctxt "Fullscr. Message"
 msgid "Loading Multiplayer"
 msgstr ""
 
-#. Unrecognized string.
+#. Label showing on screen while starting mission.
 #: guitext:163
-msgctxt "Uncommented"
+msgctxt "Fullscr. Message"
 msgid "Loading Game"
 msgstr ""
 
-#. Unrecognized string.
+#. Label for a metric shown in debrief screen.
 #: guitext:164
-msgctxt "Uncommented"
+msgctxt "Debrief metric"
 msgid "Mission Status:"
 msgstr ""
 
-#. Unrecognized string.
+#. Mission status value in debrief screen.
 #: guitext:165
-msgctxt "Uncommented"
+msgctxt "Mission status"
 msgid "Completed"
 msgstr ""
 
-#. Unrecognized string.
+#. Mission status value in debrief screen.
 #: guitext:166
-msgctxt "Uncommented"
+msgctxt "Mission status"
 msgid "Withdrew From Mission"
 msgstr ""
 
-#. Unrecognized string.
+#. Mission status value in debrief screen.
 #: guitext:167
-msgctxt "Uncommented"
-msgid "Withdrew From Mission"
-msgstr ""
-
-#. Unrecognized string.
-#: guitext:168
-msgctxt "Uncommented"
+msgctxt "Mission status"
 msgid "Failed"
 msgstr ""
 
-#. Unrecognized string.
+#. Label for a metric shown in debrief screen.
 #: guitext:169
-msgctxt "Uncommented"
+msgctxt "Debrief metric"
 msgid "Agents Used:"
 msgstr ""
 
-#. Unrecognized string.
+#. Label for a metric shown in debrief screen.
 #: guitext:170
-msgctxt "Uncommented"
+msgctxt "Debrief metric"
 msgid "New Agents Gained:"
 msgstr ""
 
-#. Unrecognized string.
+#. Label for a metric shown in debrief screen.
 #: guitext:171
-msgctxt "Uncommented"
+msgctxt "Debrief metric"
 msgid "Time In Mission:"
 msgstr ""
 
-#. Unrecognized string.
+#. String after amount of hours when formating time delta.
 #: guitext:172
-msgctxt "Uncommented"
+msgctxt "Time format"
 msgid "Hours"
 msgstr ""
 
-#. Unrecognized string.
+#. String after amount of days when formating time delta.
 #: guitext:173
-msgctxt "Uncommented"
+msgctxt "Time format"
 msgid "Days"
 msgstr ""
 
-#. Unrecognized string.
+#. For future use.
 #: guitext:174
-msgctxt "Uncommented"
-msgid "Days"
+msgctxt "Time format"
+msgid "N"
 msgstr ""
 
-#. Unrecognized string.
+#. Label for a metric shown in debrief screen.
 #: guitext:175
-msgctxt "Uncommented"
+msgctxt "Debrief metric"
 msgid "Value Of Damage:"
 msgstr ""
 
-#. Unrecognized string.
+#. Label for a metric shown in debrief screen.
 #: guitext:176
-msgctxt "Uncommented"
+msgctxt "Debrief metric"
 msgid "Enemy Agents Killed:"
 msgstr ""
 
-#. Unrecognized string.
+#. Label for a metric shown in debrief screen.
 #: guitext:177
-msgctxt "Uncommented"
+msgctxt "Debrief metric"
 msgid "Criminals Killed:"
 msgstr ""
 
-#. Unrecognized string.
+#. Label for a metric shown in debrief screen.
 #: guitext:178
-msgctxt "Uncommented"
+msgctxt "Debrief metric"
 msgid "Civilians Killed"
 msgstr ""
 
-#. Unrecognized string.
+#. Label for a metric shown in debrief screen.
 #: guitext:179
-msgctxt "Uncommented"
+msgctxt "Debrief metric"
 msgid "Police Killed:"
 msgstr ""
 
-#. Unrecognized string.
+#. Label for a metric shown in debrief screen.
 #: guitext:180
-msgctxt "Uncommented"
+msgctxt "Debrief metric"
 msgid "Guards Killed:"
 msgstr ""
 
-#. Unrecognized string.
-#: guitext:181
-msgctxt "Uncommented"
-msgid "Guards Killed:"
-msgstr ""
-
-#. Unrecognized string.
+#. Label for a metric shown in debrief screen.
 #: guitext:182
-msgctxt "Uncommented"
+msgctxt "Debrief metric"
 msgid "People Persuaded:"
 msgstr ""
 
-#. Unrecognized string.
+#. Label for a metric shown in debrief screen.
 #: guitext:183
-msgctxt "Uncommented"
+msgctxt "Debrief metric"
 msgid "Hit Accuracy:"
 msgstr ""
 
-#. Unrecognized string.
+#. Message about no possibility to compute shot accuracy in debrief screen.
 #: guitext:184
-msgctxt "Uncommented"
+msgctxt "Debrief info"
 msgid "No Bullets Fired"
 msgstr ""
 
-#. Unrecognized string.
+#. Label for a metric shown in debrief screen.
 #: guitext:185
-msgctxt "Uncommented"
+msgctxt "Debrief metric"
 msgid "Research On"
 msgstr ""
 
-#. Unrecognized string.
+#. Message about weapon taken from agents inventory in debrief screen, line 1/2.
 #: guitext:186
-msgctxt "Uncommented"
+msgctxt "Debrief info"
 msgid "New Weaponry Has Been Submitted"
 msgstr ""
 
-#. Unrecognized string.
+#. Message about weapon taken from agents inventory in debrief screen, line 2/2.
 #: guitext:187
-msgctxt "Uncommented"
+msgctxt "Debrief info"
 msgid "To The Research Department"
 msgstr ""
 
-#. Unrecognized string.
-#: guitext:188
-msgctxt "Uncommented"
-msgid "To The Research Department"
-msgstr ""
-
-#. Unrecognized string.
+#. Label above mession metrics in debrief screen.
 #: guitext:189
-msgctxt "Uncommented"
+msgctxt "Debrief label"
 msgid "Mission Statistics"
 msgstr ""
 
@@ -1180,7 +1162,7 @@ msgstr ""
 #. Cybernetic modification description in Team and Research menus.
 #: guitext:206
 msgctxt "Cyborg mod desc"
-msgid "Neuro Cns Device That Intercepts Most Low Level Functions Leaving The Brain Free To Deal With High End Desicions."
+msgid "Neuro CNS Device That Intercepts Most Low Level Functions Leaving The Brain Free To Deal With High End Desicions."
 msgstr ""
 
 #. Cybernetic modification description in Team and Research menus.
