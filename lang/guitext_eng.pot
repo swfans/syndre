@@ -907,6 +907,12 @@ msgctxt "Research label"
 msgid "Researching"
 msgstr ""
 
+#. Future use Label.
+#: guitext:160
+msgctxt "Research label"
+msgid "N"
+msgstr ""
+
 #. Label showing on screen while exiting game.
 #: guitext:161
 msgctxt "Fullscr. Message"
@@ -947,6 +953,12 @@ msgstr ""
 #: guitext:167
 msgctxt "Mission status"
 msgid "Failed"
+msgstr ""
+
+#. Future use status.
+#: guitext:168
+msgctxt "Mission status"
+msgid "N"
 msgstr ""
 
 #. Label for a metric shown in debrief screen.
@@ -1022,45 +1034,51 @@ msgid "Guards Killed:"
 msgstr ""
 
 #. Label for a metric shown in debrief screen.
-#: guitext:182
+#: guitext:181
 msgctxt "Debrief metric"
 msgid "People Persuaded:"
 msgstr ""
 
 #. Label for a metric shown in debrief screen.
-#: guitext:183
+#: guitext:182
 msgctxt "Debrief metric"
 msgid "Hit Accuracy:"
 msgstr ""
 
 #. Message about no possibility to compute shot accuracy in debrief screen.
-#: guitext:184
+#: guitext:183
 msgctxt "Debrief info"
 msgid "No Bullets Fired"
 msgstr ""
 
 #. Label for a metric shown in debrief screen.
-#: guitext:185
+#: guitext:184
 msgctxt "Debrief metric"
 msgid "Research On"
 msgstr ""
 
 #. Message about weapon taken from agents inventory in debrief screen, line 1/2.
-#: guitext:186
+#: guitext:185
 msgctxt "Debrief info"
 msgid "New Weaponry Has Been Submitted"
 msgstr ""
 
 #. Message about weapon taken from agents inventory in debrief screen, line 2/2.
-#: guitext:187
+#: guitext:186
 msgctxt "Debrief info"
 msgid "To The Research Department"
 msgstr ""
 
 #. Label above mession metrics in debrief screen.
-#: guitext:189
+#: guitext:187
 msgctxt "Debrief label"
 msgid "Mission Statistics"
+msgstr ""
+
+#. Future Label.
+#: guitext:188 guitext:189
+msgctxt "Debrief label"
+msgid "N"
 msgstr ""
 
 #. Cybernetic modification description in Team and Research menus.
@@ -1593,337 +1611,337 @@ msgid "Clinton"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:290
+#: guitext:300
 msgctxt "Agent names pool"
 msgid "Cooper"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:300
+#: guitext:301
 msgctxt "Agent names pool"
 msgid "Corpes"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:301
+#: guitext:302
 msgctxt "Agent names pool"
 msgid "Cox"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:302
+#: guitext:303
 msgctxt "Agent names pool"
 msgid "Dawson"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:303
+#: guitext:304
 msgctxt "Agent names pool"
 msgid "Donkin"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:304
+#: guitext:305
 msgctxt "Agent names pool"
 msgid "Diskett"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:305
+#: guitext:306
 msgctxt "Agent names pool"
 msgid "Dunne"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:306
+#: guitext:307
 msgctxt "Agent names pool"
 msgid "Edgar"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:307
+#: guitext:308
 msgctxt "Agent names pool"
 msgid "Evans"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:308
+#: guitext:309
 msgctxt "Agent names pool"
 msgid "Fairley"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:309
+#: guitext:310
 msgctxt "Agent names pool"
 msgid "Fawcett"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:310
+#: guitext:311
 msgctxt "Agent names pool"
 msgid "Flint"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:311
+#: guitext:312
 msgctxt "Agent names pool"
 msgid "Floyd"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:312
+#: guitext:313
 msgctxt "Agent names pool"
 msgid "Griffiths"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:313
+#: guitext:314
 msgctxt "Agent names pool"
 msgid "Harris"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:314
+#: guitext:315
 msgctxt "Agent names pool"
 msgid "Hastings"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:315
+#: guitext:316
 msgctxt "Agent names pool"
 msgid "Herbert"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:316
+#: guitext:317
 msgctxt "Agent names pool"
 msgid "Hickman"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:317
+#: guitext:318
 msgctxt "Agent names pool"
 msgid "Hicks"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:318
+#: guitext:319
 msgctxt "Agent names pool"
 msgid "Hill"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:319
+#: guitext:320
 msgctxt "Agent names pool"
 msgid "James"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:320
+#: guitext:321
 msgctxt "Agent names pool"
 msgid "Jeffery"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:321
+#: guitext:322
 msgctxt "Agent names pool"
 msgid "Joeseph"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:322
+#: guitext:323
 msgctxt "Agent names pool"
 msgid "Johnson"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:323
+#: guitext:324
 msgctxt "Agent names pool"
 msgid "Johnston"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:324
+#: guitext:325
 msgctxt "Agent names pool"
 msgid "Jones"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:325
+#: guitext:326
 msgctxt "Agent names pool"
 msgid "Lewis"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:326
+#: guitext:327
 msgctxt "Agent names pool"
 msgid "Lindsell"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:327
+#: guitext:328
 msgctxt "Agent names pool"
 msgid "Lockley"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:328
+#: guitext:329
 msgctxt "Agent names pool"
 msgid "Martin"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:329
+#: guitext:330
 msgctxt "Agent names pool"
 msgid "Mcentee"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:330
+#: guitext:331
 msgctxt "Agent names pool"
 msgid "Mclaughin"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:331
+#: guitext:332
 msgctxt "Agent names pool"
 msgid "Molyneux"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:332
+#: guitext:333
 msgctxt "Agent names pool"
 msgid "Munro"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:333
+#: guitext:334
 msgctxt "Agent names pool"
 msgid "Morris"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:334
+#: guitext:335
 msgctxt "Agent names pool"
 msgid "Mumford"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:335
+#: guitext:336
 msgctxt "Agent names pool"
 msgid "Nixon"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:336
+#: guitext:337
 msgctxt "Agent names pool"
 msgid "Parker"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:337
+#: guitext:338
 msgctxt "Agent names pool"
 msgid "Pratt"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:338
+#: guitext:339
 msgctxt "Agent names pool"
 msgid "Reid"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:339
+#: guitext:340
 msgctxt "Agent names pool"
 msgid "Rennie"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:340
+#: guitext:341
 msgctxt "Agent names pool"
 msgid "Rice"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:341
+#: guitext:342
 msgctxt "Agent names pool"
 msgid "Ripley"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:342
+#: guitext:343
 msgctxt "Agent names pool"
 msgid "Robertson"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:343
+#: guitext:344
 msgctxt "Agent names pool"
 msgid "Romano"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:344
+#: guitext:345
 msgctxt "Agent names pool"
 msgid "Seat"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:345
+#: guitext:346
 msgctxt "Agent names pool"
 msgid "Sen"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:346
+#: guitext:347
 msgctxt "Agent names pool"
 msgid "Shaw"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:347
+#: guitext:348
 msgctxt "Agent names pool"
 msgid "Simmons"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:348
+#: guitext:349
 msgctxt "Agent names pool"
 msgid "Snelling"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:349
+#: guitext:350
 msgctxt "Agent names pool"
 msgid "Taylor"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:350
+#: guitext:351
 msgctxt "Agent names pool"
 msgid "Trowers"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:351
+#: guitext:352
 msgctxt "Agent names pool"
 msgid "Webley"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:352
+#: guitext:353
 msgctxt "Agent names pool"
 msgid "Wellesley"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:353
+#: guitext:354
 msgctxt "Agent names pool"
 msgid "Wild"
 msgstr ""
 
 #. Syndicate agents are called by their surnames.
-#: guitext:354
+#: guitext:355
 msgctxt "Agent names pool"
 msgid "Willis"
 msgstr ""
