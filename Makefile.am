@@ -1,9 +1,9 @@
 ACLOCAL_AMFLAGS = --install -I m4
 
-SUBDIRS = bflibrary bfsoundlib conf src util
+SUBDIRS = bflibrary bfsoundlib conf lang src util
 
 # Do not install static libraries.
-install installdirs: SUBDIRS = conf src util
+install installdirs: SUBDIRS = conf lang src util
 
 doc_DATA = AUTHORS COPYING GPL3
 docdir = $(prefix)/$(PACKAGE)

@@ -275,7 +275,7 @@ AC_SUBST([MKWFLAGS])
 AC_SUBST([WINDRES])
 
 # Prepare makefiles from `.in` templates
-AC_CONFIG_FILES([Makefile conf/Makefile src/Makefile util/Makefile])
+AC_CONFIG_FILES([Makefile conf/Makefile lang/Makefile src/Makefile util/Makefile])
 
 # Done - generate and execute `config.status`
 AC_OUTPUT
