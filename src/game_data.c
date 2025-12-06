@@ -92,13 +92,13 @@ static void replace_backslash_with_fs_separator(char *path)
 
 void SyndFXFileNameTransform(char *out_fname, const char *inp_fname)
 {
-    char fs_fname[DISKPATH_SIZE];
+    char fs_fname[DISKPATH_SIZE-1];
     const char *base_dir;
 
     base_dir = GetDirectoryHdd();
 
     // Switch the input folder separators to proper ones for current os
-    strncpy(fs_fname, inp_fname, DISKPATH_SIZE);
+    strncpy(fs_fname, inp_fname, sizeof(fs_fname));
     replace_backslash_with_fs_separator(fs_fname);
     // Add base path only if the input one is not absolute
     if (fs_fname[0] == FS_SEP || (strlen(fs_fname) >= 2 && fs_fname[1] == ':')) {

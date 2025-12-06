@@ -291,7 +291,7 @@ static bool find_file_in_directory(const char *directory,
 static bool lookup_path(const char *path, char *buffer, size_t size)
 {
     char prefix[FILENAME_MAX];
-    char segment[FILENAME_MAX];
+    char segment[FILENAME_MAX-1];
     char exsegment[FILENAME_MAX];
     const char *rest;
 
