@@ -37,6 +37,7 @@
 #include "snderr.h"
 #include "ssampply.h"
 #include "streamfx.h"
+#include "ail.h"
 #include "aila.h"
 #include "aildebug.h"
 #include "ailss.h"
@@ -402,9 +403,9 @@ int InitMIDI(const char *bank_fname, char *drv_fname,
     struct MDI_DRIVER *mus_drvr;
     short n_prepared;
 
-    p_musbank = AIL_file_read(bank_fname, FILE_READ_WITH_SIZE);
+    p_musbank = AIL_file_read(bank_fname, NULL);
     if (p_musbank == NULL) {
-        LOGERR("Cannot read music bank - %s", strerror(errno));
+        LOGERR("Cannot read music bank - %s", AIL_API_last_error());
         return 0;
     }
 
