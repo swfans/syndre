@@ -31,7 +31,7 @@
 #include "bfsound.h"
 #include "bfwindows.h"
 #include "bfsvaribl.h"
-#include "dllload.h"
+#include "miscutil.h"
 #include "sb16.h"
 #include "sndtimer.h"
 #include "snderr.h"
@@ -402,6 +402,12 @@ int InitMIDI(const char *bank_fname, char *drv_fname,
     struct MDI_DRIVER *mus_drvr;
     short n_prepared;
 
+    p_musbank = AIL_file_read(bank_fname, FILE_READ_WITH_SIZE);
+    if (p_musbank == NULL) {
+        LOGERR("Cannot read music bank - %s", strerror(errno));
+        return 0;
+    }
+
     sSOSTrackMap[0] = NULL;
     mus_drvr = GetMusicDriver();
     n_prepared = 0;
@@ -415,13 +421,6 @@ int InitMIDI(const char *bank_fname, char *drv_fname,
         sSOSTrackMap[sequence_num] = seq;
         if (seq == NULL) {
             LOGERR("Cannot alloc handle, sequence %d", (int)sequence_num);
-            break;
-        }
-
-        // AIL consumes the memory reference - need to load for each sequence
-        p_musbank = FILE_read(bank_fname, 0);
-        if (p_musbank == NULL) {
-            LOGERR("Cannot read music bank - %s", strerror(errno));
             break;
         }
 
