@@ -24,6 +24,11 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include <assert.h>
+#include <errno.h>
+
+#if defined(WIN32)||defined(DOS)||defined(GO32)
+# include <share.h>
+#endif
 
 #include "miscutil.h"
 #include "mssal.h"
@@ -31,6 +36,12 @@
 #include "aildebug.h"
 /******************************************************************************/
 int32_t disk_err = 0;
+
+/** Lowest value of SSIZE_MAX seen on real environments was 32767.
+ * Round it down to be multiplicity of 4, to ensure compatibility with other
+ * platforms.
+ */
+#define LOWEST_SSIZE_MAX 32764
 /******************************************************************************/
 
 int32_t XMI_message_size(int32_t status)
@@ -82,7 +93,7 @@ const void *XMI_find_sequence(const uint8_t *image, int32_t sequence)
     //
     // If second or higher sequence requested, return NULL if
     // single-sequence FORM encountered
-    if (!strncasecmp((char *)image, "FORM", 4))
+    if (strncasecmp((char *)image, "FORM", 4) == 0)
     {
         if (sequence != 0)
             return NULL;
@@ -97,7 +108,7 @@ const void *XMI_find_sequence(const uint8_t *image, int32_t sequence)
     // Find nth FORM XMID chunk in outer CAT XMID block
     while (image < end)
     {
-        if (!strncasecmp((char *)image+8, "XMID", 4))
+        if (strncasecmp((char *)image+8, "XMID", 4) == 0)
         {
             if (!sequence--)
                 return image;
@@ -121,8 +132,8 @@ uint32_t XMI_whole_size(const uint8_t *image)
         beg += len;
 
         // Exit if not FORM or CAT block
-        if ((strncasecmp((char *)beg, "FORM", 4)) &&
-          (strncasecmp((char *)beg, "CAT ", 4)))
+        if ((strncasecmp((char *)beg, "FORM", 4) != 0) &&
+          (strncasecmp((char *)beg, "CAT ", 4) != 0))
             return (uint32_t)(beg - image);
 
         // Continue searching if not FORM XMID or CAT XMID
@@ -158,14 +169,18 @@ uint32_t XMI_read_VLN(const uint8_t **ptr)
 void *AIL_API_file_read(const char *fname, void *dest)
 {
     int fh;
-    uint32_t i;
+    int32_t i;
     uint32_t len;
     uint32_t readamt;
     uint8_t *buf, *mem;
 
     disk_err = 0;
 
+#if defined(WIN32)||defined(DOS)||defined(GO32)
+    fh = _sopen(fname, O_RDONLY|O_BINARY, SH_DENYNO);
+#else
     fh = open(fname, O_RDONLY);
+#endif
     if (fh == -1)
     {
         disk_err = AIL_FILE_NOT_FOUND;
@@ -197,16 +212,22 @@ void *AIL_API_file_read(const char *fname, void *dest)
 
     while (len)
     {
-        readamt = (uint16_t)((len >= 32768) ? 32768 : len);
+        readamt = (uint16_t)((len >= LOWEST_SSIZE_MAX) ? LOWEST_SSIZE_MAX : len);
 
         i = read(fh, buf, readamt);
 
+        // If reached EOF, `read()` will return 0; but some implementations
+        // also return 0 on error. Since EOF was not expected, treat as error.
         if (i == 0)
+            i = -ESPIPE;
+
+        if (i < 0)
         {
             if (dest != mem)
                 AIL_MEM_free_lock(mem, len + 4 + 64 + 128);
             close(fh);
             disk_err = AIL_CANT_READ_FILE;
+
             AIL_set_error("Unable to read file.");
 
             return NULL;

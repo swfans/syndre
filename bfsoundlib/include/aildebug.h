@@ -52,7 +52,12 @@ int32_t AIL_set_preference(uint32_t number, int32_t value);
 
 #define FILE_READ_WITH_SIZE ((void *)(int32_t)-1)
 
-/** Read file into memory at *dest, allocating memory first if dest=NULL.
+/** Read file into memory at *dest, allocating memory first if requested.
+ *
+ * @param dest Destination buffer pointer, or NULL if the buffer
+ * should be allocated based on file size, or FILE_READ_WITH_SIZE
+ * if size of the file should be additionally written as 32-bit value
+ * before the file body begins.
  */
 void *AIL_file_read(const char *fname, void *dest);
 

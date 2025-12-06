@@ -32,7 +32,7 @@ int32_t FILE_size(char const *fname);
 
 /** Read file into memory at *dest, allocating memory first if dest=NULL.
  */
-void *FILE_read(const char *fname, void *dest);
+#define FILE_read(fname, dest) AIL_file_read(fname, dest)
 /******************************************************************************/
 #ifdef __cplusplus
 };
