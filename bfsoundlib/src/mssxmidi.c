@@ -50,6 +50,8 @@ static uint32_t XMI_serve_entry = 0;
 
 char GTL_prefix[128] = "SAMPLE";
 extern char SoundDriverPath[144];
+extern char SoundDataPath[144];
+char full_midipats_cfg_path[144+16];
 
 extern MDI_DRIVER *MDI_first;
 uint32_t MDI_entry = 0;
@@ -700,7 +702,11 @@ MDI_DRIVER *XMI_construct_MDI_driver(AIL_DRIVER *drvr, const SNDCARD_IO_PARMS *i
     smp_rate = 22050;
 
 #if LBS_ENABLE_WILDMIDI
-    i = WildMidi_Init("conf/midipats.cfg", smp_rate, WM_MO_ENHANCED_RESAMPLING);
+    snprintf(full_midipats_cfg_path, sizeof(full_midipats_cfg_path),
+      "%s/midipats.cfg", SoundDataPath);
+
+    i = WildMidi_Init(full_midipats_cfg_path, smp_rate, WM_MO_ENHANCED_RESAMPLING);
+
     if (i < 0) {
         AIL_set_error("Cannot init music - invalid/missing WildMIDI config");
         AIL_set_error(WildMidi_GetError());

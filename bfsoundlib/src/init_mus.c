@@ -40,7 +40,7 @@ void *BfMusicData = NULL;
 struct BfMusicInfo *BfMusic = NULL;
 struct BfMusicInfo *BfEndMusic = NULL;
 int32_t music_allocated = 0;
-char full_music_data_path[144];
+char full_music_data_path[144+16];
 struct MusicBankSizes music_bank_size_info;
 
 ushort SongCurrentlyPlaying = 0;

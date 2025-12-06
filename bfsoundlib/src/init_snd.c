@@ -55,7 +55,7 @@ void *SfxData;
 
 long largest_dat_size = 0;
 long largest_tab_size = 0;
-char full_sound_data_path[224];
+char full_sound_data_path[144+16];
 struct SoundBankSizes sound_bank_size_info[9];
 
 extern TbBool AILStartupAlreadyInitiated;
@@ -177,7 +177,8 @@ int AllocateSoundBankMemory(ushort snd_type)
     ushort tpno;
     long dat_size, tab_size;
 
-    sprintf(full_sound_data_path, "%s/sound.dat", SoundDataPath);
+    snprintf(full_sound_data_path, sizeof(full_sound_data_path),
+      "%s/sound.dat", SoundDataPath);
     fh = LbFileOpen(full_sound_data_path, Lb_FILE_MODE_READ_ONLY);
     if (fh == INVALID_FILE) {
         return -1;
