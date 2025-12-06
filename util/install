@@ -226,24 +226,6 @@ copy_data()
     install_file "data/${fn}.dat" || return 1
   done
 
-  for fn in intro.dat intro.xmi; do
-    install_file "data/${fn}" || return 1
-  done
-
-  for fn in isnds-0 isnds-1; do
-    install_file "data/${fn}.dat" || return 1
-    install_file "data/${fn}.tab" || return 1
-  done
-
-  for fn in gsound-0 sound-0 sound-1 ; do
-    install_file "data/${fn}.dat" || return 1
-    install_file "data/${fn}.tab" || return 1
-  done
-
-  for fn in sample.ad sample.opl syngame.xmi gamedg.dll gamefm.dll; do
-    install_file "data/${fn}" || return 1
-  done
-
   for fn in col01.dat hblk01.dat hele-0.ani hfnt01.dat hfra-0.ani hreq.dat hsta-0.ani mselect.pal; do
     install_file "data/${fn}" || return 1
   done
@@ -252,7 +234,33 @@ copy_data()
     install_file "data/${fn}.dat" || return 1
   done
 
+  for fn in intro.dat; do
+    install_file "data/${fn}" || return 1
+  done
+
   install_dir "sound" || return 1
+
+  for fn in intro.xmi; do
+    install_file_to "data/${fn}" "sound" || return 1
+  done
+
+  for fn in isnds-0 isnds-1; do
+    install_file_to "data/${fn}.dat" "sound" || return 1
+    install_file_to "data/${fn}.tab" "sound" || return 1
+  done
+
+  for fn in gsound-0 sound-0 sound-1 ; do
+    install_file_to "data/${fn}.dat" "sound" || return 1
+    install_file_to "data/${fn}.tab" "sound" || return 1
+  done
+
+  for fn in sample.ad sample.opl syngame.xmi; do
+    install_file_to "data/${fn}" "sound" || return 1
+  done
+
+  for fn in gamedg.dll gamefm.dll; do
+    install_file "data/${fn}" || return 1
+  done
 
   # these folders, the game will create automatically when needed
   #install_dir "save" || return 1
