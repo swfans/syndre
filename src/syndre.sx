@@ -82620,13 +82620,13 @@ data_53f3d:
 		.long   starts_ani
 		.fill   0x38
 GLOBAL (sound_bank_files0)	/* 0x540c0 */
-		.string "data/sound-0.dat"
-		.fill   0xb
+		.string "sound/sound-0.dat"
+		.fill   0xa
 		.long   EXPORT_SYMBOL(smpdata)
 		.fill   0x8
 		.ascii  "\x01\x00\x00\x00"
-		.string "data/sound-0.tab"
-		.fill   0xb
+		.string "sound/sound-0.tab"
+		.fill   0xa
 		.long   EXPORT_SYMBOL(smptable)
 		.long   EXPORT_SYMBOL(smptable_end)
 		.fill   0x34
@@ -84987,14 +84987,14 @@ unk984_load_files:	/* 0x5b984 */
 		.long   m_select_pal
 		.fill   0x38
 GLOBAL (sound_bank_files1)	/* 0x5bb10 */
-		.string "data/sound-1.dat"
-		.fill   0xb
+		.string "sound/sound-1.dat"
+		.fill   0xa
 data_5bb2c:
 		.long   EXPORT_SYMBOL(smpdata)
 		.fill   0x8
 		.ascii  "\x01\x00\x00\x00"
-		.string "data/sound-1.tab"
-		.fill   0xb
+		.string "sound/sound-1.tab"
+		.fill   0xa
 		.long   EXPORT_SYMBOL(smptable)
 		.long   EXPORT_SYMBOL(smptable_end)
 		.fill   0x34

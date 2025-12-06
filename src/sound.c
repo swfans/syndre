@@ -100,7 +100,7 @@ void sound_bank_setup(void)
 
 void audio_options_set_default(void)
 {
-    audOpts.SoundDataPath = "data";
+    audOpts.SoundDataPath = "sound";
     audOpts.SoundDriverPath = "data";
     audOpts.IniPath = ".";
     audOpts.AutoScan = 1;
@@ -126,7 +126,7 @@ void init_audio(void)
     InitAudio(&audOpts);
 # endif
     if (MusicAble)
-        MusicAble = InitMIDI("data/syngame.xmi", "data/gamefm.dll",
+        MusicAble = InitMIDI("sound/syngame.xmi", "data/gamefm.dll",
           sndcard_irq, sndcard_dma, sndcard_ioaddr);
 }
 
